@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --font-montserrat: 'Montserrat', sans-serif;
+  
+  /* Colores corporativos */
+  --eminsa-blue: #001689;
+  --eminsa-blue-dark: #000E53;
+  --eminsa-blue-light: #1A239E;
+  --eminsa-gray: #76777A;
+  --eminsa-cyan: #00A3E0;
+  --eminsa-orange: #FF5500;
+  --eminsa-green: #00B140;
+  
+  /* Backgrounds */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-montserrat);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased;
+    font-family: var(--font-montserrat), system-ui, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat), system-ui, sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Botones */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 
+           bg-[#001689] text-white font-semibold rounded-lg
+           transition-all duration-300 ease-out
+           hover:bg-[#000E53] hover:shadow-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-[#001689]/50 focus:ring-offset-2
+           active:scale-[0.98];
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 
+           bg-transparent text-[#001689] font-semibold rounded-lg
+           border-2 border-[#001689]
+           transition-all duration-300 ease-out
+           hover:bg-[#001689] hover:text-white hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-[#001689]/50 focus:ring-offset-2
+           active:scale-[0.98];
+  }
+  
+  .btn-accent {
+    @apply inline-flex items-center justify-center px-6 py-3 
+           bg-[#00A3E0] text-white font-semibold rounded-lg
+           transition-all duration-300 ease-out
+           hover:bg-cyan-600 hover:shadow-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-[#00A3E0]/50 focus:ring-offset-2
+           active:scale-[0.98];
+  }
+  
+  .btn-white {
+    @apply inline-flex items-center justify-center px-6 py-3 
+           bg-white text-[#001689] font-semibold rounded-lg
+           transition-all duration-300 ease-out
+           hover:bg-gray-100 hover:shadow-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2
+           active:scale-[0.98];
+  }
+  
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl shadow-md overflow-hidden
+           transition-all duration-300 ease-out
+           hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  /* Section styling */
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .section-header {
+    @apply text-center max-w-3xl mx-auto mb-12 md:mb-16;
+  }
+  
+  /* Container */
+  .container-eminsa {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Navigation */
+  .nav-link {
+    @apply relative text-[#76777A] font-medium transition-colors duration-300
+           hover:text-[#001689];
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-[#001689]
+           transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  /* Form inputs */
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg
+           transition-all duration-300
+           focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]
+           placeholder:text-gray-400;
+  }
+  
+  .input-label {
+    @apply block text-sm font-medium text-[#76777A] mb-2;
+  }
+}
+
+/* Custom selection */
+::selection {
+  background-color: var(--eminsa-blue);
+  color: white;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--eminsa-blue);
+  outline-offset: 2px;
+}
