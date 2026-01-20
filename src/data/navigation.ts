@@ -89,7 +89,7 @@ export const mainNavigation = [
     description: "Últimas noticias y novedades",
   },
   {
-    name: "Contactos",
+    name: "Contacto",
     href: "/contacto",
     description: "Contáctenos",
   },
@@ -194,9 +194,9 @@ export const contactInfo = {
   address: "Santo Domingo, República Dominicana",
   whatsapp: "+18095607773",
   social: {
-    facebook: "https://facebook.com/grupoeminsa",
-    instagram: "https://instagram.com/grupoeminsa",
-    linkedin: "https://linkedin.com/company/grupoeminsa",
+    facebook: "https://www.facebook.com/GrupoEminsa/",
+    instagram: "https://www.instagram.com/grupo.eminsa/",
+    linkedin: "https://www.linkedin.com/company/grupo-eminsa/",
     youtube: "https://youtube.com/grupoeminsa",
   },
 };

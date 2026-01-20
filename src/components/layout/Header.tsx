@@ -77,7 +77,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <div className="flex items-center gap-3">
-                <Image src="/logoeminsa.jpg" alt="Logo" width={156} height={156} />
+                <Image src="/logoeminsa-Photoroom.png" alt="Logo" width={156} height={156} />
               </div>
             </Link>
 

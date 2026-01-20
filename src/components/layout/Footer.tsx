@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Facebook, 
-  Instagram, 
-  Linkedin, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Instagram,
+  Linkedin,
   Youtube,
   ArrowRight,
   MessageCircle
@@ -29,11 +29,11 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
                 <svg viewBox="0 0 50 50" className="w-8 h-8 text-white">
-                  <circle cx="25" cy="25" r="4" fill="currentColor"/>
-                  <circle cx="25" cy="25" r="10" fill="none" stroke="currentColor" strokeWidth="2"/>
-                  <circle cx="25" cy="25" r="16" fill="none" stroke="currentColor" strokeWidth="2"/>
-                  <circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M25 3 L25 15" stroke="currentColor" strokeWidth="3"/>
+                  <circle cx="25" cy="25" r="4" fill="currentColor" />
+                  <circle cx="25" cy="25" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="25" cy="25" r="16" fill="none" stroke="currentColor" strokeWidth="2" />
+                  <circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" strokeWidth="2" />
+                  <path d="M25 3 L25 15" stroke="currentColor" strokeWidth="3" />
                 </svg>
               </div>
               <div>
@@ -44,21 +44,24 @@ export default function Footer() {
                 <span className="text-white/60 text-xs italic">experiencia y servicio</span>
               </div>
             </div>
-            <p className="text-white/70 mb-6 max-w-md">
-              Más de 50 años siendo líderes en transformadores eléctricos de distribución 
-              en República Dominicana y el Caribe. Fabricación, importación, reparación y servicios.
+            <p className="text-white/70 mb-6 max-w-md text-justify">
+              Durante décadas, hemos fabricado transformadores de insuperable calidad, ofreciendo al mercado un producto confiable y de gran eficiencia de operación.
+              <br />
+              <br />
+              Desde sus inicios, su preocupación por mantenerse a la vanguardia de los adelantos tecnológicos, le ha llevado a invertir en la modernización de su infraestructura física,
+              equipos y a obtener la asesoría técnica y administrativa de prestigiosas firmas y programas de cooperación internacionales.
             </p>
-            
+
             {/* Contact Info */}
-            <div className="space-y-3 mb-6">
-              <a 
+            {/* <div className="space-y-3 mb-6">
+              <a
                 href={`tel:${contactInfo.phone}`}
                 className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
               >
                 <Phone size={18} />
                 <span>{contactInfo.phone}</span>
               </a>
-              <a 
+              <a
                 href={`mailto:${contactInfo.email}`}
                 className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
               >
@@ -69,7 +72,7 @@ export default function Footer() {
                 <MapPin size={18} className="mt-1 flex-shrink-0" />
                 <span>{contactInfo.address}</span>
               </div>
-            </div>
+            </div> */}
 
             {/* Social Links */}
             <div className="flex items-center gap-4">
@@ -123,9 +126,9 @@ export default function Footer() {
                       style={{ backgroundColor: division.color }}
                     />
                     <span>{division.name}</span>
-                    <ArrowRight 
-                      size={14} 
-                      className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" 
+                    <ArrowRight
+                      size={14}
+                      className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
                     />
                   </Link>
                 </li>
@@ -176,8 +179,8 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex items-center gap-4 bg-white/5 rounded-lg p-3">
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
-                  <img 
-                    src="/images/SelloAENORISO9001_NEG.png" 
+                  <img
+                    src="/images/SelloAENORISO9001_NEG.png"
                     alt="ISO 9001"
                     className="w-full h-full object-contain"
                   />
@@ -189,8 +192,8 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-4 bg-white/5 rounded-lg p-3">
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
-                  <img 
-                    src="/images/IQNET_RCMark_PosCMYK.png" 
+                  <img
+                    src="/images/IQNET_RCMark_PosCMYK.png"
                     alt="IQNET"
                     className="w-full h-full object-contain"
                   />
@@ -209,24 +212,22 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-eminsa py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/60 text-sm text-center md:text-left">
-              © {currentYear} Grupo Eminsa. Todos los derechos reservados.
+            <p className="text-sm text-center md:text-left">
+              <span className="text-white">© {currentYear} GRUPO EMINSA</span>
+              <span className="text-white/60">. Todos los derechos reservados.</span>
             </p>
             <div className="flex items-center gap-6">
-              <Link 
-                href="/privacidad" 
-                className="text-white/60 text-sm hover:text-white transition-colors"
-              >
-                Política de Privacidad
-              </Link>
-              <Link 
-                href="/terminos" 
-                className="text-white/60 text-sm hover:text-white transition-colors"
-              >
-                Términos y Condiciones
-              </Link>
-              <Link 
-                href="/login" 
+
+
+              <p className="text-sm text-center md:text-left">
+                <span className="text-white/60">Website by </span>
+                <Link href="https://www.linkedin.com/in/yahivas-dev/" className="text-white/60 text-sm hover:text-white transition-colors">
+                  Yahinniel Vásquez
+                </Link>
+              </p>
+
+              <Link
+                href="/login"
                 className="text-white/30 text-sm hover:text-white/60 transition-colors"
                 title="Acceso Administrador"
               >
