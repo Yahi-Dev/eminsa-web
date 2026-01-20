@@ -12,17 +12,39 @@ import {
   AlertCircle,
   Facebook,
   Instagram,
-  Linkedin
+  Linkedin,
+  Package,
+  Settings
 } from "lucide-react";
 import { contactInfo } from "@/data/navigation";
 import type { ContactFormData, ApiResponse } from "@/lib/types-contact";
+
+// Definir categorías como se solicita
+const CATEGORIAS_PRODUCTOS = [
+  'Transformadores',
+  'Capacitores',
+  'Paneles',
+  'Seccionadores',
+  'Materiales Eléctricos',
+  'Reguladores de Voltaje'
+];
+
+const CATEGORIAS_SERVICIOS = [
+  'Mantenimiento & Reparación',
+  'Diagnóstico & Asesoría',
+  'Instalaciones y montajes eléctricos',
+  'Diseño de instalaciones eléctricas',
+  'Análisis de aceite Dieléctrico',
+  'Alquiler de transformadores'
+];
 
 interface FormState {
   nombre: string;
   empresa: string;
   email: string;
   telefono: string;
-  tipoServicio: string;
+  tipoConsulta: 'productos' | 'servicios' | '';
+  categoria: string;
   mensaje: string;
 }
 
@@ -36,7 +58,8 @@ export default function ContactSection() {
     empresa: "",
     email: "",
     telefono: "",
-    tipoServicio: "",
+    tipoConsulta: "",
+    categoria: "",
     mensaje: "",
   });
 
@@ -44,6 +67,12 @@ export default function ContactSection() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [formErrors, setFormErrors] = useState<FormErrors>({});
+
+  const categoriasDisponibles = formData.tipoConsulta === 'productos' 
+    ? CATEGORIAS_PRODUCTOS 
+    : formData.tipoConsulta === 'servicios'
+    ? CATEGORIAS_SERVICIOS
+    : [];
 
   const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,7 +87,8 @@ export default function ContactSection() {
         empresa: formData.empresa || undefined,
         email: formData.email,
         telefono: formData.telefono,
-        tipoServicio: formData.tipoServicio || undefined,
+        tipoConsulta: formData.tipoConsulta,
+        categoria: formData.categoria || undefined,
         mensaje: formData.mensaje,
       };
 
@@ -94,7 +124,8 @@ export default function ContactSection() {
         empresa: "",
         email: "",
         telefono: "",
-        tipoServicio: "",
+        tipoConsulta: "",
+        categoria: "",
         mensaje: "",
       });
     } catch (error) {
@@ -109,10 +140,21 @@ export default function ContactSection() {
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
-      setFormData(prev => ({
-        ...prev,
-        [name]: value
-      }));
+      
+      // Si cambia el tipo de consulta, reiniciar la categoría
+      if (name === 'tipoConsulta') {
+        setFormData(prev => ({
+          ...prev,
+          [name]: value as 'productos' | 'servicios' | '',
+          categoria: "" // Reiniciar categoría al cambiar tipo de consulta
+        }));
+      } else {
+        setFormData(prev => ({
+          ...prev,
+          [name]: value
+        }));
+      }
+      
       // Limpiar error de este campo cuando el usuario empieza a escribir
       if (formErrors[name]) {
         setFormErrors(prev => ({
@@ -124,6 +166,22 @@ export default function ContactSection() {
     [formErrors]
   );
 
+  const handleTipoConsultaClick = useCallback((tipo: 'productos' | 'servicios') => {
+    setFormData(prev => ({
+      ...prev,
+      tipoConsulta: tipo,
+      categoria: ""
+    }));
+    
+    // Limpiar error si existe
+    if (formErrors.tipoConsulta) {
+      setFormErrors(prev => ({
+        ...prev,
+        tipoConsulta: ""
+      }));
+    }
+  }, [formErrors]);
+
   const resetForm = useCallback(() => {
     setIsSubmitted(false);
     setFormData({
@@ -131,7 +189,8 @@ export default function ContactSection() {
       empresa: "",
       email: "",
       telefono: "",
-      tipoServicio: "",
+      tipoConsulta: "",
+      categoria: "",
       mensaje: "",
     });
     setErrorMessage(null);
@@ -268,6 +327,33 @@ export default function ContactSection() {
                 <MessageCircle size={22} />
                 Chatear por WhatsApp
               </a>
+
+              {/* Google Maps Embed */}
+              <div className="mt-6">
+                <p className="text-white/60 text-sm mb-3">Nuestra ubicación:</p>
+                <div className="rounded-xl overflow-hidden border-2 border-white/20 shadow-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.1234567890123!2d-70.0613034!3d18.5668907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eaff5f43e73b9b7%3A0x33640f05d61e41e1!2sGRUPO%20EMINSA!5e0!3m2!1ses!2sdo!4v1234567890123!5m2!1ses!2sdo"
+                    width="100%"
+                    height="180"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Ubicación de GRUPO EMINSA"
+                    className="w-full"
+                  />
+                </div>
+                <a
+                  href="https://www.google.com/maps/place/GRUPO+EMINSA/@18.5668907,-70.0613034,17z/data=!3m1!4b1!4m6!3m5!1s0x8eaff5f43e73b9b7:0x33640f05d61e41e1!8m2!3d18.5668907!4d-70.0587285!16s%2Fg%2F11w21dsggc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 text-sm text-white/70 hover:text-[#00A3E0] transition-colors mt-3"
+                >
+                  <MapPin size={14} />
+                  Ver mapa más grande
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -414,27 +500,90 @@ export default function ContactSection() {
                     </div>
                   </div>
 
+                  {/* Nueva sección: Selección entre Productos y Servicios */}
                   <div>
-                    <label className="input-label">Tipo de Servicio</label>
-                    <select
-                      name="tipoServicio"
-                      value={formData.tipoServicio}
-                      onChange={handleChange}
-                      className={`input-field ${formErrors.tipoServicio ? "border-red-500 focus:ring-red-200" : ""
-                        }`}
-                    >
-                      <option value="">Seleccione una opción</option>
-                      <option value="Transformadores Nuevos (MTN)">Transformadores Nuevos (MTN)</option>
-                      <option value="Reparación (ETRYS)">Reparación (ETRYS)</option>
-                      <option value="Importaciones (EIC)">Importaciones (EIC)</option>
-                      <option value="Mantenimiento y Servicios">Mantenimiento y Servicios</option>
-                      <option value="Alquiler de Equipos">Alquiler de Equipos</option>
-                      <option value="Otro">Otro</option>
-                    </select>
-                    {formErrors.tipoServicio && (
-                      <p className="text-red-500 text-xs mt-1">{formErrors.tipoServicio}</p>
+                    <label className="input-label">
+                      ¿Qué información necesitas? <span className="text-red-500">*</span>
+                    </label>
+                    <div className="grid grid-cols-2 gap-4 mt-2">
+                      {/* Botón Productos */}
+                      <button
+                        type="button"
+                        onClick={() => handleTipoConsultaClick('productos')}
+                        className={`flex flex-col items-center justify-center p-6 rounded-xl border-2 transition-all ${formData.tipoConsulta === 'productos'
+                            ? 'border-[#001689] bg-[#001689]/10'
+                            : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                          }`}
+                      >
+                        <Package size={32} className={`mb-3 ${formData.tipoConsulta === 'productos' ? 'text-[#001689]' : 'text-gray-400'
+                          }`} />
+                        <span className={`font-semibold ${formData.tipoConsulta === 'productos' ? 'text-[#001689]' : 'text-gray-700'
+                          }`}>
+                          Productos
+                        </span>
+                        <span className="text-sm text-gray-500 mt-1">Información de productos</span>
+                      </button>
+
+                      {/* Botón Servicios */}
+                      <button
+                        type="button"
+                        onClick={() => handleTipoConsultaClick('servicios')}
+                        className={`flex flex-col items-center justify-center p-6 rounded-xl border-2 transition-all ${formData.tipoConsulta === 'servicios'
+                            ? 'border-[#001689] bg-[#001689]/10'
+                            : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                          }`}
+                      >
+                        <Settings size={32} className={`mb-3 ${formData.tipoConsulta === 'servicios' ? 'text-[#001689]' : 'text-gray-400'
+                          }`} />
+                        <span className={`font-semibold ${formData.tipoConsulta === 'servicios' ? 'text-[#001689]' : 'text-gray-700'
+                          }`}>
+                          Servicios
+                        </span>
+                        <span className="text-sm text-gray-500 mt-1">Información de servicios</span>
+                      </button>
+                    </div>
+                    {formErrors.tipoConsulta && (
+                      <p className="text-red-500 text-xs mt-2">{formErrors.tipoConsulta}</p>
                     )}
+                    <input
+                      type="hidden"
+                      name="tipoConsulta"
+                      value={formData.tipoConsulta}
+                      required={!formData.tipoConsulta}
+                    />
                   </div>
+
+                  {/* Categorías específicas (solo visible si se seleccionó un tipo) */}
+                  {formData.tipoConsulta && (
+                    <div>
+                      <label className="input-label">
+                        {formData.tipoConsulta === 'productos' ? 'Selecciona el producto' : 'Selecciona el servicio'} <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        name="categoria"
+                        value={formData.categoria}
+                        onChange={handleChange}
+                        required
+                        className={`input-field ${formErrors.categoria ? "border-red-500 focus:ring-red-200" : ""
+                          }`}
+                      >
+                        <option value="">Seleccione una opción</option>
+                        {categoriasDisponibles.map((categoria) => (
+                          <option key={categoria} value={categoria}>
+                            {categoria}
+                          </option>
+                        ))}
+                      </select>
+                      {formErrors.categoria && (
+                        <p className="text-red-500 text-xs mt-1">{formErrors.categoria}</p>
+                      )}
+                      <p className="text-[#76777A] text-xs mt-2">
+                        {formData.tipoConsulta === 'productos'
+                          ? 'Elige el producto del cual necesitas información'
+                          : 'Elige el servicio del cual necesitas información'}
+                      </p>
+                    </div>
+                  )}
 
                   <div>
                     <label className="input-label">
@@ -460,7 +609,7 @@ export default function ContactSection() {
 
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !formData.tipoConsulta || !formData.categoria}
                     className="btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                   >
                     {isSubmitting ? (
@@ -470,7 +619,7 @@ export default function ContactSection() {
                       </>
                     ) : (
                       <>
-                        Enviar Solicitud
+                        Solicitar Información
                         <Send size={18} />
                       </>
                     )}
