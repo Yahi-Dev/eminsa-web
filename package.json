@@ -9,6 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@maskito/core": "^5.0.1",
+    "@maskito/kit": "^5.0.1",
+    "@maskito/phone": "^5.0.1",
+    "@maskito/react": "^5.0.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.25",
     "lucide-react": "^0.556.0",

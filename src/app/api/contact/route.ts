@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sendCustomerEmail, sendAdminEmail } from '@/lib/email-service';
+
 import { 
   validateContactForm, 
   createErrorResponse, 
@@ -8,6 +8,7 @@ import {
   isDisposableEmail 
 } from '@/lib/contact-validation';
 import type { ApiResponse } from '@/lib/types-contact';
+import { sendContactEmails } from '@/lib/email/email-service';
 
 /**
  * POST /api/contact
@@ -53,21 +54,15 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       );
     }
 
-    // Rate limiting simple (en producción usar Redis o una base de datos)
+    // Rate limiting simple
     const clientIp = getClientIp(request.headers);
-    const rateLimitKey = `contact:${clientIp || 'unknown'}`;
     
     // Aquí podrías implementar rate limiting más sofisticado
-    // Por ahora solo registramos el IP
     console.log(`Contact form submission from IP: ${clientIp}`);
 
     // Enviar emails
     try {
-      // Enviar confirmación al cliente
-      await sendCustomerEmail(validatedData);
-
-      // Enviar notificación al admin
-      await sendAdminEmail(validatedData, clientIp);
+      await sendContactEmails(validatedData, clientIp);
     } catch (emailError) {
       console.error('Error sending emails:', emailError);
       
@@ -101,7 +96,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
 
 /**
  * GET /api/contact
- * Endpoint de información (no hace nada, solo retorna info)
+ * Endpoint de información
  */
 export async function GET(): Promise<NextResponse<ApiResponse>> {
   return NextResponse.json(
@@ -111,14 +106,8 @@ export async function GET(): Promise<NextResponse<ApiResponse>> {
       data: {
         endpoint: '/api/contact',
         method: 'POST',
-        fields: [
-          'nombre (requerido)',
-          'empresa (opcional)',
-          'email (requerido)',
-          'telefono (requerido)',
-          'tipoServicio (opcional)',
-          'mensaje (requerido)',
-        ],
+        required_fields: ['nombre', 'email', 'telefono', 'mensaje'],
+        optional_fields: ['empresa', 'identificacion', 'direccion', 'tipoConsulta', 'categoria'],
       },
     },
     { status: 200 }

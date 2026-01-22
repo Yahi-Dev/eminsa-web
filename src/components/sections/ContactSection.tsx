@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
+import { useMaskito } from '@maskito/react';
+import options from '../../lib/mask/mask-phone';
 import { motion } from "framer-motion";
 import {
   Send,
@@ -14,7 +16,14 @@ import {
   Instagram,
   Linkedin,
   Package,
-  Settings
+  Settings,
+  User,
+  Home,
+  Zap,
+  Cpu,
+  Battery,
+  Power,
+  GitBranch
 } from "lucide-react";
 import { contactInfo } from "@/data/navigation";
 import type { ContactFormData, ApiResponse } from "@/lib/types-contact";
@@ -38,6 +47,33 @@ const CATEGORIAS_SERVICIOS = [
   'Alquiler de transformadores'
 ];
 
+// Opciones para el formulario específico de transformadores
+const FASES = [
+  { value: 'monofasico', label: 'Monofásico' },
+  { value: 'trifasico', label: 'Trifásico' }
+];
+
+const TIPOS_TRANSFORMADORES = [
+  { value: 'pad_mounted', label: 'Pad Mounted' },
+  { value: 'poste', label: 'Poste' },
+  { value: 'seco', label: 'Seco' },
+  { value: 'sumergible', label: 'Sumergible' }
+];
+
+const NORMAS = [
+  { value: 'ansi', label: 'ANSI/IEEE' },
+  { value: 'iec', label: 'IEC' },
+  { value: 'nema', label: 'NEMA' },
+  { value: 'otros', label: 'Otras normas' }
+];
+
+const ZONAS_INSTALACION = [
+  { value: 'urbana', label: 'Zona Urbana' },
+  { value: 'rural', label: 'Zona Rural' },
+  { value: 'industrial', label: 'Zona Industrial' },
+  { value: 'comercial', label: 'Zona Comercial' }
+];
+
 interface FormState {
   nombre: string;
   empresa: string;
@@ -46,6 +82,16 @@ interface FormState {
   tipoConsulta: 'productos' | 'servicios' | '';
   categoria: string;
   mensaje: string;
+  identificacion: string;
+  direccion: string;
+  // Campos específicos para transformadores
+  potenciaKVA: string;
+  fase: string;
+  voltajePrimario: string;
+  voltajeSecundario: string;
+  tipoTransformador: string;
+  norma: string;
+  zonaInstalacion: string;
 }
 
 interface FormErrors {
@@ -61,18 +107,92 @@ export default function ContactSection() {
     tipoConsulta: "",
     categoria: "",
     mensaje: "",
+    identificacion: "",
+    direccion: "",
+    // Campos específicos para transformadores
+    potenciaKVA: "",
+    fase: "",
+    voltajePrimario: "",
+    voltajeSecundario: "",
+    tipoTransformador: "",
+    norma: "",
+    zonaInstalacion: ""
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const maskedInputRef = useMaskito({ options });
+  const identificacionRef = useRef<string>('');
 
   const categoriasDisponibles = formData.tipoConsulta === 'productos' 
     ? CATEGORIAS_PRODUCTOS 
     : formData.tipoConsulta === 'servicios'
     ? CATEGORIAS_SERVICIOS
     : [];
+
+  // Verificar si se seleccionó Transformadores para mostrar campos específicos
+  const showTransformadorFields = formData.tipoConsulta === 'productos' && formData.categoria === 'Transformadores';
+
+  // Función para formatear la cédula/RNC con límites automáticos
+  const formatIdentificacion = (value: string): string => {
+    // Eliminar todo excepto números
+    const cleanValue = value.replace(/\D/g, '');
+    
+    // Si ya tiene 9 dígitos o menos, es RNC - no formatear y limitar a 9
+    if (cleanValue.length <= 9) {
+      return cleanValue.substring(0, 9);
+    }
+    
+    // Si tiene más de 9 dígitos, es cédula - formatear y limitar a 11
+    if (cleanValue.length > 9) {
+      const cedula = cleanValue.substring(0, 11);
+      
+      if (cedula.length === 11) {
+        return cedula.replace(/(\d{3})(\d{7})(\d{1})/, '$1-$2-$3');
+      }
+      return cedula;
+    }
+    
+    return cleanValue;
+  };
+
+  // Manejar el cambio en el campo de identificación
+  const handleIdentificacionChange = useCallback((value: string) => {
+    const formatted = formatIdentificacion(value);
+    identificacionRef.current = formatted;
+    
+    setFormData(prev => ({
+      ...prev,
+      identificacion: formatted
+    }));
+    
+    if (formErrors.identificacion) {
+      setFormErrors(prev => ({
+        ...prev,
+        identificacion: ""
+      }));
+    }
+  }, [formErrors.identificacion]);
+
+  // Validar automáticamente cuando se completa la identificación (usando ref)
+  useEffect(() => {
+    const cleanId = identificacionRef.current.replace(/\D/g, '');
+    
+    if (cleanId.length === 9) {
+      setFormData(prev => ({
+        ...prev,
+        identificacion: cleanId
+      }));
+    } else if (cleanId.length === 11) {
+      const formatted = cleanId.replace(/(\d{3})(\d{7})(\d{1})/, '$1-$2-$3');
+      setFormData(prev => ({
+        ...prev,
+        identificacion: formatted
+      }));
+    }
+  }, [formData.identificacion]);
 
   const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -90,6 +210,20 @@ export default function ContactSection() {
         tipoConsulta: formData.tipoConsulta,
         categoria: formData.categoria || undefined,
         mensaje: formData.mensaje,
+        identificacion: formData.identificacion || undefined,
+        direccion: formData.direccion || undefined,
+        // Incluir datos específicos de transformadores si aplica
+        ...(showTransformadorFields && {
+          especificacionesTransformador: {
+            potenciaKVA: formData.potenciaKVA,
+            fase: formData.fase,
+            voltajePrimario: formData.voltajePrimario,
+            voltajeSecundario: formData.voltajeSecundario,
+            tipoTransformador: formData.tipoTransformador,
+            norma: formData.norma,
+            zonaInstalacion: formData.zonaInstalacion
+          }
+        })
       };
 
       // Enviar solicitud al API
@@ -104,7 +238,6 @@ export default function ContactSection() {
       const data: ApiResponse = await response.json();
 
       if (!response.ok) {
-        // Errores de validación
         if (data.errors) {
           setFormErrors(data.errors);
           setErrorMessage("Por favor corrige los errores en el formulario.");
@@ -117,7 +250,7 @@ export default function ContactSection() {
         return;
       }
 
-      // Éxito
+      // Éxito - resetear todos los campos
       setIsSubmitted(true);
       setFormData({
         nombre: "",
@@ -127,7 +260,17 @@ export default function ContactSection() {
         tipoConsulta: "",
         categoria: "",
         mensaje: "",
+        identificacion: "",
+        direccion: "",
+        potenciaKVA: "",
+        fase: "",
+        voltajePrimario: "",
+        voltajeSecundario: "",
+        tipoTransformador: "",
+        norma: "",
+        zonaInstalacion: ""
       });
+      identificacionRef.current = '';
     } catch (error) {
       console.error("Error submitting form:", error);
       setErrorMessage(
@@ -135,23 +278,59 @@ export default function ContactSection() {
       );
       setIsSubmitting(false);
     }
-  }, [formData]);
+  }, [formData, showTransformadorFields]);
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       const { name, value } = e.target;
+      
+      let formattedValue = value;
+      
+      // Aplicar límites de caracteres según el campo
+      if (name === 'nombre' || name === 'empresa') {
+        formattedValue = value.substring(0, 100);
+      } else if (name === 'direccion') {
+        formattedValue = value.substring(0, 130);
+      } else if (name === 'identificacion') {
+        handleIdentificacionChange(value);
+        return;
+      } else if (name === 'potenciaKVA' || name === 'voltajePrimario' || name === 'voltajeSecundario') {
+        // Solo permitir números y puntos decimales para campos numéricos
+        formattedValue = value.replace(/[^\d.]/g, '');
+      }
       
       // Si cambia el tipo de consulta, reiniciar la categoría
       if (name === 'tipoConsulta') {
         setFormData(prev => ({
           ...prev,
           [name]: value as 'productos' | 'servicios' | '',
-          categoria: "" // Reiniciar categoría al cambiar tipo de consulta
+          categoria: "",
+          // Resetear campos específicos de transformadores
+          potenciaKVA: "",
+          fase: "",
+          voltajePrimario: "",
+          voltajeSecundario: "",
+          tipoTransformador: "",
+          norma: "",
+          zonaInstalacion: ""
         }));
-      } else {
+      } else if (name === 'categoria' && value !== 'Transformadores') {
+        // Si cambia la categoría y no es Transformadores, resetear campos específicos
         setFormData(prev => ({
           ...prev,
-          [name]: value
+          [name]: value,
+          potenciaKVA: "",
+          fase: "",
+          voltajePrimario: "",
+          voltajeSecundario: "",
+          tipoTransformador: "",
+          norma: "",
+          zonaInstalacion: ""
+        }));
+      } else if (name !== 'identificacion') {
+        setFormData(prev => ({
+          ...prev,
+          [name]: formattedValue
         }));
       }
       
@@ -163,17 +342,24 @@ export default function ContactSection() {
         }));
       }
     },
-    [formErrors]
+    [formErrors, handleIdentificacionChange]
   );
 
   const handleTipoConsultaClick = useCallback((tipo: 'productos' | 'servicios') => {
     setFormData(prev => ({
       ...prev,
       tipoConsulta: tipo,
-      categoria: ""
+      categoria: "",
+      // Resetear campos específicos de transformadores
+      potenciaKVA: "",
+      fase: "",
+      voltajePrimario: "",
+      voltajeSecundario: "",
+      tipoTransformador: "",
+      norma: "",
+      zonaInstalacion: ""
     }));
     
-    // Limpiar error si existe
     if (formErrors.tipoConsulta) {
       setFormErrors(prev => ({
         ...prev,
@@ -192,16 +378,34 @@ export default function ContactSection() {
       tipoConsulta: "",
       categoria: "",
       mensaje: "",
+      identificacion: "",
+      direccion: "",
+      potenciaKVA: "",
+      fase: "",
+      voltajePrimario: "",
+      voltajeSecundario: "",
+      tipoTransformador: "",
+      norma: "",
+      zonaInstalacion: ""
     });
+    identificacionRef.current = '';
     setErrorMessage(null);
     setFormErrors({});
   }, []);
+
+  // Determinar el tipo de identificación basado en la longitud
+  const getTipoIdentificacion = () => {
+    const cleanId = formData.identificacion.replace(/\D/g, '');
+    if (cleanId.length === 9) return 'RNC';
+    if (cleanId.length === 11) return 'Cédula';
+    return 'Indefinido';
+  };
 
   return (
     <section id="contacto" className="py-20 lg:py-32 bg-gray-50 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#001689]/5 rounded-full blur-[100px]" />
+        <div className="absolute top-0 right-0 w-150 h-150 bg-[#001689]/5 rounded-full blur-[100px]" />
       </div>
 
       <div className="container-eminsa relative">
@@ -217,10 +421,13 @@ export default function ContactSection() {
             Formulario de solicitud de {" "}
             <span className="text-[#00A3E0]">servicios, productos y contacto</span>
           </h2>
+          <p className="text-[#76777A]">
+            Completa todos los campos para procesar tu solicitud correctamente
+          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-5 gap-12">
-          {/* Contact Info */}
+          {/* Contact Info (se mantiene igual) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -228,18 +435,18 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-2"
           >
-            <div className="bg-gradient-to-br from-[#001689] to-[#000E53] rounded-3xl p-8 text-white h-full">
+            <div className="bg-linear-to-br from-[#001689] to-[#000E53] rounded-3xl p-8 text-white h-full">
               <h3 className="text-2xl font-bold mb-6">Información de Contacto</h3>
 
               <div className="space-y-6 mb-10">
-                {/* Dirección con link a Google Maps */}
+                {/* Dirección */}
                 <a
                   href="https://www.google.com/maps/place/GRUPO+EMINSA/@18.5668907,-70.0613034,17z/data=!3m1!4b1!4m6!3m5!1s0x8eaff5f43e73b9b7:0x33640f05d61e41e1!8m2!3d18.5668907!4d-70.0587285!16s%2Fg%2F11w21dsggc?entry=tts&g_ep=EgoyMDI0MDkyMi4wKgBIAVAD"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 group"
                 >
-                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-white/20 transition-colors">
                     <MapPin size={20} />
                   </div>
                   <div>
@@ -255,7 +462,7 @@ export default function ContactSection() {
                   href={`mailto:${contactInfo.email}`}
                   className="flex items-start gap-4 group"
                 >
-                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-white/20 transition-colors">
                     <Mail size={20} />
                   </div>
                   <div>
@@ -271,7 +478,7 @@ export default function ContactSection() {
                   href={`tel:${contactInfo.phone}`}
                   className="flex items-start gap-4 group"
                 >
-                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-colors">
+                  <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-white/20 transition-colors">
                     <Phone size={20} />
                   </div>
                   <div>
@@ -391,14 +598,6 @@ export default function ContactSection() {
                       Te hemos enviado un email de confirmación y uno de nuestros
                       especialistas se comunicará contigo en menos de 30 minutos.
                     </p>
-                    <div className="bg-[#00A3E0]/10 border border-[#00A3E0]/30 rounded-lg p-4 mb-6 text-left">
-                      <p className="text-sm text-[#001689]">
-                        <strong>Contraseña de tu solicitud:</strong>
-                      </p>
-                      <p className="text-xs text-[#76777A] mt-1">
-                        Email: {formData.email}
-                      </p>
-                    </div>
                     <button
                       onClick={resetForm}
                       className="btn-primary"
@@ -416,7 +615,7 @@ export default function ContactSection() {
                       animate={{ opacity: 1, y: 0 }}
                       className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3"
                     >
-                      <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                      <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
                       <p className="text-red-700 text-sm">{errorMessage}</p>
                     </motion.div>
                   )}
@@ -426,20 +625,27 @@ export default function ContactSection() {
                       <label className="input-label">
                         Nombre Completo <span className="text-red-500">*</span>
                       </label>
-                      <input
-                        type="text"
-                        name="nombre"
-                        value={formData.nombre}
-                        onChange={handleChange}
-                        required
-                        className={`input-field ${formErrors.nombre ? "border-red-500 focus:ring-red-200" : ""
-                          }`}
-                        placeholder="Su nombre"
-                        autoComplete="name"
-                      />
+                      <div className="relative">
+                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                        <input
+                          type="text"
+                          name="nombre"
+                          value={formData.nombre}
+                          onChange={handleChange}
+                          required
+                          maxLength={100}
+                          className={`input-field pl-10 ${formErrors.nombre ? "border-red-500 focus:ring-red-200" : ""
+                            }`}
+                          placeholder="Su nombre completo"
+                          autoComplete="name"
+                        />
+                      </div>
                       {formErrors.nombre && (
                         <p className="text-red-500 text-xs mt-1">{formErrors.nombre}</p>
                       )}
+                      <p className="text-[#76777A] text-xs mt-2">
+                        {formData.nombre.length} / 100 caracteres
+                      </p>
                     </div>
                     <div>
                       <label className="input-label">Empresa</label>
@@ -448,6 +654,7 @@ export default function ContactSection() {
                         name="empresa"
                         value={formData.empresa}
                         onChange={handleChange}
+                        maxLength={100}
                         className={`input-field ${formErrors.empresa ? "border-red-500 focus:ring-red-200" : ""
                           }`}
                         placeholder="Nombre de su empresa"
@@ -456,28 +663,42 @@ export default function ContactSection() {
                       {formErrors.empresa && (
                         <p className="text-red-500 text-xs mt-1">{formErrors.empresa}</p>
                       )}
+                      <p className="text-[#76777A] text-xs mt-2">
+                        {formData.empresa.length} / 100 caracteres
+                      </p>
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
                       <label className="input-label">
-                        Email <span className="text-red-500">*</span>
+                        RNC / Cédula <span className="text-red-500">*</span>
+                        <span className="ml-2 text-xs font-semibold text-[#001689]">
+                          {formData.identificacion && `(${getTipoIdentificacion()})`}
+                        </span>
                       </label>
                       <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
+                        type="text"
+                        name="identificacion"
+                        value={formData.identificacion}
                         onChange={handleChange}
                         required
-                        className={`input-field ${formErrors.email ? "border-red-500 focus:ring-red-200" : ""
+                        className={`input-field ${formErrors.identificacion ? "border-red-500 focus:ring-red-200" : ""
                           }`}
-                        placeholder="correo@ejemplo.com"
-                        autoComplete="email"
+                        placeholder="123456789 (RNC) o 123-4567890-1 (Cédula)"
+                        autoComplete="off"
+                        maxLength={13}
                       />
-                      {formErrors.email && (
-                        <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>
+                      {formErrors.identificacion && (
+                        <p className="text-red-500 text-xs mt-1">{formErrors.identificacion}</p>
                       )}
+                      <div className="text-[#76777A] text-xs mt-2 space-y-1">
+                        <p>• RNC: 9 dígitos sin guiones</p>
+                        <p>• Cédula: 11 dígitos con formato 000-0000000-0</p>
+                        <p className="mt-1 font-medium">
+                          {formData.identificacion.replace(/\D/g, '').length} dígitos ingresados
+                        </p>
+                      </div>
                     </div>
                     <div>
                       <label className="input-label">
@@ -488,6 +709,7 @@ export default function ContactSection() {
                         name="telefono"
                         value={formData.telefono}
                         onChange={handleChange}
+                        ref={maskedInputRef}
                         required
                         className={`input-field ${formErrors.telefono ? "border-red-500 focus:ring-red-200" : ""
                           }`}
@@ -500,13 +722,63 @@ export default function ContactSection() {
                     </div>
                   </div>
 
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="input-label">
+                        Email <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          className={`input-field pl-10 ${formErrors.email ? "border-red-500 focus:ring-red-200" : ""
+                            }`}
+                          placeholder="correo@ejemplo.com"
+                          autoComplete="email"
+                        />
+                      </div>
+                      {formErrors.email && (
+                        <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>
+                      )}
+                    </div>
+                    <div>
+                      <label className="input-label">
+                        Dirección <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <Home className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                        <input
+                          type="text"
+                          name="direccion"
+                          value={formData.direccion}
+                          onChange={handleChange}
+                          required
+                          maxLength={130}
+                          className={`input-field pl-10 ${formErrors.direccion ? "border-red-500 focus:ring-red-200" : ""
+                            }`}
+                          placeholder="Calle, número, sector, ciudad"
+                          autoComplete="street-address"
+                        />
+                      </div>
+                      {formErrors.direccion && (
+                        <p className="text-red-500 text-xs mt-1">{formErrors.direccion}</p>
+                      )}
+                      <p className="text-[#76777A] text-xs mt-2">
+                        {formData.direccion.length} / 130 caracteres
+                      </p>
+                    </div>
+                  </div>
+
                   {/* Nueva sección: Selección entre Productos y Servicios */}
                   <div>
                     <label className="input-label">
                       ¿Qué información necesitas? <span className="text-red-500">*</span>
                     </label>
                     <div className="grid grid-cols-2 gap-4 mt-2">
-                      {/* Botón Productos */}
                       <button
                         type="button"
                         onClick={() => handleTipoConsultaClick('productos')}
@@ -524,7 +796,6 @@ export default function ContactSection() {
                         <span className="text-sm text-gray-500 mt-1">Información de productos</span>
                       </button>
 
-                      {/* Botón Servicios */}
                       <button
                         type="button"
                         onClick={() => handleTipoConsultaClick('servicios')}
@@ -585,6 +856,197 @@ export default function ContactSection() {
                     </div>
                   )}
 
+                  {/* Campos específicos para Transformadores */}
+                  {showTransformadorFields && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-[#001689]/5 border border-[#001689]/20 rounded-xl p-6 space-y-6"
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <Zap className="w-6 h-6 text-[#001689]" />
+                        <h3 className="text-lg font-bold text-[#001689]">
+                          Especificaciones del Transformador
+                        </h3>
+                      </div>
+                      
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="input-label">
+                            Potencia (KVA) <span className="text-red-500">*</span>
+                          </label>
+                          <div className="relative">
+                            <Power className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                            <input
+                              type="text"
+                              name="potenciaKVA"
+                              value={formData.potenciaKVA}
+                              onChange={handleChange}
+                              required
+                              className={`input-field pl-10 ${formErrors.potenciaKVA ? "border-red-500 focus:ring-red-200" : ""
+                                }`}
+                              placeholder="Ej: 100, 500, 1000"
+                              inputMode="decimal"
+                            />
+                          </div>
+                          {formErrors.potenciaKVA && (
+                            <p className="text-red-500 text-xs mt-1">{formErrors.potenciaKVA}</p>
+                          )}
+                        </div>
+                        
+                        <div>
+                          <label className="input-label">
+                            Fase <span className="text-red-500">*</span>
+                          </label>
+                          <div className="relative">
+                            <GitBranch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                            <select
+                              name="fase"
+                              value={formData.fase}
+                              onChange={handleChange}
+                              required
+                              className={`input-field pl-10 ${formErrors.fase ? "border-red-500 focus:ring-red-200" : ""
+                                }`}
+                            >
+                              <option value="">Seleccione la fase</option>
+                              {FASES.map((opcion) => (
+                                <option key={opcion.value} value={opcion.value}>
+                                  {opcion.label}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                          {formErrors.fase && (
+                            <p className="text-red-500 text-xs mt-1">{formErrors.fase}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="input-label">
+                            Voltaje Primario (V) <span className="text-red-500">*</span>
+                          </label>
+                          <div className="relative">
+                            <Cpu className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                            <input
+                              type="text"
+                              name="voltajePrimario"
+                              value={formData.voltajePrimario}
+                              onChange={handleChange}
+                              required
+                              className={`input-field pl-10 ${formErrors.voltajePrimario ? "border-red-500 focus:ring-red-200" : ""
+                                }`}
+                              placeholder="Ej: 13800, 34500"
+                              inputMode="decimal"
+                            />
+                          </div>
+                          {formErrors.voltajePrimario && (
+                            <p className="text-red-500 text-xs mt-1">{formErrors.voltajePrimario}</p>
+                          )}
+                        </div>
+                        
+                        <div>
+                          <label className="input-label">
+                            Voltaje Secundario (V) <span className="text-red-500">*</span>
+                          </label>
+                          <div className="relative">
+                            <Battery className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                            <input
+                              type="text"
+                              name="voltajeSecundario"
+                              value={formData.voltajeSecundario}
+                              onChange={handleChange}
+                              required
+                              className={`input-field pl-10 ${formErrors.voltajeSecundario ? "border-red-500 focus:ring-red-200" : ""
+                                }`}
+                              placeholder="Ej: 220, 480"
+                              inputMode="decimal"
+                            />
+                          </div>
+                          {formErrors.voltajeSecundario && (
+                            <p className="text-red-500 text-xs mt-1">{formErrors.voltajeSecundario}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div>
+                          <label className="input-label">
+                            Tipo de Transformador <span className="text-red-500">*</span>
+                          </label>
+                          <select
+                            name="tipoTransformador"
+                            value={formData.tipoTransformador}
+                            onChange={handleChange}
+                            required
+                            className={`input-field ${formErrors.tipoTransformador ? "border-red-500 focus:ring-red-200" : ""
+                              }`}
+                          >
+                            <option value="">Seleccione el tipo</option>
+                            {TIPOS_TRANSFORMADORES.map((tipo) => (
+                              <option key={tipo.value} value={tipo.value}>
+                                {tipo.label}
+                              </option>
+                            ))}
+                          </select>
+                          {formErrors.tipoTransformador && (
+                            <p className="text-red-500 text-xs mt-1">{formErrors.tipoTransformador}</p>
+                          )}
+                        </div>
+                        
+                        <div>
+                          <label className="input-label">
+                            Norma Aplicable <span className="text-red-500">*</span>
+                          </label>
+                          <select
+                            name="norma"
+                            value={formData.norma}
+                            onChange={handleChange}
+                            required
+                            className={`input-field ${formErrors.norma ? "border-red-500 focus:ring-red-200" : ""
+                              }`}
+                          >
+                            <option value="">Seleccione la norma</option>
+                            {NORMAS.map((norma) => (
+                              <option key={norma.value} value={norma.value}>
+                                {norma.label}
+                              </option>
+                            ))}
+                          </select>
+                          {formErrors.norma && (
+                            <p className="text-red-500 text-xs mt-1">{formErrors.norma}</p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="input-label">
+                          Zona de Instalación <span className="text-red-500">*</span>
+                        </label>
+                        <select
+                          name="zonaInstalacion"
+                          value={formData.zonaInstalacion}
+                          onChange={handleChange}
+                          required
+                          className={`input-field ${formErrors.zonaInstalacion ? "border-red-500 focus:ring-red-200" : ""
+                            }`}
+                        >
+                          <option value="">Seleccione la zona</option>
+                          {ZONAS_INSTALACION.map((zona) => (
+                            <option key={zona.value} value={zona.value}>
+                              {zona.label}
+                            </option>
+                          ))}
+                        </select>
+                        {formErrors.zonaInstalacion && (
+                          <p className="text-red-500 text-xs mt-1">{formErrors.zonaInstalacion}</p>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+
                   <div>
                     <label className="input-label">
                       Mensaje <span className="text-red-500">*</span>
@@ -594,6 +1056,7 @@ export default function ContactSection() {
                       value={formData.mensaje}
                       onChange={handleChange}
                       required
+                      maxLength={5000}
                       rows={5}
                       className={`input-field resize-none ${formErrors.mensaje ? "border-red-500 focus:ring-red-200" : ""
                         }`}
@@ -609,7 +1072,7 @@ export default function ContactSection() {
 
                   <button
                     type="submit"
-                    disabled={isSubmitting || !formData.tipoConsulta || !formData.categoria}
+                    disabled={isSubmitting || !formData.tipoConsulta || !formData.categoria || !formData.identificacion || !formData.direccion || (showTransformadorFields && (!formData.potenciaKVA || !formData.fase || !formData.voltajePrimario || !formData.voltajeSecundario || !formData.tipoTransformador || !formData.norma || !formData.zonaInstalacion))}
                     className="btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                   >
                     {isSubmitting ? (
