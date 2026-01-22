@@ -7,7 +7,6 @@ const isSupported = (l?: string): l is Locale =>
   !!l && SUPPORTED.includes(l as Locale);
 
 export default getRequestConfig(async () => {
-
   const cookieStore = await cookies();
   const cookieLocale = cookieStore.get('NEXT_LOCALE')?.value;
 
