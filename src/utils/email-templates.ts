@@ -54,7 +54,7 @@ export function customerConfirmationTemplate(
   const { primary, secondary, text, muted, bg, card } = brandColors;
   
   const preheader = `Confirmación de tu solicitud en ${appName}`;
-  const safeLogo = options?.logoUrl || `${options?.baseUrl || defaultOptions.baseUrl}/logo.png`;
+  const safeLogo = `https://res.cloudinary.com/ddne5wqxo/image/upload/v1769097816/logoeminsa-Photoroom_jgkqjb.png`;
 
   // Formatear datos específicos de transformadores si existen
   const especificacionesHTML = data.especificacionesTransformador ? `
@@ -147,7 +147,7 @@ export function customerConfirmationTemplate(
                   <td align="center" class="px" style="padding: 32px 40px;">
                     <!-- Logo -->
                     <div style="display:inline-block; background:#fff; border-radius:16px; padding:16px; box-shadow:0 10px 25px rgba(0,0,0,.08);">
-                      <img src="${safeLogo}" alt="${appName} Logo" width="114" height="114" style="display:block; border:0; outline:none; text-decoration:none;" />
+                      <img src="${safeLogo}" alt="${appName} Logo" width="134" height="134" style="display:block; border:0; outline:none; text-decoration:none;" />
                     </div>
 
                     <!-- Heading -->
