@@ -15,11 +15,14 @@ import {
 } from "lucide-react";
 import { mainNavigation, contactInfo } from "@/data/navigation";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [language, setLanguage] = useState<"en" | "es">("es");
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +31,36 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Cargar idioma desde cookies/localStorage - CORREGIDO
+  useEffect(() => {
+    const getInitialLanguage = (): "en" | "es" => {
+      if (typeof window === "undefined") return "es";
+      
+      const cookieLang = document.cookie
+        .split("; ")
+        .find(r => r.startsWith("NEXT_LOCALE="))
+        ?.split("=")[1] as "en" | "es" | undefined;
+
+      return (cookieLang ?? (localStorage.getItem("language") as "en" | "es" | null) ?? "es");
+    };
+
+    setLanguage(getInitialLanguage());
+  }, []);
+
+  const setLocale = (lng: "en" | "es") => {
+    setLanguage(lng);
+    localStorage.setItem("language", lng);
+    document.cookie = `NEXT_LOCALE=${lng}; Path=/; Max-Age=31536000; SameSite=Lax`;
+    
+    // Recargar la página para aplicar el cambio de idioma
+    router.refresh();
+  };
+
+  const toggleLanguage = () => {
+    const newLang = language === "en" ? "es" : "en";
+    setLocale(newLang);
+  };
 
   const handleMouseEnter = (name: string) => {
     setActiveDropdown(name);
@@ -54,9 +87,12 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-4">
             <span className="text-white/70">Transformadores • Servicios • Suplidores Eléctricos</span>
-            <button className="flex items-center gap-1 hover:text-[#00A3E0] transition-colors">
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 hover:text-[#00A3E0] transition-colors"
+            >
               <Globe size={14} />
-              <span>ES</span>
+              <span>{language === "en" ? "EN" : "ES"}</span>
               <ChevronDown size={12} />
             </button>
           </div>
@@ -75,7 +111,7 @@ export default function Header() {
         <div className="container-eminsa">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex-shrink-0">
+            <Link href="/" className="shrink-0"> {/* CORREGIDO: shrink-0 en lugar de flex-shrink-0 */}
               <div className="flex items-center gap-3">
                 <Image src="/logoeminsa-Photoroom.png" alt="Logo" width={156} height={156} />
               </div>
@@ -213,6 +249,19 @@ export default function Header() {
                   >
                     Solicitar Cotización
                   </Link>
+                  {/* Botón de idioma en móvil */}
+                  <button 
+                    onClick={() => {
+                      toggleLanguage();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#001689] border border-[#001689] rounded-lg hover:bg-[#001689] hover:text-white transition-all"
+                  >
+                    <Globe size={18} />
+                    <span className="font-medium">
+                      {language === "en" ? "Cambiar a Español" : "Switch to English"}
+                    </span>
+                  </button>
                 </div>
               </div>
             </motion.div>

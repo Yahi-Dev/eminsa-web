@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
 import ConditionalLayout from "@/components/ConditionalLayout";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: "Grupo Eminsa | Transformadores Eléctricos | República Dominicana",
@@ -25,19 +27,22 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const messages = await getMessages();
+  
   return (
     <html lang="es" className="scroll-smooth">
       <body className="min-h-screen flex flex-col antialiased">
         <Providers>
-          {/* ConditionalLayout decide si mostrar Header/Footer según la ruta */}
-          <ConditionalLayout>
-            {children}
-          </ConditionalLayout>
+          <NextIntlClientProvider messages={messages}>
+            <ConditionalLayout>
+              {children}
+            </ConditionalLayout>
+          </NextIntlClientProvider>
         </Providers>
       </body>
     </html>
