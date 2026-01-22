@@ -1,0 +1,2588 @@
+{
+    "general": {
+        "English": "Inglés",
+        "Spanish": "Español"
+    },
+    "dashboard": {
+        "loadingDashboard": "Cargando dashboard...",
+        "errorLoadingDashboard": "Error al cargar el dashboard",
+        "gettingSession": "Obteniendo sesión...",
+        "welcome": {
+            "title": "¡Bienvenido de nuevo, {name}!",
+            "description": "Esto es lo que está sucediendo en tu tienda hoy"
+        },
+        "timeFilter": {
+            "selectTimePeriod": "Seleccionar período de tiempo",
+            "previousYear": "Año Anterior",
+            "currentYear": "Año Actual",
+            "lastMonth": "Mes Anterior",
+            "currentMonth": "Mes Actual",
+            "viewAllTime": "Ver Todo el Tiempo"
+        },
+        "summaryChart": {
+            "title": "Resumen",
+            "order": "Pedido",
+            "incomeGrowth": "Crecimiento de Ingresos",
+            "selectPeriod": "Seleccionar período",
+            "last7Days": "Últimos 7 días",
+            "last30Days": "Últimos 30 días",
+            "last90Days": "Últimos 90 días"
+        },
+        "topProducts": {
+            "title": "Productos Más Vendidos",
+            "topProduct": "Producto Principal",
+            "id": "ID",
+            "sales": "Ventas",
+            "ofTotalSales": "% del total de ventas"
+        },
+        "recentOrders": {
+            "title": "Pedidos Recientes",
+            "viewAll": "Ver Todos",
+            "product": "Producto",
+            "customer": "Cliente",
+            "orderId": "ID del Pedido",
+            "date": "Fecha",
+            "status": "Estado",
+            "statuses": {
+                "pending": "Pendiente",
+                "shipped": "Enviado",
+                "cancelled": "Cancelado"
+            }
+        },
+        "topCustomers": {
+            "title": "Mejores Clientes de la Semana",
+            "orders": "Pedidos",
+            "view": "Ver"
+        },
+        "alertsMessages": {
+            "title": "Alertas y Mensajes",
+            "urgentAlerts": "Alertas Urgentes",
+            "messages": "Mensajes",
+            "contact": "Contacto",
+            "licenseExpiring": "Licencias y Certificados por Vencer",
+            "drugRecalls": "Nuevos Retiros de Medicamentos",
+            "dscsaInfo": "INFORMACIÓN DSCSA",
+            "contactUs": "Contáctenos"
+        },
+        "dailyOrders": {
+            "title": "Pedidos de Hoy",
+            "description": "Lista de todos los pedidos procesados hoy en B STORE",
+            "searchPlaceholder": "Buscar por cuenta, factura o pedido",
+            "filter": "Filtrar",
+            "account": "Cuenta",
+            "invoice": "Factura",
+            "orderNumber": "Pedido #",
+            "orderSource": "Origen del Pedido",
+            "orderTime": "Hora del Pedido",
+            "packaged": "Empaquetado",
+            "shipped": "Enviado",
+            "total": "Total",
+            "status": "Estado",
+            "loadingOrders": "Cargando pedidos...",
+            "noOrders": {
+                "title": "No hay pedidos para hoy",
+                "description": "No se han registrado pedidos hoy en B STORE. Los nuevos pedidos aparecerán aquí cuando se creen.",
+                "viewHistory": "Ver historial de pedidos"
+            },
+            "actions": {
+                "openMenu": "Abrir menú",
+                "actions": "Acciones",
+                "viewDetails": "Ver detalles",
+                "editOrder": "Editar pedido",
+                "printReceipt": "Imprimir recibo",
+                "cancelOrder": "Cancelar pedido"
+            },
+            "statuses": {
+                "pending": "pendiente",
+                "processing": "en proceso",
+                "completed": "completado",
+                "cancelled": "cancelado"
+            },
+            "timeNotAvailable": "N/A"
+        }
+    },
+    "buyNow": {
+        "productSearch": {
+            "title": "Búsqueda Avanzada",
+            "loadedFilters": "(Filtros actuales cargados)",
+            "searchPlaceholders": {
+                "ndc": "Buscar por NDC o UPC",
+                "description": "Buscar por descripción",
+                "manufacturer": "Fabricante"
+            },
+            "labels": {
+                "ndc": "NDC/UPC",
+                "description": "Descripción",
+                "manufacturer": "Fabricante",
+                "category": "Categoría",
+                "priceRange": "Rango de Precio",
+                "inStockOnly": "Solo productos en stock"
+            },
+            "categoryOptions": {
+                "select": "Seleccionar categoría",
+                "all": "Todas las categorías",
+                "analgesics": "Analgésicos",
+                "antibiotics": "Antibióticos",
+                "cardiovascular": "Cardiovascular",
+                "dermatological": "Dermatológico"
+            },
+            "pricePlaceholders": {
+                "min": "Mín",
+                "max": "Máx"
+            },
+            "buttons": {
+                "clear": "Limpiar",
+                "cancel": "Cancelar",
+                "applyFilters": "Aplicar Filtros"
+            }
+        },
+        "productTable": {
+            "title": "Agregar Artículos al Carrito",
+            "searchPlaceholder": "Buscar productos...",
+            "buttons": {
+                "advancedSearch": "Búsqueda Avanzada",
+                "clearFilters": "Limpiar Filtros",
+                "viewFavorites": "Favoritos"
+            },
+            "stats": {
+                "productsFound": "productos encontrados",
+                "activeFilters": "Filtros activos"
+            },
+            "filters": {
+                "category": "Categoría",
+                "allCategories": "Todas las categorías",
+                "searchCategory": "Buscar categoría...",
+                "selectCategory": "Seleccionar categoría...",
+                "manufacturer": "Fabricante",
+                "allManufacturers": "Todos los fabricantes",
+                "searchManufacturer": "Buscar fabricante...",
+                "selectManufacturer": "Seleccionar fabricante...",
+                "type": "Tipo",
+                "allTypes": "Todos los tipos",
+                "searchType": "Buscar tipo...",
+                "selectType": "Seleccionar tipo..."
+            },
+            "columns": {
+                "cart": "Carrito",
+                "favorite": "Fav",
+                "ndc": "NDC/UPC",
+                "description": "Descripción",
+                "strength": "Concentración",
+                "sizeForm": "Tamaño/Forma",
+                "primarySecondary": "P/S",
+                "netPrice": "Precio Neto",
+                "unitPrice": "Precio por Unidad",
+                "quantity": "Cant",
+                "minMax": "Mín/Máx",
+                "stock": "Stock",
+                "type": "Tipo",
+                "manufacturer": "Fabricante"
+            },
+            "permissionMessages": {
+                "noPurchase": "No tienes permisos para agregar al carrito",
+                "noControlled": "No tienes permisos para comprar productos controlados",
+                "noFavorites": "No tienes permisos para gestionar favoritos",
+                "noStockView": "Información de disponibilidad no visible",
+                "noProductPurchase": "No tienes permisos para comprar productos"
+            },
+            "stockStatus": {
+                "high": "Stock Alto",
+                "normal": "En Stock",
+                "low": "Stock Bajo",
+                "out": "Agotado",
+                "request": "Disponible bajo Pedido",
+                "unknown": "Desconocido"
+            },
+            "availabilityMessages": {
+                "availableByRequest": "Disponible bajo Pedido",
+                "outOfStock": "Agotado",
+                "onlyLeft": "Solo quedan {quantity}"
+            },
+            "errors": {
+                "loading": "Error al Cargar Productos",
+                "tryAgain": "Intentar de Nuevo",
+                "quantityExceeded": "Cantidad excedida",
+                "maxQuantity": "La cantidad máxima permitida para este producto es {max}."
+            },
+            "tooltips": {
+                "controlledNoPermission": "Producto controlado - Sin permisos de compra",
+                "stockNotVisible": "Información de stock no visible"
+            }
+        },
+        "productDetail": {
+            "title": "Detalle del Producto",
+            "labels": {
+                "item": "Artículo #:",
+                "manufacturer": "Fabricante:",
+                "strength": "Concentración:",
+                "sizeForm": "Tamaño/Forma:",
+                "availability": "Disponibilidad:"
+            },
+            "priceLabels": {
+                "listPrice": "Precio de Lista:",
+                "netPrice": "Precio Neto:"
+            },
+            "technicalSpecs": {
+                "title": "Especificaciones Técnicas",
+                "productType": "Tipo de Producto:",
+                "class": "Clase:"
+            },
+            "stockStatus": {
+                "high": "Stock Alto ({quantity} disponibles)",
+                "normal": "En Stock ({quantity} disponibles)",
+                "low": "Stock Bajo (Solo quedan {quantity})",
+                "out": "Agotado",
+                "request": "Disponible bajo Pedido"
+            },
+            "buttons": {
+                "addToCart": "Agregar al carrito",
+                "addToFavorites": "Agregar a Favoritos",
+                "removeFromFavorites": "Quitar de Favoritos"
+            },
+            "favoriteAccounts": {
+                "title": "También en favoritos de:"
+            },
+            "imageAlt": "Imagen del Producto",
+            "priceTypes": {
+                "featured": "Destacado"
+            }
+        },
+        "productLegend": {
+            "title": "Leyenda de Productos",
+            "sections": {
+                "ndcCodes": {
+                    "title": "Códigos NDC/UPC",
+                    "purchased24Hours": "Comprado en las Últimas 24 Horas"
+                },
+                "priceCodes": {
+                    "title": "Códigos de Precio",
+                    "offerPrice": "Precio de Oferta",
+                    "contractPrice": "Precio de Contrato"
+                },
+                "stockStatus": {
+                    "title": "Estado de Stock",
+                    "highStock": "Stock Alto (100+ unidades)",
+                    "inStock": "En Stock (10-99 unidades)",
+                    "lowStock": "Stock Bajo (1-9 unidades)",
+                    "outOfStock": "Agotado (0 unidades)",
+                    "availableByRequest": "Disponible bajo Pedido"
+                },
+                "orderingInfo": {
+                    "title": "Información de Pedido",
+                    "orderMultiple": "Pedir en Múltiplos/Máx Cantidad Diaria",
+                    "lowStockWarning": "Advertencia de stock bajo"
+                }
+            }
+        },
+        "productAuthorization": {
+            "loading": "Cargando autorizaciones...",
+            "titles": {
+                "authorized": "Acceso a productos autorizados",
+                "limited": "Acceso limitado a productos"
+            },
+            "labels": {
+                "authorizedCategories": "Categorías autorizadas:",
+                "accessPercentage": "Porcentaje de acceso:"
+            },
+            "messages": {
+                "authorized": "Solo puedes ver productos de categorías autorizadas",
+                "noAuthorized": "No tienes categorías específicas autorizadas. Contacta al administrador."
+            },
+            "tooltip": "Tu acceso está limitado a productos de las categorías que te han sido autorizadas. Esto garantiza que solo veas productos relevantes para tu perfil."
+        }
+    },
+    "orders": {
+        "title": "Órdenes del Cliente",
+        "search": {
+            "title": "Filtrar",
+            "description": "Filtra órdenes usando múltiples criterios",
+            "orderNumber": "Número de Orden",
+            "orderNumberPlaceholder": "Buscar por número de orden",
+            "invoice": "Factura #",
+            "invoicePlaceholder": "Buscar por número de factura",
+            "clientPO": "PO del Cliente",
+            "clientPOPlaceholder": "Buscar por PO del cliente",
+            "status": "Estado",
+            "statusPlaceholder": "Seleccionar estado",
+            "statusAll": "Todos",
+            "statusNew": "NUEVO",
+            "statusShipped": "ENVIADO",
+            "dateFrom": "Desde",
+            "dateTo": "Hasta",
+            "itemNumber": "Artículo #/NDC #",
+            "itemNumberPlaceholder": "Buscar por número de artículo o NDC",
+            "serialNumber": "Número de Serie/Código",
+            "serialNumberPlaceholder": "Buscar por número de serie o código",
+            "clearButton": "Limpiar",
+            "cancelButton": "Cancelar",
+            "searchButton": "Buscar"
+        },
+        "list": {
+            "searchPlaceholder": "Buscar órdenes...",
+            "advancedFilter": "Filtro Avanzado",
+            "clearFilters": "Limpiar Filtros",
+            "exportXls": "Exportar XLS",
+            "clickOrderInfo": "Donde esté disponible, haz clic en el Número de Orden para ver los detalles.",
+            "columns": {
+                "account": "Cuenta",
+                "invoice": "Factura #",
+                "orderNumber": "Número de Orden",
+                "orderSource": "Origen de Orden",
+                "status": "Estado",
+                "clientPO": "PO del Cliente",
+                "orderDate": "Fecha de Orden",
+                "packedDate": "Fecha de Empaque",
+                "shippedDate": "Fecha de Envío",
+                "orderTotal": "Total de Orden",
+                "forms": "Formularios",
+                "actions": "Acciones"
+            },
+            "traceDoc": "Trace Doc",
+            "cancelButton": "Cancelar",
+            "cancellingButton": "Cancelando...",
+            "cancelledBadge": "Cancelada",
+            "noOrdersSearch": "No se encontraron órdenes que coincidan con tu búsqueda",
+            "noOrdersDisplay": "No hay órdenes para mostrar",
+            "showing": "Mostrando",
+            "of": "de",
+            "ordersText": "órdenes",
+            "pagination": {
+                "firstPage": "Primera página",
+                "previousPage": "Página anterior",
+                "nextPage": "Página siguiente",
+                "lastPage": "Última página"
+            }
+        },
+        "cancelDialog": {
+            "title": "Confirmar Cancelación",
+            "description": "¿Estás seguro de que deseas cancelar la orden",
+            "warning": "Esta acción no se puede deshacer. El stock de los productos será restaurado.",
+            "cancelButton": "Cancelar",
+            "confirmButton": "Sí, Cancelar Orden",
+            "successMessage": "Orden cancelada exitosamente",
+            "successDescription": "El stock de los productos ha sido restaurado",
+            "errorMessage": "Error al cancelar la orden",
+            "errorDescription": "Intente nuevamente"
+        },
+        "detail": {
+            "viewAllOrders": "Ver Todas las Órdenes",
+            "orderInformation": "Información de la Orden",
+            "reorder": "Reordenar",
+            "exportPdf": "Exportar PDF",
+            "exportXls": "Exportar XLS",
+            "labels": {
+                "orderNumber": "Número de Orden:",
+                "orderSource": "Origen de Orden:",
+                "type": "Tipo:",
+                "billTo": "Facturar a:",
+                "shipTo": "Enviar a:",
+                "orderDate": "Fecha de Orden:",
+                "shippingMethod": "Método de Envío:",
+                "warehouse": "Almacén:",
+                "terms": "Términos:",
+                "totalDetailLines": "Total de Líneas de Detalle:",
+                "totalShippingQuantity": "Cantidad Total de Envío:",
+                "totalShippingWeight": "Peso Total de Envío:",
+                "material": "Material:",
+                "lessDiscount": "Menos Descuento (1):",
+                "handlingCharge": "Cargo por Manejo:",
+                "otherCharges": "Otros Cargos:",
+                "shippingCharge": "Cargo de Envío:",
+                "taxes": "Impuestos:",
+                "orderTotal": "Total de Orden:"
+            },
+            "orderDetails": "Detalles de la Orden",
+            "columns": {
+                "sequence": "Secuencia",
+                "orderedQty": "Cant. Ordenada",
+                "allocatedQty": "Cant. Asignada",
+                "backorderedQty": "Cant. Pendiente",
+                "itemNumber": "Número de Artículo",
+                "ndc": "NDC",
+                "description": "Descripción",
+                "pack": "Paquete",
+                "netPrice": "Precio Neto",
+                "discountPercent": "% Descuento",
+                "extension": "Extensión",
+                "forms": "Formularios"
+            },
+            "traceDoc": "Trace Doc"
+        },
+        "detailPage": {
+            "loading": "Cargando detalle de la orden...",
+            "errorTitle": "Error",
+            "errorLoadingOrder": "No se pudo cargar el detalle de la orden",
+            "invalidOrderId": "ID de orden inválido",
+            "backToOrders": "Volver a Órdenes",
+            "orderNotFoundTitle": "Orden no encontrada",
+            "orderNotFoundDescription": "La orden solicitada no existe o no está disponible."
+        }
+    },
+    "invoices": {
+        "title": "Facturas",
+        "search": {
+            "title": "Búsqueda Avanzada",
+            "description": "Filtra facturas usando múltiples criterios",
+            "invoiceNumber": "Número de Factura",
+            "invoiceNumberPlaceholder": "Buscar por número de factura",
+            "poNumber": "Número de PO",
+            "poNumberPlaceholder": "Buscar por número de PO",
+            "orderNumber": "Número de Orden",
+            "orderNumberPlaceholder": "Buscar por número de orden",
+            "dateFrom": "Fecha Desde",
+            "dateTo": "Fecha Hasta",
+            "clearButton": "Limpiar",
+            "cancelButton": "Cancelar",
+            "applyFilters": "Aplicar Filtros"
+        },
+        "list": {
+            "title": "Gestión de Facturas",
+            "searchPlaceholder": "Buscar facturas...",
+            "advancedSearch": "Búsqueda Avanzada",
+            "clearFilters": "Limpiar Filtros",
+            "newInvoice": "Nueva Factura",
+            "clickInfo": "Haz clic en el Número de Factura o Número de Orden para ver los detalles.",
+            "columns": {
+                "invoiceNumber": "Número de Factura",
+                "poNumber": "Número de PO",
+                "orderNumber": "Número de Orden",
+                "invoiceDate": "Fecha de Factura",
+                "dueDate": "Fecha de Vencimiento",
+                "description": "Descripción",
+                "amount": "Monto",
+                "payment": "Pago",
+                "currentAmount": "Monto Actual",
+                "actions": "Acciones"
+            },
+            "actions": {
+                "viewDetails": "Ver Detalles",
+                "editInvoice": "Editar Factura",
+                "downloadPdf": "Descargar PDF",
+                "delete": "Eliminar"
+            },
+            "noInvoicesSearch": "No se encontraron facturas que coincidan con tu búsqueda",
+            "noInvoicesDisplay": "No hay facturas para mostrar",
+            "showing": "Mostrando",
+            "of": "de",
+            "invoicesText": "facturas",
+            "pagination": {
+                "firstPage": "Primera página",
+                "previousPage": "Página anterior",
+                "nextPage": "Página siguiente",
+                "lastPage": "Última página"
+            }
+        },
+        "management": {
+            "loading": "Cargando facturas...",
+            "error": "Error"
+        }
+    },
+    "dashboardInvoice": {
+        "header": {
+            "title": "Información de Cuenta del Cliente",
+            "subtitle": "Gestión de Información Farmacéutica"
+        },
+        "clientInfo": {
+            "title": "Información del Cliente",
+            "clientNumber": "Número de Cliente",
+            "name": "Nombre",
+            "address": "Dirección",
+            "emailAddress": "Correo Electrónico",
+            "phone": "Teléfono",
+            "fax": "Fax",
+            "merchant": "Comerciante",
+            "terms": "Términos",
+            "clientType": "Tipo de Cliente"
+        },
+        "accountSummary": {
+            "title": "Resumen de Cuenta",
+            "openingDate": "Fecha de Apertura",
+            "lastPayment": "Último Pago",
+            "amountPaid": "Monto Pagado",
+            "lastInvoice": "Última Factura",
+            "averageDays": "Días Promedio",
+            "ordersToDate": "Órdenes a la Fecha",
+            "salesToDate": "Ventas a la Fecha",
+            "cashToDate": "Efectivo a la Fecha",
+            "highBalance": "Saldo Máximo",
+            "creditLine": "Línea de Crédito",
+            "availableCredit": "Crédito Disponible"
+        },
+        "aging": {
+            "title": "Resumen de Antigüedad",
+            "current": "Corriente",
+            "days30": "30 Días",
+            "days60": "60 Días",
+            "days90": "90 Días",
+            "days120": "120 Días",
+            "accountBalance": "Saldo de Cuenta",
+            "openOrders": "Órdenes Abiertas",
+            "total": "Total"
+        },
+        "purchases": {
+            "title": "Compras RX Marca/Genérico MTD",
+            "brand": "Marca",
+            "generic": "Genérico",
+            "totalPurchases": "Total de Compras"
+        }
+    },
+    "accountInvoices": {
+        "title": "Facturas de Cuenta",
+        "description": "Donde disponible, haga clic en el Número de la Factura para ver el detalle.",
+        "columns": {
+            "invoice": "Factura",
+            "custPO": "PO Cliente",
+            "invDate": "Fecha Fact.",
+            "dueDate": "Fecha Venc.",
+            "origAmount": "Monto Orig.",
+            "discAmount": "Monto Desc.",
+            "discPercent": "% Desc.",
+            "remAmount": "Monto Rest.",
+            "age": "Antig.",
+            "select": "Selec.",
+            "achSettlement": "Monto Liquidación ACH"
+        },
+        "pagination": {
+            "of": "de"
+        },
+        "summary": {
+            "totalSelected": "Total seleccionado:",
+            "currency": "US$"
+        },
+        "form": {
+            "payAmountLabel": "Monto a Pagar:"
+        },
+        "buttons": {
+            "selectPage": "Seleccione Página",
+            "clearAll": "Borrar Todo",
+            "continue": "Continuar",
+            "payOnAccount": "Pagar a cuenta"
+        },
+        "aria": {
+            "viewInvoiceDetail": "Ver detalle de la factura {invoiceNumber}"
+        }
+    },
+    "dataTable": {
+        "search": {
+            "placeholder": "Buscar en todos los campos..."
+        },
+        "columns": "Columnas",
+        "newButton": {
+            "loading": "Cargando...",
+            "default": "Nuevo"
+        },
+        "noResults": "No hay resultados.",
+        "selection": {
+            "of": "de",
+            "rowsSelected": "fila(s) seleccionadas."
+        },
+        "pagination": {
+            "rowsPerPage": "Filas por página",
+            "page": "Página",
+            "of": "de",
+            "aria": {
+                "firstPage": "Ir a la primera página",
+                "previousPage": "Ir a la página anterior",
+                "nextPage": "Ir a la página siguiente",
+                "lastPage": "Ir a la última página"
+            }
+        }
+    },
+    "companies": {
+        "title": "Gestión de Compañías",
+        "subtitle": "Administra las compañías del sistema",
+        "newButton": "Nueva Compañía",
+        "columns": {
+            "id": "ID",
+            "description": "Descripción",
+            "status": "Estado",
+            "createdBy": "Creado por",
+            "createdAt": "Fecha de creación",
+            "updatedAt": "Fecha de actualización"
+        },
+        "status": {
+            "active": "Activo",
+            "inactive": "Inactivo"
+        },
+        "actions": {
+            "openMenu": "Abrir menú",
+            "actions": "Acciones",
+            "edit": "Editar",
+            "delete": "Eliminar"
+        },
+        "deleteModal": {
+            "entityName": "Compañía",
+            "description": "Esta acción no se puede deshacer. La compañía y todos sus datos asociados serán eliminados permanentemente."
+        }
+    },
+    "users": {
+        "table": {
+            "columns": {
+                "name": "Nombre",
+                "email": "Email",
+                "role": "Rol",
+                "status": "Estado",
+                "emailVerified": "Email Verificado",
+                "createdAt": "Fecha de creación"
+            },
+            "roles": {
+                "admin": "Administrador",
+                "user": "Usuario"
+            },
+            "status": {
+                "active": "Activo",
+                "inactive": "Inactivo"
+            },
+            "emailStatus": {
+                "verified": "Verificado",
+                "notVerified": "No verificado"
+            },
+            "actions": {
+                "openMenu": "Abrir menú",
+                "actions": "Acciones",
+                "viewDetails": "Ver Detalles",
+                "edit": "Editar",
+                "activate": "Activar",
+                "activating": "Activando...",
+                "deactivate": "Desactivar",
+                "deactivating": "Desactivando...",
+                "delete": "Eliminar"
+            },
+            "newButton": "Nuevo Usuario",
+            "deleteModal": {
+                "entityName": "Usuario",
+                "description": "Esta acción no se puede deshacer. El usuario y todos sus datos asociados serán eliminados permanentemente."
+            },
+            "toast": {
+                "activatedSuccess": "Usuario activado correctamente",
+                "deactivatedSuccess": "Usuario desactivado correctamente",
+                "updateError": "Error al actualizar el estado del usuario",
+                "deletedSuccess": "Usuario eliminado correctamente",
+                "deleteError": "Error al eliminar el usuario"
+            }
+        },
+        "wizard": {
+            "backToUsers": "Volver a Usuarios",
+            "create": {
+                "title": "Crear Nuevo Usuario",
+                "subtitle": "Complete la configuración del usuario paso a paso"
+            },
+            "edit": {
+                "title": "Editar Usuario",
+                "subtitle": "Actualiza la configuración del usuario paso a paso",
+                "loading": "Cargando datos del usuario...",
+                "errorTitle": "Error al cargar usuario"
+            },
+            "steps": {
+                "info": {
+                    "title": "Información del Usuario",
+                    "createDescription": "Ingresa los datos del nuevo usuario",
+                    "editDescription": "Edita los datos del usuario"
+                },
+                "role": {
+                    "title": "Asignación de Rol",
+                    "createDescription": "Selecciona el rol del usuario",
+                    "editDescription": "Actualiza el rol del usuario"
+                },
+                "accounts": {
+                    "title": "Selección de Cuentas",
+                    "createDescription": "Selecciona cuentas accesibles",
+                    "editDescription": "Actualiza cuentas accesibles"
+                },
+                "permissions": {
+                    "title": "Configuración de Permisos",
+                    "createDescription": "Define permisos para cada cuenta",
+                    "editDescription": "Actualiza permisos para cada cuenta"
+                },
+                "productAuthorization": {
+                    "title": "Autorización de Productos",
+                    "description": "Define qué categorías de productos puede comprar"
+                },
+                "success": {
+                    "title": "Confirmación",
+                    "createDescription": "Usuario creado exitosamente",
+                    "editDescription": "Usuario actualizado exitosamente"
+                }
+            },
+            "stepIndicator": "Paso {current} de {total}",
+            "form": {
+                "personalInfo": {
+                    "title": "Información Personal",
+                    "firstName": "Nombre",
+                    "firstNamePlaceholder": "Ej: Juan",
+                    "firstNameRequired": "El nombre es requerido",
+                    "lastName": "Apellido",
+                    "lastNamePlaceholder": "Ej: Pérez",
+                    "lastNameRequired": "El apellido es requerido",
+                    "title": "Cargo/Puesto",
+                    "titlePlaceholder": "Ej: Gerente de Compras",
+                    "titleRequired": "El cargo es requerido"
+                },
+                "companyInfo": {
+                    "title": "Información Empresarial",
+                    "companyName": "Nombre de la Empresa",
+                    "companyNamePlaceholder": "Ej: Farmacia La Bendición",
+                    "companyNameRequired": "El nombre de la empresa es requerido",
+                    "accountNumber": "Número de Cuenta",
+                    "accountNumberPlaceholder": "Ej: 12345678",
+                    "accountNumberRequired": "El número de cuenta es requerido",
+                    "city": "Ciudad",
+                    "cityPlaceholder": "Ej: Santo Domingo",
+                    "cityRequired": "La ciudad es requerida"
+                },
+                "contactInfo": {
+                    "title": "Información de Contacto",
+                    "businessPhone": "Teléfono Empresarial",
+                    "businessPhonePlaceholder": "Ej: (809) 555-1234",
+                    "businessPhoneRequired": "El teléfono empresarial es requerido",
+                    "email": "Correo Electrónico",
+                    "emailPlaceholder": "Ej: juan.perez@empresa.com",
+                    "emailRequired": "El correo electrónico es requerido",
+                    "emailInvalid": "El formato del email no es válido",
+                    "confirmEmail": "Confirmar Correo",
+                    "confirmEmailPlaceholder": "Repita su correo electrónico",
+                    "confirmEmailRequired": "Confirmar correo es requerido",
+                    "emailMismatch": "Los correos electrónicos no coinciden"
+                },
+                "additionalContact": {
+                    "title": "Contacto Adicional",
+                    "contactPerson": "Persona de Contacto Autorizada",
+                    "contactPersonPlaceholder": "Persona autorizada para esta solicitud",
+                    "contactPersonRequired": "La persona de contacto es requerida",
+                    "directPhone": "Teléfono de Contacto Directo",
+                    "directPhonePlaceholder": "Ej: (809) 555-5678"
+                },
+                "userStatus": {
+                    "title": "Estado del Usuario",
+                    "label": "Usuario activo",
+                    "activeDescription": "El usuario puede iniciar sesión y usar el sistema.",
+                    "inactiveDescription": "El usuario no puede iniciar sesión en el sistema.",
+                    "active": "Activo",
+                    "inactive": "Inactivo",
+                    "activeUser": "Usuario activo",
+                    "inactiveUser": "Usuario inactivo"
+                },
+                "profileImage": {
+                    "title": "Imagen de Perfil",
+                    "remove": "Eliminar",
+                    "preview": "Vista previa:",
+                    "description": "Imagen para el perfil (máximo 5MB, opcional)",
+                    "imageOnly": "Solo se permiten archivos de imagen",
+                    "maxSize": "La imagen no puede ser mayor a 5MB"
+                },
+                "charactersCount": "{count}/{max} caracteres"
+            },
+            "roleStep": {
+                "selectRole": "Seleccionar Rol *",
+                "selectRolePlaceholder": "Selecciona un rol...",
+                "searchRole": "Buscar rol...",
+                "noRoleFound": "No se encontró ningún rol.",
+                "roleRequired": "El rol es requerido",
+                "roleDescription": "El rol determina los permisos generales del usuario en el sistema.",
+                "passwordInfo": {
+                    "title": "Información sobre la contraseña",
+                    "description": "La contraseña será generada automáticamente en el servidor y enviada al correo electrónico del usuario.",
+                    "note": "No es necesario que la ingreses manualmente."
+                }
+            },
+            "accountsStep": {
+                "searchLabel": "Buscar Cuentas por Código",
+                "searchPlaceholder": "Escribe el código de la cuenta...",
+                "searchDescription": "Busca cuentas por su código. Se necesitan al menos 2 caracteres.",
+                "searchResults": "Resultados de Búsqueda ({count})",
+                "noAccountsFound": "No se encontraron cuentas con ese código.",
+                "selectedAccounts": "{count} cuenta(s) seleccionada(s)",
+                "nextStepInfo": "En el siguiente paso podrás configurar los permisos específicos para cada cuenta seleccionada.",
+                "noAccountsSelected": "No hay cuentas seleccionadas",
+                "noAccountsDescription": "Puedes buscar y seleccionar cuentas, o continuar sin asignar cuentas específicas."
+            },
+            "permissionsStep": {
+                "title": "Configuración de Permisos por Cuenta",
+                "description": "Define los permisos específicos para cada cuenta seleccionada. Puedes personalizar qué acciones puede realizar el usuario en cada cuenta, independientemente de su rol.",
+                "selectedAccounts": "Cuentas Seleccionadas ({count})",
+                "permissionsSummary": "Resumen de Permisos",
+                "permissionsCount": "{count} permiso(s)",
+                "noAccountsToConfig": "No hay cuentas para configurar",
+                "noAccountsDescription": "El usuario usará únicamente los permisos globales de su rol."
+            },
+            "productAuthStep": {
+                "title": "Autorización de Productos",
+                "description": "Selecciona las categorías de productos que este usuario puede comprar. Si no seleccionas ninguna, el usuario no podrá comprar productos.",
+                "importantInfo": {
+                    "title": "Información importante",
+                    "allAccess": "Authorized For All: Si seleccionas esta opción, el usuario tendrá acceso a todas las categorías de productos, incluyendo las que se agreguen en el futuro.",
+                    "specificCategories": "Categorías específicas: Puedes seleccionar categorías individuales según los tipos de productos que el usuario necesita comprar.",
+                    "noSelection": "Sin selección: Si no seleccionas ninguna categoría, el usuario no podrá comprar productos en el sistema."
+                },
+                "selectedCategories": "Categorías seleccionadas: {count}",
+                "noPurchase": "El usuario no podrá comprar productos",
+                "allProducts": "El usuario tendrá acceso a TODOS los productos",
+                "categoriesAuthorized": "El usuario podrá comprar {count} categoría(s) de productos",
+                "configured": "Configurado",
+                "selectAll": {
+                    "label": "Authorized For All",
+                    "description": "Acceso completo a todas las categorías de productos",
+                    "allSelected": "Todas seleccionadas"
+                }
+            },
+            "successStep": {
+                "create": {
+                    "title": "¡Usuario Creado!",
+                    "emailSent": "Se ha enviado un correo electrónico a:",
+                    "emailDescription": "con las credenciales de acceso y las instrucciones para iniciar sesión en la plataforma.",
+                    "authorizationsConfigured": "Autorizaciones de productos configuradas:",
+                    "allProductsAccess": "✅ Acceso completo a todos los productos",
+                    "categoriesAuthorized": "✅ {count} categoría(s) de productos autorizadas"
+                },
+                "edit": {
+                    "title": "¡Usuario Actualizado!",
+                    "description": "Los cambios en el usuario han sido guardados exitosamente.",
+                    "status": "Estado:",
+                    "authorizedCategories": "Categorías de productos autorizadas:",
+                    "allProductsAccess": "El usuario tiene acceso a TODOS los productos"
+                }
+            },
+            "buttons": {
+                "cancel": "Cancelar",
+                "previous": "Anterior",
+                "next": "Siguiente",
+                "createUser": "Crear Usuario",
+                "creating": "Creando...",
+                "updateUser": "Actualizar Usuario",
+                "updating": "Actualizando...",
+                "backToUsers": "Volver a Usuarios",
+                "createAnother": "Crear Otro Usuario"
+            }
+        },
+        "details": {
+            "title": "Información Detallada del Usuario",
+            "sections": {
+                "general": {
+                    "title": "Información General",
+                    "fullName": "Nombre completo",
+                    "nameNotAvailable": "Nombre no disponible",
+                    "position": "Cargo / Puesto",
+                    "positionNotSpecified": "Cargo no especificado",
+                    "systemRole": "Rol del Sistema",
+                    "registrationStatus": "Estado del Registro",
+                    "pending": "Pendiente"
+                },
+                "company": {
+                    "title": "Información de la Empresa",
+                    "company": "Empresa",
+                    "accountNumber": "Número de Cuenta",
+                    "city": "Ciudad",
+                    "notAvailable": "No disponible"
+                },
+                "contact": {
+                    "title": "Información de Contacto",
+                    "email": "Correo Electrónico",
+                    "verified": "✓ Verificado",
+                    "notVerified": "✗ No verificado",
+                    "businessPhone": "Teléfono Empresarial"
+                },
+                "additionalContact": {
+                    "title": "Contacto Adicional",
+                    "authorizedPerson": "Persona de Contacto Autorizada",
+                    "directPhone": "Teléfono de Contacto Directo"
+                },
+                "assignedAccounts": {
+                    "title": "Cuentas Asignadas con Permisos",
+                    "count": "{count} cuenta(s)",
+                    "withPermissions": "Con permisos",
+                    "purchasePermissions": "Permisos de Compra",
+                    "canPurchase": "Comprar productos",
+                    "canBuyControlled": "Comprar controlados",
+                    "canAddToCart": "Agregar al carrito",
+                    "modulePermissions": "Permisos por Módulo",
+                    "actionsCount": "{count} acción(es)",
+                    "noSpecificPermissions": "Esta cuenta no tiene permisos específicos configurados",
+                    "globalPermissionsUsed": "El usuario usará los permisos globales de su rol",
+                    "noAssignedAccounts": "No hay cuentas asignadas a este usuario",
+                    "accountsWillAppear": "Las cuentas asignadas aparecerán aquí"
+                },
+                "system": {
+                    "title": "Información del Sistema",
+                    "accountStatus": "Estado de la Cuenta",
+                    "active": "Activa",
+                    "inactive": "Inactiva",
+                    "createdAt": "Fecha de Creación",
+                    "updatedAt": "Última Actualización",
+                    "approvedAt": "Fecha de Aprobación",
+                    "approvedBy": "Aprobado Por"
+                }
+            },
+            "close": "Cerrar"
+        },
+        "productAuthorization": {
+            "title": "Autorización para Comprar Productos",
+            "loading": "Cargando categorías...",
+            "loadingDescription": "Obteniendo categorías de productos disponibles",
+            "noCategories": "No hay categorías de productos configuradas. Contacta al administrador.",
+            "selectAll": {
+                "label": "Authorized For All",
+                "description": "Acceso completo a todas las categorías de productos",
+                "allSelected": "Todas seleccionadas"
+            },
+            "specificCategories": "Categorías específicas",
+            "authorized": "Autorizado",
+            "summary": {
+                "categoriesAuthorized": "Categorías autorizadas: {count}",
+                "allAuthorized": "Todas las categorías están autorizadas",
+                "specificCount": "{selected} de {total} categorías específicas"
+            },
+            "readOnly": "Solo lectura"
+        }
+    },
+    "admin": {
+        "accountCard": {
+            "aria": {
+                "selectAccount": "Seleccionar cuenta {code} - {name}"
+            },
+            "status": {
+                "selected": "Seleccionada",
+                "select": "Seleccionar"
+            }
+        },
+        "usersManagement": {
+            "title": "Gestión de Usuarios",
+            "subtitle": "Administra solicitudes de registro y usuarios del sistema",
+            "noPermission": "No tienes permisos para acceder a la gestión de usuarios.",
+            "tabs": {
+                "users": "Usuarios del Sistema",
+                "requests": "Solicitudes de Registro"
+            }
+        },
+        "approvalWizard": {
+            "title": "Aprobar Usuario",
+            "subtitle": "Complete la configuración del usuario paso a paso",
+            "steps": {
+                "info": {
+                    "title": "Información del Usuario",
+                    "description": "Revisa los datos del solicitante"
+                },
+                "role": {
+                    "title": "Asignación de Rol",
+                    "description": "Selecciona el rol del usuario"
+                },
+                "accounts": {
+                    "title": "Selección de Cuentas",
+                    "description": "Selecciona cuentas accesibles"
+                },
+                "permissions": {
+                    "title": "Configuración de Permisos",
+                    "description": "Define permisos para cada cuenta"
+                },
+                "productAuthorization": {
+                    "title": "Autorización de Productos",
+                    "description": "Define qué categorías de productos puede comprar"
+                },
+                "success": {
+                    "title": "Confirmación",
+                    "description": "Usuario aprobado exitosamente"
+                }
+            },
+            "sections": {
+                "personalInfo": {
+                    "title": "Información Personal",
+                    "name": "Nombre",
+                    "email": "Email",
+                    "position": "Cargo/Puesto",
+                    "notSpecified": "No especificado"
+                },
+                "companyInfo": {
+                    "title": "Información Empresarial",
+                    "company": "Empresa",
+                    "accountNumber": "Número de Cuenta",
+                    "city": "Ciudad"
+                },
+                "contactInfo": {
+                    "title": "Información de Contacto",
+                    "businessPhone": "Teléfono Empresarial",
+                    "email": "Correo Electrónico"
+                },
+                "additionalContact": {
+                    "title": "Contacto Adicional",
+                    "authorizedPerson": "Persona de Contacto Autorizada",
+                    "directPhone": "Teléfono De Contacto Directo"
+                },
+                "comments": {
+                    "title": "Comentarios Adicionales"
+                }
+            },
+            "roleStep": {
+                "selectRole": "Seleccionar Rol *",
+                "selectRolePlaceholder": "Selecciona un rol...",
+                "searchRole": "Buscar rol...",
+                "noRoleFound": "No se encontró ningún rol.",
+                "roleDescription": "El rol determina los permisos generales del usuario en el sistema.",
+                "passwordInfo": {
+                    "title": "Información sobre la contraseña",
+                    "description": "La contraseña será generada automáticamente en el servidor y enviada al correo electrónico del usuario.",
+                    "note": "No es necesario que la ingreses manualmente."
+                }
+            },
+            "accountsStep": {
+                "searchLabel": "Buscar Cuentas por Código",
+                "searchPlaceholder": "Escribe el código de la cuenta...",
+                "searchDescription": "Busca cuentas por su código. Se necesitan al menos 2 caracteres.",
+                "searchResults": "Resultados de Búsqueda ({count})",
+                "noAccountsFound": "No se encontraron cuentas con ese código.",
+                "selectedAccounts": "{count} cuenta(s) seleccionada(s)",
+                "nextStepInfo": "En el siguiente paso podrás configurar los permisos específicos para cada cuenta seleccionada.",
+                "noAccountsSelected": "No hay cuentas seleccionadas",
+                "noAccountsDescription": "Busca y selecciona al menos una cuenta para continuar."
+            },
+            "permissionsStep": {
+                "title": "Configuración de Permisos por Cuenta",
+                "description": "Define los permisos específicos para cada cuenta seleccionada. Puedes personalizar qué acciones puede realizar el usuario en cada cuenta, independientemente de su rol.",
+                "selectedAccounts": "Cuentas Seleccionadas ({count})",
+                "permissionsSummary": "Resumen de Permisos",
+                "permissionsCount": "{count} permiso(s)",
+                "noAccountsToConfig": "No hay cuentas para configurar",
+                "noAccountsDescription": "Regresa al paso anterior para seleccionar cuentas."
+            },
+            "productAuthStep": {
+                "title": "Autorización de Productos",
+                "description": "Selecciona las categorías de productos que este usuario puede comprar. Si no seleccionas ninguna, el usuario no podrá comprar productos.",
+                "importantInfo": {
+                    "title": "Información importante",
+                    "allAccess": "Authorized For All: Si seleccionas esta opción, el usuario tendrá acceso a todas las categorías de productos, incluyendo las que se agreguen en el futuro.",
+                    "specificCategories": "Categorías específicas: Puedes seleccionar categorías individuales según los tipos de productos que el usuario necesita comprar.",
+                    "noSelection": "Sin selección: Si no seleccionas ninguna categoría, el usuario no podrá comprar productos en el sistema."
+                },
+                "selectedCategories": "Categorías seleccionadas: {count}",
+                "noPurchase": "El usuario no podrá comprar productos",
+                "allProducts": "El usuario tendrá acceso a TODOS los productos",
+                "categoriesAuthorized": "El usuario podrá comprar {count} categoría(s) de productos",
+                "configured": "Configurado"
+            },
+            "successStep": {
+                "title": "¡Usuario Aprobado!",
+                "emailSent": "Se ha enviado un correo electrónico a:",
+                "emailDescription": "con las credenciales de acceso y las instrucciones para iniciar sesión en la plataforma.",
+                "authorizationsConfigured": "Autorizaciones de productos configuradas:",
+                "allProductsAccess": "✅ Acceso completo a todos los productos",
+                "categoriesAuthorized": "✅ {count} categoría(s) de productos autorizadas"
+            },
+            "buttons": {
+                "close": "Cerrar",
+                "decline": "Declinar",
+                "previous": "Anterior",
+                "next": "Siguiente",
+                "approveUser": "Aprobar Usuario",
+                "approving": "Aprobando...",
+                "finish": "Finalizar"
+            },
+            "declineDialog": {
+                "title": "Declinar solicitud",
+                "description": "Especifica el motivo para notificar al usuario.",
+                "reasonPlaceholder": "Motivo (opcional, pero recomendado)",
+                "cancel": "Cancelar",
+                "decline": "Declinar",
+                "declining": "Declinando..."
+            }
+        },
+        "registrationReview": {
+            "title": "Revisión de solicitud",
+            "subtitle": "Decide aprobar o declinar esta cuenta.",
+            "invalidToken": "Token inválido.",
+            "loading": "Cargando…",
+            "notFound": "No se encontró la solicitud.",
+            "fields": {
+                "name": "Nombre:",
+                "email": "Email:",
+                "company": "Empresa:",
+                "accountNumber": "No. Cuenta:",
+                "city": "Ciudad:",
+                "businessPhone": "Tel. Empresa:",
+                "authorizedContact": "Contacto Autorizado:",
+                "directPhone": "Tel. Directo:"
+            },
+            "comments": "Comentarios",
+            "buttons": {
+                "approve": "Aprobar",
+                "decline": "Declinar…"
+            },
+            "approveDialog": {
+                "title": "Confirmar aprobación",
+                "description": "Se enviará un correo al usuario con su contraseña temporal y acceso a la app.",
+                "cancel": "Cancelar",
+                "confirm": "Confirmar"
+            },
+            "declineDialog": {
+                "title": "Declinar solicitud",
+                "description": "Indica un motivo (opcional, recomendado):",
+                "cancel": "Cancelar",
+                "decline": "Declinar"
+            },
+            "toast": {
+                "loadError": "No se pudo cargar la solicitud",
+                "networkError": "Error de red al cargar la solicitud",
+                "processError": "No se pudo procesar",
+                "decisionError": "Error de red al procesar la decisión",
+                "approvedSuccess": "Solicitud aprobada. Se envió email con contraseña temporal.",
+                "declinedSuccess": "Solicitud declinada. Usuario notificado."
+            }
+        },
+        "registrationRequests": {
+            "toolbar": {
+                "searchPlaceholder": "Buscar (nombre, email, empresa, cuenta)…",
+                "search": "Buscar",
+                "status": {
+                    "pending": "Pendientes",
+                    "approved": "Aprobados",
+                    "declined": "Declinados",
+                    "all": "Todos"
+                }
+            },
+            "columns": {
+                "name": "Nombre",
+                "email": "Email",
+                "company": "Empresa",
+                "account": "Cuenta",
+                "status": "Estado",
+                "createdAt": "Creado"
+            },
+            "status": {
+                "pending": "Pendiente",
+                "approved": "Aprobado",
+                "declined": "Declinado"
+            },
+            "noName": "(sin nombre)",
+            "actions": {
+                "openMenu": "Abrir menú",
+                "actions": "Acciones",
+                "viewDetails": "Ver detalles"
+            },
+            "detailDialog": {
+                "title": "Detalles del Solicitante",
+                "description": "Información completa de la solicitud de registro",
+                "requestDate": "Fecha de solicitud",
+                "adminObservation": "Observación del administrador",
+                "sections": {
+                    "company": {
+                        "title": "Información de la Empresa",
+                        "companyName": "Nombre de empresa",
+                        "accountNumber": "Número de cuenta",
+                        "city": "Ciudad",
+                        "businessPhone": "Teléfono empresa"
+                    },
+                    "contact": {
+                        "title": "Contacto Autorizado",
+                        "contactPerson": "Persona de contacto",
+                        "directPhone": "Teléfono directo"
+                    },
+                    "comments": {
+                        "title": "Comentarios Adicionales",
+                        "noComments": "No se proporcionaron comentarios adicionales."
+                    }
+                },
+                "close": "Cerrar"
+            }
+        },
+        "permissionsCard": {
+            "permissionsSelected": "{count} permiso(s) seleccionados",
+            "quickActions": {
+                "selectAllowed": "Seleccionar Todos los Permitidos",
+                "clearAll": "Limpiar Todo"
+            },
+            "buyNowModule": {
+                "title": "Módulo Buy Now (Compras):",
+                "availableActions": "Acciones disponibles en Buy Now:",
+                "noActions": "No hay acciones de compra disponibles para este rol"
+            },
+            "purchaseActions": {
+                "canPurchase": {
+                    "label": "Realizar Compras",
+                    "description": "Puede completar órdenes de compra"
+                },
+                "canBuyControlled": {
+                    "label": "Comprar Productos Controlados",
+                    "description": "Puede adquirir productos restringidos"
+                },
+                "canAddToCart": {
+                    "label": "Agregar al Carrito",
+                    "description": "Puede añadir productos al carrito de compras"
+                },
+                "canViewProductAvailability": {
+                    "label": "Ver Disponibilidad de Productos",
+                    "description": "Puede ver la disponibilidad de productos"
+                },
+                "canApprover": {
+                    "label": "Aprobador",
+                    "description": "Puede aprobar órdenes de compra"
+                },
+                "canOrderer": {
+                    "label": "Ordenador",
+                    "description": "Puede crear órdenes de compra"
+                }
+            },
+            "systemModules": {
+                "title": "Módulos del Sistema:",
+                "description": "Acceso a diferentes secciones de la plataforma",
+                "modules": {
+                    "dashboard": {
+                        "label": "Dashboard",
+                        "description": "Acceso al panel de control"
+                    },
+                    "buyNow": {
+                        "label": "Buy Now",
+                        "description": "Proceso de compra de productos"
+                    },
+                    "orders": {
+                        "label": "Órdenes",
+                        "description": "Gestión de órdenes de compra"
+                    },
+                    "invoices": {
+                        "label": "Facturas",
+                        "description": "Gestión de facturas"
+                    },
+                    "favorites": {
+                        "label": "Favoritos",
+                        "description": "Gestión de favoritos"
+                    },
+                    "returns": {
+                        "label": "Devoluciones",
+                        "description": "Gestión de devoluciones"
+                    },
+                    "payments": {
+                        "label": "Pagos",
+                        "description": "Gestión de pagos"
+                    },
+                    "products": {
+                        "label": "Productos",
+                        "description": "Catálogo de productos"
+                    },
+                    "companies": {
+                        "label": "Empresas",
+                        "description": "Gestión de empresas"
+                    },
+                    "users": {
+                        "label": "Usuarios",
+                        "description": "Gestión de usuarios del sistema"
+                    },
+                    "roles": {
+                        "label": "Roles",
+                        "description": "Gestión de roles y permisos"
+                    },
+                    "registrationRequests": {
+                        "label": "Solicitudes de Registro",
+                        "description": "Aprobar/declinar nuevas solicitudes"
+                    }
+                }
+            },
+            "actions": {
+                "read": "Ver",
+                "create": "Crear",
+                "update": "Editar",
+                "delete": "Eliminar",
+                "manage": "Gestionar",
+                "approve": "Aprobar",
+                "decline": "Declinar",
+                "activate": "Activar",
+                "deactivate": "Desactivar",
+                "clientRead": "Ver Dashboard del Cliente",
+                "adminRead": "Ver Dashboard del Admin"
+            },
+            "summary": {
+                "permissionsSelected": "{count} permiso(s) seleccionado(s)",
+                "purchaseActions": "{count} acción(es) de compra",
+                "systemModules": "{count} módulo(s) del sistema",
+                "selectedPermissions": "Permisos seleccionados:"
+            },
+            "messages": {
+                "noPermissionsAvailable": {
+                    "title": "No hay permisos disponibles para asignar",
+                    "description": "El rol seleccionado no tiene permisos configurados que puedan asignarse a esta cuenta."
+                },
+                "noPermissionsSelected": {
+                    "title": "No has seleccionado ningún permiso específico para esta cuenta.",
+                    "description": "El usuario usará únicamente los permisos globales de su rol."
+                }
+            }
+        }
+    },
+    "roles": {
+        "table": {
+            "title": "Gestión de Roles",
+            "subtitle": "Administra los roles y permisos del sistema",
+            "newButton": "Nuevo Rol",
+            "columns": {
+                "id": "ID",
+                "name": "Nombre",
+                "status": "Estado",
+                "createdBy": "Creado por",
+                "createdAt": "Fecha de creación"
+            },
+            "status": {
+                "active": "Activo",
+                "inactive": "Inactivo"
+            },
+            "badges": {
+                "admin": "Admin"
+            },
+            "actions": {
+                "openMenu": "Abrir menú",
+                "actions": "Acciones",
+                "viewDetails": "Ver Detalles",
+                "edit": "Editar",
+                "activate": "Activar",
+                "deactivate": "Desactivar",
+                "delete": "Eliminar"
+            },
+            "deleteModal": {
+                "entityName": "Rol",
+                "description": "Esta acción no se puede deshacer. El rol y todos sus permisos asociados serán eliminados permanentemente."
+            },
+            "toast": {
+                "deletedSuccess": "Rol eliminado exitosamente",
+                "deletedDescription": "El rol ha sido eliminado del sistema.",
+                "deleteError": "No se pudo eliminar el rol",
+                "deleteErrorUnknown": "Error desconocido al eliminar el rol",
+                "statusChangedSuccess": "Rol {status} exitosamente",
+                "statusChangeError": "Error al cambiar estado",
+                "statusChangeErrorDescription": "No se pudo cambiar el estado del rol",
+                "loadDetailsError": "Error al cargar detalles del rol"
+            }
+        },
+        "create": {
+            "title": "Crear Nuevo Rol",
+            "subtitle": "Define los permisos y configuraciones del nuevo rol",
+            "form": {
+                "roleInfo": "Información del Rol",
+                "roleName": "Nombre del Rol",
+                "roleNamePlaceholder": "Ej: Administrador, Supervisor, Vendedor...",
+                "roleNameRequired": "El nombre es requerido",
+                "roleNameMaxLength": "El nombre no puede exceder 100 caracteres",
+                "roleNameDescription": "Nombre único para identificar el rol en el sistema",
+                "charactersCount": "{count}/100",
+                "roleStatus": "Estado del Rol",
+                "roleStatusActive": "El rol estará activo y disponible para asignar",
+                "roleStatusInactive": "El rol estará inactivo y no se podrá asignar"
+            },
+            "permissions": {
+                "title": "Permisos del Rol",
+                "modulesSelected": "{count} módulo(s) seleccionado(s)",
+                "moduleRequired": "Debe seleccionar al menos un módulo",
+                "moduleActionRequired": "Cada módulo debe tener al menos una acción seleccionada",
+                "basicAccess": "Acceso Básico",
+                "modulesWithActions": "Módulos con Acciones",
+                "actionsCount": "{count} acción(es)",
+                "showActions": "Mostrar acciones",
+                "hideActions": "Ocultar acciones",
+                "keepOneAction": "Debe mantener al menos una acción seleccionada"
+            },
+            "buttons": {
+                "cancel": "Cancelar",
+                "create": "Crear Rol",
+                "creating": "Creando..."
+            }
+        },
+        "edit": {
+            "title": "Editar Rol: {name}",
+            "subtitle": "Modifica los permisos y configuraciones del rol",
+            "loading": "Cargando rol...",
+            "backToRoles": "Volver a Roles",
+            "buttons": {
+                "cancel": "Cancelar",
+                "update": "Actualizar Rol",
+                "updating": "Actualizando..."
+            }
+        },
+        "details": {
+            "title": "Detalles del Rol: {name}",
+            "sections": {
+                "general": {
+                    "title": "Información General",
+                    "roleName": "Nombre del Rol",
+                    "nameNotAvailable": "Nombre no disponible",
+                    "status": "Estado",
+                    "totalPermissions": "Permisos Totales",
+                    "modules": "{count} módulo(s)",
+                    "actions": "{count} acción(es)",
+                    "createdBy": "Creado por",
+                    "system": "Sistema"
+                },
+                "system": {
+                    "title": "Información del Sistema",
+                    "createdAt": "Fecha de Creación",
+                    "updatedAt": "Última Actualización",
+                    "updatedBy": "Actualizado por",
+                    "notAvailable": "No disponible"
+                },
+                "permissions": {
+                    "title": "Permisos Asignados",
+                    "modulesAssigned": "{count} módulo(s) asignado(s)",
+                    "basicAccess": "Acceso Básico",
+                    "fullAccess": "Acceso completo",
+                    "modulesWithActions": "Módulos con Acciones",
+                    "allowedActions": "Acciones permitidas:",
+                    "noSpecificActions": "Sin acciones específicas asignadas",
+                    "fullModuleAccess": "Acceso completo al módulo",
+                    "noPermissions": "Este rol no tiene permisos asignados",
+                    "assignPermissions": "Asigna permisos para habilitar funcionalidades"
+                }
+            },
+            "status": {
+                "active": "Activo",
+                "inactive": "Inactivo"
+            },
+            "buttons": {
+                "activate": "Activar",
+                "activating": "Activando...",
+                "deactivate": "Desactivar",
+                "deactivating": "Desactivando...",
+                "close": "Cerrar"
+            },
+            "toast": {
+                "statusChangedSuccess": "Rol {status} exitosamente",
+                "statusChangeError": "Error al cambiar estado del rol",
+                "deletedSuccess": "Rol eliminado exitosamente",
+                "deleteError": "Error al eliminar rol"
+            },
+            "deleteModal": {
+                "entityName": "Rol",
+                "description": "Esta acción no se puede deshacer. El rol y todos sus permisos asociados serán eliminados permanentemente. Asegúrate de que ningún usuario tenga asignado este rol antes de proceder."
+            }
+        }
+    },
+    "contact": {
+        "header": {
+            "title": "Contáctenos",
+            "subtitle": "Estamos aquí para ayudarle. No dude en contactarnos con cualquier pregunta o información adicional sobre nuestros servicios y productos."
+        },
+        "form": {
+            "title": "Envíenos un Mensaje",
+            "successMessage": "¡Gracias por su mensaje! Nos pondremos en contacto con usted pronto.",
+            "errorMessage": "Hubo un error al enviar su mensaje.",
+            "fields": {
+                "name": {
+                    "label": "Nombre Completo"
+                },
+                "email": {
+                    "label": "Correo Electrónico"
+                },
+                "phone": {
+                    "label": "Número de Teléfono"
+                },
+                "message": {
+                    "label": "Mensaje"
+                }
+            },
+            "buttons": {
+                "send": "Enviar Mensaje",
+                "sending": "Enviando..."
+            }
+        },
+        "info": {
+            "title": "Información de Contacto",
+            "address": {
+                "label": "Dirección"
+            },
+            "phone": {
+                "label": "Teléfono"
+            },
+            "email": {
+                "label": "Correo Electrónico"
+            },
+            "hours": {
+                "label": "Horario de Atención"
+            }
+        },
+        "pharmacyInfo": {
+            "address": "Av. Principal #123, Colonia Centro, Ciudad de México",
+            "phone": "+52 (55) 1234-5678",
+            "email": "contacto@farmacia.com",
+            "hours": {
+                "weekdays": "Lunes a Viernes: 8:00 AM - 9:00 PM",
+                "saturday": "Sábados: 9:00 AM - 7:00 PM",
+                "sunday": "Domingos: 10:00 AM - 4:00 PM"
+            }
+        }
+    },
+    "account": {
+        "settings": {
+            "loading": "Cargando...",
+            "errorLoading": "No se pudo cargar la información del usuario",
+            "header": {
+                "title": "Mi Cuenta",
+                "subtitle": "En esta sección puedes cambiar tus datos personales, gestionar pedidos y ver tu lista de deseos."
+            },
+            "sections": {
+                "profile": {
+                    "title": "Perfil",
+                    "description": "Cambia tus datos personales: edita tu contraseña, dirección y más."
+                },
+                "orders": {
+                    "title": "Órdenes",
+                    "description": "Gestiona tus órdenes y visualiza el historial de compras.",
+                    "links": {
+                        "accountInformation": "Información de Cuenta",
+                        "orderSearch": "Búsqueda de Órdenes",
+                        "payments": "Pagos",
+                        "paymentHistory": "Historial de Pagos",
+                        "topItems": "Mis Productos Principales Basados en Compras de 6 Meses",
+                        "quickOrder": "Orden Rápida",
+                        "returns": "Devoluciones"
+                    }
+                },
+                "favorites": {
+                    "title": "Favoritos",
+                    "description": "Ver y gestionar tus artículos favoritos.",
+                    "links": {
+                        "favorites": "Favoritos"
+                    }
+                },
+                "security": {
+                    "title": "Seguridad",
+                    "description": "Administra la configuración de seguridad de tu cuenta y la autenticación de dos factores."
+                }
+            },
+            "accountInfo": {
+                "title": "Información de la Cuenta",
+                "subtitle": "Detalles básicos de tu cuenta",
+                "email": "Email:",
+                "twoFactor": "2FA:",
+                "enabled": "Activado",
+                "disabled": "Desactivado"
+            }
+        },
+        "profile": {
+            "header": {
+                "title": "Configuración de Cuenta",
+                "subtitle": "Administra tu perfil y preferencias"
+            },
+            "personalInfo": {
+                "title": "Información Personal",
+                "fullName": "Nombre Completo",
+                "email": "Correo Electrónico",
+                "twoFactorWarning": "Se requerirá verificación de dos factores para cambiar el email",
+                "newPassword": "Nueva Contraseña",
+                "passwordPlaceholder": "Dejar vacío para mantener la actual",
+                "confirmPassword": "Confirmar Contraseña"
+            },
+            "preferences": {
+                "title": "Preferencias",
+                "orderBy": {
+                    "label": "Ordenar Resultados Por",
+                    "options": {
+                        "relevance": "Relevancia",
+                        "itemNumber": "Número de Item",
+                        "description": "Descripción",
+                        "listPrice": "Precio de Lista",
+                        "matchedWords": "Palabras Coincidentes"
+                    }
+                },
+                "sortDirection": {
+                    "label": "Dirección de Ordenamiento",
+                    "options": {
+                        "asc": "Ascendente",
+                        "desc": "Descendente"
+                    }
+                },
+                "addToCartMode": {
+                    "label": "Modo de Agregar al Carrito",
+                    "options": {
+                        "single": "Un item a la vez",
+                        "allItems": "Todos los items de la página a la vez"
+                    }
+                }
+            },
+            "buttons": {
+                "save": "Guardar Cambios",
+                "saving": "Guardando..."
+            },
+            "linkedAccounts": {
+                "title": "Cuentas Vinculadas",
+                "noAccounts": "No hay cuentas vinculadas",
+                "columns": {
+                    "account": "Cuenta",
+                    "shipTo": "Ship-to",
+                    "address": "Dirección",
+                    "phone": "Teléfono",
+                    "status": "Estado",
+                    "access": "Acceso"
+                },
+                "status": {
+                    "main": "Principal",
+                    "secondary": "Secundaria"
+                },
+                "accessLevels": {
+                    "full": "Puede ingresar y aprobar órdenes.",
+                    "order": "Puede realizar órdenes.",
+                    "readOnly": "Solo lectura."
+                },
+                "notAvailable": "N/A"
+            },
+            "verification": {
+                "title": "Verificación Requerida",
+                "twoFactorDescription": "Ingresa el código de tu aplicación de autenticación para cambiar tu email.",
+                "otpDescription": "Ingresa el código de verificación que enviamos a tu email actual.",
+                "changingEmail": "Cambiando email de {currentEmail} a {newEmail}",
+                "twoFactorCode": "Código de Autenticación",
+                "otpCode": "Código de Verificación",
+                "buttons": {
+                    "cancel": "Cancelar",
+                    "verify": "Verificar y Cambiar Email",
+                    "verifying": "Verificando..."
+                }
+            },
+            "toast": {
+                "updateSuccess": "Perfil actualizado correctamente"
+            }
+        }
+    },
+    "paymentHistory": {
+        "search": {
+            "title": "Búsqueda",
+            "subtitle": "Filtra el historial de pagos usando múltiples criterios",
+            "fields": {
+                "dateFrom": "Desde Fecha",
+                "dateTo": "Hasta Fecha",
+                "searchType": {
+                    "label": "Buscar Por",
+                    "placeholder": "Seleccionar criterio",
+                    "options": {
+                        "checkNumber": "Número de Cheque",
+                        "invoiceNumber": "Número de Factura/Crédito"
+                    }
+                },
+                "searchValue": {
+                    "checkNumber": "Número de Cheque",
+                    "invoiceNumber": "Número de Factura/Crédito",
+                    "placeholderCheck": "Buscar por número de cheque",
+                    "placeholderInvoice": "Buscar por número de factura"
+                }
+            },
+            "buttons": {
+                "clear": "Limpiar",
+                "cancel": "Cancelar",
+                "search": "Buscar"
+            }
+        },
+        "table": {
+            "title": "Historial de Pagos",
+            "searchPlaceholder": "Buscar pagos...",
+            "advancedSearch": "Búsqueda Avanzada",
+            "clearFilters": "Limpiar Filtros",
+            "exportXls": "Exportar XLS",
+            "clickInfo": "Donde esté disponible, haga clic en el Número de Factura/Crédito para ver el detalle de la Factura/Crédito.",
+            "columns": {
+                "checkNumber": "Número de Cheque",
+                "checkDate": "Fecha del Cheque",
+                "checkAmount": "Monto del Cheque",
+                "invoiceNumber": "Número de Factura/Crédito",
+                "invoiceDate": "Fecha de Factura",
+                "docs": "Docs"
+            },
+            "emptyState": {
+                "noResults": "No se encontraron pagos con esa búsqueda",
+                "noData": "No hay pagos para mostrar"
+            },
+            "pagination": {
+                "showing": "Mostrando {count} de {total} pagos",
+                "firstPage": "Primera página",
+                "previousPage": "Página anterior",
+                "nextPage": "Página siguiente",
+                "lastPage": "Última página",
+                "pageOf": "{current} de {total}"
+            },
+            "buttons": {
+                "pdf": "PDF"
+            }
+        }
+    },
+    "topItems": {
+        "header": {
+            "title": "Mis Productos Principales Basados en Compras de 6 Meses",
+            "subtitle": "Analizando tu historial de compras para mostrar los artículos que ordenas con más frecuencia"
+        },
+        "loading": {
+            "title": "Cargando Top Items...",
+            "subtitle": "Por favor espera un momento..."
+        },
+        "error": {
+            "title": "Error al Cargar Top Items",
+            "tryAgain": "Intentar de Nuevo"
+        },
+        "search": {
+            "placeholder": "Buscar por descripción o NDC/UPC…",
+            "clearAll": "Limpiar Todo"
+        },
+        "stock": {
+            "label": "Stock:",
+            "all": "Todos",
+            "high": "Stock Alto",
+            "stock": "En Stock",
+            "out": "Sin Stock",
+            "request": "Por Pedido"
+        },
+        "legend": {
+            "highStock": "Stock Alto",
+            "stock": "En Stock",
+            "outOfStock": "Sin Stock",
+            "byRequest": "Disponible por Pedido"
+        },
+        "activeFilters": {
+            "label": "Filtros activos:",
+            "search": "Búsqueda:",
+            "stock": "Stock:",
+            "class": "Clase:",
+            "form": "Forma:"
+        },
+        "sidebar": {
+            "title": "Filtrar Resultados",
+            "productClass": {
+                "title": "Clase de Producto",
+                "clear": "Limpiar",
+                "amount": "${amount}",
+                "qty": "{qty} cant",
+                "lines": "{lines} líneas"
+            },
+            "productForm": {
+                "title": "Forma del Producto"
+            }
+        },
+        "table": {
+            "title": "Productos",
+            "showing": "Mostrando {count} de {total} artículos",
+            "exportXls": "Exportar XLS",
+            "refreshData": "Actualizar Datos",
+            "columns": {
+                "cart": "Carrito",
+                "totalAmount": "Monto Total",
+                "qty": "Cant",
+                "ndcUpc": "NDC/UPC",
+                "description": "Descripción del Producto",
+                "priceSection": "P/S",
+                "netPrice": "Precio Neto",
+                "manufacturer": "Fabricante",
+                "stock": "Stock"
+            },
+            "emptyState": {
+                "title": "No se encontraron productos",
+                "subtitle": "Intenta ajustar tus filtros o términos de búsqueda",
+                "clearFilters": "Limpiar Todos los Filtros"
+            }
+        }
+    },
+    "quickOrder": {
+        "header": {
+            "title": "Orden Rápida",
+            "subtitle": "Elige tu método preferido para agregar rápidamente múltiples artículos a tu carrito"
+        },
+        "tabs": {
+            "manualEntry": "Entrada Manual",
+            "bulkPaste": "Pegado Masivo",
+            "fileUpload": "Carga de Archivo",
+            "ariaLabel": "Métodos de orden rápida"
+        },
+        "entry": {
+            "stepNumber": "1",
+            "title": "Entrada Manual",
+            "subtitle": "Agrega artículos uno por uno a tu orden",
+            "addToCart": "Agregar al Carrito ({count})",
+            "addRow": "Agregar Fila",
+            "columns": {
+                "quantity": "Cantidad",
+                "itemNumber": "Número de Artículo",
+                "action": "Acción"
+            },
+            "placeholders": {
+                "qty": "Cant",
+                "itemNumber": "Ingrese número de artículo"
+            },
+            "removeRow": "Eliminar fila",
+            "itemsReady": "{count} artículos listos para agregar",
+            "readyToSubmit": "Listo para enviar",
+            "toast": {
+                "addAtLeastOne": "Por favor agrega al menos un artículo",
+                "addedSuccess": "Se agregaron {count} artículos al carrito"
+            }
+        },
+        "bulk": {
+            "stepNumber": "2",
+            "title": "Pegado Masivo",
+            "subtitle": "Pega múltiples artículos a la vez",
+            "pasteLabel": "Pega tus artículos abajo",
+            "pasteExample": "Pegar Ejemplo",
+            "placeholder": "Ingresa artículos en formato: Cantidad [ESPACIO/TAB/COMA] Artículo#\n\nEjemplo:\n10 653RL\n30 3VX17\n250,A123",
+            "addToCart": "Agregar al Carrito",
+            "clearAll": "Limpiar Todo",
+            "instructions": {
+                "title": "Instrucciones de Formato",
+                "onePerLine": "Un artículo por línea",
+                "format": "Formato:",
+                "formatExample": "Cantidad Artículo#",
+                "separators": "Separadores: Espacio, Tab o Coma",
+                "example": "Ejemplo:",
+                "exampleValue": "10 653RL"
+            },
+            "success": {
+                "badge": "Éxito",
+                "message": "Se agregaron {count} artículos a tu carrito"
+            },
+            "toast": {
+                "noValidLines": "No se detectaron líneas válidas. Por favor verifica el formato.",
+                "addedSuccess": "Se agregaron {count} artículos al carrito"
+            }
+        },
+        "upload": {
+            "stepNumber": "3",
+            "title": "Carga de Archivo",
+            "subtitle": "Sube tu lista de orden mediante archivo CSV",
+            "template": {
+                "title": "Comienza con la Plantilla",
+                "description": "Descarga nuestra plantilla CSV para asegurar el formato correcto",
+                "downloadButton": "Descargar Plantilla"
+            },
+            "uploadSection": {
+                "label": "Sube tu archivo",
+                "button": "Subir y Procesar"
+            },
+            "requirements": {
+                "title": "Requisitos del Archivo",
+                "csv": "CSV",
+                "csvDesc": "Formato de valores separados por comas",
+                "txt": "TXT",
+                "txtDesc": "Archivos de texto plano aceptados",
+                "header": "ENCABEZADO",
+                "headerDesc": "La primera línea debe ser:",
+                "headerValue": "qty,item",
+                "format": "FORMATO",
+                "formatDesc": "Cada línea:",
+                "formatValue": "cantidad,número-artículo"
+            },
+            "toast": {
+                "downloadSuccess": "Plantilla descargada exitosamente",
+                "selectFile": "Por favor selecciona un archivo CSV o TXT.",
+                "unsupportedFormat": "Formato no soportado. Por favor usa .csv o .txt",
+                "noValidRows": "No se encontraron filas válidas en el archivo.",
+                "uploadSuccess": "Carga exitosa: {count} artículos agregados al carrito"
+            }
+        }
+    },
+    "rma": {
+        "header": {
+            "title": "Autorización de Devolución de Mercancía (RMA)"
+        },
+        "steps": {
+            "selectInvoice": "Seleccionar Factura",
+            "requestRma": "Solicitar RMA",
+            "submitRma": "Enviar RMA",
+            "rmaConfirmation": "Confirmación RMA"
+        },
+        "search": {
+            "title": "Búsqueda",
+            "fields": {
+                "invoiceNumber": "Número de Factura",
+                "orderNumber": "Número de Orden",
+                "itemNumber": "Número de Artículo/NDC",
+                "lotNumber": "Número de Lote"
+            },
+            "placeholder": "Buscar...",
+            "buttons": {
+                "search": "Buscar",
+                "clear": "Limpiar"
+            }
+        },
+        "policy": {
+            "text": "¿Necesitas las reglas de devolución?",
+            "link": "Ver Política de Devolución"
+        },
+        "selectInvoice": {
+            "title": "Seleccionar Factura",
+            "emptyMessage": "Por favor usa la búsqueda para encontrar factura(s).",
+            "columns": {
+                "invoiceNumber": "Factura #",
+                "orderNumber": "Orden #",
+                "date": "Fecha",
+                "total": "Total",
+                "action": "Acción"
+            },
+            "selectButton": "Seleccionar"
+        },
+        "requestRma": {
+            "title": "Solicitar RMA",
+            "placeholder": {
+                "title": "Marcador de Posición",
+                "description": "Aquí irá el formulario para seleccionar líneas del invoice, cantidades a devolver, razones, adjuntos, etc. De momento es solo UI de demostración."
+            }
+        },
+        "submitRma": {
+            "title": "Enviar RMA",
+            "summary": "Resumen de la solicitud (líneas, cantidades, motivo, totales). Botón 'Enviar'."
+        },
+        "confirmation": {
+            "title": "Confirmación RMA",
+            "successMessage": "Tu solicitud fue enviada correctamente. Esta es una confirmación visual (RMA# demo:",
+            "nextSteps": "Próximos pasos, instrucciones de empaque y etiquetas de devolución aparecerán aquí."
+        },
+        "invoiceSummary": {
+            "invoiceNumber": "Factura #",
+            "orderNumber": "Orden #",
+            "date": "Fecha",
+            "total": "Total"
+        },
+        "emptyHint": {
+            "message": "No hay factura seleccionada. Regresa al",
+            "stepOne": "Paso 1",
+            "toPickOne": "para seleccionar una."
+        },
+        "navigation": {
+            "back": "Atrás",
+            "next": "Siguiente",
+            "newRma": "Nuevo RMA"
+        }
+    },
+    "twoFactor": {
+        "title": "Autenticación de Dos Factores",
+        "status": {
+            "enabled": "2FA está activado para tu cuenta",
+            "disabled": "2FA no está activado"
+        },
+        "alerts": {
+            "enabled": {
+                "message": "Tu cuenta está protegida con autenticación de dos factores."
+            },
+            "disabled": {
+                "message": "Recomendamos activar la autenticación de dos factores para mayor seguridad."
+            }
+        },
+        "instructions": {
+            "title": "¿Cómo activar la autenticación de dos factores?",
+            "step1": {
+                "title": "Descarga una aplicación de autenticación",
+                "description": "Instala una de estas aplicaciones en tu teléfono:",
+                "apps": {
+                    "googleAuth": {
+                        "name": "Google Authenticator",
+                        "availability": "Disponible en iOS y Android"
+                    },
+                    "authy": {
+                        "name": "Authy",
+                        "availability": "Disponible en iOS, Android y desktop"
+                    },
+                    "microsoftAuth": {
+                        "name": "Microsoft Authenticator",
+                        "availability": "Disponible en iOS y Android"
+                    },
+                    "lastpassAuth": {
+                        "name": "LastPass Authenticator",
+                        "availability": "Disponible en iOS y Android"
+                    }
+                }
+            },
+            "step2": {
+                "title": "Activa 2FA en tu cuenta",
+                "description": "Haz clic en el interruptor de arriba para activar la autenticación de dos factores. Se te pedirá que ingreses tu contraseña para confirmar."
+            },
+            "step3": {
+                "title": "Escanea el código QR",
+                "description": "Una vez activado, se mostrará un código QR. Abre tu aplicación de autenticación y:",
+                "steps": {
+                    "addAccount": "Selecciona \"Agregar cuenta\" o el símbolo \"+\"",
+                    "scanQr": "Elige \"Escanear código QR\"",
+                    "pointCamera": "Apunta la cámara hacia el código QR en la pantalla"
+                }
+            },
+            "step4": {
+                "title": "Verifica el código",
+                "description": "Después de escanear el código, tu app generará un código de 6 dígitos. Ingresa ese código en el campo de verificación para completar la configuración."
+            },
+            "step5": {
+                "title": "Guarda los códigos de respaldo",
+                "description": "Te proporcionaremos códigos de respaldo. Guárdalos en un lugar seguro. Estos códigos te permitirán acceder a tu cuenta si pierdes acceso a tu app de autenticación."
+            },
+            "securityTips": {
+                "title": "Consejos de seguridad:",
+                "tip1": "Guarda los códigos de respaldo en un administrador de contraseñas o imprímelos",
+                "tip2": "No compartas tus códigos de autenticación con nadie",
+                "tip3": "Asegúrate de que tu teléfono esté protegido con contraseña o biometría"
+            }
+        },
+        "passwordDialog": {
+            "enableTitle": "Activar 2FA",
+            "disableTitle": "Desactivar 2FA",
+            "enableDescription": "Ingresa tu contraseña para activar la autenticación de dos factores.",
+            "disableDescription": "Ingresa tu contraseña para desactivar la autenticación de dos factores.",
+            "passwordLabel": "Contraseña",
+            "passwordPlaceholder": "Ingresa tu contraseña",
+            "buttons": {
+                "cancel": "Cancelar",
+                "continue": "Continuar",
+                "processing": "Procesando..."
+            }
+        },
+        "setup": {
+            "title": "Completa la configuración",
+            "description": "Escanea el código QR con tu app de autenticación (Google Authenticator, Authy, etc.) e ingresa el código generado.",
+            "qrCode": {
+                "instruction": "Escanea este código QR con tu app de autenticación"
+            },
+            "backupCodes": {
+                "label": "Códigos de respaldo (guárdalos en un lugar seguro):",
+                "copyAll": "Copiar todos los códigos"
+            },
+            "verificationCode": {
+                "label": "Código de verificación",
+                "placeholder": "000000"
+            },
+            "buttons": {
+                "verify": "Verificar",
+                "cancel": "Cancelar"
+            }
+        },
+        "toast": {
+            "incorrectPassword": "Contraseña incorrecta",
+            "setupFailed": "Error en la configuración de 2FA",
+            "enableError": "Error al activar 2FA",
+            "enableErrorDescription": "Intenta nuevamente",
+            "setupSuccess": "2FA configurado",
+            "setupSuccessDescription": "Escanea el código QR con tu app de autenticación",
+            "enterCode": "Ingresa el código de verificación",
+            "invalidCode": "Código inválido",
+            "invalidCodeDescription": "El código de verificación es incorrecto",
+            "enabledSuccess": "2FA activado correctamente",
+            "verifyError": "Error al verificar el código",
+            "disableError": "Error al desactivar 2FA",
+            "disableErrorDescription": "Intenta nuevamente",
+            "disabledSuccess": "2FA desactivado correctamente",
+            "disableUnexpectedError": "Error al desactivar 2FA",
+            "codeCopied": "Código copiado al portapapeles"
+        }
+    },
+    "quickLinks": {
+        "header": {
+            "title": "Enlaces Rápidos",
+            "subtitle": "Navega a recursos importantes de farmacia"
+        },
+        "links": {
+            "recalls": {
+                "label": "Retiros",
+                "sublabel": "Alertas de seguridad y retiros de productos"
+            },
+            "reports": {
+                "label": "Reportes",
+                "sublabel": "Análisis e informes de rendimiento"
+            },
+            "returnPolicy": {
+                "label": "Política de Devolución",
+                "sublabel": "Guías para devolución de productos"
+            },
+            "rmaForm": {
+                "label": "Formulario RMA",
+                "sublabel": "Autorización de Devolución de Mercancía"
+            },
+            "pharmacyPrograms": {
+                "label": "Programas de Farmacia",
+                "sublabel": "Formularios de inscripción electrónica"
+            },
+            "trainingManual": {
+                "label": "Manual de Capacitación",
+                "sublabel": "Materiales completos de entrenamiento"
+            }
+        }
+    },
+    "recalls": {
+        "header": {
+            "title": "Retiros de Medicamentos"
+        },
+        "emptyState": "No hay retiros disponibles.",
+        "ariaLabel": "Abrir retiro: {label}",
+        "items": {
+            "aniPharmaceutical": "ANI Pharmaceutical, Inc. (Alprazolam y Pyrazinamide) — 18/02/2022",
+            "dologen325": "Dologen 325 90 Unidades - Carta de Notificación de Retiro y Formulario de Respuesta",
+            "fexofenadine": "Fexofenadina HCl 60mg y Pseudoefedrina HCL 120mg",
+            "rompePecho": "Rompe Pecho EX, CF, DM y MAX Líquidos — 10 Dic, 2021",
+            "hairCare": "Champú Seco en Aerosol y Acondicionador para Cabello — Notificación al Cliente (PR)",
+            "telmisartan": "Telmisartán HCTZ 40/12.5 mg — Lote BX74G001 (2 Dic, 2021)",
+            "tevaCartia": "Teva Cartia XT® 120 mg — Aviso al Cliente"
+        }
+    },
+    "reports": {
+        "header": {
+            "title": "Reportes"
+        },
+        "menu": {
+            "trackAndTrace": {
+                "label": "Seguimiento y Rastreo/ Reporte de Datos de Transacción DQSA",
+                "ariaLabel": "Ir a Seguimiento y Rastreo / Reporte de Datos de Transacción DQSA"
+            },
+            "taxReport": {
+                "label": "Reporte de Impuestos"
+            },
+            "analyticsReports": {
+                "label": "Reportes de Análisis",
+                "ariaLabel": "Ir a Reportes de Análisis"
+            }
+        },
+        "taxModal": {
+            "title": "Generador de Reporte de Impuestos",
+            "close": "Cerrar",
+            "from": "Desde",
+            "to": "Hasta",
+            "placeholders": {
+                "month": "MM",
+                "year": "AAAA"
+            },
+            "buttons": {
+                "generate": "Generar Reporte",
+                "cancel": "Cancelar"
+            }
+        }
+    },
+    "analytics": {
+        "metrics": {
+            "ecommerceRevenue": {
+                "title": "Ingresos de E-commerce",
+                "value": "$245,450",
+                "change": "14.9",
+                "changeText": "(+$3.1k)"
+            },
+            "newCustomers": {
+                "title": "Nuevos Clientes",
+                "value": "684",
+                "change": "8.6",
+                "changeText": ""
+            },
+            "repeatPurchaseRate": {
+                "title": "Tasa de Compra Repetida",
+                "value": "75.12 %",
+                "change": "26.4",
+                "changeText": "(+20.1%)"
+            },
+            "averageOrderValue": {
+                "title": "Valor Promedio de Orden",
+                "value": "$2,412.23",
+                "change": "32.3",
+                "changeText": "(+$756)"
+            },
+            "conversionRate": {
+                "title": "Tasa de Conversión",
+                "value": "32.65 %",
+                "change": "12.42",
+                "changeText": ""
+            }
+        }
+    },
+    "sidebar": {
+        "navigation": {
+            "label": "Principal",
+            "items": {
+                "dashboard": "Panel",
+                "buyNow": "Comprar Ahora",
+                "favorites": "Favoritos",
+                "orders": "Órdenes",
+                "invoices": "Facturas",
+                "payments": "Pagos",
+                "companies": "Compañías",
+                "users": "Usuarios",
+                "roles": "Roles"
+            }
+        },
+        "documents": {
+            "label": "Documentos",
+            "items": {
+                "catalog": "Catálogo",
+                "quickLinks": "Enlaces Rápidos",
+                "contactUs": "Contáctanos"
+            }
+        },
+        "secondary": {
+            "settings": "Configuración",
+            "getHelp": "Obtener Ayuda",
+            "search": "Buscar"
+        },
+        "user": {
+            "account": "Cuenta",
+            "notifications": "Notificaciones",
+            "logOut": "Cerrar Sesión"
+        }
+    },
+    "invoiceDetail": {
+        "loading": "Cargando detalle del invoice...",
+        "error": {
+            "title": "Error",
+            "invalidId": "ID de invoice inválido",
+            "notFound": {
+                "title": "Invoice no encontrado",
+                "description": "El invoice solicitado no existe o no está disponible."
+            }
+        },
+        "backToInvoices": "Volver a Invoices",
+        "header": {
+            "title": "Información de Factura",
+            "viewAllInvoices": "Ver Todas las Facturas"
+        },
+        "buttons": {
+            "signedPod": "POD Firmado",
+            "exportPdf": "Exportar PDF",
+            "exportXls": "Exportar XLS"
+        },
+        "labels": {
+            "invoiceNumber": "Número de Factura:",
+            "orderNumber": "Número de Orden:",
+            "billTo": "Facturar a:",
+            "shipTo": "Enviar a:",
+            "orderDate": "Fecha de Orden:",
+            "shippedVia": "Enviado Vía:",
+            "trackingNumbers": "Números de Rastreo",
+            "noTrackingNumbers": "No hay números de rastreo disponibles",
+            "warehouse": "Almacén:",
+            "terms": "Términos:",
+            "totalDetailLines": "Total Líneas de Detalle:",
+            "totalQuantityShipped": "Cantidad Total Enviada:",
+            "totalShippingWeight": "Peso Total de Envío:",
+            "material": "Material:",
+            "lessDiscount": "Menos Descuento:",
+            "handlingCharge": "Cargo por Manejo:",
+            "otherCharges": "Otros Cargos:",
+            "shippingCost": "Costo de Envío:",
+            "tax": "Impuesto:",
+            "invoiceTotal": "Total de Factura:"
+        },
+        "orderDetails": {
+            "title": "Detalles de la Orden",
+            "columns": {
+                "sequence": "Secuencia",
+                "orderedQty": "Cant. Ordenada",
+                "assignedQty": "Cant. Asignada",
+                "qtyBO": "Cant. B/O",
+                "itemNumber": "Número de Artículo",
+                "ndc": "NDC",
+                "description": "Descripción",
+                "pack": "Empaque",
+                "netPrice": "Precio Neto",
+                "extension": "Extensión"
+            }
+        }
+    },
+    "favorites": {
+        "header": {
+            "title": "Favoritos",
+            "item": "artículo",
+            "items": "artículos"
+        },
+        "search": {
+            "placeholder": "Buscar productos...",
+            "advancedSearch": "Búsqueda Avanzada"
+        },
+        "cart": {
+            "items": "{count} Artículos"
+        },
+        "filters": {
+            "rxMedications": {
+                "label": "Medicamentos RX",
+                "placeholder": "Seleccionar categoría",
+                "groupLabel": "Categorías RX",
+                "options": {
+                    "all": "Todos los Productos RX",
+                    "antibiotics": "Antibióticos",
+                    "analgesics": "Analgésicos"
+                }
+            },
+            "otcEquipment": {
+                "label": "OTC y Equipos",
+                "placeholder": "Seleccionar categoría",
+                "groupLabel": "Productos OTC",
+                "options": {
+                    "all": "Todos los OTC",
+                    "vitamins": "Vitaminas",
+                    "firstAid": "Primeros Auxilios"
+                }
+            },
+            "manufacturer": {
+                "label": "Fabricante",
+                "placeholder": "Seleccionar fabricante",
+                "groupLabel": "Fabricantes"
+            },
+            "clearFilter": "Limpiar Filtro"
+        },
+        "empty": {
+            "title": "Tu lista de favoritos está vacía",
+            "description": "Aún no has agregado ningún producto a tus favoritos. Haz clic en el ícono de estrella en los productos para agregarlos aquí.",
+            "browseProducts": "Explorar Productos"
+        }
+    },
+    "payments": {
+        "dialog": {
+            "title": "Confirmar Pago",
+            "description": "Estás a punto de pagar {count} factura(s). Se enviará una confirmación a tu correo.",
+            "cancel": "Cancelar",
+            "processing": "Procesando...",
+            "confirmPayment": "Confirmar Pago"
+        },
+        "summary": {
+            "title": "Resumen del Pago",
+            "invoices": "Facturas seleccionadas",
+            "totalAmount": "Monto total",
+            "payAmount": "Monto a pagar"
+        },
+        "paymentMethod": {
+            "title": "Método de Pago",
+            "ach": "Transferencia ACH",
+            "wire": "Transferencia Bancaria"
+        },
+        "confirmation": {
+            "message": "Una confirmación será enviada a tu correo electrónico después del procesamiento."
+        },
+        "success": {
+            "title": "¡Pago Exitoso!",
+            "message": "Tu pago ha sido procesado exitosamente. Se envió una confirmación a {email}."
+        },
+        "error": {
+            "noSelection": "Selecciona al menos una factura para pagar",
+            "noSession": "Debes iniciar sesión para procesar pagos",
+            "invalidAmount": "El monto de pago debe ser mayor a cero",
+            "exceedsTotal": "El monto de pago no puede exceder el total seleccionado",
+            "processing": "Error al procesar el pago: {{message}}"
+        }
+    },
+    "checkout": {
+        "header": {
+            "title": "Finalizar Compra",
+            "subtitle": "Completa tu compra en unos simples pasos"
+        },
+        "steps": {
+            "cartReview": "Revisar Carrito",
+            "shippingOptions": "Opciones de Envío",
+            "paymentOptions": "Opciones de Pago",
+            "completeOrder": "Completar Orden"
+        },
+        "cart": {
+            "title": "Tu Carrito de Compras",
+            "empty": {
+                "title": "Tu carrito está vacío",
+                "description": "Parece que aún no has agregado ningún producto a tu carrito. Explora nuestro catálogo para encontrar los medicamentos que necesitas."
+            },
+            "buttons": {
+                "continueShopping": "Continuar Comprando",
+                "updateCart": "Actualizar Carrito",
+                "clearCart": "Vaciar Carrito",
+                "proceedToCheckout": "Proceder al Pago"
+            },
+            "table": {
+                "image": "Imagen",
+                "itemNumber": "Artículo #",
+                "description": "Descripción",
+                "unitMeasure": "U/M",
+                "available": "Disponible",
+                "price": "Precio",
+                "lineTotal": "Total Línea"
+            },
+            "inStock": "En Stock",
+            "total": "Total:",
+            "noPermission": "No tienes permisos para completar órdenes"
+        },
+        "shipping": {
+            "title": "Información de Envío",
+            "orderingFor": "Ordenando para:",
+            "mainAccount": "Cuenta Principal",
+            "changeAccount": "Cambiar Cuenta",
+            "code": "Código:",
+            "table": {
+                "qty": "Cant",
+                "itemNumber": "Artículo #",
+                "ndc": "NDC",
+                "description": "Descripción",
+                "unitMeasure": "U/M",
+                "available": "Disponible",
+                "price": "Precio",
+                "lineTotal": "Total Línea"
+            },
+            "inStock": "En Stock",
+            "shippingAddress": {
+                "title": "Dirección de Envío",
+                "accountLabel": "Cuenta de Envío:",
+                "notSelected": "No seleccionada",
+                "fields": {
+                    "name": "Nombre",
+                    "address": "Dirección",
+                    "city": "Ciudad",
+                    "state": "Estado",
+                    "zip": "Código Postal",
+                    "country": "País",
+                    "phone": "Teléfono",
+                    "email": "Correo Electrónico"
+                },
+                "placeholder": "Ingrese {field}"
+            },
+            "shippingMethod": {
+                "title": "Método de Envío",
+                "label": "Método de Envío:",
+                "placeholder": "Seleccione método de envío",
+                "options": {
+                    "ourTruck": "Nuestro Camión",
+                    "ups": "UPS",
+                    "fedex": "FedEx"
+                },
+                "noPoBox": "Sin envíos a P.O. Box",
+                "itemsSubtotal": "Subtotal de Artículos"
+            },
+            "buttons": {
+                "editOrder": "Editar Orden",
+                "saveCart": "Guardar Carrito",
+                "proceedToCheckout": "Proceder al Pago"
+            }
+        },
+        "payment": {
+            "title": "Información de Pago",
+            "checkingPayments": "Verificando pagos pendientes...",
+            "inStock": "En Stock",
+            "reference": "Referencia",
+            "amount": "Monto",
+            "status": "Estado",
+            "initiated": "Iniciado",
+            "expires": "Expira",
+            "requestId": "ID de Solicitud",
+            "timeRemaining": "Tiempo restante",
+            "table": {
+                "qty": "Cant",
+                "itemNumber": "Artículo #",
+                "ndc": "NDC",
+                "description": "Descripción",
+                "unitMeasure": "U/M",
+                "available": "Disponible",
+                "price": "Precio",
+                "lineTotal": "Total Línea"
+            },
+            "billingShipping": {
+                "title": "Facturación y Envío",
+                "billing": {
+                    "title": "Información de Facturación"
+                },
+                "shipping": {
+                    "title": "Información de Envío",
+                    "phone": "Teléfono:",
+                    "email": "Correo:",
+                    "shipDate": "Fecha de Envío:"
+                }
+            },
+            "comments": {
+                "title": "Comentarios de la Orden",
+                "placeholder": "Agregue comentarios adicionales aquí",
+                "maxLength": "*Longitud máxima de comentarios es 250 caracteres"
+            },
+            "summary": {
+                "title": "Resumen de la Orden",
+                "material": "Material:",
+                "subtotal": "Subtotal:",
+                "handling": "Manejo:",
+                "shipping": "Envío:",
+                "tax": "Impuesto:",
+                "discount": "Descuento:",
+                "total": "Total:"
+            },
+            "promoCode": {
+                "placeholder": "Ingrese código de cupón",
+                "apply": "Aplicar",
+                "errorEmpty": "Por favor ingrese un código de cupón",
+                "errorInvalid": "Código de cupón inválido",
+                "applied": "Código aplicado:",
+                "appliedSuccess": "Código promocional aplicado exitosamente",
+                "invalidCode": "Código promocional inválido"
+            },
+            "buttons": {
+                "editOrder": "Editar Orden",
+                "saveCart": "Guardar Carrito",
+                "saveAsQuote": "Guardar como Cotización",
+                "completeOrder": "Completar Orden",
+                "processing": "Procesando...",
+                "continuePayment": "Continuar Pago",
+                "cancelPayment": "Cancelar Pago",
+                "resumePayment": "Reanudar Pago",
+                "understand": "Entendido",
+                "cancel": "Cancelar",
+                "continue": "Continuar Pago"
+            },
+            "alerts": {
+                "paymentApproved": "¡Pago Aprobado! Tu orden ha sido procesada exitosamente.",
+                "paymentRejected": "Pago Rechazado",
+                "unknownReason": "Razón desconocida",
+                "processingError": "Error al procesar el pago. Por favor, intenta nuevamente.",
+                "scriptLoadError": "Error al cargar la pasarela de pagos. Por favor, intenta nuevamente.",
+                "missingInfo": "Por favor completa la información de envío",
+                "sessionCreationFailed": "Error al crear la sesión de pago",
+                "paymentInitiated": "Pago iniciado",
+                "redirectingToGateway": "Redirigiendo a la pasarela de pagos...",
+                "paymentError": "Error al procesar el pago. Por favor, intenta nuevamente.",
+                "tryAgain": "Por favor intenta nuevamente",
+                "paymentCancelled": "Pago cancelado",
+                "sessionExpired": "Sesión de pago expirada",
+                "startNewPayment": "Por favor inicia un nuevo pago",
+                "sessionExpiredTitle": "Sesión Expirada",
+                "sessionExpiredDesc": "Tu sesión de pago ha expirado. Por favor inicia un nuevo pago.",
+                "sessionExpiringTitle": "Sesión por Expirar",
+                "sessionExpiringDesc": "Tu sesión de pago está por expirar en unos minutos. Completa el pago pronto o deberás comenzar de nuevo.",
+                "pendingPayment": "Pago Pendiente",
+                "pendingPaymentDesc": "Tienes un pago pendiente de",
+                "paymentCompleted": "Pago Completado",
+                "paymentFailed": "Pago Fallido",
+                "paymentPending": "Pago Pendiente",
+                "resumePaymentTitle": "Reanudar Pago Pendiente",
+                "resumePaymentDesc": "Tienes un pago pendiente que no se completó. ¿Deseas continuar con el proceso?",
+                "securePayment": "Pago Seguro",
+                "securePaymentDesc": "Tu pago es procesado a través de una pasarela segura y compatible con PCI. Tu información financiera está protegida."
+            },
+            "pendingPayment": "Pago Pendiente",
+            "pendingPaymentDescription": "Tienes un pago pendiente de ${amount} (Referencia: ${reference}). ¿Deseas continuar?",
+            "resumePayment": "Reanudar Pago",
+            "cancelPayment": "Cancelar Pago",
+            "resumePaymentTitle": "Reanudar Pago Pendiente",
+            "resumePaymentDescription": "Tienes un pago pendiente que no se completó. ¿Deseas continuar con el proceso?",
+            "sessionExpiringTitle": "Sesión por Expirar",
+            "sessionExpiringDescription": "Tu sesión de pago está por expirar en unos minutos. Completa el pago pronto o deberás comenzar de nuevo.",
+            "paymentApproved": "¡Pago Aprobado! Tu orden ha sido procesada exitosamente.",
+            "paymentRejected": "Pago Rechazado",
+            "unknownError": "Error desconocido",
+            "paymentGatewayError": "Error al cargar la pasarela de pagos. Por favor, intenta nuevamente.",
+            "paymentError": "Error al procesar el pago. Por favor, intenta nuevamente.",
+            "reference": "Referencia",
+            "amount": "Monto",
+            "status": "Estado",
+            "cancel": "Cancelar",
+            "resume": "Reanudar",
+            "continuePayment": "Continuar Pago"
+        },
+        "complete": {
+            "success": {
+                "title": "¡Gracias por tu orden! Tu número de orden es",
+                "emailSent": "Se ha enviado un correo de confirmación a tu dirección de correo electrónico."
+            },
+            "pdfExport": "Exportar PDF",
+            "billingInfo": {
+                "title": "Información de Facturación"
+            },
+            "shippingInfo": {
+                "title": "Información de Envío"
+            },
+            "orderItems": {
+                "title": "Artículos de la Orden",
+                "table": {
+                    "qty": "Cant",
+                    "itemNumber": "Artículo #",
+                    "ndc": "NDC",
+                    "description": "Descripción",
+                    "unitMeasure": "U/M",
+                    "price": "Precio",
+                    "lineTotal": "Total Línea"
+                }
+            },
+            "summary": {
+                "title": "Resumen de la Orden",
+                "material": "Material:",
+                "subtotal": "Subtotal:",
+                "handling": "Manejo:",
+                "shipping": "Envío:",
+                "tax": "Impuesto:",
+                "discount": "Descuento:",
+                "total": "Total:"
+            },
+            "buttons": {
+                "continueShopping": "Continuar Comprando"
+            }
+        }
+    }
+}
