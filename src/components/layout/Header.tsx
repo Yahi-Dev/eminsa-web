@@ -1,14 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Menu, 
-  X, 
-  ChevronDown, 
-  Phone, 
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Phone,
   Mail,
   Globe,
   MessageCircle
@@ -20,9 +21,8 @@ import { useRouter } from "next/navigation";
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [language, setLanguage] = useState<"en" | "es">("es");
-  const router = useRouter();
+  const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,42 +32,28 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Cargar idioma desde cookies/localStorage - CORREGIDO
-  useEffect(() => {
-    const getInitialLanguage = (): "en" | "es" => {
-      if (typeof window === "undefined") return "es";
-      
-      const cookieLang = document.cookie
-        .split("; ")
-        .find(r => r.startsWith("NEXT_LOCALE="))
-        ?.split("=")[1] as "en" | "es" | undefined;
-
-      return (cookieLang ?? (localStorage.getItem("language") as "en" | "es" | null) ?? "es");
-    };
-
-    setLanguage(getInitialLanguage());
-  }, []);
-
-  const setLocale = (lng: "en" | "es") => {
-    setLanguage(lng);
-    localStorage.setItem("language", lng);
-    document.cookie = `NEXT_LOCALE=${lng}; Path=/; Max-Age=31536000; SameSite=Lax`;
-    
-    // Recargar la página para aplicar el cambio de idioma
-    router.refresh();
+  // Determinar qué submenú mostrar basado en la ruta actual
+  const getActiveSubmenu = () => {
+    if (pathname.startsWith("/mtn")) return "MTN";
+    if (pathname.startsWith("/etrys")) return "ETRYS";
+    if (pathname.startsWith("/eic")) return "EIC";
+    if (pathname.startsWith("/servicios")) return "Servicios";
+    return null;
   };
 
-  const toggleLanguage = () => {
-    const newLang = language === "en" ? "es" : "en";
-    setLocale(newLang);
+  const activeSubmenu = getActiveSubmenu();
+
+  const toggleMobileSubmenu = (name: string) => {
+    if (mobileActiveSubmenu === name) {
+      setMobileActiveSubmenu(null);
+    } else {
+      setMobileActiveSubmenu(name);
+    }
   };
 
-  const handleMouseEnter = (name: string) => {
-    setActiveDropdown(name);
-  };
-
-  const handleMouseLeave = () => {
-    setActiveDropdown(null);
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+    setMobileActiveSubmenu(null);
   };
 
   return (
@@ -76,11 +62,17 @@ export default function Header() {
       <div className="hidden lg:block bg-[#001689] text-white text-sm">
         <div className="container-eminsa flex items-center justify-between py-2">
           <div className="flex items-center gap-6">
-            <a href={`tel:${contactInfo.phone}`} className="flex items-center gap-2 hover:text-[#00A3E0] transition-colors">
+            <a
+              href={`tel:${contactInfo.phone}`}
+              className="flex items-center gap-2 hover:text-[#00A3E0] transition-colors"
+            >
               <Phone size={14} />
               <span>{contactInfo.phone}</span>
             </a>
-            <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-2 hover:text-[#00A3E0] transition-colors">
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="flex items-center gap-2 hover:text-[#00A3E0] transition-colors"
+            >
               <Mail size={14} />
               <span>{contactInfo.email}</span>
             </a>
@@ -102,79 +94,37 @@ export default function Header() {
       {/* Main Header */}
       <header
         className={cn(
-          "sticky top-0 z-50 transition-all duration-300",
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg"
-            : "bg-white"
+          "sticky top-0 z-50 transition-all duration-300 bg-white",
+          isScrolled && "shadow-lg"
         )}
       >
         <div className="container-eminsa">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="shrink-0"> {/* CORREGIDO: shrink-0 en lugar de flex-shrink-0 */}
-              <div className="flex items-center gap-3">
-                <Image src="/logoeminsa-Photoroom.png" alt="Logo" width={156} height={156} />
-              </div>
+            <Link href="/" className="shrink-0">
+              <Image
+                src="/logoeminsa-Photoroom.png"
+                alt="Grupo EMINSA"
+                width={156}
+                height={156}
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
               {mainNavigation.map((item) => (
-                <div
+                <Link
                   key={item.name}
-                  className="relative"
-                  onMouseEnter={() => item.submenu && handleMouseEnter(item.name)}
-                  onMouseLeave={handleMouseLeave}
+                  href={item.href}
+                  className={cn(
+                    "px-4 py-2 rounded-lg font-medium transition-all duration-200",
+                    "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
+                    pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
+                  )}
                 >
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all duration-200",
-                      "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
-                      activeDropdown === item.name && "text-[#001689] bg-gray-50"
-                    )}
-                  >
-                    {item.name}
-                    {item.submenu && (
-                      <ChevronDown
-                        size={16}
-                        className={cn(
-                          "transition-transform duration-200",
-                          activeDropdown === item.name && "rotate-180"
-                        )}
-                      />
-                    )}
-                  </Link>
-
-                  {/* Dropdown Menu */}
-                  <AnimatePresence>
-                    {item.submenu && activeDropdown === item.name && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden"
-                      >
-                        <div 
-                          className="h-1 w-full"
-                          style={{ backgroundColor: item.color || "#001689" }}
-                        />
-                        <div className="p-2">
-                          {item.submenu.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
-                            >
-                              <span className="font-medium">{subItem.name}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                  {item.name}
+                </Link>
               ))}
             </nav>
 
@@ -189,10 +139,7 @@ export default function Header() {
                 <MessageCircle size={18} />
                 <span className="font-medium">WhatsApp</span>
               </a>
-              <Link
-                href="/cotizar"
-                className="btn-primary"
-              >
+              <Link href="/cotizar" className="btn-primary">
                 Solicitar Cotización
               </Link>
             </div>
@@ -201,11 +148,51 @@ export default function Header() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
+
+        {/* Submenu Bar (Desktop) - Aparece automáticamente cuando estás en la sección */}
+        <AnimatePresence>
+          {activeSubmenu && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="hidden lg:block border-t border-gray-100 bg-gray-50/50 overflow-hidden"
+            >
+              {mainNavigation.map((item) => {
+                if (item.name === activeSubmenu && item.submenu) {
+                  return (
+                    <div key={item.name} className="container-eminsa py-3">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        {item.submenu.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className={cn(
+                              "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                              pathname === subItem.href
+                                ? "bg-white text-[#001689] shadow-sm"
+                                : "text-[#76777A] hover:text-[#001689] hover:bg-white/60"
+                            )}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+                return null;
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Mobile Menu */}
         <AnimatePresence>
@@ -221,17 +208,56 @@ export default function Header() {
                 <nav className="space-y-1">
                   {mainNavigation.map((item) => (
                     <div key={item.name}>
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="flex items-center justify-between px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
-                      >
-                        <span className="font-medium">{item.name}</span>
-                        {item.submenu && <ChevronDown size={16} />}
-                      </Link>
+                      {item.submenu ? (
+                        <>
+                          <button
+                            onClick={() => toggleMobileSubmenu(item.name)}
+                            className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
+                          >
+                            <span className="font-medium">{item.name}</span>
+                            <ChevronDown
+                              size={16}
+                              className={cn(
+                                "transition-transform duration-200",
+                                mobileActiveSubmenu === item.name && "rotate-180"
+                              )}
+                            />
+                          </button>
+                          <AnimatePresence>
+                            {mobileActiveSubmenu === item.name && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                className="pl-4 space-y-1 overflow-hidden"
+                              >
+                                {item.submenu.map((subItem) => (
+                                  <Link
+                                    key={subItem.name}
+                                    href={subItem.href}
+                                    onClick={closeMobileMenu}
+                                    className="block px-4 py-2 rounded-lg text-sm text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
+                                  >
+                                    {subItem.name}
+                                  </Link>
+                                ))}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          onClick={closeMobileMenu}
+                          className="flex items-center px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
+                        >
+                          <span className="font-medium">{item.name}</span>
+                        </Link>
+                      )}
                     </div>
                   ))}
                 </nav>
+
                 <div className="mt-6 space-y-3">
                   <a
                     href={`https://wa.me/${contactInfo.whatsapp}`}
@@ -244,7 +270,7 @@ export default function Header() {
                   </a>
                   <Link
                     href="/cotizar"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={closeMobileMenu}
                     className="btn-primary w-full justify-center"
                   >
                     Solicitar Cotización

@@ -75,26 +75,11 @@ export default function ServiciosPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               EMINSA Servicios
             </h1>
-            <p className="text-xl text-white/80 mb-8">
+            <p className="text-xl text-white/80">
               Más de 50 años de experiencia en mantenimiento, reparación y soporte
               técnico de transformadores eléctricos. Su socio de confianza para
               garantizar la continuidad operativa de su infraestructura.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/servicios/ordenar" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#FF5500] font-semibold rounded-lg hover:bg-gray-100 transition-all">
-                Ordenar Servicio
-                <ArrowRight size={18} />
-              </Link>
-              <a
-                href={`https://wa.me/${contactInfo.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#20BD5A] transition-all"
-              >
-                <MessageCircle size={18} />
-                Emergencias 24/7
-              </a>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -128,7 +113,7 @@ export default function ServiciosPage() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Link href={`/servicios/${service.id}`} className="group block h-full">
+                  <Link href={service.url || `/servicios/${service.id}`} className="group block h-full">
                     <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#FF5500]/20 transition-all duration-300 hover:-translate-y-1">
                       {/* Icon */}
                       <div className="w-16 h-16 bg-gradient-to-br from-[#FF5500]/10 to-[#FF5500]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -144,7 +129,7 @@ export default function ServiciosPage() {
                       </p>
 
                       {/* Benefits */}
-                      <div className="space-y-2 mb-6">
+                      <div className="space-y-2">
                         {service.benefits.slice(0, 3).map((benefit, i) => (
                           <div key={i} className="flex items-center gap-2 text-sm text-[#76777A]">
                             <div className="w-1.5 h-1.5 bg-[#FF5500] rounded-full" />
@@ -152,14 +137,6 @@ export default function ServiciosPage() {
                           </div>
                         ))}
                       </div>
-
-                      {/* Link */}
-                      {service.url && (
-                        <Link href={service.url} className="inline-flex items-center gap-2 text-[#FF5500] font-medium group-hover:gap-3 transition-all">
-                          Más información
-                          <ArrowRight size={16} />
-                        </Link>
-                      )}
                     </div>
                   </Link>
                 </motion.div>

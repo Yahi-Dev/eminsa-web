@@ -61,20 +61,11 @@ export default function MTNPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               MTN
             </h1>
-            <p className="text-xl text-white/80 mb-8">
-              Transformadores de distribución fabricados en República Dominicana 
-              con los más altos estándares de calidad internacional. Certificados 
+            <p className="text-xl text-white/80">
+              Transformadores de distribución fabricados en República Dominicana
+              con los más altos estándares de calidad internacional. Certificados
               ISO 9001:2015.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/mtn/productos" className="btn-accent">
-                Ver Productos
-                <ArrowRight size={18} />
-              </Link>
-              <Link href="/cotizar" className="btn-white">
-                Solicitar Cotización
-              </Link>
-            </div>
           </motion.div>
         </div>
       </section>
