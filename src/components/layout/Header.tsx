@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { mainNavigation, contactInfo } from "@/data/navigation";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -78,9 +79,12 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-4">
             <span className="text-white/70">Transformadores • Servicios • Suplidores Eléctricos</span>
-            <button className="flex items-center gap-1 hover:text-[#00A3E0] transition-colors">
+            <button 
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 hover:text-[#00A3E0] transition-colors"
+            >
               <Globe size={14} />
-              <span>ES</span>
+              <span>{language === "en" ? "EN" : "ES"}</span>
               <ChevronDown size={12} />
             </button>
           </div>
@@ -271,6 +275,19 @@ export default function Header() {
                   >
                     Solicitar Cotización
                   </Link>
+                  {/* Botón de idioma en móvil */}
+                  <button 
+                    onClick={() => {
+                      toggleLanguage();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#001689] border border-[#001689] rounded-lg hover:bg-[#001689] hover:text-white transition-all"
+                  >
+                    <Globe size={18} />
+                    <span className="font-medium">
+                      {language === "en" ? "Cambiar a Español" : "Switch to English"}
+                    </span>
+                  </button>
                 </div>
               </div>
             </motion.div>

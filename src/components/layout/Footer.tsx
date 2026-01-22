@@ -13,14 +13,14 @@ import {
   MessageCircle
 } from "lucide-react";
 import { contactInfo, mainNavigation, divisions, certifications } from "@/data/navigation";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
+  const t = useTranslations('footer');
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-[#001689] text-white">
-      {/* CTA Section */}
-
       {/* Main Footer */}
       <div className="container-eminsa py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
@@ -38,41 +38,18 @@ export default function Footer() {
               </div>
               <div>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-white/70 text-lg font-light">Grupo</span>
-                  <span className="text-white text-xl font-bold">Eminsa</span>
+                  <span className="text-white/70 text-lg font-light">{t('company.group')}</span>
+                  <span className="text-white text-xl font-bold">{t('company.name')}</span>
                 </div>
-                <span className="text-white/60 text-xs italic">experiencia y servicio</span>
+                <span className="text-white/60 text-xs italic">{t('company.tagline')}</span>
               </div>
             </div>
             <p className="text-white/70 mb-6 max-w-md text-justify">
-              Durante décadas, hemos fabricado transformadores de insuperable calidad, ofreciendo al mercado un producto confiable y de gran eficiencia de operación.
+              {t('company.description.line1')}
               <br />
               <br />
-              Desde sus inicios, su preocupación por mantenerse a la vanguardia de los adelantos tecnológicos, le ha llevado a invertir en la modernización de su infraestructura física,
-              equipos y a obtener la asesoría técnica y administrativa de prestigiosas firmas y programas de cooperación internacionales.
+              {t('company.description.line2')}
             </p>
-
-            {/* Contact Info */}
-            {/* <div className="space-y-3 mb-6">
-              <a
-                href={`tel:${contactInfo.phone}`}
-                className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
-              >
-                <Phone size={18} />
-                <span>{contactInfo.phone}</span>
-              </a>
-              <a
-                href={`mailto:${contactInfo.email}`}
-                className="flex items-center gap-3 text-white/70 hover:text-white transition-colors"
-              >
-                <Mail size={18} />
-                <span>{contactInfo.email}</span>
-              </a>
-              <div className="flex items-start gap-3 text-white/70">
-                <MapPin size={18} className="mt-1 flex-shrink-0" />
-                <span>{contactInfo.address}</span>
-              </div>
-            </div> */}
 
             {/* Social Links */}
             <div className="flex items-center gap-4">
@@ -105,7 +82,7 @@ export default function Footer() {
 
           {/* Divisions */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Divisiones</h4>
+            <h4 className="text-lg font-bold mb-6">{t('divisions.title')}</h4>
             <ul className="space-y-3">
               {divisions.map((division) => (
                 <li key={division.id}>
@@ -130,36 +107,36 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Enlaces Rápidos</h4>
+            <h4 className="text-lg font-bold mb-6">{t('quickLinks.title')}</h4>
             <ul className="space-y-3">
               <li>
                 <Link href="/proyectos" className="text-white/70 hover:text-white transition-colors">
-                  Proyectos
+                  {t('quickLinks.projects')}
                 </Link>
               </li>
               <li>
                 <Link href="/noticias" className="text-white/70 hover:text-white transition-colors">
-                  Noticias
+                  {t('quickLinks.news')}
                 </Link>
               </li>
               <li>
                 <Link href="/contacto" className="text-white/70 hover:text-white transition-colors">
-                  Contacto
+                  {t('quickLinks.contact')}
                 </Link>
               </li>
               <li>
                 <Link href="/nosotros" className="text-white/70 hover:text-white transition-colors">
-                  Sobre Nosotros
+                  {t('quickLinks.about')}
                 </Link>
               </li>
               <li>
                 <Link href="/carreras" className="text-white/70 hover:text-white transition-colors">
-                  Trabaja con Nosotros
+                  {t('quickLinks.careers')}
                 </Link>
               </li>
               <li>
                 <Link href="/recursos/calculadora" className="text-white/70 hover:text-white transition-colors">
-                  Calculadora kVA
+                  {t('quickLinks.kvaCalculator')}
                 </Link>
               </li>
             </ul>
@@ -167,7 +144,7 @@ export default function Footer() {
 
           {/* Certifications */}
           <div>
-            <h4 className="text-lg font-bold mb-6">Certificaciones</h4>
+            <h4 className="text-lg font-bold mb-6">{t('certifications.title')}</h4>
             <div className="space-y-4">
               <div className="flex items-center gap-4 bg-white/5 rounded-lg p-3">
                 <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
@@ -179,7 +156,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="font-semibold text-sm">ISO 9001:2015</p>
-                  <p className="text-white/60 text-xs">Gestión de Calidad</p>
+                  <p className="text-white/60 text-xs">{t('certifications.iso9001')}</p>
                 </div>
               </div>
               <div className="flex items-center gap-4 bg-white/5 rounded-lg p-3">
@@ -192,7 +169,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="font-semibold text-sm">IQNET</p>
-                  <p className="text-white/60 text-xs">Certificación Internacional</p>
+                  <p className="text-white/60 text-xs">{t('certifications.iqnet')}</p>
                 </div>
               </div>
             </div>
@@ -206,24 +183,21 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-center md:text-left">
               <span className="text-white">© {currentYear} GRUPO EMINSA</span>
-              <span className="text-white/60">. Todos los derechos reservados.</span>
+              <span className="text-white/60">. {t('bottomBar.rights')}</span>
             </p>
             <div className="flex items-center gap-6">
-
-
               <p className="text-sm text-center md:text-left">
-                <span className="text-white/60">Website by </span>
+                <span className="text-white/60">{t('bottomBar.websiteBy')} </span>
                 <Link href="https://www.linkedin.com/in/yahivas-dev/" className="text-white/60 text-sm hover:text-white transition-colors">
                   Yahinniel Vásquez
                 </Link>
               </p>
-
               <Link
                 href="/login"
                 className="text-white/30 text-sm hover:text-white/60 transition-colors"
-                title="Acceso Administrador"
+                title={t('bottomBar.adminAccess')}
               >
-                Admin
+                {t('bottomBar.admin')}
               </Link>
             </div>
           </div>
