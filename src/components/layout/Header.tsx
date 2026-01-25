@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -23,38 +23,80 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
+  const [language, setLanguage] = useState<"en" | "es">("es");
+  const router = useRouter();
 
+  // Efecto para manejar el scroll - CORREGIDO: solo un useEffect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    
     window.addEventListener("scroll", handleScroll);
+    // Ejecutar inmediatamente para estado inicial
+    handleScroll();
+    
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Cargar idioma desde cookies/localStorage - CORREGIDO: usando useCallback
+  const getInitialLanguage = useCallback((): "en" | "es" => {
+    if (typeof window === "undefined") return "es";
+
+    const cookieLang = document.cookie
+      .split("; ")
+      .find(r => r.startsWith("NEXT_LOCALE="))
+      ?.split("=")[1] as "en" | "es" | undefined;
+
+    return (cookieLang ?? (localStorage.getItem("language") as "en" | "es" | null) ?? "es");
+  }, []);
+
+  // Efecto para inicializar el idioma - CORREGIDO
+  useEffect(() => {
+    const initialLanguage = getInitialLanguage();
+    // Solo actualizar si es diferente al estado actual
+    if (initialLanguage !== language) {
+      setLanguage(initialLanguage);
+    }
+  }, [getInitialLanguage, language]);
+
+  const setLocale = useCallback((lng: "en" | "es") => {
+    setLanguage(lng);
+    localStorage.setItem("language", lng);
+    document.cookie = `NEXT_LOCALE=${lng}; Path=/; Max-Age=31536000; SameSite=Lax`;
+
+    // Recargar la página para aplicar el cambio de idioma
+    router.refresh();
+  }, [router]);
+
+  const toggleLanguage = useCallback(() => {
+    const newLang = language === "en" ? "es" : "en";
+    setLocale(newLang);
+  }, [language, setLocale]);
+
   // Determinar qué submenú mostrar basado en la ruta actual
-  const getActiveSubmenu = () => {
+  const getActiveSubmenu = useCallback(() => {
     if (pathname.startsWith("/mtn")) return "MTN";
     if (pathname.startsWith("/etrys")) return "ETRYS";
     if (pathname.startsWith("/eic")) return "EIC";
     if (pathname.startsWith("/servicios")) return "Servicios";
     return null;
-  };
+  }, [pathname]);
 
   const activeSubmenu = getActiveSubmenu();
 
-  const toggleMobileSubmenu = (name: string) => {
+  const toggleMobileSubmenu = useCallback((name: string) => {
     if (mobileActiveSubmenu === name) {
       setMobileActiveSubmenu(null);
     } else {
       setMobileActiveSubmenu(name);
     }
-  };
+  }, [mobileActiveSubmenu]);
 
-  const closeMobileMenu = () => {
+  const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
     setMobileActiveSubmenu(null);
-  };
+  }, []);
 
   return (
     <>
@@ -79,9 +121,10 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-4">
             <span className="text-white/70">Transformadores • Servicios • Suplidores Eléctricos</span>
-            <button 
+            <button
               onClick={toggleLanguage}
               className="flex items-center gap-1 hover:text-[#00A3E0] transition-colors"
+              aria-label={language === "en" ? "Switch to Spanish" : "Cambiar a Inglés"}
             >
               <Globe size={14} />
               <span>{language === "en" ? "EN" : "ES"}</span>
@@ -135,6 +178,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all duration-200"
+                aria-label="Contactar por WhatsApp"
               >
                 <MessageCircle size={18} />
                 <span className="font-medium">WhatsApp</span>
@@ -213,6 +257,7 @@ export default function Header() {
                           <button
                             onClick={() => toggleMobileSubmenu(item.name)}
                             className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
+                            aria-expanded={mobileActiveSubmenu === item.name}
                           >
                             <span className="font-medium">{item.name}</span>
                             <ChevronDown
@@ -264,6 +309,7 @@ export default function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all"
+                    aria-label="Contactar por WhatsApp"
                   >
                     <MessageCircle size={18} />
                     <span className="font-medium">WhatsApp</span>
@@ -276,12 +322,13 @@ export default function Header() {
                     Solicitar Cotización
                   </Link>
                   {/* Botón de idioma en móvil */}
-                  <button 
+                  <button
                     onClick={() => {
                       toggleLanguage();
-                      setIsMobileMenuOpen(false);
+                      closeMobileMenu();
                     }}
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#001689] border border-[#001689] rounded-lg hover:bg-[#001689] hover:text-white transition-all"
+                    aria-label={language === "en" ? "Switch to Spanish" : "Cambiar a Inglés"}
                   >
                     <Globe size={18} />
                     <span className="font-medium">

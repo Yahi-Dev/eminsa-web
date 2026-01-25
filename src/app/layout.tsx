@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
-import ConditionalLayout from "@/components/ConditionalLayout";
+import ConditionalLayout from "@/components/shared/ConditionalLayout";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 

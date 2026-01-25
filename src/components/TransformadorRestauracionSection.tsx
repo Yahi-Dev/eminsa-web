@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Wrench, Shield, Zap } from "lucide-react";
 import Link from "next/link";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeforeAfterSlider from "@/components/shared/BeforeAfterSlider";
 
 export default function TransformadorRestauracionSection() {
   return (
