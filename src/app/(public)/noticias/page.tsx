@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, Calendar, User, ArrowRight, Star } from "lucide-react";
-import { useContent } from "@/features/contact/containers/content-context";
+import { useContent } from "@/lib/content-context";
 import { categoriasNoticias } from "@/data/content";
 
 export default function NoticiasPage() {

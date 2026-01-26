@@ -15,7 +15,7 @@ import {
   TrendingUp
 } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
-import { useContent } from "@/features/contact/containers/content-context";
+import { useContent } from "@/lib/content-context";
 
 export default function AdminPage() {
   const router = useRouter();

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, MapPin, Building, ArrowRight, Star, Calendar } from "lucide-react";
-import { useContent } from "@/features/contact/containers/content-context";
+import { useContent } from "@/lib/content-context";
 import { divisions } from "@/data/navigation";
 
 export default function ProyectosPage() {
