@@ -59,7 +59,7 @@ export {
 // Types
 export type {
   InquiryType,
-  TransformerSpecs,
+  TransformerSpec,
   ContactFormData,
   ContactFormState,
   FormErrors,
