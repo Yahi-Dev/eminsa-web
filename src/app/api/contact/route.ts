@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { 
-  validateContactForm, 
-  createErrorResponse, 
+import {
+  validateContactForm,
+  createErrorResponse,
   createSuccessResponse,
   getClientIp,
-  isDisposableEmail 
+  isDisposableEmail
 } from '@/features/contact/schema/contact-validation';
-import type { ApiResponse } from '@/lib/types-contact';
 import { sendContactEmails } from '@/lib/email/email-service';
+import { ApiResponse } from '@/features/contact';
 
 /**
  * POST /api/contact
@@ -35,6 +35,9 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       );
     }
 
+    console.log('Datos recibidos en API:', JSON.stringify(formData, null, 2));
+    console.log('Transformadores recibidos:', formData.transformadores?.length || 0);
+
     // Validar datos
     const validation = validateContactForm(formData);
     if (!validation.valid) {
@@ -56,7 +59,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
 
     // Rate limiting simple
     const clientIp = getClientIp(request.headers);
-    
+
     // Aquí podrías implementar rate limiting más sofisticado
     console.log(`Contact form submission from IP: ${clientIp}`);
 
@@ -65,7 +68,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       await sendContactEmails(validatedData, clientIp);
     } catch (emailError) {
       console.error('Error sending emails:', emailError);
-      
+
       // No exponemos los detalles del error al cliente por seguridad
       return NextResponse.json(
         createErrorResponse(
@@ -84,7 +87,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
     );
   } catch (error) {
     console.error('Unexpected error in contact API:', error);
-    
+
     return NextResponse.json(
       createErrorResponse(
         'Ocurrió un error inesperado. Por favor intenta de nuevo más tarde.'

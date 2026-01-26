@@ -64,7 +64,8 @@
         "requiredSecondaryVoltage": "El voltaje secundario es requerido",
         "requiredTransformerType": "El tipo de transformador es requerido",
         "requiredStandard": "La norma es requerida",
-        "requiredInstallationZone": "La zona de instalación es requerida"
+        "requiredInstallationZone": "La zona de instalación es requerida",
+        "requiredQuantity": "La cantidad es requerida"
       },
       "fields": {
         "fullName": {
@@ -141,6 +142,8 @@
         "removeTransformer": "Eliminar transformador",
         "primaryTransformer": "Transformador principal",
         "additionalTransformer": "Transformador adicional #{number}",
+        "units": "unidades",
+        "totalPower": "Potencia total",
         "power": {
           "label": "Potencia (KVA)",
           "placeholder": "Ej: 100, 500, 1000"
@@ -182,6 +185,11 @@
           "rural": "Zona Rural",
           "industrial": "Zona Industrial",
           "comercial": "Zona Comercial"
+        },
+        "quantity": {
+          "label": "Cantidad",
+          "placeholder": "Ingrese la cantidad",
+          "help": "Número de unidades de este transformador"
         }
       },
       "characters": "/ {max} caracteres",

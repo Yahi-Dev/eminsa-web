@@ -37,7 +37,7 @@ export async function submitContactForm(
     return result;
   } catch (error) {
     console.error('Error submitting contact form:', error);
-    
+
     if (error instanceof TypeError && error.message.includes('fetch')) {
       return {
         success: false,
@@ -80,7 +80,7 @@ export async function retryContactSubmission(
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     const result = await submitContactForm(data);
-    
+
     if (result.success) {
       return result;
     }
@@ -113,46 +113,26 @@ function delay(ms: number): Promise<void> {
  * Limpia y formatea los campos según sea necesario
  */
 export function prepareFormDataForSubmission(
-  formData: Record<string, string>,
+  formData: Record<string, any>,
   includeTransformerSpecs: boolean
 ): ContactFormData {
   const submitData: ContactFormData = {
-    nombre: formData.nombre.trim(),
-    email: formData.email.trim().toLowerCase(),
-    telefono: formData.telefono.trim(),
-    mensaje: formData.mensaje.trim(),
+    nombre: formData.nombre?.trim() || '',
+    email: formData.email?.trim().toLowerCase() || '',
+    telefono: formData.telefono?.trim() || '',
+    mensaje: formData.mensaje?.trim() || '',
     tipoConsulta: formData.tipoConsulta as 'productos' | 'servicios' | '',
+    // Incluir transformadores solo si es relevante y existen
+    transformadores: includeTransformerSpecs && formData.transformadores 
+      ? formData.transformadores 
+      : []
   };
 
-  // Campos opcionales
-  if (formData.empresa?.trim()) {
-    submitData.empresa = formData.empresa.trim();
-  }
-
-  if (formData.identificacion?.trim()) {
-    submitData.identificacion = formData.identificacion.trim();
-  }
-
-  if (formData.direccion?.trim()) {
-    submitData.direccion = formData.direccion.trim();
-  }
-
-  if (formData.categoria?.trim()) {
-    submitData.categoria = formData.categoria.trim();
-  }
-
-  // Especificaciones de transformador
-  if (includeTransformerSpecs) {
-    submitData.especificacionesTransformador = {
-      potenciaKVA: formData.potenciaKVA,
-      fase: formData.fase,
-      voltajePrimario: formData.voltajePrimario,
-      voltajeSecundario: formData.voltajeSecundario,
-      tipoTransformador: formData.tipoTransformador,
-      norma: formData.norma,
-      zonaInstalacion: formData.zonaInstalacion,
-    };
-  }
+  // Campos opcionales - asegurar que siempre se envíen si existen
+  submitData.empresa = formData.empresa?.trim() || undefined;
+  submitData.identificacion = formData.identificacion?.trim() || undefined;
+  submitData.direccion = formData.direccion?.trim() || undefined;
+  submitData.categoria = formData.categoria?.trim() || undefined;
 
   return submitData;
 }

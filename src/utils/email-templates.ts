@@ -32,22 +32,26 @@ interface TransformadorEspecificaciones {
   tipoTransformador?: string;
   norma?: string;
   zonaInstalacion?: string;
+  cantidad?: string;
+}
+
+// Interfaz para los datos del email
+interface EmailData {
+  nombre: string;
+  empresa?: string;
+  email: string;
+  telefono: string;
+  tipoConsulta?: 'productos' | 'servicios' | '';
+  categoria?: string;
+  mensaje: string;
+  identificacion?: string;
+  direccion?: string;
+  transformadores?: TransformadorEspecificaciones[];
 }
 
 // ==================== EMAIL PARA CLIENTE ====================
 export function customerConfirmationTemplate(
-  data: {
-    nombre: string;
-    empresa?: string;
-    email: string;
-    telefono: string;
-    tipoConsulta?: 'productos' | 'servicios' | '';
-    categoria?: string;
-    mensaje: string;
-    identificacion?: string;
-    direccion?: string;
-    especificacionesTransformador?: TransformadorEspecificaciones;
-  },
+  data: EmailData,
   options?: EmailTemplateOptions
 ) {
   const { appName, supportEmail } = { ...defaultOptions, ...options };
@@ -56,56 +60,91 @@ export function customerConfirmationTemplate(
   const preheader = `Confirmación de tu solicitud en ${appName}`;
   const safeLogo = `https://res.cloudinary.com/ddne5wqxo/image/upload/v1769097816/logoeminsa-Photoroom_jgkqjb.png`;
 
-  // Formatear datos específicos de transformadores si existen
-  const especificacionesHTML = data.especificacionesTransformador ? `
+  // Formatear datos de transformadores si existen
+  const especificacionesHTML = data.transformadores && data.transformadores.length > 0 ? `
     <div style="margin:24px 0; padding:20px; background:#f0f7ff; border-radius:8px; border-left:4px solid ${secondary};">
       <h3 style="margin:0 0 16px 0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:16px; color:${primary};">
-        📋 Especificaciones del Transformador
+        Especificaciones de los Transformadores Solicitados
       </h3>
-      <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:14px; color:${text};">
-        ${data.especificacionesTransformador.potenciaKVA ? `
-        <tr>
-          <td width="140" style="padding:8px 0; color:${muted};">Potencia (KVA):</td>
-          <td style="padding:8px 0; font-weight:bold;">${data.especificacionesTransformador.potenciaKVA}</td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.fase ? `
-        <tr>
-          <td width="140" style="padding:8px 0; color:${muted};">Fase:</td>
-          <td style="padding:8px 0; font-weight:bold;">${data.especificacionesTransformador.fase === 'monofasico' ? 'Monofásico' : 'Trifásico'}</td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.voltajePrimario ? `
-        <tr>
-          <td width="140" style="padding:8px 0; color:${muted};">Voltaje Primario:</td>
-          <td style="padding:8px 0; font-weight:bold;">${data.especificacionesTransformador.voltajePrimario} V</td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.voltajeSecundario ? `
-        <tr>
-          <td width="140" style="padding:8px 0; color:${muted};">Voltaje Secundario:</td>
-          <td style="padding:8px 0; font-weight:bold;">${data.especificacionesTransformador.voltajeSecundario} V</td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.tipoTransformador ? `
-        <tr>
-          <td width="140" style="padding:8px 0; color:${muted};">Tipo:</td>
-          <td style="padding:8px 0; font-weight:bold;">${data.especificacionesTransformador.tipoTransformador}</td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.norma ? `
-        <tr>
-          <td width="140" style="padding:8px 0; color:${muted};">Norma:</td>
-          <td style="padding:8px 0; font-weight:bold;">${data.especificacionesTransformador.norma}</td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.zonaInstalacion ? `
-        <tr>
-          <td width="140" style="padding:8px 0; color:${muted};">Zona de Instalación:</td>
-          <td style="padding:8px 0; font-weight:bold;">${data.especificacionesTransformador.zonaInstalacion}</td>
-        </tr>
-        ` : ''}
-      </table>
+      
+      ${data.transformadores.map((transformer, index) => {
+        const cantidad = transformer.cantidad || '1';
+        const potenciaNum = transformer.potenciaKVA ? parseFloat(transformer.potenciaKVA) : 0;
+        const cantidadNum = parseInt(cantidad) || 1;
+        const potenciaTotal = (potenciaNum * cantidadNum).toFixed(0);
+        
+        return `
+        <div style="margin-bottom: 20px; padding: 16px; background: white; border-radius: 6px; border: 1px solid #e0e0e0;">
+          <h4 style="margin:0 0 12px 0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:14px; color:${primary};">
+            Transformador ${index + 1} (${cantidad} unidad${cantidadNum > 1 ? 'es' : ''})
+          </h4>
+          <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:14px; color:${text};">
+            ${transformer.cantidad ? `
+            <tr>
+              <td width="140" style="padding:8px 0; color:${muted};">Cantidad:</td>
+              <td style="padding:8px 0; font-weight:bold;">${transformer.cantidad} unidad${cantidadNum > 1 ? 'es' : ''}</td>
+            </tr>
+            ` : ''}
+            ${transformer.potenciaKVA ? `
+            <tr>
+              <td width="140" style="padding:8px 0; color:${muted};">Potencia/unidad (KVA):</td>
+              <td style="padding:8px 0; font-weight:bold;">${transformer.potenciaKVA} KVA</td>
+            </tr>
+            ` : ''}
+            ${transformer.potenciaKVA && transformer.cantidad ? `
+            <tr>
+              <td width="140" style="padding:8px 0; color:${muted};">Potencia total:</td>
+              <td style="padding:8px 0; font-weight:bold; color: ${primary};">${potenciaTotal} KVA (${transformer.cantidad} × ${transformer.potenciaKVA} KVA)</td>
+            </tr>
+            ` : ''}
+            ${transformer.fase ? `
+            <tr>
+              <td width="140" style="padding:8px 0; color:${muted};">Fase:</td>
+              <td style="padding:8px 0; font-weight:bold;">${transformer.fase === 'monofasico' ? 'Monofásico' : 'Trifásico'}</td>
+            </tr>
+            ` : ''}
+            ${transformer.voltajePrimario ? `
+            <tr>
+              <td width="140" style="padding:8px 0; color:${muted};">Voltaje Primario:</td>
+              <td style="padding:8px 0; font-weight:bold;">${transformer.voltajePrimario} V</td>
+            </tr>
+            ` : ''}
+            ${transformer.voltajeSecundario ? `
+            <tr>
+              <td width="140" style="padding:8px 0; color:${muted};">Voltaje Secundario:</td>
+              <td style="padding:8px 0; font-weight:bold;">${transformer.voltajeSecundario} V</td>
+            </tr>
+            ` : ''}
+            ${transformer.tipoTransformador ? `
+            <tr>
+              <td width="140" style="padding:8px 0; color:${muted};">Tipo:</td>
+              <td style="padding:8px 0; font-weight:bold;">${transformer.tipoTransformador}</td>
+            </tr>
+            ` : ''}
+            ${transformer.norma ? `
+            <tr>
+              <td width="140" style="padding:8px 0; color:${muted};">Norma:</td>
+              <td style="padding:8px 0; font-weight:bold;">${transformer.norma}</td>
+            </tr>
+            ` : ''}
+            ${transformer.zonaInstalacion ? `
+            <tr>
+              <td width="140" style="padding:8px 0; color:${muted};">Zona de Instalación:</td>
+              <td style="padding:8px 0; font-weight:bold;">${transformer.zonaInstalacion}</td>
+            </tr>
+            ` : ''}
+          </table>
+        </div>
+        `;
+      }).join('')}
+      
+      ${data.transformadores.length > 1 ? `
+      <div style="margin-top: 16px; padding: 12px; background: #e8f5e9; border-radius: 6px; border: 1px solid #c8e6c9;">
+        <p style="margin:0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:14px; color: #2e7d32; font-weight: bold;">
+          Total de transformadores solicitados: ${data.transformadores.reduce((total, t) => total + (parseInt(t.cantidad || '1') || 1), 0)}
+        </p>
+      </div>
+      ` : ''}
     </div>
   ` : '';
 
@@ -167,7 +206,7 @@ export function customerConfirmationTemplate(
                     <!-- Detalles de la solicitud -->
                     <div style="margin:24px 0; padding:20px; background:#f8f9fa; border-radius:8px;">
                       <h3 style="margin:0 0 16px 0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:16px; color:${primary};">
-                        📋 Detalles de tu Solicitud
+                        Detalles de tu Solicitud
                       </h3>
                       <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:14px; color:${text};">
                         <tr>
@@ -217,7 +256,7 @@ export function customerConfirmationTemplate(
                     <!-- Mensaje del usuario -->
                     <div style="margin:24px 0; padding:20px; background:#f8f9fa; border-radius:8px;">
                       <h3 style="margin:0 0 16px 0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:16px; color:${primary};">
-                        📝 Tu Mensaje
+                        Tu Mensaje
                       </h3>
                       <p style="margin:0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:14px; line-height:1.6; color:${text}; white-space: pre-wrap;">
                         ${data.mensaje.replace(/\n/g, '<br>')}
@@ -227,7 +266,7 @@ export function customerConfirmationTemplate(
                     <!-- Contacto de emergencia -->
                     <div style="margin:24px 0; padding:20px; background:#e8f4fd; border-radius:8px; border-left:4px solid ${secondary};">
                       <h3 style="margin:0 0 12px 0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:16px; color:${primary};">
-                        📞 Contacto Rápido
+                        Contacto Rápido
                       </h3>
                       <p style="margin:8px 0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:14px; color:${text};">
                         <strong>Teléfono:</strong> +1 809-560-7773
@@ -266,18 +305,7 @@ export function customerConfirmationTemplate(
 
 // ==================== EMAIL PARA ADMIN ====================
 export function adminNotificationTemplate(
-  data: {
-    nombre: string;
-    empresa?: string;
-    email: string;
-    telefono: string;
-    tipoConsulta?: 'productos' | 'servicios' | '';
-    categoria?: string;
-    mensaje: string;
-    identificacion?: string;
-    direccion?: string;
-    especificacionesTransformador?: TransformadorEspecificaciones;
-  },
+  data: EmailData,
   ipAddress?: string,
   options?: EmailTemplateOptions
 ) {
@@ -290,56 +318,91 @@ export function adminNotificationTemplate(
     timeStyle: 'long'
   });
 
-  // Formatear especificaciones de transformadores si existen
-  const especificacionesHTML = data.especificacionesTransformador ? `
+  // Formatear datos de transformadores si existen
+  const especificacionesHTML = data.transformadores && data.transformadores.length > 0 ? `
     <div style="margin:16px 0; padding:16px; background:#f0f7ff; border-radius:6px;">
       <h4 style="margin:0 0 12px 0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:14px; color:${primary};">
-        🔧 Especificaciones Técnicas del Transformador:
+        ESPECIFICACIONES DE LOS TRANSFORMADORES SOLICITADOS
       </h4>
-      <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:13px; color:${text};">
-        ${data.especificacionesTransformador.potenciaKVA ? `
-        <tr>
-          <td width="160" style="padding:4px 0; color:${muted};">Potencia (KVA):</td>
-          <td style="padding:4px 0;"><strong>${data.especificacionesTransformador.potenciaKVA}</strong></td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.fase ? `
-        <tr>
-          <td style="padding:4px 0; color:${muted};">Fase:</td>
-          <td style="padding:4px 0;"><strong>${data.especificacionesTransformador.fase === 'monofasico' ? 'Monofásico' : 'Trifásico'}</strong></td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.voltajePrimario ? `
-        <tr>
-          <td style="padding:4px 0; color:${muted};">Voltaje Primario:</td>
-          <td style="padding:4px 0;"><strong>${data.especificacionesTransformador.voltajePrimario} V</strong></td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.voltajeSecundario ? `
-        <tr>
-          <td style="padding:4px 0; color:${muted};">Voltaje Secundario:</td>
-          <td style="padding:4px 0;"><strong>${data.especificacionesTransformador.voltajeSecundario} V</strong></td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.tipoTransformador ? `
-        <tr>
-          <td style="padding:4px 0; color:${muted};">Tipo:</td>
-          <td style="padding:4px 0;"><strong>${data.especificacionesTransformador.tipoTransformador}</strong></td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.norma ? `
-        <tr>
-          <td style="padding:4px 0; color:${muted};">Norma:</td>
-          <td style="padding:4px 0;"><strong>${data.especificacionesTransformador.norma}</strong></td>
-        </tr>
-        ` : ''}
-        ${data.especificacionesTransformador.zonaInstalacion ? `
-        <tr>
-          <td style="padding:4px 0; color:${muted};">Zona de Instalación:</td>
-          <td style="padding:4px 0;"><strong>${data.especificacionesTransformador.zonaInstalacion}</strong></td>
-        </tr>
-        ` : ''}
-      </table>
+      
+      ${data.transformadores.map((transformer, index) => {
+        const cantidad = transformer.cantidad || '1';
+        const cantidadNum = parseInt(cantidad) || 1;
+        const potenciaNum = transformer.potenciaKVA ? parseFloat(transformer.potenciaKVA) : 0;
+        const potenciaTotal = (potenciaNum * cantidadNum).toFixed(0);
+        
+        return `
+        <div style="margin-bottom: 16px; padding: 12px; background: white; border-radius: 4px; border: 1px solid #ddd;">
+          <h5 style="margin:0 0 8px 0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:13px; color:${primary};">
+            TRANSFORMADOR ${index + 1} - ${cantidad} UNIDAD${cantidadNum > 1 ? 'ES' : ''}
+          </h5>
+          <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:12px; color:${text};">
+            ${transformer.cantidad ? `
+            <tr>
+              <td width="160" style="padding:4px 0; color:${muted};">Cantidad:</td>
+              <td style="padding:4px 0;"><strong>${transformer.cantidad}</strong></td>
+            </tr>
+            ` : ''}
+            ${transformer.potenciaKVA ? `
+            <tr>
+              <td style="padding:4px 0; color:${muted};">Potencia/unidad:</td>
+              <td style="padding:4px 0;"><strong>${transformer.potenciaKVA} KVA</strong></td>
+            </tr>
+            ` : ''}
+            ${transformer.potenciaKVA && transformer.cantidad ? `
+            <tr>
+              <td style="padding:4px 0; color:${muted};">Potencia total:</td>
+              <td style="padding:4px 0;"><strong style="color: ${primary};">${potenciaTotal} KVA</strong> (${transformer.cantidad} × ${transformer.potenciaKVA} KVA)</td>
+            </tr>
+            ` : ''}
+            ${transformer.fase ? `
+            <tr>
+              <td style="padding:4px 0; color:${muted};">Fase:</td>
+              <td style="padding:4px 0;"><strong>${transformer.fase === 'monofasico' ? 'Monofásico' : 'Trifásico'}</strong></td>
+            </tr>
+            ` : ''}
+            ${transformer.voltajePrimario ? `
+            <tr>
+              <td style="padding:4px 0; color:${muted};">Voltaje Primario:</td>
+              <td style="padding:4px 0;"><strong>${transformer.voltajePrimario} V</strong></td>
+            </tr>
+            ` : ''}
+            ${transformer.voltajeSecundario ? `
+            <tr>
+              <td style="padding:4px 0; color:${muted};">Voltaje Secundario:</td>
+              <td style="padding:4px 0;"><strong>${transformer.voltajeSecundario} V</strong></td>
+            </tr>
+            ` : ''}
+            ${transformer.tipoTransformador ? `
+            <tr>
+              <td style="padding:4px 0; color:${muted};">Tipo:</td>
+              <td style="padding:4px 0;"><strong>${transformer.tipoTransformador}</strong></td>
+            </tr>
+            ` : ''}
+            ${transformer.norma ? `
+            <tr>
+              <td style="padding:4px 0; color:${muted};">Norma:</td>
+              <td style="padding:4px 0;"><strong>${transformer.norma}</strong></td>
+            </tr>
+            ` : ''}
+            ${transformer.zonaInstalacion ? `
+            <tr>
+              <td style="padding:4px 0; color:${muted};">Zona de Instalación:</td>
+              <td style="padding:4px 0;"><strong>${transformer.zonaInstalacion}</strong></td>
+            </tr>
+            ` : ''}
+          </table>
+        </div>
+        `;
+      }).join('')}
+      
+      ${data.transformadores.length > 1 ? `
+      <div style="margin-top: 12px; padding: 10px; background: #e8f5e9; border-radius: 4px; text-align: center;">
+        <p style="margin:0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:13px; color: #2e7d32; font-weight: bold;">
+          TOTAL DE TRANSFORMADORES SOLICITADOS: ${data.transformadores.reduce((total, t) => total + (parseInt(t.cantidad || '1') || 1), 0)}
+        </p>
+      </div>
+      ` : ''}
     </div>
   ` : '';
 
@@ -409,7 +472,7 @@ export function adminNotificationTemplate(
       <!-- Detalles de la Solicitud -->
       <div style="margin-bottom:24px;">
         <h2 style="margin:0 0 16px 0; font-size:18px; color:${primary}; border-bottom:3px solid ${secondary}; padding-bottom:8px;">
-          📋 Detalles de la Solicitud
+          Detalles de la Solicitud
         </h2>
         <table width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;">
           ${data.tipoConsulta ? `
@@ -447,30 +510,30 @@ export function adminNotificationTemplate(
       <div style="margin:32px 0; text-align:center;">
         <a href="mailto:${data.email}?subject=Re: Tu solicitud en ${appName}&body=Hola ${data.nombre}," 
            style="display:inline-block; background:${primary}; color:#fff; padding:14px 28px; border-radius:8px; font-weight:bold; margin:0 8px;">
-          ✉️ Responder por Email
+          Responder por Email
         </a>
         <a href="tel:${data.telefono}" 
            style="display:inline-block; background:${secondary}; color:#fff; padding:14px 28px; border-radius:8px; font-weight:bold; margin:0 8px;">
-          📞 Llamar Ahora
+          Llamar Ahora
         </a>
       </div>
 
       <!-- Metadatos -->
       <div style="margin-top:32px; padding-top:24px; border-top:2px dashed #e0e0e0;">
-        <h3 style="margin:0 0 12px 0; font-size:14px; color:#666;">📊 Información Técnica</h3>
+        <h3 style="margin:0 0 12px 0; font-size:14px; color:#666;">Información Técnica</h3>
         <table width="100%" cellpadding="0" cellspacing="0" style="font-size:12px; color:#888;">
           <tr>
-            <td width="120" style="padding:4px 0;">📅 Fecha y Hora:</td>
+            <td width="120" style="padding:4px 0;">Fecha y Hora:</td>
             <td style="padding:4px 0;"><strong>${timestamp}</strong></td>
           </tr>
           ${ipAddress ? `
           <tr>
-            <td style="padding:4px 0;">🌐 IP del Cliente:</td>
+            <td style="padding:4px 0;">IP del Cliente:</td>
             <td style="padding:4px 0;"><code>${ipAddress}</code></td>
           </tr>
           ` : ''}
           <tr>
-            <td style="padding:4px 0;">🚀 Origen:</td>
+            <td style="padding:4px 0;">Origen:</td>
             <td style="padding:4px 0;">Formulario Web - ${appName}</td>
           </tr>
         </table>
@@ -493,18 +556,7 @@ export function adminNotificationTemplate(
 
 // ==================== VERSIÓN TEXTO PLANO ====================
 export function customerConfirmationText(
-  data: {
-    nombre: string;
-    empresa?: string;
-    email: string;
-    telefono: string;
-    tipoConsulta?: 'productos' | 'servicios' | '';
-    categoria?: string;
-    mensaje: string;
-    identificacion?: string;
-    direccion?: string;
-    especificacionesTransformador?: TransformadorEspecificaciones;
-  },
+  data: EmailData,
   options?: EmailTemplateOptions
 ) {
   const { appName, supportEmail } = { ...defaultOptions, ...options };
@@ -515,7 +567,7 @@ Hola ${data.nombre},
 
 Hemos recibido tu mensaje exitosamente. Uno de nuestros especialistas se comunicará contigo en menos de 30 minutos durante horario laboral.
 
-📋 DETALLES DE TU SOLICITUD:
+DETALLES DE TU SOLICITUD:
 ─────────────────────────────
 • Nombre: ${data.nombre}
 ${data.empresa ? `• Empresa: ${data.empresa}\n` : ''}
@@ -526,42 +578,63 @@ ${data.direccion ? `• Dirección: ${data.direccion}\n` : ''}
 ${data.tipoConsulta ? `• Tipo: ${data.tipoConsulta === 'productos' ? 'Productos' : 'Servicios'}\n` : ''}
 ${data.categoria ? `• Categoría: ${data.categoria}\n` : ''}
 
-💬 TU MENSAJE:
+`;
+
+  // Agregar información de transformadores si existen
+  if (data.transformadores && data.transformadores.length > 0) {
+    text += `TRANSFORMADORES SOLICITADOS:
+─────────────────────────────
+`;
+    
+    data.transformadores.forEach((transformer, index) => {
+      const cantidad = transformer.cantidad || '1';
+      const cantidadNum = parseInt(cantidad) || 1;
+      const potenciaNum = transformer.potenciaKVA ? parseFloat(transformer.potenciaKVA) : 0;
+      const potenciaTotal = (potenciaNum * cantidadNum).toFixed(0);
+      
+      text += `Transformador ${index + 1} (${cantidad} unidad${cantidadNum > 1 ? 'es' : ''}):
+`;
+      if (transformer.cantidad) {
+        text += `  • Cantidad: ${transformer.cantidad}\n`;
+      }
+      if (transformer.potenciaKVA) {
+        text += `  • Potencia/unidad: ${transformer.potenciaKVA} KVA\n`;
+      }
+      if (transformer.potenciaKVA && transformer.cantidad) {
+        text += `  • Potencia total: ${potenciaTotal} KVA (${transformer.cantidad} × ${transformer.potenciaKVA} KVA)\n`;
+      }
+      if (transformer.fase) {
+        text += `  • Fase: ${transformer.fase === 'monofasico' ? 'Monofásico' : 'Trifásico'}\n`;
+      }
+      if (transformer.voltajePrimario) {
+        text += `  • Voltaje Primario: ${transformer.voltajePrimario} V\n`;
+      }
+      if (transformer.voltajeSecundario) {
+        text += `  • Voltaje Secundario: ${transformer.voltajeSecundario} V\n`;
+      }
+      if (transformer.tipoTransformador) {
+        text += `  • Tipo: ${transformer.tipoTransformador}\n`;
+      }
+      if (transformer.norma) {
+        text += `  • Norma: ${transformer.norma}\n`;
+      }
+      if (transformer.zonaInstalacion) {
+        text += `  • Zona de Instalación: ${transformer.zonaInstalacion}\n`;
+      }
+      text += '\n';
+    });
+    
+    if (data.transformadores.length > 1) {
+      const totalTransformadores = data.transformadores.reduce((total, t) => total + (parseInt(t.cantidad || '1') || 1), 0);
+      text += `Total de transformadores solicitados: ${totalTransformadores}\n\n`;
+    }
+  }
+
+  text += `TU MENSAJE:
 ─────────────────────────────
 ${data.mensaje}
 
-`;
-
-  // Agregar especificaciones de transformador si existen
-  if (data.especificacionesTransformador) {
-    text += `🔧 ESPECIFICACIONES DEL TRANSFORMADOR:
-─────────────────────────────
-`;
-    if (data.especificacionesTransformador.potenciaKVA) {
-      text += `• Potencia (KVA): ${data.especificacionesTransformador.potenciaKVA}\n`;
-    }
-    if (data.especificacionesTransformador.fase) {
-      text += `• Fase: ${data.especificacionesTransformador.fase === 'monofasico' ? 'Monofásico' : 'Trifásico'}\n`;
-    }
-    if (data.especificacionesTransformador.voltajePrimario) {
-      text += `• Voltaje Primario: ${data.especificacionesTransformador.voltajePrimario} V\n`;
-    }
-    if (data.especificacionesTransformador.voltajeSecundario) {
-      text += `• Voltaje Secundario: ${data.especificacionesTransformador.voltajeSecundario} V\n`;
-    }
-    if (data.especificacionesTransformador.tipoTransformador) {
-      text += `• Tipo: ${data.especificacionesTransformador.tipoTransformador}\n`;
-    }
-    if (data.especificacionesTransformador.norma) {
-      text += `• Norma: ${data.especificacionesTransformador.norma}\n`;
-    }
-    if (data.especificacionesTransformador.zonaInstalacion) {
-      text += `• Zona de Instalación: ${data.especificacionesTransformador.zonaInstalacion}\n`;
-    }
-    text += '\n';
-  }
-
-  text += `📞 CONTACTO RÁPIDO:
+CONTACTO RÁPIDO:
 ─────────────────────────────
 • Teléfono: +1 809-560-7773
 • WhatsApp: +1 809-560-7773
@@ -577,18 +650,7 @@ Av. Duarte, Km 22, Parque industrial Duarte, Nave No. 6`;
 }
 
 export function adminNotificationText(
-  data: {
-    nombre: string;
-    empresa?: string;
-    email: string;
-    telefono: string;
-    tipoConsulta?: 'productos' | 'servicios' | '';
-    categoria?: string;
-    mensaje: string;
-    identificacion?: string;
-    direccion?: string;
-    especificacionesTransformador?: TransformadorEspecificaciones;
-  },
+  data: EmailData,
   ipAddress?: string,
   options?: EmailTemplateOptions
 ) {
@@ -598,7 +660,7 @@ export function adminNotificationText(
   let text = `NUEVA SOLICITUD DE CONTACTO - ${appName.toUpperCase()}
 ─────────────────────────────
 
-👤 INFORMACIÓN DEL CLIENTE:
+INFORMACIÓN DEL CLIENTE:
 ─────────────────────────────
 • Nombre: ${data.nombre}
 ${data.empresa ? `• Empresa: ${data.empresa}\n` : ''}
@@ -607,54 +669,75 @@ ${data.identificacion ? `• RNC/Cédula: ${data.identificacion}\n` : ''}
 • Teléfono: ${data.telefono}
 ${data.direccion ? `• Dirección: ${data.direccion}\n` : ''}
 
-📋 DETALLES DE LA SOLICITUD:
+DETALLES DE LA SOLICITUD:
 ─────────────────────────────
 ${data.tipoConsulta ? `• Tipo: ${data.tipoConsulta === 'productos' ? 'Productos' : 'Servicios'}\n` : ''}
 ${data.categoria ? `• Categoría: ${data.categoria}\n` : ''}
 
 `;
 
-  // Agregar especificaciones de transformador si existen
-  if (data.especificacionesTransformador) {
-    text += `🔧 ESPECIFICACIONES DEL TRANSFORMADOR:
+  // Agregar información de transformadores si existen
+  if (data.transformadores && data.transformadores.length > 0) {
+    text += `TRANSFORMADORES SOLICITADOS:
 ─────────────────────────────
 `;
-    if (data.especificacionesTransformador.potenciaKVA) {
-      text += `• Potencia (KVA): ${data.especificacionesTransformador.potenciaKVA}\n`;
+    
+    data.transformadores.forEach((transformer, index) => {
+      const cantidad = transformer.cantidad || '1';
+      const cantidadNum = parseInt(cantidad) || 1;
+      const potenciaNum = transformer.potenciaKVA ? parseFloat(transformer.potenciaKVA) : 0;
+      const potenciaTotal = (potenciaNum * cantidadNum).toFixed(0);
+      
+      text += `TRANSFORMADOR ${index + 1} (${cantidad} unidad${cantidadNum > 1 ? 'es' : ''}):
+`;
+      if (transformer.cantidad) {
+        text += `  • Cantidad: ${transformer.cantidad}\n`;
+      }
+      if (transformer.potenciaKVA) {
+        text += `  • Potencia/unidad: ${transformer.potenciaKVA} KVA\n`;
+      }
+      if (transformer.potenciaKVA && transformer.cantidad) {
+        text += `  • Potencia total: ${potenciaTotal} KVA (${transformer.cantidad} × ${transformer.potenciaKVA} KVA)\n`;
+      }
+      if (transformer.fase) {
+        text += `  • Fase: ${transformer.fase === 'monofasico' ? 'Monofásico' : 'Trifásico'}\n`;
+      }
+      if (transformer.voltajePrimario) {
+        text += `  • Voltaje Primario: ${transformer.voltajePrimario} V\n`;
+      }
+      if (transformer.voltajeSecundario) {
+        text += `  • Voltaje Secundario: ${transformer.voltajeSecundario} V\n`;
+      }
+      if (transformer.tipoTransformador) {
+        text += `  • Tipo: ${transformer.tipoTransformador}\n`;
+      }
+      if (transformer.norma) {
+        text += `  • Norma: ${transformer.norma}\n`;
+      }
+      if (transformer.zonaInstalacion) {
+        text += `  • Zona de Instalación: ${transformer.zonaInstalacion}\n`;
+      }
+      text += '\n';
+    });
+    
+    if (data.transformadores.length > 1) {
+      const totalTransformadores = data.transformadores.reduce((total, t) => total + (parseInt(t.cantidad || '1') || 1), 0);
+      text += `TOTAL DE TRANSFORMADORES SOLICITADOS: ${totalTransformadores}\n\n`;
     }
-    if (data.especificacionesTransformador.fase) {
-      text += `• Fase: ${data.especificacionesTransformador.fase === 'monofasico' ? 'Monofásico' : 'Trifásico'}\n`;
-    }
-    if (data.especificacionesTransformador.voltajePrimario) {
-      text += `• Voltaje Primario: ${data.especificacionesTransformador.voltajePrimario} V\n`;
-    }
-    if (data.especificacionesTransformador.voltajeSecundario) {
-      text += `• Voltaje Secundario: ${data.especificacionesTransformador.voltajeSecundario} V\n`;
-    }
-    if (data.especificacionesTransformador.tipoTransformador) {
-      text += `• Tipo: ${data.especificacionesTransformador.tipoTransformador}\n`;
-    }
-    if (data.especificacionesTransformador.norma) {
-      text += `• Norma: ${data.especificacionesTransformador.norma}\n`;
-    }
-    if (data.especificacionesTransformador.zonaInstalacion) {
-      text += `• Zona de Instalación: ${data.especificacionesTransformador.zonaInstalacion}\n`;
-    }
-    text += '\n';
   }
 
-  text += `💬 MENSAJE DEL CLIENTE:
+  text += `MENSAJE DEL CLIENTE:
 ─────────────────────────────
 ${data.mensaje}
 
-📊 INFORMACIÓN TÉCNICA:
+INFORMACIÓN TÉCNICA:
 ─────────────────────────────
 • Fecha y Hora: ${timestamp}
 ${ipAddress ? `• IP del Cliente: ${ipAddress}\n` : ''}
 • Origen: Formulario Web
 • ID de Referencia: EM-${Date.now().toString(36).toUpperCase()}
 
-⚡ ACCIONES RECOMENDADAS:
+ACCIONES RECOMENDADAS:
 ─────────────────────────────
 1. Contactar al cliente en menos de 30 minutos
 2. Agendar seguimiento en CRM

@@ -1,5 +1,6 @@
 // lib/email-service.ts
 
+import { ContactFormData } from '@/features/contact';
 import { sendEmail } from '@/lib/email/mailer';
 import { 
   customerConfirmationTemplate, 
@@ -7,7 +8,6 @@ import {
   customerConfirmationText,
   adminNotificationText 
 } from '@/utils/email-templates';
-import type { ContactFormData } from '@/lib/types-contact';
 
 interface EmailServiceOptions {
   appName?: string;
@@ -82,22 +82,49 @@ export async function sendAdminEmail(
 /**
  * Función de conveniencia para enviar ambos emails
  */
+
 export async function sendContactEmails(
-  formData: ContactFormData,
-  ipAddress?: string,
-  options?: EmailServiceOptions
-): Promise<{ customer: boolean; admin: boolean }> {
+  data: ContactFormData,
+  ipAddress?: string
+): Promise<void> {
   try {
-    // Enviar email al cliente
-    await sendCustomerEmail(formData, options);
+    console.log('Enviando email con datos:', {
+      nombre: data.nombre,
+      categoria: data.categoria,
+      transformadoresCount: data.transformadores?.length || 0,
+      transformadores: data.transformadores
+    });
+    // Preparar datos para los templates
+    const emailData = {
+      ...data,
+      transformadores: data.transformadores || []
+    };
+
+    // Enviar email de confirmación al cliente
+    const customerEmail = {
+      to: data.email,
+      subject: `Confirmación de tu solicitud - Grupo EMINSA`,
+      html: customerConfirmationTemplate(emailData),
+      text: customerConfirmationText(emailData)
+    };
+
+    // Enviar email de notificación al admin
+    const adminEmail = {
+      to: process.env.ADMIN_EMAIL || 'info@eminsa.com',
+      subject: `Nueva solicitud de contacto - ${data.nombre}`,
+      html: adminNotificationTemplate(emailData, ipAddress),
+      text: adminNotificationText(emailData, ipAddress)
+    };
+
+    // Enviar ambos emails
+    await Promise.all([
+      sendEmail(customerEmail),
+      sendEmail(adminEmail)
+    ]);
     
-    // Enviar notificación al admin
-    await sendAdminEmail(formData, ipAddress, options);
-    
-    return { customer: true, admin: true };
   } catch (error) {
-    console.error('❌ Error enviando emails:', error);
-    throw error;
+    console.error('Error sending contact emails:', error);
+    throw new Error('Failed to send emails');
   }
 }
 
