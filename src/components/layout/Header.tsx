@@ -141,38 +141,37 @@ export default function Header() {
           isScrolled && "shadow-lg"
         )}
       >
-        <div className="container-eminsa">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link href="/" className="shrink-0">
-              <Image
-                src="/logoeminsa-Photoroom.png"
-                alt="Grupo EMINSA"
-                width={156}
-                height={156}
-                priority
-              />
-            </Link>
+        <div className="flex items-center h-20 px-6 lg:px-8 w-full gap-6">
+          {/* Logo - Left */}
+          <Link href="/" className="shrink-0">
+            <Image
+              src="/logoeminsa-Photoroom.png"
+              alt="Grupo EMINSA"
+              width={156}
+              height={156}
+              priority
+            />
+          </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1">
-              {mainNavigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    "px-4 py-2 rounded-lg font-medium transition-all duration-200",
-                    "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
-                    pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
+          {/* Desktop Navigation - Center */}
+          <nav className="hidden lg:flex items-center gap-6 flex-grow justify-center">
+            {mainNavigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base uppercase",
+                  "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
+                  pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
+                )}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
 
-            {/* CTA Buttons */}
-            <div className="hidden lg:flex items-center gap-3">
+          {/* CTA Buttons - Right */}
+          <div className="hidden lg:flex items-center gap-8">
               <a
                 href={`https://wa.me/${contactInfo.whatsapp}`}
                 target="_blank"
@@ -196,7 +195,6 @@ export default function Header() {
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
-          </div>
         </div>
 
         {/* Submenu Bar (Desktop) - Aparece automáticamente cuando estás en la sección */}
@@ -207,25 +205,41 @@ export default function Header() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
-              className="hidden lg:block border-t border-gray-100 bg-gray-50/50 overflow-hidden"
+              className="hidden lg:block border-t border-gray-100 bg-gray-50/50"
             >
               {mainNavigation.map((item) => {
                 if (item.name === activeSubmenu && item.submenu) {
                   return (
                     <div key={item.name} className="container-eminsa py-3">
-                      <div className="flex items-center gap-3 flex-wrap">
+                      <div className="relative flex items-center gap-3 flex-wrap">
+                        {/* Animated underline */}
+                        <motion.div
+                          layout
+                          layoutId="submenu-underline"
+                          className="absolute bottom-0 h-1 bg-gradient-to-r from-[#001689] to-[#00A3E0] rounded-full"
+                          transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                        />
+                        
                         {item.submenu.map((subItem) => (
                           <Link
                             key={subItem.name}
                             href={subItem.href}
                             className={cn(
-                              "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+                              "relative px-4 py-2 rounded-lg text-sm font-medium transition-colors group",
                               pathname === subItem.href
-                                ? "bg-white text-[#001689] shadow-sm"
-                                : "text-[#76777A] hover:text-[#001689] hover:bg-white/60"
+                                ? "text-[#001689]"
+                                : "text-[#76777A] hover:text-[#001689]"
                             )}
                           >
                             {subItem.name}
+                            {/* Static underline for active state positioning */}
+                            {pathname === subItem.href && (
+                              <motion.div
+                                layoutId="submenu-underline"
+                                className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#001689] to-[#00A3E0] rounded-full"
+                                transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                              />
+                            )}
                           </Link>
                         ))}
                       </div>

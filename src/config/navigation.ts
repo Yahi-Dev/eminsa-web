@@ -182,7 +182,7 @@ export const brands = [
 // Estadísticas de la empresa
 export const stats = [
   { value: "50+", label: "Años de Experiencia" },
-  { value: "10,000+", label: "Transformadores Instalados" },
+  { value: "10000+", label: "Transformadores Instalados" },
   { value: "500+", label: "Clientes Satisfechos" },
   { value: "24/7", label: "Soporte Técnico" },
 ];

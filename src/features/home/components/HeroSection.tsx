@@ -5,6 +5,31 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { divisions, stats } from "@/config/navigation";
+import { useCountUp } from "../hooks/useCountUp";
+
+// Componente para animar números individuales
+function AnimatedStat({ value, label, delay }: { value: string; label: string; delay: number }) {
+  // Extraer el número de la cadena (ej: "50+" -> 50)
+  const numericValue = parseInt(value.replace(/[^0-9]/g, ""));
+  const suffix = value.replace(/[0-9]/g, "");
+  const isSpecialCase = value === "24/7";
+  
+  // Siempre llamar el hook en el mismo orden (regla de React Hooks)
+  const count = useCountUp({ 
+    end: isSpecialCase ? 0 : numericValue, 
+    duration: 2000, 
+    delay 
+  });
+
+  return (
+    <div className="text-center md:text-left">
+      <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+        {isSpecialCase ? value : `${count}${suffix}`}
+      </div>
+      <div className="text-sm text-white/70">{label}</div>
+    </div>
+  );
+}
 
 export default function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -107,12 +132,12 @@ export default function HeroSection() {
               className="grid grid-cols-2 md:grid-cols-4 gap-6"
             >
               {stats.map((stat, index) => (
-                <div key={index} className="text-center md:text-left">
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-1">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-white/70">{stat.label}</div>
-                </div>
+                <AnimatedStat 
+                  key={index} 
+                  value={stat.value}
+                  label={stat.label}
+                  delay={700 + index * 100}
+                />
               ))}
             </motion.div>
           </motion.div>
