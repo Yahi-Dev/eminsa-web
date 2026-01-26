@@ -14,7 +14,7 @@ import {
   Star,
   MapPin
 } from "lucide-react";
-import { useContent } from "@/lib/content-context";
+import { useContent } from "@/features/contact/containers/content-context";
 import { divisions } from "@/data/navigation";
 
 export default function AdminProyectosPage() {

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, Save, Eye } from "lucide-react";
-import { useContent } from "@/lib/content-context";
+import { useContent } from "@/features/contact/containers/content-context";
 import { categoriasNoticias, Noticia } from "@/data/content";
 
 interface NoticiaFormProps {

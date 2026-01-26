@@ -6,7 +6,7 @@ import {
   createSuccessResponse,
   getClientIp,
   isDisposableEmail 
-} from '@/lib/contact-validation';
+} from '@/features/contact/schema/contact-validation';
 import type { ApiResponse } from '@/lib/types-contact';
 import { sendContactEmails } from '@/lib/email/email-service';
 

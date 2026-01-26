@@ -1,5 +1,5 @@
+import { ContactSection } from "@/features/contact";
 import { Metadata } from "next";
-import ContactSection from "@/components/sections/ContactSection";
 
 export const metadata: Metadata = {
   title: "Contacto - Grupo EMINSA",
@@ -14,7 +14,6 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white">
-      {/* Contact Section */}
       <ContactSection />
     </main>
   );

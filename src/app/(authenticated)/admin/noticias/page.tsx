@@ -14,7 +14,7 @@ import {
   MoreVertical,
   Star
 } from "lucide-react";
-import { useContent } from "@/lib/content-context";
+import { useContent } from "@/features/contact/containers/content-context";
 import { categoriasNoticias } from "@/data/content";
 
 export default function AdminNoticiasPage() {
