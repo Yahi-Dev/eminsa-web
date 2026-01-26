@@ -14,7 +14,7 @@ import {
   Globe,
   MessageCircle
 } from "lucide-react";
-import { mainNavigation, contactInfo } from "@/data/navigation";
+import { mainNavigation, contactInfo } from "@/config/navigation";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 

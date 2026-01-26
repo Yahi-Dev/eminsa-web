@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Factory, Wrench, Globe, Settings } from "lucide-react";
-import { divisions } from "@/data/navigation";
+import { divisions } from "@/config/navigation";
 
 const iconMap: { [key: string]: React.ElementType } = {
   factory: Factory,

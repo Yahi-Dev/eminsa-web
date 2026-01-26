@@ -12,7 +12,7 @@ import {
   FlaskConical,
   Truck
 } from "lucide-react";
-import { services } from "@/data/navigation";
+import { services } from "@/config/navigation";
 
 const iconMap: { [key: string]: React.ElementType } = {
   "shield-check": ShieldCheck,

@@ -12,7 +12,7 @@ import {
   ArrowRight,
   MessageCircle
 } from "lucide-react";
-import { contactInfo, mainNavigation, divisions, certifications } from "@/data/navigation";
+import { contactInfo, mainNavigation, divisions, certifications } from "@/config/navigation";
 import { useTranslations } from "next-intl";
 
 export default function Footer() {

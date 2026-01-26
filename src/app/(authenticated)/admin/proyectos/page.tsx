@@ -14,8 +14,8 @@ import {
   Star,
   MapPin
 } from "lucide-react";
-import { useContent } from "@/lib/content-context";
-import { divisions } from "@/data/navigation";
+import { useContent } from "@/context/content-context";
+import { divisions } from "@/config/navigation";
 
 export default function AdminProyectosPage() {
   const { proyectos, eliminarProyecto, editarProyecto } = useContent();

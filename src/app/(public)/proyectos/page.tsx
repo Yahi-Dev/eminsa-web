@@ -4,8 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, MapPin, Building, ArrowRight, Star, Calendar } from "lucide-react";
-import { useContent } from "@/lib/content-context";
-import { divisions } from "@/data/navigation";
+import { useContent } from "@/context/content-context";
+import { divisions } from "@/config/navigation";
 
 export default function ProyectosPage() {
   const { proyectos } = useContent();

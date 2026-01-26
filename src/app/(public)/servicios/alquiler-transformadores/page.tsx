@@ -20,7 +20,7 @@ import {
   MessageCircle,
   FileText
 } from "lucide-react";
-import { contactInfo } from "@/data/navigation";
+import { contactInfo } from "@/config/navigation";
 
 // Datos de transformadores disponibles para alquiler
 const transformadoresDisponibles = [

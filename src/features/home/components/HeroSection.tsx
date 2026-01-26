@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { divisions, stats } from "@/data/navigation";
+import { divisions, stats } from "@/config/navigation";
 
 export default function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);

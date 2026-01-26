@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { useContent } from "@/lib/content-context";
+import { useContent } from "@/context/content-context";
 import ProyectoForm from "@/components/admin/ProyectoForm";
 import { Proyecto } from "@/data/content";
 

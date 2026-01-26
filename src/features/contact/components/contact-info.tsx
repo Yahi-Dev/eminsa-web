@@ -15,7 +15,7 @@ import {
   Linkedin 
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { contactInfo } from '@/data/navigation';
+import { contactInfo } from '@/config/navigation';
 
 /**
  * Información de contacto con datos de la empresa, redes sociales y mapa

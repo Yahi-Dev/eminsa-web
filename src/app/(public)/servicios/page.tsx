@@ -16,7 +16,7 @@ import {
   Phone,
   MessageCircle
 } from "lucide-react";
-import { services, contactInfo } from "@/data/navigation";
+import { services, contactInfo } from "@/config/navigation";
 
 const iconMap: { [key: string]: React.ElementType } = {
   "shield-check": ShieldCheck,

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Lock, Mail, Eye, EyeOff, AlertCircle, ArrowLeft } from "lucide-react";
-import { useAuth } from "@/lib/auth-context";
+import { useAuth } from "@/context/auth-context";
 
 export default function LoginForm() {
   const router = useRouter();

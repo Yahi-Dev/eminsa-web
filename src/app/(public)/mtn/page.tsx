@@ -12,7 +12,7 @@ import {
   Calculator,
   Download
 } from "lucide-react";
-import { mtnProducts } from "@/data/navigation";
+import { mtnProducts } from "@/config/navigation";
 
 export default function MTNPage() {
   return (

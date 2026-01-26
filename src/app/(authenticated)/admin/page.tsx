@@ -14,8 +14,8 @@ import {
   Eye,
   TrendingUp
 } from "lucide-react";
-import { useAuth } from "@/lib/auth-context";
-import { useContent } from "@/lib/content-context";
+import { useAuth } from "@/context/auth-context";
+import { useContent } from "@/context/content-context";
 
 export default function AdminPage() {
   const router = useRouter();

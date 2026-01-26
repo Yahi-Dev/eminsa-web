@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, Save } from "lucide-react";
-import { useContent } from "@/lib/content-context";
-import { divisions } from "@/data/navigation";
+import { useContent } from "@/context/content-context";
+import { divisions } from "@/config/navigation";
 import { tiposProyecto, Proyecto } from "@/data/content";
 
 interface ProyectoFormProps {

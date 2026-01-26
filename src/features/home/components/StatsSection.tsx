@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { stats } from "@/data/navigation";
+import { stats } from "@/config/navigation";
 import { Award, Shield, CheckCircle2, Users } from "lucide-react";
 
 const iconMap = [

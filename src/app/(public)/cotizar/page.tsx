@@ -13,7 +13,7 @@ import {
   User,
   FileText
 } from "lucide-react";
-import { contactInfo } from "@/data/navigation";
+import { contactInfo } from "@/config/navigation";
 
 const tiposServicio = [
   { value: "mtn-transformador", label: "Transformador Nuevo (MTN)", category: "MTN" },

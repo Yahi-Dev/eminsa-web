@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { useContent } from "@/lib/content-context";
+import { useContent } from "@/context/content-context";
 import NoticiaForm from "@/components/admin/NoticiaForm";
 import { Noticia } from "@/data/content";
 
