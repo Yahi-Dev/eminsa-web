@@ -17,6 +17,14 @@ import {
 import { mainNavigation, contactInfo } from "@/config/navigation";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { Tooltip } from "@/components/ui/Tooltip";
+
+// Tooltips para las divisiones
+const divisionsTooltips: { [key: string]: { label: string; color: string } } = {
+  MTN: { label: "Manufactura Transformadores Nuevos", color: "#001689" },
+  ETRYS: { label: "Transformadores Remanufacturados", color: "#00A3E0" },
+  EIC: { label: "Eminsa International Corporation", color: "#00B140" },
+};
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -155,19 +163,36 @@ export default function Header() {
 
           {/* Desktop Navigation - Center */}
           <nav className="hidden lg:flex items-center gap-6 flex-grow justify-center">
-            {mainNavigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base uppercase",
-                  "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
-                  pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {mainNavigation.map((item) => {
+              const tooltip = divisionsTooltips[item.name as keyof typeof divisionsTooltips];
+              
+              return tooltip ? (
+                <Tooltip key={item.name} content={tooltip.label} color={tooltip.color}>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base uppercase",
+                      "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
+                      pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                </Tooltip>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base uppercase",
+                    "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
+                    pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
+                  )}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* CTA Buttons - Right */}
