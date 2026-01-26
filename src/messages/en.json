@@ -57,7 +57,14 @@
       "errors": {
         "validation": "Please correct the errors in the form.",
         "submission": "An error occurred while sending your request. Please try again.",
-        "connection": "Connection error. Please try again later."
+        "connection": "Connection error. Please try again later.",
+        "requiredPower": "The power is required",
+        "requiredPhase": "The phase is required",
+        "requiredPrimaryVoltage": "The primary voltage is required",
+        "requiredSecondaryVoltage": "The secondary voltage is required",
+        "requiredTransformerType": "The transformer type is required",
+        "requiredStandard": "The standard is required",
+        "requiredInstallationZone": "The installation zone is required"
       },
       "fields": {
         "fullName": {
@@ -129,6 +136,11 @@
       },
       "transformer": {
         "title": "Transformer Specifications",
+        "quantity": "Quantity",
+        "addTransformer": "Add another transformer",
+        "removeTransformer": "Remove transformer",
+        "primaryTransformer": "Primary transformer",
+        "additionalTransformer": "Additional transformer #{number}",
         "power": {
           "label": "Power (KVA)",
           "placeholder": "Ex: 100, 500, 1000"

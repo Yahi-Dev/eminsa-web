@@ -10,7 +10,7 @@ export type InquiryType = 'productos' | 'servicios' | '';
 /**
  * Especificaciones técnicas para transformadores
  */
-export interface TransformerSpecs {
+export interface TransformerSpec {
   potenciaKVA: string;
   fase: string;
   voltajePrimario: string;
@@ -18,8 +18,8 @@ export interface TransformerSpecs {
   tipoTransformador: string;
   norma: string;
   zonaInstalacion: string;
+  cantidad: number;
 }
-
 /**
  * Datos del formulario de contacto
  */
@@ -34,7 +34,7 @@ export interface ContactFormData {
   categoria?: string;
   mensaje: string;
   reCaptchaToken?: string;
-  especificacionesTransformador?: TransformerSpecs;
+  transformadores: TransformerSpec[];
 }
 
 /**
@@ -50,20 +50,16 @@ export interface ContactFormState {
   mensaje: string;
   identificacion: string;
   direccion: string;
-  // Campos específicos para transformadores
-  potenciaKVA: string;
-  fase: string;
-  voltajePrimario: string;
-  voltajeSecundario: string;
-  tipoTransformador: string;
-  norma: string;
-  zonaInstalacion: string;
+  // Transformadores como array
+  transformadores: TransformerSpec[];
 }
 
 /**
  * Errores del formulario
  */
-export type FormErrors = Partial<Record<keyof ContactFormState | 'general', string>>;
+export type FormErrors = Partial<Record<keyof Omit<ContactFormState, 'transformadores'> | 'general', string>> & {
+  transformadores?: (Partial<TransformerSpec> | undefined)[];
+};
 
 /**
  * Respuesta genérica de la API
@@ -114,7 +110,7 @@ export interface TransformerFieldsProps {
   formData: ContactFormState;
   formErrors: FormErrors;
   isSubmitting: boolean;
-  onFieldChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onTransformersChange: (transformers: TransformerSpec[]) => void;
   translatedOptions: {
     fases: SelectOption[];
     tiposTransformadores: SelectOption[];
@@ -163,4 +159,9 @@ export interface UseContactFormReturn {
   handleIdentificacionChange: (value: string) => void;
   getTipoIdentificacion: () => string;
   resetForm: () => void;
+  // Nuevos métodos para transformadores
+  handleTransformersChange: (transformers: TransformerSpec[]) => void;
+  handleTransformerFieldChange: (index: number, field: keyof TransformerSpec, value: string) => void;
+  handleAddTransformer: () => void;
+  handleRemoveTransformer: (index: number) => void;
 }

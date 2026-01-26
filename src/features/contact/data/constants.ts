@@ -2,7 +2,7 @@
 // Contact Feature - Constants & Static Data
 // ============================================================================
 
-import type { SelectOption } from '../types';
+import type { SelectOption, ContactFormState } from '../types';
 
 /**
  * Categorías de productos disponibles
@@ -95,7 +95,7 @@ export const FIELD_LIMITS = {
 /**
  * Estado inicial del formulario
  */
-export const INITIAL_FORM_STATE = {
+export const INITIAL_FORM_STATE: ContactFormState = {
   nombre: '',
   empresa: '',
   email: '',
@@ -105,13 +105,16 @@ export const INITIAL_FORM_STATE = {
   mensaje: '',
   identificacion: '',
   direccion: '',
-  potenciaKVA: '',
-  fase: '',
-  voltajePrimario: '',
-  voltajeSecundario: '',
-  tipoTransformador: '',
-  norma: '',
-  zonaInstalacion: ''
+  transformadores: [{
+    potenciaKVA: '',
+    fase: '',
+    voltajePrimario: '',
+    voltajeSecundario: '',
+    tipoTransformador: '',
+    norma: '',
+    zonaInstalacion: '',
+    cantidad: 1 
+  }]
 };
 
 /**

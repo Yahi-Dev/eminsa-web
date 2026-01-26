@@ -57,7 +57,14 @@
       "errors": {
         "validation": "Por favor corrige los errores en el formulario.",
         "submission": "Ocurrió un error al enviar tu solicitud. Intenta de nuevo.",
-        "connection": "Error de conexión. Por favor intenta de nuevo más tarde."
+        "connection": "Error de conexión. Por favor intenta de nuevo más tarde.",
+        "requiredPower": "La potencia es requerida",
+        "requiredPhase": "La fase es requerida",
+        "requiredPrimaryVoltage": "El voltaje primario es requerido",
+        "requiredSecondaryVoltage": "El voltaje secundario es requerido",
+        "requiredTransformerType": "El tipo de transformador es requerido",
+        "requiredStandard": "La norma es requerida",
+        "requiredInstallationZone": "La zona de instalación es requerida"
       },
       "fields": {
         "fullName": {
@@ -129,6 +136,11 @@
       },
       "transformer": {
         "title": "Especificaciones del Transformador",
+        "quantity": "Cantidad",
+        "addTransformer": "Agregar otro transformador",
+        "removeTransformer": "Eliminar transformador",
+        "primaryTransformer": "Transformador principal",
+        "additionalTransformer": "Transformador adicional #{number}",
         "power": {
           "label": "Potencia (KVA)",
           "placeholder": "Ej: 100, 500, 1000"

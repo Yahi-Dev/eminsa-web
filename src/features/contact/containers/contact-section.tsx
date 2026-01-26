@@ -17,7 +17,6 @@ import { ContactForm } from '..';
  * Integra todos los componentes y maneja el estado del formulario
  */
 export function ContactSection() {
-  const t = useTranslations('contact');
   const form = useContactForm();
 
   return (

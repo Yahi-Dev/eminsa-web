@@ -38,23 +38,27 @@ export function ContactForm({ form }: ContactFormProps) {
     handleTipoConsultaClick,
     getTipoIdentificacion,
     resetForm,
+    handleTransformersChange,
   } = form;
 
   // Validación para habilitar el botón de envío
-  const isSubmitDisabled = 
-    isSubmitting || 
-    !formData.tipoConsulta || 
-    !formData.categoria || 
-    !formData.identificacion || 
+  const isSubmitDisabled =
+    isSubmitting ||
+    !formData.tipoConsulta ||
+    !formData.categoria ||
+    !formData.identificacion ||
     !formData.direccion ||
     (showTransformadorFields && (
-      !formData.potenciaKVA || 
-      !formData.fase || 
-      !formData.voltajePrimario || 
-      !formData.voltajeSecundario || 
-      !formData.tipoTransformador || 
-      !formData.norma || 
-      !formData.zonaInstalacion
+      // Validar que todos los transformadores estén completos
+      formData.transformadores.some(transformer => 
+        !transformer.potenciaKVA ||
+        !transformer.fase ||
+        !transformer.voltajePrimario ||
+        !transformer.voltajeSecundario ||
+        !transformer.tipoTransformador ||
+        !transformer.norma ||
+        !transformer.zonaInstalacion
+      )
     ));
 
   if (isSubmitted) {
@@ -179,7 +183,7 @@ export function ContactForm({ form }: ContactFormProps) {
           formData={formData}
           formErrors={formErrors}
           isSubmitting={isSubmitting}
-          onFieldChange={handleChange}
+          onTransformersChange={handleTransformersChange}
           translatedOptions={translatedOptions}
         />
       )}
@@ -193,13 +197,13 @@ export function ContactForm({ form }: ContactFormProps) {
       />
 
       {/* Botón de Envío */}
-      <SubmitButton 
-        isSubmitting={isSubmitting} 
-        disabled={isSubmitDisabled} 
+      <SubmitButton
+        isSubmitting={isSubmitting}
+        disabled={isSubmitDisabled}
       />
 
       {/* Aviso Legal */}
-      <LegalNotice />
+      {/* <LegalNotice /> */}
     </form>
   );
 }
@@ -274,9 +278,8 @@ function TextInputField({
           required={required}
           maxLength={maxLength}
           disabled={disabled}
-          className={`input-field ${icon ? 'pl-10' : ''} ${
-            error ? 'border-red-500 focus:ring-red-200' : ''
-          }`}
+          className={`input-field ${icon ? 'pl-10' : ''} ${error ? 'border-red-500 focus:ring-red-200' : ''
+            }`}
           placeholder={placeholder}
           autoComplete={name === 'nombre' ? 'name' : name === 'email' ? 'email' : name === 'telefono' ? 'tel' : 'off'}
         />
@@ -472,7 +475,7 @@ function LegalNotice() {
 
   return (
     <p className="text-[#76777A] text-xs text-center">
-      {t('form.legalNotice.part1')}{' '}
+
       <a href="/privacidad" className="text-[#001689] hover:underline font-semibold">
         {t('form.legalNotice.privacyPolicy')}
       </a>
