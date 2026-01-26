@@ -186,7 +186,7 @@ export function customerConfirmationTemplate(
                   <td align="center" class="px" style="padding: 32px 40px;">
                     <!-- Logo -->
                     <div style="display:inline-block; background:#fff; border-radius:16px; padding:16px; box-shadow:0 10px 25px rgba(0,0,0,.08);">
-                      <img src="${safeLogo}" alt="${appName} Logo" width="194" height="114" style="display:block; border:0; outline:none; text-decoration:none;" />
+                      <img src="${safeLogo}" alt="${appName} Logo" width="234" height="114" style="display:block; border:0; outline:none; text-decoration:none;" />
                     </div>
 
                     <!-- Heading -->

@@ -3,7 +3,7 @@
 // ============================================================================
 
 import { z } from 'zod';
-import type { ContactFormData, ValidationResult, ApiResponse } from '../types';
+import type { ContactFormData, ValidationResult, ApiResponse, TransformerSpec } from '../types';
 import { DISPOSABLE_EMAIL_DOMAINS } from '../data/constants';
 
 /**
@@ -187,6 +187,10 @@ function buildContactFormData(
   validatedData: ContactFormValues,
   originalData: Record<string, unknown>
 ): ContactFormData {
+  const transformadores = Array.isArray(originalData.transformadores) 
+    ? originalData.transformadores as TransformerSpec[]
+    : [];
+
   const contactData: ContactFormData = {
     nombre: validatedData.nombre,
     email: validatedData.email,
@@ -198,16 +202,8 @@ function buildContactFormData(
     direccion: validatedData.direccion,
     categoria: validatedData.categoria,
     reCaptchaToken: validatedData.reCaptchaToken,
+    transformadores, // ✅ Now included in initial object
   };
-
-  // Añadir especificaciones de transformador si existen
-  if (
-    originalData.especificacionesTransformador &&
-    typeof originalData.especificacionesTransformador === 'object'
-  ) {
-    contactData.especificacionesTransformador =
-      originalData.especificacionesTransformador as ContactFormData['especificacionesTransformador'];
-  }
 
   return contactData;
 }

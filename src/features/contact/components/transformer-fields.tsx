@@ -80,7 +80,7 @@ export function TransformerFields({
           {/* Contador de transformadores */}
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-gray-600">
-              {t('form.transformer.quantity')}: {formData.transformadores.length}
+              {t('form.transformer.quantity.label')}: {formData.transformadores.length}
             </span>
           </div>
         </div>
@@ -170,7 +170,7 @@ function TransformerSpecification({
             </h4>
             {parseInt(transformer.cantidad) > 1 && (
               <p className="text-sm text-gray-600 mt-1">
-                {t('form.transformer.quantity')}: {transformer.cantidad} {t('form.transformer.units')}
+                {t('form.transformer.quantity.label')}: {transformer.cantidad} {t('form.transformer.units')}
               </p>
             )}
           </div>
@@ -209,9 +209,6 @@ function TransformerSpecification({
               max="100"
               type="number"
             />
-            <p className="text-sm text-gray-500 mt-2">
-              {t('form.transformer.quantity.help')}
-            </p>
           </div>
           <div className="md:col-span-1 flex items-end">
             <div className="w-full">
