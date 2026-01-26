@@ -3,7 +3,7 @@ export const mainNavigation = [
   {
     name: "MTN",
     href: "/mtn",
-    description: "Transformadores de fabricación nacional",
+    description: "Manufactura Transformadores Nuevos",
     color: "#001689",
     submenu: [
       {
@@ -31,7 +31,7 @@ export const mainNavigation = [
   {
     name: "ETRYS",
     href: "/etrys",
-    description: "Transformadores remanufacturados y reparación",
+    description: "Transformadores Remanufacturados",
     color: "#00A3E0",
     submenu: [
       { name: "Reparación", href: "/etrys/reparacion" },
@@ -44,7 +44,7 @@ export const mainNavigation = [
   {
     name: "EIC",
     href: "/eic",
-    description: "Eminsa International Corp - Importaciones",
+    description: "Eminsa International Corporation",
     color: "#00B140",
     submenu: [
       {
@@ -100,8 +100,8 @@ export const divisions = [
   {
     id: "mtn",
     name: "MTN",
-    fullName: "Mateo Transformadores Nacionales",
-    tagline: "Fabricación Nacional de Excelencia",
+    fullName: "Manufactura Transformadores Nuevos",
+    tagline: "Manufactura Transformadores Nuevos",
     description: "Transformadores de distribución fabricados en República Dominicana con los más altos estándares de calidad internacional.",
     href: "/mtn",
     color: "#001689",
@@ -117,8 +117,8 @@ export const divisions = [
   {
     id: "etrys",
     name: "ETRYS",
-    fullName: "ETRYS Transformadores",
-    tagline: "Renovados, Rendimiento Garantizado",
+    fullName: "Transformadores Remanufacturados",
+    tagline: "Transformadores Remanufacturados",
     description: "Especialistas en reparación y remanufactura de transformadores. Devolvemos la potencia y confiabilidad a sus equipos.",
     href: "/etrys",
     color: "#00A3E0",
@@ -134,8 +134,8 @@ export const divisions = [
   {
     id: "eic",
     name: "EIC",
-    fullName: "Eminsa International Corp",
-    tagline: "Marcas Líderes Mundiales",
+    fullName: "Eminsa International Corporation",
+    tagline: "Eminsa International Corporation",
     description: "Representantes exclusivos de las mejores marcas internacionales en equipos eléctricos y transformadores.",
     href: "/eic",
     color: "#00B140",
