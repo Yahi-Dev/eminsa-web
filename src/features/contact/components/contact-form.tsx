@@ -57,7 +57,9 @@ export function ContactForm({ form }: ContactFormProps) {
         !transformer.voltajeSecundario ||
         !transformer.tipoTransformador ||
         !transformer.norma ||
-        !transformer.zonaInstalacion
+        !transformer.zonaInstalacion ||
+        !transformer.cantidad ||
+        parseInt(transformer.cantidad) < 1
       )
     ));
 
@@ -475,7 +477,7 @@ function LegalNotice() {
 
   return (
     <p className="text-[#76777A] text-xs text-center">
-
+      {t('form.legalNotice.part1')}{' '}
       <a href="/privacidad" className="text-[#001689] hover:underline font-semibold">
         {t('form.legalNotice.privacyPolicy')}
       </a>

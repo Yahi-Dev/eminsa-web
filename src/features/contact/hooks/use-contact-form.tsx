@@ -1,28 +1,29 @@
-'use client';
 // ============================================================================
 // Contact Feature - useContactForm Hook
 // ============================================================================
 
+'use client';
+
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { useMaskito } from '@maskito/react';
 import { useTranslations } from 'next-intl';
-import type {
-  ContactFormState,
-  FormErrors,
+import type { 
+  ContactFormState, 
+  FormErrors, 
   InquiryType,
   UseContactFormReturn,
   TransformerSpec
 } from '../types';
 import { submitContactForm, prepareFormDataForSubmission } from '../services/contact';
-import {
-  INITIAL_FORM_STATE,
-  CATEGORIAS_PRODUCTOS,
+import { 
+  INITIAL_FORM_STATE, 
+  CATEGORIAS_PRODUCTOS, 
   CATEGORIAS_SERVICIOS,
   FASES,
   TIPOS_TRANSFORMADORES,
   NORMAS,
   ZONAS_INSTALACION,
-  FIELD_LIMITS
+  FIELD_LIMITS 
 } from '../data/constants';
 
 // Importar opciones de máscara de teléfono
@@ -34,24 +35,24 @@ import { formatIdentificacion, getIdentificationType } from '../schema/contact-v
  */
 export function useContactForm(): UseContactFormReturn {
   const t = useTranslations('contact');
-
+  
   // Estado del formulario
   const [formData, setFormData] = useState<ContactFormState>(INITIAL_FORM_STATE);
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
+  
   // Ref para tracking de identificación
   const identificacionRef = useRef<string>('');
-
+  
   // Máscara para teléfono
   const maskedInputRef = useMaskito({ options: phoneMaskOptions });
 
   // ============================================================================
   // Categorías traducidas
   // ============================================================================
-
+  
   const translateCategory = useCallback((cat: string, type: 'products' | 'services'): string => {
     const key = cat.toLowerCase()
       .replace(/\s+/g, '_')
@@ -78,33 +79,33 @@ export function useContactForm(): UseContactFormReturn {
   // ============================================================================
   // Opciones traducidas para transformadores
   // ============================================================================
-
+  
   const translatedOptions = {
-    fases: FASES.map(fase => ({
-      value: fase.value,
-      label: t(`form.transformer.phase.${fase.value}`)
+    fases: FASES.map(fase => ({ 
+      value: fase.value, 
+      label: t(`form.transformer.phase.${fase.value}`) 
     })),
-    tiposTransformadores: TIPOS_TRANSFORMADORES.map(tipo => ({
-      value: tipo.value,
-      label: t(`form.transformer.type.${tipo.value}`)
+    tiposTransformadores: TIPOS_TRANSFORMADORES.map(tipo => ({ 
+      value: tipo.value, 
+      label: t(`form.transformer.type.${tipo.value}`) 
     })),
-    normas: NORMAS.map(norma => ({
-      value: norma.value,
-      label: t(`form.transformer.standard.${norma.value}`)
+    normas: NORMAS.map(norma => ({ 
+      value: norma.value, 
+      label: t(`form.transformer.standard.${norma.value}`) 
     })),
-    zonasInstalacion: ZONAS_INSTALACION.map(zona => ({
-      value: zona.value,
-      label: t(`form.transformer.zone.${zona.value}`)
+    zonasInstalacion: ZONAS_INSTALACION.map(zona => ({ 
+      value: zona.value, 
+      label: t(`form.transformer.zone.${zona.value}`) 
     })),
   };
 
   // ============================================================================
   // Lógica de transformadores
   // ============================================================================
-
+  
   const transformadoresCategory = t('form.categories.products.transformadores');
-  const showTransformadorFields =
-    formData.tipoConsulta === 'productos' &&
+  const showTransformadorFields = 
+    formData.tipoConsulta === 'productos' && 
     formData.categoria === transformadoresCategory;
 
   // ============================================================================
@@ -130,8 +131,8 @@ export function useContactForm(): UseContactFormReturn {
    * Maneja cambios en campos específicos de transformadores
    */
   const handleTransformerFieldChange = useCallback((
-    index: number,
-    field: keyof TransformerSpec,
+    index: number, 
+    field: keyof TransformerSpec, 
     value: string
   ) => {
     const updatedTransformers = formData.transformadores.map((transformer, i) => {
@@ -155,9 +156,9 @@ export function useContactForm(): UseContactFormReturn {
       tipoTransformador: '',
       norma: '',
       zonaInstalacion: '',
-      cantidad: 1
+      cantidad: '1'
     };
-
+    
     const updatedTransformers = [...formData.transformadores, newTransformer];
     handleTransformersChange(updatedTransformers);
   }, [formData.transformadores, handleTransformersChange]);
@@ -167,7 +168,7 @@ export function useContactForm(): UseContactFormReturn {
    */
   const handleRemoveTransformer = useCallback((index: number) => {
     if (formData.transformadores.length <= 1) return;
-
+    
     const updatedTransformers = formData.transformadores.filter((_, i) => i !== index);
     handleTransformersChange(updatedTransformers);
   }, [formData.transformadores, handleTransformersChange]);
@@ -212,7 +213,8 @@ export function useContactForm(): UseContactFormReturn {
       voltajeSecundario: '',
       tipoTransformador: '',
       norma: '',
-      zonaInstalacion: ''
+      zonaInstalacion: '',
+      cantidad: '1'
     }]
   }), []);
 
@@ -224,7 +226,7 @@ export function useContactForm(): UseContactFormReturn {
       ...prev,
       tipoConsulta: tipo,
       categoria: '',
-      ...resetTransformerFields(),
+      ...resetTransformerFields()
     }));
 
     if (formErrors.tipoConsulta) {
@@ -262,7 +264,7 @@ export function useContactForm(): UseContactFormReturn {
           categoria: '',
           ...resetTransformerFields()
         }));
-      }
+      } 
       // Manejar cambio de categoría (reset transformers si no es transformadores)
       else if (name === 'categoria' && value !== transformadoresCategory) {
         setFormData(prev => ({
@@ -270,7 +272,7 @@ export function useContactForm(): UseContactFormReturn {
           categoria: value,
           ...resetTransformerFields()
         }));
-      }
+      } 
       // Cambio normal
       else {
         setFormData(prev => ({
@@ -309,7 +311,7 @@ export function useContactForm(): UseContactFormReturn {
 
     formData.transformadores.forEach((transformer, index) => {
       const errors: Partial<TransformerSpec> = {};
-
+      
       if (!transformer.potenciaKVA.trim()) {
         errors.potenciaKVA = t('form.errors.requiredPower');
         allValid = false;
@@ -390,7 +392,7 @@ export function useContactForm(): UseContactFormReturn {
       setIsSubmitted(true);
       setFormData(INITIAL_FORM_STATE);
       identificacionRef.current = '';
-
+      
     } catch (error) {
       console.error('Error submitting form:', error);
       setErrorMessage(t('form.errors.connection'));

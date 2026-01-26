@@ -113,7 +113,7 @@ export const INITIAL_FORM_STATE: ContactFormState = {
     tipoTransformador: '',
     norma: '',
     zonaInstalacion: '',
-    cantidad: 1 
+    cantidad: '1' // Cambiado a string
   }]
 };
 

@@ -5,7 +5,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Zap, Power, GitBranch, Cpu, Battery, Plus, Trash2 } from 'lucide-react';
+import { Zap, Power, GitBranch, Cpu, Battery, Plus, Trash2, Hash } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import type { TransformerFieldsProps, SelectOption, TransformerSpec } from '../types';
 
@@ -30,7 +30,8 @@ export function TransformerFields({
       voltajeSecundario: '',
       tipoTransformador: '',
       norma: '',
-      zonaInstalacion: ''
+      zonaInstalacion: '',
+      cantidad: '1'
     };
     
     const updatedTransformers = [...formData.transformadores, newTransformer];
@@ -188,7 +189,7 @@ function TransformerSpecification({
         )}
       </div>
 
-      {/* Campos del transformador - AGREGAR NUEVA FILA PARA CANTIDAD */}
+      {/* Campos del transformador */}
       <div className="space-y-6">
         {/* NUEVA FILA: Cantidad */}
         <div className="grid md:grid-cols-2 gap-6">
@@ -206,6 +207,7 @@ function TransformerSpecification({
               inputMode="numeric"
               min="1"
               max="100"
+              type="number"
             />
             <p className="text-sm text-gray-500 mt-2">
               {t('form.transformer.quantity.help')}
@@ -326,8 +328,9 @@ function TransformerSpecification({
     </motion.div>
   );
 }
+
 // ============================================================================
-// Sub-componentes (InputField y SelectField permanecen iguales)
+// Sub-componentes (InputField y SelectField)
 // ============================================================================
 
 interface InputFieldProps {
@@ -341,9 +344,9 @@ interface InputFieldProps {
   disabled?: boolean;
   required?: boolean;
   inputMode?: 'text' | 'decimal' | 'numeric';
-  min?: number; // Nuevo
-  max?: number; // Nuevo
-  type?: 'number'; // Nuevo
+  min?: string;
+  max?: string;
+  type?: 'text' | 'number';
 }
 
 function InputField({
@@ -359,8 +362,26 @@ function InputField({
   inputMode = 'text',
   min,
   max,
-  type = 'number' // Nuevo
+  type = 'text'
 }: InputFieldProps) {
+  const handleIncrement = () => {
+    const current = parseInt(value) || 1;
+    const newValue = Math.min(current + 1, parseInt(max || '100'));
+    const event = {
+      target: { name, value: newValue.toString() }
+    } as React.ChangeEvent<HTMLInputElement>;
+    onChange(event);
+  };
+
+  const handleDecrement = () => {
+    const current = parseInt(value) || 1;
+    const newValue = Math.max(current - 1, parseInt(min || '1'));
+    const event = {
+      target: { name, value: newValue.toString() }
+    } as React.ChangeEvent<HTMLInputElement>;
+    onChange(event);
+  };
+
   return (
     <div>
       <label className="input-label">
@@ -373,7 +394,7 @@ function InputField({
           </div>
         )}
         <input
-          type={type} // Usar type dinámico
+          type={type}
           name={name}
           value={value}
           onChange={onChange}
@@ -391,31 +412,17 @@ function InputField({
           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex flex-col">
             <button
               type="button"
-              onClick={() => {
-                const current = parseInt(value) || 1;
-                const newValue = Math.min(current + 1, parseInt(max || '100'));
-                const event = {
-                  target: { name, value: newValue.toString() }
-                } as React.ChangeEvent<HTMLInputElement>;
-                onChange(event);
-              }}
-              className="text-gray-400 hover:text-gray-600"
+              onClick={handleIncrement}
               disabled={disabled}
+              className="text-gray-400 hover:text-gray-600 text-xs"
             >
               ↑
             </button>
             <button
               type="button"
-              onClick={() => {
-                const current = parseInt(value) || 1;
-                const newValue = Math.max(current - 1, parseInt(min || '1'));
-                const event = {
-                  target: { name, value: newValue.toString() }
-                } as React.ChangeEvent<HTMLInputElement>;
-                onChange(event);
-              }}
-              className="text-gray-400 hover:text-gray-600"
+              onClick={handleDecrement}
               disabled={disabled}
+              className="text-gray-400 hover:text-gray-600 text-xs"
             >
               ↓
             </button>
@@ -428,6 +435,7 @@ function InputField({
     </div>
   );
 }
+
 interface SelectFieldProps {
   name: string;
   label: string;
@@ -489,6 +497,7 @@ function SelectField({
   );
 }
 
+// Función auxiliar para calcular la potencia total
 function calculateTotalPower(transformer: TransformerSpec): string {
   const cantidad = parseInt(transformer.cantidad) || 1;
   const potencia = parseFloat(transformer.potenciaKVA) || 0;

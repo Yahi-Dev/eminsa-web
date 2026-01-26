@@ -18,8 +18,9 @@ export interface TransformerSpec {
   tipoTransformador: string;
   norma: string;
   zonaInstalacion: string;
-  cantidad: number;
+  cantidad: string; // Cambiado de number a string para consistencia
 }
+
 /**
  * Datos del formulario de contacto
  */
