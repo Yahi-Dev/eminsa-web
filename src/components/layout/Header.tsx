@@ -130,14 +130,14 @@ export default function Header() {
           isScrolled && "shadow-lg"
         )}
       >
-        <div className="flex items-center h-20 px-6 lg:px-8 w-full gap-6">
+        <div className="flex items-center h-25 px-6 lg:px-8 w-full gap-6">
           {/* Logo - Left */}
           <Link href="/" className="shrink-0">
             <Image
               src="/logoeminsa-Photoroom.png"
               alt="Grupo EMINSA"
-              width={156}
-              height={156}
+              width={196}
+              height={196}
               priority
             />
           </Link>

@@ -6,7 +6,11 @@ interface UseCountUpProps {
   delay?: number;
 }
 
-export const useCountUp = ({ end, duration = 2000, delay = 0 }: UseCountUpProps) => {
+export const useCountUp = ({
+  end,
+  duration = 5000, // Aumentado de 4000 a 5000ms
+  delay = 1000 // Reducido de 2500 a 1000ms
+}: UseCountUpProps) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -23,9 +27,16 @@ export const useCountUp = ({ end, duration = 2000, delay = 0 }: UseCountUpProps)
       }
 
       if (elapsed < duration) {
-        // Easing function: ease-out (desaceleración)
+        // Easing function: ease-out (más suave)
         const progress = elapsed / duration;
-        const easeProgress = 1 - Math.pow(1 - progress, 3);
+
+        // Cambia la función de easing para que sea más gradual
+        // En lugar de 1 - Math.pow(1 - progress, 3) que es más agresivo
+        // Usamos Math.sin que crece más suavemente al inicio
+        const easeProgress = progress < 0.5
+          ? 0.5 * Math.sin(Math.PI * (progress - 0.5)) + 0.5
+          : progress;
+
         const currentCount = Math.floor(easeProgress * end);
         setCount(currentCount);
         animationId = requestAnimationFrame(animate);

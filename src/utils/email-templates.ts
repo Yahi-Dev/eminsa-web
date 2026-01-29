@@ -334,7 +334,7 @@ export function adminNotificationTemplate(
         return `
         <div style="margin-bottom: 16px; padding: 12px; background: white; border-radius: 4px; border: 1px solid #ddd;">
           <h5 style="margin:0 0 8px 0; font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:13px; color:${primary};">
-            TRANSFORMADOR ${index + 1} - ${cantidad} UNIDAD${cantidadNum > 1 ? 'ES' : ''}
+            TRANSFORMADOR ${index + 1}
           </h5>
           <table width="100%" cellpadding="0" cellspacing="0" style="font-family:Segoe UI,Roboto,Arial,sans-serif; font-size:12px; color:${text};">
             ${transformer.cantidad ? `

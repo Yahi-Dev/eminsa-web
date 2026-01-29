@@ -14,11 +14,10 @@ function AnimatedStat({ value, label, delay }: { value: string; label: string; d
   const suffix = value.replace(/[0-9]/g, "");
   const isSpecialCase = value === "24/7";
   
-  // Siempre llamar el hook en el mismo orden (regla de React Hooks)
   const count = useCountUp({ 
     end: isSpecialCase ? 0 : numericValue, 
-    duration: 2000, 
-    delay 
+    duration: 3000, // Aumentado de 2000 a 3000ms
+    delay: delay + 500 // Agregamos 500ms extra de delay
   });
 
   return (
