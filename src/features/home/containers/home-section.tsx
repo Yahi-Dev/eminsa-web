@@ -8,6 +8,10 @@ import {
   MTNResourcesSection,
   MTNQuoteSection,
 } from "../components/mtn";
+import DivisionsSection from "../components/DivisionsSection";
+import ServicesSection from "../components/ServicesSection";
+import StatsSection from "../components/StatsSection";
+import TransformadorRestauracionSection from "../components/TransformadorRestauracionSection";
 
 // Componentes anteriores - mantenidos pero no renderizados actualmente
 // import DivisionsSection from "../components/DivisionsSection";
@@ -23,12 +27,16 @@ export default function HomeSection() {
 
       {/* MTN - Manufactura de Transformadores Nuevos */}
       <MTNHeroSection />
+      <TransformadorRestauracionSection />
       <MTNProductsShowcase />
       <MTNCertificationsSection />
       <MTNResourcesSection />
 
       {/* Clientes */}
       <ClientesSection />
+      <DivisionsSection />
+      <ServicesSection />
+      <StatsSection />
 
       {/* Cotizaciones */}
       <MTNQuoteSection />

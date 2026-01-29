@@ -7,6 +7,32 @@
 // TIPOS
 // ============================================================================
 
+export interface ResourceSection {
+  title: string;
+  content?: string;
+  items?: string[];
+}
+
+export interface ResourceContent {
+  title: string;
+  description: string;
+  items?: Array<{
+    title: string;
+    date?: string;
+    category?: string;
+    excerpt?: string;
+    format?: string;
+    size?: string;
+    description?: string;
+  }>;
+  sections?: ResourceSection[];
+  chapters?: Array<{
+    number: number;
+    title: string;
+    description: string;
+  }>;
+}
+
 export interface TransformerProduct {
   id: string;
   name: string;

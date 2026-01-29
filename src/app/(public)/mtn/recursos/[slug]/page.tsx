@@ -12,7 +12,7 @@ import {
   ExternalLink,
   Search
 } from "lucide-react";
-import { getResourceBySlug, resources, transformerProducts } from "@/config/mtn-data";
+import { getResourceBySlug, ResourceContent, resources, transformerProducts } from "@/config/mtn-data";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -50,7 +50,7 @@ const resourceIcons: Record<string, React.ElementType> = {
 };
 
 // Datos de ejemplo para cada tipo de recurso
-const resourceContent = {
+const resourceContent: Record<string, ResourceContent> = {
   articulos: {
     title: "Artículos y Publicaciones",
     description: "Manténgase informado con nuestras últimas publicaciones técnicas y noticias del sector.",
@@ -208,7 +208,7 @@ export default async function RecursoDetailPage({ params }: Props) {
       <section className="py-12">
         <div className="container-eminsa">
           {/* Artículos */}
-          {slug === 'articulos' && 'items' in content && (
+          {slug === 'articulos' && content && 'items' in content && content.items && (
             <div className="max-w-4xl mx-auto space-y-6">
               {/* Search */}
               <div className="bg-white rounded-xl p-4 shadow-sm">
@@ -229,14 +229,14 @@ export default async function RecursoDetailPage({ params }: Props) {
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
                         <span className="bg-[#001689]/10 text-[#001689] text-xs font-medium px-2 py-1 rounded">
-                          {'category' in article ? article.category : ''}
+                          {article.category || ''}
                         </span>
-                        <span className="text-sm text-gray-500">{'date' in article ? article.date : ''}</span>
+                        <span className="text-sm text-gray-500">{article.date || ''}</span>
                       </div>
                       <h2 className="text-xl font-bold text-gray-900 hover:text-[#001689] transition-colors cursor-pointer">
                         {article.title}
                       </h2>
-                      <p className="text-gray-600">{'excerpt' in article ? article.excerpt : ''}</p>
+                      <p className="text-gray-600">{article.excerpt || ''}</p>
                     </div>
                     <ArrowRight size={20} className="text-gray-400 flex-shrink-0 mt-2" />
                   </div>
@@ -246,7 +246,7 @@ export default async function RecursoDetailPage({ params }: Props) {
           )}
 
           {/* Fichas Técnicas */}
-          {slug === 'fichas-tecnicas' && 'items' in content && (
+          {slug === 'fichas-tecnicas' && content && 'items' in content && content.items && (
             <div className="max-w-4xl mx-auto">
               <div className="grid gap-4">
                 {content.items.map((item, idx) => (
@@ -258,7 +258,7 @@ export default async function RecursoDetailPage({ params }: Props) {
                       <div>
                         <h3 className="font-bold text-gray-900">{item.title}</h3>
                         <p className="text-sm text-gray-500">
-                          {'format' in item ? item.format : ''} • {'size' in item ? item.size : ''}
+                          {item.format || ''} • {item.size || ''}
                         </p>
                       </div>
                     </div>
@@ -283,16 +283,16 @@ export default async function RecursoDetailPage({ params }: Props) {
           )}
 
           {/* Garantía */}
-          {slug === 'garantia' && 'sections' in content && (
+          {slug === 'garantia' && content && 'sections' in content && content.sections && (
             <div className="max-w-4xl mx-auto">
               <div className="bg-white rounded-2xl shadow-lg p-8 lg:p-12 space-y-8">
                 {content.sections.map((section, idx) => (
                   <div key={idx} className="pb-8 border-b border-gray-100 last:border-0 last:pb-0">
                     <h2 className="text-xl font-bold text-gray-900 mb-4">{section.title}</h2>
-                    {'content' in section && (
+                    {section.content && (
                       <p className="text-gray-600 leading-relaxed">{section.content}</p>
                     )}
-                    {'items' in section && (
+                    {section.items && (
                       <ul className="space-y-2">
                         {section.items.map((item, i) => (
                           <li key={i} className="flex items-start gap-3">
@@ -317,7 +317,7 @@ export default async function RecursoDetailPage({ params }: Props) {
           )}
 
           {/* Manual de Mantenimiento */}
-          {slug === 'manual-mantenimiento' && 'chapters' in content && (
+          {slug === 'manual-mantenimiento' && content && 'chapters' in content && content.chapters && (
             <div className="max-w-4xl mx-auto">
               {/* Chapter list */}
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
