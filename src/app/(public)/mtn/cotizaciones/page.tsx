@@ -1,0 +1,530 @@
+"use client";
+
+import { useState, useEffect, Suspense } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
+import { 
+  ChevronRight, 
+  FileText, 
+  Phone,
+  MessageCircle,
+  CheckCircle2,
+  Zap,
+  Clock,
+  Shield,
+  Send,
+  Loader2
+} from "lucide-react";
+import { transformerProducts } from "@/config/mtn-data";
+import { contactInfo } from "@/config/navigation";
+
+// Capacidades disponibles
+const capacities = [
+  "15", "25", "30", "37.5", "45", "50", "75", "100", "112.5", 
+  "150", "167", "225", "300", "500", "750", "1000", "1500", "2000", "2500", "3000", "Otro"
+];
+
+// Componente interno que usa useSearchParams
+function CotizacionesContent() {
+  const searchParams = useSearchParams();
+  const preselectedProduct = searchParams.get("producto");
+
+  const [formData, setFormData] = useState({
+    nombre: "",
+    empresa: "",
+    email: "",
+    telefono: "",
+    tipoTransformador: preselectedProduct || "",
+    configuracion: "",
+    capacidad: "",
+    cantidad: "1",
+    voltajePrimario: "",
+    voltajeSecundario: "",
+    ubicacion: "",
+    descripcion: "",
+    urgente: false,
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Actualizar producto preseleccionado cuando cambie el URL
+  useEffect(() => {
+    if (preselectedProduct) {
+      setFormData(prev => ({ ...prev, tipoTransformador: preselectedProduct }));
+    }
+  }, [preselectedProduct]);
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+    
+    if (!formData.nombre.trim()) newErrors.nombre = "El nombre es requerido";
+    if (!formData.email.trim()) newErrors.email = "El email es requerido";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Email inválido";
+    }
+    if (!formData.telefono.trim()) newErrors.telefono = "El teléfono es requerido";
+    if (!formData.tipoTransformador) newErrors.tipoTransformador = "Seleccione un tipo";
+    if (!formData.capacidad) newErrors.capacidad = "Seleccione una capacidad";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+    
+    // Simular envío
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value
+    }));
+    
+    // Clear error when field is modified
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  if (isSubmitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="min-h-[60vh] flex items-center justify-center p-8"
+      >
+        <div className="text-center max-w-md">
+          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle2 size={40} className="text-green-600" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            ¡Solicitud Enviada!
+          </h2>
+          <p className="text-gray-600 mb-8">
+            Hemos recibido su solicitud de cotización. Nuestro equipo se pondrá en contacto 
+            con usted en menos de 24 horas.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/mtn/productos"
+              className="inline-flex items-center justify-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+            >
+              Ver Productos
+            </Link>
+            <button
+              onClick={() => {
+                setIsSubmitted(false);
+                setFormData({
+                  nombre: "",
+                  empresa: "",
+                  email: "",
+                  telefono: "",
+                  tipoTransformador: "",
+                  configuracion: "",
+                  capacidad: "",
+                  cantidad: "1",
+                  voltajePrimario: "",
+                  voltajeSecundario: "",
+                  ubicacion: "",
+                  descripcion: "",
+                  urgente: false,
+                });
+              }}
+              className="inline-flex items-center justify-center gap-2 border-2 border-[#001689] text-[#001689] hover:bg-[#001689] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+            >
+              Nueva Cotización
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <div className="grid lg:grid-cols-3 gap-8">
+      {/* Form */}
+      <div className="lg:col-span-2">
+        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-8 space-y-8">
+          {/* Información de Contacto */}
+          <div>
+            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#001689] text-white rounded-lg flex items-center justify-center text-sm font-bold">1</div>
+              Información de Contacto
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Nombre completo *
+                </label>
+                <input
+                  type="text"
+                  name="nombre"
+                  value={formData.nombre}
+                  onChange={handleInputChange}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
+                    errors.nombre ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="Su nombre"
+                />
+                {errors.nombre && <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Empresa
+                </label>
+                <input
+                  type="text"
+                  name="empresa"
+                  value={formData.empresa}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  placeholder="Nombre de su empresa"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Correo electrónico *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
+                    errors.email ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="correo@ejemplo.com"
+                />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Teléfono *
+                </label>
+                <input
+                  type="tel"
+                  name="telefono"
+                  value={formData.telefono}
+                  onChange={handleInputChange}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
+                    errors.telefono ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="(809) 000-0000"
+                />
+                {errors.telefono && <p className="text-red-500 text-sm mt-1">{errors.telefono}</p>}
+              </div>
+            </div>
+          </div>
+
+          {/* Especificaciones del Transformador */}
+          <div>
+            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#001689] text-white rounded-lg flex items-center justify-center text-sm font-bold">2</div>
+              Especificaciones del Transformador
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Tipo de Transformador *
+                </label>
+                <select
+                  name="tipoTransformador"
+                  value={formData.tipoTransformador}
+                  onChange={handleInputChange}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
+                    errors.tipoTransformador ? "border-red-500" : "border-gray-300"
+                  }`}
+                >
+                  <option value="">Seleccione un tipo</option>
+                  {transformerProducts.map((product) => (
+                    <option key={product.id} value={product.slug}>
+                      {product.name}
+                    </option>
+                  ))}
+                </select>
+                {errors.tipoTransformador && <p className="text-red-500 text-sm mt-1">{errors.tipoTransformador}</p>}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Configuración
+                </label>
+                <select
+                  name="configuracion"
+                  value={formData.configuracion}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                >
+                  <option value="">Seleccione configuración</option>
+                  <option value="monofasico">Monofásico</option>
+                  <option value="trifasico">Trifásico</option>
+                  <option value="autoprotegido">Autoprotegido (CSP)</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Capacidad (kVA) *
+                </label>
+                <select
+                  name="capacidad"
+                  value={formData.capacidad}
+                  onChange={handleInputChange}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
+                    errors.capacidad ? "border-red-500" : "border-gray-300"
+                  }`}
+                >
+                  <option value="">Seleccione capacidad</option>
+                  {capacities.map((cap) => (
+                    <option key={cap} value={cap}>
+                      {cap === "Otro" ? "Otro (especificar)" : `${cap} kVA`}
+                    </option>
+                  ))}
+                </select>
+                {errors.capacidad && <p className="text-red-500 text-sm mt-1">{errors.capacidad}</p>}
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Cantidad
+                </label>
+                <input
+                  type="number"
+                  name="cantidad"
+                  value={formData.cantidad}
+                  onChange={handleInputChange}
+                  min="1"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Voltaje Primario
+                </label>
+                <input
+                  type="text"
+                  name="voltajePrimario"
+                  value={formData.voltajePrimario}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  placeholder="Ej: 13.2 kV"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Voltaje Secundario
+                </label>
+                <input
+                  type="text"
+                  name="voltajeSecundario"
+                  value={formData.voltajeSecundario}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  placeholder="Ej: 120/240 V"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Detalles Adicionales */}
+          <div>
+            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#001689] text-white rounded-lg flex items-center justify-center text-sm font-bold">3</div>
+              Detalles Adicionales
+            </h2>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Ubicación del proyecto
+                </label>
+                <input
+                  type="text"
+                  name="ubicacion"
+                  value={formData.ubicacion}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  placeholder="Ciudad, provincia o dirección"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Descripción o requerimientos especiales
+                </label>
+                <textarea
+                  name="descripcion"
+                  value={formData.descripcion}
+                  onChange={handleInputChange}
+                  rows={4}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all resize-none"
+                  placeholder="Describa cualquier requerimiento especial, accesorios adicionales, o información relevante para su cotización..."
+                />
+              </div>
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="urgente"
+                  checked={formData.urgente}
+                  onChange={handleInputChange}
+                  className="w-5 h-5 rounded border-gray-300 text-[#FF5500] focus:ring-[#FF5500]"
+                />
+                <span className="text-gray-700">
+                  <span className="font-medium text-[#FF5500]">Urgente</span> - Necesito respuesta lo antes posible
+                </span>
+              </label>
+            </div>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full flex items-center justify-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] disabled:bg-gray-400 text-white px-8 py-4 rounded-xl font-semibold transition-colors text-lg"
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 size={24} className="animate-spin" />
+                Enviando...
+              </>
+            ) : (
+              <>
+                <Send size={24} />
+                Enviar Solicitud de Cotización
+              </>
+            )}
+          </button>
+        </form>
+      </div>
+
+      {/* Sidebar */}
+      <div className="space-y-6">
+        {/* Contact Card */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-40">
+          <h3 className="font-bold text-gray-900 mb-4">¿Prefiere contactarnos directamente?</h3>
+          
+          <div className="space-y-4">
+            <a
+              href={`tel:${contactInfo.phone}`}
+              className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+            >
+              <div className="w-10 h-10 bg-[#001689] rounded-lg flex items-center justify-center">
+                <Phone size={20} className="text-white" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Llámenos</p>
+                <p className="font-semibold text-gray-900">{contactInfo.phone}</p>
+              </div>
+            </a>
+            
+            <a
+              href={`https://wa.me/${contactInfo.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 p-4 bg-[#25D366]/10 rounded-xl hover:bg-[#25D366]/20 transition-colors"
+            >
+              <div className="w-10 h-10 bg-[#25D366] rounded-lg flex items-center justify-center">
+                <MessageCircle size={20} className="text-white" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">WhatsApp</p>
+                <p className="font-semibold text-[#25D366]">Chatea con nosotros</p>
+              </div>
+            </a>
+          </div>
+
+          {/* Benefits */}
+          <div className="mt-6 pt-6 border-t border-gray-100 space-y-3">
+            <div className="flex items-center gap-3 text-sm">
+              <Clock size={18} className="text-[#001689]" />
+              <span className="text-gray-600">Respuesta en menos de 24 horas</span>
+            </div>
+            <div className="flex items-center gap-3 text-sm">
+              <Zap size={18} className="text-[#001689]" />
+              <span className="text-gray-600">Cotización sin compromiso</span>
+            </div>
+            <div className="flex items-center gap-3 text-sm">
+              <Shield size={18} className="text-[#001689]" />
+              <span className="text-gray-600">Asesoría técnica incluida</span>
+            </div>
+          </div>
+
+          {/* Certifications */}
+          <div className="mt-6 pt-6 border-t border-gray-100">
+            <p className="text-sm text-gray-500 mb-3">Certificaciones</p>
+            <div className="flex gap-4">
+              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
+                <span className="text-xs font-bold text-gray-600">ISO 9001</span>
+              </div>
+              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
+                <span className="text-xs font-bold text-gray-600">CIDET</span>
+              </div>
+              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
+                <span className="text-xs font-bold text-gray-600">UL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function CotizacionesPage() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-12">
+        <div className="container-eminsa">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
+            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <ChevronRight size={14} />
+            <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
+            <ChevronRight size={14} />
+            <span className="text-white">Cotizaciones</span>
+          </nav>
+
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                <FileText size={24} />
+              </div>
+              <span className="text-[#00A3E0] font-semibold">Solicitar Cotización</span>
+            </div>
+            <h1 className="text-3xl lg:text-4xl font-bold mb-4">
+              Cotice su Transformador
+            </h1>
+            <p className="text-lg text-white/80">
+              Complete el formulario y reciba una cotización personalizada en menos de 24 horas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Form Section */}
+      <section className="py-12">
+        <div className="container-eminsa">
+          <Suspense fallback={
+            <div className="flex items-center justify-center py-20">
+              <Loader2 size={40} className="animate-spin text-[#001689]" />
+            </div>
+          }>
+            <CotizacionesContent />
+          </Suspense>
+        </div>
+      </section>
+    </div>
+  );
+}
