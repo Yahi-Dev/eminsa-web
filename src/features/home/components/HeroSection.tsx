@@ -64,7 +64,6 @@ export default function HeroSection() {
           playsInline
           poster="/images/video-poster.jpg"
         >
-          <source src="/images/web-banner-video.webm" type="video/webm" />
           <source src="/images/web-banner-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
