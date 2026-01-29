@@ -34,7 +34,7 @@ export default function Header() {
   const [language, setLanguage] = useState<"en" | "es">("es");
   const router = useRouter();
 
-  // Efecto para manejar el scroll - CORREGIDO: solo un useEffect
+  // Efecto para manejar el scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -47,7 +47,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Cargar idioma desde cookies/localStorage - CORREGIDO: usando useCallback
+  // Cargar idioma desde cookies/localStorage
   const getInitialLanguage = useCallback((): "en" | "es" => {
     if (typeof window === "undefined") return "es";
 
@@ -59,7 +59,7 @@ export default function Header() {
     return (cookieLang ?? (localStorage.getItem("language") as "en" | "es" | null) ?? "es");
   }, []);
 
-  // Efecto para inicializar el idioma - CORREGIDO
+  // Efecto para inicializar el idioma
   useEffect(() => {
     const initialLanguage = getInitialLanguage();
     // Solo actualizar si es diferente al estado actual
@@ -81,25 +81,6 @@ export default function Header() {
     const newLang = language === "en" ? "es" : "en";
     setLocale(newLang);
   }, [language, setLocale]);
-
-  // Determinar qué submenú mostrar basado en la ruta actual
-  const getActiveSubmenu = useCallback(() => {
-    if (pathname.startsWith("/mtn")) return "MTN";
-    if (pathname.startsWith("/etrys")) return "ETRYS";
-    if (pathname.startsWith("/eic")) return "EIC";
-    if (pathname.startsWith("/servicios")) return "Servicios";
-    return null;
-  }, [pathname]);
-
-  const activeSubmenu = getActiveSubmenu();
-
-  const toggleMobileSubmenu = useCallback((name: string) => {
-    if (mobileActiveSubmenu === name) {
-      setMobileActiveSubmenu(null);
-    } else {
-      setMobileActiveSubmenu(name);
-    }
-  }, [mobileActiveSubmenu]);
 
   const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
@@ -197,85 +178,30 @@ export default function Header() {
 
           {/* CTA Buttons - Right */}
           <div className="hidden lg:flex items-center gap-8">
-              <a
-                href={`https://wa.me/${contactInfo.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all duration-200"
-                aria-label="Contactar por WhatsApp"
-              >
-                <MessageCircle size={18} />
-                <span className="font-medium">WhatsApp</span>
-              </a>
-              <Link href="/cotizar" className="btn-primary">
-                Solicitar Cotización
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-              aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            <a
+              href={`https://wa.me/${contactInfo.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all duration-200"
+              aria-label="Contactar por WhatsApp"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+              <MessageCircle size={18} />
+              <span className="font-medium">WhatsApp</span>
+            </a>
+            <Link href="/cotizar" className="btn-primary">
+              Solicitar Cotización
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-
-        {/* Submenu Bar (Desktop) - Aparece automáticamente cuando estás en la sección */}
-        <AnimatePresence>
-          {activeSubmenu && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-              className="hidden lg:block border-t border-gray-100 bg-gray-50/50"
-            >
-              {mainNavigation.map((item) => {
-                if (item.name === activeSubmenu && item.submenu) {
-                  return (
-                    <div key={item.name} className="container-eminsa py-3">
-                      <div className="relative flex items-center gap-3 flex-wrap">
-                        {/* Animated underline */}
-                        <motion.div
-                          layout
-                          layoutId="submenu-underline"
-                          className="absolute bottom-0 h-1 bg-gradient-to-r from-[#001689] to-[#00A3E0] rounded-full"
-                          transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                        />
-                        
-                        {item.submenu.map((subItem) => (
-                          <Link
-                            key={subItem.name}
-                            href={subItem.href}
-                            className={cn(
-                              "relative px-4 py-2 rounded-lg text-sm font-medium transition-colors group",
-                              pathname === subItem.href
-                                ? "text-[#001689]"
-                                : "text-[#76777A] hover:text-[#001689]"
-                            )}
-                          >
-                            {subItem.name}
-                            {/* Static underline for active state positioning */}
-                            {pathname === subItem.href && (
-                              <motion.div
-                                layoutId="submenu-underline"
-                                className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#001689] to-[#00A3E0] rounded-full"
-                                transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                              />
-                            )}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                }
-                return null;
-              })}
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Mobile Menu */}
         <AnimatePresence>
@@ -291,53 +217,13 @@ export default function Header() {
                 <nav className="space-y-1">
                   {mainNavigation.map((item) => (
                     <div key={item.name}>
-                      {item.submenu ? (
-                        <>
-                          <button
-                            onClick={() => toggleMobileSubmenu(item.name)}
-                            className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
-                            aria-expanded={mobileActiveSubmenu === item.name}
-                          >
-                            <span className="font-medium">{item.name}</span>
-                            <ChevronDown
-                              size={16}
-                              className={cn(
-                                "transition-transform duration-200",
-                                mobileActiveSubmenu === item.name && "rotate-180"
-                              )}
-                            />
-                          </button>
-                          <AnimatePresence>
-                            {mobileActiveSubmenu === item.name && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="pl-4 space-y-1 overflow-hidden"
-                              >
-                                {item.submenu.map((subItem) => (
-                                  <Link
-                                    key={subItem.name}
-                                    href={subItem.href}
-                                    onClick={closeMobileMenu}
-                                    className="block px-4 py-2 rounded-lg text-sm text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
-                                  >
-                                    {subItem.name}
-                                  </Link>
-                                ))}
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </>
-                      ) : (
-                        <Link
-                          href={item.href}
-                          onClick={closeMobileMenu}
-                          className="flex items-center px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
-                        >
-                          <span className="font-medium">{item.name}</span>
-                        </Link>
-                      )}
+                      <Link
+                        href={item.href}
+                        onClick={closeMobileMenu}
+                        className="flex items-center px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
+                      >
+                        <span className="font-medium">{item.name}</span>
+                      </Link>
                     </div>
                   ))}
                 </nav>

@@ -10,7 +10,7 @@ interface PublicLayoutProps {
 export default function PublicLayout({ children }: PublicLayoutProps) {
   return (
     <div className="min-h-screen bg-white">
-      <main className="pt-16">{children}</main>
+      <main className="">{children}</main>
     </div>
   );
 }
