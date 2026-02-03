@@ -67,7 +67,7 @@ export default function MTNPage() {
               {/* Title */}
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
-                  <span className="text-[#00A3E0]">MTN</span>
+                  <span className="text-[#00A3E0]">Manufactura Transformadores Nuevos</span>
                 </h1>
                 <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
                   {mtnInfo.heroDescription}
@@ -122,15 +122,7 @@ export default function MTNPage() {
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16 pt-16 border-t border-white/10">
-            {mtnInfo.stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <p className="text-3xl lg:text-4xl font-bold text-[#00A3E0]">{stat.value}</p>
-                <p className="text-sm text-white/70 mt-1">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+
         </div>
       </section>
 

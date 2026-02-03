@@ -1,0 +1,397 @@
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  ChevronRight,
+  Home,
+  MapPin,
+  Phone,
+  Mail,
+  MessageCircle,
+  Clock,
+  Activity,
+  Flame,
+  Droplets,
+  Move,
+  Settings,
+  Truck,
+  Package,
+  Database,
+} from "lucide-react";
+import { repairCenter } from "@/config/etrys-data";
+import { contactInfo } from "@/config/navigation";
+
+const equipmentIcons: { [key: string]: React.ElementType } = {
+  activity: Activity,
+  flame: Flame,
+  droplets: Droplets,
+  move: Move,
+  settings: Settings,
+  truck: Truck,
+  package: Package,
+  database: Database,
+};
+
+export default function CentroReparacionPage() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-16 lg:py-20">
+        <div className="container-eminsa">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-white/70 text-sm mb-6 flex-wrap">
+            <Link href="/" className="hover:text-white transition-colors">
+              <Home size={16} />
+            </Link>
+            <ChevronRight size={14} />
+            <Link href="/etrys" className="hover:text-white transition-colors">
+              ETRYS
+            </Link>
+            <ChevronRight size={14} />
+            <Link href="/etrys/servicios" className="hover:text-white transition-colors">
+              Servicios
+            </Link>
+            <ChevronRight size={14} />
+            <span className="text-white">Centro de Reparación</span>
+          </nav>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+            >
+              <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
+                Nuestras Instalaciones
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                {repairCenter.name}
+              </h1>
+              <p className="text-xl text-white/90 mb-6">
+                {repairCenter.description}
+              </p>
+              <div className="flex items-center gap-3 mb-6">
+                <MapPin size={20} />
+                <span>{repairCenter.location}</span>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/etrys/cotizaciones?servicio=reparacion"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors"
+                >
+                  Solicitar Servicio
+                  <ArrowRight size={20} />
+                </Link>
+                <a
+                  href={`tel:${contactInfo.phone}`}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-colors"
+                >
+                  <Phone size={20} />
+                  Llamar Ahora
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Main Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/images/etrys/centro/exterior.jpg"
+                  alt="Centro de Reparación ETRYS"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="py-16 lg:py-24">
+        <div className="container-eminsa">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Galería de Instalaciones
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Conozca nuestras modernas instalaciones equipadas con tecnología 
+              de última generación.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {repairCenter.images.map((img, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`relative rounded-xl overflow-hidden shadow-lg group ${
+                  index === 0 ? "md:col-span-2 md:row-span-2 aspect-square md:aspect-auto" : "aspect-square"
+                }`}
+              >
+                <Image
+                  src={img}
+                  alt={`Instalación ${index + 1}`}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Capabilities */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="container-eminsa">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Capacidades de Servicio
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Nuestro centro está preparado para atender una amplia variedad de 
+              transformadores y equipos eléctricos.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {repairCenter.capabilities.map((cap, index) => (
+              <motion.div
+                key={cap.type}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-gradient-to-br from-[#00A3E0] to-[#0077A8] text-white rounded-2xl p-6 shadow-xl"
+              >
+                <h3 className="text-xl font-bold mb-2">{cap.type}</h3>
+                <p className="text-white/80 mb-4">{cap.description}</p>
+                {cap.capacity && (
+                  <div className="inline-block px-4 py-2 bg-white/20 rounded-lg">
+                    <span className="font-semibold">{cap.capacity}</span>
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Equipment */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container-eminsa">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Equipamiento Especializado
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Contamos con equipos de última generación para garantizar resultados 
+              de la más alta calidad.
+            </p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {repairCenter.equipment.map((equip, index) => {
+              const Icon = equipmentIcons[equip.icon] || Settings;
+              return (
+                <motion.div
+                  key={equip.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all group"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-[#00A3E0]/10 flex items-center justify-center mb-4 group-hover:bg-[#00A3E0] transition-colors">
+                    <Icon size={28} className="text-[#00A3E0] group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="font-bold text-gray-900 mb-2">{equip.name}</h3>
+                  <p className="text-sm text-gray-600 mb-3">{equip.description}</p>
+                  {equip.specs && (
+                    <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-sm font-medium rounded-lg">
+                      {equip.specs}
+                    </span>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact & Location */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="container-eminsa">
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Map */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Ubicación
+              </h2>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg bg-gray-200">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.1234567890!2d-69.8765432!3d18.4765432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDI4JzM1LjYiTiA2OcKwNTInMzUuNiJX!5e0!3m2!1sen!2sdo!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0"
+                />
+              </div>
+              <div className="mt-4 flex items-start gap-3">
+                <MapPin size={20} className="text-[#00A3E0] shrink-0 mt-1" />
+                <div>
+                  <p className="font-semibold text-gray-900">{repairCenter.location}</p>
+                  <p className="text-gray-600">República Dominicana</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Información de Contacto
+              </h2>
+              
+              <div className="bg-gray-50 rounded-2xl p-6 mb-6">
+                <h3 className="font-semibold text-gray-900 mb-4">
+                  Horario de Atención
+                </h3>
+                <div className="space-y-2 text-gray-600">
+                  <div className="flex items-center gap-3">
+                    <Clock size={18} className="text-[#00A3E0]" />
+                    <span>Lunes a Viernes: 8:00 AM - 5:00 PM</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Clock size={18} className="text-[#00A3E0]" />
+                    <span>Sábados: 8:00 AM - 12:00 PM</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <a
+                  href={`tel:${contactInfo.phone}`}
+                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-[#00A3E0]/10 flex items-center justify-center">
+                    <Phone size={24} className="text-[#00A3E0]" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-500 block">Teléfono</span>
+                    <span className="font-semibold text-gray-900">{contactInfo.phone}</span>
+                  </div>
+                </a>
+
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-[#00A3E0]/10 flex items-center justify-center">
+                    <Mail size={24} className="text-[#00A3E0]" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-500 block">Email</span>
+                    <span className="font-semibold text-gray-900">{contactInfo.email}</span>
+                  </div>
+                </a>
+
+                <a
+                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 bg-[#25D366]/10 rounded-xl hover:bg-[#25D366]/20 transition-colors"
+                >
+                  <div className="w-12 h-12 rounded-lg bg-[#25D366]/20 flex items-center justify-center">
+                    <MessageCircle size={24} className="text-[#25D366]" />
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-500 block">WhatsApp</span>
+                    <span className="font-semibold text-gray-900">Chatea con nosotros</span>
+                  </div>
+                </a>
+              </div>
+
+              <Link
+                href="/etrys/cotizaciones?servicio=reparacion"
+                className="flex items-center justify-center gap-2 w-full mt-6 px-6 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors"
+              >
+                Solicitar Servicio
+                <ArrowRight size={20} />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white">
+        <div className="container-eminsa text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              ¿Listo para reparar su transformador?
+            </h2>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+              Visite nuestro centro o solicite una cotización en línea.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/etrys/cotizaciones?servicio=reparacion"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+              >
+                Solicitar Cotización
+                <ArrowRight size={20} />
+              </Link>
+              <Link
+                href="/etrys/servicios"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-colors"
+              >
+                Ver Todos los Servicios
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+}
