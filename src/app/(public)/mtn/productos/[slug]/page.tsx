@@ -266,28 +266,7 @@ export default async function ProductoPage({ params }: Props) {
       </section>
 
       {/* Capacities */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-eminsa">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">
-            Capacidades Disponibles (kVA)
-          </h2>
 
-          <div className="flex flex-wrap gap-3">
-            {product.capacities.map((cap) => (
-              <span
-                key={cap}
-                className="bg-white border border-gray-200 text-gray-700 font-medium px-4 py-2 rounded-lg hover:border-[#001689] hover:text-[#001689] transition-colors cursor-default"
-              >
-                {cap} kVA
-              </span>
-            ))}
-          </div>
-
-          <p className="text-sm text-gray-500 mt-4">
-            * Otras capacidades disponibles bajo pedido. Contáctenos para especificaciones personalizadas.
-          </p>
-        </div>
-      </section>
 
       {/* Resources */}
       <section className="py-16 bg-white">
