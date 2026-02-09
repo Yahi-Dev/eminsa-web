@@ -90,9 +90,9 @@ export default function Header() {
   return (
     <>
       {/* Top Bar */}
-      <div className="hidden lg:block bg-[#001689] text-white text-sm">
+      <div className="hidden lg:block bg-[#001689] text-white text-xs xl:text-sm">
         <div className="container-eminsa flex items-center justify-between py-2">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 xl:gap-6">
             <a
               href={`tel:${contactInfo.phone}`}
               className="flex items-center gap-2 hover:text-[#00A3E0] transition-colors"
@@ -109,7 +109,7 @@ export default function Header() {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-white/70">Transformadores • Servicios • Suplidores Eléctricos</span>
+            <span className="text-white/70 hidden xl:inline">Transformadores • Servicios • Suplidores Eléctricos</span>
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-1 hover:text-[#00A3E0] transition-colors"
@@ -130,7 +130,7 @@ export default function Header() {
           isScrolled && "shadow-lg"
         )}
       >
-        <div className="flex items-center h-25 px-6 lg:px-8 w-full gap-6">
+        <div className="flex items-center h-20 xl:h-25 px-4 lg:px-6 xl:px-8 w-full gap-3 lg:gap-4 xl:gap-6">
           {/* Logo - Left */}
           <Link href="/" className="shrink-0">
             <Image
@@ -138,21 +138,22 @@ export default function Header() {
               alt="Grupo EMINSA"
               width={196}
               height={196}
+              className="w-auto h-16 lg:h-18 xl:h-20"
               priority
             />
           </Link>
 
           {/* Desktop Navigation - Center */}
-          <nav className="hidden lg:flex items-center gap-6 flex-grow justify-center">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-3 2xl:gap-6 grow justify-center">
             {mainNavigation.map((item) => {
               const tooltip = divisionsTooltips[item.name as keyof typeof divisionsTooltips];
-              
+
               return tooltip ? (
                 <Tooltip key={item.name} content={tooltip.label} color={tooltip.color}>
                   <Link
                     href={item.href}
                     className={cn(
-                      "px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base uppercase",
+                      "px-2 xl:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm xl:text-base uppercase whitespace-nowrap",
                       "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
                       pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
                     )}
@@ -165,7 +166,7 @@ export default function Header() {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "px-4 py-2 rounded-lg font-medium transition-all duration-200 text-base uppercase",
+                    "px-2 xl:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm xl:text-base uppercase whitespace-nowrap",
                     "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
                     pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
                   )}
@@ -177,18 +178,18 @@ export default function Header() {
           </nav>
 
           {/* CTA Buttons - Right */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-6 shrink-0">
             <a
               href={`https://wa.me/${contactInfo.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all duration-200"
+              className="flex items-center gap-2 px-3 xl:px-4 py-2 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all duration-200"
               aria-label="Contactar por WhatsApp"
             >
               <MessageCircle size={18} />
-              <span className="font-medium">WhatsApp</span>
+              <span className="font-medium hidden xl:inline">WhatsApp</span>
             </a>
-            <Link href="/cotizar" className="btn-primary">
+            <Link href="/cotizar" className="btn-primary text-sm xl:text-base whitespace-nowrap">
               Solicitar Cotización
             </Link>
           </div>
