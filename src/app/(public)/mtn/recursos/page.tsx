@@ -30,11 +30,11 @@ const resourceIcons: Record<string, React.ElementType> = {
 
 // Colores para cada recurso
 const resourceColors: Record<string, string> = {
-  articles: "from-[#001689] to-[#00A3E0]",
-  datasheets: "from-[#00A3E0] to-[#00B140]",
-  warranty: "from-[#00B140] to-[#001689]",
-  manual: "from-[#FF5500] to-[#001689]",
-  calculator: "from-[#001689] to-[#FF5500]",
+  articles: "from-[#001689] to-[#000E53]",
+  datasheets: "from-[#001689] to-[#000E53]",
+  warranty: "from-[#001689] to-[#000E53]",
+  manual: "from-[#001689] to-[#000E53]",
+  calculator: "from-[#001689] to-[#000E53]",
 };
 
 export default function RecursosPage() {

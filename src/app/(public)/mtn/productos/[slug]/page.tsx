@@ -63,9 +63,9 @@ export default async function ProductoPage({ params }: Props) {
 
   // Colores según el tipo de producto
   const productColors: Record<string, { gradient: string; accent: string }> = {
-    "tipo-poste": { gradient: "from-[#001689] to-[#00A3E0]", accent: "#001689" },
-    "pad-mounted": { gradient: "from-[#00A3E0] to-[#00B140]", accent: "#00A3E0" },
-    "subestacion": { gradient: "from-[#00B140] to-[#001689]", accent: "#00B140" },
+    "tipo-poste": { gradient: "from-[#001689] to-[#000E53]", accent: "#001689" },
+    "pad-mounted": { gradient: "from-[#001689] to-[#000E53]", accent: "#00A3E0" },
+    "subestacion": { gradient: "from-[#001689] to-[#000E53]", accent: "#00B140" },
   };
 
   const colors = productColors[slug] || productColors["tipo-poste"];

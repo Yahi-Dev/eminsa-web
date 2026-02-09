@@ -41,7 +41,7 @@ export default function EtrysProductoDetailPage({
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-12 lg:py-16">
+      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-12 lg:py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6 flex-wrap">
