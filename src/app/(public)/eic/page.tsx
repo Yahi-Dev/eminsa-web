@@ -171,7 +171,7 @@ export default function EICPage() {
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-xl">
-                      {countryFlags[brand.country] || "🌐"}
+                      {countryFlags[brand.country] || <Globe className="w-5 h-5" />}
                     </span>
                     <span className="text-xs text-gray-500">
                       {brand.country}
@@ -238,9 +238,8 @@ export default function EICPage() {
                   className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all"
                 >
                   <div
-                    className={`grid md:grid-cols-2 gap-0 ${
-                      isEven ? "" : "md:[direction:rtl]"
-                    }`}
+                    className={`grid md:grid-cols-2 gap-0 ${isEven ? "" : "md:[direction:rtl]"
+                      }`}
                   >
                     {/* Color Block with Icon */}
                     <div
