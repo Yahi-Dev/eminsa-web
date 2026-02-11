@@ -29,9 +29,9 @@ export const mainNavigation = [
     ]
   },
   {
-    name: "ETRYS",
+    name: "RST",
     href: "/etrys",
-    description: "Transformadores Remanufacturados",
+    description: "Reparación y Servicio de Transformadores",
     color: "#00A3E0",
     submenu: [
       { name: "Reparación", href: "/etrys/reparacion" },
@@ -116,9 +116,9 @@ export const divisions = [
   },
   {
     id: "etrys",
-    name: "ETRYS",
-    fullName: "Transformadores Remanufacturados",
-    tagline: "Transformadores Remanufacturados",
+    name: "RST",
+    fullName: "Reparación y Servicio de Transformadores",
+    tagline: "Reparación y Servicio de Transformadores",
     description: "Especialistas en reparación y remanufactura de transformadores. Devolvemos la potencia y confiabilidad a sus equipos.",
     href: "/etrys",
     color: "#00A3E0",

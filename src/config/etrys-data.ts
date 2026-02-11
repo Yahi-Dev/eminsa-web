@@ -144,12 +144,12 @@ export interface NavItem {
 // ============================================================================
 
 export const etrysInfo: EtrysInfo = {
-  name: "ETRYS",
-  fullName: "ETRYS by EMINSA",
-  tagline: "REPARACION Y REACONDICIONAMIENTO DE TRANSFORMADORES",
-  slogan: "Reparación y Reacondicionamiento de Transformadores",
+  name: "RST",
+  fullName: "RST by EMINSA",
+  tagline: "REPARACION Y SERVICIO DE TRANSFORMADORES",
+  slogan: "Reparación y Servicio de Transformadores",
   description:
-    "GRUPO EMINSA cuenta con más de 50 años de trayectoria en el sector de transformadores eléctricos de distribución y equipos relacionados. A través de nuestra división ETRYS, nos especializamos en la reparación y remanufactura de transformadores de distribución e industriales, ofreciendo soluciones que devuelven la potencia y la confiabilidad a sus equipos.",
+    "GRUPO EMINSA cuenta con más de 50 años de trayectoria en el sector de transformadores eléctricos de distribución y equipos relacionados. A través de nuestra división RST, nos especializamos en la reparación y remanufactura de transformadores de distribución e industriales, ofreciendo soluciones que devuelven la potencia y la confiabilidad a sus equipos.",
   color: "#00A3E0",
   colorName: "Pantone 2995C",
   stats: [
@@ -225,9 +225,9 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
     name: "Transformadores Tipo Poste Remanufacturados",
     shortName: "Tipo Poste",
     description:
-      "Los transformadores tipo poste ETRYS by EMINSA ofrecen una solución confiable y económica para sistemas de distribución aérea.",
+      "Los transformadores tipo poste RST by EMINSA ofrecen una solución confiable y económica para sistemas de distribución aérea.",
     fullDescription: [
-      "Los transformadores tipo poste ETRYS by EMINSA ofrecen una solución confiable y económica para sistemas de distribución aérea. Cada unidad ha sido restaurada siguiendo procesos rigurosos que aseguran el cumplimiento de las especificaciones originales de diseño, manteniendo la conformidad con las normas ANSI y IEEE.",
+      "Los transformadores tipo poste RST by EMINSA ofrecen una solución confiable y económica para sistemas de distribución aérea. Cada unidad ha sido restaurada siguiendo procesos rigurosos que aseguran el cumplimiento de las especificaciones originales de diseño, manteniendo la conformidad con las normas ANSI y IEEE.",
       "Gracias a una restauración integral —que incluye inspección, reemplazo de componentes críticos, pruebas eléctricas y reacondicionamiento estructural— estos equipos conservan un desempeño seguro, eficiente y estable, a un costo significativamente menor que los transformadores nuevos.",
       "Son ideales para aplicaciones residenciales, comerciales e industriales que requieren una alternativa confiable, durable y optimizada en costo.",
     ],
@@ -272,9 +272,9 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
     name: "Transformadores Tipo Pad-Mounted Remanufacturados",
     shortName: "Pad-Mounted",
     description:
-      "Los transformadores tipo pad-mounted ETRYS by EMINSA son una opción segura y altamente eficiente para sistemas de distribución subterránea.",
+      "Los transformadores tipo pad-mounted RST by EMINSA son una opción segura y altamente eficiente para sistemas de distribución subterránea.",
     fullDescription: [
-      "Los transformadores tipo pad-mounted ETRYS by EMINSA son una opción segura y altamente eficiente para sistemas de distribución subterránea. Estas unidades restauradas bajo estándares estrictos garantizan una operación confiable y cumplen con normas ANSI/IEEE, manteniendo los niveles de seguridad y desempeño originales.",
+      "Los transformadores tipo pad-mounted RST by EMINSA son una opción segura y altamente eficiente para sistemas de distribución subterránea. Estas unidades restauradas bajo estándares estrictos garantizan una operación confiable y cumplen con normas ANSI/IEEE, manteniendo los niveles de seguridad y desempeño originales.",
       "Su diseño cerrado y hermético protege contra condiciones ambientales y contactos accidentales, haciéndolos adecuados para urbanizaciones, hoteles, centros comerciales, industrias y zonas públicas.",
       "Cada equipo es sometido a procesos de restauración que aseguran bajas pérdidas, excelente regulación y larga vida útil, preservando la integridad del diseño original a un costo más accesible.",
     ],
@@ -319,9 +319,9 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
     name: "Transformadores Tipo Subestación Remanufacturados",
     shortName: "Subestación",
     description:
-      "Los transformadores tipo subestación ETRYS by EMINSA son unidades restauradas que proporcionan alto rendimiento para aplicaciones de mayor exigencia.",
+      "Los transformadores tipo subestación RST by EMINSA son unidades restauradas que proporcionan alto rendimiento para aplicaciones de mayor exigencia.",
     fullDescription: [
-      "Los transformadores tipo subestación ETRYS by EMINSA son unidades restauradas que proporcionan alto rendimiento, seguridad y confiabilidad para aplicaciones de mayor exigencia en sistemas industriales, comerciales, de distribución y generación.",
+      "Los transformadores tipo subestación RST by EMINSA son unidades restauradas que proporcionan alto rendimiento, seguridad y confiabilidad para aplicaciones de mayor exigencia en sistemas industriales, comerciales, de distribución y generación.",
       "Cumplen plenamente con las normas ANSI y IEEE, garantizando que cada equipo mantenga sus características eléctricas y mecánicas originales.",
       "Estos transformadores admiten configuraciones personalizadas, como cambiadores de derivación, gabinetes especiales, boquillas de alta capacidad y otros accesorios bajo requerimiento.",
     ],
@@ -446,7 +446,7 @@ export const repairServices: RepairService[] = [
 // ============================================================================
 
 export const repairCenter: RepairCenter = {
-  name: "Centro de Reparación ETRYS",
+  name: "Centro de Reparación RST",
   location: "Santo Domingo, República Dominicana",
   description: "En nuestro taller en Santo Domingo podemos atender transformadores tipo pedestal, secos de media tensión y subestaciones de hasta 10 toneladas.",
   capabilities: [
@@ -503,7 +503,7 @@ export const testsPerformed: TestPerformed[] = [
 
 export const rentalInfo: RentalInfo = {
   title: "Alquiler de Transformadores",
-  description: "Obtenga energía a corto plazo con una unidad de alquiler con ETRYS.",
+  description: "Obtenga energía a corto plazo con una unidad de alquiler con RST.",
   phone: "809-560-7773",
   benefits: [
     { id: "disponibilidad", title: "Disponibilidad Inmediata", description: "Equipos listos para entrega rápida.", icon: "clock" },
@@ -536,7 +536,7 @@ export const etrysResources: EtrysResource[] = [
 
 export const aboutEtrys: AboutEtrys = {
   title: "¿Quiénes Somos?",
-  description: "En ETRYS creemos que la verdadera excelencia no está solo en lo que hacemos, sino en cómo lo hacemos. Por más de 50 años hemos trabajado con un enfoque especializado en transformadores.",
+  description: "En RST creemos que la verdadera excelencia no está solo en lo que hacemos, sino en cómo lo hacemos. Por más de 50 años hemos trabajado con un enfoque especializado en transformadores.",
   mission: "Brindar soluciones confiables y una atención que supere expectativas, actuando con transparencia y dedicación en cada paso.",
   vision: "Ser el referente líder en el Caribe para la reparación y remanufactura de transformadores.",
   position: "En la República Dominicana y el Caribe, nos hemos ganado el lugar de especialistas gracias a una pasión que se refleja en cada transformador que pasa por nuestras manos.",

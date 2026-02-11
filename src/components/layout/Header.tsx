@@ -22,7 +22,7 @@ import { Tooltip } from "@/components/ui/Tooltip";
 // Tooltips para las divisiones
 const divisionsTooltips: { [key: string]: { label: string; color: string } } = {
   MTN: { label: "Manufactura Transformadores Nuevos", color: "#001689" },
-  ETRYS: { label: "Transformadores Remanufacturados", color: "#00A3E0" },
+  RST: { label: "Reparación y Servicio de Transformadores", color: "#00A3E0" },
   EIC: { label: "Eminsa International Corporation", color: "#00B140" },
 };
 
