@@ -98,11 +98,11 @@ const etrysNavItems: NavItem[] = [
     href: "/etrys/cotizaciones",
     icon: FileText,
   },
-  {
-    name: "Nosotros",
-    href: "/etrys/nosotros",
-    icon: Users,
-  },
+  // {
+  //   name: "Nosotros",
+  //   href: "/etrys/nosotros",
+  //   icon: Users,
+  // },
 ];
 
 export default function EtrysLayout({
