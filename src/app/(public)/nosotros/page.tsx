@@ -109,10 +109,29 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Mission & Vision */}
-      <section className="py-16 lg:py-24">
+      {/* Mission, Vision & Values */}
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+              Nuestra Filosofía
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Misión, Visión y Valores
+            </h2>
+            <p className="text-gray-600 text-lg">
+              Los principios y propósitos que guían nuestro camino hacia la excelencia.
+            </p>
+          </motion.div>
+
+          {/* Mission & Vision */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Mission */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -123,9 +142,9 @@ export default function NosotrosPage() {
               <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#001689]/10 to-[#00A3E0]/10 flex items-center justify-center mb-6">
                 <Target size={32} className="text-[#001689]" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Nuestra Misión
-              </h2>
+              </h3>
               <p className="text-gray-600 text-lg">
                 {aboutEminsa.mission}
               </p>
@@ -142,19 +161,46 @@ export default function NosotrosPage() {
               <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00B140]/10 to-[#FF5500]/10 flex items-center justify-center mb-6">
                 <Eye size={32} className="text-[#00B140]" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Nuestra Visión
-              </h2>
+              </h3>
               <p className="text-gray-600 text-lg">
                 {aboutEminsa.vision}
               </p>
             </motion.div>
           </div>
+
+          {/* Values */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {aboutEminsa.values.map((value, index) => {
+              const Icon = valueIcons[value.icon] || Award;
+              return (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all text-center group"
+                >
+                  <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-[#001689]/20 to-[#00A3E0]/20 flex items-center justify-center mb-4 group-hover:from-[#001689] group-hover:to-[#00A3E0] transition-all">
+                    <Icon size={32} className="text-[#001689] group-hover:text-white transition-colors" />
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">
+                    {value.title}
+                  </h4>
+                  <p className="text-gray-600">
+                    {value.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* Our Position */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -228,55 +274,6 @@ export default function NosotrosPage() {
                 ))}
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values */}
-      <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="container-eminsa">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-12"
-          >
-            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
-              Lo Que Nos Define
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Nuestros Valores
-            </h2>
-            <p className="text-gray-600 text-lg">
-              Los principios que guían cada una de nuestras acciones y nos
-              permiten ofrecer un servicio de excelencia.
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {aboutEminsa.values.map((value, index) => {
-              const Icon = valueIcons[value.icon] || Award;
-              return (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all text-center group"
-                >
-                  <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-[#001689]/20 to-[#00A3E0]/20 flex items-center justify-center mb-4 group-hover:from-[#001689] group-hover:to-[#00A3E0] transition-all">
-                    <Icon size={32} className="text-[#001689] group-hover:text-white transition-colors" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {value.description}
-                  </p>
-                </motion.div>
-              );
-            })}
           </div>
         </div>
       </section>
