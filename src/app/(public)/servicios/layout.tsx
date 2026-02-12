@@ -120,7 +120,7 @@ const serviciosNavItems: NavItem[] = [
     icon: Users,
   },
   {
-    name: "Cotización",
+    name: "Cotizaciones",
     href: "/servicios/cotizacion",
     icon: FileText,
   },
@@ -230,19 +230,6 @@ export default function ServiciosLayout({
                                 transition={{ duration: 0.15 }}
                                 className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
                               >
-                                <Link
-                                  href="/servicios"
-                                  onClick={() => setOpenSubmenu(null)}
-                                  className={cn(
-                                    "block px-4 py-2 text-sm transition-colors hover:bg-gray-50 border-b border-gray-100",
-                                    pathname === "/servicios"
-                                      ? "bg-[#FF5500]/10 text-[#FF5500] font-medium"
-                                      : "text-gray-600"
-                                  )}
-                                >
-                                  Ver todos
-                                </Link>
-
                                 {item.submenu?.map((subItem) => (
                                   <Link
                                     key={subItem.name}

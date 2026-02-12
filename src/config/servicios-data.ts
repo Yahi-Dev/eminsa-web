@@ -710,15 +710,6 @@ export const recursosServicios: RecursoServicio[] = [
     tipo: "formulario",
   },
   {
-    id: "r4",
-    nombre: "Solicitud de Empleo",
-    descripcion:
-      "¿Desea formar parte de nuestro equipo técnico? Envíe su solicitud aquí.",
-    icon: "briefcase",
-    href: "/contacto",
-    tipo: "formulario",
-  },
-  {
     id: "r5",
     nombre: "Términos y Condiciones",
     descripcion:
