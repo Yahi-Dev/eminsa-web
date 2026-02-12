@@ -79,19 +79,16 @@ export const mainNavigation = [
     ]
   },
   {
-    name: "Proyectos",
-    href: "/proyectos",
-    description: "Nuestros proyectos realizados",
-  },
-  {
-    name: "Noticias",
-    href: "/noticias",
-    description: "Últimas noticias y novedades",
-  },
-  {
-    name: "Contacto",
-    href: "/contacto",
-    description: "Contáctenos",
+    name: "Compañía",
+    href: "/nosotros",
+    description: "Conozca Grupo EMINSA",
+    color: "#1a1a1a",
+    submenu: [
+      { name: "Sobre Nosotros", href: "/nosotros" },
+      { name: "Proyectos", href: "/proyectos" },
+      { name: "Noticias", href: "/noticias" },
+      { name: "Contacto", href: "/contacto" },
+    ]
   },
 ];
 

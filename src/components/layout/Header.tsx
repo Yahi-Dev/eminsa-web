@@ -19,6 +19,13 @@ import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Tooltip } from "@/components/ui/Tooltip";
 
+// Tipos
+interface SubMenuItem {
+  name: string;
+  href: string;
+  description?: string;
+}
+
 // Tooltips para las divisiones
 const divisionsTooltips: { [key: string]: { label: string; color: string } } = {
   MTN: { label: "Manufactura Transformadores Nuevos", color: "#001689" },
@@ -30,6 +37,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState<string | null>(null);
+  const [desktopActiveSubmenu, setDesktopActiveSubmenu] = useState<string | null>(null);
   const pathname = usePathname();
   const [language, setLanguage] = useState<"en" | "es">("es");
   const router = useRouter();
@@ -147,7 +155,67 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-1 xl:gap-3 2xl:gap-6 grow justify-center">
             {mainNavigation.map((item) => {
               const tooltip = divisionsTooltips[item.name as keyof typeof divisionsTooltips];
+              // Solo mostrar dropdown para "Compañía"
+              const hasSubmenu = item.name === "Compañía" && item.submenu && item.submenu.length > 0;
 
+              if (hasSubmenu) {
+                // Item con submenú - mostrar dropdown
+                return (
+                  <div
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={() => setDesktopActiveSubmenu(item.name)}
+                    onMouseLeave={() => setDesktopActiveSubmenu(null)}
+                  >
+                    <button
+                      className={cn(
+                        "flex items-center gap-1 px-2 xl:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm xl:text-base uppercase whitespace-nowrap",
+                        "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
+                        pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
+                      )}
+                    >
+                      {item.name}
+                      <ChevronDown
+                        size={14}
+                        className={cn(
+                          "transition-transform duration-200",
+                          desktopActiveSubmenu === item.name && "rotate-180"
+                        )}
+                      />
+                    </button>
+
+                    {/* Dropdown */}
+                    <AnimatePresence>
+                      {desktopActiveSubmenu === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                        >
+                          {item.submenu?.map((subItem: SubMenuItem) => (
+                            <Link
+                              key={subItem.name}
+                              href={subItem.href}
+                              className={cn(
+                                "block px-4 py-2 text-sm transition-colors hover:bg-gray-50",
+                                pathname === subItem.href || pathname.startsWith(subItem.href + "/")
+                                  ? "text-[#001689] bg-gray-50 font-medium"
+                                  : "text-gray-600"
+                              )}
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+
+              // Item sin submenú - enlace normal
               return tooltip ? (
                 <Tooltip key={item.name} content={tooltip.label} color={tooltip.color}>
                   <Link
@@ -216,17 +284,74 @@ export default function Header() {
             >
               <div className="container-eminsa py-4">
                 <nav className="space-y-1">
-                  {mainNavigation.map((item) => (
-                    <div key={item.name}>
-                      <Link
-                        href={item.href}
-                        onClick={closeMobileMenu}
-                        className="flex items-center px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
-                      >
-                        <span className="font-medium">{item.name}</span>
-                      </Link>
-                    </div>
-                  ))}
+                  {mainNavigation.map((item) => {
+                    // Solo mostrar accordion para "Compañía"
+                    const hasSubmenu = item.name === "Compañía" && item.submenu && item.submenu.length > 0;
+
+                    if (hasSubmenu) {
+                      return (
+                        <div key={item.name}>
+                          {/* Botón para toggle del submenú */}
+                          <button
+                            onClick={() => setMobileActiveSubmenu(
+                              mobileActiveSubmenu === item.name ? null : item.name
+                            )}
+                            className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
+                          >
+                            <span className="font-medium">{item.name}</span>
+                            <ChevronDown
+                              size={16}
+                              className={cn(
+                                "transition-transform duration-200",
+                                mobileActiveSubmenu === item.name && "rotate-180"
+                              )}
+                            />
+                          </button>
+
+                          {/* Submenú accordion */}
+                          <AnimatePresence>
+                            {mobileActiveSubmenu === item.name && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="overflow-hidden space-y-1 mt-1"
+                              >
+                                {item.submenu?.map((subItem) => (
+                                  <Link
+                                    key={subItem.name}
+                                    href={subItem.href}
+                                    onClick={closeMobileMenu}
+                                    className={cn(
+                                      "block px-8 py-2 rounded-lg text-sm transition-colors",
+                                      pathname === subItem.href || pathname.startsWith(subItem.href + "/")
+                                        ? "text-[#001689] bg-gray-50 font-medium"
+                                        : "text-gray-600 hover:bg-gray-50"
+                                    )}
+                                  >
+                                    {subItem.name}
+                                  </Link>
+                                ))}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div key={item.name}>
+                        <Link
+                          href={item.href}
+                          onClick={closeMobileMenu}
+                          className="flex items-center px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
+                        >
+                          <span className="font-medium">{item.name}</span>
+                        </Link>
+                      </div>
+                    );
+                  })}
                 </nav>
 
                 <div className="mt-6 space-y-3">
