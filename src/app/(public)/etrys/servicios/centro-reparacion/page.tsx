@@ -199,7 +199,7 @@ export default function CentroReparacionPage() {
       </section>
 
       {/* Equipment */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      {/* <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-eminsa">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -243,7 +243,7 @@ export default function CentroReparacionPage() {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact & Location */}
       <section className="py-16 lg:py-24 bg-white">

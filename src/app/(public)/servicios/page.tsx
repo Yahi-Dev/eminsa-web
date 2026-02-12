@@ -22,12 +22,20 @@ import {
   Star,
   Calendar,
   Building2,
+  Activity,
+  Flame,
+  Droplets,
+  Move,
+  Database,
+  Package,
 } from "lucide-react";
 import { services, contactInfo } from "@/config/navigation";
 import {
   serviciosInfo,
   proyectosServicios,
   testimoniales,
+  equipamientoEspecializado,
+  serviciosPorTipo,
 } from "@/config/servicios-data";
 
 const iconMap: { [key: string]: React.ElementType } = {
@@ -44,6 +52,17 @@ const procesoIcons: { [key: string]: React.ElementType } = {
   search: Search,
   wrench: Wrench,
   "check-circle": CheckCircle2,
+};
+
+const equipmentIcons: { [key: string]: React.ElementType } = {
+  activity: Activity,
+  flame: Flame,
+  droplets: Droplets,
+  move: Move,
+  settings: Settings,
+  truck: Truck,
+  package: Package,
+  database: Database,
 };
 
 export default function ServiciosPage() {
@@ -172,64 +191,168 @@ export default function ServiciosPage() {
             </p>
           </motion.div>
 
-          {/* Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const IconComponent = iconMap[service.icon] || ShieldCheck;
+          {/* Servicios en Campo */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#FF5500] to-[#CC4400] rounded-xl flex items-center justify-center">
+                <MapPin size={24} className="text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-[#001689]">
+                  Servicios en Campo
+                </h3>
+                <p className="text-[#76777A] text-sm">
+                  Atención directa en sitio para sus equipos eléctricos
+                </p>
+              </div>
+            </div>
 
-              return (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Link
-                    href={service.url || `/servicios/${service.id}`}
-                    className="group block h-full"
-                  >
-                    <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#FF5500]/20 transition-all duration-300 hover:-translate-y-1">
-                      {/* Icon */}
-                      <div className="w-16 h-16 bg-gradient-to-br from-[#FF5500]/10 to-[#FF5500]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#FF5500] group-hover:to-[#CC4400] transition-all duration-300">
-                        <IconComponent className="w-8 h-8 text-[#FF5500] group-hover:text-white transition-colors duration-300" />
-                      </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services
+                .filter((s) => serviciosPorTipo.campo.includes(s.id))
+                .map((service, index) => {
+                  const IconComponent = iconMap[service.icon] || ShieldCheck;
 
-                      {/* Content */}
-                      <h3 className="text-xl font-bold text-[#001689] mb-3 group-hover:text-[#FF5500] transition-colors">
-                        {service.name}
-                      </h3>
-                      <p className="text-[#76777A] text-sm leading-relaxed mb-6">
-                        {service.description}
-                      </p>
-
-                      {/* Benefits */}
-                      <div className="space-y-2">
-                        {service.benefits.slice(0, 3).map((benefit, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center gap-2 text-sm text-[#76777A]"
-                          >
-                            <div className="w-1.5 h-1.5 bg-[#FF5500] rounded-full flex-shrink-0" />
-                            {benefit}
+                  return (
+                    <motion.div
+                      key={service.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Link
+                        href={service.url || `/servicios/${service.id}`}
+                        className="group block h-full"
+                      >
+                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#FF5500]/20 transition-all duration-300 hover:-translate-y-1">
+                          {/* Icon */}
+                          <div className="w-16 h-16 bg-gradient-to-br from-[#FF5500]/10 to-[#FF5500]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#FF5500] group-hover:to-[#CC4400] transition-all duration-300">
+                            <IconComponent className="w-8 h-8 text-[#FF5500] group-hover:text-white transition-colors duration-300" />
                           </div>
-                        ))}
-                      </div>
 
-                      {/* Hover Arrow */}
-                      <div className="mt-6 flex items-center gap-2 text-[#FF5500] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        Ver más detalles
-                        <ArrowRight
-                          size={16}
-                          className="group-hover:translate-x-1 transition-transform"
-                        />
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
+                          {/* Content */}
+                          <h3 className="text-xl font-bold text-[#001689] mb-3 group-hover:text-[#FF5500] transition-colors">
+                            {service.name}
+                          </h3>
+                          <p className="text-[#76777A] text-sm leading-relaxed mb-6">
+                            {service.description}
+                          </p>
+
+                          {/* Benefits */}
+                          <div className="space-y-2">
+                            {service.benefits.slice(0, 3).map((benefit, i) => (
+                              <div
+                                key={i}
+                                className="flex items-center gap-2 text-sm text-[#76777A]"
+                              >
+                                <div className="w-1.5 h-1.5 bg-[#FF5500] rounded-full flex-shrink-0" />
+                                {benefit}
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Hover Arrow */}
+                          <div className="mt-6 flex items-center gap-2 text-[#FF5500] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Ver más detalles
+                            <ArrowRight
+                              size={16}
+                              className="group-hover:translate-x-1 transition-transform"
+                            />
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+            </div>
+          </motion.div>
+
+          {/* Servicios en Taller */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#001689] to-[#000E53] rounded-xl flex items-center justify-center">
+                <Settings size={24} className="text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-[#001689]">
+                  Servicios en Taller
+                </h3>
+                <p className="text-[#76777A] text-sm">
+                  Servicios especializados en nuestras instalaciones
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {services
+                .filter((s) => serviciosPorTipo.taller.includes(s.id))
+                .map((service, index) => {
+                  const IconComponent = iconMap[service.icon] || ShieldCheck;
+
+                  return (
+                    <motion.div
+                      key={service.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Link
+                        href={service.url || `/servicios/${service.id}`}
+                        className="group block h-full"
+                      >
+                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#001689]/20 transition-all duration-300 hover:-translate-y-1">
+                          {/* Icon */}
+                          <div className="w-16 h-16 bg-gradient-to-br from-[#001689]/10 to-[#001689]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#001689] group-hover:to-[#000E53] transition-all duration-300">
+                            <IconComponent className="w-8 h-8 text-[#001689] group-hover:text-white transition-colors duration-300" />
+                          </div>
+
+                          {/* Content */}
+                          <h3 className="text-xl font-bold text-[#001689] mb-3 group-hover:text-[#001689] transition-colors">
+                            {service.name}
+                          </h3>
+                          <p className="text-[#76777A] text-sm leading-relaxed mb-6">
+                            {service.description}
+                          </p>
+
+                          {/* Benefits */}
+                          <div className="space-y-2">
+                            {service.benefits.slice(0, 3).map((benefit, i) => (
+                              <div
+                                key={i}
+                                className="flex items-center gap-2 text-sm text-[#76777A]"
+                              >
+                                <div className="w-1.5 h-1.5 bg-[#001689] rounded-full flex-shrink-0" />
+                                {benefit}
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Hover Arrow */}
+                          <div className="mt-6 flex items-center gap-2 text-[#001689] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            Ver más detalles
+                            <ArrowRight
+                              size={16}
+                              className="group-hover:translate-x-1 transition-transform"
+                            />
+                          </div>
+                        </div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -301,7 +424,88 @@ export default function ServiciosPage() {
       </section>
 
       {/* ================================================================ */}
-      {/* 4. EMERGENCY CTA */}
+      {/* 4. EQUIPAMIENTO ESPECIALIZADO */}
+      {/* ================================================================ */}
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="container-eminsa">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <span className="inline-block px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-sm font-medium rounded-full mb-4">
+              Tecnología de Punta
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
+              Equipamiento Especializado
+            </h2>
+            <p className="text-[#76777A] text-lg">
+              Contamos con equipos de última generación y un centro de servicio
+              completamente equipado para garantizar resultados de la más alta
+              calidad en cada intervención.
+            </p>
+          </motion.div>
+
+          {/* Equipment Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {equipamientoEspecializado.map((equip, index) => {
+              const Icon = equipmentIcons[equip.icon] || Settings;
+              return (
+                <motion.div
+                  key={equip.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#FF5500]/20 transition-all duration-300 group"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#FF5500]/10 to-[#FF5500]/5 flex items-center justify-center mb-4 group-hover:from-[#FF5500] group-hover:to-[#CC4400] transition-all">
+                    <Icon
+                      size={28}
+                      className="text-[#FF5500] group-hover:text-white transition-colors"
+                    />
+                  </div>
+                  <h3 className="font-bold text-[#001689] mb-2 group-hover:text-[#FF5500] transition-colors">
+                    {equip.name}
+                  </h3>
+                  <p className="text-sm text-[#76777A] mb-3 leading-relaxed">
+                    {equip.description}
+                  </p>
+                  {equip.specs && (
+                    <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-medium rounded-lg">
+                      {equip.specs}
+                    </span>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <p className="text-[#76777A] mb-4">
+              ¿Desea conocer más sobre nuestras instalaciones y capacidades?
+            </p>
+            <Link
+              href="/servicios/cotizacion"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
+            >
+              Agendar Visita
+              <ArrowRight size={20} />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* 5. EMERGENCY CTA */}
       {/* ================================================================ */}
       <section className="py-16 bg-gradient-to-r from-[#001689] to-[#000E53]">
         <div className="container-eminsa">
@@ -348,7 +552,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* ================================================================ */}
-      {/* 5. PROYECTOS PREVIEW */}
+      {/* 6. PROYECTOS PREVIEW */}
       {/* ================================================================ */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
@@ -453,7 +657,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* ================================================================ */}
-      {/* 6. TESTIMONIALES PREVIEW */}
+      {/* 7. TESTIMONIALES PREVIEW */}
       {/* ================================================================ */}
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-eminsa">
@@ -558,7 +762,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* ================================================================ */}
-      {/* 7. WHY CHOOSE US STATS */}
+      {/* 8. WHY CHOOSE US STATS */}
       {/* ================================================================ */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#001689] text-white">
         <div className="container-eminsa">
@@ -643,7 +847,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* ================================================================ */}
-      {/* 8. FINAL CTA */}
+      {/* 9. FINAL CTA */}
       {/* ================================================================ */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">

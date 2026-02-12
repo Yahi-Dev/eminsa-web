@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   ChevronRight,
@@ -22,6 +23,9 @@ import {
   Wrench,
   Globe,
   Settings,
+  X,
+  Calendar,
+  TrendingUp,
 } from "lucide-react";
 import {
   aboutEminsa,
@@ -48,6 +52,19 @@ const divisionIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function NosotrosPage() {
+  const [selectedMilestone, setSelectedMilestone] = useState<typeof eminsaMilestones[0] | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const openMilestoneDialog = (milestone: typeof eminsaMilestones[0]) => {
+    setSelectedMilestone(milestone);
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+    setTimeout(() => setSelectedMilestone(null), 300);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -433,11 +450,23 @@ export default function NosotrosPage() {
                   }`}
                 >
                   <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 inline-block">
-                      <span className="text-2xl font-bold text-amber-400">{milestone.decade}</span>
-                      <p className="text-white/90 font-medium">{milestone.event}</p>
-                      <p className="text-white/70 text-sm mt-1">{milestone.description}</p>
-                    </div>
+                    <button
+                      onClick={() => openMilestoneDialog(milestone)}
+                      className="bg-white/10 backdrop-blur-sm rounded-xl p-4 inline-block hover:bg-white/20 transition-all cursor-pointer group"
+                    >
+                      <span className="text-2xl font-bold text-amber-400 group-hover:text-amber-300 transition-colors">
+                        {milestone.decade}
+                      </span>
+                      <p className="text-white/90 font-medium group-hover:text-white transition-colors">
+                        {milestone.event}
+                      </p>
+                      <p className="text-white/70 text-sm mt-1 group-hover:text-white/80 transition-colors">
+                        {milestone.description}
+                      </p>
+                      <p className="text-amber-400/80 text-xs mt-2 group-hover:text-amber-300 transition-colors">
+                        Click para ver más detalles →
+                      </p>
+                    </button>
                   </div>
                   <div className="w-4 h-4 rounded-full bg-amber-400 relative z-10 hidden md:block" />
                   <div className="flex-1 hidden md:block" />
@@ -492,6 +521,131 @@ export default function NosotrosPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Milestone Detail Dialog */}
+      <AnimatePresence>
+        {isDialogOpen && selectedMilestone && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={closeDialog}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            />
+
+            {/* Dialog */}
+            <div className="fixed inset-0 z-50 overflow-y-auto">
+              <div className="flex min-h-full items-center justify-center p-4">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  transition={{ duration: 0.2 }}
+                  className="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Header */}
+                  <div className="bg-gradient-to-br from-[#001689] to-[#00A3E0] text-white p-6 lg:p-8">
+                    <button
+                      onClick={closeDialog}
+                      className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/20 transition-colors"
+                      aria-label="Cerrar"
+                    >
+                      <X size={24} />
+                    </button>
+
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-amber-400 flex items-center justify-center">
+                        <Calendar size={24} className="text-gray-900" />
+                      </div>
+                      <div>
+                        <span className="text-3xl font-bold text-amber-400">
+                          {selectedMilestone.decade}
+                        </span>
+                        <p className="text-sm text-white/70">{selectedMilestone.year}</p>
+                      </div>
+                    </div>
+
+                    <h3 className="text-2xl lg:text-3xl font-bold mb-2">
+                      {selectedMilestone.event}
+                    </h3>
+                    <p className="text-white/90 text-lg">
+                      {selectedMilestone.description}
+                    </p>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 lg:p-8 overflow-y-auto max-h-[calc(90vh-250px)]">
+                    {/* Details */}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="w-8 h-8 rounded-lg bg-[#001689]/10 flex items-center justify-center">
+                          <CheckCircle2 size={20} className="text-[#001689]" />
+                        </div>
+                        <h4 className="text-xl font-bold text-gray-900">
+                          Detalles del Período
+                        </h4>
+                      </div>
+                      <ul className="space-y-3">
+                        {selectedMilestone.details?.map((detail, index) => (
+                          <motion.li
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            className="flex items-start gap-3 text-gray-600"
+                          >
+                            <CheckCircle2 size={18} className="text-[#00B140] shrink-0 mt-0.5" />
+                            <span>{detail}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Achievements */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="w-8 h-8 rounded-lg bg-amber-400/10 flex items-center justify-center">
+                          <TrendingUp size={20} className="text-amber-500" />
+                        </div>
+                        <h4 className="text-xl font-bold text-gray-900">
+                          Logros Destacados
+                        </h4>
+                      </div>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        {selectedMilestone.achievements?.map((achievement, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 + index * 0.1 }}
+                            className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-200"
+                          >
+                            <Award size={20} className="text-amber-500 mb-2" />
+                            <p className="text-gray-800 font-medium">{achievement}</p>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Footer */}
+                  <div className="border-t border-gray-200 p-6 bg-gray-50">
+                    <button
+                      onClick={closeDialog}
+                      className="w-full px-6 py-3 bg-[#001689] hover:bg-[#000E53] text-white font-semibold rounded-xl transition-colors"
+                    >
+                      Cerrar
+                    </button>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

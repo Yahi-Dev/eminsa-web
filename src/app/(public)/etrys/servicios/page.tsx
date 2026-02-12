@@ -273,7 +273,7 @@ export default function EtrysServiciosPage() {
       </section>
 
       {/* Equipment Grid */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      {/* <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-eminsa">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -311,7 +311,7 @@ export default function EtrysServiciosPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Warranty Section */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 text-white">

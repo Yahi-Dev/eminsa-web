@@ -334,6 +334,96 @@ export const serviciosDetalle: ServicioDetalle[] = [
 ];
 
 // ================================================================
+// EQUIPAMIENTO ESPECIALIZADO
+// ================================================================
+export interface EquipamientoEspecializado {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  specs?: string;
+}
+
+export const equipamientoEspecializado: EquipamientoEspecializado[] = [
+  {
+    id: "lab",
+    name: "Laboratorio de Pruebas Eléctricas",
+    description: "Laboratorio equipado conforme a normas ANSI C.57 para garantizar la calidad de cada servicio",
+    icon: "activity",
+    specs: "Certificación ANSI C.57"
+  },
+  {
+    id: "horno",
+    name: "Horno de Secado",
+    description: "Horno industrial para secado de núcleos y bobinas de transformadores",
+    icon: "flame",
+    specs: "Alta capacidad"
+  },
+  {
+    id: "deshidratadores",
+    name: "Deshidratadores de Aceite",
+    description: "Sistema de deshidratación de aceite al vacío para purificación",
+    icon: "droplets",
+    specs: "1,600 GPH"
+  },
+  {
+    id: "grua",
+    name: "Puente Grúa",
+    description: "Puente grúa para manejo seguro de transformadores pesados en taller",
+    icon: "move",
+    specs: "10 toneladas"
+  },
+  {
+    id: "taller",
+    name: "Taller de Fabricación",
+    description: "Taller completo con cabina de pintura profesional para acabados de alta calidad",
+    icon: "settings",
+    specs: "Cabina de pintura"
+  },
+  {
+    id: "montacargas",
+    name: "Montacargas Industrial",
+    description: "Montacargas de alta capacidad para manejo de equipos pesados",
+    icon: "truck",
+    specs: "15,000 lb"
+  },
+  {
+    id: "almacen",
+    name: "Almacén de Componentes",
+    description: "Inventario completo de componentes y repuestos para disponibilidad inmediata",
+    icon: "package",
+    specs: "Stock permanente"
+  },
+  {
+    id: "tanque",
+    name: "Tanque de Almacenamiento",
+    description: "Tanque de almacenamiento de fluido dieléctrico de gran capacidad",
+    icon: "database",
+    specs: "12,000 galones"
+  },
+];
+
+// ================================================================
+// CLASIFICACIÓN DE SERVICIOS
+// ================================================================
+export const serviciosPorTipo = {
+  campo: [
+    "preventivo",
+    "correctivo",
+    "integral",
+    "revisiones",
+    "asesoria",
+    "especiales",
+    "emergencias",
+    "ingenieria",
+  ],
+  taller: [
+    "laboratorio",
+    "alquiler",
+  ],
+};
+
+// ================================================================
 // PROYECTOS DE SERVICIOS (Ejemplos)
 // ================================================================
 export interface ProyectoServicio {

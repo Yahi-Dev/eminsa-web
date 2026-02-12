@@ -67,7 +67,7 @@ const etrysNavItems: NavItem[] = [
     ],
   },
   {
-    name: "Servicios",
+    name: "Servicios en Planta",
     href: "/etrys/servicios",
     icon: Wrench,
     submenu: [
