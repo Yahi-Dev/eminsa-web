@@ -195,7 +195,7 @@ export default function AdminProyectosPage() {
                             {proyecto.publicado ? <Eye size={18} /> : <EyeOff size={18} />}
                           </button>
                           <Link
-                            href={`/admin/proyectos/${proyecto.id}`}
+                            href={`/admin/proyectos/${proyecto.id}/edit`}
                             className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-[#00A3E0]"
                             title="Editar"
                           >

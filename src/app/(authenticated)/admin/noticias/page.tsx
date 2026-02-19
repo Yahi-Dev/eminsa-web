@@ -182,7 +182,7 @@ export default function AdminNoticiasPage() {
                             {noticia.publicado ? <Eye size={18} /> : <EyeOff size={18} />}
                           </button>
                           <Link
-                            href={`/admin/noticias/${noticia.id}`}
+                            href={`/admin/noticias/${noticia.id}/edit`}
                             className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-[#001689]"
                             title="Editar"
                           >
