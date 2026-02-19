@@ -51,12 +51,17 @@ function CotizacionesForm() {
   useEffect(() => {
     const servicio = searchParams.get("servicio");
     const producto = searchParams.get("producto");
-    if (servicio) {
-      setFormData((prev) => ({ ...prev, tipoServicio: servicio }));
-    }
-    if (producto) {
-      setFormData((prev) => ({ ...prev, tipoProducto: producto }));
-    }
+    const nombre = searchParams.get("nombre");
+    const email = searchParams.get("email");
+    const telefono = searchParams.get("telefono");
+    setFormData((prev) => ({
+      ...prev,
+      ...(servicio && { tipoServicio: servicio }),
+      ...(producto && { tipoProducto: producto }),
+      ...(nombre && { nombre }),
+      ...(email && { email }),
+      ...(telefono && { telefono }),
+    }));
   }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {

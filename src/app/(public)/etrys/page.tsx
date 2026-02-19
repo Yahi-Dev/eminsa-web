@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -37,6 +38,18 @@ const advantageIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function EtrysPage() {
+  const router = useRouter();
+  const [quoteForm, setQuoteForm] = useState({ nombre: "", email: "", telefono: "" });
+
+  const handleQuoteSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams();
+    if (quoteForm.nombre) params.set("nombre", quoteForm.nombre);
+    if (quoteForm.email) params.set("email", quoteForm.email);
+    if (quoteForm.telefono) params.set("telefono", quoteForm.telefono);
+    router.push(`/etrys/cotizaciones?${params.toString()}`);
+  };
+
   // Referencia para el video
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -379,29 +392,35 @@ export default function EtrysPage() {
                 Complete el formulario y le responderemos en menos de 30 minutos
                 durante horario laboral.
               </p>
-              <div className="space-y-4">
+              <form onSubmit={handleQuoteSubmit} className="space-y-4">
                 <input
                   type="text"
                   placeholder="Nombre completo"
+                  value={quoteForm.nombre}
+                  onChange={(e) => setQuoteForm((p) => ({ ...p, nombre: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
                 />
                 <input
                   type="email"
                   placeholder="Correo electrónico"
+                  value={quoteForm.email}
+                  onChange={(e) => setQuoteForm((p) => ({ ...p, email: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
                 />
                 <input
                   type="tel"
                   placeholder="Teléfono"
+                  value={quoteForm.telefono}
+                  onChange={(e) => setQuoteForm((p) => ({ ...p, telefono: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
                 />
-                <Link
-                  href="/etrys/cotizaciones"
+                <button
+                  type="submit"
                   className="block w-full px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors text-center"
                 >
                   Continuar Cotización
-                </Link>
-              </div>
+                </button>
+              </form>
               <p className="text-xs text-gray-500 mt-4 flex items-center gap-2">
                 <Clock size={14} />
                 Respuesta promedio: 30 minutos en horario laboral
