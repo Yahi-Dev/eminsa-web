@@ -69,8 +69,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email: foundUser.email,
         rol: foundUser.rol,
       };
+      const token = `eminsa_mock_${foundUser.id}_${Date.now()}`;
       setUser(userData);
       localStorage.setItem("eminsa_user", JSON.stringify(userData));
+      localStorage.setItem("eminsa_token", token);
+      // Guardar en cookie para que el middleware lo pueda leer
+      document.cookie = `eminsa_token=${token}; path=/; max-age=86400; SameSite=Lax`;
       return true;
     }
 
@@ -80,6 +84,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = () => {
     setUser(null);
     localStorage.removeItem("eminsa_user");
+    localStorage.removeItem("eminsa_token");
+    document.cookie = "eminsa_token=; path=/; max-age=0";
   };
 
   return (

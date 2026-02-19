@@ -4,10 +4,11 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  Newspaper, 
-  FolderKanban, 
-  LogOut, 
+import {
+  Newspaper,
+  FolderKanban,
+  Download,
+  LogOut,
   User,
   Plus,
   Edit,
@@ -20,7 +21,7 @@ import { useContent } from "@/context/content-context";
 export default function AdminPage() {
   const router = useRouter();
   const { user, isAuthenticated, isLoading, logout } = useAuth();
-  const { noticias, proyectos } = useContent();
+  const { noticias, proyectos, recursos } = useContent();
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -43,6 +44,7 @@ export default function AdminPage() {
 
   const noticiasPublicadas = noticias.filter(n => n.publicado).length;
   const proyectosPublicados = proyectos.filter(p => p.publicado).length;
+  const recursosActivos = recursos.filter(r => r.activo).length;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -92,7 +94,7 @@ export default function AdminPage() {
             ¡Bienvenido, {user?.nombre?.split(" ")[0]}!
           </h1>
           <p className="text-[#76777A]">
-            Gestione el contenido de noticias y proyectos del sitio web.
+            Gestione el contenido de noticias, proyectos y recursos descargables del sitio web.
           </p>
         </motion.div>
 
@@ -101,7 +103,7 @@ export default function AdminPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
         >
           <div className="bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-4">
@@ -144,6 +146,27 @@ export default function AdminPage() {
             <p className="text-3xl font-bold text-[#001689]">{proyectosPublicados}</p>
             <p className="text-[#76777A] text-sm">Proyectos Publicados</p>
           </div>
+
+          <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                <Download className="w-6 h-6 text-orange-600" />
+              </div>
+              <TrendingUp className="w-5 h-5 text-green-500" />
+            </div>
+            <p className="text-3xl font-bold text-[#001689]">{recursos.length}</p>
+            <p className="text-[#76777A] text-sm">Recursos Totales</p>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                <Eye className="w-6 h-6 text-green-600" />
+              </div>
+            </div>
+            <p className="text-3xl font-bold text-[#001689]">{recursosActivos}</p>
+            <p className="text-[#76777A] text-sm">Recursos Activos</p>
+          </div>
         </motion.div>
 
         {/* Quick Actions */}
@@ -151,7 +174,7 @@ export default function AdminPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="grid md:grid-cols-2 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {/* Noticias Card */}
           <div className="bg-white rounded-xl shadow-sm overflow-hidden">
@@ -231,6 +254,37 @@ export default function AdminPage() {
               >
                 <Eye size={20} />
                 <span className="font-medium">Ver Página Pública</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Recursos Card */}
+          <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+            <div className="p-6 border-b">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
+                  <Download className="w-6 h-6 text-orange-600" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-[#001689]">Recursos</h2>
+                  <p className="text-[#76777A] text-sm">Gestionar recursos descargables</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-6 space-y-3">
+              <Link
+                href="/admin/recursos/nueva"
+                className="flex items-center gap-3 p-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+              >
+                <Plus size={20} />
+                <span className="font-medium">Crear Nuevo Recurso</span>
+              </Link>
+              <Link
+                href="/admin/recursos"
+                className="flex items-center gap-3 p-4 bg-gray-100 text-[#001689] rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                <Edit size={20} />
+                <span className="font-medium">Ver y Editar Recursos</span>
               </Link>
             </div>
           </div>
