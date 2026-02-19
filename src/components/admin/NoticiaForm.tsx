@@ -4,9 +4,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Save, Eye } from "lucide-react";
+import { ArrowLeft, Save } from "lucide-react";
 import { useContent } from "@/context/content-context";
 import { categoriasNoticias, Noticia } from "@/data/content";
+import ImageUploadField from "@/components/admin/ImageUploadField";
 
 interface NoticiaFormProps {
   noticia?: Noticia;
@@ -174,22 +175,12 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
             </div>
 
             {/* Imagen */}
-            <div>
-              <label className="block text-sm font-medium text-[#76777A] mb-2">
-                URL de Imagen
-              </label>
-              <input
-                type="url"
-                name="imagen"
-                value={formData.imagen}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
-                placeholder="https://ejemplo.com/imagen.jpg"
-              />
-              <p className="text-xs text-[#76777A] mt-1">
-                Ingrese la URL de la imagen o déjelo vacío para usar una imagen por defecto.
-              </p>
-            </div>
+            <ImageUploadField
+              label="Imagen"
+              value={formData.imagen}
+              onChange={(val) => setFormData(prev => ({ ...prev, imagen: val }))}
+              accentColor="#001689"
+            />
 
             {/* Resumen */}
             <div>

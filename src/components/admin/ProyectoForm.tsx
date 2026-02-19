@@ -8,6 +8,7 @@ import { ArrowLeft, Save } from "lucide-react";
 import { useContent } from "@/context/content-context";
 import { divisions } from "@/config/navigation";
 import { tiposProyecto, Proyecto } from "@/data/content";
+import ImageUploadField from "@/components/admin/ImageUploadField";
 
 interface ProyectoFormProps {
   proyecto?: Proyecto;
@@ -228,17 +229,12 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-[#76777A] mb-2">URL de Imagen Principal</label>
-              <input
-                type="url"
-                name="imagenPrincipal"
-                value={formData.imagenPrincipal}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00A3E0]/30 focus:border-[#00A3E0]"
-                placeholder="https://ejemplo.com/imagen.jpg"
-              />
-            </div>
+            <ImageUploadField
+              label="Imagen Principal"
+              value={formData.imagenPrincipal}
+              onChange={(val) => setFormData(prev => ({ ...prev, imagenPrincipal: val }))}
+              accentColor="#00A3E0"
+            />
 
             <div>
               <label className="block text-sm font-medium text-[#76777A] mb-2">Descripción Breve *</label>
