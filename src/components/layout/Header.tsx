@@ -15,6 +15,7 @@ import {
   MessageCircle
 } from "lucide-react";
 import { mainNavigation, contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Tooltip } from "@/components/ui/Tooltip";
@@ -248,7 +249,7 @@ export default function Header() {
           {/* CTA Buttons - Right */}
           <div className="hidden lg:flex items-center gap-3 xl:gap-6 shrink-0">
             <a
-              href={`https://wa.me/${contactInfo.whatsapp}`}
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-3 xl:px-4 py-2 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all duration-200"
@@ -356,7 +357,7 @@ export default function Header() {
 
                 <div className="mt-6 space-y-3">
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all"

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 interface NavItem {
   name: string;
@@ -386,7 +387,7 @@ export default function EICLayout({
                 {/* Mobile CTAs */}
                 <div className="pt-4 mt-4 border-t border-gray-100 space-y-3">
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all font-medium"

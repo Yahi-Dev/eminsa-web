@@ -30,6 +30,7 @@ import {
   eicBrands,
 } from "@/config/eic-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import React from "react";
 
 const categoryIcons: { [key: string]: React.ElementType } = {
@@ -124,7 +125,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
@@ -449,7 +450,7 @@ function ProductPage({ slug }: { slug: string }) {
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
@@ -582,7 +583,7 @@ function ProductPage({ slug }: { slug: string }) {
                     {contactInfo.phone}
                   </a>
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-medium rounded-xl transition-colors"

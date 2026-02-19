@@ -21,6 +21,7 @@ import {
   FileText
 } from "lucide-react";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 // Datos de transformadores disponibles para alquiler
 const transformadoresDisponibles = [
@@ -223,7 +224,7 @@ export default function AlquilerTransformadoresPage() {
                 <ArrowRight size={18} />
               </Link>
               <a 
-                href={`https://wa.me/${contactInfo.whatsapp}`}
+                href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#20BD5A] transition-all"

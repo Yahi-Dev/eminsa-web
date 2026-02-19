@@ -20,6 +20,7 @@ import {
   Globe,
 } from "lucide-react";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import {
   eicProductCategories,
   eicProducts,
@@ -618,7 +619,7 @@ function CotizacionesForm() {
                     </div>
                   </a>
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"

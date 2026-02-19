@@ -16,6 +16,7 @@ import {
   Settings,
 } from "lucide-react";
 import { services, contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 export default function CotizacionServiciosPage() {
   const [formData, setFormData] = useState({
@@ -197,7 +198,7 @@ export default function CotizacionServiciosPage() {
                   {contactInfo.phone}
                 </a>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 text-[#25D366] hover:text-[#20BD5A] font-medium transition-colors"
@@ -580,7 +581,7 @@ export default function CotizacionServiciosPage() {
                     {contactInfo.phone}
                   </a>
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-[#25D366] hover:text-[#20BD5A] transition-colors"

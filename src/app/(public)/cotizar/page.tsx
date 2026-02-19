@@ -14,6 +14,7 @@ import {
   FileText
 } from "lucide-react";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 const tiposServicio = [
   { value: "mtn-transformador", label: "Transformador Nuevo (MTN)", category: "MTN" },
@@ -272,7 +273,7 @@ export default function CotizarPage() {
                     <Phone size={20} />
                     <span className="font-semibold">{contactInfo.phone}</span>
                   </a>
-                  <a href={`https://wa.me/${contactInfo.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#20BD5A] transition-all">
+                  <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#20BD5A] transition-all">
                     <MessageCircle size={18} />
                     WhatsApp
                   </a>

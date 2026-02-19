@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { aboutEtrys, etrysInfo } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 const valueIcons: { [key: string]: React.ElementType } = {
   award: Award,
@@ -408,7 +409,7 @@ export default function EtrysNosotrosPage() {
                 Llamar Ahora
               </a>
               <a
-                href={`https://wa.me/${contactInfo.whatsapp}`}
+                href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"

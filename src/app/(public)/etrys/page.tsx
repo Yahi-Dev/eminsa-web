@@ -26,6 +26,7 @@ import {
   rentalInfo,
 } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import TransformadorRestauracionSection from "@/features/home/components/TransformadorRestauracionSection";
 
 const advantageIcons: { [key: string]: React.ElementType } = {
@@ -100,7 +101,7 @@ export default function EtrysPage() {
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-all"

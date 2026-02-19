@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
-import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -68,7 +68,7 @@ export default function WhatsAppButton() {
 
           {/* Button */}
           <a
-            href={`https://wa.me/${contactInfo.whatsapp}?text=Hola,%20me%20gustaría%20obtener%20información%20sobre%20sus%20servicios.`}
+            href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex items-center justify-center w-16 h-16 bg-[#25D366] text-white rounded-full shadow-lg hover:bg-[#20BD5A] transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-[#25D366]/30"

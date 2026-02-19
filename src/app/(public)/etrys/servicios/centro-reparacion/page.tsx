@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { repairCenter } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 const equipmentIcons: { [key: string]: React.ElementType } = {
   activity: Activity,
@@ -333,7 +334,7 @@ export default function CentroReparacionPage() {
                 </a>
 
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-[#25D366]/10 rounded-xl hover:bg-[#25D366]/20 transition-colors"

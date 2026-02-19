@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { eicInfo, eicProductCategories, eicBrands } from "@/config/eic-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 const categoryIcons: { [key: string]: React.ElementType } = {
   zap: Zap,
@@ -408,7 +409,7 @@ export default function EICPage() {
                   <ArrowRight size={22} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold rounded-xl transition-all text-lg"

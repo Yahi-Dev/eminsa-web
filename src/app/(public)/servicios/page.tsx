@@ -30,6 +30,7 @@ import {
   Package,
 } from "lucide-react";
 import { services, contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import {
   serviciosInfo,
   proyectosServicios,
@@ -125,7 +126,7 @@ export default function ServiciosPage() {
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-all"
@@ -538,7 +539,7 @@ export default function ServiciosPage() {
                 {contactInfo.phone}
               </a>
               <a
-                href={`https://wa.me/${contactInfo.whatsapp}`}
+                href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#20BD5A] transition-all"
@@ -882,7 +883,7 @@ export default function ServiciosPage() {
                   <ArrowRight size={22} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold rounded-xl transition-all text-lg"

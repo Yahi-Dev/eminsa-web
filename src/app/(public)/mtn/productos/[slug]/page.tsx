@@ -20,6 +20,7 @@ import {
   transformerProducts 
 } from "@/config/mtn-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -137,7 +138,7 @@ export default async function ProductoPage({ params }: Props) {
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}?text=Hola, me interesa información sobre ${product.name}`}
+                  href={getWhatsAppUrl(`Hola, me interesa información sobre ${product.name}`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-semibold transition-colors border border-white/30"
