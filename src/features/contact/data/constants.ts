@@ -13,7 +13,8 @@ export const CATEGORIAS_PRODUCTOS = [
   'Paneles',
   'Seccionadores',
   'Materiales Eléctricos',
-  'Reguladores de Voltaje'
+  'Reguladores de Voltaje',
+  'Otros productos o servicios'
 ] as const;
 
 /**
@@ -25,7 +26,8 @@ export const CATEGORIAS_SERVICIOS = [
   'Instalaciones y montajes eléctricos',
   'Diseño de instalaciones eléctricas',
   'Análisis de aceite Dieléctrico',
-  'Alquiler de transformadores'
+  'Alquiler de transformadores',
+  'Otros productos o servicios'
 ] as const;
 
 /**
@@ -105,6 +107,7 @@ export const INITIAL_FORM_STATE: ContactFormState = {
   mensaje: '',
   identificacion: '',
   direccion: '',
+  otrosDescripcion: '',
   transformadores: [{
     potenciaKVA: '',
     fase: '',

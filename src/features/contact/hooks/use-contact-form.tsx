@@ -104,9 +104,10 @@ export function useContactForm(): UseContactFormReturn {
   // ============================================================================
   
   const transformadoresCategory = t('form.categories.products.transformadores');
-  const showTransformadorFields = 
-    formData.tipoConsulta === 'productos' && 
+  const showTransformadorFields =
+    formData.tipoConsulta === 'productos' &&
     formData.categoria === transformadoresCategory;
+  const showOtrosField = formData.categoria === 'Otros productos o servicios';
 
   // ============================================================================
   // Handlers para transformadores
@@ -371,8 +372,13 @@ export function useContactForm(): UseContactFormReturn {
         return;
       }
 
+      // Si "Otros" está seleccionado, usar otrosDescripcion como mensaje
+      const formDataForSubmission = showOtrosField
+        ? { ...formData, mensaje: formData.otrosDescripcion }
+        : formData;
+
       const submitData = prepareFormDataForSubmission(
-        formData as unknown as Record<string, any>,
+        formDataForSubmission as unknown as Record<string, any>,
         showTransformadorFields
       );
 
@@ -433,6 +439,7 @@ export function useContactForm(): UseContactFormReturn {
     isSubmitted,
     errorMessage,
     showTransformadorFields,
+    showOtrosField,
     categoriasDisponibles,
     translatedOptions,
     maskedInputRef,

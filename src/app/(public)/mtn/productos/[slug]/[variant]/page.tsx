@@ -208,23 +208,25 @@ export default async function VariantPage({ params }: Props) {
       </section>
 
       {/* Capacities */}
-      <section className="py-16 bg-white">
-        <div className="container-eminsa">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">
-            Capacidades Disponibles (kVA)
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            {variant.capacities.map((cap) => (
-              <span
-                key={cap}
-                className="bg-gray-100 text-gray-700 font-medium px-4 py-2 rounded-lg hover:bg-[#001689] hover:text-white transition-colors cursor-default"
-              >
-                {cap} kVA
-              </span>
-            ))}
+      {variant.capacities.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container-eminsa">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">
+              Capacidades Disponibles (kVA)
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {variant.capacities.map((cap) => (
+                <span
+                  key={cap}
+                  className="bg-gray-100 text-gray-700 font-medium px-4 py-2 rounded-lg hover:bg-[#001689] hover:text-white transition-colors cursor-default"
+                >
+                  {cap} kVA
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Resources */}
       <section className="py-16 bg-gray-50">

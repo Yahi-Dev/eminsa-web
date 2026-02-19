@@ -109,6 +109,10 @@
         "message": {
           "label": "Message",
           "placeholder": "Describe your requirement..."
+        },
+        "otrosDescripcion": {
+          "label": "Describe the product or service you need",
+          "placeholder": "Tell us what product or service you are looking for. Include details such as brand, model, intended use, or other relevant specifications..."
         }
       },
       "inquiryType": {
@@ -124,7 +128,8 @@
           "paneles": "Panels",
           "seccionadores": "Switchgears",
           "materiales_electricos": "Electrical Materials",
-          "reguladores_de_voltaje": "Voltage Regulators"
+          "reguladores_de_voltaje": "Voltage Regulators",
+          "otros_productos_o_servicios": "Other products or services"
         },
         "services": {
           "mantenimiento_y_reparacion": "Maintenance & Repair",
@@ -132,7 +137,8 @@
           "instalaciones_y_montajes_electricos": "Electrical installations and assemblies",
           "diseno_de_instalaciones_electricas": "Electrical installation design",
           "analisis_de_aceite_dielectrico": "Dielectric Oil Analysis",
-          "alquiler_de_transformadores": "Transformer Rental"
+          "alquiler_de_transformadores": "Transformer Rental",
+          "otros_productos_o_servicios": "Other products or services"
         }
       },
       "transformer": {

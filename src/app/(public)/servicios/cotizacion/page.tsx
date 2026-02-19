@@ -62,11 +62,39 @@ export default function CotizacionServiciosPage() {
 
     setIsSubmitting(true);
 
-    // Simular envío
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const parts: string[] = [`Descripción: ${formData.descripcion}`];
+      if (formData.tipoEquipo) parts.push(`Tipo de equipo: ${formData.tipoEquipo}`);
+      if (formData.ubicacion) parts.push(`Ubicación del equipo: ${formData.ubicacion}`);
+      if (formData.urgente) parts.push("⚠️ SERVICIO URGENTE - Requiere atención inmediata");
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nombre: formData.nombre,
+          empresa: formData.empresa || undefined,
+          email: formData.email,
+          telefono: formData.telefono,
+          tipoConsulta: "servicios",
+          categoria: formData.tipoServicio || undefined,
+          mensaje: parts.join("\n\n"),
+          transformadores: [],
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        setErrors((prev) => ({ ...prev, general: result.message || "Error al enviar la solicitud" }));
+      }
+    } catch {
+      setErrors((prev) => ({ ...prev, general: "Error de conexión. Por favor intenta de nuevo." }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (

@@ -30,6 +30,7 @@ export function ContactForm({ form }: ContactFormProps) {
     isSubmitted,
     errorMessage,
     showTransformadorFields,
+    showOtrosField,
     categoriasDisponibles,
     translatedOptions,
     maskedInputRef,
@@ -48,9 +49,10 @@ export function ContactForm({ form }: ContactFormProps) {
     !formData.categoria ||
     !formData.identificacion ||
     !formData.direccion ||
+    (showOtrosField && !formData.otrosDescripcion.trim()) ||
+    (!showOtrosField && !formData.mensaje.trim()) ||
     (showTransformadorFields && (
-      // Validar que todos los transformadores estén completos
-      formData.transformadores.some(transformer => 
+      formData.transformadores.some(transformer =>
         !transformer.potenciaKVA ||
         !transformer.fase ||
         !transformer.voltajePrimario ||
@@ -190,13 +192,25 @@ export function ContactForm({ form }: ContactFormProps) {
         />
       )}
 
-      {/* Mensaje */}
-      <MessageField
-        value={formData.mensaje}
-        error={formErrors.mensaje}
-        onChange={handleChange}
-        disabled={isSubmitting}
-      />
+      {/* Campo "Otros productos o servicios" */}
+      {showOtrosField && (
+        <OtrosDescripcionField
+          value={formData.otrosDescripcion}
+          error={formErrors.otrosDescripcion}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        />
+      )}
+
+      {/* Mensaje (oculto cuando "Otros" está seleccionado) */}
+      {!showOtrosField && (
+        <MessageField
+          value={formData.mensaje}
+          error={formErrors.mensaje}
+          onChange={handleChange}
+          disabled={isSubmitting}
+        />
+      )}
 
       {/* Botón de Envío */}
       <SubmitButton
@@ -432,6 +446,42 @@ function MessageField({ value, error, onChange, disabled }: MessageFieldProps) {
         rows={5}
         className={`input-field resize-none ${error ? 'border-red-500 focus:ring-red-200' : ''}`}
         placeholder={t('form.fields.message.placeholder')}
+      />
+      {error && (
+        <p className="text-red-500 text-xs mt-1">{error}</p>
+      )}
+      <p className="text-[#76777A] text-xs mt-2">
+        {value.length} / {t('form.characters', { max: FIELD_LIMITS.mensaje })}
+      </p>
+    </div>
+  );
+}
+
+interface OtrosDescripcionFieldProps {
+  value: string;
+  error?: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  disabled?: boolean;
+}
+
+function OtrosDescripcionField({ value, error, onChange, disabled }: OtrosDescripcionFieldProps) {
+  const t = useTranslations('contact');
+
+  return (
+    <div>
+      <label className="input-label">
+        {t('form.fields.otrosDescripcion.label')} <span className="text-red-500">*</span>
+      </label>
+      <textarea
+        name="otrosDescripcion"
+        value={value}
+        onChange={onChange}
+        required
+        disabled={disabled}
+        maxLength={FIELD_LIMITS.mensaje}
+        rows={5}
+        className={`input-field resize-none ${error ? 'border-red-500 focus:ring-red-200' : ''}`}
+        placeholder={t('form.fields.otrosDescripcion.placeholder')}
       />
       {error && (
         <p className="text-red-500 text-xs mt-1">{error}</p>

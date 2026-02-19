@@ -51,6 +51,7 @@ export interface ContactFormState {
   mensaje: string;
   identificacion: string;
   direccion: string;
+  otrosDescripcion: string;
   // Transformadores como array
   transformadores: TransformerSpec[];
 }
@@ -146,6 +147,7 @@ export interface UseContactFormReturn {
   isSubmitted: boolean;
   errorMessage: string | null;
   showTransformadorFields: boolean;
+  showOtrosField: boolean;
   categoriasDisponibles: string[];
   translatedOptions: {
     fases: SelectOption[];

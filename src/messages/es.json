@@ -109,6 +109,10 @@
         "message": {
           "label": "Mensaje",
           "placeholder": "Describa su requerimiento..."
+        },
+        "otrosDescripcion": {
+          "label": "Describa el producto o servicio que necesita",
+          "placeholder": "Cuéntenos qué producto o servicio está buscando. Incluya detalles como marca, modelo, uso previsto u otras especificaciones relevantes..."
         }
       },
       "inquiryType": {
@@ -124,7 +128,8 @@
           "paneles": "Paneles",
           "seccionadores": "Seccionadores",
           "materiales_electricos": "Materiales Eléctricos",
-          "reguladores_de_voltaje": "Reguladores de Voltaje"
+          "reguladores_de_voltaje": "Reguladores de Voltaje",
+          "otros_productos_o_servicios": "Otros productos o servicios"
         },
         "services": {
           "mantenimiento_y_reparacion": "Mantenimiento & Reparación",
@@ -132,7 +137,8 @@
           "instalaciones_y_montajes_electricos": "Instalaciones y montajes eléctricos",
           "diseno_de_instalaciones_electricas": "Diseño de instalaciones eléctricas",
           "analisis_de_aceite_dielectrico": "Análisis de aceite Dieléctrico",
-          "alquiler_de_transformadores": "Alquiler de transformadores"
+          "alquiler_de_transformadores": "Alquiler de transformadores",
+          "otros_productos_o_servicios": "Otros productos o servicios"
         }
       },
       "transformer": {
