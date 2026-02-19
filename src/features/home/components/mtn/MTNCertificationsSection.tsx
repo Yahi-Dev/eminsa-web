@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Award, FileCheck, Shield, Globe2, ChevronLeft, ChevronRight, BadgeCheck } from "lucide-react";
+import { Award, FileCheck, Shield, Globe2, ChevronLeft, ChevronRight, BadgeCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 interface Certification {
   id: string;
@@ -248,10 +247,10 @@ export default function MTNCertificationsSection() {
           className="text-center mt-12"
         >
           <Link
-            href="/mtn/productos"
+            href="/mtn/certificaciones"
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#001689] text-white font-semibold rounded-xl hover:bg-[#000E53] transition-all duration-300 group"
           >
-            Ver Productos Certificados
+            Ver Todas las Certificaciones
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
