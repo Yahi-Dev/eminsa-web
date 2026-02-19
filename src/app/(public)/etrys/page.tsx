@@ -29,6 +29,7 @@ import {
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import TransformadorRestauracionSection from "@/features/home/components/TransformadorRestauracionSection";
+import RemanufactureProcessModal from "@/features/home/components/etrys/RemanufactureProcessModal";
 
 const advantageIcons: { [key: string]: React.ElementType } = {
   zap: Zap,
@@ -40,6 +41,7 @@ const advantageIcons: { [key: string]: React.ElementType } = {
 export default function EtrysPage() {
   const router = useRouter();
   const [quoteForm, setQuoteForm] = useState({ nombre: "", email: "", telefono: "" });
+  const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
 
   const handleQuoteSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -307,25 +309,28 @@ export default function EtrysPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 lg:gap-2">
               {remanufactureProcess.map((step, index) => (
-                <motion.div
+                <motion.button
                   key={step.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="relative text-center"
+                  onClick={() => setActiveStepIndex(index)}
+                  className="relative text-center group cursor-pointer"
                 >
-                  {/* Step Number */}
-                  <div className="relative z-10 w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#00A3E0] to-[#001689] flex items-center justify-center text-white font-bold shadow-lg">
+                  <div className="relative z-10 w-12 h-12 mx-auto mb-3 rounded-full bg-linear-to-br from-[#00A3E0] to-[#001689] flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-200">
                     {step.id}
                   </div>
-                  <h3 className="font-semibold text-gray-900 text-sm mb-1">
+                  <h3 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-[#00A3E0] transition-colors">
                     {step.shortTitle}
                   </h3>
                   <p className="text-xs text-gray-500 hidden md:block line-clamp-2">
                     {step.description}
                   </p>
-                </motion.div>
+                  <p className="text-xs text-[#00A3E0] font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                    Ver detalle →
+                  </p>
+                </motion.button>
               ))}
             </div>
           </div>
@@ -505,7 +510,12 @@ export default function EtrysPage() {
         </div>
       </section>
 
-
+      <RemanufactureProcessModal
+        steps={remanufactureProcess}
+        activeIndex={activeStepIndex}
+        onClose={() => setActiveStepIndex(null)}
+        onNavigate={setActiveStepIndex}
+      />
     </div>
   );
 }
