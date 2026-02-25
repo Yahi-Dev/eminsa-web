@@ -325,7 +325,7 @@ export default function EtrysProductosPage() {
           </p>
           <Link
             href="/etrys/cotizaciones"
-            className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#00A3E0] hover:bg-[#0077A8] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
           >
             Solicitar Cotización Personalizada
             <ArrowRight size={20} />

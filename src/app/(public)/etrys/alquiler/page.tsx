@@ -25,6 +25,7 @@ import {
 import { rentalInfo } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { PhoneInputField } from "@/components/ui/PhoneInputField";
 
 const benefitIcons: { [key: string]: React.ElementType } = {
   clock: Clock,
@@ -61,6 +62,10 @@ export default function EtrysAlquilerPage() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePhoneChange = (value: string) => {
+    setFormData(prev => ({ ...prev, telefono: value }));
   };
 
   if (isSuccess) {
@@ -424,17 +429,12 @@ export default function EtrysAlquilerPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Teléfono *
-                    </label>
-                    <input
-                      type="tel"
-                      name="telefono"
-                      required
+                    <PhoneInputField
                       value={formData.telefono}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
-                      placeholder="809-000-0000"
+                      onChange={handlePhoneChange}
+                      label="Teléfono"
+                      required
+                      focusColor="#00A3E0"
                     />
                   </div>
                 </div>

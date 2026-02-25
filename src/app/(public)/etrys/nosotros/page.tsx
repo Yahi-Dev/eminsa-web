@@ -396,7 +396,7 @@ export default function EtrysNosotrosPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/etrys/cotizaciones"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

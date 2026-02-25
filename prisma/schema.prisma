@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  role          String    @default("admin")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  sessions      Session[]
+  accounts      Account[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?   @db.Text
+  refreshToken          String?   @db.Text
+  idToken               String?   @db.Text
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String    @db.Text
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@map("verification")
+}
+
+model Noticia {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  titulo      String   @db.VarChar(200)
+  resumen     String   @db.Text
+  contenido   String   @db.LongText
+  imagen      String?  @db.LongText
+  imagenes    Json?
+  categoria   String?
+  division    String?
+  autor       String?
+  publicado   Boolean  @default(false)
+  destacado   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("noticia")
+}
+
+model Proyecto {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  titulo      String   @db.VarChar(200)
+  cliente     String?
+  division    String
+  resumen     String   @db.Text
+  descripcion String?  @db.LongText
+  imagen      String?  @db.LongText
+  imagenes    Json?
+  ubicacion   String?
+  capacidad   String?
+  anio        Int?
+  publicado   Boolean  @default(false)
+  destacado   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("proyecto")
+}
+
+model Recurso {
+  id            Int      @id @default(autoincrement())
+  nombre        String   @db.VarChar(200)
+  descripcion   String?  @db.VarChar(500)
+  division      String
+  tipo          String
+  archivo       String?  @db.LongText
+  nombreArchivo String?
+  activo        Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("recurso")
+}
+
+model Cotizacion {
+  id        Int      @id @default(autoincrement())
+  codigo    String   @unique
+  unidad    String
+  nombre    String
+  empresa   String?
+  email     String
+  telefono  String
+  detalles  Json
+  urgente   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("cotizacion")
+}

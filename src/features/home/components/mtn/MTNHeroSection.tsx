@@ -1,34 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Factory, Zap, Shield, Award } from "lucide-react";
-
-const features = [
-  {
-    icon: Factory,
-    title: "Fabricación Local",
-    description: "100% fabricados en República Dominicana",
-    color: "#001689",
-  },
-  {
-    icon: Shield,
-    title: "Estándares Internacionales",
-    description: "Cumplimiento ANSI y DOE 2016",
-    color: "#00A3E0",
-  },
-  {
-    icon: Zap,
-    title: "Alta Eficiencia",
-    description: "Máxima eficiencia energética garantizada",
-    color: "#00B140",
-  },
-  {
-    icon: Award,
-    title: "Certificación ISO",
-    description: "ISO 9001:2015 certificado",
-    color: "#FF5500",
-  },
-];
+import { Factory } from "lucide-react";
 
 export default function MTNHeroSection() {
   return (
@@ -88,68 +61,6 @@ export default function MTNHeroSection() {
           </p>
         </motion.div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 h-full">
-                <div
-                  className="w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-5"
-                  style={{ backgroundColor: `${feature.color}15` }}
-                >
-                  <feature.icon
-                    className="w-7 h-7 md:w-8 md:h-8"
-                    style={{ color: feature.color }}
-                  />
-                </div>
-
-                <h3 className="font-bold text-[#001689] text-lg mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-[#76777A] leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
-        >
-          {[
-            { value: "50+", label: "Años de Experiencia" },
-            { value: "10K+", label: "Transformadores" },
-            { value: "500+", label: "Clientes" },
-            { value: "100%", label: "Calidad Garantizada" },
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-              className="text-center"
-            >
-              <div className="text-3xl md:text-4xl font-bold text-[#001689]">
-                {stat.value}
-              </div>
-              <div className="text-sm text-[#76777A] mt-1">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

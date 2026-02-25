@@ -1,4 +1,56 @@
 {
+  "nav": {
+    "requestQuote": "Request a Quote",
+    "tagline": "Transformers • Services • Electrical Suppliers"
+  },
+  "home": {
+    "hero": {
+      "title1": "Transforming your energy",
+      "title2": "since 1973.",
+      "description": "Discover comprehensive solutions in the manufacturing and maintenance of electrical systems that optimize efficiency and ensure the safety of your infrastructure.",
+      "cta": "Request a Quote",
+      "scrollIndicator": "Discover more"
+    },
+    "stats": {
+      "yearsExperience": "Years of Experience",
+      "transformersInstalled": "Transformers Installed",
+      "satisfiedClients": "Satisfied Clients",
+      "techSupport": "Technical Support"
+    },
+    "certifications": {
+      "title": "Certifications and Standards",
+      "subtitle": "We comply with the highest international quality standards",
+      "iso9001": "Quality Management",
+      "iqnet": "International Certification",
+      "ansi": "American Standards",
+      "doe": "Energy Efficiency"
+    },
+    "divisions": {
+      "sectionLabel": "Our Divisions",
+      "title": "Four divisions,",
+      "titleAccent": "one integrated solution",
+      "description": "Grupo EMINSA brings together four specialized divisions to offer comprehensive solutions in the manufacturing, repair, distribution, and services of electrical transformers.",
+      "cta": "Learn more"
+    },
+    "services": {
+      "sectionLabel": "Specialized Services",
+      "title": "Experts in the Care of Your Transformers",
+      "description": "More than 50 years of experience back us up. We offer specialized technical services to guarantee the maximum performance of your equipment.",
+      "cta": "View All Services",
+      "viewMore": "See more"
+    },
+    "clients": {
+      "sectionLabel": "Our Clients",
+      "title": "Companies that trust EMINSA",
+      "description": "For over 50 years, leading companies in the energy sector have relied on Grupo EMINSA for their electrical transformation needs."
+    },
+    "news": {
+      "sectionLabel": "News",
+      "title": "Latest news",
+      "viewAll": "View all news",
+      "readMore": "Read more"
+    }
+  },
   "general": {
     "English": "English",
     "Spanish": "Spanish"

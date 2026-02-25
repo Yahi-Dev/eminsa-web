@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -13,21 +13,60 @@ import {
   Plus,
   Edit,
   Eye,
-  TrendingUp
+  TrendingUp,
+  FileText
 } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
-import { useContent } from "@/context/content-context";
+
+interface CotizacionStats {
+  total: number;
+  MTN: number;
+  RST: number;
+  EIC: number;
+  SRV: number;
+}
+
+interface ContentStats {
+  noticias: { total: number; publicadas: number };
+  proyectos: { total: number; publicados: number };
+  recursos: { total: number; activos: number };
+}
 
 export default function AdminPage() {
   const router = useRouter();
   const { user, isAuthenticated, isLoading, logout } = useAuth();
-  const { noticias, proyectos, recursos } = useContent();
+  const [cotStats, setCotStats] = useState<CotizacionStats>({ total: 0, MTN: 0, RST: 0, EIC: 0, SRV: 0 });
+  const [contentStats, setContentStats] = useState<ContentStats>({
+    noticias: { total: 0, publicadas: 0 },
+    proyectos: { total: 0, publicados: 0 },
+    recursos: { total: 0, activos: 0 },
+  });
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
       router.push("/login");
     }
   }, [isAuthenticated, isLoading, router]);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetch('/api/admin/cotizaciones/stats')
+        .then(r => r.json())
+        .then(data => {
+          if (data.success) {
+            setCotStats({ total: data.total, MTN: data.MTN, RST: data.RST, EIC: data.EIC, SRV: data.SRV });
+          }
+        })
+        .catch(() => {/* silent */});
+
+      fetch('/api/admin/stats')
+        .then(r => r.json())
+        .then(data => {
+          if (data.success) setContentStats(data);
+        })
+        .catch(() => {/* silent */});
+    }
+  }, [isAuthenticated]);
 
   const handleLogout = () => {
     logout();
@@ -41,10 +80,6 @@ export default function AdminPage() {
       </div>
     );
   }
-
-  const noticiasPublicadas = noticias.filter(n => n.publicado).length;
-  const proyectosPublicados = proyectos.filter(p => p.publicado).length;
-  const recursosActivos = recursos.filter(r => r.activo).length;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -112,7 +147,7 @@ export default function AdminPage() {
               </div>
               <TrendingUp className="w-5 h-5 text-green-500" />
             </div>
-            <p className="text-3xl font-bold text-[#001689]">{noticias.length}</p>
+            <p className="text-3xl font-bold text-[#001689]">{contentStats.noticias.total}</p>
             <p className="text-[#76777A] text-sm">Noticias Totales</p>
           </div>
 
@@ -122,7 +157,7 @@ export default function AdminPage() {
                 <Eye className="w-6 h-6 text-green-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-[#001689]">{noticiasPublicadas}</p>
+            <p className="text-3xl font-bold text-[#001689]">{contentStats.noticias.publicadas}</p>
             <p className="text-[#76777A] text-sm">Noticias Publicadas</p>
           </div>
 
@@ -133,7 +168,7 @@ export default function AdminPage() {
               </div>
               <TrendingUp className="w-5 h-5 text-green-500" />
             </div>
-            <p className="text-3xl font-bold text-[#001689]">{proyectos.length}</p>
+            <p className="text-3xl font-bold text-[#001689]">{contentStats.proyectos.total}</p>
             <p className="text-[#76777A] text-sm">Proyectos Totales</p>
           </div>
 
@@ -143,7 +178,7 @@ export default function AdminPage() {
                 <Eye className="w-6 h-6 text-green-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-[#001689]">{proyectosPublicados}</p>
+            <p className="text-3xl font-bold text-[#001689]">{contentStats.proyectos.publicados}</p>
             <p className="text-[#76777A] text-sm">Proyectos Publicados</p>
           </div>
 
@@ -154,7 +189,7 @@ export default function AdminPage() {
               </div>
               <TrendingUp className="w-5 h-5 text-green-500" />
             </div>
-            <p className="text-3xl font-bold text-[#001689]">{recursos.length}</p>
+            <p className="text-3xl font-bold text-[#001689]">{contentStats.recursos.total}</p>
             <p className="text-[#76777A] text-sm">Recursos Totales</p>
           </div>
 
@@ -164,8 +199,46 @@ export default function AdminPage() {
                 <Eye className="w-6 h-6 text-green-600" />
               </div>
             </div>
-            <p className="text-3xl font-bold text-[#001689]">{recursosActivos}</p>
+            <p className="text-3xl font-bold text-[#001689]">{contentStats.recursos.activos}</p>
             <p className="text-[#76777A] text-sm">Recursos Activos</p>
+          </div>
+
+          {/* Cotizaciones total */}
+          <div className="bg-white rounded-xl shadow-sm p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center">
+                <FileText className="w-6 h-6 text-violet-600" />
+              </div>
+              <TrendingUp className="w-5 h-5 text-green-500" />
+            </div>
+            <p className="text-3xl font-bold text-[#001689]">{cotStats.total}</p>
+            <p className="text-[#76777A] text-sm">Cotizaciones Totales</p>
+          </div>
+
+          {/* Cotizaciones por unidad */}
+          <div className="bg-white rounded-xl shadow-sm p-6 sm:col-span-2 lg:col-span-2">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center">
+                <FileText className="w-6 h-6 text-violet-600" />
+              </div>
+              <div>
+                <p className="font-semibold text-[#001689]">Cotizaciones por Unidad</p>
+                <p className="text-[#76777A] text-xs">MTN · RST · EIC · SRV</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {([
+                { label: 'MTN', value: cotStats.MTN, color: 'bg-[#001689]' },
+                { label: 'RST', value: cotStats.RST, color: 'bg-[#00A3E0]' },
+                { label: 'EIC', value: cotStats.EIC, color: 'bg-[#00B140]' },
+                { label: 'SRV', value: cotStats.SRV, color: 'bg-[#696969]' },
+              ] as const).map(({ label, value, color }) => (
+                <div key={label} className="text-center p-3 bg-gray-50 rounded-xl">
+                  <span className={`inline-block px-2 py-0.5 ${color} text-white text-xs font-bold rounded-full mb-2`}>{label}</span>
+                  <p className="text-2xl font-bold text-[#001689]">{value}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
 
@@ -262,8 +335,8 @@ export default function AdminPage() {
           <div className="bg-white rounded-xl shadow-sm overflow-hidden">
             <div className="p-6 border-b">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center">
-                  <Download className="w-6 h-6 text-orange-600" />
+                <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
+                  <Download className="w-6 h-6 text-[#696969]" />
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-[#001689]">Recursos</h2>
@@ -274,7 +347,7 @@ export default function AdminPage() {
             <div className="p-6 space-y-3">
               <Link
                 href="/admin/recursos/nueva"
-                className="flex items-center gap-3 p-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+                className="flex items-center gap-3 p-4 bg-[#696969] text-white rounded-lg hover:bg-[#555555] transition-colors"
               >
                 <Plus size={20} />
                 <span className="font-medium">Crear Nuevo Recurso</span>
@@ -286,6 +359,43 @@ export default function AdminPage() {
                 <Edit size={20} />
                 <span className="font-medium">Ver y Editar Recursos</span>
               </Link>
+            </div>
+          </div>
+
+          {/* Cotizaciones Card */}
+          <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+            <div className="p-6 border-b">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-violet-100 rounded-xl flex items-center justify-center">
+                  <FileText className="w-6 h-6 text-violet-600" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-[#001689]">Cotizaciones</h2>
+                  <p className="text-[#76777A] text-sm">Ver solicitudes recibidas</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-6 space-y-3">
+              <Link
+                href="/admin/cotizaciones"
+                className="flex items-center gap-3 p-4 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors"
+              >
+                <Eye size={20} />
+                <span className="font-medium">Ver Todas las Solicitudes</span>
+              </Link>
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                {([
+                  { label: 'MTN', color: 'bg-[#001689]', count: cotStats.MTN },
+                  { label: 'RST', color: 'bg-[#00A3E0]', count: cotStats.RST },
+                  { label: 'EIC', color: 'bg-[#00B140]', count: cotStats.EIC },
+                  { label: 'SRV', color: 'bg-[#696969]', count: cotStats.SRV },
+                ]).map(({ label, color, count }) => (
+                  <div key={label} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
+                    <span className={`px-1.5 py-0.5 ${color} text-white text-xs font-bold rounded`}>{label}</span>
+                    <span className="text-sm font-semibold text-[#001689]">{count}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </motion.div>

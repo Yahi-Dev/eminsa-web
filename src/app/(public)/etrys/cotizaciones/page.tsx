@@ -20,11 +20,14 @@ import {
 } from "lucide-react";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { PhoneInputField } from "@/components/ui/PhoneInputField";
 
 function CotizacionesForm() {
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [codigo, setCodigo] = useState("");
+  const [submitError, setSubmitError] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [formData, setFormData] = useState({
     // Contact info
@@ -67,16 +70,58 @@ function CotizacionesForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    setSubmitError("");
+
+    try {
+      const res = await fetch('/api/cotizaciones', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          unidad: 'RST',
+          nombre: formData.nombre,
+          empresa: formData.empresa || undefined,
+          email: formData.email,
+          telefono: formData.telefono,
+          urgente: formData.urgencia === 'urgente',
+          detalles: {
+            tipoServicio: formData.tipoServicio,
+            tipoProducto: formData.tipoProducto,
+            marca: formData.marca,
+            potencia: formData.potencia,
+            voltajePrimario: formData.voltajePrimario,
+            voltajeSecundario: formData.voltajeSecundario,
+            cantidadUnidades: formData.cantidadUnidades,
+            urgencia: formData.urgencia,
+            cargo: formData.cargo,
+            ubicacion: formData.ubicacion,
+            descripcion: formData.descripcion,
+            comoNosConocio: formData.comoNosConocio,
+            ...(files.length > 0 && {
+              archivos: files.map(f => `${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join(' • '),
+            }),
+          },
+        }),
+      });
+
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message || 'Error al enviar');
+      setCodigo(json.codigo);
+      setIsSuccess(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Error de conexión. Intente de nuevo.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handlePhoneChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, telefono: value }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -104,8 +149,15 @@ function CotizacionesForm() {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             ¡Solicitud Enviada!
           </h2>
+          {codigo && (
+            <div className="bg-[#00A3E0]/5 border border-[#00A3E0]/20 rounded-xl p-4 mb-4">
+              <p className="text-xs text-[#00A3E0] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+              <p className="text-2xl font-bold text-[#00A3E0] tracking-widest">{codigo}</p>
+              <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
+            </div>
+          )}
           <p className="text-gray-600 mb-6">
-            Hemos recibido su solicitud de cotización. Nuestro equipo le contactará 
+            Hemos recibido su solicitud de cotización. Nuestro equipo le contactará
             en breve con un presupuesto personalizado.
           </p>
           <div className="bg-[#00A3E0]/10 rounded-xl p-4 mb-6">
@@ -227,17 +279,12 @@ function CotizacionesForm() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Teléfono *
-                      </label>
-                      <input
-                        type="tel"
-                        name="telefono"
-                        required
+                      <PhoneInputField
                         value={formData.telefono}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
-                        placeholder="809-000-0000"
+                        onChange={handlePhoneChange}
+                        label="Teléfono"
+                        required
+                        focusColor="#00A3E0"
                       />
                     </div>
                     <div className="sm:col-span-2">
@@ -488,11 +535,18 @@ function CotizacionesForm() {
                   </div>
                 </div>
 
+                {/* General error */}
+                {submitError && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+                    {submitError}
+                  </div>
+                )}
+
                 {/* Submit */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-4 bg-[#FF5500] hover:bg-[#E64D00] disabled:bg-orange-300 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 bg-[#00A3E0] hover:bg-[#0077A8] disabled:bg-[#00A3E0]/50 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>

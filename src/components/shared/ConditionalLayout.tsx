@@ -13,7 +13,7 @@ export default function ConditionalLayout({
   const pathname = usePathname();
   
   // Rutas donde NO queremos mostrar Header, Footer y WhatsApp
-  const hideLayoutRoutes = ['/login', '/admin'];
+  const hideLayoutRoutes = ['/login', '/admin', '/forgot-password', '/reset-password'];
   
   const shouldHideLayout = hideLayoutRoutes.some(route => 
     pathname.startsWith(route)

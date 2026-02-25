@@ -1,225 +1,140 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Building2 } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-// Datos de clientes (temporales con iconos)
+const sectorColors: { [key: string]: string } = {
+  "Energía": "#001689",
+  "Turismo": "#00A3E0",
+  "Industrial": "#696969",
+  "Alimentación": "#00B140",
+  "Manufactura": "#696969",
+  "Telecomunicaciones": "#00A3E0",
+  "Construcción": "#76777A",
+  "Minería": "#696969",
+  "Retail": "#001689",
+  "Salud": "#00B140",
+};
+
 const clientes = [
-  {
-    id: 1,
-    nombre: "Grupo Eléctrico Dominicano",
-    imagen: null, // Placeholder
-    industria: "Energía"
-  },
-  {
-    id: 2,
-    nombre: "Grupo Puntacana",
-    imagen: null,
-    industria: "Turismo"
-  },
-  {
-    id: 3,
-    nombre: "Ramos Grupo",
-    imagen: null,
-    industria: "Industrial"
-  },
-  {
-    id: 4,
-    nombre: "Grupo Viamar",
-    imagen: null,
-    industria: "Marítimo"
-  },
-  {
-    id: 5,
-    nombre: "EDE Norte",
-    imagen: null,
-    industria: "Energía"
-  },
-  {
-    id: 6,
-    nombre: "EDE Este",
-    imagen: null,
-    industria: "Energía"
-  },
-  {
-    id: 7,
-    nombre: "CEPM",
-    imagen: null,
-    industria: "Minería"
-  },
-  {
-    id: 8,
-    nombre: "Cervecería Nacional Dominicana",
-    imagen: null,
-    industria: "Industria"
-  },
+  { id: 1, nombre: "Grupo Viamar", sector: "Industrial", logo: null },
+  { id: 2, nombre: "Helados Bon", sector: "Alimentación", logo: null },
+  { id: 3, nombre: "Ingeniería Estrella", sector: "Construcción", logo: null },
+  { id: 4, nombre: "INICA", sector: "Manufactura", logo: null },
+  { id: 5, nombre: "Lexco", sector: "Industrial", logo: null },
+  { id: 6, nombre: "Gerdau Metaldom", sector: "Manufactura", logo: null },
+  { id: 7, nombre: "Grupo Eléctrico Dom.", sector: "Energía", logo: null },
+  { id: 8, nombre: "Bluewave Group", sector: "Turismo", logo: null },
+  { id: 9, nombre: "Cap Cana", sector: "Turismo", logo: null },
+  { id: 10, nombre: "CCN", sector: "Retail", logo: null },
+  { id: 11, nombre: "Cementos Cibrao", sector: "Manufactura", logo: null },
+  { id: 12, nombre: "CEPM", sector: "Energía", logo: null },
+  { id: 13, nombre: "Claro RD", sector: "Telecomunicaciones", logo: null },
+  { id: 14, nombre: "Gas Aribe", sector: "Energía", logo: null },
+  { id: 15, nombre: "Grupo Puntacana", sector: "Turismo", logo: null },
+  { id: 16, nombre: "Ramos Grupo", sector: "Industrial", logo: null },
 ];
 
+// Duplicar para el loop infinito
+const clientesLoop = [...clientes, ...clientes];
+
 export default function ClientesSection() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  
-  // Configuración responsive
-  const itemsPerSlide = {
-    mobile: 1,
-    tablet: 2,
-    desktop: 4,
-  };
-  
-  const [itemsToShow, setItemsToShow] = useState(itemsPerSlide.desktop);
+  const t = useTranslations("home");
+  const trackRef = useRef<HTMLDivElement>(null);
+  const animRef = useRef<number>(0);
+  const posRef = useRef(0);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setItemsToShow(itemsPerSlide.mobile);
-      } else if (window.innerWidth < 1024) {
-        setItemsToShow(itemsPerSlide.tablet);
-      } else {
-        setItemsToShow(itemsPerSlide.desktop);
-      }
+    const speed = 0.5; // px per frame
+    const track = trackRef.current;
+    if (!track) return;
+
+    const step = () => {
+      posRef.current += speed;
+      const halfWidth = track.scrollWidth / 2;
+      if (posRef.current >= halfWidth) posRef.current = 0;
+      track.style.transform = `translateX(-${posRef.current}px)`;
+      animRef.current = requestAnimationFrame(step);
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    animRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animRef.current);
   }, []);
 
-  const totalSlides = Math.ceil(clientes.length / itemsToShow);
-
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, totalSlides]);
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 5000);
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 5000);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-    setIsAutoPlaying(false);
-    setTimeout(() => setIsAutoPlaying(true), 5000);
-  };
-
-  const getCurrentClientes = () => {
-    const start = currentSlide * itemsToShow;
-    return clientes.slice(start, start + itemsToShow);
+  const handleMouseEnter = () => cancelAnimationFrame(animRef.current);
+  const handleMouseLeave = () => {
+    const track = trackRef.current;
+    if (!track) return;
+    const speed = 0.5;
+    const step = () => {
+      posRef.current += speed;
+      const halfWidth = track.scrollWidth / 2;
+      if (posRef.current >= halfWidth) posRef.current = 0;
+      track.style.transform = `translateX(-${posRef.current}px)`;
+      animRef.current = requestAnimationFrame(step);
+    };
+    animRef.current = requestAnimationFrame(step);
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-gray-50 overflow-hidden">
       <div className="container-eminsa">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
-            Clientes
+          <span className="inline-block px-4 py-2 bg-[#001689]/10 text-[#001689] rounded-full text-sm font-semibold mb-4 uppercase">
+            {t('clients.sectionLabel')}
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689]">
+            {t('clients.title')}
           </h2>
-          <p className="text-[#76777A] text-lg">
-            Empresas líderes que confían en nuestros transformadores y servicios
-          </p>
         </motion.div>
+      </div>
 
-        {/* Carousel Container */}
-        <div className="relative max-w-6xl mx-auto">
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 lg:-translate-x-12 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-[#001689] hover:bg-[#001689] hover:text-white transition-all duration-300 hover:scale-110"
-            aria-label="Cliente anterior"
-          >
-            <ChevronLeft size={24} />
-          </button>
+      {/* Infinite scroll carousel */}
+      <div
+        className="relative w-full overflow-hidden"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Left fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
+        {/* Right fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
 
-          <button
-            onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 lg:translate-x-12 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-[#001689] hover:bg-[#001689] hover:text-white transition-all duration-300 hover:scale-110"
-            aria-label="Siguiente cliente"
-          >
-            <ChevronRight size={24} />
-          </button>
-
-          {/* Logos Grid */}
-          <div className="overflow-hidden px-4">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+        <div ref={trackRef} className="flex gap-5 will-change-transform" style={{ width: "max-content" }}>
+          {clientesLoop.map((cliente, index) => {
+            const color = sectorColors[cliente.sector] || "#001689";
+            return (
+              <div
+                key={`${cliente.id}-${index}`}
+                className="flex-shrink-0 w-52 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 p-6 flex flex-col items-center gap-3 cursor-default"
               >
-                {getCurrentClientes().map((cliente) => (
-                  <motion.div
-                    key={cliente.id}
-                    whileHover={{ scale: 1.05 }}
-                    className="flex flex-col items-center justify-center p-8 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#00A3E0]/30 hover:shadow-lg transition-all duration-300 group"
-                  >
-                    {cliente.imagen ? (
-                      <img
-                        src={cliente.imagen}
-                        alt={cliente.nombre}
-                        className="w-full h-24 object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
-                      />
-                    ) : (
-                      // Placeholder con icono
-                      <div className="w-full h-24 flex items-center justify-center">
-                        <div className="relative">
-                          <div className="w-20 h-20 bg-gradient-to-br from-[#001689]/10 to-[#00A3E0]/10 rounded-2xl flex items-center justify-center group-hover:from-[#001689]/20 group-hover:to-[#00A3E0]/20 transition-all duration-300">
-                            <Building2 className="w-10 h-10 text-[#001689] group-hover:text-[#00A3E0] transition-colors" />
-                          </div>
-                          {/* Badge de industria */}
-                          <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-[#00A3E0] text-white text-xs font-medium rounded-full">
-                            {cliente.industria}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* Nombre del cliente */}
-                    <p className="mt-4 text-sm font-medium text-[#001689] text-center group-hover:text-[#00A3E0] transition-colors">
-                      {cliente.nombre}
-                    </p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* Dots Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: totalSlides }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  currentSlide === index
-                    ? "w-8 h-2 bg-[#001689]"
-                    : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
-                }`}
-                aria-label={`Ir a diapositiva ${index + 1}`}
-              />
-            ))}
-          </div>
+                {/* Logo placeholder */}
+                <div
+                  className="w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-black text-white"
+                  style={{ backgroundColor: color }}
+                >
+                  {cliente.nombre.charAt(0)}
+                </div>
+                <p className="text-sm font-bold text-[#001689] text-center leading-tight">
+                  {cliente.nombre}
+                </p>
+                <span
+                  className="px-3 py-1 rounded-full text-xs font-semibold text-white"
+                  style={{ backgroundColor: color }}
+                >
+                  {cliente.sector}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

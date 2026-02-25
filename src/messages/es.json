@@ -1,4 +1,56 @@
 {
+  "nav": {
+    "requestQuote": "Solicitar Cotización",
+    "tagline": "Transformadores • Servicios • Suplidores Eléctricos"
+  },
+  "home": {
+    "hero": {
+      "title1": "Transformando tu energía",
+      "title2": "desde 1973.",
+      "description": "Descubra soluciones integrales en la fabricación y mantenimiento de sistemas eléctricos que optimizan la eficiencia y garantizan la seguridad de su infraestructura.",
+      "cta": "Solicitar una Cotización",
+      "scrollIndicator": "Descubrir más"
+    },
+    "stats": {
+      "yearsExperience": "Años de Experiencia",
+      "transformersInstalled": "Transformadores Instalados",
+      "satisfiedClients": "Clientes Satisfechos",
+      "techSupport": "Soporte Técnico"
+    },
+    "certifications": {
+      "title": "Certificaciones y Normativas",
+      "subtitle": "Cumplimos con los más altos estándares internacionales de calidad",
+      "iso9001": "Gestión de Calidad",
+      "iqnet": "Certificación Internacional",
+      "ansi": "Estándares Americanos",
+      "doe": "Eficiencia Energética"
+    },
+    "divisions": {
+      "sectionLabel": "Nuestras Divisiones",
+      "title": "Cuatro divisiones,",
+      "titleAccent": "una solución integrada",
+      "description": "Grupo EMINSA reúne cuatro divisiones especializadas para ofrecer soluciones integrales en la fabricación, reparación, distribución y servicios de transformadores eléctricos.",
+      "cta": "Conocer más"
+    },
+    "services": {
+      "sectionLabel": "Servicios Especializados",
+      "title": "Expertos en el Cuidado de Sus Transformadores",
+      "description": "Más de 50 años de experiencia nos respaldan. Ofrecemos servicios técnicos especializados para garantizar el máximo rendimiento de sus equipos.",
+      "cta": "Ver Todos los Servicios",
+      "viewMore": "Ver más"
+    },
+    "clients": {
+      "sectionLabel": "Nuestros Clientes",
+      "title": "Empresas que confían en EMINSA",
+      "description": "Durante más de 50 años, las empresas líderes del sector energético han confiado en Grupo EMINSA para sus necesidades de transformación eléctrica."
+    },
+    "news": {
+      "sectionLabel": "Noticias",
+      "title": "Últimas noticias",
+      "viewAll": "Ver todas las noticias",
+      "readMore": "Leer más"
+    }
+  },
   "general": {
     "English": "Inglés",
     "Spanish": "Español"

@@ -17,6 +17,7 @@ export interface EICBrand {
   logo?: string;
   category: string;
   products: string[];
+  catalogUrl?: string;
 }
 
 export interface EICProduct {
@@ -34,6 +35,7 @@ export interface EICProduct {
   features: string[];
   applications: string[];
   specs: { label: string; value: string }[];
+  datasheetUrl?: string;
 }
 
 export interface EICProductCategory {
@@ -91,7 +93,7 @@ export const eicInfo: EICInfo = {
   fullName: "Eminsa International Corporation",
   tagline: "Suplidores Eléctricos Internacionales",
   description:
-    "Eminsa International Corporation es la división encargada de gestionar y expandir las ventas internacionales de Eminsa. A través de una red global de suplidores y aliados estratégicos, lidera la comercialización de nuestros productos en mercados internacionales, garantizando un servicio especializado y un acompañamiento cercano para cada proyecto.",
+    "Conectamos a Eminsa con el mundo, expandiendo nuestras soluciones energéticas a través de una sólida red global de aliados estratégicos, garantizando presencia internacional, servicio especializado y un acompañamiento cercano en cada proyecto.",
   color: "#00B140",
   stats: [
     { value: "8", label: "Marcas Representadas", suffix: "+" },
@@ -607,4 +609,12 @@ export const getOtherEICProducts = (currentSlug: string): EICProduct[] => {
 
 export const getAllEICProductSlugs = (): string[] => {
   return eicProducts.map((p) => p.slug);
+};
+
+export const getEICProductsByBrand = (brandSlug: string): EICProduct[] => {
+  return eicProducts.filter((p) => p.brandSlug === brandSlug);
+};
+
+export const getAllEICBrandSlugs = (): string[] => {
+  return eicBrands.map((b) => b.slug);
 };

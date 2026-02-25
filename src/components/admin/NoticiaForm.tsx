@@ -4,19 +4,18 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Save } from "lucide-react";
-import { useContent } from "@/context/content-context";
-import { categoriasNoticias, Noticia } from "@/data/content";
+import { ArrowLeft, Save, AlertCircle } from "lucide-react";
+import { categoriasNoticias } from "@/data/content";
 import ImageUploadField from "@/components/admin/ImageUploadField";
+import type { NoticiaAPI } from "@/features/admin/types";
 
 interface NoticiaFormProps {
-  noticia?: Noticia;
+  noticia?: NoticiaAPI;
   isEditing?: boolean;
 }
 
 export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormProps) {
   const router = useRouter();
-  const { agregarNoticia, editarNoticia } = useContent();
 
   const [formData, setFormData] = useState({
     titulo: noticia?.titulo || "",
@@ -25,12 +24,14 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
     contenido: noticia?.contenido || "",
     imagen: noticia?.imagen || "",
     categoria: noticia?.categoria || "empresa",
+    division: noticia?.division || "",
     autor: noticia?.autor || "",
     publicado: noticia?.publicado || false,
     destacado: noticia?.destacado || false,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   const generateSlug = (titulo: string) => {
     return titulo
@@ -61,26 +62,35 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setApiError(null);
 
-    const fechaHoy = new Date().toISOString().split("T")[0];
+    try {
+      const url = isEditing && noticia ? `/api/noticias/${noticia.id}` : "/api/noticias";
+      const method = isEditing ? "PUT" : "POST";
 
-    if (isEditing && noticia) {
-      editarNoticia(noticia.id, {
-        ...formData,
-        categoria: formData.categoria as Noticia["categoria"],
-        fechaActualizacion: fechaHoy,
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          categoria: formData.categoria || null,
+          division: formData.division || null,
+          autor: formData.autor || null,
+        }),
       });
-    } else {
-      agregarNoticia({
-        ...formData,
-        categoria: formData.categoria as Noticia["categoria"],
-        fechaPublicacion: fechaHoy,
-        fechaActualizacion: fechaHoy,
-      });
+
+      const data = await res.json();
+      if (!data.success) {
+        setApiError(data.message || "Error al guardar");
+        setIsSubmitting(false);
+        return;
+      }
+
+      router.push("/admin/noticias");
+    } catch {
+      setApiError("Error de conexión. Intente nuevamente.");
+      setIsSubmitting(false);
     }
-
-    await new Promise(resolve => setTimeout(resolve, 500));
-    router.push("/admin/noticias");
   };
 
   return (
@@ -121,9 +131,11 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                 value={formData.titulo}
                 onChange={handleTituloChange}
                 required
+                maxLength={200}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
                 placeholder="Título de la noticia"
               />
+              <p className="text-right text-xs text-gray-400 mt-1">{formData.titulo.length}/200</p>
             </div>
 
             {/* Slug */}
@@ -141,7 +153,15 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
               />
             </div>
 
-            {/* Categoría y Autor */}
+            {/* Error */}
+            {apiError && (
+              <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+                <AlertCircle size={16} />
+                {apiError}
+              </div>
+            )}
+
+            {/* Categoría, División y Autor */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-[#76777A] mb-2">
@@ -168,10 +188,30 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                   name="autor"
                   value={formData.autor}
                   onChange={handleChange}
+                  maxLength={100}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
                   placeholder="Nombre del autor"
                 />
               </div>
+            </div>
+
+            {/* División */}
+            <div>
+              <label className="block text-sm font-medium text-[#76777A] mb-2">
+                División (opcional)
+              </label>
+              <select
+                name="division"
+                value={formData.division}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
+              >
+                <option value="">Sin división específica</option>
+                <option value="MTN">MTN — Manufactura Transformadores Nuevos</option>
+                <option value="RST">RST — Reparación y Servicio de Transformadores</option>
+                <option value="EIC">EIC — Eminsa International Corporation</option>
+                <option value="SRV">SRV — Servicios</option>
+              </select>
             </div>
 
             {/* Imagen */}
@@ -193,9 +233,11 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                 onChange={handleChange}
                 required
                 rows={3}
+                maxLength={500}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689] resize-none"
                 placeholder="Breve descripción de la noticia (se mostrará en la lista)"
               />
+              <p className="text-right text-xs text-gray-400 mt-1">{formData.resumen.length}/500</p>
             </div>
 
             {/* Contenido */}
@@ -209,9 +251,11 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                 onChange={handleChange}
                 required
                 rows={10}
+                maxLength={20000}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689] resize-none"
                 placeholder="Contenido completo de la noticia..."
               />
+              <p className="text-right text-xs text-gray-400 mt-1">{formData.contenido.length}/20000</p>
             </div>
 
             {/* Opciones */}

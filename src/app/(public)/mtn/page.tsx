@@ -84,7 +84,7 @@ export default function MTNPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/mtn/cotizaciones"
-                  className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -333,7 +333,7 @@ export default function MTNPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/mtn/cotizaciones"
-                className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

@@ -1,237 +1,239 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { 
-  Plus, 
-  Edit, 
-  Trash2, 
-  Eye, 
-  EyeOff,
-  Search,
-  ArrowLeft,
-  MoreVertical,
-  Star
-} from "lucide-react";
-import { useContent } from "@/context/content-context";
-import { categoriasNoticias } from "@/data/content";
+import { Plus, Edit, Trash2, Eye, EyeOff, Search, ArrowLeft, Star } from "lucide-react";
+import type { NoticiaAPI } from "@/features/admin/types";
 
-export default function AdminNoticiasPage() {
-  const { noticias, eliminarNoticia, editarNoticia } = useContent();
+const categoriasNoticias = [
+  { value: "empresa", label: "Empresa" },
+  { value: "producto", label: "Producto" },
+  { value: "proyecto", label: "Proyecto" },
+  { value: "industria", label: "Industria" },
+  { value: "tecnologia", label: "Tecnología" },
+];
+
+export default function NoticiasAdminPage() {
+  const [noticias, setNoticias] = useState<NoticiaAPI[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterCategoria, setFilterCategoria] = useState("");
-  const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [deleteConfirm, setDeleteConfirm] = useState<number | null>(null);
 
-  const noticiasFiltradas = noticias.filter((noticia) => {
-    const matchSearch = noticia.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                       noticia.resumen.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchCategoria = !filterCategoria || noticia.categoria === filterCategoria;
-    return matchSearch && matchCategoria;
+  useEffect(() => {
+    fetch("/api/noticias")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success) setNoticias(data.noticias ?? []);
+      })
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
+  async function togglePublicado(id: number, current: boolean) {
+    const res = await fetch(`/api/noticias/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ publicado: !current }),
+    });
+    if (res.ok) {
+      setNoticias((prev) =>
+        prev.map((n) => (n.id === id ? { ...n, publicado: !current } : n))
+      );
+    }
+  }
+
+  async function toggleDestacado(id: number, current: boolean) {
+    const res = await fetch(`/api/noticias/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ destacado: !current }),
+    });
+    if (res.ok) {
+      setNoticias((prev) =>
+        prev.map((n) => (n.id === id ? { ...n, destacado: !current } : n))
+      );
+    }
+  }
+
+  async function handleDelete(id: number) {
+    const res = await fetch(`/api/noticias/${id}`, { method: "DELETE" });
+    if (res.ok) {
+      setNoticias((prev) => prev.filter((n) => n.id !== id));
+      setDeleteConfirm(null);
+    }
+  }
+
+  const noticiasFiltradas = noticias.filter((n) => {
+    const matchSearch =
+      !searchTerm ||
+      n.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (n.resumen ?? "").toLowerCase().includes(searchTerm.toLowerCase());
+    const matchCat = !filterCategoria || n.categoria === filterCategoria;
+    return matchSearch && matchCat;
   });
 
-  const handleDelete = (id: string) => {
-    eliminarNoticia(id);
-    setDeleteConfirm(null);
-  };
-
-  const togglePublicado = (id: string, publicado: boolean) => {
-    editarNoticia(id, { publicado: !publicado });
-  };
-
-  const toggleDestacado = (id: string, destacado: boolean) => {
-    editarNoticia(id, { destacado: !destacado });
-  };
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="w-8 h-8 border-4 border-[#001689] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-4">
-              <Link href="/admin" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <ArrowLeft size={20} className="text-[#76777A]" />
-              </Link>
-              <h1 className="text-xl font-bold text-[#001689]">Gestionar Noticias</h1>
-            </div>
-            <Link
-              href="/admin/noticias/nueva"
-              className="flex items-center gap-2 px-4 py-2 bg-[#001689] text-white rounded-lg hover:bg-[#000E53] transition-colors"
-            >
-              <Plus size={18} />
-              <span className="hidden sm:inline">Nueva Noticia</span>
+      <div className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Link href="/admin" className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors">
+              <ArrowLeft className="w-5 h-5" />
             </Link>
+            <h1 className="text-xl font-bold text-gray-900">Noticias</h1>
+            <span className="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">
+              {noticias.length}
+            </span>
           </div>
+          <Link
+            href="/admin/noticias/nueva"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium"
+            style={{ backgroundColor: "#001689" }}
+          >
+            <Plus className="w-4 h-4" />
+            Nueva Noticia
+          </Link>
         </div>
-      </header>
+      </div>
 
-      {/* Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-xl shadow-sm p-4 mb-6"
-        >
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Buscar noticias..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
-              />
-            </div>
-            <select
-              value={filterCategoria}
-              onChange={(e) => setFilterCategoria(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
-            >
-              <option value="">Todas las categorías</option>
-              {categoriasNoticias.map((cat) => (
-                <option key={cat.value} value={cat.value}>{cat.label}</option>
-              ))}
-            </select>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="bg-white rounded-xl p-4 shadow-sm mb-6 flex flex-col sm:flex-row gap-3">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Buscar noticias..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#001689]"
+            />
           </div>
-        </motion.div>
+          <select
+            value={filterCategoria}
+            onChange={(e) => setFilterCategoria(e.target.value)}
+            className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#001689]"
+          >
+            <option value="">Todas las categorías</option>
+            {categoriasNoticias.map((c) => (
+              <option key={c.value} value={c.value}>{c.label}</option>
+            ))}
+          </select>
+        </div>
 
-        {/* List */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="bg-white rounded-xl shadow-sm overflow-hidden"
-        >
-          {noticiasFiltradas.length === 0 ? (
-            <div className="p-12 text-center">
-              <p className="text-[#76777A] mb-4">No se encontraron noticias</p>
-              <Link
-                href="/admin/noticias/nueva"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#001689] text-white rounded-lg hover:bg-[#000E53] transition-colors"
-              >
-                <Plus size={18} />
-                Crear Primera Noticia
-              </Link>
-            </div>
-          ) : (
-            <div className="divide-y">
-              {noticiasFiltradas.map((noticia) => (
-                <div key={noticia.id} className="p-4 hover:bg-gray-50 transition-colors">
-                  <div className="flex items-start gap-4">
-                    {/* Image placeholder */}
-                    <div className="w-20 h-20 bg-gray-200 rounded-lg flex-shrink-0 overflow-hidden">
-                      {noticia.imagen ? (
-                        <img src={noticia.imagen} alt="" className="w-full h-full object-cover" />
-                      ) : (
-                        <div className="w-full h-full bg-[#001689]/10 flex items-center justify-center">
-                          <span className="text-[#001689] text-xs">Sin imagen</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <div className="flex items-center gap-2 mb-1">
-                            {noticia.destacado && (
-                              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                            )}
-                            <h3 className="font-semibold text-[#001689] truncate">
-                              {noticia.titulo}
-                            </h3>
-                          </div>
-                          <p className="text-[#76777A] text-sm line-clamp-2 mb-2">
-                            {noticia.resumen}
-                          </p>
-                          <div className="flex items-center gap-3 text-xs text-[#76777A]">
-                            <span 
-                              className="px-2 py-1 rounded-full"
-                              style={{ 
-                                backgroundColor: `${categoriasNoticias.find(c => c.value === noticia.categoria)?.color}15`,
-                                color: categoriasNoticias.find(c => c.value === noticia.categoria)?.color
-                              }}
-                            >
-                              {categoriasNoticias.find(c => c.value === noticia.categoria)?.label}
-                            </span>
-                            <span>{noticia.fechaPublicacion}</span>
-                            <span className={`flex items-center gap-1 ${noticia.publicado ? 'text-green-600' : 'text-orange-500'}`}>
-                              {noticia.publicado ? <Eye size={14} /> : <EyeOff size={14} />}
-                              {noticia.publicado ? 'Publicado' : 'Borrador'}
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Actions */}
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={() => toggleDestacado(noticia.id, noticia.destacado)}
-                            className={`p-2 rounded-lg transition-colors ${noticia.destacado ? 'bg-yellow-100 text-yellow-600' : 'hover:bg-gray-100 text-gray-400'}`}
-                            title={noticia.destacado ? 'Quitar destacado' : 'Destacar'}
-                          >
-                            <Star size={18} className={noticia.destacado ? 'fill-current' : ''} />
-                          </button>
-                          <button
-                            onClick={() => togglePublicado(noticia.id, noticia.publicado)}
-                            className={`p-2 rounded-lg transition-colors ${noticia.publicado ? 'hover:bg-gray-100 text-green-600' : 'hover:bg-gray-100 text-orange-500'}`}
-                            title={noticia.publicado ? 'Despublicar' : 'Publicar'}
-                          >
-                            {noticia.publicado ? <Eye size={18} /> : <EyeOff size={18} />}
-                          </button>
-                          <Link
-                            href={`/admin/noticias/${noticia.id}/edit`}
-                            className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-[#001689]"
-                            title="Editar"
-                          >
-                            <Edit size={18} />
-                          </Link>
-                          <button
-                            onClick={() => setDeleteConfirm(noticia.id)}
-                            className="p-2 hover:bg-red-100 rounded-lg transition-colors text-red-500"
-                            title="Eliminar"
-                          >
-                            <Trash2 size={18} />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Delete confirmation */}
-                  {deleteConfirm === noticia.id && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      className="mt-4 p-4 bg-red-50 rounded-lg"
-                    >
-                      <p className="text-red-800 text-sm mb-3">
-                        ¿Está seguro de eliminar esta noticia? Esta acción no se puede deshacer.
-                      </p>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => handleDelete(noticia.id)}
-                          className="px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition-colors"
-                        >
-                          Sí, eliminar
-                        </button>
-                        <button
-                          onClick={() => setDeleteConfirm(null)}
-                          className="px-4 py-2 bg-white text-gray-700 text-sm rounded-lg hover:bg-gray-100 transition-colors border"
-                        >
-                          Cancelar
-                        </button>
-                      </div>
-                    </motion.div>
-                  )}
-                </div>
-              ))}
+        <div className="space-y-3">
+          {noticiasFiltradas.length === 0 && (
+            <div className="bg-white rounded-xl p-8 text-center text-gray-500">
+              No se encontraron noticias.
             </div>
           )}
-        </motion.div>
-      </main>
+          {noticiasFiltradas.map((noticia) => (
+            <motion.div
+              key={noticia.id}
+              layout
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-white rounded-xl shadow-sm overflow-hidden"
+            >
+              <div className="flex gap-4 p-4">
+                {noticia.imagen && (
+                  <img
+                    src={noticia.imagen}
+                    alt={noticia.titulo}
+                    className="w-20 h-20 object-cover rounded-lg flex-shrink-0"
+                  />
+                )}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <h3 className="font-semibold text-gray-900 truncate">{noticia.titulo}</h3>
+                      {noticia.resumen && (
+                        <p className="text-sm text-gray-500 mt-0.5 line-clamp-2">{noticia.resumen}</p>
+                      )}
+                      <div className="flex flex-wrap items-center gap-2 mt-2">
+                        {noticia.categoria && (
+                          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
+                            {noticia.categoria}
+                          </span>
+                        )}
+                        <span className="text-xs text-gray-400">
+                          {new Date(noticia.createdAt).toLocaleDateString("es")}
+                        </span>
+                        <span
+                          className={`text-xs px-2 py-0.5 rounded-full ${
+                            noticia.publicado ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"
+                          }`}
+                        >
+                          {noticia.publicado ? "Publicado" : "Borrador"}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                      <button
+                        onClick={() => toggleDestacado(noticia.id, noticia.destacado)}
+                        title="Destacado"
+                        className={`p-1.5 rounded-lg transition-colors ${
+                          noticia.destacado ? "text-amber-500 bg-amber-50" : "text-gray-400 hover:text-amber-500 hover:bg-amber-50"
+                        }`}
+                      >
+                        <Star className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => togglePublicado(noticia.id, noticia.publicado)}
+                        title={noticia.publicado ? "Despublicar" : "Publicar"}
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#001689] hover:bg-blue-50 transition-colors"
+                      >
+                        {noticia.publicado ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      </button>
+                      <Link
+                        href={`/admin/noticias/${noticia.id}/edit`}
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#001689] hover:bg-blue-50 transition-colors"
+                      >
+                        <Edit className="w-4 h-4" />
+                      </Link>
+                      <button
+                        onClick={() => setDeleteConfirm(noticia.id)}
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {deleteConfirm === noticia.id && (
+                <div className="border-t border-red-100 bg-red-50 px-4 py-3 flex items-center justify-between">
+                  <p className="text-sm text-red-700">¿Eliminar esta noticia?</p>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setDeleteConfirm(null)}
+                      className="px-3 py-1 text-xs rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      onClick={() => handleDelete(noticia.id)}
+                      className="px-3 py-1 text-xs rounded-lg bg-red-500 text-white hover:bg-red-600"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

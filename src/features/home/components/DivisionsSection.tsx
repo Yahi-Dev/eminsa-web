@@ -1,9 +1,11 @@
 "use client";
 
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Factory, Wrench, Globe, Settings } from "lucide-react";
 import { divisions } from "@/config/navigation";
+import { useTranslations } from "next-intl";
 
 const iconMap: { [key: string]: React.ElementType } = {
   factory: Factory,
@@ -13,12 +15,56 @@ const iconMap: { [key: string]: React.ElementType } = {
 };
 
 export default function DivisionsSection() {
+  const t = useTranslations("home");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const activeDivision = divisions[activeIndex];
+
+  const resetProgress = useCallback(() => {
+    setProgress(0);
+    if (progressRef.current) clearInterval(progressRef.current);
+    progressRef.current = setInterval(() => {
+      setProgress((p) => {
+        if (p >= 100) return 100;
+        return p + 100 / (4500 / 50);
+      });
+    }, 50);
+  }, []);
+
+  const next = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % divisions.length);
+  }, []);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    resetProgress();
+    const timer = setInterval(next, 4500);
+    return () => {
+      clearInterval(timer);
+      if (progressRef.current) clearInterval(progressRef.current);
+    };
+  }, [isAutoPlaying, next, resetProgress]);
+
+  // Reset progress bar when slide changes
+  useEffect(() => {
+    if (isAutoPlaying) resetProgress();
+  }, [activeIndex, isAutoPlaying, resetProgress]);
+
+  const handleTabClick = (index: number) => {
+    setActiveIndex(index);
+    setIsAutoPlaying(false);
+    setProgress(0);
+  };
+
   return (
-    <section id="divisiones" className="py-20 lg:py-32 bg-gray-50 relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#001689]/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#00A3E0]/5 rounded-full blur-[80px]" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gray-50 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gray-50 rounded-full blur-[100px]" />
       </div>
 
       <div className="container-eminsa relative">
@@ -28,94 +74,168 @@ export default function DivisionsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center mb-10"
         >
-          <span className="inline-block px-4 py-2 bg-[#001689]/10 text-[#001689] rounded-full text-sm font-semibold mb-4">
-            Nuestras Divisiones
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689] mb-4">
-            Soluciones Integrales en{" "}
-            <span className="text-[#00A3E0]">Transformadores</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689] uppercase">
+            {t('divisions.sectionLabel')}
           </h2>
-          <p className="text-[#76777A] text-lg max-w-2xl mx-auto">
-            Cuatro divisiones especializadas trabajando juntas para ofrecer 
-            la más completa gama de productos y servicios en el sector eléctrico.
-          </p>
         </motion.div>
 
-        {/* Division Cards */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {divisions.map((division, index) => {
-            const IconComponent = iconMap[division.icon] || Factory;
-            
-            return (
-              <motion.div
-                key={division.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+        {/* Division Name Bubbles */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-3 mb-10"
+        >
+          {divisions.map((division, index) => (
+            <button
+              key={division.id}
+              onClick={() => handleTabClick(index)}
+              className={`px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wide transition-all duration-300 ${
+                activeIndex === index
+                  ? "text-white shadow-lg scale-105"
+                  : "bg-gray-100 text-gray-500 hover:bg-gray-200 hover:scale-102"
+              }`}
+              style={
+                activeIndex === index
+                  ? { backgroundColor: division.color }
+                  : {}
+              }
+            >
+              {division.name}
+            </button>
+          ))}
+        </motion.div>
+
+        {/* Carousel Card */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeIndex}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -24 }}
+            transition={{ duration: 0.4 }}
+            className="rounded-3xl overflow-hidden shadow-xl border border-gray-100"
+          >
+            <div className="grid lg:grid-cols-2">
+              {/* Left: Info */}
+              <div
+                className="p-10 lg:p-14 flex flex-col justify-center"
+                style={{
+                  background: `linear-gradient(135deg, ${activeDivision.color}12 0%, ${activeDivision.color}05 100%)`,
+                }}
               >
-                <Link href={division.href} className="group block h-full">
-                  <div className="h-full bg-white rounded-3xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
-                    {/* Card Header with gradient */}
-                    <div 
-                      className={`p-8 bg-gradient-to-br ${division.gradient}`}
-                    >
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="inline-flex items-center justify-center w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl mb-4">
-                            <IconComponent className="w-7 h-7 text-white" />
-                          </div>
-                          <h3 className="text-2xl font-bold text-white mb-1">
-                            {division.name}
-                          </h3>
-                          <p className="text-white/80 text-sm">
-                            {division.fullName}
-                          </p>
-                        </div>
-                        <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-                          <ArrowRight className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform" />
-                        </div>
-                      </div>
-                    </div>
+                {/* Icon */}
+                <div
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                  style={{ backgroundColor: `${activeDivision.color}20` }}
+                >
+                  {(() => {
+                    const IconComp = iconMap[activeDivision.icon] || Factory;
+                    return (
+                      <IconComp
+                        className="w-8 h-8"
+                        style={{ color: activeDivision.color }}
+                      />
+                    );
+                  })()}
+                </div>
 
-                    {/* Card Body */}
-                    <div className="p-8">
-                      <p className="text-[#76777A] mb-6 leading-relaxed">
-                        {division.description}
-                      </p>
+                {/* Tagline badge */}
+                <div
+                  className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4"
+                  style={{
+                    backgroundColor: `${activeDivision.color}15`,
+                    color: activeDivision.color,
+                  }}
+                >
+                  {activeDivision.tagline}
+                </div>
 
-                      {/* Features */}
-                      <div className="space-y-3">
-                        {division.features.map((feature, i) => (
-                          <div key={i} className="flex items-center gap-3">
-                            <div 
-                              className="w-2 h-2 rounded-full"
-                              style={{ backgroundColor: division.color }}
-                            />
-                            <span className="text-[#76777A] text-sm">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
+                {/* Name */}
+                <h3 className="text-5xl md:text-6xl font-black text-[#001689] mb-4">
+                  {activeDivision.name}
+                </h3>
 
-                      {/* CTA */}
-                      <div className="mt-8 pt-6 border-t border-gray-100">
-                        <span 
-                          className="inline-flex items-center gap-2 font-semibold transition-colors group-hover:gap-3"
-                          style={{ color: division.color }}
-                        >
-                          Explorar {division.name}
-                          <ArrowRight size={18} />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                {/* Description */}
+                <p className="text-[#76777A] text-base leading-relaxed mb-8">
+                  {activeDivision.description}
+                </p>
+
+                {/* CTA */}
+                <Link
+                  href={activeDivision.href}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white transition-all hover:opacity-90 hover:-translate-y-0.5 self-start group"
+                  style={{ backgroundColor: activeDivision.color }}
+                >
+                  {t('divisions.cta')}
+                  <ArrowRight
+                    size={18}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
                 </Link>
-              </motion.div>
-            );
-          })}
-        </div>
+              </div>
+
+              {/* Right: Features grid */}
+              <div
+                className="p-10 lg:p-14 flex flex-col justify-between"
+                style={{
+                  background: `linear-gradient(135deg, ${activeDivision.color}08 0%, white 60%)`,
+                }}
+              >
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  {activeDivision.features.map((feature, idx) => (
+                    <motion.div
+                      key={feature}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: idx * 0.07 }}
+                      className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200"
+                    >
+                      <div
+                        className="w-2 h-2 rounded-full mb-3"
+                        style={{ backgroundColor: activeDivision.color }}
+                      />
+                      <p className="font-semibold text-[#001689] text-sm">
+                        {feature}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Progress dots + auto-play bar */}
+                <div className="space-y-3">
+                  <div className="flex justify-center gap-2">
+                    {divisions.map((div, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleTabClick(idx)}
+                        className="h-2 rounded-full transition-all duration-300"
+                        style={{
+                          width: activeIndex === idx ? "32px" : "8px",
+                          backgroundColor:
+                            activeIndex === idx ? activeDivision.color : "#e5e7eb",
+                        }}
+                      />
+                    ))}
+                  </div>
+                  {isAutoPlaying && (
+                    <div className="w-full h-0.5 bg-gray-100 rounded-full overflow-hidden">
+                      <motion.div
+                        className="h-full rounded-full"
+                        style={{ backgroundColor: activeDivision.color }}
+                        animate={{ width: `${progress}%` }}
+                        transition={{ duration: 0.05, ease: "linear" }}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

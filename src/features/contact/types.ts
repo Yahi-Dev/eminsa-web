@@ -155,7 +155,7 @@ export interface UseContactFormReturn {
     normas: SelectOption[];
     zonasInstalacion: SelectOption[];
   };
-  maskedInputRef: React.RefCallback<HTMLInputElement>;
+  handlePhoneChange: (value: string) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   handleTipoConsultaClick: (tipo: 'productos' | 'servicios') => void;

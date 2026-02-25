@@ -201,7 +201,7 @@ export default function EtrysProductoDetailPage({
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={`/etrys/cotizaciones?producto=${product.slug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -361,7 +361,7 @@ export default function EtrysProductoDetailPage({
                 <div className="space-y-3 mb-6">
                   <Link
                     href={`/etrys/cotizaciones?producto=${product.slug}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
                   >
                     Solicitar Cotización
                   </Link>
@@ -441,7 +441,7 @@ export default function EtrysProductoDetailPage({
           </p>
           <Link
             href={`/etrys/cotizaciones?producto=${product.slug}`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
           >
             Solicitar Cotización
             <ArrowRight size={20} />

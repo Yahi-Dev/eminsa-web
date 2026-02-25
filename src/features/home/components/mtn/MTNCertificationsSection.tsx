@@ -49,7 +49,7 @@ const certifications: Certification[] = [
     description:
       "Certificación que valida nuestros transformadores bajo los más exigentes estándares de calidad y seguridad del sector eléctrico latinoamericano.",
     icon: Globe2,
-    color: "#FF5500",
+    color: "#001689",
   },
 ];
 

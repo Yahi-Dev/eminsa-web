@@ -3,245 +3,244 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Save, FileText, Upload } from "lucide-react";
-import { useContent } from "@/context/content-context";
-import { RecursoDescargable, tiposRecurso, divisionesRecurso } from "@/data/content";
+import { ArrowLeft, Save, AlertCircle, FileText } from "lucide-react";
+import FileUploadField from "@/components/admin/FileUploadField";
+import type { RecursoAPI } from "@/features/admin/types";
+
+const tiposRecurso = [
+  { value: "pdf", label: "PDF", emoji: "📄" },
+  { value: "doc", label: "Word", emoji: "📝" },
+  { value: "xls", label: "Excel", emoji: "📊" },
+  { value: "img", label: "Imagen", emoji: "🖼️" },
+  { value: "link", label: "Enlace/URL", emoji: "🔗" },
+];
+
+const divisionesRecurso = [
+  { value: "MTN", label: "MTN" },
+  { value: "RST", label: "RST" },
+  { value: "EIC", label: "EIC" },
+  { value: "SRV", label: "SRV — Servicios" },
+];
 
 interface RecursoFormProps {
-  recurso?: RecursoDescargable;
+  recurso?: RecursoAPI;
   isEditing?: boolean;
 }
 
 export default function RecursoForm({ recurso, isEditing = false }: RecursoFormProps) {
   const router = useRouter();
-  const { agregarRecurso, editarRecurso } = useContent();
 
   const [formData, setFormData] = useState({
-    nombre: recurso?.nombre || "",
-    descripcion: recurso?.descripcion || "",
-    archivo: recurso?.archivo || "",
-    tipo: recurso?.tipo || "pdf",
-    division: recurso?.division || "general",
+    nombre: recurso?.nombre ?? "",
+    descripcion: recurso?.descripcion ?? "",
+    archivo: recurso?.archivo ?? "",
+    nombreArchivo: recurso?.nombreArchivo ?? "",
+    tipo: recurso?.tipo ?? "pdf",
+    division: recurso?.division ?? "MTN",
     activo: recurso?.activo ?? true,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) {
     const { name, value, type } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
-    }));
-  };
+    if (type === "checkbox") {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData((prev) => ({ ...prev, [name]: checked }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  function handleFileUpload(base64: string, filename: string) {
+    setFormData((prev) => ({ ...prev, archivo: base64, nombreArchivo: filename }));
+  }
+
+  function handleFileClear() {
+    setFormData((prev) => ({ ...prev, archivo: "", nombreArchivo: "" }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setIsSubmitting(true);
+    setApiError(null);
 
-    await new Promise((r) => setTimeout(r, 600));
-
-    const now = new Date().toISOString().split("T")[0];
-
-    if (isEditing && recurso) {
-      editarRecurso(recurso.id, { ...formData, fechaActualizacion: now });
-    } else {
-      agregarRecurso({
-        ...formData,
-        fechaCreacion: now,
-        fechaActualizacion: now,
+    try {
+      const url = isEditing ? `/api/recursos/${recurso!.id}` : "/api/recursos";
+      const method = isEditing ? "PUT" : "POST";
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setApiError(data.error ?? "Error al guardar el recurso");
+        return;
+      }
+      router.push("/admin/recursos");
+    } catch {
+      setApiError("Error de red. Intenta de nuevo.");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    router.push("/admin/recursos");
-  };
-
-  const tipoIcono: Record<string, string> = {
-    pdf: "📄", excel: "📊", word: "📝", imagen: "🖼️", otro: "📎",
-  };
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b sticky top-0 z-40">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-4">
-              <Link
-                href="/admin/recursos"
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <ArrowLeft size={20} className="text-gray-500" />
-              </Link>
-              <div className="flex items-center gap-2">
-                <FileText size={20} className="text-[#001689]" />
-                <h1 className="text-xl font-bold text-[#001689]">
-                  {isEditing ? "Editar Recurso" : "Nuevo Recurso"}
-                </h1>
-              </div>
-            </div>
+      <div className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Link
+              href="/admin/recursos"
+              className="p-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </Link>
+            <FileText className="w-5 h-5 text-[#001689]" />
+            <h1 className="text-xl font-bold text-gray-900">
+              {isEditing ? "Editar Recurso" : "Nuevo Recurso"}
+            </h1>
           </div>
         </div>
-      </header>
+      </div>
 
-      {/* Form */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {apiError && (
+          <div className="mb-6 flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl">
+            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+            <p className="text-sm">{apiError}</p>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Nombre */}
-          <div className="bg-white rounded-xl p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Información del Recurso</h2>
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Nombre <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="nombre"
-                  value={formData.nombre}
-                  onChange={handleChange}
-                  required
-                  placeholder="Ej: Ficha Técnica Transformador Tipo Poste"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
-                />
-              </div>
+          <div className="bg-white rounded-xl p-6 shadow-sm space-y-4">
+            <h2 className="text-base font-semibold text-gray-800 mb-2">Información del Recurso</h2>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Descripción <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  name="descripcion"
-                  value={formData.descripcion}
-                  onChange={handleChange}
-                  required
-                  rows={3}
-                  placeholder="Breve descripción del contenido del recurso..."
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all resize-none"
-                />
-              </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Nombre <span className="text-red-500">*</span>
+              </label>
+              <input
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                required
+                maxLength={200}
+                placeholder="Ej. Manual de instalación de transformadores"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#001689] text-sm"
+              />
+              <p className="text-right text-xs text-gray-400 mt-1">{formData.nombre.length}/200</p>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+              <textarea
+                name="descripcion"
+                value={formData.descripcion}
+                onChange={handleChange}
+                rows={3}
+                maxLength={500}
+                placeholder="Breve descripción del recurso"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#001689] text-sm resize-none"
+              />
+              <p className="text-right text-xs text-gray-400 mt-1">{formData.descripcion.length}/500</p>
             </div>
           </div>
 
-          {/* Archivo y Clasificación */}
-          <div className="bg-white rounded-xl p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Archivo y Clasificación</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="sm:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  URL del Archivo <span className="text-red-500">*</span>
-                </label>
-                <div className="flex gap-2">
-                  <div className="relative flex-1">
-                    <Upload size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="text"
-                      name="archivo"
-                      value={formData.archivo}
-                      onChange={handleChange}
-                      required
-                      placeholder="/recursos/mi-documento.pdf"
-                      className="w-full pl-9 pr-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
-                    />
-                  </div>
-                </div>
-                <p className="text-xs text-gray-500 mt-1">
-                  Ruta relativa desde /public (ej: /recursos/archivo.pdf) o URL completa
-                </p>
-              </div>
+          <div className="bg-white rounded-xl p-6 shadow-sm space-y-4">
+            <h2 className="text-base font-semibold text-gray-800 mb-2">Archivo y Clasificación</h2>
 
+            <FileUploadField
+              value={formData.archivo}
+              nombreArchivo={formData.nombreArchivo}
+              onChange={handleFileUpload}
+              onClear={handleFileClear}
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Tipo de Archivo
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Tipo</label>
                 <select
                   name="tipo"
                   value={formData.tipo}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#001689] text-sm"
                 >
                   {tiposRecurso.map((t) => (
-                    <option key={t.value} value={t.value}>
-                      {tipoIcono[t.value]} {t.label}
-                    </option>
+                    <option key={t.value} value={t.value}>{t.emoji} {t.label}</option>
                   ))}
                 </select>
               </div>
-
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  División
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">División</label>
                 <select
                   name="division"
                   value={formData.division}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#001689] text-sm"
                 >
                   {divisionesRecurso.map((d) => (
-                    <option key={d.value} value={d.value}>
-                      {d.label}
-                    </option>
+                    <option key={d.value} value={d.value}>{d.label}</option>
                   ))}
                 </select>
               </div>
             </div>
           </div>
 
-          {/* Estado */}
           <div className="bg-white rounded-xl p-6 shadow-sm">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Estado</h2>
-            <label className="flex items-center gap-3 cursor-pointer group">
-              <div className="relative">
-                <input
-                  type="checkbox"
-                  name="activo"
-                  checked={formData.activo}
-                  onChange={handleChange}
-                  className="sr-only"
-                />
-                <div className={`w-11 h-6 rounded-full transition-colors duration-200 ${formData.activo ? "bg-green-500" : "bg-gray-300"}`}>
-                  <div className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${formData.activo ? "translate-x-5" : "translate-x-0"}`} />
-                </div>
-              </div>
+            <h2 className="text-base font-semibold text-gray-800 mb-4">Estado</h2>
+            <div className="flex items-center justify-between">
               <div>
-                <span className="font-medium text-gray-900">
+                <p className="text-sm font-medium text-gray-700">
                   {formData.activo ? "Activo" : "Inactivo"}
-                </span>
+                </p>
                 <p className="text-xs text-gray-500">
-                  {formData.activo
-                    ? "El recurso es visible en la sección de descargas"
-                    : "El recurso está oculto para los usuarios"}
+                  {formData.activo ? "El recurso es visible y descargable" : "El recurso está oculto"}
                 </p>
               </div>
-            </label>
+              <button
+                type="button"
+                onClick={() => setFormData((prev) => ({ ...prev, activo: !prev.activo }))}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                  formData.activo ? "bg-[#001689]" : "bg-gray-200"
+                }`}
+              >
+                <span
+                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                    formData.activo ? "translate-x-6" : "translate-x-1"
+                  }`}
+                />
+              </button>
+            </div>
           </div>
 
-          {/* Actions */}
-          <div className="flex gap-3 justify-end">
+          <div className="flex items-center justify-end gap-3 pt-2 pb-8">
             <Link
               href="/admin/recursos"
-              className="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium"
+              className="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors"
             >
               Cancelar
             </Link>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 px-6 py-2.5 bg-[#001689] text-white rounded-lg hover:bg-[#000E53] disabled:opacity-50 transition-colors font-medium"
+              className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-sm font-medium transition-colors disabled:opacity-60"
+              style={{ backgroundColor: "#001689" }}
             >
               {isSubmitting ? (
-                <span className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
               ) : (
-                <Save size={16} />
+                <Save className="w-4 h-4" />
               )}
-              {isSubmitting ? "Guardando..." : isEditing ? "Guardar Cambios" : "Crear Recurso"}
+              {isEditing ? "Guardar Cambios" : "Crear Recurso"}
             </button>
           </div>
         </form>
-      </main>
+      </div>
     </div>
   );
 }

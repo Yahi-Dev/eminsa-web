@@ -54,7 +54,7 @@ export default function EICPage() {
       {/* ================================================================ */}
       {/* HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white py-16 lg:py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white py-20 lg:py-28 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -72,14 +72,23 @@ export default function EICPage() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="space-y-8"
             >
-              <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6 border border-white/20">
-                {eicInfo.tagline}
-              </span>
-              <h1 className="text-3xl md:text-3xl lg:text-5xl font-bold mb-6 leading-tight">
-                Eminsa International Corporation
-              </h1>
-              <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                <Globe size={18} className="text-[#00B140]" />
+                <span className="text-sm font-medium">{eicInfo.tagline}</span>
+              </div>
+
+              <div className="space-y-4">
+                <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
+                  <span className="text-white">Eminsa International Corporation</span>
+                </h1>
+                <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
+                  Suplidores eléctricos internacionales al servicio de su proyecto.
+                </p>
+              </div>
+
+              <p className="text-lg text-white/70 leading-relaxed max-w-xl">
                 {eicInfo.description}
               </p>
 
@@ -102,30 +111,39 @@ export default function EICPage() {
               </div>
             </motion.div>
 
-            {/* Stats Grid */}
+            {/* Visual - Animated Circles */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative hidden lg:block"
             >
-              <div className="grid grid-cols-2 gap-4">
-                {eicInfo.stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center hover:bg-white/15 transition-colors"
-                  >
-                    <div className="text-3xl md:text-4xl font-bold mb-1">
-                      {stat.value}
-                      {stat.suffix && (
-                        <span className="text-white/70">{stat.suffix}</span>
-                      )}
-                    </div>
-                    <div className="text-sm text-white/80">{stat.label}</div>
-                  </motion.div>
-                ))}
+              <div className="relative aspect-square">
+                {/* Decorative circles */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-80 h-80 border-2 border-white/10 rounded-full animate-pulse" />
+                  <div className="absolute w-64 h-64 border-2 border-[#00B140]/30 rounded-full animate-pulse delay-150" />
+                  <div className="absolute w-48 h-48 border-2 border-white/20 rounded-full animate-pulse delay-300" />
+                </div>
+
+                {/* Center card */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2">
+                    <Globe size={48} className="mx-auto text-[#00B140]" />
+                    <p className="text-4xl font-bold">8+</p>
+                    <p className="text-white/70 text-sm">Marcas internacionales</p>
+                  </div>
+                </div>
+
+                {/* Floating stat cards */}
+                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
+                  <p className="text-2xl font-bold">500+</p>
+                  <p className="text-xs text-white/70">Clientes satisfechos</p>
+                </div>
+                <div className="absolute bottom-8 left-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
+                  <p className="text-2xl font-bold">50+</p>
+                  <p className="text-xs text-white/70">Años de trayectoria</p>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -167,7 +185,7 @@ export default function EICPage() {
                 transition={{ delay: index * 0.08 }}
               >
                 <Link
-                  href={`/eic/productos`}
+                  href={`/eic/marcas/${brand.slug}`}
                   className="block bg-gray-50 hover:bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-all group h-full border border-gray-100 hover:border-[#00B140]/30"
                 >
                   <div className="flex items-center gap-2 mb-3">
@@ -185,7 +203,7 @@ export default function EICPage() {
                     {brand.description.substring(0, 150)}...
                   </p>
                   <div className="flex items-center gap-1 text-[#00B140] text-sm font-medium mt-auto">
-                    Ver productos
+                    Ver marca
                     <ArrowRight
                       size={14}
                       className="group-hover:translate-x-1 transition-transform"

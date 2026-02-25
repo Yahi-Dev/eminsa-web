@@ -2,28 +2,26 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { useContent } from "@/context/content-context";
 import ProyectoForm from "@/components/admin/ProyectoForm";
-import { Proyecto } from "@/data/content";
+import type { ProyectoAPI } from "@/features/admin/types";
 
 export default function EditarProyectoPage() {
   const params = useParams();
   const router = useRouter();
-  const { obtenerProyecto } = useContent();
-  const [proyecto, setProyecto] = useState<Proyecto | null>(null);
+  const [proyecto, setProyecto] = useState<ProyectoAPI | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const id = params.id as string;
-    const found = obtenerProyecto(id);
-    
-    if (found) {
-      setProyecto(found);
-    } else {
-      router.push("/admin/proyectos");
-    }
-    setLoading(false);
-  }, [params.id, obtenerProyecto, router]);
+    fetch(`/api/proyectos/${id}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success) setProyecto(data.proyecto);
+        else router.push("/admin/proyectos");
+      })
+      .catch(() => router.push("/admin/proyectos"))
+      .finally(() => setLoading(false));
+  }, [params.id, router]);
 
   if (loading) {
     return (
@@ -32,10 +30,6 @@ export default function EditarProyectoPage() {
       </div>
     );
   }
-
-  if (!proyecto) {
-    return null;
-  }
-
+  if (!proyecto) return null;
   return <ProyectoForm proyecto={proyecto} isEditing />;
 }

@@ -80,7 +80,7 @@ export default function CentroReparacionPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/etrys/cotizaciones?servicio=reparacion"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
                 >
                   Solicitar Servicio
                   <ArrowRight size={20} />
@@ -351,7 +351,7 @@ export default function CentroReparacionPage() {
 
               <Link
                 href="/etrys/cotizaciones?servicio=reparacion"
-                className="flex items-center justify-center gap-2 w-full mt-6 px-6 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors"
+                className="flex items-center justify-center gap-2 w-full mt-6 px-6 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
               >
                 Solicitar Servicio
                 <ArrowRight size={20} />
@@ -378,7 +378,7 @@ export default function CentroReparacionPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/etrys/cotizaciones?servicio=reparacion"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

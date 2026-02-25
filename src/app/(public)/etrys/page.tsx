@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { PhoneInputField } from "@/components/ui/PhoneInputField";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Play,
   CheckCircle2,
   Phone,
   MessageCircle,
@@ -18,6 +18,7 @@ import {
   Award,
   Users,
   Clock,
+  Wrench,
 } from "lucide-react";
 import {
   etrysInfo,
@@ -26,7 +27,6 @@ import {
   remanufactureProcess,
   rentalInfo,
 } from "@/config/etrys-data";
-import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import TransformadorRestauracionSection from "@/features/home/components/TransformadorRestauracionSection";
 import RemanufactureProcessModal from "@/features/home/components/etrys/RemanufactureProcessModal";
@@ -52,33 +52,11 @@ export default function EtrysPage() {
     router.push(`/etrys/cotizaciones?${params.toString()}`);
   };
 
-  // Referencia para el video
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Efecto para asegurar que el video se reproduzca
-  useEffect(() => {
-    if (videoRef.current) {
-      // Intentar reproducir el video
-      videoRef.current.play().catch((error) => {
-        console.log("Video autoplay failed, trying with user interaction simulation:", error);
-        
-        // Si falla el autoplay, intentar con una simulación de interacción del usuario
-        const playVideo = () => {
-          if (videoRef.current) {
-            videoRef.current.play();
-          }
-        };
-        
-        // Agregar un event listener para intentar reproducir en la primera interacción del usuario
-        document.addEventListener('click', playVideo, { once: true });
-      });
-    }
-  }, []);
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-16 lg:py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-20 lg:py-28 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -93,24 +71,33 @@ export default function EtrysPage() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="space-y-8"
             >
-              <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6 border border-white/20">
-                {etrysInfo.slogan}
-              </span>
-              <h1 className="text-3xl md:text-3xl lg:text-5xl font-bold mb-6 leading-tight">
-                {etrysInfo.tagline}
-              </h1>
-              <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl">
-                En ETRYS unimos la experiencia de un equipo técnico altamente
-                calificado con tecnología de última generación para garantizar
-                que sus transformadores trabajen como nuevos.
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                <Wrench size={18} className="text-[#00A3E0]" />
+                <span className="text-sm font-medium">{etrysInfo.slogan}</span>
+              </div>
+
+              <div className="space-y-4">
+                <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
+                  <span className="text-white">{etrysInfo.tagline}</span>
+                </h1>
+                <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
+                  Reparación y restauración de transformadores eléctricos con garantía certificada.
+                </p>
+              </div>
+
+              <p className="text-lg text-white/70 leading-relaxed max-w-xl">
+                En RST combinamos la experiencia de un equipo técnico altamente
+                calificado con tecnología de última generación para darle a sus
+                transformadores una nueva vida.
               </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/etrys/cotizaciones"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00A3E0] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -127,34 +114,39 @@ export default function EtrysPage() {
               </div>
             </motion.div>
 
-            {/* Video */}
+            {/* Visual - Animated Circles */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
+              className="relative hidden lg:block"
             >
-              <div className="aspect-video bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
-                {/* Video con reproducción automática - Similar al HeroSection */}
-                <video
-                  ref={videoRef}
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  poster="/images/video-poster.jpg"
-                  preload="auto"
-                >
-                  <source src="/videos/video-home-etrys.mp4" type="video/mp4" />
-                  Tu navegador no soporta el elemento de video.
-                </video>
-              </div>
+              <div className="relative aspect-square">
+                {/* Decorative circles */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-80 h-80 border-2 border-white/10 rounded-full animate-pulse" />
+                  <div className="absolute w-64 h-64 border-2 border-[#00A3E0]/30 rounded-full animate-pulse delay-150" />
+                  <div className="absolute w-48 h-48 border-2 border-white/20 rounded-full animate-pulse delay-300" />
+                </div>
 
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 bg-amber-500 text-white px-4 py-2 rounded-xl shadow-lg">
-                <span className="font-bold">18 meses</span>
-                <span className="text-sm block">de garantía</span>
+                {/* Center card */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2">
+                    <Wrench size={48} className="mx-auto text-[#00A3E0]" />
+                    <p className="text-4xl font-bold">18 meses</p>
+                    <p className="text-white/70 text-sm">Garantía certificada</p>
+                  </div>
+                </div>
+
+                {/* Floating stat cards */}
+                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
+                  <p className="text-2xl font-bold">50+</p>
+                  <p className="text-xs text-white/70">Años de experiencia</p>
+                </div>
+                <div className="absolute bottom-8 left-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
+                  <p className="text-2xl font-bold">10K+</p>
+                  <p className="text-xs text-white/70">Transformadores restaurados</p>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -412,16 +404,14 @@ export default function EtrysPage() {
                   onChange={(e) => setQuoteForm((p) => ({ ...p, email: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
                 />
-                <input
-                  type="tel"
-                  placeholder="Teléfono"
+                <PhoneInputField
                   value={quoteForm.telefono}
-                  onChange={(e) => setQuoteForm((p) => ({ ...p, telefono: e.target.value }))}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                  onChange={(val) => setQuoteForm((p) => ({ ...p, telefono: val }))}
+                  focusColor="#00A3E0"
                 />
                 <button
                   type="submit"
-                  className="block w-full px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors text-center"
+                  className="block w-full px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors text-center"
                 >
                   Continuar Cotización
                 </button>

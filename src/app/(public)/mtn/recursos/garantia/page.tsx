@@ -278,7 +278,7 @@ export default function GarantiaPage() {
           </p>
           <Link
             href="/mtn/cotizaciones"
-            className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
           >
             Contactar Soporte
             <ArrowRight size={18} />

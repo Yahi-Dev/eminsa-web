@@ -62,26 +62,6 @@ const transformerTypes: TransformerType[] = [
     href: "/mtn/productos/transformadores/pad-mounted",
     color: "#00A3E0",
   },
-  {
-    id: "subestacion",
-    name: "Transformadores de Subestación",
-    shortName: "Subestación",
-    image: "/images/mtn/subestacion.png",
-    phases: ["3F"],
-    standards: ["ANSI"],
-    power: "Hasta 3,000 KVA",
-    voltage: "Hasta 34.5 KV",
-    description:
-      "Diseñados para suministrar energía con máxima confiabilidad y seguridad en aplicaciones de alta potencia.",
-    features: [
-      "Alta potencia y confiabilidad",
-      "Sistemas de protección integrados",
-      "Configuraciones flexibles",
-      "Ideal para subestaciones industriales",
-    ],
-    href: "/mtn/productos/transformadores/subestacion",
-    color: "#00B140",
-  },
 ];
 
 export default function MTNProductsShowcase() {
@@ -118,7 +98,7 @@ export default function MTNProductsShowcase() {
       </div>
 
       <div className="container-eminsa relative">
-        {/* Section Header */}
+        {/* Section Badge */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -126,16 +106,9 @@ export default function MTNProductsShowcase() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-2 bg-white/10 text-white rounded-full text-sm font-semibold mb-4">
+          <span className="inline-block px-4 py-2 bg-white/10 text-white rounded-full text-sm font-semibold">
             Línea de Productos
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            Transformadores de <span className="text-[#00A3E0]">Clase Mundial</span>
-          </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
-            Explore nuestra línea completa de transformadores fabricados con los
-            más altos estándares de calidad
-          </p>
         </motion.div>
 
         {/* Product Tabs */}

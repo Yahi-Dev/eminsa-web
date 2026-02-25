@@ -12,6 +12,7 @@ import { InquiryTypeSelector } from './inquiry-type-selector';
 import { TransformerFields } from './transformer-fields';
 import type { UseContactFormReturn } from '../types';
 import { FIELD_LIMITS } from '../data/constants';
+import { PhoneInputField } from '@/components/ui/PhoneInputField';
 
 interface ContactFormProps {
   form: UseContactFormReturn;
@@ -33,7 +34,7 @@ export function ContactForm({ form }: ContactFormProps) {
     showOtrosField,
     categoriasDisponibles,
     translatedOptions,
-    maskedInputRef,
+    handlePhoneChange,
     handleSubmit,
     handleChange,
     handleTipoConsultaClick,
@@ -117,17 +118,13 @@ export function ContactForm({ form }: ContactFormProps) {
           identificationType={getTipoIdentificacion()}
         />
 
-        <TextInputField
-          name="telefono"
-          label={t('form.fields.phone.label')}
-          placeholder="+1 809-000-0000"
+        <PhoneInputField
           value={formData.telefono}
-          error={formErrors.telefono}
-          onChange={handleChange}
-          disabled={isSubmitting}
-          inputRef={maskedInputRef}
-          type="tel"
+          onChange={handlePhoneChange}
+          label={t('form.fields.phone.label')}
           required
+          error={formErrors.telefono}
+          focusColor="#001689"
         />
       </div>
 

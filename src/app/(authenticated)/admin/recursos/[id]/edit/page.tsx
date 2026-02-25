@@ -1,31 +1,35 @@
 "use client";
 
-import { useContent } from "@/context/content-context";
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
 import RecursoForm from "@/components/admin/RecursoForm";
-import Link from "next/link";
-import React from "react";
+import type { RecursoAPI } from "@/features/admin/types";
 
-export default function EditRecursoPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = React.use(params);
-  const { obtenerRecurso } = useContent();
-  const recurso = obtenerRecurso(id);
+export default function EditarRecursoPage() {
+  const params = useParams();
+  const router = useRouter();
+  const [recurso, setRecurso] = useState<RecursoAPI | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!recurso) {
+  useEffect(() => {
+    const id = params.id as string;
+    fetch(`/api/recursos/${id}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success) setRecurso(data.recurso);
+        else router.push("/admin/recursos");
+      })
+      .catch(() => router.push("/admin/recursos"))
+      .finally(() => setLoading(false));
+  }, [params.id, router]);
+
+  if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-gray-500 mb-4">Recurso no encontrado</p>
-          <Link href="/admin/recursos" className="text-[#001689] hover:underline font-medium">
-            Volver a Recursos
-          </Link>
-        </div>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="w-8 h-8 border-4 border-[#001689] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
-
+  if (!recurso) return null;
   return <RecursoForm recurso={recurso} isEditing />;
 }

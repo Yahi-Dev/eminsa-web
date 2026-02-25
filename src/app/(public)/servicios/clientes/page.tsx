@@ -46,7 +46,7 @@ export default function ClientesServiciosPage() {
       {/* ================================================================ */}
       {/* 1. HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#FF5500] via-[#E04D00] to-[#CC4400] text-white py-16 lg:py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#696969] via-[#5a5a5a] to-[#4a4a4a] text-white py-16 lg:py-24 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -107,7 +107,7 @@ export default function ClientesServiciosPage() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#FF5500] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#696969] mb-2">
                 500+
               </div>
               <div className="text-[#76777A]">Clientes Atendidos</div>
@@ -120,7 +120,7 @@ export default function ClientesServiciosPage() {
               transition={{ delay: 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#FF5500] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#696969] mb-2">
                 5
               </div>
               <div className="text-[#76777A]">Sectores Industriales</div>
@@ -133,7 +133,7 @@ export default function ClientesServiciosPage() {
               transition={{ delay: 0.2 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#FF5500] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#696969] mb-2">
                 50+
               </div>
               <div className="text-[#76777A]">Años de Experiencia</div>
@@ -146,7 +146,7 @@ export default function ClientesServiciosPage() {
               transition={{ delay: 0.3 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#FF5500] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#696969] mb-2">
                 100%
               </div>
               <div className="text-[#76777A]">Satisfacción</div>
@@ -166,7 +166,7 @@ export default function ClientesServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
               Portafolio de Clientes
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
@@ -222,7 +222,7 @@ export default function ClientesServiciosPage() {
                         >
                           {/* Client Name */}
                           <div className="flex items-start gap-3 mb-4">
-                            <div className="w-10 h-10 bg-gradient-to-br from-[#FF5500] to-[#CC4400] rounded-lg flex items-center justify-center flex-shrink-0">
+                            <div className="w-10 h-10 bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-lg flex items-center justify-center flex-shrink-0">
                               <Building2 className="w-5 h-5 text-white" />
                             </div>
                             <div>
@@ -249,7 +249,7 @@ export default function ClientesServiciosPage() {
                                   >
                                     <CheckCircle2
                                       size={12}
-                                      className="text-[#FF5500] flex-shrink-0"
+                                      className="text-[#696969] flex-shrink-0"
                                     />
                                     {servicio}
                                   </div>
@@ -279,11 +279,11 @@ export default function ClientesServiciosPage() {
             viewport={{ once: true }}
             className="relative bg-gradient-to-br from-[#001689] via-[#000E53] to-[#001689] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#FF5500]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#FF5500]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#696969]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#696969]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
 
             <div className="relative z-10 max-w-2xl mx-auto">
-              <Building2 size={48} className="mx-auto mb-6 text-[#FF5500]" />
+              <Building2 size={48} className="mx-auto mb-6 text-[#696969]" />
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 ¿Quiere Ser Nuestro Próximo Cliente?
               </h2>
@@ -296,7 +296,7 @@ export default function ClientesServiciosPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#FF5500] text-white hover:bg-[#E04D00] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#696969] text-white hover:bg-[#5a5a5a] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={22} />

@@ -21,7 +21,7 @@ export default function IngenieriaPage() {
     <>
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FF5500] via-[#E04D00] to-[#CC4400]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#696969] via-[#5a5a5a] to-[#4a4a4a]">
           <div
             className="absolute inset-0 opacity-[0.03]"
             style={{
@@ -78,7 +78,7 @@ export default function IngenieriaPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
                 Descripcion del Servicio
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-6">
@@ -100,8 +100,8 @@ export default function IngenieriaPage() {
                 <div className="space-y-4">
                   {servicio.beneficios.map((b, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#FF5500]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <CheckCircle2 size={14} className="text-[#FF5500]" />
+                      <div className="w-6 h-6 rounded-full bg-[#696969]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <CheckCircle2 size={14} className="text-[#696969]" />
                       </div>
                       <span className="text-[#76777A]">{b}</span>
                     </div>
@@ -137,7 +137,7 @@ export default function IngenieriaPage() {
                   transition={{ delay: i * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all"
                 >
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#FF5500] to-[#CC4400] text-white flex items-center justify-center font-bold mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#696969] to-[#4a4a4a] text-white flex items-center justify-center font-bold mb-4">
                     {i + 1}
                   </div>
                   <h3 className="text-lg font-bold text-[#001689] mb-2">
@@ -174,8 +174,8 @@ export default function IngenieriaPage() {
                     transition={{ delay: i * 0.1 }}
                     className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-[#FF5500]/10 flex items-center justify-center flex-shrink-0">
-                      <CheckCircle2 size={16} className="text-[#FF5500]" />
+                    <div className="w-8 h-8 rounded-lg bg-[#696969]/10 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 size={16} className="text-[#696969]" />
                     </div>
                     <span className="text-[#76777A]">{item}</span>
                   </motion.div>
@@ -215,7 +215,7 @@ export default function IngenieriaPage() {
           >
             <Link
               href="/servicios/cotizacion"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-bold rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#696969] hover:bg-[#5a5a5a] text-white font-bold rounded-xl transition-colors"
             >
               Solicitar Cotizacion <ArrowRight size={20} />
             </Link>

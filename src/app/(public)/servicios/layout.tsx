@@ -173,7 +173,7 @@ export default function ServiciosLayout({
       {/* Subnavegación Servicios - Desktop */}
       <nav
         ref={menuRef}
-        className="hidden lg:block bg-white border-b border-gray-200 sticky top-24 z-40 shadow-sm"
+        className="hidden lg:block bg-[#696969]/5 border-t-2 border-[#696969]/20 border-b border-[#696969]/10 sticky top-20 xl:top-28 z-40 shadow-sm"
       >
         <div className="container-eminsa">
           <div className="flex items-center justify-between py-2">
@@ -205,8 +205,8 @@ export default function ServiciosLayout({
                               className={cn(
                                 "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                                 active
-                                  ? "bg-[#FF5500] text-white"
-                                  : "text-gray-600 hover:bg-gray-100 hover:text-[#FF5500]"
+                                  ? "bg-[#696969] text-white"
+                                  : "text-gray-600 hover:bg-gray-100 hover:text-[#696969]"
                               )}
                             >
                               <Icon size={16} />
@@ -239,7 +239,7 @@ export default function ServiciosLayout({
                                     className={cn(
                                       "block px-4 py-2.5 text-sm transition-colors hover:bg-gray-50 group",
                                       pathname === subItem.href || pathname.startsWith(subItem.href + "/")
-                                        ? "bg-[#FF5500]/10"
+                                        ? "bg-[#696969]/10"
                                         : "text-gray-600"
                                     )}
                                   >
@@ -247,7 +247,7 @@ export default function ServiciosLayout({
                                       <span className={cn(
                                         "font-medium",
                                         (pathname === subItem.href || pathname.startsWith(subItem.href + "/"))
-                                          ? "text-[#FF5500]"
+                                          ? "text-[#696969]"
                                           : "text-gray-800"
                                       )}>
                                         {subItem.name}
@@ -270,8 +270,8 @@ export default function ServiciosLayout({
                           className={cn(
                             "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                             active
-                              ? "bg-[#FF5500] text-white"
-                              : "text-gray-600 hover:bg-gray-100 hover:text-[#FF5500]"
+                              ? "bg-[#696969] text-white"
+                              : "text-gray-600 hover:bg-gray-100 hover:text-[#696969]"
                           )}
                         >
                           <Icon size={16} />
@@ -289,15 +289,15 @@ export default function ServiciosLayout({
 
       {/* Subnavegación Servicios - Mobile */}
       <div
-        className="lg:hidden sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm"
+        className="lg:hidden sticky top-20 z-40 bg-[#696969]/5 border-t-2 border-[#696969]/20 border-b border-[#696969]/10 shadow-sm"
       >
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#FF5500] to-[#CC4400] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#696969] to-[#4a4a4a] flex items-center justify-center">
               <span className="text-white font-bold text-sm">S</span>
             </div>
             <div>
-              <span className="text-[#FF5500] font-bold">Servicios</span>
+              <span className="text-[#696969] font-bold">Servicios</span>
               <span className="text-gray-400 text-xs block -mt-1">by EMINSA</span>
             </div>
           </div>
@@ -336,7 +336,7 @@ export default function ServiciosLayout({
                               className={cn(
                                 "flex-1 flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                                 active
-                                  ? "bg-[#FF5500]/10 text-[#FF5500]"
+                                  ? "bg-[#696969]/10 text-[#696969]"
                                   : "text-gray-600 hover:bg-gray-50"
                               )}
                             >
@@ -370,7 +370,7 @@ export default function ServiciosLayout({
                                   onClick={() => { setMobileMenuOpen(false); setOpenSubmenu(null); }}
                                   className={cn(
                                     "block px-8 py-2.5 rounded-lg text-sm transition-colors",
-                                    pathname === "/servicios" ? "bg-[#FF5500] text-white" : "text-gray-600 hover:bg-gray-50"
+                                    pathname === "/servicios" ? "bg-[#696969] text-white" : "text-gray-600 hover:bg-gray-50"
                                   )}
                                 >
                                   Ver todos
@@ -382,7 +382,7 @@ export default function ServiciosLayout({
                                     onClick={() => { setMobileMenuOpen(false); setOpenSubmenu(null); }}
                                     className={cn(
                                       "block px-8 py-2.5 rounded-lg text-sm transition-colors group",
-                                      pathname === subItem.href ? "bg-[#FF5500] text-white" : "text-gray-600 hover:bg-gray-50"
+                                      pathname === subItem.href ? "bg-[#696969] text-white" : "text-gray-600 hover:bg-gray-50"
                                     )}
                                   >
                                     <div className="flex flex-col">
@@ -403,7 +403,7 @@ export default function ServiciosLayout({
                           onClick={() => setMobileMenuOpen(false)}
                           className={cn(
                             "flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors",
-                            active ? "bg-[#FF5500] text-white" : "text-gray-600 hover:bg-gray-50"
+                            active ? "bg-[#696969] text-white" : "text-gray-600 hover:bg-gray-50"
                           )}
                         >
                           <Icon size={18} />
@@ -427,7 +427,7 @@ export default function ServiciosLayout({
                   </a>
                   <a
                     href={`tel:${contactInfo.phone}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#FF5500] border border-[#FF5500] rounded-lg hover:bg-[#FF5500] hover:text-white transition-all font-medium"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#696969] border border-[#696969] rounded-lg hover:bg-[#696969] hover:text-white transition-all font-medium"
                   >
                     <Phone size={20} />
                     {contactInfo.phone}
@@ -435,7 +435,7 @@ export default function ServiciosLayout({
                   <Link
                     href="/servicios/cotizacion"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full px-4 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white rounded-lg transition-all font-medium"
+                    className="flex items-center justify-center w-full px-4 py-3 bg-[#696969] hover:bg-[#5a5a5a] text-white rounded-lg transition-all font-medium"
                   >
                     Solicitar Cotización
                   </Link>

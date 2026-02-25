@@ -119,7 +119,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={`/eic/cotizaciones?categoria=${categorySlug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -347,7 +347,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/eic/cotizaciones?categoria=${categorySlug}`}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />
@@ -444,7 +444,7 @@ function ProductPage({ slug }: { slug: string }) {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={`/eic/cotizaciones?producto=${product.slug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -571,7 +571,7 @@ function ProductPage({ slug }: { slug: string }) {
                 <div className="space-y-3 mb-6">
                   <Link
                     href={`/eic/cotizaciones?producto=${product.slug}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors"
                   >
                     Solicitar Cotización
                   </Link>
@@ -687,7 +687,7 @@ function ProductPage({ slug }: { slug: string }) {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href={`/eic/cotizaciones?producto=${product.slug}`}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
             >
               Solicitar Cotización
               <ArrowRight size={20} />

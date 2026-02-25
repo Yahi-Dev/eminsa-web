@@ -2,28 +2,26 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { useContent } from "@/context/content-context";
 import NoticiaForm from "@/components/admin/NoticiaForm";
-import { Noticia } from "@/data/content";
+import type { NoticiaAPI } from "@/features/admin/types";
 
 export default function EditarNoticiaPage() {
   const params = useParams();
   const router = useRouter();
-  const { obtenerNoticia } = useContent();
-  const [noticia, setNoticia] = useState<Noticia | null>(null);
+  const [noticia, setNoticia] = useState<NoticiaAPI | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const id = params.id as string;
-    const found = obtenerNoticia(id);
-    
-    if (found) {
-      setNoticia(found);
-    } else {
-      router.push("/admin/noticias");
-    }
-    setLoading(false);
-  }, [params.id, obtenerNoticia, router]);
+    fetch(`/api/noticias/${id}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success) setNoticia(data.noticia);
+        else router.push("/admin/noticias");
+      })
+      .catch(() => router.push("/admin/noticias"))
+      .finally(() => setLoading(false));
+  }, [params.id, router]);
 
   if (loading) {
     return (
@@ -32,10 +30,6 @@ export default function EditarNoticiaPage() {
       </div>
     );
   }
-
-  if (!noticia) {
-    return null;
-  }
-
+  if (!noticia) return null;
   return <NoticiaForm noticia={noticia} isEditing />;
 }

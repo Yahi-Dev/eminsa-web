@@ -77,27 +77,8 @@ const transformadoresDisponibles = [
       "Ideal para interiores"
     ],
     aplicaciones: ["Centros comerciales", "Edificios", "Industrias", "Hospitales"],
-    color: "#FF5500"
+    color: "#696969"
   },
-  {
-    id: "subestacion",
-    nombre: "Transformadores de Subestación",
-    descripcion: "Para grandes facilidades industriales, centros comerciales y subestaciones eléctricas",
-    icon: Factory,
-    imagen: "https://eminsa.com/wp-content/uploads/2022/05/4.jpg?x54751", // Ruta a la imagen
-    potencias: [
-      "Small Power: 500 KVA - 10 MVA",
-      "Medium Power: 10 MVA - 60 MVA"
-    ],
-    caracteristicas: [
-      "Tensiones: 15 kV, 34.5 kV, 69 kV, 138 kV",
-      "Refrigeración ONAN",
-      "Cambiador de tomas con carga",
-      "Sistemas de preservación de fluidos"
-    ],
-    aplicaciones: ["Industrias", "Subestaciones", "Edificios corporativos", "Hospitales"],
-    color: "#00B140"
-  }
 ];
 
 const beneficiosAlquiler = [
@@ -166,7 +147,7 @@ export default function AlquilerTransformadoresPage() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#FF5500] via-[#E04D00] to-[#CC4400]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#696969] via-[#555555] to-[#4a4a4a]">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/20 rounded-full blur-[100px]" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[100px]" />
@@ -218,7 +199,7 @@ export default function AlquilerTransformadoresPage() {
             <div className="flex flex-wrap gap-4">
               <Link 
                 href="#cotizar" 
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#FF5500] font-semibold rounded-lg hover:bg-gray-100 transition-all hover:shadow-lg"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#696969] font-semibold rounded-lg hover:bg-gray-100 transition-all hover:shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={18} />
@@ -266,8 +247,8 @@ export default function AlquilerTransformadoresPage() {
                   transition={{ delay: index * 0.1 }}
                   className="p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#FF5500]/10 to-[#FF5500]/5 rounded-xl flex items-center justify-center mb-4">
-                    <IconComponent className="w-7 h-7 text-[#FF5500]" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#696969]/10 to-[#696969]/5 rounded-xl flex items-center justify-center mb-4">
+                    <IconComponent className="w-7 h-7 text-[#696969]" />
                   </div>
                   <h3 className="text-xl font-bold text-[#001689] mb-2">
                     {beneficio.titulo}
@@ -500,8 +481,8 @@ export default function AlquilerTransformadoresPage() {
                   className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-[#FF5500]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <IconComponent className="w-6 h-6 text-[#FF5500]" />
+                    <div className="w-12 h-12 bg-[#696969]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <IconComponent className="w-6 h-6 text-[#696969]" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-[#001689] mb-2">{caso.titulo}</h3>

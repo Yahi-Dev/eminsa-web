@@ -186,7 +186,7 @@ export default function EICRecursosPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/eic/cotizaciones"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white rounded-xl font-semibold transition-all shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B140] hover:bg-[#008F33] text-white rounded-xl font-semibold transition-all shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

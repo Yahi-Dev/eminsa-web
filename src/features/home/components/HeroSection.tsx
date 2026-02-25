@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { divisions, stats } from "@/config/navigation";
 import { useCountUp } from "../hooks/useCountUp";
+import { useTranslations } from "next-intl";
 
 // Componente para animar números individuales
 function AnimatedStat({ value, label, delay }: { value: string; label: string; delay: number }) {
@@ -30,7 +31,10 @@ function AnimatedStat({ value, label, delay }: { value: string; label: string; d
   );
 }
 
+const statKeys = ["yearsExperience", "transformersInstalled", "satisfiedClients", "techSupport"] as const;
+
 export default function HeroSection() {
+  const t = useTranslations("home");
   const [activeSlide, setActiveSlide] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -72,6 +76,25 @@ export default function HeroSection() {
 
         {/* Additional gradient overlay for depth */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
+
+        {/* Animated floating orbs — futuristic depth effect */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <motion.div
+            animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 1.15, 0.9, 1] }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 right-1/3 w-[450px] h-[450px] bg-[#00A3E0]/12 rounded-full blur-[90px]"
+          />
+          <motion.div
+            animate={{ x: [0, -30, 20, 0], y: [0, 25, -20, 0] }}
+            transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 4 }}
+            className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-[#001689]/20 rounded-full blur-[100px]"
+          />
+          <motion.div
+            animate={{ x: [0, 15, -25, 0], y: [0, -20, 30, 0], scale: [1, 0.9, 1.1, 1] }}
+            transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 8 }}
+            className="absolute top-1/2 left-1/4 w-[280px] h-[280px] bg-[#00B140]/8 rounded-full blur-[80px]"
+          />
+        </div>
       </div>
 
       {/* Content */}
@@ -90,8 +113,8 @@ export default function HeroSection() {
               transition={{ delay: 0.3 }}
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
             >
-              <span className="block">¡Viva la verdadera</span>
-              <span className="block text-[#00A3E0]">eficiencia eléctrica!</span>
+              <span className="block">{t('hero.title1')}</span>
+              <span className="block text-[#00A3E0]">{t('hero.title2')}</span>
             </motion.h1>
 
             {/* Description */}
@@ -101,9 +124,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4 }}
               className="text-lg md:text-xl text-white/90 mb-10 max-w-xl"
             >
-              Descubra soluciones integrales en la fabricación y mantenimiento de
-              sistemas eléctricos que optimizan la eficiencia y garantizan la
-              seguridad de su infraestructura.
+              {t('hero.description')}
             </motion.p>
 
             {/* CTA Buttons */}
@@ -117,7 +138,7 @@ export default function HeroSection() {
                 href="/cotizar"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#00A3E0] text-white font-semibold rounded-xl hover:bg-[#0091C7] transition-all duration-300 hover:shadow-lg hover:shadow-[#00A3E0]/30 hover:-translate-y-1"
               >
-                Solicitar una Cotización
+                {t('hero.cta')}
                 <ArrowRight size={20} />
               </Link>
             </motion.div>
@@ -130,10 +151,10 @@ export default function HeroSection() {
               className="grid grid-cols-2 md:grid-cols-4 gap-6"
             >
               {stats.map((stat, index) => (
-                <AnimatedStat 
-                  key={index} 
+                <AnimatedStat
+                  key={index}
                   value={stat.value}
-                  label={stat.label}
+                  label={t(`stats.${statKeys[index]}`)}
                   delay={700 + index * 100}
                 />
               ))}
@@ -177,8 +198,8 @@ export default function HeroSection() {
                               {division.name}
                             </span>
                           </div>
-                          <p className="text-white/70 text-sm max-w-xs">
-                            {division.tagline}
+                          <p className="text-white/70 text-sm max-w-xs line-clamp-3">
+                            {division.description}
                           </p>
                         </div>
                         <ArrowRight
@@ -230,7 +251,7 @@ export default function HeroSection() {
           href="#divisiones"
           className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors"
         >
-          <span className="text-sm">Descubrir más</span>
+          <span className="text-sm">{t('hero.scrollIndicator')}</span>
           <ChevronDown size={24} className="animate-bounce" />
         </a>
       </motion.div>
