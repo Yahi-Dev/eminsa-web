@@ -1,11 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Wrench, Shield, Zap } from "lucide-react";
-import Link from "next/link";
+import { Wrench, Shield, Zap } from "lucide-react";
 import BeforeAfterSlider from "@/components/shared/BeforeAfterSlider";
+import { useTranslations } from "next-intl";
 
 export default function TransformadorRestauracionSection() {
+  const t = useTranslations("home");
+
+  const features = [
+    {
+      icon: Shield,
+      color: "#00B140",
+      title: t("rst.diagnosisTitle"),
+      desc: t("rst.diagnosisDesc"),
+    },
+    {
+      icon: Wrench,
+      color: "#00A3E0",
+      title: t("rst.restorationTitle"),
+      desc: t("rst.restorationDesc"),
+    },
+    {
+      icon: Zap,
+      color: "#00A3E0",
+      title: t("rst.guaranteeTitle"),
+      desc: t("rst.guaranteeDesc"),
+    },
+  ];
+
   return (
     <section className="py-20 bg-linear-to-br from-gray-50 to-white">
       <div className="container-eminsa">
@@ -19,36 +42,17 @@ export default function TransformadorRestauracionSection() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#00A3E0]/10 rounded-full text-[#00A3E0] text-sm font-medium mb-6">
               <Wrench size={16} />
-              <span>Mantenimiento y Restauración</span>
+              <span>{t("rst.badge")}</span>
             </div>
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689] mb-6">
-              Transformamos equipos dañados en{" "}
-              <span className="text-[#00A3E0]">soluciones confiables</span>
+              {t("rst.title")}{" "}
+              <span className="text-[#00A3E0]">{t("rst.titleAccent")}</span>
             </h2>
 
             {/* Features Grid */}
             <div className="grid grid-cols-1 gap-4 mb-8">
-              {[
-                {
-                  icon: Shield,
-                  color: "#00B140",
-                  title: "Diagnóstico Completo",
-                  desc: "Evaluación exhaustiva del estado del transformador y recomendaciones técnicas",
-                },
-                {
-                  icon: Wrench,
-                  color: "#00A3E0",
-                  title: "Restauración Profesional",
-                  desc: "Reparación, pintura, reemplazo de componentes y certificación de calidad",
-                },
-                {
-                  icon: Zap,
-                  color: "#00A3E0",
-                  title: "Garantía de Rendimiento",
-                  desc: "Pruebas eléctricas completas y garantía en todos nuestros servicios",
-                },
-              ].map((item, i) => (
+              {features.map((item, i) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, x: -30 }}

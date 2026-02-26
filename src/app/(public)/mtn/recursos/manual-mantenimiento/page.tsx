@@ -260,50 +260,7 @@ export default function ManualMantenimientoPage() {
         </div>
       </section>
 
-      {/* Video Tutorials Placeholder */}
-      <section className="py-12 bg-white">
-        <div className="container-eminsa">
-          <div className="max-w-3xl mx-auto bg-gradient-to-br from-[#001689]/5 to-[#00A3E0]/5 rounded-2xl p-8 text-center">
-            <BookOpen size={48} className="mx-auto text-[#001689] mb-4" />
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Videos Tutoriales</h2>
-            <p className="text-gray-600 mb-6">
-              Próximamente: Videos paso a paso sobre procedimientos de mantenimiento.
-            </p>
-            <button className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-              Notificarme cuando estén disponibles
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
-      <section className="py-12 bg-gradient-to-r from-[#001689] to-[#00A3E0] text-white">
-        <div className="container-eminsa">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div>
-              <h2 className="text-2xl font-bold mb-2">¿Necesita servicio de mantenimiento?</h2>
-              <p className="text-white/80">
-                Ofrecemos servicios de mantenimiento preventivo y correctivo para sus transformadores.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/mtn/cotizaciones"
-                className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-              >
-                Solicitar Servicio
-                <ArrowRight size={18} />
-              </Link>
-              <Link
-                href="/mtn/recursos/garantia"
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl font-semibold transition-colors border border-white/30"
-              >
-                Ver Garantía
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

@@ -49,6 +49,77 @@
       "title": "Últimas noticias",
       "viewAll": "Ver todas las noticias",
       "readMore": "Leer más"
+    },
+    "mtn": {
+      "sectionLabel": "Manufactura de Transformadores Nuevos",
+      "title": "Transformadores",
+      "titleAccent": "100% Nuevos",
+      "description": "Fabricados en la República Dominicana bajo los más altos estándares internacionales, cumpliendo plenamente con los niveles de eficiencia establecidos por ANSI y DOE 2016.",
+      "cta": {
+        "quote": "Cotizar Ahora",
+        "viewProduct": "Ver Producto",
+        "viewDetails": "Ver Detalles"
+      },
+      "aria": {
+        "prev": "Anterior",
+        "next": "Siguiente"
+      },
+      "specLabels": {
+        "power": "Potencia",
+        "voltage": "Voltaje",
+        "phases": "Fases",
+        "standard": "Norma"
+      },
+      "slides": {
+        "tipoPoste": {
+          "category": "Tipo Poste",
+          "name": "Distribución Aérea",
+          "subtitle": "Confiabilidad y eficiencia máxima para sistemas de distribución eléctrica aérea."
+        },
+        "padMounted": {
+          "category": "Pad Mounted",
+          "name": "Distribución Subterránea",
+          "subtitle": "Solución compacta, segura y hermética para urbanizaciones y sistemas soterrados."
+        },
+        "subestacion": {
+          "category": "Subestación",
+          "name": "Potencia Industrial",
+          "subtitle": "Alta capacidad para plantas industriales, parques solares y proyectos de gran escala."
+        }
+      },
+      "showcase": {
+        "sectionLabel": "Línea de Productos",
+        "title": "Nuestros Transformadores",
+        "tipoPoste": {
+          "name": "Transformadores Tipo Poste",
+          "shortName": "Tipo Poste",
+          "description": "Diseñados para ofrecer máxima confiabilidad, eficiencia y durabilidad en sistemas de distribución eléctrica aérea.",
+          "feature1": "Máxima confiabilidad y eficiencia",
+          "feature2": "Diseño robusto para intemperie",
+          "feature3": "Cumplimiento ANSI y DOE 2016",
+          "feature4": "Aplicaciones residenciales e industriales"
+        },
+        "padMounted": {
+          "name": "Transformadores Pad Mounted",
+          "shortName": "Pad Mounted",
+          "description": "Solución segura, compacta y altamente eficiente para sistemas de distribución subterránea en urbanizaciones.",
+          "feature1": "Diseño compacto y seguro",
+          "feature2": "Montaje a nivel del suelo",
+          "feature3": "Protección hermética total",
+          "feature4": "Ideal para urbanizaciones"
+        }
+      }
+    },
+    "rst": {
+      "badge": "Mantenimiento y Restauración",
+      "title": "Transformamos equipos dañados en",
+      "titleAccent": "soluciones confiables",
+      "diagnosisTitle": "Diagnóstico Completo",
+      "diagnosisDesc": "Evaluación exhaustiva del estado del transformador y recomendaciones técnicas",
+      "restorationTitle": "Restauración Profesional",
+      "restorationDesc": "Reparación, pintura, reemplazo de componentes y certificación de calidad",
+      "guaranteeTitle": "Garantía de Rendimiento",
+      "guaranteeDesc": "Pruebas eléctricas completas y garantía en todos nuestros servicios"
     }
   },
   "general": {

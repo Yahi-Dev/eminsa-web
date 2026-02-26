@@ -12,15 +12,11 @@ import {
   Zap,
   Building2,
   Factory,
-  ShoppingBag,
   Hotel,
   Truck,
-  Calendar,
   Phone,
   MessageCircle,
-  FileText
 } from "lucide-react";
-import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 // Datos de transformadores disponibles para alquiler
@@ -198,7 +194,7 @@ export default function AlquilerTransformadoresPage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link 
-                href="#cotizar" 
+                href="/servicios/cotizacion" 
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#001689] font-semibold rounded-lg hover:bg-gray-100 transition-all hover:shadow-lg"
               >
                 Solicitar Cotización
@@ -434,7 +430,7 @@ export default function AlquilerTransformadoresPage() {
                       {/* CTA Button */}
                       <div>
                         <Link 
-                          href="#cotizar"
+                          href="/servicios/cotizacion"
                           className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all group shadow-md hover:shadow-lg text-white"
                           style={{ backgroundColor: transformador.color }}
                         >

@@ -5,12 +5,48 @@ import { sendCotizacionEmails } from '@/lib/email/email-service';
 const VALID_UNITS = ['MTN', 'RST', 'EIC', 'SRV'] as const;
 type UnidadType = (typeof VALID_UNITS)[number];
 
+// Input limits
+const LIMITS = {
+  nombre: 100,
+  empresa: 100,
+  email: 255,
+  telefono: 30,
+  detallesJsonMaxBytes: 5000,
+};
+
+// Simple in-memory rate limiter: max 5 requests per IP per 10 minutes
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return true; // allowed
+  }
+
+  if (entry.count >= RATE_LIMIT_MAX) {
+    return false; // blocked
+  }
+
+  entry.count += 1;
+  return true; // allowed
+}
+
 function getClientIp(headers: Headers): string {
   return (
     headers.get('x-forwarded-for')?.split(',')[0].trim() ||
     headers.get('x-real-ip') ||
     'unknown'
   );
+}
+
+function sanitize(value: unknown, maxLen: number): string {
+  if (typeof value !== 'string') return '';
+  return value.trim().slice(0, maxLen);
 }
 
 async function generateCodigo(unidad: UnidadType): Promise<string> {
@@ -32,6 +68,16 @@ async function generateCodigo(unidad: UnidadType): Promise<string> {
 
 export async function POST(request: NextRequest) {
   try {
+    const clientIp = getClientIp(request.headers);
+
+    // Rate limiting
+    if (!checkRateLimit(clientIp)) {
+      return NextResponse.json(
+        { success: false, message: 'Demasiadas solicitudes. Inténtelo más tarde.' },
+        { status: 429 }
+      );
+    }
+
     let body: Record<string, unknown>;
     try {
       body = await request.json();
@@ -49,21 +95,44 @@ export async function POST(request: NextRequest) {
       detalles?: Record<string, unknown>;
     };
 
-    // Validations
+    // Validate unidad
     if (!unidad || !VALID_UNITS.includes(unidad as UnidadType)) {
       return NextResponse.json(
         { success: false, message: 'Unidad de negocio inválida' },
         { status: 400 }
       );
     }
-    if (!nombre?.trim()) {
+
+    // Validate and sanitize required fields
+    const cleanNombre = sanitize(nombre, LIMITS.nombre);
+    const cleanEmail = sanitize(email, LIMITS.email).toLowerCase();
+    const cleanTelefono = sanitize(telefono, LIMITS.telefono);
+    const cleanEmpresa = empresa ? sanitize(empresa, LIMITS.empresa) : null;
+
+    if (!cleanNombre) {
       return NextResponse.json({ success: false, message: 'El nombre es requerido' }, { status: 400 });
     }
-    if (!email?.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!cleanEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
       return NextResponse.json({ success: false, message: 'Email inválido' }, { status: 400 });
     }
-    if (!telefono?.trim()) {
-      return NextResponse.json({ success: false, message: 'El teléfono es requerido' }, { status: 400 });
+    if (!cleanTelefono || !/^[\d+\s\-().]+$/.test(cleanTelefono)) {
+      return NextResponse.json({ success: false, message: 'Teléfono inválido' }, { status: 400 });
+    }
+
+    // Validate urgente is boolean
+    const cleanUrgente = urgente === true;
+
+    // Validate detalles: must be a plain object and not too large
+    let cleanDetalles: Record<string, unknown> = {};
+    if (detalles !== undefined) {
+      if (typeof detalles !== 'object' || Array.isArray(detalles)) {
+        return NextResponse.json({ success: false, message: 'Detalles inválidos' }, { status: 400 });
+      }
+      const detallesJson = JSON.stringify(detalles);
+      if (detallesJson.length > LIMITS.detallesJsonMaxBytes) {
+        return NextResponse.json({ success: false, message: 'Los detalles exceden el tamaño permitido' }, { status: 400 });
+      }
+      cleanDetalles = detalles;
     }
 
     const codigo = await generateCodigo(unidad as UnidadType);
@@ -72,16 +141,15 @@ export async function POST(request: NextRequest) {
       data: {
         codigo,
         unidad,
-        nombre: nombre.trim(),
-        empresa: empresa?.trim() || null,
-        email: email.trim().toLowerCase(),
-        telefono: telefono.trim(),
-        urgente: urgente ?? false,
-        detalles: (detalles as object) ?? {},
+        nombre: cleanNombre,
+        empresa: cleanEmpresa || null,
+        email: cleanEmail,
+        telefono: cleanTelefono,
+        urgente: cleanUrgente,
+        detalles: cleanDetalles as object,
       },
     });
 
-    const clientIp = getClientIp(request.headers);
     try {
       await sendCotizacionEmails(
         {

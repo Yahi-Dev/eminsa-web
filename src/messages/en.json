@@ -49,6 +49,77 @@
       "title": "Latest news",
       "viewAll": "View all news",
       "readMore": "Read more"
+    },
+    "mtn": {
+      "sectionLabel": "Manufacturing of New Transformers",
+      "title": "Transformers",
+      "titleAccent": "100% New",
+      "description": "Manufactured in the Dominican Republic under the highest international standards, fully complying with the efficiency levels established by ANSI and DOE 2016.",
+      "cta": {
+        "quote": "Get a Quote",
+        "viewProduct": "View Product",
+        "viewDetails": "View Details"
+      },
+      "aria": {
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "specLabels": {
+        "power": "Power",
+        "voltage": "Voltage",
+        "phases": "Phases",
+        "standard": "Standard"
+      },
+      "slides": {
+        "tipoPoste": {
+          "category": "Pole Type",
+          "name": "Aerial Distribution",
+          "subtitle": "Maximum reliability and efficiency for overhead electrical distribution systems."
+        },
+        "padMounted": {
+          "category": "Pad Mounted",
+          "name": "Underground Distribution",
+          "subtitle": "Compact, safe, and hermetically sealed solution for residential developments and underground systems."
+        },
+        "subestacion": {
+          "category": "Substation",
+          "name": "Industrial Power",
+          "subtitle": "High capacity for industrial plants, solar parks, and large-scale projects."
+        }
+      },
+      "showcase": {
+        "sectionLabel": "Product Line",
+        "title": "Our Transformers",
+        "tipoPoste": {
+          "name": "Pole Type Transformers",
+          "shortName": "Pole Type",
+          "description": "Designed to provide maximum reliability, efficiency, and durability in overhead electrical distribution systems.",
+          "feature1": "Maximum reliability and efficiency",
+          "feature2": "Robust design for outdoor use",
+          "feature3": "ANSI and DOE 2016 compliance",
+          "feature4": "Residential and industrial applications"
+        },
+        "padMounted": {
+          "name": "Pad Mounted Transformers",
+          "shortName": "Pad Mounted",
+          "description": "Safe, compact, and highly efficient solution for underground distribution systems in residential developments.",
+          "feature1": "Compact and safe design",
+          "feature2": "Ground-level mounting",
+          "feature3": "Full hermetic protection",
+          "feature4": "Ideal for residential developments"
+        }
+      }
+    },
+    "rst": {
+      "badge": "Maintenance and Restoration",
+      "title": "We transform damaged equipment into",
+      "titleAccent": "reliable solutions",
+      "diagnosisTitle": "Complete Diagnosis",
+      "diagnosisDesc": "Comprehensive assessment of the transformer's condition and technical recommendations",
+      "restorationTitle": "Professional Restoration",
+      "restorationDesc": "Repair, painting, component replacement, and quality certification",
+      "guaranteeTitle": "Performance Guarantee",
+      "guaranteeDesc": "Complete electrical testing and guarantee on all our services"
     }
   },
   "general": {

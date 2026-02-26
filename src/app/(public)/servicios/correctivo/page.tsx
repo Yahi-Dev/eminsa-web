@@ -6,11 +6,9 @@ import {
   ChevronRight,
   Wrench,
   CheckCircle2,
-  Phone,
   MessageCircle,
   ArrowRight,
 } from "lucide-react";
-import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { serviciosDetalle } from "@/config/servicios-data";
 

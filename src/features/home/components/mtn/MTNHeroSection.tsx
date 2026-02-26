@@ -5,66 +5,68 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Factory, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-
-const slides = [
-  {
-    id: "tipo-poste",
-    category: "Tipo Poste",
-    name: "Distribución Aérea",
-    subtitle: "Confiabilidad y eficiencia máxima para sistemas de distribución eléctrica aérea.",
-    specs: [
-      { label: "Potencia", value: "15 – 500 KVA" },
-      { label: "Voltaje", value: "Hasta 34.5 KV" },
-      { label: "Fases", value: "1F / 3F" },
-    ],
-    image: "/images/mtn/tipo-poste.png",
-    productHref: "/mtn/productos/tipo-poste",
-    quoteHref: "/mtn/cotizaciones",
-  },
-  {
-    id: "pad-mounted",
-    category: "Pad Mounted",
-    name: "Distribución Subterránea",
-    subtitle: "Solución compacta, segura y hermética para urbanizaciones y sistemas soterrados.",
-    specs: [
-      { label: "Potencia", value: "30 – 3,000 KVA" },
-      { label: "Voltaje", value: "Hasta 34.5 KV" },
-      { label: "Fases", value: "1F / 3F" },
-    ],
-    image: "/images/mtn/pad-mounted.png",
-    productHref: "/mtn/productos/pad-mounted",
-    quoteHref: "/mtn/cotizaciones",
-  },
-  {
-    id: "subestacion",
-    category: "Subestación",
-    name: "Potencia Industrial",
-    subtitle: "Alta capacidad para plantas industriales, parques solares y proyectos de gran escala.",
-    specs: [
-      { label: "Potencia", value: "Hasta 10,000 KVA" },
-      { label: "Voltaje", value: "Hasta 138 KV" },
-      { label: "Norma", value: "ANSI / IEEE" },
-    ],
-    image: "/images/mtn/subestacion.png",
-    productHref: "/mtn/productos",
-    quoteHref: "/mtn/cotizaciones",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function MTNHeroSection() {
+  const t = useTranslations("home");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [direction, setDirection] = useState(1);
 
+  const slides = [
+    {
+      id: "tipo-poste",
+      category: t("mtn.slides.tipoPoste.category"),
+      name: t("mtn.slides.tipoPoste.name"),
+      subtitle: t("mtn.slides.tipoPoste.subtitle"),
+      specs: [
+        { label: t("mtn.specLabels.power"), value: "15 – 500 KVA" },
+        { label: t("mtn.specLabels.voltage"), value: "≤ 34.5 KV" },
+        { label: t("mtn.specLabels.phases"), value: "1F / 3F" },
+      ],
+      image: "/images/mtn/tipo-poste.png",
+      productHref: "/mtn/productos/tipo-poste",
+      quoteHref: "/mtn/cotizaciones",
+    },
+    {
+      id: "pad-mounted",
+      category: t("mtn.slides.padMounted.category"),
+      name: t("mtn.slides.padMounted.name"),
+      subtitle: t("mtn.slides.padMounted.subtitle"),
+      specs: [
+        { label: t("mtn.specLabels.power"), value: "30 – 3,000 KVA" },
+        { label: t("mtn.specLabels.voltage"), value: "≤ 34.5 KV" },
+        { label: t("mtn.specLabels.phases"), value: "1F / 3F" },
+      ],
+      image: "/images/mtn/pad-mounted.png",
+      productHref: "/mtn/productos/pad-mounted",
+      quoteHref: "/mtn/cotizaciones",
+    },
+    {
+      id: "subestacion",
+      category: t("mtn.slides.subestacion.category"),
+      name: t("mtn.slides.subestacion.name"),
+      subtitle: t("mtn.slides.subestacion.subtitle"),
+      specs: [
+        { label: t("mtn.specLabels.power"), value: "≤ 10,000 KVA" },
+        { label: t("mtn.specLabels.voltage"), value: "≤ 138 KV" },
+        { label: t("mtn.specLabels.standard"), value: "ANSI / IEEE" },
+      ],
+      image: "/images/mtn/subestacion.png",
+      productHref: "/mtn/productos",
+      quoteHref: "/mtn/cotizaciones",
+    },
+  ];
+
   const nextSlide = useCallback(() => {
     setDirection(1);
     setActiveIndex((prev) => (prev + 1) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   const prevSlide = useCallback(() => {
     setDirection(-1);
     setActiveIndex((prev) => (prev - 1 + slides.length) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   const goToSlide = (index: number) => {
     setDirection(index > activeIndex ? 1 : -1);
@@ -100,13 +102,13 @@ export default function MTNHeroSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#001689]/10 text-[#001689] rounded-full text-sm font-semibold mb-6">
             <Factory className="w-4 h-4" />
-            Manufactura de Transformadores Nuevos
+            {t("mtn.sectionLabel")}
           </span>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001689] mb-6">
-            Transformadores{" "}
+            {t("mtn.title")}{" "}
             <span className="relative inline-block">
-              <span className="text-[#00A3E0]">100% Nuevos</span>
+              <span className="text-[#00A3E0]">{t("mtn.titleAccent")}</span>
               <motion.svg
                 className="absolute -bottom-2 left-0 w-full"
                 viewBox="0 0 200 12"
@@ -131,10 +133,7 @@ export default function MTNHeroSection() {
           </h2>
 
           <p className="text-lg md:text-xl text-[#76777A] max-w-3xl mx-auto leading-relaxed">
-            Fabricados en la República Dominicana bajo los más altos estándares
-            internacionales, cumpliendo plenamente con los niveles de eficiencia
-            establecidos por <strong className="text-[#001689]">ANSI</strong> y{" "}
-            <strong className="text-[#001689]">DOE 2016</strong>.
+            {t("mtn.description")}
           </p>
         </motion.div>
 
@@ -228,14 +227,14 @@ export default function MTNHeroSection() {
                     href={slide.quoteHref}
                     className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#0020A0] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 group"
                   >
-                    Cotizar Ahora
+                    {t("mtn.cta.quote")}
                     <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
                   </Link>
                   <Link
                     href={slide.productHref}
                     className="inline-flex items-center gap-2 bg-white/8 hover:bg-white/15 border border-white/15 text-white/80 hover:text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300"
                   >
-                    Ver Producto
+                    {t("mtn.cta.viewProduct")}
                   </Link>
                 </motion.div>
               </div>
@@ -259,7 +258,7 @@ export default function MTNHeroSection() {
                   className="absolute w-80 h-80 rounded-full blur-3xl bg-[#001689]/50"
                 />
 
-                {/* Transformer image — fixed container so all slides stay the same size */}
+                {/* Transformer image */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -296,14 +295,14 @@ export default function MTNHeroSection() {
           {/* ── Prev / Next arrows ──────────────────────────────────── */}
           <button
             onClick={() => { prevSlide(); setIsAutoPlaying(false); }}
-            aria-label="Anterior"
+            aria-label={t("mtn.aria.prev")}
             className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all duration-200"
           >
             <ChevronLeft size={18} />
           </button>
           <button
             onClick={() => { nextSlide(); setIsAutoPlaying(false); }}
-            aria-label="Siguiente"
+            aria-label={t("mtn.aria.next")}
             className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-all duration-200"
           >
             <ChevronRight size={18} />
@@ -315,7 +314,7 @@ export default function MTNHeroSection() {
               <button
                 key={s.id}
                 onClick={() => goToSlide(i)}
-                aria-label={`Ir a ${s.category}`}
+                aria-label={`${s.category} ${i + 1}`}
                 className="relative h-0.5 rounded-full overflow-hidden transition-all duration-300"
                 style={{ width: activeIndex === i ? 32 : 16 }}
               >

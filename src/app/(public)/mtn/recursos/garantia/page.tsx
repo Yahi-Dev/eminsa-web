@@ -251,7 +251,7 @@ export default function GarantiaPage() {
             </div>
 
             {/* Download */}
-            <div className="bg-gradient-to-br from-[#001689] to-[#00A3E0] rounded-2xl p-8 text-white">
+            <div className="bg-gradient-to-br from-[#001689] to-[#001689] rounded-2xl p-8 text-white">
               <h2 className="text-xl font-bold mb-4">Documento de Garantía</h2>
               <p className="text-white/80 mb-6">
                 Descargue el documento completo con todos los términos y condiciones de garantía.
