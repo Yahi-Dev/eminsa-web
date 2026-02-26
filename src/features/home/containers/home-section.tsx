@@ -4,9 +4,6 @@ import HeroSection from "../components/HeroSection";
 import {
   MTNHeroSection,
   MTNProductsShowcase,
-  MTNCertificationsSection,
-  MTNResourcesSection,
-  MTNQuoteSection,
 } from "../components/mtn";
 import DivisionsSection from "../components/DivisionsSection";
 import ServicesSection from "../components/ServicesSection";
@@ -24,8 +21,6 @@ export default function HomeSection() {
       <MTNHeroSection />
       <TransformadorRestauracionSection />
       <MTNProductsShowcase />
-      <MTNCertificationsSection />
-      <MTNResourcesSection />
 
       {/* Noticias */}
       <NoticiasSection />
@@ -33,12 +28,10 @@ export default function HomeSection() {
       {/* Clientes */}
       <ClientesSection />
       <DivisionsSection />
+
       <ServicesSection />
       <StatsSection />
-
-      {/* Cotizaciones */}
-      <MTNQuoteSection />
-
+      
       {/* Contacto */}
       <ContactSection />
     </>

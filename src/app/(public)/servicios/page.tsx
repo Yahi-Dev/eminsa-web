@@ -106,13 +106,9 @@ export default function ServiciosPage() {
                   SERVICIOS
                 </h1>
                 <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
-                  Atención técnica especializada para sus transformadores eléctricos.
+                  {serviciosInfo.description}
                 </p>
               </div>
-
-              <p className="text-lg text-white/70 leading-relaxed max-w-xl">
-                {serviciosInfo.description}
-              </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">

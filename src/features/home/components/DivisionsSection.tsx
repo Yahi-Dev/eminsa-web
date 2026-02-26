@@ -68,19 +68,6 @@ export default function DivisionsSection() {
       </div>
 
       <div className="container-eminsa relative">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689] uppercase">
-            {t('divisions.sectionLabel')}
-          </h2>
-        </motion.div>
-
         {/* Division Name Bubbles */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -115,7 +115,11 @@ function CotizacionesForm() {
           urgente: formData.urgencia === 'urgente',
           detalles: {
             categoriaProducto: formData.categoriaProducto,
-            productoEspecifico: formData.productoEspecifico,
+            productoEspecifico: (() => {
+              if (!formData.productoEspecifico) return '';
+              const found = filteredProducts.find(p => p.slug === formData.productoEspecifico);
+              return found ? `${found.shortName} (${found.brand})` : formData.productoEspecifico;
+            })(),
             marca: formData.marca,
             cantidad: formData.cantidad,
             urgencia: formData.urgencia,

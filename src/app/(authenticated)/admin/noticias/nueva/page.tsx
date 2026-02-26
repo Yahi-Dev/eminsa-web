@@ -1,7 +1,5 @@
-"use client";
+import NoticiaForm from "@/features/admin/components/NoticiaForm";
 
-import NoticiaForm from "@/components/admin/NoticiaForm";
-
-export default function NuevaNoticiaPage() {
+export default function Page() {
   return <NoticiaForm />;
 }

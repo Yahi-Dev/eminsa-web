@@ -84,13 +84,9 @@ export default function EICPage() {
                   <span className="text-white">Eminsa International Corporation</span>
                 </h1>
                 <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
-                  Suplidores eléctricos internacionales al servicio de su proyecto.
+                  {eicInfo.description}
                 </p>
               </div>
-
-              <p className="text-lg text-white/70 leading-relaxed max-w-xl">
-                {eicInfo.description}
-              </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">

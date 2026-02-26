@@ -7,7 +7,7 @@ import BeforeAfterSlider from "@/components/shared/BeforeAfterSlider";
 
 export default function TransformadorRestauracionSection() {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-20 bg-linear-to-br from-gray-50 to-white">
       <div className="container-eminsa">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Izquierda - Contenido */}
@@ -60,7 +60,7 @@ export default function TransformadorRestauracionSection() {
                   <motion.div
                     whileHover={{ scale: 1.15, rotate: -6 }}
                     transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
                     style={{ backgroundColor: `${item.color}1A` }}
                   >
                     <item.icon className="w-5 h-5" style={{ color: item.color }} />
@@ -84,7 +84,7 @@ export default function TransformadorRestauracionSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="aspect-[4/3] w-full max-w-[600px] mx-auto">
+            <div className="aspect-4/3 w-full max-w-150 mx-auto">
               <BeforeAfterSlider
                 beforeImage="transformador-before.png"
                 afterImage="transformador-after.png"

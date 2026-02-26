@@ -1,5 +1,5 @@
-import RecursoForm from "@/components/admin/RecursoForm";
+import RecursoForm from "@/features/admin/components/RecursoForm";
 
-export default function NuevoRecursoPage() {
+export default function Page() {
   return <RecursoForm />;
 }

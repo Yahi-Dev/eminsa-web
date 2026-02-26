@@ -83,14 +83,12 @@ export default function EtrysPage() {
                   <span className="text-white">{etrysInfo.tagline}</span>
                 </h1>
                 <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
-                  Reparación y restauración de transformadores eléctricos con garantía certificada.
+                  En RST combinamos la experiencia de un equipo técnico altamente calificado con tecnología de última generación para darle a sus transformadores una nueva vida.
                 </p>
               </div>
 
               <p className="text-lg text-white/70 leading-relaxed max-w-xl">
-                En RST combinamos la experiencia de un equipo técnico altamente
-                calificado con tecnología de última generación para darle a sus
-                transformadores una nueva vida.
+                {etrysInfo.description}
               </p>
 
               {/* CTAs */}
