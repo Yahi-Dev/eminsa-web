@@ -360,12 +360,6 @@ function buildCustomerHtml(data: CotizacionTemplateData): string {
             </table>
 
             <!-- Next steps -->
-            <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8faff;border-radius:10px;border-left:4px solid ${color};margin-bottom:28px;">
-              <tr><td style="padding:16px 20px;">
-                <p style="margin:0 0 5px;color:${color};font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;">Próximos Pasos</p>
-                <p style="margin:0;color:#374151;font-size:14px;line-height:1.7;">${cfg.nextSteps}</p>
-              </td></tr>
-            </table>
 
             <!-- Quick contact -->
             <p style="margin:0 0 5px;color:#374151;font-size:13px;font-weight:700;">¿Necesita asistencia inmediata?</p>
@@ -420,9 +414,6 @@ DETALLES DE SU SOLICITUD
 ─────────────────────────────────────────
 ${buildDetallesText(data.detalles) || '  Sin detalles adicionales.'}
 
-PRÓXIMOS PASOS
-─────────────────────────────────────────
-${cfg.nextSteps}
 
 ¿Necesita asistencia inmediata?
   Teléfono  : (809) 596-5774
@@ -456,14 +447,14 @@ function buildAdminHtml(data: CotizacionTemplateData, ipAddress?: string): strin
         <!-- HEADER -->
         <tr>
           <td style="background:${color};padding:22px 28px;">
-            <p style="margin:0 0 4px;color:#ffffff;font-size:20px;font-weight:800;">📋 ${cfg.adminDivisionTitle}</p>
+            <p style="margin:0 0 4px;color:#ffffff;font-size:20px;font-weight:800;"> ${cfg.adminDivisionTitle}</p>
             <p style="margin:0;color:rgba(255,255,255,.7);font-size:13px;">Código: <strong style="color:#ffffff;">${data.codigo}</strong>${data.urgente ? ' · <span style="color:#ffd700;">⚠️ URGENTE</span>' : ''} · ${registeredAt}</p>
           </td>
         </tr>
 
         ${data.urgente ? `<!-- URGENCY BANNER -->
         <tr><td style="background:#dc2626;padding:10px 28px;text-align:center;">
-          <p style="margin:0;color:#ffffff;font-size:13px;font-weight:800;letter-spacing:.5px;">⚠️ SOLICITUD URGENTE — ATENDER CON MÁXIMA PRIORIDAD</p>
+          <p style="margin:0;color:#ffffff;font-size:13px;font-weight:800;letter-spacing:.5px;"> SOLICITUD URGENTE — ATENDER CON MÁXIMA PRIORIDAD</p>
         </td></tr>` : ''}
 
         <!-- QUICK ACTIONS -->

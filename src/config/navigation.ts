@@ -75,7 +75,7 @@ export const mainNavigation = [
       { name: "Emergencias", href: "/servicios/emergencias" },
       { name: "Ingeniería y Proyectos", href: "/servicios/ingenieria" },
       { name: "Pruebas de Laboratorio", href: "/servicios/laboratorio" },
-      { name: "Alquiler de Equipos", href: "/servicios/alquiler" },
+      { name: "Alquiler de Equipos", href: "/servicios/alquiler-transformadores" },
       { name: "Cotizaciones", href: "/servicios/cotizacion" },
     ]
   },
@@ -264,6 +264,7 @@ export const services = [
     shortName: "Integral",
     description: "Atención completa combinando inspección, ejecución y verificación final para máxima confiabilidad.",
     icon: "clipboard-check",
+    url: "/servicios/mantenimiento",
     benefits: [
       "Inspección técnica previa",
       "Mantenimiento según hallazgos",

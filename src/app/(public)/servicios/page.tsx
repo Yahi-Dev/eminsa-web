@@ -38,6 +38,7 @@ import {
   equipamientoEspecializado,
   serviciosPorTipo,
 } from "@/config/servicios-data";
+import { useTranslations } from "next-intl";
 
 const iconMap: { [key: string]: React.ElementType } = {
   "shield-check": ShieldCheck,
@@ -67,6 +68,7 @@ const equipmentIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function ServiciosPage() {
+  const t = useTranslations("pages.servicios");
   const proyectosDestacados = proyectosServicios.filter((p) => p.destacado).slice(0, 3);
   const testimonialesPreview = testimoniales.slice(0, 3);
 
@@ -98,12 +100,12 @@ export default function ServiciosPage() {
             >
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
                 <Settings size={18} className="text-white/80" />
-                <span className="text-sm font-medium">Servicios Especializados</span>
+                <span className="text-sm font-medium">{t("hero.badge")}</span>
               </div>
 
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
-                  SERVICIOS
+                  {t("hero.title")}
                 </h1>
                 <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
                   {serviciosInfo.description}
@@ -114,9 +116,9 @@ export default function ServiciosPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#696969] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#001689] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
-                  Solicitar Cotización
+                  {t("hero.requestQuote")}
                   <ArrowRight size={20} />
                 </Link>
                 <a
@@ -173,16 +175,14 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
-              Nuestros Servicios
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+              {t("grid.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
-              Soluciones Integrales para sus Transformadores
+              {t("grid.title")}
             </h2>
             <p className="text-[#76777A] text-lg">
-              Ofrecemos una gama completa de servicios especializados para el
-              mantenimiento, reparación y soporte técnico de transformadores
-              eléctricos.
+              {t("grid.description")}
             </p>
           </motion.div>
 
@@ -194,15 +194,15 @@ export default function ServiciosPage() {
             className="mb-16"
           >
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#001689] to-[#000E53] rounded-xl flex items-center justify-center">
                 <MapPin size={24} className="text-white" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-[#001689]">
-                  Servicios en Campo
+                  {t("grid.campo.title")}
                 </h3>
                 <p className="text-[#76777A] text-sm">
-                  Atención directa en sitio para sus equipos eléctricos
+                  {t("grid.campo.description")}
                 </p>
               </div>
             </div>
@@ -225,14 +225,14 @@ export default function ServiciosPage() {
                         href={service.url || `/servicios/${service.id}`}
                         className="group block h-full"
                       >
-                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#696969]/20 transition-all duration-300 hover:-translate-y-1">
+                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#001689]/20 transition-all duration-300 hover:-translate-y-1">
                           {/* Icon */}
-                          <div className="w-16 h-16 bg-gradient-to-br from-[#696969]/10 to-[#696969]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#696969] group-hover:to-[#4a4a4a] transition-all duration-300">
-                            <IconComponent className="w-8 h-8 text-[#696969] group-hover:text-white transition-colors duration-300" />
+                          <div className="w-16 h-16 bg-gradient-to-br from-[#001689]/10 to-[#001689]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#001689] group-hover:to-[#000E53] transition-all duration-300">
+                            <IconComponent className="w-8 h-8 text-[#001689] group-hover:text-white transition-colors duration-300" />
                           </div>
 
                           {/* Content */}
-                          <h3 className="text-xl font-bold text-[#001689] mb-3 group-hover:text-[#696969] transition-colors">
+                          <h3 className="text-xl font-bold text-[#001689] mb-3 group-hover:text-[#001689] transition-colors">
                             {service.name}
                           </h3>
                           <p className="text-[#76777A] text-sm leading-relaxed mb-6">
@@ -246,15 +246,15 @@ export default function ServiciosPage() {
                                 key={i}
                                 className="flex items-center gap-2 text-sm text-[#76777A]"
                               >
-                                <div className="w-1.5 h-1.5 bg-[#696969] rounded-full flex-shrink-0" />
+                                <div className="w-1.5 h-1.5 bg-[#001689] rounded-full flex-shrink-0" />
                                 {benefit}
                               </div>
                             ))}
                           </div>
 
                           {/* Hover Arrow */}
-                          <div className="mt-6 flex items-center gap-2 text-[#696969] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            Ver más detalles
+                          <div className="mt-6 flex items-center gap-2 text-[#001689] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            {t("grid.viewMore")}
                             <ArrowRight
                               size={16}
                               className="group-hover:translate-x-1 transition-transform"
@@ -280,10 +280,10 @@ export default function ServiciosPage() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-[#001689]">
-                  Servicios en Taller
+                  {t("grid.taller.title")}
                 </h3>
                 <p className="text-[#76777A] text-sm">
-                  Servicios especializados en nuestras instalaciones
+                  {t("grid.taller.description")}
                 </p>
               </div>
             </div>
@@ -335,7 +335,7 @@ export default function ServiciosPage() {
 
                           {/* Hover Arrow */}
                           <div className="mt-6 flex items-center gap-2 text-[#001689] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            Ver más detalles
+                            {t("grid.viewMore")}
                             <ArrowRight
                               size={16}
                               className="group-hover:translate-x-1 transition-transform"
@@ -363,22 +363,21 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
-              Metodología
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+              {t("process.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
-              Nuestro Proceso de Trabajo
+              {t("process.title")}
             </h2>
             <p className="text-[#76777A] text-lg">
-              Un enfoque sistemático de tres fases que garantiza resultados
-              óptimos en cada intervención.
+              {t("process.description")}
             </p>
           </motion.div>
 
           {/* Timeline */}
           <div className="relative">
             {/* Connecting line (desktop only) */}
-            <div className="hidden lg:block absolute top-[60px] left-[16.66%] right-[16.66%] h-0.5 border-t-2 border-dashed border-[#696969]/30" />
+            <div className="hidden lg:block absolute top-[60px] left-[16.66%] right-[16.66%] h-0.5 border-t-2 border-dashed border-[#001689]/30" />
 
             <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
               {serviciosInfo.procesoTrabajo.map((paso, index) => {
@@ -395,7 +394,7 @@ export default function ServiciosPage() {
                   >
                     {/* Numbered Circle */}
                     <div className="relative z-10 w-[120px] h-[120px] mx-auto mb-8">
-                      <div className="w-full h-full bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-full flex items-center justify-center shadow-lg shadow-[#696969]/25">
+                      <div className="w-full h-full bg-gradient-to-br from-[#001689] to-[#000E53] rounded-full flex items-center justify-center shadow-lg shadow-[#001689]/25">
                         <Icon className="w-12 h-12 text-white" />
                       </div>
                       <div className="absolute -top-2 -right-2 w-10 h-10 bg-[#001689] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
@@ -430,16 +429,14 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
-              Tecnología de Punta
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+              {t("equipment.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
-              Equipamiento Especializado
+              {t("equipment.title")}
             </h2>
             <p className="text-[#76777A] text-lg">
-              Contamos con equipos de última generación y un centro de servicio
-              completamente equipado para garantizar resultados de la más alta
-              calidad en cada intervención.
+              {t("equipment.description")}
             </p>
           </motion.div>
 
@@ -454,15 +451,15 @@ export default function ServiciosPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#696969]/20 transition-all duration-300 group"
+                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#001689]/20 transition-all duration-300 group"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#696969]/10 to-[#696969]/5 flex items-center justify-center mb-4 group-hover:from-[#696969] group-hover:to-[#4a4a4a] transition-all">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#001689]/10 to-[#001689]/5 flex items-center justify-center mb-4 group-hover:from-[#001689] group-hover:to-[#000E53] transition-all">
                     <Icon
                       size={28}
-                      className="text-[#696969] group-hover:text-white transition-colors"
+                      className="text-[#001689] group-hover:text-white transition-colors"
                     />
                   </div>
-                  <h3 className="font-bold text-[#001689] mb-2 group-hover:text-[#696969] transition-colors">
+                  <h3 className="font-bold text-[#001689] mb-2 group-hover:text-[#001689] transition-colors">
                     {equip.name}
                   </h3>
                   <p className="text-sm text-[#76777A] mb-3 leading-relaxed">
@@ -486,13 +483,13 @@ export default function ServiciosPage() {
             className="text-center mt-12"
           >
             <p className="text-[#76777A] mb-4">
-              ¿Desea conocer más sobre nuestras instalaciones y capacidades?
+              {t("equipment.ctaText")}
             </p>
             <Link
               href="/servicios/cotizacion"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#696969] hover:bg-[#4a4a4a] text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#001689] hover:bg-[#4a4a4a] text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
             >
-              Agendar Visita
+              {t("equipment.ctaButton")}
               <ArrowRight size={20} />
             </Link>
           </motion.div>
@@ -511,16 +508,15 @@ export default function ServiciosPage() {
             className="flex flex-col md:flex-row items-center justify-between gap-8"
           >
             <div className="flex items-center gap-6">
-              <div className="w-16 h-16 bg-[#696969] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="w-16 h-16 bg-[#001689] rounded-2xl flex items-center justify-center flex-shrink-0">
                 <AlertTriangle className="w-8 h-8 text-white" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-1">
-                  ¿Emergencia Eléctrica?
+                  {t("emergency.title")}
                 </h3>
                 <p className="text-white/70">
-                  Estamos disponibles 24/7 para atender sus emergencias con
-                  respuesta inmediata
+                  {t("emergency.description")}
                 </p>
               </div>
             </div>
@@ -558,15 +554,14 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
-              Casos de Éxito
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+              {t("projects.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
-              Proyectos Destacados
+              {t("projects.title")}
             </h2>
             <p className="text-[#76777A] text-lg">
-              Conozca algunos de los proyectos más representativos que hemos
-              ejecutado para nuestros clientes.
+              {t("projects.description")}
             </p>
           </motion.div>
 
@@ -587,7 +582,7 @@ export default function ServiciosPage() {
                 <div className="p-8">
                   {/* Service Badge + Date */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#696969]/10 text-[#696969] text-xs font-medium rounded-full">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#001689]/10 text-[#001689] text-xs font-medium rounded-full">
                       <Settings size={12} />
                       {proyecto.tipoServicio}
                     </span>
@@ -598,7 +593,7 @@ export default function ServiciosPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-[#001689] mb-2 group-hover:text-[#696969] transition-colors">
+                  <h3 className="text-lg font-bold text-[#001689] mb-2 group-hover:text-[#001689] transition-colors">
                     {proyecto.titulo}
                   </h3>
 
@@ -622,7 +617,7 @@ export default function ServiciosPage() {
                       >
                         <CheckCircle2
                           size={14}
-                          className="text-[#696969] flex-shrink-0"
+                          className="text-[#001689] flex-shrink-0"
                         />
                         {resultado}
                       </div>
@@ -644,7 +639,7 @@ export default function ServiciosPage() {
               href="/servicios/proyectos"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#001689] text-white font-semibold rounded-xl hover:bg-[#001689]/90 transition-all shadow-md hover:shadow-lg"
             >
-              Ver Todos los Proyectos
+              {t("projects.viewAll")}
               <ArrowRight size={20} />
             </Link>
           </motion.div>
@@ -663,15 +658,14 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
-              Testimonios
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+              {t("testimonials.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
-              Lo que Dicen Nuestros Clientes
+              {t("testimonials.title")}
             </h2>
             <p className="text-[#76777A] text-lg">
-              La confianza de nuestros clientes es nuestro mayor respaldo.
-              Conozca sus experiencias trabajando con EMINSA.
+              {t("testimonials.description")}
             </p>
           </motion.div>
 
@@ -689,7 +683,7 @@ export default function ServiciosPage() {
                 {/* Large Quote Icon */}
                 <Quote
                   size={64}
-                  className="absolute top-6 right-6 text-[#696969]/10"
+                  className="absolute top-6 right-6 text-[#001689]/10"
                 />
 
                 {/* Testimonial Text */}
@@ -705,7 +699,7 @@ export default function ServiciosPage() {
                       size={16}
                       className={
                         i < testimonial.rating
-                          ? "text-[#696969] fill-[#696969]"
+                          ? "text-[#001689] fill-[#001689]"
                           : "text-gray-200 fill-gray-200"
                       }
                     />
@@ -714,7 +708,7 @@ export default function ServiciosPage() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#001689] to-[#000E53] rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {testimonial.iniciales}
                   </div>
                   <div>
@@ -729,7 +723,7 @@ export default function ServiciosPage() {
 
                 {/* Service Badge */}
                 <div className="mt-4 pt-4 border-t border-gray-100">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#696969]/10 text-[#696969] text-xs font-medium rounded-full">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#001689]/10 text-[#001689] text-xs font-medium rounded-full">
                     <Settings size={10} />
                     {testimonial.servicio}
                   </span>
@@ -747,9 +741,9 @@ export default function ServiciosPage() {
           >
             <Link
               href="/servicios/testimoniales"
-              className="inline-flex items-center gap-2 text-[#696969] font-semibold hover:gap-3 transition-all text-lg"
+              className="inline-flex items-center gap-2 text-[#001689] font-semibold hover:gap-3 transition-all text-lg"
             >
-              Ver Todos los Testimonios
+              {t("testimonials.viewAll")}
               <ArrowRight size={20} />
             </Link>
           </motion.div>
@@ -769,14 +763,13 @@ export default function ServiciosPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <span className="inline-block px-3 py-1 bg-white/10 text-white text-sm font-medium rounded-full mb-4">
-              ¿Por qué EMINSA?
+              {t("whyUs.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              La Experiencia que nos Respalda
+              {t("whyUs.title")}
             </h2>
             <p className="text-white/70 text-lg">
-              Más de cinco décadas de servicio ininterrumpido nos convierten en
-              el aliado de confianza para la industria eléctrica.
+              {t("whyUs.description")}
             </p>
           </motion.div>
 
@@ -788,15 +781,14 @@ export default function ServiciosPage() {
               viewport={{ once: true }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#696969] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-[#001689] mb-4">
                 50+
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
-                Años de Experiencia
+                {t("whyUs.stats.experience.title")}
               </h3>
               <p className="text-white/70">
-                Décadas de conocimiento especializado en transformadores
-                eléctricos, brindando soluciones confiables desde 1974.
+                {t("whyUs.stats.experience.description")}
               </p>
             </motion.div>
 
@@ -807,15 +799,14 @@ export default function ServiciosPage() {
               transition={{ delay: 0.1 }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#696969] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-[#001689] mb-4">
                 24/7
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
-                Disponibilidad
+                {t("whyUs.stats.availability.title")}
               </h3>
               <p className="text-white/70">
-                Atención a emergencias las 24 horas, los 7 días de la semana,
-                con equipo técnico dedicado y tiempos de respuesta mínimos.
+                {t("whyUs.stats.availability.description")}
               </p>
             </motion.div>
 
@@ -826,15 +817,14 @@ export default function ServiciosPage() {
               transition={{ delay: 0.2 }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#696969] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-[#001689] mb-4">
                 100%
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
-                Satisfacción
+                {t("whyUs.stats.satisfaction.title")}
               </h3>
               <p className="text-white/70">
-                Compromiso total con la calidad y el servicio al cliente,
-                respaldado por la confianza de más de 500 empresas.
+                {t("whyUs.stats.satisfaction.description")}
               </p>
             </motion.div>
           </div>
@@ -859,21 +849,19 @@ export default function ServiciosPage() {
             <div className="relative z-10 max-w-2xl mx-auto">
               <Settings size={48} className="mx-auto mb-6 text-white/80" />
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                ¿Necesita Servicios para sus Transformadores?
+                {t("finalCta.title")}
               </h2>
               <p className="text-white/90 text-lg mb-8 leading-relaxed">
-                Solicite una cotización y reciba asesoría personalizada de
-                nuestro equipo de ingenieros especializados. Más de 50 años de
-                experiencia a su servicio.
+                {t("finalCta.description")}
               </p>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#696969] hover:bg-white/90 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#001689] hover:bg-white/90 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
-                  Solicitar Cotización
+                  {t("finalCta.button")}
                   <ArrowRight size={22} />
                 </Link>
                 <a

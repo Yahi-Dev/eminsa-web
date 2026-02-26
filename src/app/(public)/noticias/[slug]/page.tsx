@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Calendar, User, Tag, ChevronRight } from "lucide-react";
 import { categoriasNoticias } from "@/data/content";
 import type { NoticiaAPI } from "@/features/admin/types";
+import { useTranslations, useLocale } from "next-intl";
 
 const categoriaColors: { [key: string]: string } = {
   empresa: "#001689",
@@ -15,8 +16,8 @@ const categoriaColors: { [key: string]: string } = {
   industria: "#76777A",
 };
 
-function formatFecha(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("es-ES", {
+function formatFecha(dateStr: string, locale: string) {
+  return new Date(dateStr).toLocaleDateString(locale === "en" ? "en-US" : "es-ES", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -25,6 +26,9 @@ function formatFecha(dateStr: string) {
 
 export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
+  const t = useTranslations("pages.noticiaDetalle");
+  const tCommon = useTranslations("pages.common");
+  const locale = useLocale();
   const [noticia, setNoticia] = useState<NoticiaAPI | null>(null);
   const [relacionadas, setRelacionadas] = useState<NoticiaAPI[]>([]);
   const [loading, setLoading] = useState(true);
@@ -70,14 +74,14 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-[#001689] mb-4">Noticia no encontrada</h1>
-          <p className="text-[#76777A] mb-8">La noticia que buscas no existe o no está disponible.</p>
+          <h1 className="text-3xl font-bold text-[#001689] mb-4">{t("notFound.title")}</h1>
+          <p className="text-[#76777A] mb-8">{t("notFound.description")}</p>
           <Link
             href="/noticias"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#001689] text-white font-semibold rounded-xl"
           >
             <ArrowLeft size={18} />
-            Volver a Noticias
+            {t("notFound.back")}
           </Link>
         </div>
       </div>
@@ -109,9 +113,9 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 text-white/60 text-sm mb-8"
           >
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{tCommon("home")}</Link>
             <ChevronRight size={14} />
-            <Link href="/noticias" className="hover:text-white transition-colors">Noticias</Link>
+            <Link href="/noticias" className="hover:text-white transition-colors">{t("breadcrumb")}</Link>
             <ChevronRight size={14} />
             <span className="text-white/80 line-clamp-1 max-w-xs">{noticia.titulo}</span>
           </motion.div>
@@ -136,7 +140,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
             <div className="flex flex-wrap items-center gap-6 text-white/70 text-sm">
               <span className="flex items-center gap-2">
                 <Calendar size={16} />
-                {formatFecha(noticia.createdAt)}
+                {formatFecha(noticia.createdAt, locale)}
               </span>
               {noticia.autor && (
                 <span className="flex items-center gap-2">
@@ -187,7 +191,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
                   dangerouslySetInnerHTML={{ __html: noticia.contenido }}
                 />
               ) : (
-                <p className="text-[#76777A] italic">Contenido completo no disponible.</p>
+                <p className="text-[#76777A] italic">{t("contentUnavailable")}</p>
               )}
 
               <div className="mt-12 pt-8 border-t border-gray-100">
@@ -196,7 +200,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
                   className="inline-flex items-center gap-2 text-[#001689] font-semibold hover:gap-3 transition-all group"
                 >
                   <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                  Volver a Noticias
+                  {t("backToNews")}
                 </Link>
               </div>
             </motion.article>
@@ -209,10 +213,10 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
               className="lg:col-span-1 space-y-8"
             >
               <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                <h3 className="font-bold text-[#001689] mb-4">Información</h3>
+                <h3 className="font-bold text-[#001689] mb-4">{t("info")}</h3>
                 <dl className="space-y-3">
                   <div>
-                    <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Categoría</dt>
+                    <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">{t("category")}</dt>
                     <dd>
                       <span
                         className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold"
@@ -223,12 +227,12 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Publicado</dt>
-                    <dd className="text-sm text-[#4a4a4a] font-medium">{formatFecha(noticia.createdAt)}</dd>
+                    <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">{t("published")}</dt>
+                    <dd className="text-sm text-[#4a4a4a] font-medium">{formatFecha(noticia.createdAt, locale)}</dd>
                   </div>
                   {noticia.autor && (
                     <div>
-                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Autor</dt>
+                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">{t("author")}</dt>
                       <dd className="text-sm text-[#4a4a4a] font-medium">{noticia.autor}</dd>
                     </div>
                   )}
@@ -237,7 +241,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
 
               {relacionadas.length > 0 && (
                 <div>
-                  <h3 className="font-bold text-[#001689] mb-4">Noticias Relacionadas</h3>
+                  <h3 className="font-bold text-[#001689] mb-4">{t("relatedNews")}</h3>
                   <div className="space-y-4">
                     {relacionadas.map((rel) => (
                       <Link
@@ -248,7 +252,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
                         <p className="font-semibold text-sm text-[#001689] group-hover:text-[#00A3E0] transition-colors line-clamp-2 mb-1">
                           {rel.titulo}
                         </p>
-                        <span className="text-xs text-[#76777A]">{formatFecha(rel.createdAt)}</span>
+                        <span className="text-xs text-[#76777A]">{formatFecha(rel.createdAt, locale)}</span>
                       </Link>
                     ))}
                   </div>
@@ -259,16 +263,16 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
                 className="rounded-2xl p-6 text-white text-center"
                 style={{ background: `linear-gradient(135deg, ${catColor}, ${catColor}bb)` }}
               >
-                <h3 className="font-bold mb-2">¿Necesita más información?</h3>
+                <h3 className="font-bold mb-2">{t("cta.title")}</h3>
                 <p className="text-white/80 text-sm mb-4">
-                  Contáctenos para conocer más sobre nuestros productos y servicios.
+                  {t("cta.description")}
                 </p>
                 <Link
                   href="/cotizar"
                   className="inline-block px-5 py-2.5 bg-white font-semibold rounded-xl text-sm transition-opacity hover:opacity-90"
                   style={{ color: catColor }}
                 >
-                  Solicitar Cotización
+                  {t("cta.button")}
                 </Link>
               </div>
             </motion.aside>

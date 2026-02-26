@@ -12,15 +12,11 @@ import {
   Zap,
   Building2,
   Factory,
-  ShoppingBag,
   Hotel,
   Truck,
-  Calendar,
   Phone,
   MessageCircle,
-  FileText
 } from "lucide-react";
-import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 // Datos de transformadores disponibles para alquiler
@@ -77,7 +73,7 @@ const transformadoresDisponibles = [
       "Ideal para interiores"
     ],
     aplicaciones: ["Centros comerciales", "Edificios", "Industrias", "Hospitales"],
-    color: "#696969"
+    color: "#001689"
   },
 ];
 
@@ -198,8 +194,8 @@ export default function AlquilerTransformadoresPage() {
             </p>
             <div className="flex flex-wrap gap-4">
               <Link 
-                href="#cotizar" 
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#696969] font-semibold rounded-lg hover:bg-gray-100 transition-all hover:shadow-lg"
+                href="/servicios/cotizacion" 
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#001689] font-semibold rounded-lg hover:bg-gray-100 transition-all hover:shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={18} />
@@ -247,8 +243,8 @@ export default function AlquilerTransformadoresPage() {
                   transition={{ delay: index * 0.1 }}
                   className="p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#696969]/10 to-[#696969]/5 rounded-xl flex items-center justify-center mb-4">
-                    <IconComponent className="w-7 h-7 text-[#696969]" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#001689]/10 to-[#001689]/5 rounded-xl flex items-center justify-center mb-4">
+                    <IconComponent className="w-7 h-7 text-[#001689]" />
                   </div>
                   <h3 className="text-xl font-bold text-[#001689] mb-2">
                     {beneficio.titulo}
@@ -434,7 +430,7 @@ export default function AlquilerTransformadoresPage() {
                       {/* CTA Button */}
                       <div>
                         <Link 
-                          href="#cotizar"
+                          href="/servicios/cotizacion"
                           className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all group shadow-md hover:shadow-lg text-white"
                           style={{ backgroundColor: transformador.color }}
                         >
@@ -481,8 +477,8 @@ export default function AlquilerTransformadoresPage() {
                   className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-[#696969]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <IconComponent className="w-6 h-6 text-[#696969]" />
+                    <div className="w-12 h-12 bg-[#001689]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <IconComponent className="w-6 h-6 text-[#001689]" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-[#001689] mb-2">{caso.titulo}</h3>

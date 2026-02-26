@@ -68,7 +68,7 @@ export default function ServicesSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
-                <Link href={`/servicios/${service.id}`} className="group block h-full">
+                <Link href={service.url ?? `/servicios/${service.id}`} className="group block h-full">
                   <div className="h-full p-6 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#00A3E0]/20 transition-shadow transition-border duration-300">
                     {/* Icon */}
                     <motion.div

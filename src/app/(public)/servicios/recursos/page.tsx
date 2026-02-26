@@ -126,23 +126,23 @@ export default function RecursosServiciosPage() {
                       rel={isExternal ? "noopener noreferrer" : undefined}
                       className="group block h-full"
                     >
-                      <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#696969]/20 transition-all duration-300 hover:-translate-y-1">
-                        <div className="w-16 h-16 bg-gradient-to-br from-[#696969]/10 to-[#696969]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#696969] group-hover:to-[#4a4a4a] transition-all duration-300">
-                          <IconComponent className="w-8 h-8 text-[#696969] group-hover:text-white transition-colors duration-300" />
+                      <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#001689]/20 transition-all duration-300 hover:-translate-y-1">
+                        <div className="w-16 h-16 bg-gradient-to-br from-[#001689]/10 to-[#001689]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#001689] group-hover:to-[#000E53] transition-all duration-300">
+                          <IconComponent className="w-8 h-8 text-[#001689] group-hover:text-white transition-colors duration-300" />
                         </div>
 
-                        <span className="inline-block px-2 py-1 bg-[#696969]/10 text-[#696969] text-xs font-medium rounded mb-3 capitalize">
+                        <span className="inline-block px-2 py-1 bg-[#001689]/10 text-[#001689] text-xs font-medium rounded mb-3 capitalize">
                           {recurso.tipo}
                         </span>
 
-                        <h3 className="text-xl font-bold text-[#001689] mb-3 group-hover:text-[#696969] transition-colors">
+                        <h3 className="text-xl font-bold text-[#001689] mb-3 group-hover:text-[#001689] transition-colors">
                           {recurso.nombre}
                         </h3>
                         <p className="text-[#76777A] text-sm leading-relaxed mb-6">
                           {recurso.descripcion}
                         </p>
 
-                        <div className="flex items-center gap-2 text-[#696969] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="flex items-center gap-2 text-[#001689] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           {isExternal ? "Visitar" : "Acceder"}
                           {isExternal ? (
                             <ExternalLink
@@ -177,8 +177,8 @@ export default function RecursosServiciosPage() {
             viewport={{ once: true }}
             className="relative bg-gradient-to-br from-[#001689] via-[#000E53] to-[#001689] rounded-3xl p-8 md:p-12 text-white text-center overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#696969]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#696969]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#001689]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#001689]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
 
             <div className="relative z-10 max-w-2xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -192,7 +192,7 @@ export default function RecursosServiciosPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#696969] text-white hover:bg-[#5a5a5a] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#001689] text-white hover:bg-[#000E53] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />

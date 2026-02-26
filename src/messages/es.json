@@ -49,6 +49,77 @@
       "title": "Últimas noticias",
       "viewAll": "Ver todas las noticias",
       "readMore": "Leer más"
+    },
+    "mtn": {
+      "sectionLabel": "Manufactura de Transformadores Nuevos",
+      "title": "Transformadores",
+      "titleAccent": "100% Nuevos",
+      "description": "Fabricados en la República Dominicana bajo los más altos estándares internacionales, cumpliendo plenamente con los niveles de eficiencia establecidos por ANSI y DOE 2016.",
+      "cta": {
+        "quote": "Cotizar Ahora",
+        "viewProduct": "Ver Producto",
+        "viewDetails": "Ver Detalles"
+      },
+      "aria": {
+        "prev": "Anterior",
+        "next": "Siguiente"
+      },
+      "specLabels": {
+        "power": "Potencia",
+        "voltage": "Voltaje",
+        "phases": "Fases",
+        "standard": "Norma"
+      },
+      "slides": {
+        "tipoPoste": {
+          "category": "Tipo Poste",
+          "name": "Distribución Aérea",
+          "subtitle": "Confiabilidad y eficiencia máxima para sistemas de distribución eléctrica aérea."
+        },
+        "padMounted": {
+          "category": "Pad Mounted",
+          "name": "Distribución Subterránea",
+          "subtitle": "Solución compacta, segura y hermética para urbanizaciones y sistemas soterrados."
+        },
+        "subestacion": {
+          "category": "Subestación",
+          "name": "Potencia Industrial",
+          "subtitle": "Alta capacidad para plantas industriales, parques solares y proyectos de gran escala."
+        }
+      },
+      "showcase": {
+        "sectionLabel": "Línea de Productos",
+        "title": "Nuestros Transformadores",
+        "tipoPoste": {
+          "name": "Transformadores Tipo Poste",
+          "shortName": "Tipo Poste",
+          "description": "Diseñados para ofrecer máxima confiabilidad, eficiencia y durabilidad en sistemas de distribución eléctrica aérea.",
+          "feature1": "Máxima confiabilidad y eficiencia",
+          "feature2": "Diseño robusto para intemperie",
+          "feature3": "Cumplimiento ANSI y DOE 2016",
+          "feature4": "Aplicaciones residenciales e industriales"
+        },
+        "padMounted": {
+          "name": "Transformadores Pad Mounted",
+          "shortName": "Pad Mounted",
+          "description": "Solución segura, compacta y altamente eficiente para sistemas de distribución subterránea en urbanizaciones.",
+          "feature1": "Diseño compacto y seguro",
+          "feature2": "Montaje a nivel del suelo",
+          "feature3": "Protección hermética total",
+          "feature4": "Ideal para urbanizaciones"
+        }
+      }
+    },
+    "rst": {
+      "badge": "Mantenimiento y Restauración",
+      "title": "Transformamos equipos dañados en",
+      "titleAccent": "soluciones confiables",
+      "diagnosisTitle": "Diagnóstico Completo",
+      "diagnosisDesc": "Evaluación exhaustiva del estado del transformador y recomendaciones técnicas",
+      "restorationTitle": "Restauración Profesional",
+      "restorationDesc": "Reparación, pintura, reemplazo de componentes y certificación de calidad",
+      "guaranteeTitle": "Garantía de Rendimiento",
+      "guaranteeDesc": "Pruebas eléctricas completas y garantía en todos nuestros servicios"
     }
   },
   "general": {
@@ -276,6 +347,245 @@
       "whatsappButton": "Chatear por WhatsApp",
       "location": "Nuestra ubicación:",
       "viewMap": "Ver mapa más grande"
+    }
+  },
+  "pages": {
+    "common": {
+      "home": "Inicio",
+      "requestQuote": "Solicitar Cotización",
+      "learnMore": "Conocer más",
+      "viewDetails": "Ver más detalles"
+    },
+    "noticias": {
+      "title": "Noticias",
+      "description": "Manténgase informado sobre las últimas novedades de Grupo EMINSA, lanzamientos de productos y noticias del sector eléctrico.",
+      "filterAll": "Todas",
+      "featured": "Destacadas",
+      "allNews": "Todas las Noticias",
+      "empty": "No hay noticias disponibles en este momento."
+    },
+    "noticiaDetalle": {
+      "breadcrumb": "Noticias",
+      "notFound": {
+        "title": "Noticia no encontrada",
+        "description": "La noticia que buscas no existe o no está disponible.",
+        "back": "Volver a Noticias"
+      },
+      "info": "Información",
+      "category": "Categoría",
+      "published": "Publicado",
+      "author": "Autor",
+      "relatedNews": "Noticias Relacionadas",
+      "contentUnavailable": "Contenido completo no disponible.",
+      "backToNews": "Volver a Noticias",
+      "cta": {
+        "title": "¿Necesita más información?",
+        "description": "Contáctenos para conocer más sobre nuestros productos y servicios.",
+        "button": "Solicitar Cotización"
+      }
+    },
+    "proyectos": {
+      "title": "Proyectos",
+      "description": "Conozca algunos de los proyectos más destacados que hemos realizado para nuestros clientes en República Dominicana y el Caribe.",
+      "filterAll": "Todos",
+      "featured": "Proyectos Destacados",
+      "allProjects": "Todos los Proyectos",
+      "empty": "No hay proyectos disponibles en este momento.",
+      "cta": {
+        "title": "¿Tiene un proyecto en mente?",
+        "description": "Contáctenos para discutir cómo podemos ayudarle con su próximo proyecto de transformadores o sistemas eléctricos.",
+        "button": "Solicitar Cotización"
+      }
+    },
+    "nosotros": {
+      "breadcrumb": "Nosotros",
+      "philosophy": {
+        "badge": "Nuestra Filosofía",
+        "title": "Misión, Visión y Valores",
+        "description": "Los principios y propósitos que guían nuestro camino hacia la excelencia."
+      },
+      "mission": "Nuestra Misión",
+      "vision": "Nuestra Visión",
+      "position": {
+        "badge": "Nuestra Posición",
+        "title": "Líderes en el Caribe"
+      },
+      "divisions": {
+        "badge": "Nuestras Divisiones",
+        "title": "Soluciones Integrales",
+        "description": "Cuatro divisiones especializadas trabajando en conjunto para ofrecer soluciones completas en transformadores y equipos eléctricos.",
+        "learnMore": "Conocer más"
+      },
+      "team": {
+        "badge": "Nuestro Equipo",
+        "title": "Profesionales Comprometidos",
+        "stats": {
+          "professionals": "Profesionales",
+          "avgExp": "Años Promedio Exp.",
+          "training": "Capacitación Anual",
+          "certifications": "Certificaciones"
+        }
+      },
+      "milestones": {
+        "title": "Nuestra Trayectoria",
+        "description": "Más de cinco décadas de compromiso con la excelencia en el sector eléctrico.",
+        "clickHint": "Click para ver más detalles →",
+        "dialog": {
+          "details": "Detalles del Período",
+          "achievements": "Logros Destacados",
+          "close": "Cerrar",
+          "ariaClose": "Cerrar"
+        }
+      },
+      "cta": {
+        "title": "¿Listo para trabajar con nosotros?",
+        "description": "Descubra por qué somos la elección preferida para transformadores y equipos eléctricos en el Caribe.",
+        "contact": "Contáctenos"
+      }
+    },
+    "servicios": {
+      "hero": {
+        "badge": "Servicios Especializados",
+        "title": "SERVICIOS",
+        "requestQuote": "Solicitar Cotización"
+      },
+      "grid": {
+        "badge": "Nuestros Servicios",
+        "title": "Soluciones Integrales para sus Transformadores",
+        "description": "Ofrecemos una gama completa de servicios especializados para el mantenimiento, reparación y soporte técnico de transformadores eléctricos.",
+        "campo": {
+          "title": "Servicios en Campo",
+          "description": "Atención directa en sitio para sus equipos eléctricos"
+        },
+        "taller": {
+          "title": "Servicios en Taller",
+          "description": "Servicios especializados en nuestras instalaciones"
+        },
+        "viewMore": "Ver más detalles"
+      },
+      "process": {
+        "badge": "Metodología",
+        "title": "Nuestro Proceso de Trabajo",
+        "description": "Un enfoque sistemático de tres fases que garantiza resultados óptimos en cada intervención."
+      },
+      "equipment": {
+        "badge": "Tecnología de Punta",
+        "title": "Equipamiento Especializado",
+        "description": "Contamos con equipos de última generación y un centro de servicio completamente equipado para garantizar resultados de la más alta calidad en cada intervención.",
+        "ctaText": "¿Desea conocer más sobre nuestras instalaciones y capacidades?",
+        "ctaButton": "Agendar Visita"
+      },
+      "emergency": {
+        "title": "¿Emergencia Eléctrica?",
+        "description": "Estamos disponibles 24/7 para atender sus emergencias con respuesta inmediata"
+      },
+      "projects": {
+        "badge": "Casos de Éxito",
+        "title": "Proyectos Destacados",
+        "description": "Conozca algunos de los proyectos más representativos que hemos ejecutado para nuestros clientes.",
+        "viewAll": "Ver Todos los Proyectos"
+      },
+      "testimonials": {
+        "badge": "Testimonios",
+        "title": "Lo que Dicen Nuestros Clientes",
+        "description": "La confianza de nuestros clientes es nuestro mayor respaldo. Conozca sus experiencias trabajando con EMINSA.",
+        "viewAll": "Ver Todos los Testimonios"
+      },
+      "whyUs": {
+        "badge": "¿Por qué EMINSA?",
+        "title": "La Experiencia que nos Respalda",
+        "description": "Más de cinco décadas de servicio ininterrumpido nos convierten en el aliado de confianza para la industria eléctrica.",
+        "stats": {
+          "experience": {
+            "title": "Años de Experiencia",
+            "description": "Décadas de conocimiento especializado en transformadores eléctricos, brindando soluciones confiables desde 1974."
+          },
+          "availability": {
+            "title": "Disponibilidad",
+            "description": "Atención a emergencias las 24 horas, los 7 días de la semana, con equipo técnico dedicado y tiempos de respuesta mínimos."
+          },
+          "satisfaction": {
+            "title": "Satisfacción",
+            "description": "Compromiso total con la calidad y el servicio al cliente, respaldado por la confianza de más de 500 empresas."
+          }
+        }
+      },
+      "finalCta": {
+        "title": "¿Necesita Servicios para sus Transformadores?",
+        "description": "Solicite una cotización y reciba asesoría personalizada de nuestro equipo de ingenieros especializados. Más de 50 años de experiencia a su servicio.",
+        "button": "Solicitar Cotización"
+      }
+    },
+    "cotizar": {
+      "breadcrumb": "Solicitar Cotización",
+      "title": "Solicitar Cotización",
+      "description": "Complete el formulario y recibirá una respuesta en menos de 30 minutos durante horario laboral.",
+      "success": {
+        "title": "¡Solicitud Recibida!",
+        "description": "Gracias por contactarnos. Uno de nuestros especialistas se comunicará con usted en breve.",
+        "newRequest": "Nueva Solicitud",
+        "backHome": "Volver al Inicio"
+      },
+      "sections": {
+        "contact": "Información de Contacto",
+        "serviceType": "Tipo de Requerimiento",
+        "details": "Detalles Adicionales"
+      },
+      "fields": {
+        "fullName": "Nombre Completo",
+        "company": "Empresa",
+        "email": "Email",
+        "serviceType": "Tipo de Servicio",
+        "transformerType": "Tipo de Transformador",
+        "capacity": "Capacidad",
+        "quantity": "Cantidad",
+        "location": "Ubicación del Proyecto",
+        "locationPlaceholder": "Ciudad, provincia",
+        "description": "Descripción del Requerimiento",
+        "descriptionPlaceholder": "Describa su requerimiento...",
+        "urgentLabel": "Urgente:",
+        "urgentDescription": "Necesito una respuesta lo antes posible",
+        "phone": "Teléfono",
+        "namePlaceholder": "Su nombre",
+        "companyPlaceholder": "Nombre de su empresa",
+        "emailPlaceholder": "correo@ejemplo.com"
+      },
+      "selects": {
+        "selectOption": "Seleccione una opción",
+        "select": "Seleccione"
+      },
+      "submit": {
+        "sending": "Enviando...",
+        "button": "Enviar Solicitud"
+      },
+      "tiposServicio": {
+        "mtnTransformador": "Transformador Nuevo (MTN)",
+        "etrysReparacion": "Reparación de Transformador",
+        "etrysRemanufacturado": "Transformador Remanufacturado",
+        "etrysAlquiler": "Alquiler de Transformador",
+        "eicImportacion": "Importación de Equipos",
+        "servicioPreventivo": "Mantenimiento Preventivo",
+        "servicioCorrectivo": "Mantenimiento Correctivo",
+        "servicioEmergencia": "Atención de Emergencia",
+        "otro": "Otro"
+      },
+      "tiposTransformador": {
+        "posteMonofasico": "Tipo Poste Monofásico",
+        "posteTrifasico": "Tipo Poste Trifásico",
+        "padMonofasico": "Pad Mounted Monofásico",
+        "padTrifasico": "Pad Mounted Trifásico",
+        "subestacion": "Subestación",
+        "secoResina": "Seco en Resina",
+        "noAplica": "No aplica"
+      },
+      "sidebar": {
+        "callUs": "¿Prefiere llamarnos?",
+        "responseTime": "Tiempo de Respuesta",
+        "responseUnit": "minutos",
+        "responseDetail": "en horario laboral",
+        "businessHours": "Lunes a Viernes de 8:00 AM a 5:00 PM",
+        "certifications": "Certificaciones"
+      }
     }
   }
 }

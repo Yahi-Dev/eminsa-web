@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
-import { hashSync } from "bcryptjs";
 import { randomUUID } from "crypto";
+import { hashPassword } from "better-auth/crypto";
 
 const prisma = new PrismaClient();
 
@@ -25,11 +25,11 @@ const users = [
   },
 ];
 
-async function main() {
+async function main(): Promise<void> {
   console.log("Seeding database...\n");
 
   for (const u of users) {
-    const hashedPassword = hashSync(u.password, 10);
+    const hashedPassword = await hashPassword(u.password);
     const userId = randomUUID();
     const accountId = randomUUID();
     const now = new Date();

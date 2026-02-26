@@ -49,6 +49,77 @@
       "title": "Latest news",
       "viewAll": "View all news",
       "readMore": "Read more"
+    },
+    "mtn": {
+      "sectionLabel": "Manufacturing of New Transformers",
+      "title": "Transformers",
+      "titleAccent": "100% New",
+      "description": "Manufactured in the Dominican Republic under the highest international standards, fully complying with the efficiency levels established by ANSI and DOE 2016.",
+      "cta": {
+        "quote": "Get a Quote",
+        "viewProduct": "View Product",
+        "viewDetails": "View Details"
+      },
+      "aria": {
+        "prev": "Previous",
+        "next": "Next"
+      },
+      "specLabels": {
+        "power": "Power",
+        "voltage": "Voltage",
+        "phases": "Phases",
+        "standard": "Standard"
+      },
+      "slides": {
+        "tipoPoste": {
+          "category": "Pole Type",
+          "name": "Aerial Distribution",
+          "subtitle": "Maximum reliability and efficiency for overhead electrical distribution systems."
+        },
+        "padMounted": {
+          "category": "Pad Mounted",
+          "name": "Underground Distribution",
+          "subtitle": "Compact, safe, and hermetically sealed solution for residential developments and underground systems."
+        },
+        "subestacion": {
+          "category": "Substation",
+          "name": "Industrial Power",
+          "subtitle": "High capacity for industrial plants, solar parks, and large-scale projects."
+        }
+      },
+      "showcase": {
+        "sectionLabel": "Product Line",
+        "title": "Our Transformers",
+        "tipoPoste": {
+          "name": "Pole Type Transformers",
+          "shortName": "Pole Type",
+          "description": "Designed to provide maximum reliability, efficiency, and durability in overhead electrical distribution systems.",
+          "feature1": "Maximum reliability and efficiency",
+          "feature2": "Robust design for outdoor use",
+          "feature3": "ANSI and DOE 2016 compliance",
+          "feature4": "Residential and industrial applications"
+        },
+        "padMounted": {
+          "name": "Pad Mounted Transformers",
+          "shortName": "Pad Mounted",
+          "description": "Safe, compact, and highly efficient solution for underground distribution systems in residential developments.",
+          "feature1": "Compact and safe design",
+          "feature2": "Ground-level mounting",
+          "feature3": "Full hermetic protection",
+          "feature4": "Ideal for residential developments"
+        }
+      }
+    },
+    "rst": {
+      "badge": "Maintenance and Restoration",
+      "title": "We transform damaged equipment into",
+      "titleAccent": "reliable solutions",
+      "diagnosisTitle": "Complete Diagnosis",
+      "diagnosisDesc": "Comprehensive assessment of the transformer's condition and technical recommendations",
+      "restorationTitle": "Professional Restoration",
+      "restorationDesc": "Repair, painting, component replacement, and quality certification",
+      "guaranteeTitle": "Performance Guarantee",
+      "guaranteeDesc": "Complete electrical testing and guarantee on all our services"
     }
   },
   "general": {
@@ -276,6 +347,245 @@
       "whatsappButton": "Chat on WhatsApp",
       "location": "Our location:",
       "viewMap": "View larger map"
+    }
+  },
+  "pages": {
+    "common": {
+      "home": "Home",
+      "requestQuote": "Request a Quote",
+      "learnMore": "Learn more",
+      "viewDetails": "View details"
+    },
+    "noticias": {
+      "title": "News",
+      "description": "Stay informed about the latest news from Grupo EMINSA, product launches, and updates from the electrical sector.",
+      "filterAll": "All",
+      "featured": "Featured",
+      "allNews": "All News",
+      "empty": "No news available at this time."
+    },
+    "noticiaDetalle": {
+      "breadcrumb": "News",
+      "notFound": {
+        "title": "News not found",
+        "description": "The news article you are looking for does not exist or is not available.",
+        "back": "Back to News"
+      },
+      "info": "Information",
+      "category": "Category",
+      "published": "Published",
+      "author": "Author",
+      "relatedNews": "Related News",
+      "contentUnavailable": "Full content not available.",
+      "backToNews": "Back to News",
+      "cta": {
+        "title": "Need more information?",
+        "description": "Contact us to learn more about our products and services.",
+        "button": "Request a Quote"
+      }
+    },
+    "proyectos": {
+      "title": "Projects",
+      "description": "Explore some of the most outstanding projects we have carried out for our clients in the Dominican Republic and the Caribbean.",
+      "filterAll": "All",
+      "featured": "Featured Projects",
+      "allProjects": "All Projects",
+      "empty": "No projects available at this time.",
+      "cta": {
+        "title": "Have a project in mind?",
+        "description": "Contact us to discuss how we can help you with your next transformer or electrical systems project.",
+        "button": "Request a Quote"
+      }
+    },
+    "nosotros": {
+      "breadcrumb": "About Us",
+      "philosophy": {
+        "badge": "Our Philosophy",
+        "title": "Mission, Vision & Values",
+        "description": "The principles and purposes that guide our path toward excellence."
+      },
+      "mission": "Our Mission",
+      "vision": "Our Vision",
+      "position": {
+        "badge": "Our Position",
+        "title": "Leaders in the Caribbean"
+      },
+      "divisions": {
+        "badge": "Our Divisions",
+        "title": "Integrated Solutions",
+        "description": "Four specialized divisions working together to offer complete solutions in transformers and electrical equipment.",
+        "learnMore": "Learn more"
+      },
+      "team": {
+        "badge": "Our Team",
+        "title": "Committed Professionals",
+        "stats": {
+          "professionals": "Professionals",
+          "avgExp": "Avg. Years Exp.",
+          "training": "Annual Training",
+          "certifications": "Certifications"
+        }
+      },
+      "milestones": {
+        "title": "Our Journey",
+        "description": "More than five decades of commitment to excellence in the electrical sector.",
+        "clickHint": "Click to view more details →",
+        "dialog": {
+          "details": "Period Details",
+          "achievements": "Key Achievements",
+          "close": "Close",
+          "ariaClose": "Close"
+        }
+      },
+      "cta": {
+        "title": "Ready to work with us?",
+        "description": "Discover why we are the preferred choice for transformers and electrical equipment in the Caribbean.",
+        "contact": "Contact Us"
+      }
+    },
+    "servicios": {
+      "hero": {
+        "badge": "Specialized Services",
+        "title": "SERVICES",
+        "requestQuote": "Request a Quote"
+      },
+      "grid": {
+        "badge": "Our Services",
+        "title": "Comprehensive Solutions for Your Transformers",
+        "description": "We offer a complete range of specialized services for the maintenance, repair, and technical support of electrical transformers.",
+        "campo": {
+          "title": "Field Services",
+          "description": "On-site support for your electrical equipment"
+        },
+        "taller": {
+          "title": "Workshop Services",
+          "description": "Specialized services at our facilities"
+        },
+        "viewMore": "View details"
+      },
+      "process": {
+        "badge": "Methodology",
+        "title": "Our Work Process",
+        "description": "A systematic three-phase approach that guarantees optimal results in every intervention."
+      },
+      "equipment": {
+        "badge": "Cutting-Edge Technology",
+        "title": "Specialized Equipment",
+        "description": "We have state-of-the-art equipment and a fully equipped service center to ensure the highest quality results in every intervention.",
+        "ctaText": "Would you like to learn more about our facilities and capabilities?",
+        "ctaButton": "Schedule a Visit"
+      },
+      "emergency": {
+        "title": "Electrical Emergency?",
+        "description": "We are available 24/7 to handle your emergencies with immediate response"
+      },
+      "projects": {
+        "badge": "Success Stories",
+        "title": "Featured Projects",
+        "description": "Discover some of the most representative projects we have executed for our clients.",
+        "viewAll": "View All Projects"
+      },
+      "testimonials": {
+        "badge": "Testimonials",
+        "title": "What Our Clients Say",
+        "description": "The trust of our clients is our greatest endorsement. Learn about their experiences working with EMINSA.",
+        "viewAll": "View All Testimonials"
+      },
+      "whyUs": {
+        "badge": "Why EMINSA?",
+        "title": "The Experience That Backs Us",
+        "description": "More than five decades of uninterrupted service make us the trusted partner for the electrical industry.",
+        "stats": {
+          "experience": {
+            "title": "Years of Experience",
+            "description": "Decades of specialized knowledge in electrical transformers, providing reliable solutions since 1974."
+          },
+          "availability": {
+            "title": "Availability",
+            "description": "Emergency response 24 hours a day, 7 days a week, with dedicated technical staff and minimal response times."
+          },
+          "satisfaction": {
+            "title": "Satisfaction",
+            "description": "Total commitment to quality and customer service, backed by the trust of more than 500 companies."
+          }
+        }
+      },
+      "finalCta": {
+        "title": "Need Services for Your Transformers?",
+        "description": "Request a quote and receive personalized advice from our team of specialized engineers. More than 50 years of experience at your service.",
+        "button": "Request a Quote"
+      }
+    },
+    "cotizar": {
+      "breadcrumb": "Request a Quote",
+      "title": "Request a Quote",
+      "description": "Fill out the form and receive a response in less than 30 minutes during business hours.",
+      "success": {
+        "title": "Request Received!",
+        "description": "Thank you for contacting us. One of our specialists will contact you shortly.",
+        "newRequest": "New Request",
+        "backHome": "Back to Home"
+      },
+      "sections": {
+        "contact": "Contact Information",
+        "serviceType": "Service Type",
+        "details": "Additional Details"
+      },
+      "fields": {
+        "fullName": "Full Name",
+        "company": "Company",
+        "email": "Email",
+        "serviceType": "Service Type",
+        "transformerType": "Transformer Type",
+        "capacity": "Capacity",
+        "quantity": "Quantity",
+        "location": "Project Location",
+        "locationPlaceholder": "City, province",
+        "description": "Requirement Description",
+        "descriptionPlaceholder": "Describe your requirement...",
+        "urgentLabel": "Urgent:",
+        "urgentDescription": "I need a response as soon as possible",
+        "phone": "Phone",
+        "namePlaceholder": "Your name",
+        "companyPlaceholder": "Your company name",
+        "emailPlaceholder": "email@example.com"
+      },
+      "selects": {
+        "selectOption": "Select an option",
+        "select": "Select"
+      },
+      "submit": {
+        "sending": "Sending...",
+        "button": "Send Request"
+      },
+      "tiposServicio": {
+        "mtnTransformador": "New Transformer (MTN)",
+        "etrysReparacion": "Transformer Repair",
+        "etrysRemanufacturado": "Remanufactured Transformer",
+        "etrysAlquiler": "Transformer Rental",
+        "eicImportacion": "Equipment Import",
+        "servicioPreventivo": "Preventive Maintenance",
+        "servicioCorrectivo": "Corrective Maintenance",
+        "servicioEmergencia": "Emergency Response",
+        "otro": "Other"
+      },
+      "tiposTransformador": {
+        "posteMonofasico": "Single-Phase Pole Type",
+        "posteTrifasico": "Three-Phase Pole Type",
+        "padMonofasico": "Single-Phase Pad Mounted",
+        "padTrifasico": "Three-Phase Pad Mounted",
+        "subestacion": "Substation",
+        "secoResina": "Dry Resin Type",
+        "noAplica": "Not applicable"
+      },
+      "sidebar": {
+        "callUs": "Prefer to call us?",
+        "responseTime": "Response Time",
+        "responseUnit": "minutes",
+        "responseDetail": "during business hours",
+        "businessHours": "Monday to Friday 8:00 AM to 5:00 PM",
+        "certifications": "Certifications"
+      }
     }
   }
 }

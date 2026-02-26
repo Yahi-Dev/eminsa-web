@@ -5,71 +5,57 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Layers } from "lucide-react";
-
-interface TransformerType {
-  id: string;
-  name: string;
-  shortName: string;
-  image: string;
-  phases: string[];
-  standards: string[];
-  power: string;
-  voltage: string;
-  description: string;
-  features: string[];
-  href: string;
-}
-
-const transformerTypes: TransformerType[] = [
-  {
-    id: "tipo-poste",
-    name: "Transformadores Tipo Poste",
-    shortName: "Tipo Poste",
-    image: "/images/mtn/tipo-poste.png",
-    phases: ["3F", "1F"],
-    standards: ["DOE 2016", "ANSI C57"],
-    power: "15 – 500 KVA",
-    voltage: "Hasta 34.5 KV",
-    description:
-      "Diseñados para ofrecer máxima confiabilidad, eficiencia y durabilidad en sistemas de distribución eléctrica aérea.",
-    features: [
-      "Máxima confiabilidad y eficiencia",
-      "Diseño robusto para intemperie",
-      "Cumplimiento ANSI y DOE 2016",
-      "Aplicaciones residenciales e industriales",
-    ],
-    href: "/mtn/productos/transformadores/tipo-poste",
-  },
-  {
-    id: "pad-mounted",
-    name: "Transformadores Pad Mounted",
-    shortName: "Pad Mounted",
-    image: "/images/mtn/pad-mounted.png",
-    phases: ["3F", "1F"],
-    standards: ["DOE 2016", "ANSI C57"],
-    power: "30 – 3,000 KVA",
-    voltage: "Hasta 34.5 KV",
-    description:
-      "Solución segura, compacta y altamente eficiente para sistemas de distribución subterránea en urbanizaciones.",
-    features: [
-      "Diseño compacto y seguro",
-      "Montaje a nivel del suelo",
-      "Protección hermética total",
-      "Ideal para urbanizaciones",
-    ],
-    href: "/mtn/productos/transformadores/pad-mounted",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function MTNProductsShowcase() {
+  const t = useTranslations("home");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const transformerTypes = [
+    {
+      id: "tipo-poste",
+      name: t("mtn.showcase.tipoPoste.name"),
+      shortName: t("mtn.showcase.tipoPoste.shortName"),
+      image: "/images/mtn/tipo-poste.png",
+      phases: ["3F", "1F"],
+      standards: ["DOE 2016", "ANSI C57"],
+      power: "15 – 500 KVA",
+      voltage: "≤ 34.5 KV",
+      description: t("mtn.showcase.tipoPoste.description"),
+      features: [
+        t("mtn.showcase.tipoPoste.feature1"),
+        t("mtn.showcase.tipoPoste.feature2"),
+        t("mtn.showcase.tipoPoste.feature3"),
+        t("mtn.showcase.tipoPoste.feature4"),
+      ],
+      href: "/mtn/productos/transformadores/tipo-poste",
+    },
+    {
+      id: "pad-mounted",
+      name: t("mtn.showcase.padMounted.name"),
+      shortName: t("mtn.showcase.padMounted.shortName"),
+      image: "/images/mtn/pad-mounted.png",
+      phases: ["3F", "1F"],
+      standards: ["DOE 2016", "ANSI C57"],
+      power: "30 – 3,000 KVA",
+      voltage: "≤ 34.5 KV",
+      description: t("mtn.showcase.padMounted.description"),
+      features: [
+        t("mtn.showcase.padMounted.feature1"),
+        t("mtn.showcase.padMounted.feature2"),
+        t("mtn.showcase.padMounted.feature3"),
+        t("mtn.showcase.padMounted.feature4"),
+      ],
+      href: "/mtn/productos/transformadores/pad-mounted",
+    },
+  ];
 
   const activeTransformer = transformerTypes[activeIndex];
 
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % transformerTypes.length);
-  }, []);
+  }, [transformerTypes.length]);
 
   const goToSlide = (index: number) => {
     setActiveIndex(index);
@@ -86,7 +72,7 @@ export default function MTNProductsShowcase() {
     <section className="py-24 lg:py-32 bg-[#001689] relative overflow-hidden">
       {/* Ambient blurs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px]" />
+        <div className="absolute top-0 right-0 w-125 h-125 bg-white/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00A3E0]/8 rounded-full blur-[100px]" />
       </div>
 
@@ -104,10 +90,10 @@ export default function MTNProductsShowcase() {
           <div>
             <span className="inline-flex items-center gap-2 text-[#00A3E0] text-xs font-bold uppercase tracking-[0.2em] mb-2">
               <Layers className="w-3.5 h-3.5" />
-              Línea de Productos
+              {t("mtn.showcase.sectionLabel")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Nuestros Transformadores
+              {t("mtn.showcase.title")}
             </h2>
           </div>
 
@@ -144,14 +130,14 @@ export default function MTNProductsShowcase() {
             className="grid lg:grid-cols-[1fr_1.25fr] rounded-2xl overflow-hidden border border-white/10"
           >
             {/* ── Left: image stage ── */}
-            <div className="relative flex flex-col items-center justify-center gap-5 p-10 bg-white/[0.03] min-h-80">
+            <div className="relative flex flex-col items-center justify-center gap-5 p-10 bg-white/3 min-h-80">
               {/* Radial glow */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-60 h-60 rounded-full bg-[#00A3E0]/12 blur-3xl" />
               </div>
 
               {/* Image */}
-              <div className="relative w-full max-w-[260px] h-64 md:h-72 z-10">
+              <div className="relative w-full max-w-65 h-64 md:h-72 z-10">
                 <Image
                   src={activeTransformer.image}
                   alt={activeTransformer.name}
@@ -187,11 +173,11 @@ export default function MTNProductsShowcase() {
                 </p>
               </div>
 
-              {/* Inline specs — no cards, just typography */}
+              {/* Inline specs */}
               <div className="flex gap-10">
                 <div>
                   <span className="text-white/35 text-[11px] uppercase tracking-widest block">
-                    Potencia
+                    {t("mtn.specLabels.power")}
                   </span>
                   <span className="text-white font-bold text-base mt-0.5 block">
                     {activeTransformer.power}
@@ -199,7 +185,7 @@ export default function MTNProductsShowcase() {
                 </div>
                 <div>
                   <span className="text-white/35 text-[11px] uppercase tracking-widest block">
-                    Voltaje
+                    {t("mtn.specLabels.voltage")}
                   </span>
                   <span className="text-white font-bold text-base mt-0.5 block">
                     {activeTransformer.voltage}
@@ -222,11 +208,11 @@ export default function MTNProductsShowcase() {
                 ))}
               </div>
 
-              {/* Features — minimal dot list */}
+              {/* Features */}
               <ul className="space-y-2.5">
                 {activeTransformer.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00A3E0] flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00A3E0] shrink-0" />
                     <span className="text-white/65 text-sm">{feature}</span>
                   </li>
                 ))}
@@ -238,7 +224,7 @@ export default function MTNProductsShowcase() {
                   href="/mtn/cotizaciones"
                   className="inline-flex items-center gap-2 bg-[#00A3E0] hover:bg-[#0091C7] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-colors duration-300 group"
                 >
-                  Cotizar Ahora
+                  {t("mtn.cta.quote")}
                   <ArrowRight
                     size={15}
                     className="group-hover:translate-x-0.5 transition-transform"
@@ -248,7 +234,7 @@ export default function MTNProductsShowcase() {
                   href={activeTransformer.href}
                   className="inline-flex items-center gap-2 bg-white/8 hover:bg-white/14 border border-white/12 text-white/80 hover:text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300"
                 >
-                  Ver Detalles
+                  {t("mtn.cta.viewDetails")}
                 </Link>
               </div>
             </div>
@@ -261,7 +247,7 @@ export default function MTNProductsShowcase() {
             <button
               key={i}
               onClick={() => goToSlide(i)}
-              aria-label={`Producto ${i + 1}`}
+              aria-label={`${i + 1}`}
               className={`h-0.5 rounded-full transition-all duration-300 ${
                 activeIndex === i
                   ? "w-8 bg-[#00A3E0]"

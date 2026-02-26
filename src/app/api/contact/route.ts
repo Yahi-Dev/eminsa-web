@@ -35,9 +35,6 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       );
     }
 
-    console.log('Datos recibidos en API:', JSON.stringify(formData, null, 2));
-    console.log('Transformadores recibidos:', formData.transformadores?.length || 0);
-
     // Validar datos
     const validation = validateContactForm(formData);
     if (!validation.valid) {
@@ -57,11 +54,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       );
     }
 
-    // Rate limiting simple
     const clientIp = getClientIp(request.headers);
-
-    // Aquí podrías implementar rate limiting más sofisticado
-    console.log(`Contact form submission from IP: ${clientIp}`);
 
     // Enviar emails
     try {

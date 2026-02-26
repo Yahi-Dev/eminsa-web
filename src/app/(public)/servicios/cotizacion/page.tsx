@@ -182,9 +182,9 @@ export default function CotizacionServiciosPage() {
               ¡Solicitud Enviada Exitosamente!
             </h2>
             {codigo && (
-              <div className="bg-[#696969]/5 border border-[#696969]/20 rounded-xl p-4 mb-6">
-                <p className="text-xs text-[#696969] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
-                <p className="text-2xl font-bold text-[#696969] tracking-widest">{codigo}</p>
+              <div className="bg-[#001689]/5 border border-[#001689]/20 rounded-xl p-4 mb-6">
+                <p className="text-xs text-[#001689] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+                <p className="text-2xl font-bold text-[#001689] tracking-widest">{codigo}</p>
                 <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
               </div>
             )}
@@ -200,19 +200,19 @@ export default function CotizacionServiciosPage() {
               </h3>
               <div className="space-y-3 text-left">
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 size={20} className="text-[#696969]" />
+                  <CheckCircle2 size={20} className="text-[#001689]" />
                   <span className="text-gray-600">
                     Revise su email para confirmación
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 size={20} className="text-[#696969]" />
+                  <CheckCircle2 size={20} className="text-[#001689]" />
                   <span className="text-gray-600">
                     Prepárese con información adicional del equipo
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 size={20} className="text-[#696969]" />
+                  <CheckCircle2 size={20} className="text-[#001689]" />
                   <span className="text-gray-600">
                     Si es urgente, contáctenos directamente
                   </span>
@@ -223,7 +223,7 @@ export default function CotizacionServiciosPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/servicios"
-                className="inline-flex items-center justify-center gap-2 bg-[#696969] hover:bg-[#555555] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-[#001689] hover:bg-[#555555] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
               >
                 Ver Nuestros Servicios
               </Link>
@@ -246,7 +246,7 @@ export default function CotizacionServiciosPage() {
                     voltajeSecundario: "",
                   });
                 }}
-                className="inline-flex items-center justify-center gap-2 border-2 border-[#696969] text-[#696969] hover:bg-[#555555] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 border-2 border-[#001689] text-[#001689] hover:bg-[#555555] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
               >
                 Nueva Cotización
               </button>
@@ -259,7 +259,7 @@ export default function CotizacionServiciosPage() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="inline-flex items-center justify-center gap-2 text-[#001689] hover:text-[#696969] font-medium transition-colors"
+                  className="inline-flex items-center justify-center gap-2 text-[#001689] hover:text-[#001689] font-medium transition-colors"
                 >
                   <Phone size={18} />
                   {contactInfo.phone}
@@ -363,8 +363,8 @@ export default function CotizacionServiciosPage() {
                         className={`w-full px-4 py-3 rounded-lg border ${
                           errors.nombre
                             ? "border-red-300 focus:border-red-500"
-                            : "border-gray-300 focus:border-[#696969]"
-                        } focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors`}
+                            : "border-gray-300 focus:border-[#001689]"
+                        } focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors`}
                         placeholder="Juan Pérez"
                       />
                       {errors.nombre && (
@@ -383,7 +383,7 @@ export default function CotizacionServiciosPage() {
                         name="empresa"
                         value={formData.empresa}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#001689] focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors"
                         placeholder="Nombre de su empresa"
                       />
                     </div>
@@ -402,8 +402,8 @@ export default function CotizacionServiciosPage() {
                         className={`w-full px-4 py-3 rounded-lg border ${
                           errors.email
                             ? "border-red-300 focus:border-red-500"
-                            : "border-gray-300 focus:border-[#696969]"
-                        } focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors`}
+                            : "border-gray-300 focus:border-[#001689]"
+                        } focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors`}
                         placeholder="juan@ejemplo.com"
                       />
                       {errors.email && (
@@ -420,7 +420,7 @@ export default function CotizacionServiciosPage() {
                         label="Teléfono"
                         required
                         error={errors.telefono}
-                        focusColor="#696969"
+                        focusColor="#001689"
                       />
                     </div>
                   </div>
@@ -443,8 +443,8 @@ export default function CotizacionServiciosPage() {
                         className={`w-full px-4 py-3 rounded-lg border ${
                           errors.tipoServicio
                             ? "border-red-300 focus:border-red-500"
-                            : "border-gray-300 focus:border-[#696969]"
-                        } focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors`}
+                            : "border-gray-300 focus:border-[#001689]"
+                        } focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors`}
                       >
                         <option value="">Seleccione un servicio...</option>
                         {services.map((service) => (
@@ -468,7 +468,7 @@ export default function CotizacionServiciosPage() {
                         name="tipoEquipo"
                         value={formData.tipoEquipo}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#001689] focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors"
                       >
                         <option value="">Seleccione tipo de equipo...</option>
                         {equipoOptions
@@ -487,10 +487,10 @@ export default function CotizacionServiciosPage() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       transition={{ duration: 0.3 }}
-                      className="mb-6 bg-[#696969]/5 border border-[#696969]/20 rounded-xl p-5 overflow-hidden"
+                      className="mb-6 bg-[#001689]/5 border border-[#001689]/20 rounded-xl p-5 overflow-hidden"
                     >
                       <div className="flex items-center gap-2 mb-4">
-                        <Zap className="w-5 h-5 text-[#696969]" />
+                        <Zap className="w-5 h-5 text-[#001689]" />
                         <h3 className="font-semibold text-gray-800">Especificaciones del Equipo</h3>
                       </div>
                       <div className="grid md:grid-cols-2 gap-4">
@@ -503,7 +503,7 @@ export default function CotizacionServiciosPage() {
                             name="potencia"
                             value={formData.potencia}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#001689] focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors"
                             placeholder="Ej: 500 kVA"
                           />
                         </div>
@@ -515,7 +515,7 @@ export default function CotizacionServiciosPage() {
                             name="configuracion"
                             value={formData.configuracion}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#001689] focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors"
                           >
                             <option value="">Seleccione...</option>
                             <option value="monofasico">Monofásico</option>
@@ -532,7 +532,7 @@ export default function CotizacionServiciosPage() {
                             name="voltajePrimario"
                             value={formData.voltajePrimario}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#001689] focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors"
                             placeholder="Ej: 13.2 kV"
                           />
                         </div>
@@ -545,7 +545,7 @@ export default function CotizacionServiciosPage() {
                             name="voltajeSecundario"
                             value={formData.voltajeSecundario}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#001689] focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors"
                             placeholder="Ej: 120/240 V"
                           />
                         </div>
@@ -562,7 +562,7 @@ export default function CotizacionServiciosPage() {
                       name="ubicacion"
                       value={formData.ubicacion}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#001689] focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors"
                       placeholder="Ciudad, Provincia o Dirección"
                     />
                   </div>
@@ -580,8 +580,8 @@ export default function CotizacionServiciosPage() {
                       className={`w-full px-4 py-3 rounded-lg border ${
                         errors.descripcion
                           ? "border-red-300 focus:border-red-500"
-                          : "border-gray-300 focus:border-[#696969]"
-                      } focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors resize-none`}
+                          : "border-gray-300 focus:border-[#001689]"
+                      } focus:outline-none focus:ring-2 focus:ring-[#001689]/20 transition-colors resize-none`}
                       placeholder="Describa el servicio que necesita, el estado del equipo, síntomas o problemas identificados, y cualquier información relevante..."
                     />
                     {errors.descripcion && (
@@ -598,7 +598,7 @@ export default function CotizacionServiciosPage() {
                         name="urgente"
                         checked={formData.urgente}
                         onChange={handleInputChange}
-                        className="w-5 h-5 rounded border-gray-300 text-[#696969] focus:ring-[#696969]"
+                        className="w-5 h-5 rounded border-gray-300 text-[#001689] focus:ring-[#001689]"
                       />
                       <span className="text-sm font-medium text-gray-700">
                         Este servicio es urgente (requiere atención inmediata)
@@ -609,7 +609,7 @@ export default function CotizacionServiciosPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#696969] hover:bg-[#555555] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full bg-[#001689] hover:bg-[#555555] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -636,8 +636,8 @@ export default function CotizacionServiciosPage() {
                 className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-[#696969]/10 rounded-xl flex items-center justify-center">
-                    <Clock size={24} className="text-[#696969]" />
+                  <div className="w-12 h-12 bg-[#001689]/10 rounded-xl flex items-center justify-center">
+                    <Clock size={24} className="text-[#001689]" />
                   </div>
                   <div>
                     <h3 className="font-bold text-[#001689]">
@@ -698,7 +698,7 @@ export default function CotizacionServiciosPage() {
                 <div className="space-y-2">
                   <a
                     href={`tel:${contactInfo.phone}`}
-                    className="flex items-center gap-2 text-sm text-[#001689] hover:text-[#696969] transition-colors"
+                    className="flex items-center gap-2 text-sm text-[#001689] hover:text-[#001689] transition-colors"
                   >
                     <Phone size={16} />
                     {contactInfo.phone}
@@ -719,7 +719,7 @@ export default function CotizacionServiciosPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-2xl p-6 text-white"
+                className="bg-gradient-to-br from-[#001689] to-[#000E53] rounded-2xl p-6 text-white"
               >
                 <Settings size={32} className="mb-4 opacity-80" />
                 <h3 className="font-bold text-lg mb-2">
@@ -731,7 +731,7 @@ export default function CotizacionServiciosPage() {
                 </p>
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="inline-flex items-center gap-2 bg-white text-[#696969] px-4 py-2 rounded-lg font-semibold hover:bg-white/90 transition-colors text-sm"
+                  className="inline-flex items-center gap-2 bg-white text-[#001689] px-4 py-2 rounded-lg font-semibold hover:bg-white/90 transition-colors text-sm"
                 >
                   <Phone size={16} />
                   Llamar Ahora
