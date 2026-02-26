@@ -78,7 +78,7 @@ export default function TestimonialesServiciosPage() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#696969] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-2">
                 500+
               </div>
               <div className="text-[#76777A]">Clientes Satisfechos</div>
@@ -91,7 +91,7 @@ export default function TestimonialesServiciosPage() {
               transition={{ delay: 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#696969] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-2">
                 4.9/5
               </div>
               <div className="text-[#76777A]">Calificación Promedio</div>
@@ -104,7 +104,7 @@ export default function TestimonialesServiciosPage() {
               transition={{ delay: 0.2 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#696969] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-2">
                 50+
               </div>
               <div className="text-[#76777A]">Años de Experiencia</div>
@@ -117,7 +117,7 @@ export default function TestimonialesServiciosPage() {
               transition={{ delay: 0.3 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#696969] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-2">
                 100%
               </div>
               <div className="text-[#76777A]">Recomendación</div>
@@ -137,7 +137,7 @@ export default function TestimonialesServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
               Testimonios
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
@@ -162,7 +162,7 @@ export default function TestimonialesServiciosPage() {
                 {/* Large Quote Icon */}
                 <Quote
                   size={64}
-                  className="absolute top-6 right-6 text-[#696969]/10"
+                  className="absolute top-6 right-6 text-[#001689]/10"
                 />
 
                 {/* Testimonial Text */}
@@ -178,7 +178,7 @@ export default function TestimonialesServiciosPage() {
                       size={16}
                       className={
                         i < testimonial.rating
-                          ? "text-[#696969] fill-[#696969]"
+                          ? "text-[#001689] fill-[#001689]"
                           : "text-gray-200 fill-gray-200"
                       }
                     />
@@ -187,7 +187,7 @@ export default function TestimonialesServiciosPage() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#001689] to-[#000E53] rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {testimonial.iniciales}
                   </div>
                   <div>
@@ -202,7 +202,7 @@ export default function TestimonialesServiciosPage() {
 
                 {/* Service Badge & Date */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#696969]/10 text-[#696969] text-xs font-medium rounded-full">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#001689]/10 text-[#001689] text-xs font-medium rounded-full">
                     <Settings size={10} />
                     {testimonial.servicio}
                   </span>
@@ -228,8 +228,8 @@ export default function TestimonialesServiciosPage() {
             viewport={{ once: true }}
             className="relative bg-gradient-to-br from-[#001689] via-[#000E53] to-[#001689] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#696969]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#696969]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#001689]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#001689]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
 
             <div className="relative z-10 max-w-2xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -243,7 +243,7 @@ export default function TestimonialesServiciosPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#696969] text-white hover:bg-[#5a5a5a] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#001689] text-white hover:bg-[#000E53] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={22} />

@@ -124,7 +124,7 @@ export default function ProyectosServiciosPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/servicios/cotizacion"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#696969] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#001689] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />
@@ -146,7 +146,7 @@ export default function ProyectosServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
               Casos de Éxito
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
@@ -163,14 +163,14 @@ export default function ProyectosServiciosPage() {
             {/* Navigation Arrows */}
             <button
               onClick={() => scrollCarousel("left")}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-[#001689] hover:text-[#696969] transition-all duration-300 hover:scale-110 hidden md:flex"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-[#001689] hover:text-[#001689] transition-all duration-300 hover:scale-110 hidden md:flex"
               aria-label="Anterior"
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={() => scrollCarousel("right")}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-[#001689] hover:text-[#696969] transition-all duration-300 hover:scale-110 hidden md:flex"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-[#001689] hover:text-[#001689] transition-all duration-300 hover:scale-110 hidden md:flex"
               aria-label="Siguiente"
             >
               <ChevronRight size={24} />
@@ -204,24 +204,24 @@ export default function ProyectosServiciosPage() {
                 >
                   <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 h-full">
                     {/* Top gradient stripe */}
-                    <div className="h-2 bg-gradient-to-r from-[#696969] to-[#4a4a4a]" />
+                    <div className="h-2 bg-gradient-to-r from-[#001689] to-[#000E53]" />
 
                     {/* Image placeholder area */}
-                    <div className="h-48 bg-gradient-to-br from-[#696969]/5 to-[#696969]/10 flex items-center justify-center relative">
-                      <Settings className="w-16 h-16 text-[#696969]/20" />
+                    <div className="h-48 bg-gradient-to-br from-[#001689]/5 to-[#001689]/10 flex items-center justify-center relative">
+                      <Settings className="w-16 h-16 text-[#001689]/20" />
                       <div className="absolute top-3 right-3">
-                        <span className="px-3 py-1 bg-[#696969] text-white text-xs font-bold rounded-full">
+                        <span className="px-3 py-1 bg-[#001689] text-white text-xs font-bold rounded-full">
                           {project.tipoServicio}
                         </span>
                       </div>
                       {/* Decorative circles */}
-                      <div className="absolute bottom-3 left-3 w-20 h-20 bg-[#696969]/5 rounded-full" />
+                      <div className="absolute bottom-3 left-3 w-20 h-20 bg-[#001689]/5 rounded-full" />
                       <div className="absolute top-6 left-6 w-8 h-8 bg-[#001689]/5 rounded-full" />
                     </div>
 
                     {/* Content */}
                     <div className="p-6">
-                      <h3 className="text-lg font-bold text-[#001689] mb-2 group-hover:text-[#696969] transition-colors line-clamp-2">
+                      <h3 className="text-lg font-bold text-[#001689] mb-2 group-hover:text-[#001689] transition-colors line-clamp-2">
                         {project.titulo}
                       </h3>
                       <div className="flex items-center gap-2 text-sm text-[#76777A] mb-2">
@@ -240,7 +240,7 @@ export default function ProyectosServiciosPage() {
                       </p>
 
                       {/* View more hint */}
-                      <div className="flex items-center gap-2 text-[#696969] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="flex items-center gap-2 text-[#001689] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         Ver detalles del proyecto
                         <ArrowRight
                           size={14}
@@ -261,8 +261,8 @@ export default function ProyectosServiciosPage() {
                   onClick={() => scrollToIndex(index)}
                   className={`transition-all duration-300 rounded-full ${
                     activeIndex === index
-                      ? "w-8 h-3 bg-[#696969]"
-                      : "w-3 h-3 bg-gray-300 hover:bg-[#696969]/50"
+                      ? "w-8 h-3 bg-[#001689]"
+                      : "w-3 h-3 bg-gray-300 hover:bg-[#001689]/50"
                   }`}
                   aria-label={`Ir al proyecto ${index + 1}`}
                 />
@@ -295,14 +295,14 @@ export default function ProyectosServiciosPage() {
               {/* Close button */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center z-10 text-[#001689] hover:text-[#696969] transition-all hover:scale-110"
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center z-10 text-[#001689] hover:text-[#001689] transition-all hover:scale-110"
                 aria-label="Cerrar"
               >
                 <X size={24} />
               </button>
 
               {/* Header gradient */}
-              <div className="bg-gradient-to-r from-[#696969] to-[#4a4a4a] p-8 text-white relative overflow-hidden">
+              <div className="bg-gradient-to-r from-[#001689] to-[#000E53] p-8 text-white relative overflow-hidden">
                 {/* Decorative elements */}
                 <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
                 <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -329,7 +329,7 @@ export default function ProyectosServiciosPage() {
                       <p className="text-[#76777A] flex items-center gap-2 mt-1">
                         <Building2
                           size={16}
-                          className="text-[#696969] flex-shrink-0"
+                          className="text-[#001689] flex-shrink-0"
                         />
                         {selectedProject.cliente}
                       </p>
@@ -341,7 +341,7 @@ export default function ProyectosServiciosPage() {
                       <p className="text-[#76777A] flex items-center gap-2 mt-1">
                         <MapPin
                           size={16}
-                          className="text-[#696969] flex-shrink-0"
+                          className="text-[#001689] flex-shrink-0"
                         />
                         {selectedProject.ubicacion}
                       </p>
@@ -353,7 +353,7 @@ export default function ProyectosServiciosPage() {
                       <p className="text-[#76777A] flex items-center gap-2 mt-1">
                         <Wrench
                           size={16}
-                          className="text-[#696969] flex-shrink-0"
+                          className="text-[#001689] flex-shrink-0"
                         />
                         {selectedProject.tipoProducto}
                       </p>
@@ -367,7 +367,7 @@ export default function ProyectosServiciosPage() {
                       <p className="text-[#76777A] flex items-center gap-2 mt-1">
                         <Calendar
                           size={16}
-                          className="text-[#696969] flex-shrink-0"
+                          className="text-[#001689] flex-shrink-0"
                         />
                         {formatDate(selectedProject.fechaInicio)} -{" "}
                         {formatDate(selectedProject.fechaFin)}
@@ -381,7 +381,7 @@ export default function ProyectosServiciosPage() {
                         <p className="text-[#76777A] flex items-center gap-2 mt-1">
                           <Settings
                             size={16}
-                            className="text-[#696969] flex-shrink-0"
+                            className="text-[#001689] flex-shrink-0"
                           />
                           {selectedProject.capacidad}
                         </p>
@@ -412,11 +412,11 @@ export default function ProyectosServiciosPage() {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="flex items-start gap-3 bg-[#696969]/5 rounded-xl p-4"
+                        className="flex items-start gap-3 bg-[#001689]/5 rounded-xl p-4"
                       >
                         <CheckCircle2
                           size={18}
-                          className="text-[#696969] flex-shrink-0 mt-0.5"
+                          className="text-[#001689] flex-shrink-0 mt-0.5"
                         />
                         <span className="text-sm text-[#76777A]">
                           {resultado}
@@ -430,7 +430,7 @@ export default function ProyectosServiciosPage() {
                 <div className="mt-8 pt-6 border-t border-gray-100 flex flex-wrap gap-4">
                   <Link
                     href="/servicios/cotizacion"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#696969] text-white font-semibold rounded-xl hover:bg-[#5a5a5a] transition-all shadow-md hover:shadow-lg"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#001689] text-white font-semibold rounded-xl hover:bg-[#000E53] transition-all shadow-md hover:shadow-lg"
                   >
                     Solicitar un Servicio Similar
                     <ArrowRight size={18} />
@@ -460,7 +460,7 @@ export default function ProyectosServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
               Portafolio Completo
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
@@ -491,7 +491,7 @@ export default function ProyectosServiciosPage() {
                   <div className="p-6">
                     {/* Service Badge + Date */}
                     <div className="flex items-center justify-between mb-4">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#696969]/10 text-[#696969] text-xs font-medium rounded-full">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#001689]/10 text-[#001689] text-xs font-medium rounded-full">
                         <Settings size={12} />
                         {project.tipoServicio}
                       </span>
@@ -503,7 +503,7 @@ export default function ProyectosServiciosPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-lg font-bold text-[#001689] mb-2 group-hover:text-[#696969] transition-colors line-clamp-2">
+                    <h3 className="text-lg font-bold text-[#001689] mb-2 group-hover:text-[#001689] transition-colors line-clamp-2">
                       {project.titulo}
                     </h3>
 
@@ -538,7 +538,7 @@ export default function ProyectosServiciosPage() {
                         >
                           <CheckCircle2
                             size={12}
-                            className="text-[#696969] flex-shrink-0"
+                            className="text-[#001689] flex-shrink-0"
                           />
                           {resultado}
                         </div>
@@ -546,7 +546,7 @@ export default function ProyectosServiciosPage() {
                     </div>
 
                     {/* View more hint */}
-                    <div className="flex items-center gap-2 text-[#696969] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-2 border-t border-gray-100">
+                    <div className="flex items-center gap-2 text-[#001689] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-2 border-t border-gray-100">
                       Ver proyecto completo
                       <ArrowRight
                         size={14}
@@ -573,12 +573,12 @@ export default function ProyectosServiciosPage() {
             className="relative bg-gradient-to-br from-[#001689] via-[#000E53] to-[#001689] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
           >
             {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#696969]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#696969]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#696969]/5 rounded-full blur-[100px]" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#001689]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#001689]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#001689]/5 rounded-full blur-[100px]" />
 
             <div className="relative z-10 max-w-2xl mx-auto">
-              <Settings size={48} className="mx-auto mb-6 text-[#696969]" />
+              <Settings size={48} className="mx-auto mb-6 text-[#001689]" />
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 ¿Tiene un Proyecto en Mente?
               </h2>
@@ -591,7 +591,7 @@ export default function ProyectosServiciosPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#696969] text-white hover:bg-[#5a5a5a] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#001689] text-white hover:bg-[#000E53] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={22} />

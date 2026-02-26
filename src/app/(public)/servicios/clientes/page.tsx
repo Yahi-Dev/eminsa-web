@@ -110,7 +110,7 @@ export default function ClientesServiciosPage() {
                 transition={{ delay: i * 0.08 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold text-[#696969] mb-1">
+                <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-1">
                   {stat.value}
                 </div>
                 <div className="text-[#76777A] text-sm">{stat.label}</div>
@@ -129,7 +129,7 @@ export default function ClientesServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
               Portafolio de Clientes
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
