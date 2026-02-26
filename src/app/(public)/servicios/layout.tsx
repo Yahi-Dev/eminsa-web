@@ -173,11 +173,11 @@ export default function ServiciosLayout({
       {/* Subnavegación Servicios - Desktop */}
       <nav
         ref={menuRef}
-        className="hidden lg:block bg-[#696969]/5 border-t-2 border-[#696969]/20 border-b border-[#696969]/10 sticky top-20 xl:top-28 z-40 shadow-sm"
+        className="hidden lg:block bg-[#696969]/10 border-t-2 border-t-[#696969]/30 border-b border-b-[#696969]/20 sticky top-20 xl:top-28 z-40 shadow-sm"
       >
         <div className="container-eminsa">
-          <div className="flex items-center justify-between py-2">
-            <div className="flex items-center gap-1 flex-1 justify-between">
+          <div className="flex items-center justify-center py-2">
+            <div className="flex items-center gap-1">
               <div className="flex items-center gap-1">
                 {serviciosNavItems.map((item) => {
                   const Icon = item.icon;
@@ -289,7 +289,7 @@ export default function ServiciosLayout({
 
       {/* Subnavegación Servicios - Mobile */}
       <div
-        className="lg:hidden sticky top-20 z-40 bg-[#696969]/5 border-t-2 border-[#696969]/20 border-b border-[#696969]/10 shadow-sm"
+        className="lg:hidden sticky top-20 z-40 bg-[#696969]/10 border-t-2 border-t-[#696969]/30 border-b border-b-[#696969]/20 shadow-sm"
       >
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">

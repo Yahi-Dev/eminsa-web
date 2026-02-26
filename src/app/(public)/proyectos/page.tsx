@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight, MapPin, Building, ArrowRight, Star } from "lucide-react";
 import type { ProyectoAPI } from "@/features/admin/types";
+import { useTranslations } from "next-intl";
 
 const divisionOptions = [
   { id: "MTN", name: "MTN", color: "#001689" },
@@ -22,6 +23,7 @@ function getDivisionName(division: string) {
 }
 
 export default function ProyectosPage() {
+  const t = useTranslations("pages");
   const [proyectos, setProyectos] = useState<ProyectoAPI[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterDivision, setFilterDivision] = useState("");
@@ -54,16 +56,15 @@ export default function ProyectosPage() {
         />
         <div className="container-eminsa relative">
           <div className="flex items-center gap-2 text-white/60 text-sm mb-8">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("common.home")}</Link>
             <ChevronRight size={16} />
-            <span className="text-white">Proyectos</span>
+            <span className="text-white">{t("proyectos.title")}</span>
           </div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Proyectos</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t("proyectos.title")}</h1>
             <p className="text-xl text-white/80">
-              Conozca algunos de los proyectos más destacados que hemos realizado
-              para nuestros clientes en República Dominicana y el Caribe.
+              {t("proyectos.description")}
             </p>
           </motion.div>
         </div>
@@ -86,7 +87,7 @@ export default function ProyectosPage() {
                   : "bg-white text-[#76777A] hover:bg-gray-100"
               }`}
             >
-              Todos
+              {t("proyectos.filterAll")}
             </button>
             {divisionOptions.map((div) => (
               <button
@@ -120,7 +121,7 @@ export default function ProyectosPage() {
                 >
                   <h2 className="text-2xl font-bold text-[#001689] mb-6 flex items-center gap-2">
                     <Star className="text-yellow-500" size={24} />
-                    Proyectos Destacados
+                    {t("proyectos.featured")}
                   </h2>
                   <div className="grid md:grid-cols-2 gap-6">
                     {proyectosDestacados.slice(0, 2).map((proyecto) => (
@@ -181,12 +182,12 @@ export default function ProyectosPage() {
                 transition={{ delay: 0.2 }}
               >
                 {!filterDivision && proyectosDestacados.length > 0 && (
-                  <h2 className="text-2xl font-bold text-[#001689] mb-6">Todos los Proyectos</h2>
+                  <h2 className="text-2xl font-bold text-[#001689] mb-6">{t("proyectos.allProjects")}</h2>
                 )}
 
                 {proyectosPublicados.length === 0 ? (
                   <div className="text-center py-12">
-                    <p className="text-[#76777A]">No hay proyectos disponibles en este momento.</p>
+                    <p className="text-[#76777A]">{t("proyectos.empty")}</p>
                   </div>
                 ) : (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -261,13 +262,12 @@ export default function ProyectosPage() {
       {/* CTA */}
       <section className="py-16 bg-gradient-to-r from-[#001689] to-[#000E53]">
         <div className="container-eminsa text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">¿Tiene un proyecto en mente?</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">{t("proyectos.cta.title")}</h2>
           <p className="text-white/80 mb-8 max-w-xl mx-auto">
-            Contáctenos para discutir cómo podemos ayudarle con su próximo proyecto
-            de transformadores o sistemas eléctricos.
+            {t("proyectos.cta.description")}
           </p>
           <Link href="/cotizar" className="btn-accent inline-flex items-center gap-2">
-            Solicitar Cotización
+            {t("proyectos.cta.button")}
             <ArrowRight size={18} />
           </Link>
         </div>

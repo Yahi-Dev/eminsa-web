@@ -6,9 +6,10 @@ import { motion } from "framer-motion";
 import { ChevronRight, Calendar, User, ArrowRight, Star } from "lucide-react";
 import { categoriasNoticias } from "@/data/content";
 import type { NoticiaAPI } from "@/features/admin/types";
+import { useTranslations, useLocale } from "next-intl";
 
-function formatFecha(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("es-ES", {
+function formatFecha(dateStr: string, locale: string) {
+  return new Date(dateStr).toLocaleDateString(locale === "en" ? "en-US" : "es-ES", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -16,6 +17,8 @@ function formatFecha(dateStr: string) {
 }
 
 export default function NoticiasPage() {
+  const t = useTranslations("pages");
+  const locale = useLocale();
   const [noticias, setNoticias] = useState<NoticiaAPI[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterCategoria, setFilterCategoria] = useState("");
@@ -48,16 +51,15 @@ export default function NoticiasPage() {
         />
         <div className="container-eminsa relative">
           <div className="flex items-center gap-2 text-white/60 text-sm mb-8">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("common.home")}</Link>
             <ChevronRight size={16} />
-            <span className="text-white">Noticias</span>
+            <span className="text-white">{t("noticias.title")}</span>
           </div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Noticias</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t("noticias.title")}</h1>
             <p className="text-xl text-white/80">
-              Manténgase informado sobre las últimas novedades de Grupo EMINSA,
-              lanzamientos de productos y noticias del sector eléctrico.
+              {t("noticias.description")}
             </p>
           </motion.div>
         </div>
@@ -80,7 +82,7 @@ export default function NoticiasPage() {
                   : "bg-white text-[#76777A] hover:bg-gray-100"
               }`}
             >
-              Todas
+              {t("noticias.filterAll")}
             </button>
             {categoriasNoticias.map((cat) => (
               <button
@@ -114,7 +116,7 @@ export default function NoticiasPage() {
                 >
                   <h2 className="text-2xl font-bold text-[#001689] mb-6 flex items-center gap-2">
                     <Star className="text-yellow-500" size={24} />
-                    Destacadas
+                    {t("noticias.featured")}
                   </h2>
                   <div className="grid md:grid-cols-2 gap-6">
                     {noticiasDestacadas.slice(0, 2).map((noticia) => (
@@ -142,7 +144,7 @@ export default function NoticiasPage() {
                               <div className="flex items-center gap-4">
                                 <span className="flex items-center gap-1">
                                   <Calendar size={14} />
-                                  {formatFecha(noticia.createdAt)}
+                                  {formatFecha(noticia.createdAt, locale)}
                                 </span>
                                 {noticia.autor && (
                                   <span className="flex items-center gap-1">
@@ -168,12 +170,12 @@ export default function NoticiasPage() {
                 transition={{ delay: 0.2 }}
               >
                 {!filterCategoria && noticiasDestacadas.length > 0 && (
-                  <h2 className="text-2xl font-bold text-[#001689] mb-6">Todas las Noticias</h2>
+                  <h2 className="text-2xl font-bold text-[#001689] mb-6">{t("noticias.allNews")}</h2>
                 )}
 
                 {noticiasPublicadas.length === 0 ? (
                   <div className="text-center py-12">
-                    <p className="text-[#76777A]">No hay noticias disponibles en este momento.</p>
+                    <p className="text-[#76777A]">{t("noticias.empty")}</p>
                   </div>
                 ) : (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -210,7 +212,7 @@ export default function NoticiasPage() {
                               <p className="text-[#76777A] text-sm mb-4 line-clamp-2">{noticia.resumen}</p>
                               <div className="flex items-center gap-2 text-xs text-[#76777A]">
                                 <Calendar size={12} />
-                                {formatFecha(noticia.createdAt)}
+                                {formatFecha(noticia.createdAt, locale)}
                               </div>
                             </div>
                           </div>

@@ -57,7 +57,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
       <section
         className="text-white py-16 lg:py-20"
         style={{
-          background: `linear-gradient(135deg, ${category.color} 0%, ${category.color}CC 50%, #001689 100%)`,
+          background: `linear-gradient(135deg, #00B140 0%, #008F33 50%, #001689 100%)`,
         }}
       >
         <div className="container-eminsa">

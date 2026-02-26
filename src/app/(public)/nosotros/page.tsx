@@ -37,6 +37,7 @@ import {
 } from "@/config/eminsa-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { useTranslations } from "next-intl";
 
 const valueIcons: { [key: string]: React.ElementType } = {
   award: Award,
@@ -53,6 +54,7 @@ const divisionIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function NosotrosPage() {
+  const t = useTranslations("pages.nosotros");
   const [selectedMilestone, setSelectedMilestone] = useState<typeof eminsaMilestones[0] | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -77,7 +79,7 @@ export default function NosotrosPage() {
               <Home size={16} />
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Nosotros</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -138,13 +140,13 @@ export default function NosotrosPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
-              Nuestra Filosofía
+              {t("philosophy.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Misión, Visión y Valores
+              {t("philosophy.title")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Los principios y propósitos que guían nuestro camino hacia la excelencia.
+              {t("philosophy.description")}
             </p>
           </motion.div>
 
@@ -161,7 +163,7 @@ export default function NosotrosPage() {
                 <Target size={32} className="text-[#001689]" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Nuestra Misión
+                {t("mission")}
               </h3>
               <p className="text-gray-600 text-lg">
                 {aboutEminsa.mission}
@@ -180,7 +182,7 @@ export default function NosotrosPage() {
                 <Eye size={32} className="text-[#00B140]" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Nuestra Visión
+                {t("vision")}
               </h3>
               <p className="text-gray-600 text-lg">
                 {aboutEminsa.vision}
@@ -270,10 +272,10 @@ export default function NosotrosPage() {
               className="order-1 lg:order-2"
             >
               <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
-                Nuestra Posición
+                {t("position.badge")}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Líderes en el Caribe
+                {t("position.title")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
                 {aboutEminsa.position}
@@ -306,14 +308,13 @@ export default function NosotrosPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
-              Nuestras Divisiones
+              {t("divisions.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Soluciones Integrales
+              {t("divisions.title")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Cuatro divisiones especializadas trabajando en conjunto para ofrecer
-              soluciones completas en transformadores y equipos eléctricos.
+              {t("divisions.description")}
             </p>
           </motion.div>
 
@@ -350,7 +351,7 @@ export default function NosotrosPage() {
                       {division.description}
                     </p>
                     <div className="mt-4 flex items-center justify-center gap-2 text-sm font-medium group-hover:gap-3 transition-all" style={{ color: division.color }}>
-                      Conocer más
+                      {t("divisions.learnMore")}
                       <ArrowRight size={16} />
                     </div>
                   </Link>
@@ -371,10 +372,10 @@ export default function NosotrosPage() {
               viewport={{ once: true }}
             >
               <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
-                Nuestro Equipo
+                {t("team.badge")}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Profesionales Comprometidos
+                {t("team.title")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
                 {aboutEminsa.team}
@@ -382,18 +383,18 @@ export default function NosotrosPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { icon: Users, label: "Profesionales", value: "100+" },
-                  { icon: Award, label: "Años Promedio Exp.", value: "15+" },
-                  { icon: Clock, label: "Capacitación Anual", value: "500+ hrs" },
-                  { icon: ShieldCheck, label: "Certificaciones", value: "ISO 9001" },
+                  { icon: Users, labelKey: "team.stats.professionals", value: "100+" },
+                  { icon: Award, labelKey: "team.stats.avgExp", value: "15+" },
+                  { icon: Clock, labelKey: "team.stats.training", value: "500+ hrs" },
+                  { icon: ShieldCheck, labelKey: "team.stats.certifications", value: "ISO 9001" },
                 ].map((item) => (
                   <div
-                    key={item.label}
+                    key={item.labelKey}
                     className="bg-white rounded-xl p-4 text-center shadow-md"
                   >
                     <item.icon size={28} className="text-[#001689] mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">{item.value}</div>
-                    <div className="text-xs text-gray-500">{item.label}</div>
+                    <div className="text-xs text-gray-500">{t(item.labelKey as Parameters<typeof t>[0])}</div>
                   </div>
                 ))}
               </div>
@@ -427,10 +428,10 @@ export default function NosotrosPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Nuestra Trayectoria
+              {t("milestones.title")}
             </h2>
             <p className="text-xl text-white/90">
-              Más de cinco décadas de compromiso con la excelencia en el sector eléctrico.
+              {t("milestones.description")}
             </p>
           </motion.div>
 
@@ -465,7 +466,7 @@ export default function NosotrosPage() {
                         {milestone.description}
                       </p>
                       <p className="text-amber-400/80 text-xs mt-2 group-hover:text-amber-300 transition-colors">
-                        Click para ver más detalles →
+                        {t("milestones.clickHint")}
                       </p>
                     </button>
                   </div>
@@ -488,18 +489,17 @@ export default function NosotrosPage() {
             className="bg-gradient-to-br from-[#001689] to-[#00A3E0] rounded-3xl p-8 lg:p-12 text-white text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              ¿Listo para trabajar con nosotros?
+              {t("cta.title")}
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              Descubra por qué somos la elección preferida para transformadores
-              y equipos eléctricos en el Caribe.
+              {t("cta.description")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/contacto"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#001689] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
               >
-                Contáctenos
+                {t("cta.contact")}
                 <ArrowRight size={20} />
               </Link>
               <a
@@ -552,7 +552,7 @@ export default function NosotrosPage() {
                     <button
                       onClick={closeDialog}
                       className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/20 transition-colors"
-                      aria-label="Cerrar"
+                      aria-label={t("milestones.dialog.ariaClose")}
                     >
                       <X size={24} />
                     </button>
@@ -586,7 +586,7 @@ export default function NosotrosPage() {
                           <CheckCircle2 size={20} className="text-[#001689]" />
                         </div>
                         <h4 className="text-xl font-bold text-gray-900">
-                          Detalles del Período
+                          {t("milestones.dialog.details")}
                         </h4>
                       </div>
                       <ul className="space-y-3">
@@ -612,7 +612,7 @@ export default function NosotrosPage() {
                           <TrendingUp size={20} className="text-amber-500" />
                         </div>
                         <h4 className="text-xl font-bold text-gray-900">
-                          Logros Destacados
+                          {t("milestones.dialog.achievements")}
                         </h4>
                       </div>
                       <div className="grid sm:grid-cols-2 gap-4">
@@ -638,7 +638,7 @@ export default function NosotrosPage() {
                       onClick={closeDialog}
                       className="w-full px-6 py-3 bg-[#001689] hover:bg-[#000E53] text-white font-semibold rounded-xl transition-colors"
                     >
-                      Cerrar
+                      {t("milestones.dialog.close")}
                     </button>
                   </div>
                 </motion.div>

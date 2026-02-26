@@ -108,7 +108,7 @@ export default function EtrysAlquilerPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 text-white py-16 lg:py-20">
+      <section className="bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-16 lg:py-20">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
