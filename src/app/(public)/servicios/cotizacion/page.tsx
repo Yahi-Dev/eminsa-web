@@ -16,6 +16,8 @@ import {
   Settings,
 } from "lucide-react";
 import { services, contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { PhoneInputField } from "@/components/ui/PhoneInputField";
 
 export default function CotizacionServiciosPage() {
   const [formData, setFormData] = useState({
@@ -28,10 +30,15 @@ export default function CotizacionServiciosPage() {
     ubicacion: "",
     descripcion: "",
     urgente: false,
+    potencia: "",
+    configuracion: "",
+    voltajePrimario: "",
+    voltajeSecundario: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [codigo, setCodigo] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateForm = () => {
@@ -61,11 +68,45 @@ export default function CotizacionServiciosPage() {
 
     setIsSubmitting(true);
 
-    // Simular envío
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const res = await fetch("/api/cotizaciones", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          unidad: "SRV",
+          nombre: formData.nombre,
+          empresa: formData.empresa || undefined,
+          email: formData.email,
+          telefono: formData.telefono,
+          urgente: formData.urgente,
+          detalles: {
+            tipoServicio: formData.tipoServicio,
+            tipoEquipo: formData.tipoEquipo,
+            ubicacion: formData.ubicacion,
+            descripcion: formData.descripcion,
+            ...(['distribucion', 'potencia', 'pad-mounted', 'tipo-poste', 'subestacion'].includes(formData.tipoEquipo) ? {
+              potencia: formData.potencia,
+              configuracion: formData.configuracion,
+              voltajePrimario: formData.voltajePrimario,
+              voltajeSecundario: formData.voltajeSecundario,
+            } : {}),
+          },
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const result = await res.json();
+
+      if (result.success) {
+        setCodigo(result.codigo);
+        setIsSubmitted(true);
+      } else {
+        setErrors((prev) => ({ ...prev, general: result.message || "Error al enviar la solicitud" }));
+      }
+    } catch {
+      setErrors((prev) => ({ ...prev, general: "Error de conexión. Por favor intenta de nuevo." }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (
@@ -86,10 +127,26 @@ export default function CotizacionServiciosPage() {
     }
   };
 
+  const handlePhoneChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, telefono: value }));
+    if (errors.telefono) setErrors((prev) => ({ ...prev, telefono: "" }));
+  };
+
+  const showTransformadorDetails = ['distribucion', 'potencia', 'pad-mounted', 'tipo-poste', 'subestacion'].includes(formData.tipoEquipo);
+
+  const equipoOptions = [
+    { value: 'distribucion', label: 'Transformador de Distribución' },
+    { value: 'potencia', label: 'Transformador de Potencia' },
+    { value: 'pad-mounted', label: 'Pad Mounted' },
+    { value: 'tipo-poste', label: 'Tipo Poste' },
+    { value: 'subestacion', label: 'Subestación', excludeAlquiler: true },
+    { value: 'otro', label: 'Otro' },
+  ];
+
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <section className="relative bg-gradient-to-br from-[#FF5500] via-[#E04D00] to-[#CC4400] text-white py-16 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-[#696969] via-[#555555] to-[#4a4a4a] text-white py-16 overflow-hidden">
           <div className="container-eminsa relative">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -124,6 +181,13 @@ export default function CotizacionServiciosPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               ¡Solicitud Enviada Exitosamente!
             </h2>
+            {codigo && (
+              <div className="bg-[#696969]/5 border border-[#696969]/20 rounded-xl p-4 mb-6">
+                <p className="text-xs text-[#696969] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+                <p className="text-2xl font-bold text-[#696969] tracking-widest">{codigo}</p>
+                <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
+              </div>
+            )}
             <p className="text-gray-600 mb-8 text-lg">
               Hemos recibido su solicitud de cotización. Nuestro equipo de
               expertos se pondrá en contacto con usted en menos de 24 horas
@@ -136,19 +200,19 @@ export default function CotizacionServiciosPage() {
               </h3>
               <div className="space-y-3 text-left">
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 size={20} className="text-[#FF5500]" />
+                  <CheckCircle2 size={20} className="text-[#696969]" />
                   <span className="text-gray-600">
                     Revise su email para confirmación
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 size={20} className="text-[#FF5500]" />
+                  <CheckCircle2 size={20} className="text-[#696969]" />
                   <span className="text-gray-600">
                     Prepárese con información adicional del equipo
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 size={20} className="text-[#FF5500]" />
+                  <CheckCircle2 size={20} className="text-[#696969]" />
                   <span className="text-gray-600">
                     Si es urgente, contáctenos directamente
                   </span>
@@ -159,7 +223,7 @@ export default function CotizacionServiciosPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/servicios"
-                className="inline-flex items-center justify-center gap-2 bg-[#FF5500] hover:bg-[#E04D00] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-[#696969] hover:bg-[#555555] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
               >
                 Ver Nuestros Servicios
               </Link>
@@ -176,9 +240,13 @@ export default function CotizacionServiciosPage() {
                     ubicacion: "",
                     descripcion: "",
                     urgente: false,
+                    potencia: "",
+                    configuracion: "",
+                    voltajePrimario: "",
+                    voltajeSecundario: "",
                   });
                 }}
-                className="inline-flex items-center justify-center gap-2 border-2 border-[#FF5500] text-[#FF5500] hover:bg-[#FF5500] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center justify-center gap-2 border-2 border-[#696969] text-[#696969] hover:bg-[#555555] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
               >
                 Nueva Cotización
               </button>
@@ -191,13 +259,13 @@ export default function CotizacionServiciosPage() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="inline-flex items-center justify-center gap-2 text-[#001689] hover:text-[#FF5500] font-medium transition-colors"
+                  className="inline-flex items-center justify-center gap-2 text-[#001689] hover:text-[#696969] font-medium transition-colors"
                 >
                   <Phone size={18} />
                   {contactInfo.phone}
                 </a>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 text-[#25D366] hover:text-[#20BD5A] font-medium transition-colors"
@@ -216,7 +284,7 @@ export default function CotizacionServiciosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#FF5500] via-[#E04D00] to-[#CC4400] text-white py-16 lg:py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#696969] via-[#555555] to-[#4a4a4a] text-white py-16 lg:py-20 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div
             className="absolute inset-0"
@@ -295,8 +363,8 @@ export default function CotizacionServiciosPage() {
                         className={`w-full px-4 py-3 rounded-lg border ${
                           errors.nombre
                             ? "border-red-300 focus:border-red-500"
-                            : "border-gray-300 focus:border-[#FF5500]"
-                        } focus:outline-none focus:ring-2 focus:ring-[#FF5500]/20 transition-colors`}
+                            : "border-gray-300 focus:border-[#696969]"
+                        } focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors`}
                         placeholder="Juan Pérez"
                       />
                       {errors.nombre && (
@@ -315,7 +383,7 @@ export default function CotizacionServiciosPage() {
                         name="empresa"
                         value={formData.empresa}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF5500] focus:outline-none focus:ring-2 focus:ring-[#FF5500]/20 transition-colors"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
                         placeholder="Nombre de su empresa"
                       />
                     </div>
@@ -334,8 +402,8 @@ export default function CotizacionServiciosPage() {
                         className={`w-full px-4 py-3 rounded-lg border ${
                           errors.email
                             ? "border-red-300 focus:border-red-500"
-                            : "border-gray-300 focus:border-[#FF5500]"
-                        } focus:outline-none focus:ring-2 focus:ring-[#FF5500]/20 transition-colors`}
+                            : "border-gray-300 focus:border-[#696969]"
+                        } focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors`}
                         placeholder="juan@ejemplo.com"
                       />
                       {errors.email && (
@@ -346,26 +414,14 @@ export default function CotizacionServiciosPage() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Teléfono <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="tel"
-                        name="telefono"
+                      <PhoneInputField
                         value={formData.telefono}
-                        onChange={handleInputChange}
-                        className={`w-full px-4 py-3 rounded-lg border ${
-                          errors.telefono
-                            ? "border-red-300 focus:border-red-500"
-                            : "border-gray-300 focus:border-[#FF5500]"
-                        } focus:outline-none focus:ring-2 focus:ring-[#FF5500]/20 transition-colors`}
-                        placeholder="(809) 123-4567"
+                        onChange={handlePhoneChange}
+                        label="Teléfono"
+                        required
+                        error={errors.telefono}
+                        focusColor="#696969"
                       />
-                      {errors.telefono && (
-                        <p className="mt-1 text-sm text-red-500">
-                          {errors.telefono}
-                        </p>
-                      )}
                     </div>
                   </div>
 
@@ -387,8 +443,8 @@ export default function CotizacionServiciosPage() {
                         className={`w-full px-4 py-3 rounded-lg border ${
                           errors.tipoServicio
                             ? "border-red-300 focus:border-red-500"
-                            : "border-gray-300 focus:border-[#FF5500]"
-                        } focus:outline-none focus:ring-2 focus:ring-[#FF5500]/20 transition-colors`}
+                            : "border-gray-300 focus:border-[#696969]"
+                        } focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors`}
                       >
                         <option value="">Seleccione un servicio...</option>
                         {services.map((service) => (
@@ -412,22 +468,90 @@ export default function CotizacionServiciosPage() {
                         name="tipoEquipo"
                         value={formData.tipoEquipo}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF5500] focus:outline-none focus:ring-2 focus:ring-[#FF5500]/20 transition-colors"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
                       >
                         <option value="">Seleccione tipo de equipo...</option>
-                        <option value="distribucion">
-                          Transformador de Distribución
-                        </option>
-                        <option value="potencia">
-                          Transformador de Potencia
-                        </option>
-                        <option value="pad-mounted">Pad Mounted</option>
-                        <option value="tipo-poste">Tipo Poste</option>
-                        <option value="subestacion">Subestación</option>
-                        <option value="otro">Otro</option>
+                        {equipoOptions
+                          .filter((opt) => !('excludeAlquiler' in opt && opt.excludeAlquiler && formData.tipoServicio === 'alquiler'))
+                          .map((opt) => (
+                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                          ))
+                        }
                       </select>
                     </div>
                   </div>
+
+                  {/* Especificaciones del Transformador — solo cuando se selecciona un tipo de transformador */}
+                  {showTransformadorDetails && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      transition={{ duration: 0.3 }}
+                      className="mb-6 bg-[#696969]/5 border border-[#696969]/20 rounded-xl p-5 overflow-hidden"
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <Zap className="w-5 h-5 text-[#696969]" />
+                        <h3 className="font-semibold text-gray-800">Especificaciones del Equipo</h3>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Potencia (kVA)
+                          </label>
+                          <input
+                            type="text"
+                            name="potencia"
+                            value={formData.potencia}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                            placeholder="Ej: 500 kVA"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Configuración
+                          </label>
+                          <select
+                            name="configuracion"
+                            value={formData.configuracion}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                          >
+                            <option value="">Seleccione...</option>
+                            <option value="monofasico">Monofásico</option>
+                            <option value="trifasico">Trifásico</option>
+                            <option value="autoprotegido">Autoprotegido (CSP)</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Voltaje Primario (kV)
+                          </label>
+                          <input
+                            type="text"
+                            name="voltajePrimario"
+                            value={formData.voltajePrimario}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                            placeholder="Ej: 13.2 kV"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Voltaje Secundario (V)
+                          </label>
+                          <input
+                            type="text"
+                            name="voltajeSecundario"
+                            value={formData.voltajeSecundario}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
+                            placeholder="Ej: 120/240 V"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
 
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -438,7 +562,7 @@ export default function CotizacionServiciosPage() {
                       name="ubicacion"
                       value={formData.ubicacion}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#FF5500] focus:outline-none focus:ring-2 focus:ring-[#FF5500]/20 transition-colors"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#696969] focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors"
                       placeholder="Ciudad, Provincia o Dirección"
                     />
                   </div>
@@ -456,8 +580,8 @@ export default function CotizacionServiciosPage() {
                       className={`w-full px-4 py-3 rounded-lg border ${
                         errors.descripcion
                           ? "border-red-300 focus:border-red-500"
-                          : "border-gray-300 focus:border-[#FF5500]"
-                      } focus:outline-none focus:ring-2 focus:ring-[#FF5500]/20 transition-colors resize-none`}
+                          : "border-gray-300 focus:border-[#696969]"
+                      } focus:outline-none focus:ring-2 focus:ring-[#696969]/20 transition-colors resize-none`}
                       placeholder="Describa el servicio que necesita, el estado del equipo, síntomas o problemas identificados, y cualquier información relevante..."
                     />
                     {errors.descripcion && (
@@ -474,7 +598,7 @@ export default function CotizacionServiciosPage() {
                         name="urgente"
                         checked={formData.urgente}
                         onChange={handleInputChange}
-                        className="w-5 h-5 rounded border-gray-300 text-[#FF5500] focus:ring-[#FF5500]"
+                        className="w-5 h-5 rounded border-gray-300 text-[#696969] focus:ring-[#696969]"
                       />
                       <span className="text-sm font-medium text-gray-700">
                         Este servicio es urgente (requiere atención inmediata)
@@ -485,7 +609,7 @@ export default function CotizacionServiciosPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#FF5500] hover:bg-[#E04D00] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full bg-[#696969] hover:bg-[#555555] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -512,8 +636,8 @@ export default function CotizacionServiciosPage() {
                 className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-[#FF5500]/10 rounded-xl flex items-center justify-center">
-                    <Clock size={24} className="text-[#FF5500]" />
+                  <div className="w-12 h-12 bg-[#696969]/10 rounded-xl flex items-center justify-center">
+                    <Clock size={24} className="text-[#696969]" />
                   </div>
                   <div>
                     <h3 className="font-bold text-[#001689]">
@@ -574,13 +698,13 @@ export default function CotizacionServiciosPage() {
                 <div className="space-y-2">
                   <a
                     href={`tel:${contactInfo.phone}`}
-                    className="flex items-center gap-2 text-sm text-[#001689] hover:text-[#FF5500] transition-colors"
+                    className="flex items-center gap-2 text-sm text-[#001689] hover:text-[#696969] transition-colors"
                   >
                     <Phone size={16} />
                     {contactInfo.phone}
                   </a>
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-[#25D366] hover:text-[#20BD5A] transition-colors"
@@ -595,7 +719,7 @@ export default function CotizacionServiciosPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="bg-gradient-to-br from-[#FF5500] to-[#CC4400] rounded-2xl p-6 text-white"
+                className="bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-2xl p-6 text-white"
               >
                 <Settings size={32} className="mb-4 opacity-80" />
                 <h3 className="font-bold text-lg mb-2">
@@ -607,7 +731,7 @@ export default function CotizacionServiciosPage() {
                 </p>
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="inline-flex items-center gap-2 bg-white text-[#FF5500] px-4 py-2 rounded-lg font-semibold hover:bg-white/90 transition-colors text-sm"
+                  className="inline-flex items-center gap-2 bg-white text-[#696969] px-4 py-2 rounded-lg font-semibold hover:bg-white/90 transition-colors text-sm"
                 >
                   <Phone size={16} />
                   Llamar Ahora

@@ -4,20 +4,12 @@ import HeroSection from "../components/HeroSection";
 import {
   MTNHeroSection,
   MTNProductsShowcase,
-  MTNCertificationsSection,
-  MTNResourcesSection,
-  MTNQuoteSection,
 } from "../components/mtn";
 import DivisionsSection from "../components/DivisionsSection";
 import ServicesSection from "../components/ServicesSection";
 import StatsSection from "../components/StatsSection";
 import TransformadorRestauracionSection from "../components/TransformadorRestauracionSection";
-
-// Componentes anteriores - mantenidos pero no renderizados actualmente
-// import DivisionsSection from "../components/DivisionsSection";
-// import ServicesSection from "../components/ServicesSection";
-// import StatsSection from "../components/StatsSection";
-// import TransformadorRestauracionSection from "../components/TransformadorRestauracionSection";
+import NoticiasSection from "../components/NoticiasSection";
 
 export default function HomeSection() {
   return (
@@ -29,18 +21,17 @@ export default function HomeSection() {
       <MTNHeroSection />
       <TransformadorRestauracionSection />
       <MTNProductsShowcase />
-      <MTNCertificationsSection />
-      <MTNResourcesSection />
+
+      {/* Noticias */}
+      <NoticiasSection />
 
       {/* Clientes */}
       <ClientesSection />
       <DivisionsSection />
+
       <ServicesSection />
       <StatsSection />
-
-      {/* Cotizaciones */}
-      <MTNQuoteSection />
-
+      
       {/* Contacto */}
       <ContactSection />
     </>

@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import { transformerProducts } from "@/config/mtn-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { PhoneInputField } from "@/components/ui/PhoneInputField";
 
 // Capacidades disponibles
 const capacities = [
@@ -48,6 +50,7 @@ function CotizacionesContent() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [codigo, setCodigo] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Actualizar producto preseleccionado cuando cambie el URL
@@ -75,31 +78,64 @@ function CotizacionesContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    
-    // Simular envío
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    try {
+      const res = await fetch('/api/cotizaciones', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          unidad: 'MTN',
+          nombre: formData.nombre,
+          empresa: formData.empresa || undefined,
+          email: formData.email,
+          telefono: formData.telefono,
+          urgente: formData.urgente,
+          detalles: {
+            tipoTransformador: formData.tipoTransformador,
+            configuracion: formData.configuracion,
+            capacidad: formData.capacidad ? `${formData.capacidad} kVA` : '',
+            cantidad: formData.cantidad,
+            voltajePrimario: formData.voltajePrimario,
+            voltajeSecundario: formData.voltajeSecundario,
+            ubicacion: formData.ubicacion,
+            descripcion: formData.descripcion,
+          },
+        }),
+      });
+
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message || 'Error al enviar');
+      setCodigo(json.codigo);
+      setIsSubmitted(true);
+    } catch (err) {
+      setErrors(prev => ({ ...prev, general: err instanceof Error ? err.message : 'Error de conexión. Intente de nuevo.' }));
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
-    
+
     setFormData(prev => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value
     }));
-    
+
     // Clear error when field is modified
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: "" }));
     }
+  };
+
+  const handlePhoneChange = (value: string) => {
+    setFormData(prev => ({ ...prev, telefono: value }));
+    if (errors.telefono) setErrors(prev => ({ ...prev, telefono: "" }));
   };
 
   if (isSubmitted) {
@@ -116,8 +152,15 @@ function CotizacionesContent() {
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
             ¡Solicitud Enviada!
           </h2>
+          {codigo && (
+            <div className="bg-[#001689]/5 border border-[#001689]/20 rounded-xl p-4 mb-4">
+              <p className="text-xs text-[#001689] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+              <p className="text-2xl font-bold text-[#001689] tracking-widest">{codigo}</p>
+              <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
+            </div>
+          )}
           <p className="text-gray-600 mb-8">
-            Hemos recibido su solicitud de cotización. Nuestro equipo se pondrá en contacto 
+            Hemos recibido su solicitud de cotización. Nuestro equipo se pondrá en contacto
             con usted en menos de 24 horas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -214,20 +257,14 @@ function CotizacionesContent() {
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Teléfono *
-                </label>
-                <input
-                  type="tel"
-                  name="telefono"
+                <PhoneInputField
                   value={formData.telefono}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
-                    errors.telefono ? "border-red-500" : "border-gray-300"
-                  }`}
-                  placeholder="(809) 000-0000"
+                  onChange={handlePhoneChange}
+                  label="Teléfono"
+                  required
+                  error={errors.telefono}
+                  focusColor="#001689"
                 />
-                {errors.telefono && <p className="text-red-500 text-sm mt-1">{errors.telefono}</p>}
               </div>
             </div>
           </div>
@@ -378,20 +415,27 @@ function CotizacionesContent() {
                   name="urgente"
                   checked={formData.urgente}
                   onChange={handleInputChange}
-                  className="w-5 h-5 rounded border-gray-300 text-[#FF5500] focus:ring-[#FF5500]"
+                  className="w-5 h-5 rounded border-gray-300 text-[#001689] focus:ring-[#001689]"
                 />
                 <span className="text-gray-700">
-                  <span className="font-medium text-[#FF5500]">Urgente</span> - Necesito respuesta lo antes posible
+                  <span className="font-medium text-[#001689]">Urgente</span> - Necesito respuesta lo antes posible
                 </span>
               </label>
             </div>
           </div>
 
+          {/* General error */}
+          {errors.general && (
+            <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+              {errors.general}
+            </div>
+          )}
+
           {/* Submit */}
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] disabled:bg-gray-400 text-white px-8 py-4 rounded-xl font-semibold transition-colors text-lg"
+            className="w-full flex items-center justify-center gap-2 bg-[#001689] hover:bg-[#000E53] disabled:bg-gray-400 text-white px-8 py-4 rounded-xl font-semibold transition-colors text-lg"
           >
             {isSubmitting ? (
               <>
@@ -429,7 +473,7 @@ function CotizacionesContent() {
             </a>
             
             <a
-              href={`https://wa.me/${contactInfo.whatsapp}`}
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 p-4 bg-[#25D366]/10 rounded-xl hover:bg-[#25D366]/20 transition-colors"

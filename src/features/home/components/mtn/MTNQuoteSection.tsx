@@ -11,6 +11,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 const quickInfo = [
   {
@@ -99,7 +100,7 @@ export default function MTNQuoteSection() {
 
             {/* WhatsApp CTA */}
             <motion.a
-              href={`https://wa.me/${contactInfo.whatsapp}`}
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}

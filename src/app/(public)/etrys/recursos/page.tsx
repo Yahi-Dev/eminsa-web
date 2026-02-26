@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { etrysResources } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 const resourceIcons: { [key: string]: React.ElementType } = {
   "file-text": FileText,
@@ -269,7 +270,7 @@ export default function EtrysRecursosPage() {
                 {contactInfo.phone}
               </a>
               <a
-                href={`https://wa.me/${contactInfo.whatsapp}`}
+                href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
@@ -279,7 +280,7 @@ export default function EtrysRecursosPage() {
               </a>
               <Link
                 href="/etrys/cotizaciones"
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

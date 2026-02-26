@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { 
+import {
   ArrowRight, 
   Factory, 
   Shield, 
@@ -15,14 +14,16 @@ import {
   Phone,
   MessageCircle
 } from "lucide-react";
-import { 
-  mtnInfo, 
-  transformerProducts, 
-  standards, 
+import {
+  mtnInfo,
+  transformerProducts,
+  standards,
   certifications,
-  resources 
+  resources
 } from "@/config/mtn-data";
+import CertificationsTabSelector from "@/features/home/components/mtn/CertificationsTabSelector";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 export const metadata: Metadata = {
   title: "MTN - Manufactura de Transformadores Nuevos | Grupo EMINSA",
@@ -83,7 +84,7 @@ export default function MTNPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/mtn/cotizaciones"
-                  className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -110,13 +111,19 @@ export default function MTNPage() {
                 
                 {/* Center content */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20">
+                  <Link
+                    href="/mtn/certificaciones"
+                    className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
+                  >
                     <div className="text-center space-y-2">
                       <Zap size={48} className="mx-auto text-[#00A3E0]" />
                       <p className="text-4xl font-bold">DOE 2016</p>
                       <p className="text-sm text-white/70">Certificación de Eficiencia</p>
+                      <p className="text-xs text-white/50 group-hover:text-white/80 transition-colors pt-1">
+                        Ver certificaciones →
+                      </p>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -269,45 +276,7 @@ export default function MTNPage() {
                 </div>
               </div>
 
-              <div className="grid gap-4">
-                {certifications.map((cert) => (
-                  <div
-                    key={cert.id}
-                    className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                        {cert.image ? (
-                          <Image
-                            src={cert.image}
-                            alt={cert.name}
-                            width={48}
-                            height={48}
-                            className="object-contain"
-                          />
-                        ) : (
-                          <Award size={32} className="text-[#001689]" />
-                        )}
-                      </div>
-                      <div className="space-y-1">
-                        <h3 className="font-bold text-gray-900">{cert.name}</h3>
-                        <p className="text-sm text-gray-500">{cert.issuingBody}</p>
-                        <p className="text-sm text-gray-600 line-clamp-2">
-                          {cert.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="/mtn/certificaciones"
-                className="inline-flex items-center gap-2 text-[#00A3E0] hover:text-[#0092C7] font-semibold mt-6 transition-colors"
-              >
-                Ver todas las certificaciones
-                <ArrowRight size={18} />
-              </Link>
+              <CertificationsTabSelector certifications={certifications} />
             </div>
           </div>
         </div>
@@ -364,7 +333,7 @@ export default function MTNPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/mtn/cotizaciones"
-                className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />
@@ -377,7 +346,7 @@ export default function MTNPage() {
                 Llamar Ahora
               </a>
               <a
-                href={`https://wa.me/${contactInfo.whatsapp}`}
+                href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300"

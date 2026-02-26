@@ -15,9 +15,11 @@ import {
   MessageCircle
 } from "lucide-react";
 import { mainNavigation, contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { Tooltip } from "@/components/ui/Tooltip";
+import { useTranslations } from "next-intl";
 
 // Tipos
 interface SubMenuItem {
@@ -34,6 +36,7 @@ const divisionsTooltips: { [key: string]: { label: string; color: string } } = {
 };
 
 export default function Header() {
+  const t = useTranslations("nav");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState<string | null>(null);
@@ -117,7 +120,7 @@ export default function Header() {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-white/70 hidden xl:inline">Transformadores • Servicios • Suplidores Eléctricos</span>
+            <span className="text-white/70 hidden xl:inline">{t('tagline')}</span>
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-1 hover:text-[#00A3E0] transition-colors"
@@ -138,28 +141,38 @@ export default function Header() {
           isScrolled && "shadow-lg"
         )}
       >
-        <div className="flex items-center h-20 xl:h-25 px-4 lg:px-6 xl:px-8 w-full gap-3 lg:gap-4 xl:gap-6">
+        <div className="flex items-center h-20 xl:h-28 px-4 lg:px-6 xl:px-10 w-full gap-3 lg:gap-4 xl:gap-8">
           {/* Logo - Left */}
-          <Link href="/" className="shrink-0">
-            <Image
-              src="/logoeminsa-Photoroom.png"
-              alt="Grupo EMINSA"
-              width={196}
-              height={196}
-              className="w-auto h-16 lg:h-18 xl:h-20"
-              priority
-            />
-          </Link>
+          <motion.div
+            className="shrink-0"
+            whileHover={{ scale: 1.04 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+          >
+            <Link href="/">
+              <Image
+                src="/logoeminsa-Photoroom.png"
+                alt="Grupo EMINSA"
+                width={240}
+                height={240}
+                className="w-auto h-16 lg:h-20 xl:h-24"
+                priority
+              />
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation - Center */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-3 2xl:gap-6 grow justify-center">
+          <motion.nav
+            className="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-5 grow justify-center"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+          >
             {mainNavigation.map((item) => {
               const tooltip = divisionsTooltips[item.name as keyof typeof divisionsTooltips];
-              // Solo mostrar dropdown para "Compañía"
-              const hasSubmenu = item.name === "Compañía" && item.submenu && item.submenu.length > 0;
+              // Solo mostrar dropdown para "EMINSA"
+              const hasSubmenu = item.name === "EMINSA" && item.submenu && item.submenu.length > 0;
 
               if (hasSubmenu) {
-                // Item con submenú - mostrar dropdown
                 return (
                   <div
                     key={item.name}
@@ -169,12 +182,13 @@ export default function Header() {
                   >
                     <button
                       className={cn(
-                        "flex items-center gap-1 px-2 xl:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm xl:text-base uppercase whitespace-nowrap",
-                        "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
-                        pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
+                        "relative group flex items-center gap-1 px-3 xl:px-4 py-2 rounded-lg font-semibold transition-colors duration-200 text-sm xl:text-[15px] 2xl:text-base uppercase whitespace-nowrap tracking-wide",
+                        "text-[#4a4a4a] hover:text-[#001689]",
+                        pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689]"
                       )}
                     >
                       {item.name}
+                      <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#001689] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                       <ChevronDown
                         size={14}
                         className={cn(
@@ -188,21 +202,21 @@ export default function Header() {
                     <AnimatePresence>
                       {desktopActiveSubmenu === item.name && (
                         <motion.div
-                          initial={{ opacity: 0, y: -10 }}
+                          initial={{ opacity: 0, y: -8 }}
                           animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.18 }}
+                          className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 z-50"
                         >
                           {item.submenu?.map((subItem: SubMenuItem) => (
                             <Link
                               key={subItem.name}
                               href={subItem.href}
                               className={cn(
-                                "block px-4 py-2 text-sm transition-colors hover:bg-gray-50",
+                                "block px-5 py-2.5 text-sm font-medium transition-colors hover:bg-[#001689]/5 hover:text-[#001689]",
                                 pathname === subItem.href || pathname.startsWith(subItem.href + "/")
-                                  ? "text-[#001689] bg-gray-50 font-medium"
-                                  : "text-gray-600"
+                                  ? "text-[#001689] bg-[#001689]/5"
+                                  : "text-[#4a4a4a]"
                               )}
                             >
                               {subItem.name}
@@ -221,12 +235,13 @@ export default function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "px-2 xl:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm xl:text-base uppercase whitespace-nowrap",
-                      "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
-                      pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
+                      "relative group px-3 xl:px-4 py-2 rounded-lg font-semibold transition-colors duration-200 text-sm xl:text-[15px] 2xl:text-base uppercase whitespace-nowrap tracking-wide",
+                      "text-[#4a4a4a] hover:text-[#001689]",
+                      pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689]"
                     )}
                   >
                     {item.name}
+                    <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#001689] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                   </Link>
                 </Tooltip>
               ) : (
@@ -234,31 +249,32 @@ export default function Header() {
                   key={item.name}
                   href={item.href}
                   className={cn(
-                    "px-2 xl:px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm xl:text-base uppercase whitespace-nowrap",
-                    "text-[#76777A] hover:text-[#001689] hover:bg-gray-50",
-                    pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689] bg-gray-50"
+                    "relative group px-3 xl:px-4 py-2 rounded-lg font-semibold transition-colors duration-200 text-sm xl:text-[15px] 2xl:text-base uppercase whitespace-nowrap tracking-wide",
+                    "text-[#4a4a4a] hover:text-[#001689]",
+                    pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689]"
                   )}
                 >
                   {item.name}
+                  <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#001689] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                 </Link>
               );
             })}
-          </nav>
+          </motion.nav>
 
           {/* CTA Buttons - Right */}
-          <div className="hidden lg:flex items-center gap-3 xl:gap-6 shrink-0">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-4 shrink-0">
             <a
-              href={`https://wa.me/${contactInfo.whatsapp}`}
+              href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 xl:px-4 py-2 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all duration-200"
+              className="flex items-center gap-2 px-3 xl:px-5 py-2 xl:py-2.5 text-[#25D366] border-2 border-[#25D366] rounded-xl font-semibold hover:bg-[#25D366] hover:text-white transition-all duration-200"
               aria-label="Contactar por WhatsApp"
             >
               <MessageCircle size={18} />
-              <span className="font-medium hidden xl:inline">WhatsApp</span>
+              <span className="hidden xl:inline">WhatsApp</span>
             </a>
-            <Link href="/cotizar" className="btn-primary text-sm xl:text-base whitespace-nowrap">
-              Solicitar Cotización
+            <Link href="/cotizar" className="btn-primary text-sm xl:text-[15px] 2xl:text-base whitespace-nowrap px-5 xl:px-6 py-2.5">
+              {t('requestQuote')}
             </Link>
           </div>
 
@@ -285,8 +301,8 @@ export default function Header() {
               <div className="container-eminsa py-4">
                 <nav className="space-y-1">
                   {mainNavigation.map((item) => {
-                    // Solo mostrar accordion para "Compañía"
-                    const hasSubmenu = item.name === "Compañía" && item.submenu && item.submenu.length > 0;
+                    // Solo mostrar accordion para "EMINSA"
+                    const hasSubmenu = item.name === "EMINSA" && item.submenu && item.submenu.length > 0;
 
                     if (hasSubmenu) {
                       return (
@@ -356,7 +372,7 @@ export default function Header() {
 
                 <div className="mt-6 space-y-3">
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all"
@@ -370,7 +386,7 @@ export default function Header() {
                     onClick={closeMobileMenu}
                     className="btn-primary w-full justify-center"
                   >
-                    Solicitar Cotización
+                    {t('requestQuote')}
                   </Link>
                   {/* Botón de idioma en móvil */}
                   <button

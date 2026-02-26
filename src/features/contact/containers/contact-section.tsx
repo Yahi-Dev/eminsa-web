@@ -33,8 +33,7 @@ export function ContactSection() {
         <BackgroundDecoration />
 
         <div className="container-eminsa relative">
-          {/* Section Header */}
-          <SectionHeader />
+          {/* Section Header - removed per design spec */}
 
           {/* Main Grid: Contact Info + Form */}
           <div className="grid lg:grid-cols-5 gap-12">

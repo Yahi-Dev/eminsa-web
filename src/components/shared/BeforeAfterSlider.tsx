@@ -21,26 +21,32 @@ export default function BeforeAfterSlider({
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const animDirRef = useRef(1);
+
+  // Auto-animation: oscillates smoothly between 20% and 80%
+  useEffect(() => {
+    if (isDragging) return;
+    const interval = setInterval(() => {
+      setSliderPosition((prev) => {
+        let next = prev + animDirRef.current * 0.5;
+        if (next >= 80) { next = 80; animDirRef.current = -1; }
+        if (next <= 20) { next = 20; animDirRef.current = 1; }
+        return next;
+      });
+    }, 25);
+    return () => clearInterval(interval);
+  }, [isDragging]);
 
   const handleMove = (clientX: number) => {
     if (!containerRef.current) return;
-
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
     const percentage = (x / rect.width) * 100;
-
-    // Limitar entre 0 y 100
-    const newPosition = Math.min(Math.max(percentage, 0), 100);
-    setSliderPosition(newPosition);
+    setSliderPosition(Math.min(Math.max(percentage, 0), 100));
   };
 
-  const handleMouseDown = () => {
-    setIsDragging(true);
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
+  const handleMouseDown = () => setIsDragging(true);
+  const handleMouseUp = () => setIsDragging(false);
 
   const handleMouseMove = (e: MouseEvent) => {
     if (!isDragging) return;
@@ -59,7 +65,6 @@ export default function BeforeAfterSlider({
       window.addEventListener("touchmove", handleTouchMove);
       window.addEventListener("touchend", handleMouseUp);
     }
-
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
@@ -121,7 +126,7 @@ export default function BeforeAfterSlider({
 
         {/* Handle (círculo con flechas) */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#FF5500] rounded-full shadow-xl flex items-center justify-center cursor-grab active:cursor-grabbing"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#001689] rounded-full shadow-xl flex items-center justify-center cursor-grab active:cursor-grabbing"
           onMouseDown={handleMouseDown}
           onTouchStart={() => setIsDragging(true)}
         >

@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, ReactNode } from "react";
+import { authClient } from "@/lib/auth-client";
 
 interface User {
   id: string;
@@ -19,75 +20,33 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Usuario de demostración (en producción esto vendría de una API/base de datos)
-const DEMO_USERS = [
-  {
-    id: "1",
-    nombre: "Administrador EMINSA",
-    email: "admin@eminsa.com",
-    password: "eminsa2024",
-    rol: "admin" as const,
-  },
-  {
-    id: "2",
-    nombre: "Editor",
-    email: "editor@eminsa.com",
-    password: "editor2024",
-    rol: "editor" as const,
-  },
-];
-
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // Verificar si hay una sesión guardada
-    const savedUser = localStorage.getItem("eminsa_user");
-    if (savedUser) {
-      try {
-        setUser(JSON.parse(savedUser));
-      } catch {
-        localStorage.removeItem("eminsa_user");
-      }
-    }
-    setIsLoading(false);
-  }, []);
+  const { data: session, isPending } = authClient.useSession();
 
   const login = async (email: string, password: string): Promise<boolean> => {
-    // Simular delay de autenticación
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    const foundUser = DEMO_USERS.find(
-      (u) => u.email === email && u.password === password
-    );
-
-    if (foundUser) {
-      const userData: User = {
-        id: foundUser.id,
-        nombre: foundUser.nombre,
-        email: foundUser.email,
-        rol: foundUser.rol,
-      };
-      setUser(userData);
-      localStorage.setItem("eminsa_user", JSON.stringify(userData));
-      return true;
-    }
-
-    return false;
+    const result = await authClient.signIn.email({ email, password });
+    return !result.error;
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("eminsa_user");
+  const logout = async () => {
+    await authClient.signOut();
   };
+
+  const user: User | null = session?.user
+    ? {
+        id: session.user.id,
+        nombre: session.user.name,
+        email: session.user.email,
+        rol: ((session.user as { role?: string }).role as "admin" | "editor") ?? "admin",
+      }
+    : null;
 
   return (
     <AuthContext.Provider
       value={{
         user,
-        isAuthenticated: !!user,
-        isLoading,
+        isAuthenticated: !!session?.user,
+        isLoading: isPending,
         login,
         logout,
       }}

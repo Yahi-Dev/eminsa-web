@@ -157,20 +157,16 @@ export default function LoginForm() {
                 "Iniciar Sesión"
               )}
             </button>
-          </form>
 
-          {/* Demo credentials hint */}
-          <div className="px-8 pb-8">
-            <div className="p-4 bg-blue-50 rounded-lg">
-              <p className="text-xs text-blue-800 font-medium mb-2">
-                Credenciales de demostración:
-              </p>
-              <p className="text-xs text-blue-600">
-                Email: admin@eminsa.com<br />
-                Contraseña: eminsa2024
-              </p>
+            <div className="text-center">
+              <Link
+                href="/forgot-password"
+                className="text-sm text-[#001689] hover:text-[#000E53] transition-colors"
+              >
+                ¿Olvidaste tu contraseña?
+              </Link>
             </div>
-          </div>
+          </form>
         </div>
 
         <p className="text-center text-white/50 text-sm mt-6">

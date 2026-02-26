@@ -5,7 +5,6 @@
 'use client';
 
 import { useState, useCallback, useEffect, useRef } from 'react';
-import { useMaskito } from '@maskito/react';
 import { useTranslations } from 'next-intl';
 import type { 
   ContactFormState, 
@@ -26,8 +25,6 @@ import {
   FIELD_LIMITS 
 } from '../data/constants';
 
-// Importar opciones de máscara de teléfono
-import phoneMaskOptions from '@/lib/mask/mask-phone';
 import { formatIdentificacion, getIdentificationType } from '../schema/contact-validation';
 
 /**
@@ -45,9 +42,6 @@ export function useContactForm(): UseContactFormReturn {
   
   // Ref para tracking de identificación
   const identificacionRef = useRef<string>('');
-  
-  // Máscara para teléfono
-  const maskedInputRef = useMaskito({ options: phoneMaskOptions });
 
   // ============================================================================
   // Categorías traducidas
@@ -104,9 +98,10 @@ export function useContactForm(): UseContactFormReturn {
   // ============================================================================
   
   const transformadoresCategory = t('form.categories.products.transformadores');
-  const showTransformadorFields = 
-    formData.tipoConsulta === 'productos' && 
+  const showTransformadorFields =
+    formData.tipoConsulta === 'productos' &&
     formData.categoria === transformadoresCategory;
+  const showOtrosField = formData.categoria === 'Otros productos o servicios';
 
   // ============================================================================
   // Handlers para transformadores
@@ -193,6 +188,16 @@ export function useContactForm(): UseContactFormReturn {
       setFormErrors(prev => ({ ...prev, identificacion: undefined }));
     }
   }, [formErrors.identificacion]);
+
+  /**
+   * Maneja cambios en el campo de teléfono (react-phone-number-input)
+   */
+  const handlePhoneChange = useCallback((value: string) => {
+    setFormData(prev => ({ ...prev, telefono: value }));
+    if (formErrors.telefono) {
+      setFormErrors(prev => ({ ...prev, telefono: undefined }));
+    }
+  }, [formErrors.telefono]);
 
   /**
    * Obtiene el tipo de identificación (RNC/Cédula)
@@ -371,8 +376,13 @@ export function useContactForm(): UseContactFormReturn {
         return;
       }
 
+      // Si "Otros" está seleccionado, usar otrosDescripcion como mensaje
+      const formDataForSubmission = showOtrosField
+        ? { ...formData, mensaje: formData.otrosDescripcion }
+        : formData;
+
       const submitData = prepareFormDataForSubmission(
-        formData as unknown as Record<string, any>,
+        formDataForSubmission as unknown as Record<string, any>,
         showTransformadorFields
       );
 
@@ -433,9 +443,10 @@ export function useContactForm(): UseContactFormReturn {
     isSubmitted,
     errorMessage,
     showTransformadorFields,
+    showOtrosField,
     categoriasDisponibles,
     translatedOptions,
-    maskedInputRef,
+    handlePhoneChange,
     handleSubmit,
     handleChange,
     handleTipoConsultaClick,

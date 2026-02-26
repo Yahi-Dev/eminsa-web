@@ -334,7 +334,7 @@ export default function CalculadoraPage() {
                 {/* CTA */}
                 <Link
                   href={`/mtn/cotizaciones?capacidad=${recommendedSize}`}
-                  className="mt-6 w-full flex items-center justify-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                  className="mt-6 w-full flex items-center justify-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                 >
                   Cotizar {recommendedSize} kVA
                   <ArrowRight size={18} />

@@ -1,0 +1,343 @@
+"use client";
+
+import { use, useEffect, useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowLeft, MapPin, Calendar, User, Zap, ChevronRight } from "lucide-react";
+import type { ProyectoAPI } from "@/features/admin/types";
+
+const divisionColors: { [key: string]: string } = {
+  MTN: "#001689",
+  RST: "#00A3E0",
+  EIC: "#00B140",
+  SRV: "#696969",
+};
+
+const divisionLabels: { [key: string]: string } = {
+  MTN: "MTN",
+  RST: "ETRYS",
+  EIC: "EIC",
+  SRV: "Servicios",
+};
+
+export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
+  const [proyecto, setProyecto] = useState<ProyectoAPI | null>(null);
+  const [relacionados, setRelacionados] = useState<ProyectoAPI[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+
+  useEffect(() => {
+    fetch(`/api/proyectos/${slug}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success && data.proyecto?.publicado) {
+          setProyecto(data.proyecto);
+          const div = data.proyecto.division;
+          if (div) {
+            fetch(`/api/proyectos?division=${div}`)
+              .then((r2) => r2.json())
+              .then((d2) => {
+                if (d2.success) {
+                  setRelacionados(
+                    (d2.proyectos as ProyectoAPI[])
+                      .filter((p) => p.publicado && p.slug !== slug)
+                      .slice(0, 3)
+                  );
+                }
+              });
+          }
+        } else {
+          setNotFound(true);
+        }
+      })
+      .catch(() => setNotFound(true))
+      .finally(() => setLoading(false));
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="w-8 h-8 border-4 border-[#00A3E0] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (notFound || !proyecto) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-[#001689] mb-4">Proyecto no encontrado</h1>
+          <p className="text-[#76777A] mb-8">El proyecto que buscas no existe o no está disponible.</p>
+          <Link
+            href="/proyectos"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#001689] text-white font-semibold rounded-xl"
+          >
+            <ArrowLeft size={18} />
+            Volver a Proyectos
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const divColor = divisionColors[proyecto.division] || "#001689";
+  const divLabel = divisionLabels[proyecto.division] || proyecto.division;
+  const imagenesGaleria = Array.isArray(proyecto.imagenes) ? (proyecto.imagenes as string[]) : [];
+
+  return (
+    <>
+      {/* Hero */}
+      <section
+        className="relative py-20 text-white overflow-hidden"
+        style={{ background: `linear-gradient(135deg, ${divColor} 0%, ${divColor}cc 100%)` }}
+      >
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
+            backgroundSize: "60px 60px",
+          }}
+        />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="container-eminsa relative">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2 text-white/60 text-sm mb-8"
+          >
+            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <ChevronRight size={14} />
+            <Link href="/proyectos" className="hover:text-white transition-colors">Proyectos</Link>
+            <ChevronRight size={14} />
+            <span className="text-white/80 line-clamp-1 max-w-xs">{proyecto.titulo}</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <span
+              className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6"
+              style={{ backgroundColor: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.3)" }}
+            >
+              {divLabel}
+            </span>
+
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              {proyecto.titulo}
+            </h1>
+
+            <p className="text-white/80 text-lg leading-relaxed max-w-2xl">{proyecto.resumen}</p>
+
+            <div className="flex flex-wrap items-center gap-6 text-white/70 text-sm mt-6">
+              {proyecto.ubicacion && (
+                <span className="flex items-center gap-2">
+                  <MapPin size={16} />
+                  {proyecto.ubicacion}
+                </span>
+              )}
+              {proyecto.cliente && (
+                <span className="flex items-center gap-2">
+                  <User size={16} />
+                  {proyecto.cliente}
+                </span>
+              )}
+              {proyecto.anio && (
+                <span className="flex items-center gap-2">
+                  <Calendar size={16} />
+                  {proyecto.anio}
+                </span>
+              )}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <section className="py-16 bg-white">
+        <div className="container-eminsa">
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* Article body */}
+            <motion.article
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="lg:col-span-2"
+            >
+              {proyecto.imagen && (
+                <div className="rounded-2xl overflow-hidden mb-10 shadow-lg">
+                  <img
+                    src={proyecto.imagen}
+                    alt={proyecto.titulo}
+                    className="w-full h-72 md:h-96 object-cover"
+                  />
+                </div>
+              )}
+
+              {proyecto.descripcion ? (
+                <div
+                  className="prose prose-lg max-w-none text-[#4a4a4a] leading-relaxed
+                    prose-headings:text-[#001689] prose-headings:font-bold
+                    prose-a:text-[#00A3E0] prose-a:no-underline hover:prose-a:underline
+                    prose-strong:text-[#001689]"
+                  dangerouslySetInnerHTML={{ __html: proyecto.descripcion }}
+                />
+              ) : (
+                <p className="text-[#76777A] italic">Descripción completa no disponible.</p>
+              )}
+
+              {imagenesGaleria.length > 0 && (
+                <div className="mt-12">
+                  <h3 className="text-xl font-bold text-[#001689] mb-6">Galería del Proyecto</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {imagenesGaleria.map((img, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.06 }}
+                        className="rounded-xl overflow-hidden aspect-square shadow-sm"
+                      >
+                        <img
+                          src={img}
+                          alt={`${proyecto.titulo} - imagen ${i + 1}`}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-12 pt-8 border-t border-gray-100">
+                <Link
+                  href="/proyectos"
+                  className="inline-flex items-center gap-2 text-[#001689] font-semibold hover:gap-3 transition-all group"
+                >
+                  <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
+                  Volver a Proyectos
+                </Link>
+              </div>
+            </motion.article>
+
+            {/* Sidebar */}
+            <motion.aside
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="lg:col-span-1 space-y-8"
+            >
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <h3 className="font-bold text-[#001689] mb-4">Detalles del Proyecto</h3>
+                <dl className="space-y-4">
+                  <div>
+                    <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">División</dt>
+                    <dd>
+                      <span
+                        className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold"
+                        style={{ backgroundColor: divColor }}
+                      >
+                        {divLabel}
+                      </span>
+                    </dd>
+                  </div>
+
+                  {proyecto.cliente && (
+                    <div>
+                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Cliente</dt>
+                      <dd className="text-sm text-[#4a4a4a] font-medium flex items-center gap-2">
+                        <User size={14} className="text-[#76777A]" />
+                        {proyecto.cliente}
+                      </dd>
+                    </div>
+                  )}
+
+                  {proyecto.ubicacion && (
+                    <div>
+                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Ubicación</dt>
+                      <dd className="text-sm text-[#4a4a4a] font-medium flex items-center gap-2">
+                        <MapPin size={14} className="text-[#76777A]" />
+                        {proyecto.ubicacion}
+                      </dd>
+                    </div>
+                  )}
+
+                  {proyecto.capacidad && (
+                    <div>
+                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Capacidad</dt>
+                      <dd className="text-sm text-[#4a4a4a] font-medium flex items-center gap-2">
+                        <Zap size={14} className="text-[#76777A]" />
+                        {proyecto.capacidad}
+                      </dd>
+                    </div>
+                  )}
+
+                  {proyecto.anio && (
+                    <div>
+                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Año</dt>
+                      <dd className="text-sm text-[#4a4a4a] font-medium flex items-center gap-2">
+                        <Calendar size={14} className="text-[#76777A]" />
+                        {proyecto.anio}
+                      </dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+
+              {relacionados.length > 0 && (
+                <div>
+                  <h3 className="font-bold text-[#001689] mb-4">Proyectos Relacionados</h3>
+                  <div className="space-y-4">
+                    {relacionados.map((rel) => (
+                      <Link
+                        key={rel.id}
+                        href={`/proyectos/${rel.slug}`}
+                        className="group block p-4 bg-white rounded-xl border border-gray-100 hover:border-[#001689]/20 hover:shadow-md transition-all"
+                      >
+                        {rel.imagen && (
+                          <div className="rounded-lg overflow-hidden mb-3 h-24">
+                            <img
+                              src={rel.imagen}
+                              alt={rel.titulo}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                          </div>
+                        )}
+                        <p className="font-semibold text-sm text-[#001689] group-hover:text-[#00A3E0] transition-colors line-clamp-2 mb-1">
+                          {rel.titulo}
+                        </p>
+                        <span className="text-xs text-[#76777A]">{rel.ubicacion}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div
+                className="rounded-2xl p-6 text-white text-center"
+                style={{ background: `linear-gradient(135deg, ${divColor}, ${divColor}bb)` }}
+              >
+                <h3 className="font-bold mb-2">¿Proyecto similar?</h3>
+                <p className="text-white/80 text-sm mb-4">
+                  Contáctenos para discutir su próximo proyecto eléctrico.
+                </p>
+                <Link
+                  href="/cotizar"
+                  className="inline-block px-5 py-2.5 bg-white font-semibold rounded-xl text-sm transition-opacity hover:opacity-90"
+                  style={{ color: divColor }}
+                >
+                  Solicitar Cotización
+                </Link>
+              </div>
+            </motion.aside>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

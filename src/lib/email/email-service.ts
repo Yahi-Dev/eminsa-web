@@ -2,12 +2,13 @@
 
 import { ContactFormData } from '@/features/contact';
 import { sendEmail } from '@/lib/email/mailer';
-import { 
-  customerConfirmationTemplate, 
+import {
+  customerConfirmationTemplate,
   adminNotificationTemplate,
   customerConfirmationText,
-  adminNotificationText 
+  adminNotificationText
 } from '@/utils/email-templates';
+import { buildCotizacionEmails } from '@/utils/cotizacion-templates';
 
 interface EmailServiceOptions {
   appName?: string;
@@ -126,6 +127,61 @@ export async function sendContactEmails(
     console.error('Error sending contact emails:', error);
     throw new Error('Failed to send emails');
   }
+}
+
+// ─── Cotizaciones ────────────────────────────────────────────────────────────
+
+type CotizacionUnit = 'MTN' | 'RST' | 'EIC' | 'SRV';
+
+interface CotizacionData {
+  codigo: string;
+  unidad: CotizacionUnit;
+  nombre: string;
+  empresa?: string;
+  email: string;
+  telefono: string;
+  urgente: boolean;
+  detalles: Record<string, unknown>;
+}
+
+const UNIT_LABELS: Record<CotizacionUnit, string> = {
+  MTN: 'MTN – Transformadores Nuevos',
+  RST: 'ETRYS – Remanufactura y Servicios',
+  EIC: 'EIC – Productos Internacionales',
+  SRV: 'Servicios Técnicos',
+};
+
+export async function sendCotizacionEmails(
+  data: CotizacionData,
+  ipAddress?: string
+): Promise<void> {
+  const { customerHtml, customerText, adminHtml, adminText } = buildCotizacionEmails(
+    data,
+    ipAddress
+  );
+
+  const adminEmails = process.env.ADMIN_EMAILS || process.env.ADMIN_EMAIL || 'info@eminsa.com';
+  const recipients = adminEmails.split(',').map((e) => e.trim());
+
+  const unidadLabel = UNIT_LABELS[data.unidad] ?? data.unidad;
+
+  await Promise.all([
+    sendEmail({
+      to: data.email,
+      subject: `✓ Solicitud ${data.codigo} recibida – Grupo EMINSA`,
+      html: customerHtml,
+      text: customerText,
+    }),
+    sendEmail({
+      to: recipients,
+      subject: `📋 [${data.codigo}]${data.urgente ? ' ⚠️ URGENTE' : ''} ${data.nombre}${data.empresa ? ` – ${data.empresa}` : ''} · ${unidadLabel}`,
+      html: adminHtml,
+      text: adminText,
+      cc: process.env.SALES_EMAIL?.split(',').map((e) => e.trim()),
+    }),
+  ]);
+
+  console.log(`✅ Emails de cotización ${data.codigo} enviados`);
 }
 
 /**

@@ -3,10 +3,11 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   ChevronRight,
+  ChevronLeft,
   Home,
   CheckCircle2,
   Phone,
@@ -18,9 +19,108 @@ import {
   getRemanufacturedProductBySlug,
   getOtherProducts,
   remanufactureProcess,
+  type RemanufacturedProduct,
 } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
-import React from "react"; // Importar React
+import { getWhatsAppUrl } from "@/utils/whatsapp";
+import React, { useState } from "react";
+import RemanufactureProcessModal from "@/features/home/components/etrys/RemanufactureProcessModal";
+
+function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[] }) {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const current = products[index];
+
+  if (!current) return null;
+
+  const prev = () => {
+    setDirection(-1);
+    setIndex((i) => (i - 1 + products.length) % products.length);
+  };
+  const next = () => {
+    setDirection(1);
+    setIndex((i) => (i + 1) % products.length);
+  };
+
+  return (
+    <div className="relative">
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          key={current.id}
+          custom={direction}
+          initial={{ opacity: 0, x: direction * 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: direction * -40 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Link
+            href={`/etrys/productos/${current.slug}`}
+            className="flex gap-6 bg-gray-50 hover:bg-[#00A3E0]/5 rounded-2xl p-6 transition-colors group border border-transparent hover:border-[#00A3E0]/20"
+          >
+            <div className="relative w-32 h-32 rounded-xl overflow-hidden bg-gray-200 shrink-0">
+              <Image
+                src={current.image}
+                alt={current.name}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <span className="text-xs font-semibold text-[#00A3E0] uppercase tracking-wider">
+                RST by EMINSA
+              </span>
+              <h3 className="font-bold text-gray-900 group-hover:text-[#00A3E0] transition-colors text-lg mt-1">
+                {current.shortName}
+              </h3>
+              <p className="text-sm text-gray-600 mt-1 line-clamp-2">{current.description}</p>
+              <div className="flex items-center gap-4 mt-3">
+                <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full font-medium">
+                  {current.powerRange}
+                </span>
+                <span className="inline-flex items-center gap-1 text-sm text-[#00A3E0] font-semibold">
+                  Ver producto <ArrowRight size={14} />
+                </span>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+      </AnimatePresence>
+
+      {products.length > 1 && (
+        <div className="flex items-center justify-between mt-4">
+          <div className="flex gap-2">
+            {products.map((prod, i) => (
+              <button
+                key={prod.slug}
+                onClick={() => {
+                  setDirection(i > index ? 1 : -1);
+                  setIndex(i);
+                }}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === index ? "w-8 bg-[#00A3E0]" : "w-2 bg-gray-300 hover:bg-gray-400"
+                }`}
+              />
+            ))}
+          </div>
+          <div className="flex gap-2">
+            <button
+              onClick={prev}
+              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-[#00A3E0] hover:text-[#00A3E0] transition-colors"
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <button
+              onClick={next}
+              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-[#00A3E0] hover:text-[#00A3E0] transition-colors"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function EtrysProductoDetailPage({
   params,
@@ -37,6 +137,7 @@ export default function EtrysProductoDetailPage({
   }
 
   const otherProducts = getOtherProducts(slug);
+  const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -100,13 +201,13 @@ export default function EtrysProductoDetailPage({
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={`/etrys/cotizaciones?producto=${product.slug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
@@ -198,22 +299,24 @@ export default function EtrysProductoDetailPage({
               </motion.div>
 
               {/* Capacities */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Capacidades Disponibles
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {product.capacities.map((cap) => (
-                    <span key={cap} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">
-                      {cap}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
+              {product.capacities.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                    Capacidades Disponibles
+                  </h2>
+                  <div className="flex flex-wrap gap-2">
+                    {product.capacities.map((cap) => (
+                      <span key={cap} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">
+                        {cap}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
 
               {/* Process */}
               <motion.div
@@ -225,14 +328,19 @@ export default function EtrysProductoDetailPage({
                   Proceso de Remanufactura
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {remanufactureProcess.slice(0, 6).map((step) => (
-                    <div key={step.id} className="bg-white rounded-xl p-4 shadow-sm">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#00A3E0] to-[#001689] flex items-center justify-center text-white font-bold mb-3">
+                  {remanufactureProcess.slice(0, 6).map((step, i) => (
+                    <button
+                      key={step.id}
+                      onClick={() => setActiveStepIndex(i)}
+                      className="bg-white rounded-xl p-4 shadow-sm text-left group hover:shadow-md hover:ring-1 hover:ring-[#00A3E0]/30 transition-all duration-200"
+                    >
+                      <div className="w-10 h-10 rounded-lg bg-linear-to-br from-[#00A3E0] to-[#001689] flex items-center justify-center text-white font-bold mb-3 group-hover:scale-110 transition-transform duration-200">
                         {step.id}
                       </div>
-                      <h3 className="font-semibold text-gray-900 mb-1">{step.shortTitle}</h3>
+                      <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#00A3E0] transition-colors">{step.shortTitle}</h3>
                       <p className="text-sm text-gray-600">{step.description}</p>
-                    </div>
+                      <p className="text-xs text-[#00A3E0] font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Ver detalle →</p>
+                    </button>
                   ))}
                 </div>
               </motion.div>
@@ -253,7 +361,7 @@ export default function EtrysProductoDetailPage({
                 <div className="space-y-3 mb-6">
                   <Link
                     href={`/etrys/cotizaciones?producto=${product.slug}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
                   >
                     Solicitar Cotización
                   </Link>
@@ -265,7 +373,7 @@ export default function EtrysProductoDetailPage({
                     {contactInfo.phone}
                   </a>
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-medium rounded-xl transition-colors"
@@ -306,35 +414,19 @@ export default function EtrysProductoDetailPage({
 
       {/* Other Products */}
       <section className="py-12 lg:py-16 bg-white">
-        <div className="container-eminsa">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">
-            Otros Productos ETRYS
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {otherProducts.map((prod) => (
-              <Link
-                key={prod.id}
-                href={`/etrys/productos/${prod.slug}`}
-                className="flex gap-4 bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors group"
-              >
-                <div className="relative w-24 h-24 rounded-lg overflow-hidden bg-gray-200 shrink-0">
-                  <Image
-                    src={prod.image}
-                    alt={prod.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 group-hover:text-[#00A3E0] transition-colors">
-                    {prod.shortName}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-2 line-clamp-2">{prod.description}</p>
-                  <span className="text-xs text-gray-500">{prod.powerRange}</span>
-                </div>
-              </Link>
-            ))}
+        <div className="container-eminsa max-w-2xl mx-auto">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl font-bold text-gray-900">
+              Otros Productos ETRYS
+            </h2>
+            <Link
+              href="/etrys/productos"
+              className="inline-flex items-center gap-1 text-[#00A3E0] hover:text-[#0092C7] font-semibold text-sm transition-colors"
+            >
+              Ver todos <ArrowRight size={16} />
+            </Link>
           </div>
+          <OtherProductsCarousel products={otherProducts} />
         </div>
       </section>
 
@@ -349,13 +441,20 @@ export default function EtrysProductoDetailPage({
           </p>
           <Link
             href={`/etrys/cotizaciones?producto=${product.slug}`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
           >
             Solicitar Cotización
             <ArrowRight size={20} />
           </Link>
         </div>
       </section>
+
+      <RemanufactureProcessModal
+        steps={remanufactureProcess}
+        activeIndex={activeStepIndex}
+        onClose={() => setActiveStepIndex(null)}
+        onNavigate={setActiveStepIndex}
+      />
     </div>
   );
 }

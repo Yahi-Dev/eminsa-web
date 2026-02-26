@@ -9,9 +9,9 @@ export const serviciosInfo = {
   tagline: "Soluciones Integrales en Campo",
   slogan: "Más de 50 años de experiencia y servicio",
   description:
-    "EMINSA Servicios es la unidad de negocios de Grupo EMINSA especializada en atender las necesidades de servicio, reparación y mantenimiento en sitio de nuestros clientes, con un enfoque particular en la estructura y operación de sus transformadores eléctricos.",
-  color: "#FF5500",
-  colorName: "Orange",
+    "SERVICIOS es la unidad de negocios de Grupo EMINSA enfocada en brindar atención técnica especializada en sitio, ofreciendo mantenimiento, reparación y soporte integral para garantizar la eficiencia, seguridad y continuidad operativa de los transformadores eléctricos de nuestros clientes.",
+  color: "#696969",
+  colorName: "Gray",
   stats: [
     { value: "50", suffix: "+", label: "Años de Experiencia" },
     { value: "500", suffix: "+", label: "Clientes Atendidos" },

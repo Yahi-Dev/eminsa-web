@@ -16,9 +16,6 @@ export function ContactHero() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             {t('hero.title')}
           </h1>
-          <p className="text-xl text-white/90">
-            {t('hero.description')}
-          </p>
         </div>
       </div>
     </section>

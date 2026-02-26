@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { PhoneInputField } from "@/components/ui/PhoneInputField";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Play,
   CheckCircle2,
   Phone,
   MessageCircle,
@@ -17,6 +18,7 @@ import {
   Award,
   Users,
   Clock,
+  Wrench,
 } from "lucide-react";
 import {
   etrysInfo,
@@ -25,8 +27,9 @@ import {
   remanufactureProcess,
   rentalInfo,
 } from "@/config/etrys-data";
-import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import TransformadorRestauracionSection from "@/features/home/components/TransformadorRestauracionSection";
+import RemanufactureProcessModal from "@/features/home/components/etrys/RemanufactureProcessModal";
 
 const advantageIcons: { [key: string]: React.ElementType } = {
   zap: Zap,
@@ -36,33 +39,24 @@ const advantageIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function EtrysPage() {
-  // Referencia para el video
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const router = useRouter();
+  const [quoteForm, setQuoteForm] = useState({ nombre: "", email: "", telefono: "" });
+  const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
 
-  // Efecto para asegurar que el video se reproduzca
-  useEffect(() => {
-    if (videoRef.current) {
-      // Intentar reproducir el video
-      videoRef.current.play().catch((error) => {
-        console.log("Video autoplay failed, trying with user interaction simulation:", error);
-        
-        // Si falla el autoplay, intentar con una simulación de interacción del usuario
-        const playVideo = () => {
-          if (videoRef.current) {
-            videoRef.current.play();
-          }
-        };
-        
-        // Agregar un event listener para intentar reproducir en la primera interacción del usuario
-        document.addEventListener('click', playVideo, { once: true });
-      });
-    }
-  }, []);
+  const handleQuoteSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const params = new URLSearchParams();
+    if (quoteForm.nombre) params.set("nombre", quoteForm.nombre);
+    if (quoteForm.email) params.set("email", quoteForm.email);
+    if (quoteForm.telefono) params.set("telefono", quoteForm.telefono);
+    router.push(`/etrys/cotizaciones?${params.toString()}`);
+  };
+
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-16 lg:py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-20 lg:py-28 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -77,30 +71,37 @@ export default function EtrysPage() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="space-y-8"
             >
-              <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-6 border border-white/20">
-                {etrysInfo.slogan}
-              </span>
-              <h1 className="text-3xl md:text-3xl lg:text-5xl font-bold mb-6 leading-tight">
-                {etrysInfo.tagline}
-              </h1>
-              <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl">
-                En ETRYS unimos la experiencia de un equipo técnico altamente
-                calificado con tecnología de última generación para garantizar
-                que sus transformadores trabajen como nuevos.
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                <Wrench size={18} className="text-[#00A3E0]" />
+                <span className="text-sm font-medium">{etrysInfo.slogan}</span>
+              </div>
+
+              <div className="space-y-4">
+                <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
+                  <span className="text-white">{etrysInfo.tagline}</span>
+                </h1>
+                <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
+                  En RST combinamos la experiencia de un equipo técnico altamente calificado con tecnología de última generación para darle a sus transformadores una nueva vida.
+                </p>
+              </div>
+
+              <p className="text-lg text-white/70 leading-relaxed max-w-xl">
+                {etrysInfo.description}
               </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/etrys/cotizaciones"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00A3E0] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-all"
@@ -111,34 +112,39 @@ export default function EtrysPage() {
               </div>
             </motion.div>
 
-            {/* Video */}
+            {/* Visual - Animated Circles */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
+              className="relative hidden lg:block"
             >
-              <div className="aspect-video bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/20 shadow-2xl">
-                {/* Video con reproducción automática - Similar al HeroSection */}
-                <video
-                  ref={videoRef}
-                  className="w-full h-full object-cover"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  poster="/images/video-poster.jpg"
-                  preload="auto"
-                >
-                  <source src="/videos/video-home-etrys.mp4" type="video/mp4" />
-                  Tu navegador no soporta el elemento de video.
-                </video>
-              </div>
+              <div className="relative aspect-square">
+                {/* Decorative circles */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-80 h-80 border-2 border-white/10 rounded-full animate-pulse" />
+                  <div className="absolute w-64 h-64 border-2 border-[#00A3E0]/30 rounded-full animate-pulse delay-150" />
+                  <div className="absolute w-48 h-48 border-2 border-white/20 rounded-full animate-pulse delay-300" />
+                </div>
 
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 bg-amber-500 text-white px-4 py-2 rounded-xl shadow-lg">
-                <span className="font-bold">18 meses</span>
-                <span className="text-sm block">de garantía</span>
+                {/* Center card */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2">
+                    <Wrench size={48} className="mx-auto text-[#00A3E0]" />
+                    <p className="text-4xl font-bold">18 meses</p>
+                    <p className="text-white/70 text-sm">Garantía certificada</p>
+                  </div>
+                </div>
+
+                {/* Floating stat cards */}
+                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
+                  <p className="text-2xl font-bold">50+</p>
+                  <p className="text-xs text-white/70">Años de experiencia</p>
+                </div>
+                <div className="absolute bottom-8 left-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
+                  <p className="text-2xl font-bold">10K+</p>
+                  <p className="text-xs text-white/70">Transformadores restaurados</p>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -293,25 +299,28 @@ export default function EtrysPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 lg:gap-2">
               {remanufactureProcess.map((step, index) => (
-                <motion.div
+                <motion.button
                   key={step.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="relative text-center"
+                  onClick={() => setActiveStepIndex(index)}
+                  className="relative text-center group cursor-pointer"
                 >
-                  {/* Step Number */}
-                  <div className="relative z-10 w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#00A3E0] to-[#001689] flex items-center justify-center text-white font-bold shadow-lg">
+                  <div className="relative z-10 w-12 h-12 mx-auto mb-3 rounded-full bg-linear-to-br from-[#00A3E0] to-[#001689] flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-200">
                     {step.id}
                   </div>
-                  <h3 className="font-semibold text-gray-900 text-sm mb-1">
+                  <h3 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-[#00A3E0] transition-colors">
                     {step.shortTitle}
                   </h3>
                   <p className="text-xs text-gray-500 hidden md:block line-clamp-2">
                     {step.description}
                   </p>
-                </motion.div>
+                  <p className="text-xs text-[#00A3E0] font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                    Ver detalle →
+                  </p>
+                </motion.button>
               ))}
             </div>
           </div>
@@ -378,29 +387,33 @@ export default function EtrysPage() {
                 Complete el formulario y le responderemos en menos de 30 minutos
                 durante horario laboral.
               </p>
-              <div className="space-y-4">
+              <form onSubmit={handleQuoteSubmit} className="space-y-4">
                 <input
                   type="text"
                   placeholder="Nombre completo"
+                  value={quoteForm.nombre}
+                  onChange={(e) => setQuoteForm((p) => ({ ...p, nombre: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
                 />
                 <input
                   type="email"
                   placeholder="Correo electrónico"
+                  value={quoteForm.email}
+                  onChange={(e) => setQuoteForm((p) => ({ ...p, email: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
                 />
-                <input
-                  type="tel"
-                  placeholder="Teléfono"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                <PhoneInputField
+                  value={quoteForm.telefono}
+                  onChange={(val) => setQuoteForm((p) => ({ ...p, telefono: val }))}
+                  focusColor="#00A3E0"
                 />
-                <Link
-                  href="/etrys/cotizaciones"
-                  className="block w-full px-6 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-colors text-center"
+                <button
+                  type="submit"
+                  className="block w-full px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors text-center"
                 >
                   Continuar Cotización
-                </Link>
-              </div>
+                </button>
+              </form>
               <p className="text-xs text-gray-500 mt-4 flex items-center gap-2">
                 <Clock size={14} />
                 Respuesta promedio: 30 minutos en horario laboral
@@ -485,7 +498,12 @@ export default function EtrysPage() {
         </div>
       </section>
 
-
+      <RemanufactureProcessModal
+        steps={remanufactureProcess}
+        activeIndex={activeStepIndex}
+        onClose={() => setActiveStepIndex(null)}
+        onNavigate={setActiveStepIndex}
+      />
     </div>
   );
 }

@@ -30,6 +30,7 @@ import {
   Package,
 } from "lucide-react";
 import { services, contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import {
   serviciosInfo,
   proyectosServicios,
@@ -74,7 +75,7 @@ export default function ServiciosPage() {
       {/* ================================================================ */}
       {/* 1. HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#FF5500] via-[#E04D00] to-[#CC4400] text-white py-16 lg:py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#696969] via-[#555555] to-[#4a4a4a] text-white py-20 lg:py-28 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -93,39 +94,33 @@ export default function ServiciosPage() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="space-y-8"
             >
-              {/* Breadcrumb */}
-              <div className="flex items-center gap-2 text-white/60 text-sm mb-8">
-                <Link href="/" className="hover:text-white transition-colors">
-                  Inicio
-                </Link>
-                <ChevronRight size={16} />
-                <span className="text-white">Servicios</span>
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                <Settings size={18} className="text-white/80" />
+                <span className="text-sm font-medium">Servicios Especializados</span>
               </div>
 
-              <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
-                <Settings size={16} />
-                Servicios Especializados
-              </span>
-
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                EMINSA Servicios
-              </h1>
-              <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl">
-                {serviciosInfo.description}
-              </p>
+              <div className="space-y-4">
+                <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
+                  SERVICIOS
+                </h1>
+                <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
+                  {serviciosInfo.description}
+                </p>
+              </div>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#FF5500] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#696969] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-all"
@@ -178,7 +173,7 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
               Nuestros Servicios
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
@@ -199,7 +194,7 @@ export default function ServiciosPage() {
             className="mb-16"
           >
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#FF5500] to-[#CC4400] rounded-xl flex items-center justify-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-xl flex items-center justify-center">
                 <MapPin size={24} className="text-white" />
               </div>
               <div>
@@ -230,14 +225,14 @@ export default function ServiciosPage() {
                         href={service.url || `/servicios/${service.id}`}
                         className="group block h-full"
                       >
-                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#FF5500]/20 transition-all duration-300 hover:-translate-y-1">
+                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#696969]/20 transition-all duration-300 hover:-translate-y-1">
                           {/* Icon */}
-                          <div className="w-16 h-16 bg-gradient-to-br from-[#FF5500]/10 to-[#FF5500]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#FF5500] group-hover:to-[#CC4400] transition-all duration-300">
-                            <IconComponent className="w-8 h-8 text-[#FF5500] group-hover:text-white transition-colors duration-300" />
+                          <div className="w-16 h-16 bg-gradient-to-br from-[#696969]/10 to-[#696969]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#696969] group-hover:to-[#4a4a4a] transition-all duration-300">
+                            <IconComponent className="w-8 h-8 text-[#696969] group-hover:text-white transition-colors duration-300" />
                           </div>
 
                           {/* Content */}
-                          <h3 className="text-xl font-bold text-[#001689] mb-3 group-hover:text-[#FF5500] transition-colors">
+                          <h3 className="text-xl font-bold text-[#001689] mb-3 group-hover:text-[#696969] transition-colors">
                             {service.name}
                           </h3>
                           <p className="text-[#76777A] text-sm leading-relaxed mb-6">
@@ -251,14 +246,14 @@ export default function ServiciosPage() {
                                 key={i}
                                 className="flex items-center gap-2 text-sm text-[#76777A]"
                               >
-                                <div className="w-1.5 h-1.5 bg-[#FF5500] rounded-full flex-shrink-0" />
+                                <div className="w-1.5 h-1.5 bg-[#696969] rounded-full flex-shrink-0" />
                                 {benefit}
                               </div>
                             ))}
                           </div>
 
                           {/* Hover Arrow */}
-                          <div className="mt-6 flex items-center gap-2 text-[#FF5500] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="mt-6 flex items-center gap-2 text-[#696969] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             Ver más detalles
                             <ArrowRight
                               size={16}
@@ -368,7 +363,7 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
               Metodología
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
@@ -383,7 +378,7 @@ export default function ServiciosPage() {
           {/* Timeline */}
           <div className="relative">
             {/* Connecting line (desktop only) */}
-            <div className="hidden lg:block absolute top-[60px] left-[16.66%] right-[16.66%] h-0.5 border-t-2 border-dashed border-[#FF5500]/30" />
+            <div className="hidden lg:block absolute top-[60px] left-[16.66%] right-[16.66%] h-0.5 border-t-2 border-dashed border-[#696969]/30" />
 
             <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
               {serviciosInfo.procesoTrabajo.map((paso, index) => {
@@ -400,7 +395,7 @@ export default function ServiciosPage() {
                   >
                     {/* Numbered Circle */}
                     <div className="relative z-10 w-[120px] h-[120px] mx-auto mb-8">
-                      <div className="w-full h-full bg-gradient-to-br from-[#FF5500] to-[#CC4400] rounded-full flex items-center justify-center shadow-lg shadow-[#FF5500]/25">
+                      <div className="w-full h-full bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-full flex items-center justify-center shadow-lg shadow-[#696969]/25">
                         <Icon className="w-12 h-12 text-white" />
                       </div>
                       <div className="absolute -top-2 -right-2 w-10 h-10 bg-[#001689] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
@@ -435,7 +430,7 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
               Tecnología de Punta
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
@@ -459,15 +454,15 @@ export default function ServiciosPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#FF5500]/20 transition-all duration-300 group"
+                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#696969]/20 transition-all duration-300 group"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#FF5500]/10 to-[#FF5500]/5 flex items-center justify-center mb-4 group-hover:from-[#FF5500] group-hover:to-[#CC4400] transition-all">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#696969]/10 to-[#696969]/5 flex items-center justify-center mb-4 group-hover:from-[#696969] group-hover:to-[#4a4a4a] transition-all">
                     <Icon
                       size={28}
-                      className="text-[#FF5500] group-hover:text-white transition-colors"
+                      className="text-[#696969] group-hover:text-white transition-colors"
                     />
                   </div>
-                  <h3 className="font-bold text-[#001689] mb-2 group-hover:text-[#FF5500] transition-colors">
+                  <h3 className="font-bold text-[#001689] mb-2 group-hover:text-[#696969] transition-colors">
                     {equip.name}
                   </h3>
                   <p className="text-sm text-[#76777A] mb-3 leading-relaxed">
@@ -495,7 +490,7 @@ export default function ServiciosPage() {
             </p>
             <Link
               href="/servicios/cotizacion"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF5500] hover:bg-[#E64D00] text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#696969] hover:bg-[#4a4a4a] text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
             >
               Agendar Visita
               <ArrowRight size={20} />
@@ -516,7 +511,7 @@ export default function ServiciosPage() {
             className="flex flex-col md:flex-row items-center justify-between gap-8"
           >
             <div className="flex items-center gap-6">
-              <div className="w-16 h-16 bg-[#FF5500] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="w-16 h-16 bg-[#696969] rounded-2xl flex items-center justify-center flex-shrink-0">
                 <AlertTriangle className="w-8 h-8 text-white" />
               </div>
               <div>
@@ -538,7 +533,7 @@ export default function ServiciosPage() {
                 {contactInfo.phone}
               </a>
               <a
-                href={`https://wa.me/${contactInfo.whatsapp}`}
+                href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#20BD5A] transition-all"
@@ -563,7 +558,7 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
               Casos de Éxito
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
@@ -587,12 +582,12 @@ export default function ServiciosPage() {
                 className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1"
               >
                 {/* Top Gradient Stripe */}
-                <div className="h-2 bg-gradient-to-r from-[#FF5500] via-[#E04D00] to-[#CC4400]" />
+                <div className="h-2 bg-gradient-to-r from-[#696969] via-[#555555] to-[#4a4a4a]" />
 
                 <div className="p-8">
                   {/* Service Badge + Date */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-xs font-medium rounded-full">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#696969]/10 text-[#696969] text-xs font-medium rounded-full">
                       <Settings size={12} />
                       {proyecto.tipoServicio}
                     </span>
@@ -603,7 +598,7 @@ export default function ServiciosPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-[#001689] mb-2 group-hover:text-[#FF5500] transition-colors">
+                  <h3 className="text-lg font-bold text-[#001689] mb-2 group-hover:text-[#696969] transition-colors">
                     {proyecto.titulo}
                   </h3>
 
@@ -627,7 +622,7 @@ export default function ServiciosPage() {
                       >
                         <CheckCircle2
                           size={14}
-                          className="text-[#FF5500] flex-shrink-0"
+                          className="text-[#696969] flex-shrink-0"
                         />
                         {resultado}
                       </div>
@@ -668,7 +663,7 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#696969]/10 text-[#696969] text-sm font-medium rounded-full mb-4">
               Testimonios
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
@@ -676,7 +671,7 @@ export default function ServiciosPage() {
             </h2>
             <p className="text-[#76777A] text-lg">
               La confianza de nuestros clientes es nuestro mayor respaldo.
-              Conozca sus experiencias trabajando con EMINSA Servicios.
+              Conozca sus experiencias trabajando con EMINSA.
             </p>
           </motion.div>
 
@@ -694,7 +689,7 @@ export default function ServiciosPage() {
                 {/* Large Quote Icon */}
                 <Quote
                   size={64}
-                  className="absolute top-6 right-6 text-[#FF5500]/10"
+                  className="absolute top-6 right-6 text-[#696969]/10"
                 />
 
                 {/* Testimonial Text */}
@@ -710,7 +705,7 @@ export default function ServiciosPage() {
                       size={16}
                       className={
                         i < testimonial.rating
-                          ? "text-[#FF5500] fill-[#FF5500]"
+                          ? "text-[#696969] fill-[#696969]"
                           : "text-gray-200 fill-gray-200"
                       }
                     />
@@ -719,7 +714,7 @@ export default function ServiciosPage() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#FF5500] to-[#CC4400] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#696969] to-[#4a4a4a] rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {testimonial.iniciales}
                   </div>
                   <div>
@@ -734,7 +729,7 @@ export default function ServiciosPage() {
 
                 {/* Service Badge */}
                 <div className="mt-4 pt-4 border-t border-gray-100">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#FF5500]/10 text-[#FF5500] text-xs font-medium rounded-full">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#696969]/10 text-[#696969] text-xs font-medium rounded-full">
                     <Settings size={10} />
                     {testimonial.servicio}
                   </span>
@@ -752,7 +747,7 @@ export default function ServiciosPage() {
           >
             <Link
               href="/servicios/testimoniales"
-              className="inline-flex items-center gap-2 text-[#FF5500] font-semibold hover:gap-3 transition-all text-lg"
+              className="inline-flex items-center gap-2 text-[#696969] font-semibold hover:gap-3 transition-all text-lg"
             >
               Ver Todos los Testimonios
               <ArrowRight size={20} />
@@ -793,7 +788,7 @@ export default function ServiciosPage() {
               viewport={{ once: true }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#FF5500] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-[#696969] mb-4">
                 50+
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -812,7 +807,7 @@ export default function ServiciosPage() {
               transition={{ delay: 0.1 }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#FF5500] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-[#696969] mb-4">
                 24/7
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -831,7 +826,7 @@ export default function ServiciosPage() {
               transition={{ delay: 0.2 }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#FF5500] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-[#696969] mb-4">
                 100%
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -855,7 +850,7 @@ export default function ServiciosPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative bg-gradient-to-br from-[#FF5500] via-[#E04D00] to-[#CC4400] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
+            className="relative bg-gradient-to-br from-[#696969] via-[#555555] to-[#4a4a4a] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
           >
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
@@ -876,13 +871,13 @@ export default function ServiciosPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#FF5500] hover:bg-white/90 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#696969] hover:bg-white/90 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={22} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
+                  href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold rounded-xl transition-all text-lg"

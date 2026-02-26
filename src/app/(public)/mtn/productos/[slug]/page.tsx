@@ -20,6 +20,7 @@ import {
   transformerProducts 
 } from "@/config/mtn-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -131,13 +132,13 @@ export default async function ProductoPage({ params }: Props) {
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link
                   href={`/mtn/cotizaciones?producto=${product.slug}`}
-                  className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}?text=Hola, me interesa información sobre ${product.name}`}
+                  href={getWhatsAppUrl(`Hola, me interesa información sobre ${product.name}`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-semibold transition-colors border border-white/30"
@@ -334,7 +335,7 @@ export default async function ProductoPage({ params }: Props) {
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <Link
                 href={`/mtn/cotizaciones?producto=${product.slug}`}
-                className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

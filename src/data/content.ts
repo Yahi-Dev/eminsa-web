@@ -41,6 +41,81 @@ export interface Usuario {
   rol: "admin" | "editor";
 }
 
+export interface RecursoDescargable {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  archivo: string; // URL del archivo
+  tipo: "pdf" | "excel" | "word" | "imagen" | "otro";
+  division: "mtn" | "etrys" | "eic" | "servicios" | "general";
+  activo: boolean;
+  fechaCreacion: string;
+  fechaActualizacion: string;
+}
+
+export const tiposRecurso = [
+  { value: "pdf", label: "PDF" },
+  { value: "excel", label: "Excel" },
+  { value: "word", label: "Word" },
+  { value: "imagen", label: "Imagen" },
+  { value: "otro", label: "Otro" },
+] as const;
+
+export const divisionesRecurso = [
+  { value: "general", label: "General" },
+  { value: "mtn", label: "MTN" },
+  { value: "etrys", label: "ETRYS / RST" },
+  { value: "eic", label: "EIC" },
+  { value: "servicios", label: "Servicios" },
+] as const;
+
+export const recursosEjemplo: RecursoDescargable[] = [
+  {
+    id: "1",
+    nombre: "Ficha Técnica Transformadores Tipo Poste",
+    descripcion: "Especificaciones técnicas completas para transformadores tipo poste RST by EMINSA.",
+    archivo: "/recursos/ficha-tecnica-tipo-poste.pdf",
+    tipo: "pdf",
+    division: "etrys",
+    activo: true,
+    fechaCreacion: "2024-11-01",
+    fechaActualizacion: "2024-11-01",
+  },
+  {
+    id: "2",
+    nombre: "Manual de Instalación Pad Mounted",
+    descripcion: "Guía de instalación y mantenimiento para transformadores Pad Mounted.",
+    archivo: "/recursos/manual-pad-mounted.pdf",
+    tipo: "pdf",
+    division: "etrys",
+    activo: true,
+    fechaCreacion: "2024-10-15",
+    fechaActualizacion: "2024-10-15",
+  },
+  {
+    id: "3",
+    nombre: "Catálogo MTN 2024",
+    descripcion: "Catálogo completo de transformadores nuevos MTN by EMINSA.",
+    archivo: "/recursos/catalogo-mtn-2024.pdf",
+    tipo: "pdf",
+    division: "mtn",
+    activo: true,
+    fechaCreacion: "2024-09-01",
+    fechaActualizacion: "2024-09-01",
+  },
+  {
+    id: "4",
+    nombre: "Política de Garantía RST",
+    descripcion: "Términos y condiciones de la garantía de 18 meses RST by EMINSA.",
+    archivo: "/recursos/politica-garantia-rst.pdf",
+    tipo: "pdf",
+    division: "etrys",
+    activo: false,
+    fechaCreacion: "2024-08-01",
+    fechaActualizacion: "2024-08-01",
+  },
+];
+
 // Datos de ejemplo para noticias
 export const noticiasEjemplo: Noticia[] = [
   {

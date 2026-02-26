@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { contactInfo } from '@/config/navigation';
+import { getWhatsAppUrl } from '@/utils/whatsapp';
 
 /**
  * Información de contacto con datos de la empresa, redes sociales y mapa
@@ -162,7 +163,7 @@ function WhatsAppButton({ whatsappNumber }: WhatsAppButtonProps) {
 
   return (
     <a
-      href={`https://wa.me/${whatsappNumber}`}
+      href={getWhatsAppUrl()}
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center justify-center gap-3 w-full px-6 py-4 bg-[#25D366] text-white font-semibold rounded-xl hover:bg-[#20BD5A] transition-all mt-8"

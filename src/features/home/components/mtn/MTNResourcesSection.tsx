@@ -59,7 +59,7 @@ const resources: Resource[] = [
       "Herramienta para dimensionar el transformador ideal según tus necesidades.",
     icon: Calculator,
     href: "/mtn/recursos/calculadora",
-    color: "#FF5500",
+    color: "#001689",
     cta: "Usar Calculadora",
   },
 ];

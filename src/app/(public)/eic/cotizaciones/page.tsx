@@ -18,18 +18,23 @@ import {
   Upload,
   X,
   Globe,
+  Zap,
 } from "lucide-react";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 import {
   eicProductCategories,
   eicProducts,
   eicBrands,
 } from "@/config/eic-data";
+import { PhoneInputField } from "@/components/ui/PhoneInputField";
 
 function CotizacionesForm() {
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [codigo, setCodigo] = useState("");
+  const [submitError, setSubmitError] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [formData, setFormData] = useState({
     // Contact info
@@ -46,6 +51,7 @@ function CotizacionesForm() {
     potencia: "",
     voltajePrimario: "",
     voltajeSecundario: "",
+    configuracion: "",
     urgencia: "normal",
     // Additional
     ubicacion: "",
@@ -70,6 +76,8 @@ function CotizacionesForm() {
       })
     : eicBrands;
 
+  const showTransformerFields = formData.categoriaProducto === 'transformadores';
+
   useEffect(() => {
     const producto = searchParams.get("producto");
     const categoria = searchParams.get("categoria");
@@ -92,9 +100,59 @@ function CotizacionesForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    setSubmitError("");
+
+    try {
+      const res = await fetch('/api/cotizaciones', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          unidad: 'EIC',
+          nombre: formData.nombre,
+          empresa: formData.empresa || undefined,
+          email: formData.email,
+          telefono: formData.telefono,
+          urgente: formData.urgencia === 'urgente',
+          detalles: {
+            categoriaProducto: formData.categoriaProducto,
+            productoEspecifico: (() => {
+              if (!formData.productoEspecifico) return '';
+              const found = filteredProducts.find(p => p.slug === formData.productoEspecifico);
+              return found ? `${found.shortName} (${found.brand})` : formData.productoEspecifico;
+            })(),
+            marca: formData.marca,
+            cantidad: formData.cantidad,
+            urgencia: formData.urgencia,
+            cargo: formData.cargo,
+            ubicacion: formData.ubicacion,
+            descripcion: formData.descripcion,
+            comoNosConocio: formData.comoNosConocio,
+            ...(formData.categoriaProducto === 'transformadores' ? {
+              potencia: formData.potencia,
+              configuracion: formData.configuracion,
+              voltajePrimario: formData.voltajePrimario,
+              voltajeSecundario: formData.voltajeSecundario,
+            } : {}),
+            ...(files.length > 0 && {
+              archivos: files.map(f => `${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join(' • '),
+            }),
+          },
+        }),
+      });
+
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message || 'Error al enviar');
+      setCodigo(json.codigo);
+      setIsSuccess(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Error de conexión. Intente de nuevo.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handlePhoneChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, telefono: value }));
   };
 
   const handleChange = (
@@ -109,6 +167,10 @@ function CotizacionesForm() {
       if (name === "categoriaProducto") {
         updated.productoEspecifico = "";
         updated.marca = "";
+        updated.potencia = "";
+        updated.voltajePrimario = "";
+        updated.voltajeSecundario = "";
+        updated.configuracion = "";
       }
       return updated;
     });
@@ -139,6 +201,13 @@ function CotizacionesForm() {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             ¡Solicitud Enviada!
           </h2>
+          {codigo && (
+            <div className="bg-[#00B140]/5 border border-[#00B140]/20 rounded-xl p-4 mb-4">
+              <p className="text-xs text-[#00B140] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+              <p className="text-2xl font-bold text-[#00B140] tracking-widest">{codigo}</p>
+              <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
+            </div>
+          )}
           <p className="text-gray-600 mb-6">
             Hemos recibido su solicitud de cotización. Nuestro equipo de
             comercio internacional le contactará en breve con un presupuesto
@@ -278,17 +347,12 @@ function CotizacionesForm() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Teléfono *
-                      </label>
-                      <input
-                        type="tel"
-                        name="telefono"
-                        required
+                      <PhoneInputField
                         value={formData.telefono}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
-                        placeholder="809-000-0000"
+                        onChange={handlePhoneChange}
+                        label="Teléfono"
+                        required
+                        focusColor="#00B140"
                       />
                     </div>
                     <div className="sm:col-span-2">
@@ -382,46 +446,7 @@ function CotizacionesForm() {
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
                       />
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Potencia (kVA)
-                      </label>
-                      <input
-                        type="text"
-                        name="potencia"
-                        value={formData.potencia}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
-                        placeholder="Ej: 500 kVA"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Voltaje Primario (kV)
-                      </label>
-                      <input
-                        type="text"
-                        name="voltajePrimario"
-                        value={formData.voltajePrimario}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
-                        placeholder="Ej: 13.2 kV"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Voltaje Secundario (V)
-                      </label>
-                      <input
-                        type="text"
-                        name="voltajeSecundario"
-                        value={formData.voltajeSecundario}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
-                        placeholder="Ej: 120/240 V"
-                      />
-                    </div>
-                    <div>
+                    <div className="sm:col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
                         Urgencia
                       </label>
@@ -441,6 +466,78 @@ function CotizacionesForm() {
                       </select>
                     </div>
                   </div>
+
+                  {/* Transformer specs — only visible when category is Transformadores */}
+                  {showTransformerFields && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-6 bg-[#00B140]/5 border border-[#00B140]/20 rounded-xl p-5 overflow-hidden"
+                    >
+                      <div className="flex items-center gap-2 mb-4">
+                        <Zap className="w-5 h-5 text-[#00B140]" />
+                        <h3 className="font-semibold text-gray-800">Especificaciones del Transformador</h3>
+                      </div>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Potencia (kVA)
+                          </label>
+                          <input
+                            type="text"
+                            name="potencia"
+                            value={formData.potencia}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                            placeholder="Ej: 500 kVA"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Configuración
+                          </label>
+                          <select
+                            name="configuracion"
+                            value={formData.configuracion}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                          >
+                            <option value="">Seleccione...</option>
+                            <option value="monofasico">Monofásico</option>
+                            <option value="trifasico">Trifásico</option>
+                            <option value="autoprotegido">Autoprotegido (CSP)</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Voltaje Primario (kV)
+                          </label>
+                          <input
+                            type="text"
+                            name="voltajePrimario"
+                            value={formData.voltajePrimario}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                            placeholder="Ej: 13.2 kV"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Voltaje Secundario (V)
+                          </label>
+                          <input
+                            type="text"
+                            name="voltajeSecundario"
+                            value={formData.voltajeSecundario}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                            placeholder="Ej: 120/240 V"
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
 
                 {/* Section: Información Adicional */}
@@ -553,11 +650,18 @@ function CotizacionesForm() {
                   </div>
                 </div>
 
+                {/* General error */}
+                {submitError && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+                    {submitError}
+                  </div>
+                )}
+
                 {/* Submit */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-4 bg-[#FF5500] hover:bg-[#E64D00] disabled:bg-orange-300 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 bg-[#00B140] hover:bg-[#008F33] disabled:bg-[#00B140]/50 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -618,7 +722,7 @@ function CotizacionesForm() {
                     </div>
                   </a>
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"

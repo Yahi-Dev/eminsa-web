@@ -19,6 +19,7 @@ import {
   transformerVariants
 } from "@/config/mtn-data";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 interface Props {
   params: Promise<{ slug: string; variant: string }>;
@@ -116,13 +117,13 @@ export default async function VariantPage({ params }: Props) {
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link
                   href={`/mtn/cotizaciones?producto=${product.slug}&config=${variant.slug}`}
-                  className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={`https://wa.me/${contactInfo.whatsapp}?text=Hola, me interesa información sobre ${variant.name}`}
+                  href={getWhatsAppUrl(`Hola, me interesa información sobre ${variant.name}`)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-semibold transition-colors border border-white/30"
@@ -207,23 +208,25 @@ export default async function VariantPage({ params }: Props) {
       </section>
 
       {/* Capacities */}
-      <section className="py-16 bg-white">
-        <div className="container-eminsa">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">
-            Capacidades Disponibles (kVA)
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            {variant.capacities.map((cap) => (
-              <span
-                key={cap}
-                className="bg-gray-100 text-gray-700 font-medium px-4 py-2 rounded-lg hover:bg-[#001689] hover:text-white transition-colors cursor-default"
-              >
-                {cap} kVA
-              </span>
-            ))}
+      {variant.capacities.length > 0 && (
+        <section className="py-16 bg-white">
+          <div className="container-eminsa">
+            <h2 className="text-2xl font-bold text-gray-900 mb-8">
+              Capacidades Disponibles (kVA)
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {variant.capacities.map((cap) => (
+                <span
+                  key={cap}
+                  className="bg-gray-100 text-gray-700 font-medium px-4 py-2 rounded-lg hover:bg-[#001689] hover:text-white transition-colors cursor-default"
+                >
+                  {cap} kVA
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Resources */}
       <section className="py-16 bg-gray-50">
@@ -281,7 +284,7 @@ export default async function VariantPage({ params }: Props) {
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <Link
                 href={`/mtn/cotizaciones?producto=${product.slug}&config=${variant.slug}`}
-                className="inline-flex items-center gap-2 bg-[#FF5500] hover:bg-[#E64D00] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

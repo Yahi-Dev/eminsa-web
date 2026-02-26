@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { contactInfo } from "@/config/navigation";
+import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 // Tipos para los items del menú
 interface NavItem {
@@ -166,7 +167,7 @@ export default function EtrysLayout({
       {/* Subnavegación ETRYS - Desktop */}
       <nav 
         ref={menuRef}
-        className="hidden lg:block bg-white border-b border-gray-200 sticky top-24 z-40 shadow-sm"
+        className="hidden lg:block bg-[#00A3E0]/5 border-t-2 border-[#00A3E0]/20 border-b border-[#00A3E0]/10 sticky top-20 xl:top-28 z-40 shadow-sm"
       >
         <div className="container-eminsa">
           <div className="flex items-center justify-between py-2">
@@ -302,7 +303,7 @@ export default function EtrysLayout({
       {/* Subnavegación ETRYS - Mobile */}
       <div 
         ref={menuRef}
-        className="lg:hidden sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm"
+        className="lg:hidden sticky top-20 z-40 bg-[#00A3E0]/5 border-t-2 border-[#00A3E0]/20 border-b border-[#00A3E0]/10 shadow-sm"
       >
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
@@ -447,7 +448,7 @@ export default function EtrysLayout({
                 {/* Mobile CTAs */}
                 <div className="pt-4 mt-4 border-t border-gray-100 space-y-3">
                   <a
-                    href={`https://wa.me/${contactInfo.whatsapp}`}
+                    href={getWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all font-medium"
@@ -465,7 +466,7 @@ export default function EtrysLayout({
                   <Link
                     href="/etrys/cotizaciones"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full px-4 py-3 bg-[#FF5500] hover:bg-[#E64D00] text-white rounded-lg transition-all font-medium"
+                    className="flex items-center justify-center w-full px-4 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white rounded-lg transition-all font-medium"
                   >
                     Solicitar Cotización
                   </Link>
