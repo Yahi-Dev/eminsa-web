@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Mail, ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
 
 export default function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
@@ -16,15 +17,13 @@ export default function ForgotPasswordForm() {
     setError("");
     setIsSubmitting(true);
 
-    const res = await fetch("/api/auth/forget-password", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, redirectTo: `${window.location.origin}/reset-password` }),
+    const result = await authClient.forgetPassword({
+      email,
+      redirectTo: `${window.location.origin}/reset-password`,
     });
 
-    if (!res.ok) {
-      const data = await res.json().catch(() => ({}));
-      setError(data.message || "No se pudo enviar el correo. Intente nuevamente.");
+    if (result.error) {
+      setError(result.error.message || "No se pudo enviar el correo. Intente nuevamente.");
     } else {
       setSubmitted(true);
     }

@@ -36,7 +36,7 @@ export async function PUT(
   try {
     const { id } = await params;
     const body = await request.json();
-    const { titulo, resumen, contenido, imagen, imagenes, categoria, division, autor, publicado, destacado } = body;
+    const { titulo, resumen, contenido, imagen, imagenes, categoria, division, autor, publicado, destacado, scheduledAt } = body;
 
     const data: Record<string, unknown> = {};
     if (titulo !== undefined) {
@@ -53,6 +53,9 @@ export async function PUT(
     if (autor !== undefined) data.autor = autor?.trim() || null;
     if (publicado !== undefined) data.publicado = publicado;
     if (destacado !== undefined) data.destacado = destacado;
+    if (scheduledAt !== undefined) {
+      data.scheduledAt = !publicado && scheduledAt ? new Date(scheduledAt) : null;
+    }
 
     const noticia = await prisma.noticia.update({
       where: { id: parseInt(id, 10) },

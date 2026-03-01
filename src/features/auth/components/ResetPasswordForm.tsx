@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Lock, Eye, EyeOff, AlertCircle, CheckCircle, ArrowLeft } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
 
 export default function ResetPasswordForm() {
   const router = useRouter();
@@ -50,15 +51,13 @@ export default function ResetPasswordForm() {
 
     setIsSubmitting(true);
 
-    const res = await fetch("/api/auth/reset-password", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ newPassword: password, token }),
+    const result = await authClient.resetPassword({
+      newPassword: password,
+      token: token!,
     });
 
-    if (!res.ok) {
-      const data = await res.json().catch(() => ({}));
-      setError(data.message || "No se pudo restablecer la contraseña. El enlace puede haber expirado.");
+    if (result.error) {
+      setError(result.error.message || "No se pudo restablecer la contraseña. El enlace puede haber expirado.");
     } else {
       setSuccess(true);
       setTimeout(() => router.push("/login"), 3000);

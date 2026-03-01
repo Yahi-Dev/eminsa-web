@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Save, AlertCircle } from "lucide-react";
 import ImageUploadField from "@/components/admin/ImageUploadField";
+import ScheduledPublishPicker from "@/components/admin/ScheduledPublishPicker";
 import type { ProyectoAPI } from "@/features/admin/types";
 
 const divisionOptions = [
@@ -29,6 +30,13 @@ function generateSlug(text: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+function toDatetimeLocal(isoString?: string | null): string {
+  if (!isoString) return "";
+  const d = new Date(isoString);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
 export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFormProps) {
   const router = useRouter();
 
@@ -45,6 +53,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
     capacidad: proyecto?.capacidad ?? "",
     publicado: proyecto?.publicado ?? false,
     destacado: proyecto?.destacado ?? false,
+    scheduledAt: toDatetimeLocal(proyecto?.scheduledAt),
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -68,7 +77,12 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
     const { name, value, type } = e.target;
     if (type === "checkbox") {
       const checked = (e.target as HTMLInputElement).checked;
-      setFormData((prev) => ({ ...prev, [name]: checked }));
+      setFormData((prev) => ({
+        ...prev,
+        [name]: checked,
+        // When publishing immediately, clear the scheduled date
+        ...(name === "publicado" && checked ? { scheduledAt: "" } : {}),
+      }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -79,9 +93,14 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
     setIsSubmitting(true);
     setApiError(null);
 
+    const scheduledAt = !formData.publicado && formData.scheduledAt
+      ? new Date(formData.scheduledAt).toISOString()
+      : null;
+
     const body = {
       ...formData,
       anio: formData.anio ? parseInt(formData.anio, 10) : null,
+      scheduledAt,
     };
 
     try {
@@ -90,11 +109,12 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(body),
       });
       const data = await res.json();
       if (!res.ok || !data.success) {
-        setApiError(data.error ?? "Error al guardar el proyecto");
+        setApiError(data.error ?? data.message ?? "Error al guardar el proyecto");
         return;
       }
       router.push("/admin/proyectos");
@@ -281,27 +301,49 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
 
           <div className="bg-white rounded-xl p-6 shadow-sm">
             <h2 className="text-base font-semibold text-gray-800 mb-4">Estado y Visibilidad</h2>
-            <div className="space-y-3">
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="publicado"
-                  checked={formData.publicado}
-                  onChange={handleChange}
-                  className="w-4 h-4 rounded border-gray-300 text-[#00A3E0] focus:ring-[#00A3E0]"
-                />
-                <span className="text-sm text-gray-700">Publicado (visible en el sitio)</span>
-              </label>
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="destacado"
-                  checked={formData.destacado}
-                  onChange={handleChange}
-                  className="w-4 h-4 rounded border-gray-300 text-[#00A3E0] focus:ring-[#00A3E0]"
-                />
-                <span className="text-sm text-gray-700">Destacado (aparece en sección destacada)</span>
-              </label>
+            <div className="space-y-4">
+              <div className="space-y-3">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="publicado"
+                    checked={formData.publicado}
+                    onChange={handleChange}
+                    className="w-4 h-4 rounded border-gray-300 text-[#00A3E0] focus:ring-[#00A3E0]"
+                  />
+                  <span className="text-sm text-gray-700">Publicado (visible en el sitio)</span>
+                </label>
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="destacado"
+                    checked={formData.destacado}
+                    onChange={handleChange}
+                    className="w-4 h-4 rounded border-gray-300 text-[#00A3E0] focus:ring-[#00A3E0]"
+                  />
+                  <span className="text-sm text-gray-700">Destacado (aparece en sección destacada)</span>
+                </label>
+              </div>
+
+              {/* Programar publicación — visible solo cuando NO está publicado */}
+              <AnimatePresence>
+                {!formData.publicado && (
+                  <motion.div
+                    key="scheduler"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <ScheduledPublishPicker
+                      value={formData.scheduledAt}
+                      onChange={(val) => setFormData(prev => ({ ...prev, scheduledAt: val }))}
+                      accentColor="#00A3E0"
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 

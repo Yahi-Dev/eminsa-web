@@ -466,14 +466,6 @@ export const certifications: Certification[] = [
 
 export const resources: Resource[] = [
   {
-    id: "articulos",
-    name: "Artículos",
-    slug: "articulos",
-    description: "Publicaciones técnicas, noticias del sector y contenido educativo sobre transformadores.",
-    icon: "newspaper",
-    type: "articles",
-  },
-  {
     id: "fichas-tecnicas",
     name: "Fichas Técnicas",
     slug: "fichas-tecnicas",

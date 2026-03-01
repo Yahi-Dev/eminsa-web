@@ -35,7 +35,7 @@ export async function PUT(
   try {
     const { id } = await params;
     const body = await request.json();
-    const { titulo, cliente, division, resumen, descripcion, imagen, imagenes, ubicacion, capacidad, anio, publicado, destacado } = body;
+    const { titulo, cliente, division, resumen, descripcion, imagen, imagenes, ubicacion, capacidad, anio, publicado, destacado, scheduledAt } = body;
 
     const data: Record<string, unknown> = {};
     if (titulo !== undefined) { data.titulo = titulo.trim().substring(0, 200); if (body.slug === undefined) data.slug = slugify(titulo.trim()); }
@@ -51,6 +51,9 @@ export async function PUT(
     if (anio !== undefined) data.anio = anio ? parseInt(String(anio), 10) : null;
     if (publicado !== undefined) data.publicado = publicado;
     if (destacado !== undefined) data.destacado = destacado;
+    if (scheduledAt !== undefined) {
+      data.scheduledAt = !publicado && scheduledAt ? new Date(scheduledAt) : null;
+    }
 
     const proyecto = await prisma.proyecto.update({
       where: { id: parseInt(id, 10) },

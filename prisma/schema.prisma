@@ -78,10 +78,11 @@ model Noticia {
   categoria   String?
   division    String?
   autor       String?
-  publicado   Boolean  @default(false)
-  destacado   Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  publicado   Boolean   @default(false)
+  destacado   Boolean   @default(false)
+  scheduledAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   @@map("noticia")
 }
@@ -99,10 +100,11 @@ model Proyecto {
   ubicacion   String?
   capacidad   String?
   anio        Int?
-  publicado   Boolean  @default(false)
-  destacado   Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  publicado   Boolean   @default(false)
+  destacado   Boolean   @default(false)
+  scheduledAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 
   @@map("proyecto")
 }

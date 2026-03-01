@@ -3,15 +3,23 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Save, AlertCircle } from "lucide-react";
 import { categoriasNoticias } from "@/data/content";
 import ImageUploadField from "@/components/admin/ImageUploadField";
+import ScheduledPublishPicker from "@/components/admin/ScheduledPublishPicker";
 import type { NoticiaAPI } from "@/features/admin/types";
 
 interface NoticiaFormProps {
   noticia?: NoticiaAPI;
   isEditing?: boolean;
+}
+
+function toDatetimeLocal(isoString?: string | null): string {
+  if (!isoString) return "";
+  const d = new Date(isoString);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
 export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormProps) {
@@ -28,6 +36,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
     autor: noticia?.autor || "",
     publicado: noticia?.publicado || false,
     destacado: noticia?.destacado || false,
+    scheduledAt: toDatetimeLocal(noticia?.scheduledAt),
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -53,10 +62,17 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
-    }));
+    if (type === "checkbox") {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData(prev => ({
+        ...prev,
+        [name]: checked,
+        // When publishing immediately, clear the scheduled date
+        ...(name === "publicado" && checked ? { scheduledAt: "" } : {}),
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -68,14 +84,20 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
       const url = isEditing && noticia ? `/api/noticias/${noticia.id}` : "/api/noticias";
       const method = isEditing ? "PUT" : "POST";
 
+      const scheduledAt = !formData.publicado && formData.scheduledAt
+        ? new Date(formData.scheduledAt).toISOString()
+        : null;
+
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({
           ...formData,
           categoria: formData.categoria || null,
           division: formData.division || null,
           autor: formData.autor || null,
+          scheduledAt,
         }),
       });
 
@@ -161,7 +183,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
               </div>
             )}
 
-            {/* Categoría, División y Autor */}
+            {/* Categoría y Autor */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-[#76777A] mb-2">
@@ -258,28 +280,50 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
               <p className="text-right text-xs text-gray-400 mt-1">{formData.contenido.length}/20000</p>
             </div>
 
-            {/* Opciones */}
-            <div className="flex flex-wrap gap-6">
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="publicado"
-                  checked={formData.publicado}
-                  onChange={handleChange}
-                  className="w-5 h-5 rounded border-gray-300 text-[#001689] focus:ring-[#001689]"
-                />
-                <span className="text-[#76777A]">Publicar inmediatamente</span>
-              </label>
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="destacado"
-                  checked={formData.destacado}
-                  onChange={handleChange}
-                  className="w-5 h-5 rounded border-gray-300 text-yellow-500 focus:ring-yellow-500"
-                />
-                <span className="text-[#76777A]">Marcar como destacada</span>
-              </label>
+            {/* Opciones de publicación */}
+            <div className="space-y-4">
+              <div className="flex flex-wrap gap-6">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="publicado"
+                    checked={formData.publicado}
+                    onChange={handleChange}
+                    className="w-5 h-5 rounded border-gray-300 text-[#001689] focus:ring-[#001689]"
+                  />
+                  <span className="text-[#76777A]">Publicar inmediatamente</span>
+                </label>
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="destacado"
+                    checked={formData.destacado}
+                    onChange={handleChange}
+                    className="w-5 h-5 rounded border-gray-300 text-yellow-500 focus:ring-yellow-500"
+                  />
+                  <span className="text-[#76777A]">Marcar como destacada</span>
+                </label>
+              </div>
+
+              {/* Programar publicación — visible solo cuando NO se publica inmediatamente */}
+              <AnimatePresence>
+                {!formData.publicado && (
+                  <motion.div
+                    key="scheduler"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="overflow-hidden"
+                  >
+                    <ScheduledPublishPicker
+                      value={formData.scheduledAt}
+                      onChange={(val) => setFormData(prev => ({ ...prev, scheduledAt: val }))}
+                      accentColor="#001689"
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
 

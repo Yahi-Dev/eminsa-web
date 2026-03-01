@@ -10,6 +10,14 @@ export async function GET(request: NextRequest) {
     const division = searchParams.get('division');
     const destacado = searchParams.get('destacado');
 
+    // Auto-publish any scheduled proyectos whose time has passed
+    if (publicadoParam === 'true') {
+      await prisma.proyecto.updateMany({
+        where: { publicado: false, scheduledAt: { lte: new Date() } },
+        data: { publicado: true },
+      });
+    }
+
     const where: Record<string, unknown> = {};
     if (publicadoParam === 'true') where.publicado = true;
     if (division) where.division = division;
@@ -31,6 +39,7 @@ export async function GET(request: NextRequest) {
         anio: true,
         publicado: true,
         destacado: true,
+        scheduledAt: true,
         createdAt: true,
         updatedAt: true,
       },
@@ -49,7 +58,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { titulo, cliente, division, resumen, descripcion, imagen, imagenes, ubicacion, capacidad, anio, publicado, destacado } = body;
+    const { titulo, cliente, division, resumen, descripcion, imagen, imagenes, ubicacion, capacidad, anio, publicado, destacado, scheduledAt } = body;
 
     if (!titulo?.trim()) {
       return NextResponse.json({ success: false, message: 'El título es requerido' }, { status: 400 });
@@ -64,6 +73,8 @@ export async function POST(request: NextRequest) {
     let slug = body.slug?.trim() ? slugify(body.slug.trim()) : slugify(titulo.trim());
     const existing = await prisma.proyecto.findUnique({ where: { slug } });
     if (existing) slug = `${slug}-${Date.now()}`;
+
+    const scheduledDate = !publicado && scheduledAt ? new Date(scheduledAt) : null;
 
     const proyecto = await prisma.proyecto.create({
       data: {
@@ -80,6 +91,7 @@ export async function POST(request: NextRequest) {
         anio: anio ? parseInt(String(anio), 10) : null,
         publicado: publicado ?? false,
         destacado: destacado ?? false,
+        scheduledAt: scheduledDate,
       },
     });
 

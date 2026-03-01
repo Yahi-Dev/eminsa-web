@@ -11,6 +11,14 @@ export async function GET(request: NextRequest) {
     const categoria = searchParams.get('categoria');
     const destacado = searchParams.get('destacado');
 
+    // Auto-publish any scheduled noticias whose time has passed
+    if (publicadoParam === 'true') {
+      await prisma.noticia.updateMany({
+        where: { publicado: false, scheduledAt: { lte: new Date() } },
+        data: { publicado: true },
+      });
+    }
+
     const where: Record<string, unknown> = {};
     if (publicadoParam === 'true') where.publicado = true;
     if (division) where.division = division;
@@ -31,6 +39,7 @@ export async function GET(request: NextRequest) {
         autor: true,
         publicado: true,
         destacado: true,
+        scheduledAt: true,
         createdAt: true,
         updatedAt: true,
       },
@@ -49,7 +58,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { titulo, resumen, contenido, imagen, imagenes, categoria, division, autor, publicado, destacado } = body;
+    const { titulo, resumen, contenido, imagen, imagenes, categoria, division, autor, publicado, destacado, scheduledAt } = body;
 
     if (!titulo?.trim()) {
       return NextResponse.json({ success: false, message: 'El título es requerido' }, { status: 400 });
@@ -65,6 +74,8 @@ export async function POST(request: NextRequest) {
     const existing = await prisma.noticia.findUnique({ where: { slug } });
     if (existing) slug = `${slug}-${Date.now()}`;
 
+    const scheduledDate = !publicado && scheduledAt ? new Date(scheduledAt) : null;
+
     const noticia = await prisma.noticia.create({
       data: {
         slug,
@@ -78,6 +89,7 @@ export async function POST(request: NextRequest) {
         autor: autor?.trim() || null,
         publicado: publicado ?? false,
         destacado: destacado ?? false,
+        scheduledAt: scheduledDate,
       },
     });
 

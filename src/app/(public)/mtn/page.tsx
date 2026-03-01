@@ -294,7 +294,7 @@ export default function MTNPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {resources.map((resource) => {
               const Icon = resourceIcons[resource.icon] || FileText;
               return (

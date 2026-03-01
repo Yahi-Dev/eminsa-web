@@ -11,6 +11,7 @@ export interface NoticiaAPI {
   autor?: string | null;
   publicado: boolean;
   destacado: boolean;
+  scheduledAt?: string | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -30,6 +31,7 @@ export interface ProyectoAPI {
   anio?: number | null;
   publicado: boolean;
   destacado: boolean;
+  scheduledAt?: string | null;
   createdAt: string;
   updatedAt: string;
 }
