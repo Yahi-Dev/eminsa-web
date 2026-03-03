@@ -781,7 +781,7 @@ export default function ServiciosPage() {
               viewport={{ once: true }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#00269b] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-white mb-4">
                 50+
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -799,7 +799,7 @@ export default function ServiciosPage() {
               transition={{ delay: 0.1 }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#00269b] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-white mb-4">
                 24/7
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -817,7 +817,7 @@ export default function ServiciosPage() {
               transition={{ delay: 0.2 }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#00269b] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-white mb-4">
                 100%
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
