@@ -77,7 +77,7 @@ export default function ServiciosPage() {
       {/* ================================================================ */}
       {/* 1. HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#6d6e6d] via-[#575857] to-[#414241] text-white py-20 lg:py-28 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#6d6e6d] via-[#575857] to-[#414241] text-white py-16 lg:py-24 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -87,39 +87,39 @@ export default function ServiciosPage() {
             }}
           />
         </div>
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px]" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/10 rounded-full blur-[120px]" />
 
         <div className="container-eminsa relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             {/* Left: Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
+              className="space-y-6"
             >
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <Settings size={18} className="text-white/80" />
+                <Settings size={16} className="text-white/80" />
                 <span className="text-sm font-medium">{t("hero.badge")}</span>
               </div>
 
-              <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+              <div className="space-y-3">
+                <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight">
                   {t("hero.title")}
                 </h1>
-                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed">
+                <p className="text-xl lg:text-2xl font-light text-white/90 leading-relaxed max-w-xl">
                   {serviciosInfo.description}
                 </p>
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-3">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00269b] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#6d6e6d] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
                   {t("hero.requestQuote")}
-                  <ArrowRight size={20} />
+                  <ArrowRight size={18} />
                 </Link>
                 <a
                   href={getWhatsAppUrl()}
@@ -127,7 +127,7 @@ export default function ServiciosPage() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-all"
                 >
-                  <MessageCircle size={20} />
+                  <MessageCircle size={18} />
                   WhatsApp
                 </a>
               </div>
@@ -139,22 +139,22 @@ export default function ServiciosPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 {serviciosInfo.stats.map((stat, index) => (
                   <motion.div
                     key={stat.label}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center hover:bg-white/15 transition-colors"
+                    className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20 text-center hover:bg-white/15 transition-colors"
                   >
-                    <div className="text-3xl md:text-4xl xl:text-5xl font-bold mb-1">
+                    <div className="text-3xl md:text-4xl font-bold mb-1">
                       {stat.value}
                       {stat.suffix && (
                         <span className="text-white/70">{stat.suffix}</span>
                       )}
                     </div>
-                    <div className="text-sm text-white/80">{stat.label}</div>
+                    <div className="text-xs text-white/80">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -175,10 +175,10 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#6d6e6d]/10 text-[#6d6e6d] text-sm font-medium rounded-full mb-4">
               {t("grid.badge")}
             </span>
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#6d6e6d] mb-4">
               {t("grid.title")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
@@ -191,23 +191,20 @@ export default function ServiciosPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
           >
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#00269b] to-[#00175d] rounded-xl flex items-center justify-center">
-                <MapPin size={24} className="text-white" />
+            <div className="text-center mb-10">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#6d6e6d] to-[#414241] rounded-xl flex items-center justify-center mx-auto mb-4">
+                <MapPin size={26} className="text-white" />
               </div>
-              <div>
-                <h3 className="text-2xl font-bold text-[#00269b]">
-                  {t("grid.campo.title")}
-                </h3>
-                <p className="text-[#6d6e6d] text-sm">
-                  {t("grid.campo.description")}
-                </p>
-              </div>
+              <h3 className="text-2xl font-bold text-[#6d6e6d] mb-2">
+                {t("grid.campo.title")}
+              </h3>
+              <p className="text-[#6d6e6d] text-sm max-w-lg mx-auto">
+                {t("grid.campo.description")}
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {services
                 .filter((s) => serviciosPorTipo.campo.includes(s.id))
                 .map((service, index) => {
@@ -225,14 +222,14 @@ export default function ServiciosPage() {
                         href={service.url || `/servicios/${service.id}`}
                         className="group block h-full"
                       >
-                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#00269b]/20 transition-all duration-300 hover:-translate-y-1">
+                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#6d6e6d]/20 transition-all duration-300 hover:-translate-y-1">
                           {/* Icon */}
-                          <div className="w-16 h-16 bg-gradient-to-br from-[#00269b]/10 to-[#00269b]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#00269b] group-hover:to-[#00175d] transition-all duration-300">
-                            <IconComponent className="w-8 h-8 text-[#00269b] group-hover:text-white transition-colors duration-300" />
+                          <div className="w-16 h-16 bg-gradient-to-br from-[#6d6e6d]/10 to-[#6d6e6d]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#6d6e6d] group-hover:to-[#414241] transition-all duration-300">
+                            <IconComponent className="w-8 h-8 text-[#6d6e6d] group-hover:text-white transition-colors duration-300" />
                           </div>
 
                           {/* Content */}
-                          <h3 className="text-xl font-bold text-[#00269b] mb-3 group-hover:text-[#00269b] transition-colors">
+                          <h3 className="text-xl font-bold text-[#6d6e6d] mb-3 group-hover:text-[#6d6e6d] transition-colors">
                             {service.name}
                           </h3>
                           <p className="text-[#6d6e6d] text-sm leading-relaxed mb-6">
@@ -246,14 +243,14 @@ export default function ServiciosPage() {
                                 key={i}
                                 className="flex items-center gap-2 text-sm text-[#6d6e6d]"
                               >
-                                <div className="w-1.5 h-1.5 bg-[#00269b] rounded-full flex-shrink-0" />
+                                <div className="w-1.5 h-1.5 bg-[#6d6e6d] rounded-full shrink-0" />
                                 {benefit}
                               </div>
                             ))}
                           </div>
 
                           {/* Hover Arrow */}
-                          <div className="mt-6 flex items-center gap-2 text-[#00269b] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="mt-6 flex items-center gap-2 text-[#6d6e6d] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             {t("grid.viewMore")}
                             <ArrowRight
                               size={16}
@@ -268,27 +265,28 @@ export default function ServiciosPage() {
             </div>
           </motion.div>
 
+          {/* Divider */}
+          <div className="h-px bg-gray-200 mt-12 mb-16" />
+
           {/* Servicios en Taller */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-[#00269b] to-[#00175d] rounded-xl flex items-center justify-center">
-                <Settings size={24} className="text-white" />
+            <div className="text-center mb-10">
+              <div className="w-14 h-14 bg-gradient-to-br from-[#6d6e6d] to-[#414241] rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Settings size={26} className="text-white" />
               </div>
-              <div>
-                <h3 className="text-2xl font-bold text-[#00269b]">
-                  {t("grid.taller.title")}
-                </h3>
-                <p className="text-[#6d6e6d] text-sm">
-                  {t("grid.taller.description")}
-                </p>
-              </div>
+              <h3 className="text-2xl font-bold text-[#6d6e6d] mb-2">
+                {t("grid.taller.title")}
+              </h3>
+              <p className="text-[#6d6e6d] text-sm max-w-lg mx-auto">
+                {t("grid.taller.description")}
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               {services
                 .filter((s) => serviciosPorTipo.taller.includes(s.id))
                 .map((service, index) => {
@@ -306,14 +304,14 @@ export default function ServiciosPage() {
                         href={service.url || `/servicios/${service.id}`}
                         className="group block h-full"
                       >
-                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#00269b]/20 transition-all duration-300 hover:-translate-y-1">
+                        <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#6d6e6d]/20 transition-all duration-300 hover:-translate-y-1">
                           {/* Icon */}
-                          <div className="w-16 h-16 bg-gradient-to-br from-[#00269b]/10 to-[#00269b]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#00269b] group-hover:to-[#00175d] transition-all duration-300">
-                            <IconComponent className="w-8 h-8 text-[#00269b] group-hover:text-white transition-colors duration-300" />
+                          <div className="w-16 h-16 bg-gradient-to-br from-[#6d6e6d]/10 to-[#6d6e6d]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#6d6e6d] group-hover:to-[#414241] transition-all duration-300">
+                            <IconComponent className="w-8 h-8 text-[#6d6e6d] group-hover:text-white transition-colors duration-300" />
                           </div>
 
                           {/* Content */}
-                          <h3 className="text-xl font-bold text-[#00269b] mb-3 group-hover:text-[#00269b] transition-colors">
+                          <h3 className="text-xl font-bold text-[#6d6e6d] mb-3 group-hover:text-[#6d6e6d] transition-colors">
                             {service.name}
                           </h3>
                           <p className="text-[#6d6e6d] text-sm leading-relaxed mb-6">
@@ -327,14 +325,14 @@ export default function ServiciosPage() {
                                 key={i}
                                 className="flex items-center gap-2 text-sm text-[#6d6e6d]"
                               >
-                                <div className="w-1.5 h-1.5 bg-[#00269b] rounded-full flex-shrink-0" />
+                                <div className="w-1.5 h-1.5 bg-[#6d6e6d] rounded-full shrink-0" />
                                 {benefit}
                               </div>
                             ))}
                           </div>
 
                           {/* Hover Arrow */}
-                          <div className="mt-6 flex items-center gap-2 text-[#00269b] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="mt-6 flex items-center gap-2 text-[#6d6e6d] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             {t("grid.viewMore")}
                             <ArrowRight
                               size={16}
@@ -363,10 +361,10 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#6d6e6d]/10 text-[#6d6e6d] text-sm font-medium rounded-full mb-4">
               {t("process.badge")}
             </span>
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#6d6e6d] mb-4">
               {t("process.title")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
@@ -377,7 +375,7 @@ export default function ServiciosPage() {
           {/* Timeline */}
           <div className="relative">
             {/* Connecting line (desktop only) */}
-            <div className="hidden lg:block absolute top-[60px] left-[16.66%] right-[16.66%] h-0.5 border-t-2 border-dashed border-[#00269b]/30" />
+            <div className="hidden lg:block absolute top-[60px] left-[16.66%] right-[16.66%] h-0.5 border-t-2 border-dashed border-[#6d6e6d]/30" />
 
             <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
               {serviciosInfo.procesoTrabajo.map((paso, index) => {
@@ -394,16 +392,16 @@ export default function ServiciosPage() {
                   >
                     {/* Numbered Circle */}
                     <div className="relative z-10 w-[120px] h-[120px] mx-auto mb-8">
-                      <div className="w-full h-full bg-gradient-to-br from-[#00269b] to-[#00175d] rounded-full flex items-center justify-center shadow-lg shadow-[#00269b]/25">
+                      <div className="w-full h-full bg-gradient-to-br from-[#6d6e6d] to-[#414241] rounded-full flex items-center justify-center shadow-lg shadow-[#6d6e6d]/25">
                         <Icon className="w-12 h-12 text-white" />
                       </div>
-                      <div className="absolute -top-2 -right-2 w-10 h-10 bg-[#00269b] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
+                      <div className="absolute -top-2 -right-2 w-10 h-10 bg-[#6d6e6d] rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
                         {paso.id}
                       </div>
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-xl font-bold text-[#00269b] mb-3">
+                    <h3 className="text-xl font-bold text-[#6d6e6d] mb-3">
                       {paso.titulo}
                     </h3>
                     <p className="text-[#6d6e6d] leading-relaxed max-w-sm mx-auto">
@@ -429,10 +427,10 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#6d6e6d]/10 text-[#6d6e6d] text-sm font-medium rounded-full mb-4">
               {t("equipment.badge")}
             </span>
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#6d6e6d] mb-4">
               {t("equipment.title")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
@@ -451,22 +449,22 @@ export default function ServiciosPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#00269b]/20 transition-all duration-300 group"
+                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#6d6e6d]/20 transition-all duration-300 group"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00269b]/10 to-[#00269b]/5 flex items-center justify-center mb-4 group-hover:from-[#00269b] group-hover:to-[#00175d] transition-all">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#6d6e6d]/10 to-[#6d6e6d]/5 flex items-center justify-center mb-4 group-hover:from-[#6d6e6d] group-hover:to-[#414241] transition-all">
                     <Icon
                       size={28}
-                      className="text-[#00269b] group-hover:text-white transition-colors"
+                      className="text-[#6d6e6d] group-hover:text-white transition-colors"
                     />
                   </div>
-                  <h3 className="font-bold text-[#00269b] mb-2 group-hover:text-[#00269b] transition-colors">
+                  <h3 className="font-bold text-[#6d6e6d] mb-2 group-hover:text-[#6d6e6d] transition-colors">
                     {equip.name}
                   </h3>
                   <p className="text-sm text-[#6d6e6d] mb-3 leading-relaxed">
                     {equip.description}
                   </p>
                   {equip.specs && (
-                    <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-medium rounded-lg">
+                    <span className="inline-block px-3 py-1 bg-[#6d6e6d]/10 text-[#6d6e6d] text-xs font-medium rounded-lg">
                       {equip.specs}
                     </span>
                   )}
@@ -487,7 +485,7 @@ export default function ServiciosPage() {
             </p>
             <Link
               href="/servicios/cotizacion"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#00269b] hover:bg-[#414241] text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#6d6e6d] hover:bg-[#414241] text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg"
             >
               {t("equipment.ctaButton")}
               <ArrowRight size={20} />
@@ -499,7 +497,7 @@ export default function ServiciosPage() {
       {/* ================================================================ */}
       {/* 5. EMERGENCY CTA */}
       {/* ================================================================ */}
-      <section className="py-16 bg-gradient-to-r from-[#00269b] to-[#00175d]">
+      <section className="py-16 bg-gradient-to-r from-[#6d6e6d] to-[#414241]">
         <div className="container-eminsa">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -508,7 +506,7 @@ export default function ServiciosPage() {
             className="flex flex-col md:flex-row items-center justify-between gap-8"
           >
             <div className="flex items-center gap-6">
-              <div className="w-16 h-16 bg-[#00269b] rounded-2xl flex items-center justify-center flex-shrink-0">
+              <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center shrink-0 border border-white/20">
                 <AlertTriangle className="w-8 h-8 text-white" />
               </div>
               <div>
@@ -523,7 +521,7 @@ export default function ServiciosPage() {
             <div className="flex flex-wrap gap-4">
               <a
                 href={`tel:${contactInfo.phone}`}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00269b] font-semibold rounded-lg hover:bg-gray-100 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#6d6e6d] font-semibold rounded-lg hover:bg-gray-100 transition-all"
               >
                 <Phone size={18} />
                 {contactInfo.phone}
@@ -554,10 +552,10 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#6d6e6d]/10 text-[#6d6e6d] text-sm font-medium rounded-full mb-4">
               {t("projects.badge")}
             </span>
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#6d6e6d] mb-4">
               {t("projects.title")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
@@ -582,7 +580,7 @@ export default function ServiciosPage() {
                 <div className="p-8">
                   {/* Service Badge + Date */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-xs font-medium rounded-full">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#6d6e6d]/10 text-[#6d6e6d] text-xs font-medium rounded-full">
                       <Settings size={12} />
                       {proyecto.tipoServicio}
                     </span>
@@ -593,7 +591,7 @@ export default function ServiciosPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-[#00269b] mb-2 group-hover:text-[#00269b] transition-colors">
+                  <h3 className="text-lg font-bold text-[#6d6e6d] mb-2 group-hover:text-[#6d6e6d] transition-colors">
                     {proyecto.titulo}
                   </h3>
 
@@ -617,7 +615,7 @@ export default function ServiciosPage() {
                       >
                         <CheckCircle2
                           size={14}
-                          className="text-[#00269b] flex-shrink-0"
+                          className="text-[#6d6e6d] shrink-0"
                         />
                         {resultado}
                       </div>
@@ -637,7 +635,7 @@ export default function ServiciosPage() {
           >
             <Link
               href="/servicios/proyectos"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#00269b] text-white font-semibold rounded-xl hover:bg-[#00269b]/90 transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#6d6e6d] text-white font-semibold rounded-xl hover:bg-[#6d6e6d]/90 transition-all shadow-md hover:shadow-lg"
             >
               {t("projects.viewAll")}
               <ArrowRight size={20} />
@@ -658,10 +656,10 @@ export default function ServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#6d6e6d]/10 text-[#6d6e6d] text-sm font-medium rounded-full mb-4">
               {t("testimonials.badge")}
             </span>
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#6d6e6d] mb-4">
               {t("testimonials.title")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
@@ -683,7 +681,7 @@ export default function ServiciosPage() {
                 {/* Large Quote Icon */}
                 <Quote
                   size={64}
-                  className="absolute top-6 right-6 text-[#00269b]/10"
+                  className="absolute top-6 right-6 text-[#6d6e6d]/10"
                 />
 
                 {/* Testimonial Text */}
@@ -699,7 +697,7 @@ export default function ServiciosPage() {
                       size={16}
                       className={
                         i < testimonial.rating
-                          ? "text-[#00269b] fill-[#00269b]"
+                          ? "text-[#6d6e6d] fill-[#6d6e6d]"
                           : "text-gray-200 fill-gray-200"
                       }
                     />
@@ -708,11 +706,11 @@ export default function ServiciosPage() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#00269b] to-[#00175d] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#6d6e6d] to-[#414241] rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {testimonial.iniciales}
                   </div>
                   <div>
-                    <div className="font-bold text-[#00269b] text-sm">
+                    <div className="font-bold text-[#6d6e6d] text-sm">
                       {testimonial.nombre}
                     </div>
                     <div className="text-xs text-[#6d6e6d]">
@@ -723,7 +721,7 @@ export default function ServiciosPage() {
 
                 {/* Service Badge */}
                 <div className="mt-4 pt-4 border-t border-gray-100">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-xs font-medium rounded-full">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#6d6e6d]/10 text-[#6d6e6d] text-xs font-medium rounded-full">
                     <Settings size={10} />
                     {testimonial.servicio}
                   </span>
@@ -741,7 +739,7 @@ export default function ServiciosPage() {
           >
             <Link
               href="/servicios/testimoniales"
-              className="inline-flex items-center gap-2 text-[#00269b] font-semibold hover:gap-3 transition-all text-lg"
+              className="inline-flex items-center gap-2 text-[#6d6e6d] font-semibold hover:gap-3 transition-all text-lg"
             >
               {t("testimonials.viewAll")}
               <ArrowRight size={20} />
@@ -753,9 +751,8 @@ export default function ServiciosPage() {
       {/* ================================================================ */}
       {/* 8. WHY CHOOSE US STATS */}
       {/* ================================================================ */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#00269b] text-white">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-[#6d6e6d] via-[#575857] to-[#414241] text-white">
         <div className="container-eminsa">
-          {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -765,7 +762,7 @@ export default function ServiciosPage() {
             <span className="inline-block px-3 py-1 bg-white/10 text-white text-sm font-medium rounded-full mb-4">
               {t("whyUs.badge")}
             </span>
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {t("whyUs.title")}
             </h2>
             <p className="text-white/70 text-lg">
@@ -773,7 +770,6 @@ export default function ServiciosPage() {
             </p>
           </motion.div>
 
-          {/* Stats Grid */}
           <div className="grid md:grid-cols-3 gap-8">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -781,7 +777,7 @@ export default function ServiciosPage() {
               viewport={{ once: true }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#00269b] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-white mb-4">
                 50+
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -799,7 +795,7 @@ export default function ServiciosPage() {
               transition={{ delay: 0.1 }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#00269b] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-white mb-4">
                 24/7
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -817,7 +813,7 @@ export default function ServiciosPage() {
               transition={{ delay: 0.2 }}
               className="text-center p-8 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10"
             >
-              <div className="text-5xl md:text-6xl font-bold text-[#00269b] mb-4">
+              <div className="text-5xl md:text-6xl font-bold text-white mb-4">
                 100%
               </div>
               <h3 className="text-xl font-bold text-white mb-2">
@@ -834,7 +830,7 @@ export default function ServiciosPage() {
       {/* ================================================================ */}
       {/* 9. FINAL CTA */}
       {/* ================================================================ */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="pt-8 pb-20 bg-white">
         <div className="container-eminsa">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -848,7 +844,7 @@ export default function ServiciosPage() {
 
             <div className="relative z-10 max-w-2xl mx-auto">
               <Settings size={48} className="mx-auto mb-6 text-white/80" />
-              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 {t("finalCta.title")}
               </h2>
               <p className="text-white/90 text-lg mb-8 leading-relaxed">
@@ -859,7 +855,7 @@ export default function ServiciosPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#00269b] hover:bg-white/90 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#6d6e6d] hover:bg-white/90 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                   {t("finalCta.button")}
                   <ArrowRight size={22} />
