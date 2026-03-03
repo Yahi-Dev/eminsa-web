@@ -199,11 +199,11 @@ export async function testEmailConnection(
       text: 'Esta es una prueba de la configuración del sistema de email de Grupo EMINSA.',
       html: `
         <div style="padding: 20px; background: #f8fafc; font-family: Arial, sans-serif;">
-          <h1 style="color: #001689;">✅ Configuración Exitosa</h1>
+          <h1 style="color: #00269b;">✅ Configuración Exitosa</h1>
           <p>El sistema de email de <strong>Grupo EMINSA</strong> está configurado correctamente.</p>
           <p><strong>Fecha:</strong> ${new Date().toLocaleString('es-DO')}</p>
           <p><strong>Servidor:</strong> ${process.env.MAIL_HOST}:${process.env.MAIL_PORT}</p>
-          <div style="margin-top: 20px; padding: 10px; background: #e8f4fd; border-left: 4px solid #00A3E0;">
+          <div style="margin-top: 20px; padding: 10px; background: #e8f4fd; border-left: 4px solid #0099ce;">
             <p><small>Esta es una prueba automática del sistema.</small></p>
           </div>
         </div>

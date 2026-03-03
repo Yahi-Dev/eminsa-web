@@ -35,6 +35,7 @@ export default function NoticiasAdminList() {
     const res = await fetch(`/api/noticias/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify({ publicado: !current }),
     });
     if (res.ok) {
@@ -48,6 +49,7 @@ export default function NoticiasAdminList() {
     const res = await fetch(`/api/noticias/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify({ destacado: !current }),
     });
     if (res.ok) {
@@ -58,7 +60,7 @@ export default function NoticiasAdminList() {
   }
 
   async function handleDelete(id: number) {
-    const res = await fetch(`/api/noticias/${id}`, { method: "DELETE" });
+    const res = await fetch(`/api/noticias/${id}`, { method: "DELETE", credentials: "include" });
     if (res.ok) {
       setNoticias((prev) => prev.filter((n) => n.id !== id));
       setDeleteConfirm(null);
@@ -77,7 +79,7 @@ export default function NoticiasAdminList() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-8 h-8 border-4 border-[#001689] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[#00269b] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -98,7 +100,7 @@ export default function NoticiasAdminList() {
           <Link
             href="/admin/noticias/nueva"
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium"
-            style={{ backgroundColor: "#001689" }}
+            style={{ backgroundColor: "#00269b" }}
           >
             <Plus className="w-4 h-4" />
             Nueva Noticia
@@ -115,13 +117,13 @@ export default function NoticiasAdminList() {
               placeholder="Buscar noticias..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#001689]"
+              className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#00269b]"
             />
           </div>
           <select
             value={filterCategoria}
             onChange={(e) => setFilterCategoria(e.target.value)}
-            className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#001689]"
+            className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#00269b]"
           >
             <option value="">Todas las categorías</option>
             {categoriasNoticias.map((c) => (
@@ -190,13 +192,13 @@ export default function NoticiasAdminList() {
                       <button
                         onClick={() => togglePublicado(noticia.id, noticia.publicado)}
                         title={noticia.publicado ? "Despublicar" : "Publicar"}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#001689] hover:bg-blue-50 transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#00269b] hover:bg-blue-50 transition-colors"
                       >
                         {noticia.publicado ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                       <Link
                         href={`/admin/noticias/${noticia.id}/edit`}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#001689] hover:bg-blue-50 transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#00269b] hover:bg-blue-50 transition-colors"
                       >
                         <Edit className="w-4 h-4" />
                       </Link>

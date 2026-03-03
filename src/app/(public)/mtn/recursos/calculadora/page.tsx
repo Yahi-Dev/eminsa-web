@@ -109,7 +109,7 @@ export default function CalculadoraPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#00A3E0] text-white py-12">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#0099ce] text-white py-12">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -157,14 +157,14 @@ export default function CalculadoraPage() {
                         onClick={() => handleLoadTypeChange(type)}
                         className={`p-4 rounded-xl border-2 transition-all ${
                           loadType === type
-                            ? "border-[#001689] bg-[#001689]/5"
+                            ? "border-[#00269b] bg-[#00269b]/5"
                             : "border-gray-200 hover:border-gray-300"
                         }`}
                       >
                         <div className={`w-10 h-10 ${color} rounded-lg flex items-center justify-center mx-auto mb-2`}>
                           <Icon size={20} className="text-white" />
                         </div>
-                        <p className={`text-sm font-medium ${loadType === type ? "text-[#001689]" : "text-gray-700"}`}>
+                        <p className={`text-sm font-medium ${loadType === type ? "text-[#00269b]" : "text-gray-700"}`}>
                           {label}
                         </p>
                       </button>
@@ -179,7 +179,7 @@ export default function CalculadoraPage() {
                   <h2 className="text-xl font-bold text-gray-900">Cargas Eléctricas</h2>
                   <button
                     onClick={resetCalculator}
-                    className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#001689] transition-colors"
+                    className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#00269b] transition-colors"
                   >
                     <RefreshCw size={16} />
                     Reiniciar
@@ -203,7 +203,7 @@ export default function CalculadoraPage() {
                         <span className="w-8 text-center font-semibold">{load.quantity}</span>
                         <button
                           onClick={() => updateLoadQuantity(index, load.quantity + 1)}
-                          className="w-8 h-8 bg-[#001689] hover:bg-[#000E53] text-white rounded-lg flex items-center justify-center transition-colors"
+                          className="w-8 h-8 bg-[#00269b] hover:bg-[#00175d] text-white rounded-lg flex items-center justify-center transition-colors"
                         >
                           +
                         </button>
@@ -229,18 +229,18 @@ export default function CalculadoraPage() {
                       placeholder="Nombre"
                       value={customLoad.name}
                       onChange={(e) => setCustomLoad({ ...customLoad, name: e.target.value })}
-                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent"
+                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00269b] focus:border-transparent"
                     />
                     <input
                       type="number"
                       placeholder="Watts"
                       value={customLoad.watts || ""}
                       onChange={(e) => setCustomLoad({ ...customLoad, watts: Number(e.target.value) })}
-                      className="w-24 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent"
+                      className="w-24 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00269b] focus:border-transparent"
                     />
                     <button
                       onClick={addCustomLoad}
-                      className="px-4 py-2 bg-[#001689] hover:bg-[#000E53] text-white rounded-lg transition-colors"
+                      className="px-4 py-2 bg-[#00269b] hover:bg-[#00175d] text-white rounded-lg transition-colors"
                     >
                       Agregar
                     </button>
@@ -262,7 +262,7 @@ export default function CalculadoraPage() {
                     <select
                       value={powerFactor}
                       onChange={(e) => setPowerFactor(Number(e.target.value))}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00269b] focus:border-transparent"
                     >
                       <option value={0.8}>0.8 (Industrial típico)</option>
                       <option value={0.85}>0.85</option>
@@ -278,7 +278,7 @@ export default function CalculadoraPage() {
                     <select
                       value={voltage}
                       onChange={(e) => setVoltage(Number(e.target.value))}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00269b] focus:border-transparent"
                     >
                       <option value={120}>120V (Monofásico)</option>
                       <option value={208}>208V (Trifásico)</option>
@@ -296,7 +296,7 @@ export default function CalculadoraPage() {
                 <h2 className="text-xl font-bold text-gray-900 mb-6">Resultado</h2>
 
                 {/* Main Result */}
-                <div className="bg-gradient-to-br from-[#001689] to-[#00A3E0] text-white rounded-xl p-6 text-center mb-6">
+                <div className="bg-gradient-to-br from-[#00269b] to-[#0099ce] text-white rounded-xl p-6 text-center mb-6">
                   <Zap size={40} className="mx-auto mb-2 opacity-80" />
                   <p className="text-4xl font-bold mb-1">{kVA.toFixed(1)} kVA</p>
                   <p className="text-white/80 text-sm">Capacidad calculada</p>
@@ -334,7 +334,7 @@ export default function CalculadoraPage() {
                 {/* CTA */}
                 <Link
                   href={`/mtn/cotizaciones?capacidad=${recommendedSize}`}
-                  className="mt-6 w-full flex items-center justify-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                  className="mt-6 w-full flex items-center justify-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                 >
                   Cotizar {recommendedSize} kVA
                   <ArrowRight size={18} />

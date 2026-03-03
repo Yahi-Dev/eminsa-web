@@ -27,7 +27,7 @@ export default function CertificationsTabSelector({ certifications }: Props) {
             onClick={() => setActiveId(cert.id)}
             className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
               activeId === cert.id
-                ? "bg-[#001689] text-white shadow-sm"
+                ? "bg-[#00269b] text-white shadow-sm"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >
@@ -47,10 +47,10 @@ export default function CertificationsTabSelector({ certifications }: Props) {
         >
           <Link
             href="/mtn/certificaciones"
-            className="group block bg-white rounded-xl p-6 border border-gray-200 hover:border-[#001689]/30 hover:shadow-lg transition-all duration-300"
+            className="group block bg-white rounded-xl p-6 border border-gray-200 hover:border-[#00269b]/30 hover:shadow-lg transition-all duration-300"
           >
             <div className="flex items-start gap-4">
-              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#001689]/5 transition-colors">
+              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#00269b]/5 transition-colors">
                 {activeCert.image ? (
                   <Image
                     src={activeCert.image}
@@ -60,11 +60,11 @@ export default function CertificationsTabSelector({ certifications }: Props) {
                     className="object-contain"
                   />
                 ) : (
-                  <Award size={32} className="text-[#001689]" />
+                  <Award size={32} className="text-[#00269b]" />
                 )}
               </div>
               <div className="space-y-1 flex-1">
-                <h3 className="font-bold text-gray-900 group-hover:text-[#001689] transition-colors">
+                <h3 className="font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
                   {activeCert.name}
                 </h3>
                 <p className="text-sm text-gray-500">{activeCert.issuingBody}</p>
@@ -74,7 +74,7 @@ export default function CertificationsTabSelector({ certifications }: Props) {
               </div>
               <ArrowRight
                 size={18}
-                className="text-gray-400 group-hover:text-[#001689] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1"
+                className="text-gray-400 group-hover:text-[#00269b] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1"
               />
             </div>
           </Link>
@@ -83,7 +83,7 @@ export default function CertificationsTabSelector({ certifications }: Props) {
 
       <Link
         href="/mtn/certificaciones"
-        className="inline-flex items-center gap-2 text-[#00A3E0] hover:text-[#0092C7] font-semibold mt-6 transition-colors"
+        className="inline-flex items-center gap-2 text-[#0099ce] hover:text-[#0092C7] font-semibold mt-6 transition-colors"
       >
         Ver todas las certificaciones
         <ArrowRight size={18} />

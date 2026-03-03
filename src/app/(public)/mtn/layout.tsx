@@ -143,7 +143,7 @@ export default function MTNLayout({
       {/* Subnavegación MTN - Desktop */}
       <nav 
         ref={menuRef}
-        className="hidden lg:block bg-[#001689]/10 border-t-2 border-t-[#001689]/30 border-b border-b-[#001689]/20 sticky top-20 xl:top-28 z-40 shadow-sm"
+        className="hidden lg:block bg-[#00269b]/10 border-t-2 border-t-[#00269b]/30 border-b border-b-[#00269b]/20 sticky top-20 xl:top-28 z-40 shadow-sm"
       >
         <div className="container-eminsa">
           <div className="flex items-center gap-1 py-2 justify-center">
@@ -180,8 +180,8 @@ export default function MTNLayout({
                           className={cn(
                             "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                             active
-                              ? "bg-[#001689] text-white"
-                              : "text-gray-600 hover:bg-gray-100 hover:text-[#001689]"
+                              ? "bg-[#00269b] text-white"
+                              : "text-gray-600 hover:bg-gray-100 hover:text-[#00269b]"
                           )}
                         >
                           <Icon size={16} />
@@ -217,7 +217,7 @@ export default function MTNLayout({
                               className={cn(
                                 "block px-4 py-2 text-sm transition-colors hover:bg-gray-50 border-b border-gray-100",
                                 pathname === item.href
-                                  ? "bg-[#001689]/10 text-[#001689] font-medium"
+                                  ? "bg-[#00269b]/10 text-[#00269b] font-medium"
                                   : "text-gray-600"
                               )}
                             >
@@ -233,7 +233,7 @@ export default function MTNLayout({
                                 className={cn(
                                   "block px-4 py-2 text-sm transition-colors hover:bg-gray-50",
                                   pathname === subItem.href || pathname.startsWith(subItem.href + "/")
-                                    ? "bg-[#001689]/10 text-[#001689] font-medium"
+                                    ? "bg-[#00269b]/10 text-[#00269b] font-medium"
                                     : "text-gray-600"
                                 )}
                               >
@@ -250,8 +250,8 @@ export default function MTNLayout({
                       className={cn(
                         "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                         active
-                          ? "bg-[#001689] text-white"
-                          : "text-gray-600 hover:bg-gray-100 hover:text-[#001689]"
+                          ? "bg-[#00269b] text-white"
+                          : "text-gray-600 hover:bg-gray-100 hover:text-[#00269b]"
                       )}
                     >
                       <Icon size={16} />
@@ -268,14 +268,14 @@ export default function MTNLayout({
       {/* Subnavegación MTN - Mobile */}
       <div 
         ref={menuRef}
-        className="lg:hidden sticky top-20 z-40 bg-[#001689]/10 border-t-2 border-t-[#001689]/30 border-b border-b-[#001689]/20 shadow-sm"
+        className="lg:hidden sticky top-20 z-40 bg-[#00269b]/10 border-t-2 border-t-[#00269b]/30 border-b border-b-[#00269b]/20 shadow-sm"
       >
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-[#001689] rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-[#00269b] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xs">MTN</span>
             </div>
-            <span className="font-semibold text-[#001689]">
+            <span className="font-semibold text-[#00269b]">
               {mtnNavItems.find(item => isActive(item.href, item.exact))?.name || "MTN"}
             </span>
           </div>
@@ -315,7 +315,7 @@ export default function MTNLayout({
                               className={cn(
                                 "flex-1 flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                                 active
-                                  ? "bg-[#001689]/10 text-[#001689]"
+                                  ? "bg-[#00269b]/10 text-[#00269b]"
                                   : "text-gray-600 hover:bg-gray-50"
                               )}
                             >
@@ -354,7 +354,7 @@ export default function MTNLayout({
                                   className={cn(
                                     "block px-8 py-2.5 rounded-lg text-sm transition-colors",
                                     pathname === item.href
-                                      ? "bg-[#001689] text-white"
+                                      ? "bg-[#00269b] text-white"
                                       : "text-gray-600 hover:bg-gray-50"
                                   )}
                                 >
@@ -372,7 +372,7 @@ export default function MTNLayout({
                                     className={cn(
                                       "block px-8 py-2.5 rounded-lg text-sm transition-colors",
                                       pathname === subItem.href
-                                        ? "bg-[#001689] text-white"
+                                        ? "bg-[#00269b] text-white"
                                         : "text-gray-600 hover:bg-gray-50"
                                     )}
                                   >
@@ -390,7 +390,7 @@ export default function MTNLayout({
                           className={cn(
                             "flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                             active
-                              ? "bg-[#001689] text-white"
+                              ? "bg-[#00269b] text-white"
                               : "text-gray-600 hover:bg-gray-50"
                           )}
                         >

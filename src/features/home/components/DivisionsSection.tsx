@@ -142,12 +142,12 @@ export default function DivisionsSection() {
                 </div>
 
                 {/* Name */}
-                <h3 className="text-5xl md:text-6xl font-black text-[#001689] mb-4">
+                <h3 className="text-5xl md:text-6xl font-black text-[#00269b] mb-4">
                   {activeDivision.name}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[#76777A] text-base leading-relaxed mb-8">
+                <p className="text-[#6d6e6d] text-base leading-relaxed mb-8">
                   {activeDivision.description}
                 </p>
 
@@ -185,7 +185,7 @@ export default function DivisionsSection() {
                         className="w-2 h-2 rounded-full mb-3"
                         style={{ backgroundColor: activeDivision.color }}
                       />
-                      <p className="font-semibold text-[#001689] text-sm">
+                      <p className="font-semibold text-[#00269b] text-sm">
                         {feature}
                       </p>
                     </motion.div>

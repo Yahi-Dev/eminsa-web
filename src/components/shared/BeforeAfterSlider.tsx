@@ -126,7 +126,7 @@ export default function BeforeAfterSlider({
 
         {/* Handle (círculo con flechas) */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#001689] rounded-full shadow-xl flex items-center justify-center cursor-grab active:cursor-grabbing"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#00269b] rounded-full shadow-xl flex items-center justify-center cursor-grab active:cursor-grabbing"
           onMouseDown={handleMouseDown}
           onTouchStart={() => setIsDragging(true)}
         >

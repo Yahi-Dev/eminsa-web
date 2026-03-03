@@ -57,7 +57,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
       <section
         className="text-white py-16 lg:py-20"
         style={{
-          background: `linear-gradient(135deg, #00B140 0%, #008F33 50%, #001689 100%)`,
+          background: `linear-gradient(135deg, #009e49 0%, #007d3a 50%, #00269b 100%)`,
         }}
       >
         <div className="container-eminsa">
@@ -119,7 +119,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={`/eic/cotizaciones?categoria=${categorySlug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -275,12 +275,12 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                     </span>
                     <ArrowRight
                       size={18}
-                      className="text-gray-300 group-hover:text-[#00B140] group-hover:translate-x-1 transition-all"
+                      className="text-gray-300 group-hover:text-[#009e49] group-hover:translate-x-1 transition-all"
                     />
                   </div>
 
                   {/* Product Info */}
-                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#00B140] transition-colors mb-2">
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#009e49] transition-colors mb-2">
                     {product.name}
                   </h3>
                   <p className="text-sm text-gray-600 mb-4 line-clamp-3">
@@ -328,7 +328,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
       <section
         className="py-12 lg:py-16 text-white"
         style={{
-          background: `linear-gradient(135deg, ${category.color} 0%, ${category.color}CC 50%, #001689 100%)`,
+          background: `linear-gradient(135deg, ${category.color} 0%, ${category.color}CC 50%, #00269b 100%)`,
         }}
       >
         <div className="container-eminsa text-center">
@@ -347,7 +347,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/eic/cotizaciones?categoria=${categorySlug}`}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />
@@ -379,7 +379,7 @@ function ProductPage({ slug }: { slug: string }) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white py-12 lg:py-16">
+      <section className="bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-12 lg:py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6 flex-wrap">
@@ -444,7 +444,7 @@ function ProductPage({ slug }: { slug: string }) {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={`/eic/cotizaciones?producto=${product.slug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -525,7 +525,7 @@ function ProductPage({ slug }: { slug: string }) {
                     >
                       <CheckCircle2
                         size={20}
-                        className="text-[#00B140] shrink-0 mt-0.5"
+                        className="text-[#009e49] shrink-0 mt-0.5"
                       />
                       <span className="text-gray-700">{feature}</span>
                     </div>
@@ -548,7 +548,7 @@ function ProductPage({ slug }: { slug: string }) {
                       key={app}
                       className="flex items-center gap-2 text-gray-700"
                     >
-                      <div className="w-2 h-2 rounded-full bg-[#00B140]" />
+                      <div className="w-2 h-2 rounded-full bg-[#009e49]" />
                       {app}
                     </div>
                   ))}
@@ -571,13 +571,13 @@ function ProductPage({ slug }: { slug: string }) {
                 <div className="space-y-3 mb-6">
                   <Link
                     href={`/eic/cotizaciones?producto=${product.slug}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors"
                   >
                     Solicitar Cotización
                   </Link>
                   <a
                     href={`tel:${contactInfo.phone}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-gray-200 text-gray-700 hover:border-[#00B140] hover:text-[#00B140] font-medium rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-gray-200 text-gray-700 hover:border-[#009e49] hover:text-[#009e49] font-medium rounded-xl transition-colors"
                   >
                     <Phone size={18} />
                     {contactInfo.phone}
@@ -593,7 +593,7 @@ function ProductPage({ slug }: { slug: string }) {
                   </a>
                   <a
                     href={`mailto:${contactInfo.email}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-gray-200 text-gray-700 hover:border-[#00B140] hover:text-[#00B140] font-medium rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-gray-200 text-gray-700 hover:border-[#009e49] hover:text-[#009e49] font-medium rounded-xl transition-colors"
                   >
                     <Mail size={18} />
                     {contactInfo.email}
@@ -604,7 +604,7 @@ function ProductPage({ slug }: { slug: string }) {
                 {brand && (
                   <div className="pt-6 border-t border-gray-100">
                     <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                      <Building2 size={16} className="text-[#00B140]" />
+                      <Building2 size={16} className="text-[#009e49]" />
                       Marca
                     </h4>
                     <div className="bg-gray-50 rounded-xl p-4 space-y-2">
@@ -623,7 +623,7 @@ function ProductPage({ slug }: { slug: string }) {
                 {/* CTA to cotizaciones */}
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <div className="flex items-center gap-3 bg-green-50 rounded-xl p-4">
-                    <Globe size={32} className="text-[#00B140]" />
+                    <Globe size={32} className="text-[#009e49]" />
                     <div>
                       <span className="font-bold text-green-800 block">
                         Suplidores Internacionales
@@ -654,15 +654,15 @@ function ProductPage({ slug }: { slug: string }) {
                 className="group bg-gray-50 rounded-2xl p-6 hover:bg-white hover:shadow-xl border border-transparent hover:border-gray-200 transition-all duration-300"
               >
                 <div className="flex items-start justify-between mb-3">
-                  <span className="inline-block px-2.5 py-1 bg-[#00B140]/10 text-[#00B140] text-xs font-semibold rounded-full">
+                  <span className="inline-block px-2.5 py-1 bg-[#009e49]/10 text-[#009e49] text-xs font-semibold rounded-full">
                     {prod.brand}
                   </span>
                   <ArrowRight
                     size={18}
-                    className="text-gray-400 group-hover:text-[#00B140] group-hover:translate-x-1 transition-all"
+                    className="text-gray-400 group-hover:text-[#009e49] group-hover:translate-x-1 transition-all"
                   />
                 </div>
-                <h3 className="font-bold text-gray-900 group-hover:text-[#00B140] transition-colors mb-2">
+                <h3 className="font-bold text-gray-900 group-hover:text-[#009e49] transition-colors mb-2">
                   {prod.shortName}
                 </h3>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-3">
@@ -676,7 +676,7 @@ function ProductPage({ slug }: { slug: string }) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white">
+      <section className="py-12 bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             ¿Interesado en este producto?
@@ -687,7 +687,7 @@ function ProductPage({ slug }: { slug: string }) {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href={`/eic/cotizaciones?producto=${product.slug}`}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
             >
               Solicitar Cotización
               <ArrowRight size={20} />

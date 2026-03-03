@@ -6,10 +6,10 @@ export interface Cliente {
 }
 
 export const sectorColors: Record<string, string> = {
-  Energía: "#001689",
-  Turismo: "#00A3E0",
+  Energía: "#00269b",
+  Turismo: "#0099ce",
   Industrial: "#374151",
-  Alimentación: "#00B140",
+  Alimentación: "#009e49",
   Manufactura: "#D97706",
   Telecomunicaciones: "#DC2626",
   Construcción: "#7C3AED",
@@ -18,10 +18,10 @@ export const sectorColors: Record<string, string> = {
 };
 
 export const sectorBg: Record<string, string> = {
-  Energía: "#001689",
-  Turismo: "#00A3E0",
+  Energía: "#00269b",
+  Turismo: "#0099ce",
   Industrial: "#374151",
-  Alimentación: "#00B140",
+  Alimentación: "#009e49",
   Manufactura: "#D97706",
   Telecomunicaciones: "#DC2626",
   Construcción: "#7C3AED",

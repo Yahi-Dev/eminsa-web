@@ -110,8 +110,8 @@ export const mtnInfo = {
   tagline: "Transformadores 100% nuevos, fabricados en la República Dominicana",
   description: "Transformadores 100% nuevos, fabricados en la República Dominicana bajo los más altos estándares internacionales y cumpliendo plenamente con los niveles de eficiencia establecidos por ANSI y DOE 2016.",
   heroDescription: "Soluciones en transformación eléctrica con tecnología de alto desempeño, eficiencia garantizada y fabricación local bajo normas ANSI y DOE 2016.",
-  color: "#001689",
-  gradient: "from-[#001689] via-[#000E53] to-[#001689]",
+  color: "#00269b",
+  gradient: "from-[#00269b] via-[#00175d] to-[#00269b]",
   stats: [
     { value: "50+", label: "Años de Experiencia" },
     { value: "10,000+", label: "Transformadores Fabricados" },

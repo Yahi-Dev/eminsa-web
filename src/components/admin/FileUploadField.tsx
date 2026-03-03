@@ -1,17 +1,19 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Upload, X, FileText, FileSpreadsheet, File } from "lucide-react";
+import { Upload, X, FileText, FileSpreadsheet, File, Loader2 } from "lucide-react";
 
 interface FileUploadFieldProps {
   value: string;
   nombreArchivo: string;
-  onChange: (base64: string, filename: string) => void;
+  onChange: (url: string, filename: string) => void;
   onClear: () => void;
   label?: string;
+  folder?: string;
 }
 
-const MAX_SIZE_BYTES = 5 * 1024 * 1024;
+const MAX_SIZE_MB = 10;
+const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024;
 
 export default function FileUploadField({
   value,
@@ -19,22 +21,45 @@ export default function FileUploadField({
   onChange,
   onClear,
   label = "Archivo",
+  folder = "eminsa/recursos",
 }: FileUploadFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleFile = (file: File) => {
+  const handleFile = async (file: File) => {
     setError(null);
     if (file.size > MAX_SIZE_BYTES) {
-      setError("El archivo supera el tamaño máximo de 5MB");
+      setError(`El archivo supera el tamaño máximo de ${MAX_SIZE_MB}MB`);
       return;
     }
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      onChange(e.target?.result as string, file.name);
-    };
-    reader.readAsDataURL(file);
+    setUploading(true);
+
+    try {
+      const body = new FormData();
+      body.append("file", file);
+      body.append("folder", folder);
+      body.append("resourceType", "raw");
+
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        credentials: "include",
+        body,
+      });
+
+      const data = await res.json();
+      if (!data.success) {
+        setError(data.message || "Error al subir archivo");
+        return;
+      }
+
+      onChange(data.url, file.name);
+    } catch {
+      setError("Error de conexión al subir archivo");
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,27 +83,28 @@ export default function FileUploadField({
     return <File size={20} className="text-blue-500" />;
   };
 
-  const formatSize = (base64: string) => {
-    const bytes = Math.round((base64.length * 3) / 4);
-    return bytes > 1024 * 1024
-      ? `${(bytes / (1024 * 1024)).toFixed(1)} MB`
-      : `${Math.round(bytes / 1024)} KB`;
-  };
-
   return (
     <div>
       <label className="block text-sm font-medium text-gray-700 mb-1">
         {label}
       </label>
 
-      {value && nombreArchivo ? (
+      {uploading ? (
+        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+          <Loader2 size={24} className="mx-auto text-[#00269b] mb-2 animate-spin" />
+          <p className="text-sm font-medium text-[#00269b]">Subiendo archivo...</p>
+          <p className="text-xs text-[#6d6e6d] mt-1">Esto puede tomar unos segundos</p>
+        </div>
+      ) : value && nombreArchivo ? (
         <div className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg bg-gray-50">
           {getFileIcon(nombreArchivo)}
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-gray-900 truncate">
               {nombreArchivo}
             </p>
-            <p className="text-xs text-gray-500">{formatSize(value)}</p>
+            <p className="text-xs text-gray-500">
+              {value.startsWith("http") ? "Almacenado en Cloudinary" : "Archivo cargado"}
+            </p>
           </div>
           <button
             type="button"
@@ -92,8 +118,8 @@ export default function FileUploadField({
         <div
           className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors ${
             isDragOver
-              ? "border-[#001689] bg-[#001689]/5"
-              : "border-gray-300 hover:border-[#001689]/50"
+              ? "border-[#00269b] bg-[#00269b]/5"
+              : "border-gray-300 hover:border-[#00269b]/50"
           }`}
           onClick={() => inputRef.current?.click()}
           onDragOver={(e) => {
@@ -106,12 +132,12 @@ export default function FileUploadField({
           <Upload size={24} className="mx-auto text-gray-400 mb-2" />
           <p className="text-sm text-gray-600">
             Arrastra un archivo o{" "}
-            <span className="text-[#001689] font-medium">
+            <span className="text-[#00269b] font-medium">
               haz clic para seleccionar
             </span>
           </p>
           <p className="text-xs text-gray-400 mt-1">
-            PDF, Word, Excel — máx. 5MB
+            PDF, Word, Excel — máx. {MAX_SIZE_MB}MB
           </p>
         </div>
       )}

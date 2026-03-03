@@ -11,19 +11,19 @@ export default function TransformadorRestauracionSection() {
   const features = [
     {
       icon: Shield,
-      color: "#00B140",
+      color: "#009e49",
       title: t("rst.diagnosisTitle"),
       desc: t("rst.diagnosisDesc"),
     },
     {
       icon: Wrench,
-      color: "#00A3E0",
+      color: "#0099ce",
       title: t("rst.restorationTitle"),
       desc: t("rst.restorationDesc"),
     },
     {
       icon: Zap,
-      color: "#00A3E0",
+      color: "#0099ce",
       title: t("rst.guaranteeTitle"),
       desc: t("rst.guaranteeDesc"),
     },
@@ -40,14 +40,14 @@ export default function TransformadorRestauracionSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#00A3E0]/10 rounded-full text-[#00A3E0] text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#0099ce]/10 rounded-full text-[#0099ce] text-sm font-medium mb-6">
               <Wrench size={16} />
               <span>{t("rst.badge")}</span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689] mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00269b] mb-6">
               {t("rst.title")}{" "}
-              <span className="text-[#00A3E0]">{t("rst.titleAccent")}</span>
+              <span className="text-[#0099ce]">{t("rst.titleAccent")}</span>
             </h2>
 
             {/* Features Grid */}
@@ -70,10 +70,10 @@ export default function TransformadorRestauracionSection() {
                     <item.icon className="w-5 h-5" style={{ color: item.color }} />
                   </motion.div>
                   <div>
-                    <h3 className="font-semibold text-[#001689] mb-1">
+                    <h3 className="font-semibold text-[#00269b] mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-[#76777A]">{item.desc}</p>
+                    <p className="text-sm text-[#6d6e6d]">{item.desc}</p>
                   </div>
                 </motion.div>
               ))}

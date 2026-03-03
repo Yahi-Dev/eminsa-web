@@ -67,7 +67,7 @@ export default function ResetPasswordForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#001689] via-[#000E53] to-[#001689] p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#00269b] via-[#00175d] to-[#00269b] p-4">
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -96,7 +96,7 @@ export default function ResetPasswordForm() {
 
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#001689] to-[#000E53] p-8 text-center">
+          <div className="bg-gradient-to-r from-[#00269b] to-[#00175d] p-8 text-center">
             <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Lock className="w-8 h-8 text-white" />
             </div>
@@ -129,7 +129,7 @@ export default function ResetPasswordForm() {
               </p>
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 text-[#001689] hover:text-[#000E53] font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-[#00269b] hover:text-[#00175d] font-medium transition-colors"
               >
                 <ArrowLeft size={16} />
                 Ir al inicio de sesión
@@ -150,7 +150,7 @@ export default function ResetPasswordForm() {
               )}
 
               <div>
-                <label className="block text-sm font-medium text-[#76777A] mb-2">
+                <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                   Nueva contraseña
                 </label>
                 <div className="relative">
@@ -162,7 +162,7 @@ export default function ResetPasswordForm() {
                     required
                     minLength={8}
                     disabled={!token}
-                    className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689] transition-colors disabled:bg-gray-50 disabled:cursor-not-allowed"
+                    className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b] transition-colors disabled:bg-gray-50 disabled:cursor-not-allowed"
                     placeholder="Mínimo 8 caracteres"
                   />
                   <button
@@ -176,7 +176,7 @@ export default function ResetPasswordForm() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-[#76777A] mb-2">
+                <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                   Confirmar contraseña
                 </label>
                 <div className="relative">
@@ -188,7 +188,7 @@ export default function ResetPasswordForm() {
                     required
                     minLength={8}
                     disabled={!token}
-                    className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689] transition-colors disabled:bg-gray-50 disabled:cursor-not-allowed"
+                    className="w-full pl-12 pr-12 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b] transition-colors disabled:bg-gray-50 disabled:cursor-not-allowed"
                     placeholder="Repite tu contraseña"
                   />
                   <button
@@ -208,7 +208,7 @@ export default function ResetPasswordForm() {
               <button
                 type="submit"
                 disabled={isSubmitting || !token}
-                className="w-full py-3 bg-[#001689] text-white font-semibold rounded-lg hover:bg-[#000E53] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[#00269b] text-white font-semibold rounded-lg hover:bg-[#00175d] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>
@@ -224,7 +224,7 @@ export default function ResetPasswordForm() {
                 <div className="text-center">
                   <Link
                     href="/forgot-password"
-                    className="text-sm text-[#001689] hover:text-[#000E53] transition-colors"
+                    className="text-sm text-[#00269b] hover:text-[#00175d] transition-colors"
                   >
                     Solicitar nuevo enlace de recuperación
                   </Link>

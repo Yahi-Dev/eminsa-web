@@ -14,9 +14,9 @@ const defaultOptions: EmailTemplateOptions = {
 };
 
 const brandColors = {
-  primary: '#001689',
-  secondary: '#00A3E0',
-  accent: '#000E53',
+  primary: '#00269b',
+  secondary: '#0099ce',
+  accent: '#00175d',
   text: '#111827',
   muted: '#6b7280',
   bg: '#f8fafc',

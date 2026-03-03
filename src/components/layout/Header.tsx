@@ -30,10 +30,10 @@ interface SubMenuItem {
 
 // Tooltips para las divisiones
 const divisionsTooltips: { [key: string]: { label: string; color: string } } = {
-  MTN: { label: "Manufactura Transformadores Nuevos", color: "#001689" },
-  RST: { label: "Reparación y Servicio de Transformadores", color: "#00A3E0" },
-  EIC: { label: "Eminsa International Corporation", color: "#00B140" },
-  Servicios: { label: "Servicios a Nivel Interno y Externo", color: "#696969" },
+  MTN: { label: "Manufactura Transformadores Nuevos", color: "#00269b" },
+  RST: { label: "Reparación y Servicio de Transformadores", color: "#0099ce" },
+  EIC: { label: "Eminsa International Corporation", color: "#009e49" },
+  Servicios: { label: "Servicios a Nivel Interno y Externo", color: "#6d6e6d" },
 };
 
 export default function Header() {
@@ -102,19 +102,19 @@ export default function Header() {
   return (
     <>
       {/* Top Bar */}
-      <div className="hidden lg:block bg-[#001689] text-white text-xs xl:text-sm">
+      <div className="hidden lg:block bg-[#00269b] text-white text-xs xl:text-sm">
         <div className="container-eminsa flex items-center justify-between py-2">
           <div className="flex items-center gap-4 xl:gap-6">
             <a
               href={`tel:${contactInfo.phone}`}
-              className="flex items-center gap-2 hover:text-[#00A3E0] transition-colors"
+              className="flex items-center gap-2 hover:text-[#0099ce] transition-colors"
             >
               <Phone size={14} />
               <span>{contactInfo.phone}</span>
             </a>
             <a
               href={`mailto:${contactInfo.email}`}
-              className="flex items-center gap-2 hover:text-[#00A3E0] transition-colors"
+              className="flex items-center gap-2 hover:text-[#0099ce] transition-colors"
             >
               <Mail size={14} />
               <span>{contactInfo.email}</span>
@@ -124,7 +124,7 @@ export default function Header() {
             <span className="text-white/70 hidden xl:inline">{t('tagline')}</span>
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1 hover:text-[#00A3E0] transition-colors"
+              className="flex items-center gap-1 hover:text-[#0099ce] transition-colors"
               aria-label={language === "en" ? "Switch to Spanish" : "Cambiar a Inglés"}
             >
               <Globe size={14} />
@@ -184,12 +184,12 @@ export default function Header() {
                     <button
                       className={cn(
                         "relative group flex items-center gap-1 px-3 xl:px-4 py-2 rounded-lg font-semibold transition-colors duration-200 text-sm xl:text-[15px] 2xl:text-base uppercase whitespace-nowrap tracking-wide",
-                        "text-[#4a4a4a] hover:text-[#001689]",
-                        pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689]"
+                        "text-[#414241] hover:text-[#00269b]",
+                        pathname.startsWith(item.href) && item.href !== "/" && "text-[#00269b]"
                       )}
                     >
                       {item.name}
-                      <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#001689] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                      <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#00269b] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                       <ChevronDown
                         size={14}
                         className={cn(
@@ -214,10 +214,10 @@ export default function Header() {
                               key={subItem.name}
                               href={subItem.href}
                               className={cn(
-                                "block px-5 py-2.5 text-sm font-medium transition-colors hover:bg-[#001689]/5 hover:text-[#001689]",
+                                "block px-5 py-2.5 text-sm font-medium transition-colors hover:bg-[#00269b]/5 hover:text-[#00269b]",
                                 pathname === subItem.href || pathname.startsWith(subItem.href + "/")
-                                  ? "text-[#001689] bg-[#001689]/5"
-                                  : "text-[#4a4a4a]"
+                                  ? "text-[#00269b] bg-[#00269b]/5"
+                                  : "text-[#414241]"
                               )}
                             >
                               {subItem.name}
@@ -237,12 +237,12 @@ export default function Header() {
                     href={item.href}
                     className={cn(
                       "relative group px-3 xl:px-4 py-2 rounded-lg font-semibold transition-colors duration-200 text-sm xl:text-[15px] 2xl:text-base uppercase whitespace-nowrap tracking-wide",
-                      "text-[#4a4a4a] hover:text-[#001689]",
-                      pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689]"
+                      "text-[#414241] hover:text-[#00269b]",
+                      pathname.startsWith(item.href) && item.href !== "/" && "text-[#00269b]"
                     )}
                   >
                     {item.name}
-                    <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#001689] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                    <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#00269b] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                   </Link>
                 </Tooltip>
               ) : (
@@ -251,12 +251,12 @@ export default function Header() {
                   href={item.href}
                   className={cn(
                     "relative group px-3 xl:px-4 py-2 rounded-lg font-semibold transition-colors duration-200 text-sm xl:text-[15px] 2xl:text-base uppercase whitespace-nowrap tracking-wide",
-                    "text-[#4a4a4a] hover:text-[#001689]",
-                    pathname.startsWith(item.href) && item.href !== "/" && "text-[#001689]"
+                    "text-[#414241] hover:text-[#00269b]",
+                    pathname.startsWith(item.href) && item.href !== "/" && "text-[#00269b]"
                   )}
                 >
                   {item.name}
-                  <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#001689] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                  <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#00269b] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                 </Link>
               );
             })}
@@ -313,7 +313,7 @@ export default function Header() {
                             onClick={() => setMobileActiveSubmenu(
                               mobileActiveSubmenu === item.name ? null : item.name
                             )}
-                            className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
+                            className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-[#6d6e6d] hover:text-[#00269b] hover:bg-gray-50 transition-colors"
                           >
                             <span className="font-medium">{item.name}</span>
                             <ChevronDown
@@ -343,7 +343,7 @@ export default function Header() {
                                     className={cn(
                                       "block px-8 py-2 rounded-lg text-sm transition-colors",
                                       pathname === subItem.href || pathname.startsWith(subItem.href + "/")
-                                        ? "text-[#001689] bg-gray-50 font-medium"
+                                        ? "text-[#00269b] bg-gray-50 font-medium"
                                         : "text-gray-600 hover:bg-gray-50"
                                     )}
                                   >
@@ -362,7 +362,7 @@ export default function Header() {
                         <Link
                           href={item.href}
                           onClick={closeMobileMenu}
-                          className="flex items-center px-4 py-3 rounded-lg text-[#76777A] hover:text-[#001689] hover:bg-gray-50 transition-colors"
+                          className="flex items-center px-4 py-3 rounded-lg text-[#6d6e6d] hover:text-[#00269b] hover:bg-gray-50 transition-colors"
                         >
                           <span className="font-medium">{item.name}</span>
                         </Link>
@@ -395,7 +395,7 @@ export default function Header() {
                       toggleLanguage();
                       closeMobileMenu();
                     }}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#001689] border border-[#001689] rounded-lg hover:bg-[#001689] hover:text-white transition-all"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#00269b] border border-[#00269b] rounded-lg hover:bg-[#00269b] hover:text-white transition-all"
                     aria-label={language === "en" ? "Switch to Spanish" : "Cambiar a Inglés"}
                   >
                     <Globe size={18} />

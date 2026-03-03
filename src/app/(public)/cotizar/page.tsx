@@ -90,7 +90,7 @@ export default function CotizarPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-20 bg-gradient-to-br from-[#001689] to-[#000E53]">
+      <section className="relative py-20 bg-gradient-to-br from-[#00269b] to-[#00175d]">
         <div className="container-eminsa relative">
           <div className="flex items-center gap-2 text-white/60 text-sm mb-8">
             <Link href="/" className="hover:text-white transition-colors">{tCommon("home")}</Link>
@@ -103,7 +103,7 @@ export default function CotizarPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-2xl"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold text-white mb-4">
               {t("title")}
             </h1>
             <p className="text-xl text-white/80">
@@ -129,10 +129,10 @@ export default function CotizarPage() {
                     <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
                       <CheckCircle2 className="w-12 h-12 text-green-600" />
                     </div>
-                    <h2 className="text-3xl font-bold text-[#001689] mb-4">
+                    <h2 className="text-3xl font-bold text-[#00269b] mb-4">
                       {t("success.title")}
                     </h2>
-                    <p className="text-[#76777A] text-lg mb-8 max-w-md mx-auto">
+                    <p className="text-[#6d6e6d] text-lg mb-8 max-w-md mx-auto">
                       {t("success.description")}
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
@@ -149,11 +149,11 @@ export default function CotizarPage() {
                     {/* Contact Info */}
                     <div>
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="w-12 h-12 bg-[#001689]/10 rounded-xl flex items-center justify-center">
-                          <User className="w-6 h-6 text-[#001689]" />
+                        <div className="w-12 h-12 bg-[#00269b]/10 rounded-xl flex items-center justify-center">
+                          <User className="w-6 h-6 text-[#00269b]" />
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-[#001689]">{t("sections.contact")}</h3>
+                          <h3 className="text-xl font-bold text-[#00269b]">{t("sections.contact")}</h3>
                         </div>
                       </div>
 
@@ -176,7 +176,7 @@ export default function CotizarPage() {
                             onChange={handlePhoneChange}
                             label={t("fields.phone") as string}
                             required
-                            focusColor="#001689"
+                            focusColor="#00269b"
                           />
                         </div>
                       </div>
@@ -185,11 +185,11 @@ export default function CotizarPage() {
                     {/* Service Type */}
                     <div>
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="w-12 h-12 bg-[#00A3E0]/10 rounded-xl flex items-center justify-center">
-                          <FileText className="w-6 h-6 text-[#00A3E0]" />
+                        <div className="w-12 h-12 bg-[#0099ce]/10 rounded-xl flex items-center justify-center">
+                          <FileText className="w-6 h-6 text-[#0099ce]" />
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-[#001689]">{t("sections.serviceType")}</h3>
+                          <h3 className="text-xl font-bold text-[#00269b]">{t("sections.serviceType")}</h3>
                         </div>
                       </div>
 
@@ -227,11 +227,11 @@ export default function CotizarPage() {
                     {/* Details */}
                     <div>
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="w-12 h-12 bg-[#00B140]/10 rounded-xl flex items-center justify-center">
-                          <Building className="w-6 h-6 text-[#00B140]" />
+                        <div className="w-12 h-12 bg-[#009e49]/10 rounded-xl flex items-center justify-center">
+                          <Building className="w-6 h-6 text-[#009e49]" />
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-[#001689]">{t("sections.details")}</h3>
+                          <h3 className="text-xl font-bold text-[#00269b]">{t("sections.details")}</h3>
                         </div>
                       </div>
 
@@ -252,8 +252,8 @@ export default function CotizarPage() {
 
                       <div className="flex items-center gap-3 p-4 bg-orange-50 rounded-xl mt-6">
                         <input type="checkbox" name="urgente" checked={formData.urgente} onChange={handleChange} id="urgente" className="w-5 h-5" />
-                        <label htmlFor="urgente" className="text-[#76777A]">
-                          <span className="font-semibold text-[#FF5500]">{t("fields.urgentLabel")}</span> {t("fields.urgentDescription")}
+                        <label htmlFor="urgente" className="text-[#6d6e6d]">
+                          <span className="font-semibold text-[#e9862c]">{t("fields.urgentLabel")}</span> {t("fields.urgentDescription")}
                         </label>
                       </div>
                     </div>
@@ -279,9 +279,9 @@ export default function CotizarPage() {
             {/* Sidebar */}
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
               <div className="sticky top-24 space-y-6">
-                <div className="bg-gradient-to-br from-[#001689] to-[#000E53] rounded-2xl p-6 text-white">
+                <div className="bg-gradient-to-br from-[#00269b] to-[#00175d] rounded-2xl p-6 text-white">
                   <h3 className="text-lg font-bold mb-4">{t("sidebar.callUs")}</h3>
-                  <a href={`tel:${contactInfo.phone}`} className="flex items-center gap-3 mb-4 hover:text-[#00A3E0] transition-colors">
+                  <a href={`tel:${contactInfo.phone}`} className="flex items-center gap-3 mb-4 hover:text-[#0099ce] transition-colors">
                     <Phone size={20} />
                     <span className="font-semibold">{contactInfo.phone}</span>
                   </a>
@@ -292,16 +292,16 @@ export default function CotizarPage() {
                 </div>
 
                 <div className="bg-white rounded-2xl shadow-lg p-6">
-                  <h3 className="text-lg font-bold text-[#001689] mb-4">{t("sidebar.responseTime")}</h3>
+                  <h3 className="text-lg font-bold text-[#00269b] mb-4">{t("sidebar.responseTime")}</h3>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="text-4xl font-bold text-[#00A3E0]">&lt;30</div>
-                    <div className="text-[#76777A] text-sm">{t("sidebar.responseUnit")}<br/>{t("sidebar.responseDetail")}</div>
+                    <div className="text-4xl font-bold text-[#0099ce]">&lt;30</div>
+                    <div className="text-[#6d6e6d] text-sm">{t("sidebar.responseUnit")}<br/>{t("sidebar.responseDetail")}</div>
                   </div>
-                  <p className="text-[#76777A] text-sm">{t("sidebar.businessHours")}</p>
+                  <p className="text-[#6d6e6d] text-sm">{t("sidebar.businessHours")}</p>
                 </div>
 
                 <div className="bg-gray-50 rounded-2xl p-6">
-                  <h4 className="font-semibold text-[#001689] mb-4">{t("sidebar.certifications")}</h4>
+                  <h4 className="font-semibold text-[#00269b] mb-4">{t("sidebar.certifications")}</h4>
                   <div className="flex gap-4">
                     <img src="/images/SelloAENORISO9001_NEG.png" alt="ISO 9001" className="h-12 object-contain" />
                     <img src="/images/IQNET_RCMark_PosCMYK.png" alt="IQNET" className="h-12 object-contain" />

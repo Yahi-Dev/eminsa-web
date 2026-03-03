@@ -31,7 +31,7 @@ export default function ServicesSection() {
     <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#00A3E0]/5 rounded-full blur-[100px] -translate-y-1/2" />
+        <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#0099ce]/5 rounded-full blur-[100px] -translate-y-1/2" />
       </div>
 
       <div className="container-eminsa relative">
@@ -43,13 +43,13 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-[#00A3E0]/10 text-[#00A3E0] rounded-full text-sm font-semibold mb-4 uppercase">
+          <span className="inline-block px-4 py-2 bg-[#0099ce]/10 text-[#0099ce] rounded-full text-sm font-semibold mb-4 uppercase">
             {t('services.sectionLabel')}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689] mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00269b] mb-4">
             {t('services.title')}
           </h2>
-          <p className="text-[#76777A] text-lg">
+          <p className="text-[#6d6e6d] text-lg">
             {t('services.description')}
           </p>
         </motion.div>
@@ -69,26 +69,26 @@ export default function ServicesSection() {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
               >
                 <Link href={service.url ?? `/servicios/${service.id}`} className="group block h-full">
-                  <div className="h-full p-6 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#00A3E0]/20 transition-shadow transition-border duration-300">
+                  <div className="h-full p-6 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#0099ce]/20 transition-shadow transition-border duration-300">
                     {/* Icon */}
                     <motion.div
                       whileHover={{ scale: 1.15, rotate: 8 }}
                       transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                      className="w-14 h-14 bg-linear-to-br from-[#00A3E0]/10 to-[#00A3E0]/5 rounded-2xl flex items-center justify-center mb-5"
+                      className="w-14 h-14 bg-linear-to-br from-[#0099ce]/10 to-[#0099ce]/5 rounded-2xl flex items-center justify-center mb-5"
                     >
-                      <IconComponent className="w-7 h-7 text-[#00A3E0]" />
+                      <IconComponent className="w-7 h-7 text-[#0099ce]" />
                     </motion.div>
 
                     {/* Content */}
-                    <h3 className="text-lg font-bold text-[#001689] mb-3 group-hover:text-[#00A3E0] transition-colors">
+                    <h3 className="text-lg font-bold text-[#00269b] mb-3 group-hover:text-[#0099ce] transition-colors">
                       {service.shortName}
                     </h3>
-                    <p className="text-[#76777A] text-sm leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-[#6d6e6d] text-sm leading-relaxed mb-4 line-clamp-3">
                       {service.description}
                     </p>
 
                     {/* Link */}
-                    <span className="inline-flex items-center gap-2 text-[#00A3E0] font-medium text-sm group-hover:gap-3 transition-all">
+                    <span className="inline-flex items-center gap-2 text-[#0099ce] font-medium text-sm group-hover:gap-3 transition-all">
                       {t('services.viewMore')}
                       <ArrowRight size={16} />
                     </span>
@@ -109,7 +109,7 @@ export default function ServicesSection() {
         >
           <Link
             href="/servicios"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#00A3E0] text-white font-semibold rounded-xl hover:bg-[#0091C7] transition-all duration-300 hover:shadow-lg hover:shadow-[#00A3E0]/30 hover:-translate-y-1"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] text-white font-semibold rounded-xl hover:bg-[#0091C7] transition-all duration-300 hover:shadow-lg hover:shadow-[#0099ce]/30 hover:-translate-y-1"
           >
             {t('services.cta').toUpperCase()}
             <ArrowRight size={20} />

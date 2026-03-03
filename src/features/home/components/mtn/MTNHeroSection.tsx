@@ -86,8 +86,8 @@ export default function MTNHeroSection() {
     <section className="py-24 lg:py-32 bg-gray-50 relative overflow-hidden">
       {/* Ambient background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#001689]/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#00A3E0]/5 rounded-full blur-[80px]" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#00269b]/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#0099ce]/5 rounded-full blur-[80px]" />
       </div>
 
       <div className="container-eminsa relative">
@@ -100,15 +100,15 @@ export default function MTNHeroSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#001689]/10 text-[#001689] rounded-full text-sm font-semibold mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-6">
             <Factory className="w-4 h-4" />
             {t("mtn.sectionLabel")}
           </span>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#001689] mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#00269b] mb-6">
             {t("mtn.title")}{" "}
             <span className="relative inline-block">
-              <span className="text-[#00A3E0]">{t("mtn.titleAccent")}</span>
+              <span className="text-[#0099ce]">{t("mtn.titleAccent")}</span>
               <motion.svg
                 className="absolute -bottom-2 left-0 w-full"
                 viewBox="0 0 200 12"
@@ -120,7 +120,7 @@ export default function MTNHeroSection() {
                 <motion.path
                   d="M0 6 Q50 0 100 6 T200 6"
                   fill="none"
-                  stroke="#00A3E0"
+                  stroke="#0099ce"
                   strokeWidth="4"
                   strokeLinecap="round"
                   initial={{ pathLength: 0 }}
@@ -132,7 +132,7 @@ export default function MTNHeroSection() {
             </span>
           </h2>
 
-          <p className="text-lg md:text-xl text-[#76777A] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-[#6d6e6d] max-w-3xl mx-auto leading-relaxed">
             {t("mtn.description")}
           </p>
         </motion.div>
@@ -171,8 +171,8 @@ export default function MTNHeroSection() {
                   transition={{ duration: 0.4 }}
                   className="mb-5"
                 >
-                  <span className="inline-flex items-center gap-2 text-[#00A3E0] text-xs font-bold uppercase tracking-[0.2em]">
-                    <span className="w-6 h-px bg-[#00A3E0] inline-block" />
+                  <span className="inline-flex items-center gap-2 text-[#0099ce] text-xs font-bold uppercase tracking-[0.2em]">
+                    <span className="w-6 h-px bg-[#0099ce] inline-block" />
                     {slide.category}
                   </span>
                 </motion.div>
@@ -225,7 +225,7 @@ export default function MTNHeroSection() {
                 >
                   <Link
                     href={slide.quoteHref}
-                    className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#0020A0] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 group"
+                    className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#0020A0] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 group"
                   >
                     {t("mtn.cta.quote")}
                     <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
@@ -255,7 +255,7 @@ export default function MTNHeroSection() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6 }}
-                  className="absolute w-80 h-80 rounded-full blur-3xl bg-[#001689]/50"
+                  className="absolute w-80 h-80 rounded-full blur-3xl bg-[#00269b]/50"
                 />
 
                 {/* Transformer image */}

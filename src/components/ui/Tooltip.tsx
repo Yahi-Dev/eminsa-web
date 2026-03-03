@@ -10,7 +10,7 @@ interface TooltipProps {
   color?: string;
 }
 
-export function Tooltip({ content, children, position = "bottom", color = "#001689" }: TooltipProps) {
+export function Tooltip({ content, children, position = "bottom", color = "#00269b" }: TooltipProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   return (

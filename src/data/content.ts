@@ -221,11 +221,11 @@ export const proyectosEjemplo: Proyecto[] = [
 
 // Categorías de noticias
 export const categoriasNoticias = [
-  { value: "empresa", label: "Empresa", color: "#001689" },
-  { value: "productos", label: "Productos", color: "#00A3E0" },
-  { value: "servicios", label: "Servicios", color: "#FF5500" },
-  { value: "eventos", label: "Eventos", color: "#00B140" },
-  { value: "industria", label: "Industria", color: "#76777A" },
+  { value: "empresa", label: "Empresa", color: "#00269b" },
+  { value: "productos", label: "Productos", color: "#0099ce" },
+  { value: "servicios", label: "Servicios", color: "#e9862c" },
+  { value: "eventos", label: "Eventos", color: "#009e49" },
+  { value: "industria", label: "Industria", color: "#6d6e6d" },
 ];
 
 // Tipos de proyectos

@@ -8,11 +8,11 @@ import type { ProyectoAPI } from "@/features/admin/types";
 
 function getDivisionColor(division: string): string {
   switch (division) {
-    case "MTN": return "#001689";
-    case "RST": return "#00A3E0";
-    case "EIC": return "#00B140";
-    case "SRV": return "#696969";
-    default: return "#001689";
+    case "MTN": return "#00269b";
+    case "RST": return "#0099ce";
+    case "EIC": return "#009e49";
+    case "SRV": return "#6d6e6d";
+    default: return "#00269b";
   }
 }
 
@@ -47,6 +47,7 @@ export default function ProyectosAdminList() {
     const res = await fetch(`/api/proyectos/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify({ publicado: !current }),
     });
     if (res.ok) {
@@ -60,6 +61,7 @@ export default function ProyectosAdminList() {
     const res = await fetch(`/api/proyectos/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify({ destacado: !current }),
     });
     if (res.ok) {
@@ -70,7 +72,7 @@ export default function ProyectosAdminList() {
   }
 
   async function handleDelete(id: number) {
-    const res = await fetch(`/api/proyectos/${id}`, { method: "DELETE" });
+    const res = await fetch(`/api/proyectos/${id}`, { method: "DELETE", credentials: "include" });
     if (res.ok) {
       setProyectos((prev) => prev.filter((p) => p.id !== id));
       setDeleteConfirm(null);
@@ -89,7 +91,7 @@ export default function ProyectosAdminList() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-8 h-8 border-4 border-[#001689] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[#00269b] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -110,7 +112,7 @@ export default function ProyectosAdminList() {
           <Link
             href="/admin/proyectos/nuevo"
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium"
-            style={{ backgroundColor: "#00A3E0" }}
+            style={{ backgroundColor: "#0099ce" }}
           >
             <Plus className="w-4 h-4" />
             Nuevo Proyecto
@@ -127,13 +129,13 @@ export default function ProyectosAdminList() {
               placeholder="Buscar proyectos..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A3E0]"
+              className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#0099ce]"
             />
           </div>
           <select
             value={filterDivision}
             onChange={(e) => setFilterDivision(e.target.value)}
-            className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#00A3E0]"
+            className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#0099ce]"
           >
             <option value="">Todas las divisiones</option>
             <option value="MTN">MTN</option>
@@ -215,13 +217,13 @@ export default function ProyectosAdminList() {
                       <button
                         onClick={() => togglePublicado(proyecto.id, proyecto.publicado)}
                         title={proyecto.publicado ? "Despublicar" : "Publicar"}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#00A3E0] hover:bg-blue-50 transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#0099ce] hover:bg-blue-50 transition-colors"
                       >
                         {proyecto.publicado ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                       </button>
                       <Link
                         href={`/admin/proyectos/${proyecto.id}/edit`}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#00A3E0] hover:bg-blue-50 transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#0099ce] hover:bg-blue-50 transition-colors"
                       >
                         <Edit className="w-4 h-4" />
                       </Link>

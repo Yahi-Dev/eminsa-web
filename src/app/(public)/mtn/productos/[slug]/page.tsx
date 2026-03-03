@@ -64,9 +64,9 @@ export default async function ProductoPage({ params }: Props) {
 
   // Colores según el tipo de producto
   const productColors: Record<string, { gradient: string; accent: string }> = {
-    "tipo-poste": { gradient: "from-[#001689] to-[#000E53]", accent: "#001689" },
-    "pad-mounted": { gradient: "from-[#001689] to-[#000E53]", accent: "#00A3E0" },
-    "subestacion": { gradient: "from-[#001689] to-[#000E53]", accent: "#00B140" },
+    "tipo-poste": { gradient: "from-[#00269b] to-[#00175d]", accent: "#00269b" },
+    "pad-mounted": { gradient: "from-[#00269b] to-[#00175d]", accent: "#0099ce" },
+    "subestacion": { gradient: "from-[#00269b] to-[#00175d]", accent: "#009e49" },
   };
 
   const colors = productColors[slug] || productColors["tipo-poste"];
@@ -132,7 +132,7 @@ export default async function ProductoPage({ params }: Props) {
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link
                   href={`/mtn/cotizaciones?producto=${product.slug}`}
-                  className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -181,16 +181,16 @@ export default async function ProductoPage({ params }: Props) {
                 <Link
                   key={variant.id}
                   href={`/mtn/productos/${product.slug}/${variant.slug}`}
-                  className="group bg-gray-50 hover:bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#001689]/30 hover:shadow-xl transition-all duration-300"
+                  className="group bg-gray-50 hover:bg-white rounded-2xl p-6 border border-gray-200 hover:border-[#00269b]/30 hover:shadow-xl transition-all duration-300"
                 >
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-[#001689]/10 rounded-xl flex items-center justify-center group-hover:bg-[#001689] transition-colors">
-                      <Zap size={24} className="text-[#001689] group-hover:text-white transition-colors" />
+                    <div className="w-12 h-12 bg-[#00269b]/10 rounded-xl flex items-center justify-center group-hover:bg-[#00269b] transition-colors">
+                      <Zap size={24} className="text-[#00269b] group-hover:text-white transition-colors" />
                     </div>
-                    <ChevronRight size={20} className="text-gray-400 group-hover:text-[#001689] group-hover:translate-x-1 transition-all" />
+                    <ChevronRight size={20} className="text-gray-400 group-hover:text-[#00269b] group-hover:translate-x-1 transition-all" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#001689] transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#00269b] transition-colors">
                     {variant.name.replace(`Transformadores ${product.shortName} `, '')}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4">
@@ -258,7 +258,7 @@ export default async function ProductoPage({ params }: Props) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {product.applications.map((app, idx) => (
               <div key={idx} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl">
-                <Building2 size={20} className="text-[#001689]" />
+                <Building2 size={20} className="text-[#00269b]" />
                 <span className="text-gray-700">{app}</span>
               </div>
             ))}
@@ -279,9 +279,9 @@ export default async function ProductoPage({ params }: Props) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <Link
               href="/mtn/recursos/fichas-tecnicas"
-              className="flex items-center gap-4 bg-gray-50 hover:bg-[#001689] p-6 rounded-xl group transition-colors"
+              className="flex items-center gap-4 bg-gray-50 hover:bg-[#00269b] p-6 rounded-xl group transition-colors"
             >
-              <FileText size={24} className="text-[#001689] group-hover:text-white" />
+              <FileText size={24} className="text-[#00269b] group-hover:text-white" />
               <div>
                 <p className="font-semibold text-gray-900 group-hover:text-white">Ficha Técnica</p>
                 <p className="text-sm text-gray-500 group-hover:text-white/70">Descargar PDF</p>
@@ -289,9 +289,9 @@ export default async function ProductoPage({ params }: Props) {
             </Link>
             <Link
               href="/mtn/recursos/manual-mantenimiento"
-              className="flex items-center gap-4 bg-gray-50 hover:bg-[#001689] p-6 rounded-xl group transition-colors"
+              className="flex items-center gap-4 bg-gray-50 hover:bg-[#00269b] p-6 rounded-xl group transition-colors"
             >
-              <Download size={24} className="text-[#001689] group-hover:text-white" />
+              <Download size={24} className="text-[#00269b] group-hover:text-white" />
               <div>
                 <p className="font-semibold text-gray-900 group-hover:text-white">Manual</p>
                 <p className="text-sm text-gray-500 group-hover:text-white/70">Mantenimiento</p>
@@ -299,9 +299,9 @@ export default async function ProductoPage({ params }: Props) {
             </Link>
             <Link
               href="/mtn/recursos/garantia"
-              className="flex items-center gap-4 bg-gray-50 hover:bg-[#001689] p-6 rounded-xl group transition-colors"
+              className="flex items-center gap-4 bg-gray-50 hover:bg-[#00269b] p-6 rounded-xl group transition-colors"
             >
-              <Shield size={24} className="text-[#001689] group-hover:text-white" />
+              <Shield size={24} className="text-[#00269b] group-hover:text-white" />
               <div>
                 <p className="font-semibold text-gray-900 group-hover:text-white">Garantía</p>
                 <p className="text-sm text-gray-500 group-hover:text-white/70">Ver términos</p>
@@ -309,9 +309,9 @@ export default async function ProductoPage({ params }: Props) {
             </Link>
             <Link
               href="/mtn/recursos/calculadora"
-              className="flex items-center gap-4 bg-gray-50 hover:bg-[#001689] p-6 rounded-xl group transition-colors"
+              className="flex items-center gap-4 bg-gray-50 hover:bg-[#00269b] p-6 rounded-xl group transition-colors"
             >
-              <Settings size={24} className="text-[#001689] group-hover:text-white" />
+              <Settings size={24} className="text-[#00269b] group-hover:text-white" />
               <div>
                 <p className="font-semibold text-gray-900 group-hover:text-white">Calculadora</p>
                 <p className="text-sm text-gray-500 group-hover:text-white/70">Calcular kVA</p>
@@ -335,7 +335,7 @@ export default async function ProductoPage({ params }: Props) {
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <Link
                 href={`/mtn/cotizaciones?producto=${product.slug}`}
-                className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

@@ -32,7 +32,7 @@ export default function EICProductosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white py-16 lg:py-20">
+      <section className="bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-16 lg:py-20">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
@@ -55,7 +55,7 @@ export default function EICProductosPage() {
             <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
               Suplidores Eléctricos Internacionales
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
               Productos y Soluciones
             </h1>
             <p className="text-xl text-white/90">
@@ -75,10 +75,10 @@ export default function EICProductosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-[#00B140]/10 text-[#00B140] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#009e49]/10 text-[#009e49] text-sm font-medium rounded-full mb-4">
               Catálogo de Productos
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Categorías de Productos
             </h2>
             <p className="text-gray-600 text-lg">
@@ -134,7 +134,7 @@ export default function EICProductosPage() {
                         key={brand.id}
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-700"
                       >
-                        <Globe size={14} className="text-[#00B140]" />
+                        <Globe size={14} className="text-[#009e49]" />
                         {brand.name}
                         <span className="text-gray-400">|</span>
                         <span className="text-gray-500 text-xs">
@@ -156,7 +156,7 @@ export default function EICProductosPage() {
                       >
                         <Link
                           href={`/eic/productos/${product.slug}`}
-                          className="group block bg-white rounded-xl border border-gray-200 hover:border-[#00B140]/40 hover:shadow-lg transition-all p-6 h-full"
+                          className="group block bg-white rounded-xl border border-gray-200 hover:border-[#009e49]/40 hover:shadow-lg transition-all p-6 h-full"
                         >
                           {/* Product Brand Badge */}
                           <div className="flex items-center justify-between mb-3">
@@ -171,12 +171,12 @@ export default function EICProductosPage() {
                             </span>
                             <ArrowRight
                               size={16}
-                              className="text-gray-300 group-hover:text-[#00B140] group-hover:translate-x-1 transition-all"
+                              className="text-gray-300 group-hover:text-[#009e49] group-hover:translate-x-1 transition-all"
                             />
                           </div>
 
                           {/* Product Info */}
-                          <h4 className="text-lg font-bold text-gray-900 group-hover:text-[#00B140] transition-colors mb-2">
+                          <h4 className="text-lg font-bold text-gray-900 group-hover:text-[#009e49] transition-colors mb-2">
                             {product.shortName}
                           </h4>
                           <p className="text-sm text-gray-600 mb-4 line-clamp-2">
@@ -219,10 +219,10 @@ export default function EICProductosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-[#00B140]/10 text-[#00B140] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#009e49]/10 text-[#009e49] text-sm font-medium rounded-full mb-4">
               Nuestros Aliados
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Marcas que Representamos
             </h2>
             <p className="text-gray-600 text-lg">
@@ -250,7 +250,7 @@ export default function EICProductosPage() {
                     <h3 className="text-lg font-bold text-gray-900">
                       {brand.name}
                     </h3>
-                    <Globe size={16} className="text-[#00B140] shrink-0 mt-1" />
+                    <Globe size={16} className="text-[#009e49] shrink-0 mt-1" />
                   </div>
 
                   <div className="flex items-center gap-1.5 text-sm text-gray-500 mb-3">
@@ -273,7 +273,7 @@ export default function EICProductosPage() {
                   <div className="mt-auto">
                     <Link
                       href={`/eic/productos#${brand.category}`}
-                      className="inline-flex items-center gap-1 text-sm font-medium text-[#00B140] group-hover:underline"
+                      className="inline-flex items-center gap-1 text-sm font-medium text-[#009e49] group-hover:underline"
                     >
                       Ver productos
                       <ArrowRight size={14} />
@@ -287,14 +287,14 @@ export default function EICProductosPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white">
+      <section className="py-16 bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               ¿Necesita productos eléctricos internacionales?
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
@@ -304,7 +304,7 @@ export default function EICProductosPage() {
             </p>
             <Link
               href="/eic/cotizaciones"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-gray-100 text-[#00B140] font-semibold rounded-xl transition-colors shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-gray-100 text-[#009e49] font-semibold rounded-xl transition-colors shadow-lg"
             >
               Solicitar Cotización
               <ArrowRight size={20} />

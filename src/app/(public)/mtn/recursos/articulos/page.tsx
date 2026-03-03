@@ -60,7 +60,7 @@ export default function ArticulosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-12">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-12">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -94,7 +94,7 @@ export default function ArticulosPage() {
                 key={cat}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   cat === "Todas" 
-                    ? "bg-[#001689] text-white" 
+                    ? "bg-[#00269b] text-white" 
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}
               >
@@ -115,19 +115,19 @@ export default function ArticulosPage() {
                 className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow group"
               >
                 {/* Image placeholder */}
-                <div className="aspect-[16/9] bg-gradient-to-br from-[#001689]/10 to-[#00A3E0]/10 flex items-center justify-center">
-                  <Newspaper size={48} className="text-[#001689]/30" />
+                <div className="aspect-[16/9] bg-gradient-to-br from-[#00269b]/10 to-[#0099ce]/10 flex items-center justify-center">
+                  <Newspaper size={48} className="text-[#00269b]/30" />
                 </div>
 
                 <div className="p-6 space-y-4">
                   {/* Category */}
                   <div className="flex items-center gap-2">
-                    <Tag size={14} className="text-[#00A3E0]" />
-                    <span className="text-sm font-medium text-[#00A3E0]">{article.category}</span>
+                    <Tag size={14} className="text-[#0099ce]" />
+                    <span className="text-sm font-medium text-[#0099ce]">{article.category}</span>
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-xl font-bold text-gray-900 group-hover:text-[#001689] transition-colors line-clamp-2">
+                  <h2 className="text-xl font-bold text-gray-900 group-hover:text-[#00269b] transition-colors line-clamp-2">
                     {article.title}
                   </h2>
 
@@ -151,7 +151,7 @@ export default function ArticulosPage() {
                   {/* CTA */}
                   <Link
                     href={`/mtn/recursos/articulos/${article.id}`}
-                    className="inline-flex items-center gap-2 text-[#001689] font-semibold hover:text-[#00A3E0] transition-colors"
+                    className="inline-flex items-center gap-2 text-[#00269b] font-semibold hover:text-[#0099ce] transition-colors"
                   >
                     Leer más
                     <ArrowRight size={16} />
@@ -171,13 +171,13 @@ export default function ArticulosPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 bg-[#001689] text-white">
+      <section className="py-12 bg-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-2xl font-bold mb-4">¿Tiene preguntas técnicas?</h2>
           <p className="text-white/80 mb-6">Nuestro equipo de ingenieros está disponible para asistirle.</p>
           <Link
             href="/mtn/cotizaciones"
-            className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
           >
             Contactar Soporte
             <ArrowRight size={18} />

@@ -126,7 +126,7 @@ export default function ManualMantenimientoPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-12">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-12">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -180,14 +180,14 @@ export default function ManualMantenimientoPage() {
                   className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow cursor-pointer group"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#001689]/10 rounded-xl flex items-center justify-center group-hover:bg-[#001689] transition-colors">
-                      <Icon size={24} className="text-[#001689] group-hover:text-white transition-colors" />
+                    <div className="w-12 h-12 bg-[#00269b]/10 rounded-xl flex items-center justify-center group-hover:bg-[#00269b] transition-colors">
+                      <Icon size={24} className="text-[#00269b] group-hover:text-white transition-colors" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-medium text-[#00A3E0]">Capítulo {chapter.number}</span>
+                        <span className="text-xs font-medium text-[#0099ce]">Capítulo {chapter.number}</span>
                       </div>
-                      <h3 className="font-bold text-gray-900 group-hover:text-[#001689] transition-colors">
+                      <h3 className="font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
                         {chapter.title}
                       </h3>
                       <p className="text-sm text-gray-600 mt-1">
@@ -212,7 +212,7 @@ export default function ManualMantenimientoPage() {
             {maintenanceSchedule.map((schedule, idx) => (
               <div key={idx} className="bg-gray-50 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Clock size={20} className="text-[#001689]" />
+                  <Clock size={20} className="text-[#00269b]" />
                   <h3 className="text-lg font-bold text-gray-900">{schedule.frequency}</h3>
                 </div>
                 <ul className="space-y-2">
@@ -251,7 +251,7 @@ export default function ManualMantenimientoPage() {
                     <p className="text-xs text-gray-400 mt-1">{doc.type} • {doc.size}</p>
                   </div>
                 </div>
-                <button className="flex-shrink-0 flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-4 py-2 rounded-lg transition-colors">
+                <button className="flex-shrink-0 flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-4 py-2 rounded-lg transition-colors">
                   <Download size={18} />
                 </button>
               </div>

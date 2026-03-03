@@ -34,7 +34,7 @@ export default function EtrysNosotrosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-16 lg:py-24">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
@@ -57,7 +57,7 @@ export default function EtrysNosotrosPage() {
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
                 Quiénes Somos
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
                 {aboutEtrys.title}
               </h1>
               <p className="text-xl text-white/90 mb-6">
@@ -105,8 +105,8 @@ export default function EtrysNosotrosPage() {
               viewport={{ once: true }}
               className="bg-white rounded-2xl p-8 shadow-lg"
             >
-              <div className="w-16 h-16 rounded-xl bg-[#00A3E0]/10 flex items-center justify-center mb-6">
-                <Target size={32} className="text-[#00A3E0]" />
+              <div className="w-16 h-16 rounded-xl bg-[#0099ce]/10 flex items-center justify-center mb-6">
+                <Target size={32} className="text-[#0099ce]" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 Nuestra Misión
@@ -124,8 +124,8 @@ export default function EtrysNosotrosPage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-2xl p-8 shadow-lg"
             >
-              <div className="w-16 h-16 rounded-xl bg-[#00A3E0]/10 flex items-center justify-center mb-6">
-                <Eye size={32} className="text-[#00A3E0]" />
+              <div className="w-16 h-16 rounded-xl bg-[#0099ce]/10 flex items-center justify-center mb-6">
+                <Eye size={32} className="text-[#0099ce]" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 Nuestra Visión
@@ -190,10 +190,10 @@ export default function EtrysNosotrosPage() {
               viewport={{ once: true }}
               className="order-1 lg:order-2"
             >
-              <span className="inline-block px-3 py-1 bg-[#00A3E0]/10 text-[#00A3E0] text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
                 Nuestra Posición
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 Líderes en el Mercado
               </h2>
               <p className="text-gray-600 text-lg mb-6">
@@ -204,7 +204,7 @@ export default function EtrysNosotrosPage() {
               <div className="space-y-4">
                 {etrysInfo.advantages.map((adv) => (
                   <div key={adv.title} className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-[#00A3E0] shrink-0 mt-1" />
+                    <CheckCircle2 size={20} className="text-[#0099ce] shrink-0 mt-1" />
                     <div>
                       <h4 className="font-semibold text-gray-900">{adv.title}</h4>
                       <p className="text-sm text-gray-600">{adv.description}</p>
@@ -226,10 +226,10 @@ export default function EtrysNosotrosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-[#00A3E0]/10 text-[#00A3E0] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
               Lo Que Nos Define
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Nuestros Valores
             </h2>
             <p className="text-gray-600 text-lg">
@@ -250,8 +250,8 @@ export default function EtrysNosotrosPage() {
                   transition={{ delay: index * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all text-center group"
                 >
-                  <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-[#00A3E0]/20 to-[#001689]/20 flex items-center justify-center mb-4 group-hover:from-[#00A3E0] group-hover:to-[#001689] transition-all">
-                    <Icon size={32} className="text-[#00A3E0] group-hover:text-white transition-colors" />
+                  <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-[#0099ce]/20 to-[#00269b]/20 flex items-center justify-center mb-4 group-hover:from-[#0099ce] group-hover:to-[#00269b] transition-all">
+                    <Icon size={32} className="text-[#0099ce] group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
                     {value.title}
@@ -275,10 +275,10 @@ export default function EtrysNosotrosPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block px-3 py-1 bg-[#00A3E0]/10 text-[#00A3E0] text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
                 Nuestro Equipo
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 Profesionales Comprometidos
               </h2>
               <p className="text-gray-600 text-lg mb-6">
@@ -296,7 +296,7 @@ export default function EtrysNosotrosPage() {
                     key={item.label}
                     className="bg-gray-50 rounded-xl p-4 text-center"
                   >
-                    <item.icon size={28} className="text-[#00A3E0] mx-auto mb-2" />
+                    <item.icon size={28} className="text-[#0099ce] mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">{item.value}</div>
                     <div className="text-xs text-gray-500">{item.label}</div>
                   </div>
@@ -323,7 +323,7 @@ export default function EtrysNosotrosPage() {
       </section>
 
       {/* Milestones */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
         <div className="container-eminsa">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -331,7 +331,7 @@ export default function EtrysNosotrosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               Nuestra Trayectoria
             </h2>
             <p className="text-xl text-white/90">
@@ -364,11 +364,11 @@ export default function EtrysNosotrosPage() {
                 >
                   <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                     <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 inline-block">
-                      <span className="text-2xl font-bold text-amber-400">{milestone.year}</span>
+                      <span className="text-2xl font-bold text-[#0099ce]">{milestone.year}</span>
                       <p className="text-white/90">{milestone.event}</p>
                     </div>
                   </div>
-                  <div className="w-4 h-4 rounded-full bg-amber-400 relative z-10 hidden md:block" />
+                  <div className="w-4 h-4 rounded-full bg-[#0099ce] relative z-10 hidden md:block" />
                   <div className="flex-1 hidden md:block" />
                 </motion.div>
               ))}
@@ -386,7 +386,7 @@ export default function EtrysNosotrosPage() {
             viewport={{ once: true }}
             className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 lg:p-12 text-white text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               ¿Listo para trabajar con nosotros?
             </h2>
             <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
@@ -396,7 +396,7 @@ export default function EtrysNosotrosPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/etrys/cotizaciones"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

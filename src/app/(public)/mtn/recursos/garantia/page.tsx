@@ -76,7 +76,7 @@ export default function GarantiaPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-12">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-12">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -109,9 +109,9 @@ export default function GarantiaPage() {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {warrantyPeriods.map((item, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-[#001689]/5 to-[#00A3E0]/5 rounded-2xl p-6 text-center border border-[#001689]/10">
+              <div key={idx} className="bg-gradient-to-br from-[#00269b]/5 to-[#0099ce]/5 rounded-2xl p-6 text-center border border-[#00269b]/10">
                 <span className="text-4xl">{item.icon}</span>
-                <p className="text-3xl font-bold text-[#001689] mt-4">{item.period}</p>
+                <p className="text-3xl font-bold text-[#00269b] mt-4">{item.period}</p>
                 <p className="text-gray-600 mt-2">{item.product}</p>
               </div>
             ))}
@@ -173,7 +173,7 @@ export default function GarantiaPage() {
               {claimProcess.map((item) => (
                 <div key={item.step} className="relative">
                   <div className="bg-gray-50 rounded-xl p-6 h-full">
-                    <div className="w-10 h-10 bg-[#001689] text-white rounded-full flex items-center justify-center font-bold mb-4">
+                    <div className="w-10 h-10 bg-[#00269b] text-white rounded-full flex items-center justify-center font-bold mb-4">
                       {item.step}
                     </div>
                     <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -194,26 +194,26 @@ export default function GarantiaPage() {
       {/* Requirements */}
       <section className="py-12">
         <div className="container-eminsa">
-          <div className="max-w-3xl mx-auto bg-[#001689]/5 rounded-2xl p-8">
+          <div className="max-w-3xl mx-auto bg-[#00269b]/5 rounded-2xl p-8">
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Clock size={24} className="text-[#001689]" />
+              <Clock size={24} className="text-[#00269b]" />
               Requisitos para Validar la Garantía
             </h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-[#001689] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+                <div className="w-6 h-6 bg-[#00269b] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
                 <span className="text-gray-700">Presentar factura original de compra o documento equivalente.</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-[#001689] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+                <div className="w-6 h-6 bg-[#00269b] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
                 <span className="text-gray-700">Proporcionar número de serie del equipo visible en la placa de datos.</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-[#001689] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+                <div className="w-6 h-6 bg-[#00269b] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
                 <span className="text-gray-700">Documentar registros de mantenimiento preventivo según el manual.</span>
               </li>
               <li className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-[#001689] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
+                <div className="w-6 h-6 bg-[#00269b] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
                 <span className="text-gray-700">Reportar la falla dentro del período de garantía vigente.</span>
               </li>
             </ul>
@@ -230,7 +230,7 @@ export default function GarantiaPage() {
               <h2 className="text-xl font-bold text-gray-900 mb-6">Contacto de Servicio Técnico</h2>
               <div className="space-y-4">
                 <a href="tel:809-555-0123" className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 bg-[#001689] rounded-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-[#00269b] rounded-lg flex items-center justify-center">
                     <Phone size={24} className="text-white" />
                   </div>
                   <div>
@@ -239,7 +239,7 @@ export default function GarantiaPage() {
                   </div>
                 </a>
                 <a href="mailto:servicio@eminsa.com" className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-shadow">
-                  <div className="w-12 h-12 bg-[#00A3E0] rounded-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-[#0099ce] rounded-lg flex items-center justify-center">
                     <Mail size={24} className="text-white" />
                   </div>
                   <div>
@@ -251,12 +251,12 @@ export default function GarantiaPage() {
             </div>
 
             {/* Download */}
-            <div className="bg-gradient-to-br from-[#001689] to-[#001689] rounded-2xl p-8 text-white">
+            <div className="bg-gradient-to-br from-[#00269b] to-[#00269b] rounded-2xl p-8 text-white">
               <h2 className="text-xl font-bold mb-4">Documento de Garantía</h2>
               <p className="text-white/80 mb-6">
                 Descargue el documento completo con todos los términos y condiciones de garantía.
               </p>
-              <button className="flex items-center gap-2 bg-white text-[#001689] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors">
+              <button className="flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors">
                 <Download size={20} />
                 Descargar PDF
               </button>
@@ -270,7 +270,7 @@ export default function GarantiaPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-12 bg-[#001689] text-white">
+      <section className="py-12 bg-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-2xl font-bold mb-4">¿Tiene preguntas sobre la garantía?</h2>
           <p className="text-white/80 mb-6 max-w-xl mx-auto">
@@ -278,7 +278,7 @@ export default function GarantiaPage() {
           </p>
           <Link
             href="/mtn/cotizaciones"
-            className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
           >
             Contactar Soporte
             <ArrowRight size={18} />

@@ -205,7 +205,7 @@ interface UnitConfig {
 
 const UNIT_CONFIGS: Record<string, UnitConfig> = {
   MTN: {
-    color: '#001689',
+    color: '#00269b',
     label: 'MTN – Transformadores Nuevos',
     badge: 'Fabricados en República Dominicana',
     headerTitle: 'Solicitud de Cotización',
@@ -217,7 +217,7 @@ const UNIT_CONFIGS: Record<string, UnitConfig> = {
     adminDivisionTitle: 'MTN – NUEVA COTIZACIÓN DE TRANSFORMADOR',
   },
   RST: {
-    color: '#00A3E0',
+    color: '#0099ce',
     label: 'ETRYS – Remanufactura y Servicios',
     badge: 'Taller Especializado en Transformadores',
     headerTitle: 'Solicitud de Servicio',
@@ -229,7 +229,7 @@ const UNIT_CONFIGS: Record<string, UnitConfig> = {
     adminDivisionTitle: 'ETRYS – NUEVA SOLICITUD DE SERVICIO',
   },
   EIC: {
-    color: '#00B140',
+    color: '#009e49',
     label: 'EIC – Productos Internacionales',
     badge: 'Eminsa International Corporation',
     headerTitle: 'Solicitud de Cotización Internacional',
@@ -241,7 +241,7 @@ const UNIT_CONFIGS: Record<string, UnitConfig> = {
     adminDivisionTitle: 'EIC – NUEVA COTIZACIÓN INTERNACIONAL',
   },
   SRV: {
-    color: '#696969',
+    color: '#6d6e6d',
     label: 'Servicios Técnicos Especializados',
     badge: 'Disponible 24/7 para Emergencias',
     headerTitle: 'Solicitud de Servicio Técnico',

@@ -23,7 +23,7 @@ function AnimatedStat({ value, label, delay }: { value: string; label: string; d
 
   return (
     <div className="text-center md:text-left">
-      <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+      <div className="text-3xl md:text-4xl xl:text-5xl font-bold text-white mb-1">
         {isSpecialCase ? value : `${count}${suffix}`}
       </div>
       <div className="text-sm text-white/70">{label}</div>
@@ -82,17 +82,17 @@ export default function HeroSection() {
           <motion.div
             animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 1.15, 0.9, 1] }}
             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 right-1/3 w-[450px] h-[450px] bg-[#00A3E0]/12 rounded-full blur-[90px]"
+            className="absolute top-1/4 right-1/3 w-[450px] h-[450px] bg-[#0099ce]/12 rounded-full blur-[90px]"
           />
           <motion.div
             animate={{ x: [0, -30, 20, 0], y: [0, 25, -20, 0] }}
             transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-            className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-[#001689]/20 rounded-full blur-[100px]"
+            className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-[#00269b]/20 rounded-full blur-[100px]"
           />
           <motion.div
             animate={{ x: [0, 15, -25, 0], y: [0, -20, 30, 0], scale: [1, 0.9, 1.1, 1] }}
             transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 8 }}
-            className="absolute top-1/2 left-1/4 w-[280px] h-[280px] bg-[#00B140]/8 rounded-full blur-[80px]"
+            className="absolute top-1/2 left-1/4 w-[280px] h-[280px] bg-[#009e49]/8 rounded-full blur-[80px]"
           />
         </div>
       </div>
@@ -114,7 +114,7 @@ export default function HeroSection() {
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
             >
               <span className="block">{t('hero.title1')}</span>
-              <span className="block text-[#00A3E0]">{t('hero.title2')}</span>
+              <span className="block text-[#0099ce]">{t('hero.title2')}</span>
             </motion.h1>
 
             {/* Description */}
@@ -136,7 +136,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/cotizar"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#00A3E0] text-white font-semibold rounded-xl hover:bg-[#0091C7] transition-all duration-300 hover:shadow-lg hover:shadow-[#00A3E0]/30 hover:-translate-y-1"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0099ce] text-white font-semibold rounded-xl hover:bg-[#0091C7] transition-all duration-300 hover:shadow-lg hover:shadow-[#0099ce]/30 hover:-translate-y-1"
               >
                 {t('hero.cta')}
                 <ArrowRight size={20} />

@@ -40,7 +40,7 @@ export default function CentroReparacionPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-16 lg:py-20">
+      <section className="bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-16 lg:py-20">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6 flex-wrap">
@@ -67,7 +67,7 @@ export default function CentroReparacionPage() {
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
                 Nuestras Instalaciones
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
                 {repairCenter.name}
               </h1>
               <p className="text-xl text-white/90 mb-6">
@@ -80,7 +80,7 @@ export default function CentroReparacionPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/etrys/cotizaciones?servicio=reparacion"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                 >
                   Solicitar Servicio
                   <ArrowRight size={20} />
@@ -124,7 +124,7 @@ export default function CentroReparacionPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Galería de Instalaciones
             </h2>
             <p className="text-gray-600 text-lg">
@@ -167,7 +167,7 @@ export default function CentroReparacionPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Capacidades de Servicio
             </h2>
             <p className="text-gray-600 text-lg">
@@ -184,7 +184,7 @@ export default function CentroReparacionPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-gradient-to-br from-[#00A3E0] to-[#0077A8] text-white rounded-2xl p-6 shadow-xl"
+                className="bg-gradient-to-br from-[#0099ce] to-[#007ba8] text-white rounded-2xl p-6 shadow-xl"
               >
                 <h3 className="text-xl font-bold mb-2">{cap.type}</h3>
                 <p className="text-white/80 mb-4">{cap.description}</p>
@@ -208,7 +208,7 @@ export default function CentroReparacionPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Equipamiento Especializado
             </h2>
             <p className="text-gray-600 text-lg">
@@ -229,13 +229,13 @@ export default function CentroReparacionPage() {
                   transition={{ delay: index * 0.05 }}
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all group"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-[#00A3E0]/10 flex items-center justify-center mb-4 group-hover:bg-[#00A3E0] transition-colors">
-                    <Icon size={28} className="text-[#00A3E0] group-hover:text-white transition-colors" />
+                  <div className="w-14 h-14 rounded-xl bg-[#0099ce]/10 flex items-center justify-center mb-4 group-hover:bg-[#0099ce] transition-colors">
+                    <Icon size={28} className="text-[#0099ce] group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-2">{equip.name}</h3>
                   <p className="text-sm text-gray-600 mb-3">{equip.description}</p>
                   {equip.specs && (
-                    <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-sm font-medium rounded-lg">
+                    <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#007ba8] text-sm font-medium rounded-lg">
                       {equip.specs}
                     </span>
                   )}
@@ -272,7 +272,7 @@ export default function CentroReparacionPage() {
                 />
               </div>
               <div className="mt-4 flex items-start gap-3">
-                <MapPin size={20} className="text-[#00A3E0] shrink-0 mt-1" />
+                <MapPin size={20} className="text-[#0099ce] shrink-0 mt-1" />
                 <div>
                   <p className="font-semibold text-gray-900">{repairCenter.location}</p>
                   <p className="text-gray-600">República Dominicana</p>
@@ -296,11 +296,11 @@ export default function CentroReparacionPage() {
                 </h3>
                 <div className="space-y-2 text-gray-600">
                   <div className="flex items-center gap-3">
-                    <Clock size={18} className="text-[#00A3E0]" />
+                    <Clock size={18} className="text-[#0099ce]" />
                     <span>Lunes a Viernes: 8:00 AM - 5:00 PM</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Clock size={18} className="text-[#00A3E0]" />
+                    <Clock size={18} className="text-[#0099ce]" />
                     <span>Sábados: 8:00 AM - 12:00 PM</span>
                   </div>
                 </div>
@@ -311,8 +311,8 @@ export default function CentroReparacionPage() {
                   href={`tel:${contactInfo.phone}`}
                   className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-[#00A3E0]/10 flex items-center justify-center">
-                    <Phone size={24} className="text-[#00A3E0]" />
+                  <div className="w-12 h-12 rounded-lg bg-[#0099ce]/10 flex items-center justify-center">
+                    <Phone size={24} className="text-[#0099ce]" />
                   </div>
                   <div>
                     <span className="text-sm text-gray-500 block">Teléfono</span>
@@ -324,8 +324,8 @@ export default function CentroReparacionPage() {
                   href={`mailto:${contactInfo.email}`}
                   className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-[#00A3E0]/10 flex items-center justify-center">
-                    <Mail size={24} className="text-[#00A3E0]" />
+                  <div className="w-12 h-12 rounded-lg bg-[#0099ce]/10 flex items-center justify-center">
+                    <Mail size={24} className="text-[#0099ce]" />
                   </div>
                   <div>
                     <span className="text-sm text-gray-500 block">Email</span>
@@ -351,7 +351,7 @@ export default function CentroReparacionPage() {
 
               <Link
                 href="/etrys/cotizaciones?servicio=reparacion"
-                className="flex items-center justify-center gap-2 w-full mt-6 px-6 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
+                className="flex items-center justify-center gap-2 w-full mt-6 px-6 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
               >
                 Solicitar Servicio
                 <ArrowRight size={20} />
@@ -362,14 +362,14 @@ export default function CentroReparacionPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white">
+      <section className="py-16 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               ¿Listo para reparar su transformador?
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
@@ -378,7 +378,7 @@ export default function CentroReparacionPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/etrys/cotizaciones?servicio=reparacion"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

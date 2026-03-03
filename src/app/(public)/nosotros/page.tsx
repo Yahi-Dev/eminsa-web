@@ -71,7 +71,7 @@ export default function NosotrosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-[#001689] text-white py-16 lg:py-24">
+      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-[#00269b] text-white py-16 lg:py-24">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
@@ -90,7 +90,7 @@ export default function NosotrosPage() {
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
                 {eminsaInfo.tagline}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
                 {aboutEminsa.title}
               </h1>
               <p className="text-xl text-white/90 mb-6">
@@ -139,10 +139,10 @@ export default function NosotrosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
               {t("philosophy.badge")}
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               {t("philosophy.title")}
             </h2>
             <p className="text-gray-600 text-lg">
@@ -159,8 +159,8 @@ export default function NosotrosPage() {
               viewport={{ once: true }}
               className="bg-white rounded-2xl p-8 shadow-lg"
             >
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#001689]/10 to-[#00A3E0]/10 flex items-center justify-center mb-6">
-                <Target size={32} className="text-[#001689]" />
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00269b]/10 to-[#0099ce]/10 flex items-center justify-center mb-6">
+                <Target size={32} className="text-[#00269b]" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 {t("mission")}
@@ -178,8 +178,8 @@ export default function NosotrosPage() {
               transition={{ delay: 0.1 }}
               className="bg-white rounded-2xl p-8 shadow-lg"
             >
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00B140]/10 to-[#FF5500]/10 flex items-center justify-center mb-6">
-                <Eye size={32} className="text-[#00B140]" />
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#009e49]/10 to-[#e9862c]/10 flex items-center justify-center mb-6">
+                <Eye size={32} className="text-[#009e49]" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 {t("vision")}
@@ -203,8 +203,8 @@ export default function NosotrosPage() {
                   transition={{ delay: index * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all text-center group"
                 >
-                  <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-[#001689]/20 to-[#00A3E0]/20 flex items-center justify-center mb-4 group-hover:from-[#001689] group-hover:to-[#00A3E0] transition-all">
-                    <Icon size={32} className="text-[#001689] group-hover:text-white transition-colors" />
+                  <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-[#00269b]/20 to-[#0099ce]/20 flex items-center justify-center mb-4 group-hover:from-[#00269b] group-hover:to-[#0099ce] transition-all">
+                    <Icon size={32} className="text-[#00269b] group-hover:text-white transition-colors" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2">
                     {value.title}
@@ -271,10 +271,10 @@ export default function NosotrosPage() {
               viewport={{ once: true }}
               className="order-1 lg:order-2"
             >
-              <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
                 {t("position.badge")}
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 {t("position.title")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
@@ -285,7 +285,7 @@ export default function NosotrosPage() {
               <div className="space-y-4">
                 {eminsaAdvantages.map((adv) => (
                   <div key={adv.title} className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-[#00B140] shrink-0 mt-1" />
+                    <CheckCircle2 size={20} className="text-[#009e49] shrink-0 mt-1" />
                     <div>
                       <h4 className="font-semibold text-gray-900">{adv.title}</h4>
                       <p className="text-sm text-gray-600">{adv.description}</p>
@@ -307,10 +307,10 @@ export default function NosotrosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
               {t("divisions.badge")}
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               {t("divisions.title")}
             </h2>
             <p className="text-gray-600 text-lg">
@@ -371,10 +371,10 @@ export default function NosotrosPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
                 {t("team.badge")}
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 {t("team.title")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
@@ -392,7 +392,7 @@ export default function NosotrosPage() {
                     key={item.labelKey}
                     className="bg-white rounded-xl p-4 text-center shadow-md"
                   >
-                    <item.icon size={28} className="text-[#001689] mx-auto mb-2" />
+                    <item.icon size={28} className="text-[#00269b] mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">{item.value}</div>
                     <div className="text-xs text-gray-500">{t(item.labelKey as Parameters<typeof t>[0])}</div>
                   </div>
@@ -419,7 +419,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Milestones */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#001689] text-white">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#00269b] text-white">
         <div className="container-eminsa">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -427,7 +427,7 @@ export default function NosotrosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               {t("milestones.title")}
             </h2>
             <p className="text-xl text-white/90">
@@ -486,9 +486,9 @@ export default function NosotrosPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-[#001689] to-[#00A3E0] rounded-3xl p-8 lg:p-12 text-white text-center"
+            className="bg-gradient-to-br from-[#00269b] to-[#0099ce] rounded-3xl p-8 lg:p-12 text-white text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               {t("cta.title")}
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
@@ -497,7 +497,7 @@ export default function NosotrosPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/contacto"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#001689] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#00269b] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
               >
                 {t("cta.contact")}
                 <ArrowRight size={20} />
@@ -548,7 +548,7 @@ export default function NosotrosPage() {
                   onClick={(e) => e.stopPropagation()}
                 >
                   {/* Header */}
-                  <div className="bg-gradient-to-br from-[#001689] to-[#00A3E0] text-white p-6 lg:p-8">
+                  <div className="bg-gradient-to-br from-[#00269b] to-[#0099ce] text-white p-6 lg:p-8">
                     <button
                       onClick={closeDialog}
                       className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/20 transition-colors"
@@ -582,8 +582,8 @@ export default function NosotrosPage() {
                     {/* Details */}
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">
-                        <div className="w-8 h-8 rounded-lg bg-[#001689]/10 flex items-center justify-center">
-                          <CheckCircle2 size={20} className="text-[#001689]" />
+                        <div className="w-8 h-8 rounded-lg bg-[#00269b]/10 flex items-center justify-center">
+                          <CheckCircle2 size={20} className="text-[#00269b]" />
                         </div>
                         <h4 className="text-xl font-bold text-gray-900">
                           {t("milestones.dialog.details")}
@@ -598,7 +598,7 @@ export default function NosotrosPage() {
                             transition={{ delay: index * 0.1 }}
                             className="flex items-start gap-3 text-gray-600"
                           >
-                            <CheckCircle2 size={18} className="text-[#00B140] shrink-0 mt-0.5" />
+                            <CheckCircle2 size={18} className="text-[#009e49] shrink-0 mt-0.5" />
                             <span>{detail}</span>
                           </motion.li>
                         ))}
@@ -636,7 +636,7 @@ export default function NosotrosPage() {
                   <div className="border-t border-gray-200 p-6 bg-gray-50">
                     <button
                       onClick={closeDialog}
-                      className="w-full px-6 py-3 bg-[#001689] hover:bg-[#000E53] text-white font-semibold rounded-xl transition-colors"
+                      className="w-full px-6 py-3 bg-[#00269b] hover:bg-[#00175d] text-white font-semibold rounded-xl transition-colors"
                     >
                       {t("milestones.dialog.close")}
                     </button>

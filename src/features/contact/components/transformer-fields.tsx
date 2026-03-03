@@ -67,12 +67,12 @@ export function TransformerFields({
       className="space-y-6"
     >
       {/* Contenedor principal */}
-      <div className="bg-[#001689]/5 border border-[#001689]/20 rounded-xl p-6 space-y-6">
+      <div className="bg-[#00269b]/5 border border-[#00269b]/20 rounded-xl p-6 space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <Zap className="w-6 h-6 text-[#001689]" />
-            <h3 className="text-lg font-bold text-[#001689]">
+            <Zap className="w-6 h-6 text-[#00269b]" />
+            <h3 className="text-lg font-bold text-[#00269b]">
               {t('form.transformer.title')}
             </h3>
           </div>
@@ -90,10 +90,10 @@ export function TransformerFields({
           type="button"
           onClick={handleAddTransformer}
           disabled={isSubmitting}
-          className="flex items-center justify-center gap-2 w-full p-3 border-2 border-dashed border-[#001689]/30 rounded-lg hover:border-[#001689]/50 hover:bg-[#001689]/5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center justify-center gap-2 w-full p-3 border-2 border-dashed border-[#00269b]/30 rounded-lg hover:border-[#00269b]/50 hover:bg-[#00269b]/5 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Plus className="w-5 h-5 text-[#001689]" />
-          <span className="font-medium text-[#001689]">
+          <Plus className="w-5 h-5 text-[#00269b]" />
+          <span className="font-medium text-[#00269b]">
             {t('form.transformer.addTransformer')}
           </span>
         </button>
@@ -161,8 +161,8 @@ function TransformerSpecification({
       {/* Header del transformador - Mostrar cantidad si es mayor a 1 */}
       <div className="flex items-center justify-between pb-4 border-b">
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-8 h-8 bg-[#001689]/10 rounded-full">
-            <span className="font-bold text-[#001689]">{index + 1}</span>
+          <div className="flex items-center justify-center w-8 h-8 bg-[#00269b]/10 rounded-full">
+            <span className="font-bold text-[#00269b]">{index + 1}</span>
           </div>
           <div>
             <h4 className="font-bold text-gray-800">
@@ -216,7 +216,7 @@ function TransformerSpecification({
                 {t('form.transformer.totalPower')}:
               </p>
               <div className="bg-gray-50 p-3 rounded-lg border">
-                <p className="text-lg font-bold text-[#001689]">
+                <p className="text-lg font-bold text-[#00269b]">
                   {calculateTotalPower(transformer)}
                 </p>
               </div>

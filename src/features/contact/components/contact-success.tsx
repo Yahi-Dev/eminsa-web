@@ -31,13 +31,13 @@ export function ContactSuccess({ onReset }: ContactSuccessProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <h3 className="text-2xl font-bold text-[#001689] mb-3">
+        <h3 className="text-2xl font-bold text-[#00269b] mb-3">
           {t('form.success.title')}
         </h3>
-        <p className="text-[#76777A] mb-2">
+        <p className="text-[#6d6e6d] mb-2">
           {t('form.success.description1')}
         </p>
-        <p className="text-[#76777A] mb-8">
+        <p className="text-[#6d6e6d] mb-8">
           {t('form.success.description2')}
         </p>
         <button

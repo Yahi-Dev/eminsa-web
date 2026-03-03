@@ -172,7 +172,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                 required
                 maxLength={200}
                 placeholder="Ej. Transformador de distribución 500 kVA"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00A3E0] text-sm"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ce] text-sm"
               />
               <p className="text-right text-xs text-gray-400 mt-1">{formData.titulo.length}/200</p>
             </div>
@@ -184,7 +184,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                 value={formData.slug}
                 onChange={handleChange}
                 placeholder="transformador-distribucion-500-kva"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00A3E0] text-sm font-mono"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ce] text-sm font-mono"
               />
             </div>
 
@@ -195,7 +195,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                   name="division"
                   value={formData.division}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00A3E0] text-sm"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ce] text-sm"
                 >
                   {divisionOptions.map((opt) => (
                     <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -212,7 +212,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                   placeholder="2024"
                   min="2000"
                   max="2099"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00A3E0] text-sm"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ce] text-sm"
                 />
               </div>
             </div>
@@ -226,7 +226,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                   onChange={handleChange}
                   maxLength={100}
                   placeholder="Nombre del cliente"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00A3E0] text-sm"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ce] text-sm"
                 />
               </div>
               <div>
@@ -237,7 +237,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                   onChange={handleChange}
                   maxLength={100}
                   placeholder="Ej. Caracas, Venezuela"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00A3E0] text-sm"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ce] text-sm"
                 />
               </div>
             </div>
@@ -250,7 +250,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                 onChange={handleChange}
                 maxLength={100}
                 placeholder="Ej. 500 kVA, 25 MVA"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00A3E0] text-sm"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ce] text-sm"
               />
             </div>
           </div>
@@ -261,6 +261,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
               label="Imagen Principal"
               value={formData.imagen}
               onChange={(base64) => setFormData((prev) => ({ ...prev, imagen: base64 }))}
+              folder="eminsa/proyectos"
             />
           </div>
 
@@ -279,7 +280,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                 rows={3}
                 maxLength={500}
                 placeholder="Breve descripción del proyecto"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00A3E0] text-sm resize-none"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ce] text-sm resize-none"
               />
               <p className="text-right text-xs text-gray-400 mt-1">{formData.resumen.length}/500</p>
             </div>
@@ -293,7 +294,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                 rows={8}
                 maxLength={20000}
                 placeholder="Descripción completa del proyecto, proceso, resultados..."
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00A3E0] text-sm resize-none"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ce] text-sm resize-none"
               />
               <p className="text-right text-xs text-gray-400 mt-1">{formData.descripcion.length}/20000</p>
             </div>
@@ -309,7 +310,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                     name="publicado"
                     checked={formData.publicado}
                     onChange={handleChange}
-                    className="w-4 h-4 rounded border-gray-300 text-[#00A3E0] focus:ring-[#00A3E0]"
+                    className="w-4 h-4 rounded border-gray-300 text-[#0099ce] focus:ring-[#0099ce]"
                   />
                   <span className="text-sm text-gray-700">Publicado (visible en el sitio)</span>
                 </label>
@@ -319,7 +320,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                     name="destacado"
                     checked={formData.destacado}
                     onChange={handleChange}
-                    className="w-4 h-4 rounded border-gray-300 text-[#00A3E0] focus:ring-[#00A3E0]"
+                    className="w-4 h-4 rounded border-gray-300 text-[#0099ce] focus:ring-[#0099ce]"
                   />
                   <span className="text-sm text-gray-700">Destacado (aparece en sección destacada)</span>
                 </label>
@@ -339,7 +340,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
                     <ScheduledPublishPicker
                       value={formData.scheduledAt}
                       onChange={(val) => setFormData(prev => ({ ...prev, scheduledAt: val }))}
-                      accentColor="#00A3E0"
+                      accentColor="#0099ce"
                     />
                   </motion.div>
                 )}
@@ -358,7 +359,7 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
               type="submit"
               disabled={isSubmitting}
               className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-sm font-medium transition-colors disabled:opacity-60"
-              style={{ backgroundColor: "#00A3E0" }}
+              style={{ backgroundColor: "#0099ce" }}
             >
               {isSubmitting ? (
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

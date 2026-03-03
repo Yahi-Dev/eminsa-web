@@ -24,7 +24,7 @@ export default function NormativaPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-16">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -40,7 +40,7 @@ export default function NormativaPage() {
               <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
                 <Shield size={24} />
               </div>
-              <span className="text-[#00A3E0] font-semibold">Estándares de Calidad</span>
+              <span className="text-[#0099ce] font-semibold">Estándares de Calidad</span>
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
               Normativas
@@ -66,7 +66,7 @@ export default function NormativaPage() {
                   className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow"
                 >
                   {/* Header */}
-                  <div className="bg-gradient-to-r from-[#001689] to-[#00A3E0] p-6 text-white">
+                  <div className="bg-gradient-to-r from-[#00269b] to-[#0099ce] p-6 text-white">
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center">
                         <Icon size={32} />
@@ -103,7 +103,7 @@ export default function NormativaPage() {
                       <div className="grid grid-cols-2 gap-2">
                         {standard.benefits.map((benefit, idx) => (
                           <div key={idx} className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg text-sm">
-                            <div className="w-2 h-2 bg-[#00A3E0] rounded-full" />
+                            <div className="w-2 h-2 bg-[#0099ce] rounded-full" />
                             <span className="text-gray-700">{benefit}</span>
                           </div>
                         ))}
@@ -113,7 +113,7 @@ export default function NormativaPage() {
                     {/* CTA */}
                     <Link
                       href={`/mtn/normativa/${standard.slug}`}
-                      className="inline-flex items-center gap-2 text-[#001689] hover:text-[#00A3E0] font-semibold transition-colors"
+                      className="inline-flex items-center gap-2 text-[#00269b] hover:text-[#0099ce] font-semibold transition-colors"
                     >
                       Ver más información
                       <ArrowRight size={18} />
@@ -132,7 +132,7 @@ export default function NormativaPage() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 lg:p-12">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#001689] rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-[#00269b] rounded-xl flex items-center justify-center flex-shrink-0">
                   <FileText size={24} className="text-white" />
                 </div>
                 <div>
@@ -151,7 +151,7 @@ export default function NormativaPage() {
                   className="flex items-center justify-between bg-white p-4 rounded-xl hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-center gap-3">
-                    <FileText size={20} className="text-[#001689]" />
+                    <FileText size={20} className="text-[#00269b]" />
                     <span className="font-medium text-gray-900">Fichas Técnicas</span>
                   </div>
                   <ChevronRight size={18} className="text-gray-400" />
@@ -161,7 +161,7 @@ export default function NormativaPage() {
                   className="flex items-center justify-between bg-white p-4 rounded-xl hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-center gap-3">
-                    <Shield size={20} className="text-[#001689]" />
+                    <Shield size={20} className="text-[#00269b]" />
                     <span className="font-medium text-gray-900">Certificaciones</span>
                   </div>
                   <ChevronRight size={18} className="text-gray-400" />
@@ -173,7 +173,7 @@ export default function NormativaPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#001689] text-white">
+      <section className="py-16 bg-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-3xl font-bold mb-4">¿Necesita más información?</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
@@ -181,7 +181,7 @@ export default function NormativaPage() {
           </p>
           <Link
             href="/mtn/cotizaciones"
-            className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
           >
             Contactar Equipo Técnico
             <ArrowRight size={20} />

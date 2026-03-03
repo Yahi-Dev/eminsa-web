@@ -69,11 +69,11 @@ export default function MTNProductsShowcase() {
   }, [isAutoPlaying, nextSlide]);
 
   return (
-    <section className="py-24 lg:py-32 bg-[#001689] relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-[#00269b] relative overflow-hidden">
       {/* Ambient blurs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-125 h-125 bg-white/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00A3E0]/8 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0099ce]/8 rounded-full blur-[100px]" />
       </div>
 
       <div className="container-eminsa relative">
@@ -88,11 +88,11 @@ export default function MTNProductsShowcase() {
         >
           {/* Title */}
           <div>
-            <span className="inline-flex items-center gap-2 text-[#00A3E0] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+            <span className="inline-flex items-center gap-2 text-[#0099ce] text-xs font-bold uppercase tracking-[0.2em] mb-2">
               <Layers className="w-3.5 h-3.5" />
               {t("mtn.showcase.sectionLabel")}
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-white">
               {t("mtn.showcase.title")}
             </h2>
           </div>
@@ -104,7 +104,7 @@ export default function MTNProductsShowcase() {
                 key={type.id}
                 onClick={() => goToSlide(index)}
                 className="relative px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors duration-200"
-                style={{ color: activeIndex === index ? "#001689" : "rgba(255,255,255,0.6)" }}
+                style={{ color: activeIndex === index ? "#00269b" : "rgba(255,255,255,0.6)" }}
               >
                 {activeIndex === index && (
                   <motion.span
@@ -133,7 +133,7 @@ export default function MTNProductsShowcase() {
             <div className="relative flex flex-col items-center justify-center gap-5 p-10 bg-white/3 min-h-80">
               {/* Radial glow */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-60 h-60 rounded-full bg-[#00A3E0]/12 blur-3xl" />
+                <div className="w-60 h-60 rounded-full bg-[#0099ce]/12 blur-3xl" />
               </div>
 
               {/* Image */}
@@ -201,7 +201,7 @@ export default function MTNProductsShowcase() {
                 {activeTransformer.standards.map((standard) => (
                   <span
                     key={standard}
-                    className="px-3 py-1.5 bg-[#00A3E0]/12 border border-[#00A3E0]/25 text-[#00A3E0] rounded-lg text-xs font-bold uppercase tracking-wide"
+                    className="px-3 py-1.5 bg-[#0099ce]/12 border border-[#0099ce]/25 text-[#0099ce] rounded-lg text-xs font-bold uppercase tracking-wide"
                   >
                     {standard}
                   </span>
@@ -212,7 +212,7 @@ export default function MTNProductsShowcase() {
               <ul className="space-y-2.5">
                 {activeTransformer.features.map((feature, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00A3E0] shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#0099ce] shrink-0" />
                     <span className="text-white/65 text-sm">{feature}</span>
                   </li>
                 ))}
@@ -222,7 +222,7 @@ export default function MTNProductsShowcase() {
               <div className="flex flex-wrap gap-3 mt-auto pt-2">
                 <Link
                   href="/mtn/cotizaciones"
-                  className="inline-flex items-center gap-2 bg-[#00A3E0] hover:bg-[#0091C7] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-colors duration-300 group"
+                  className="inline-flex items-center gap-2 bg-[#0099ce] hover:bg-[#0091C7] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-colors duration-300 group"
                 >
                   {t("mtn.cta.quote")}
                   <ArrowRight
@@ -250,7 +250,7 @@ export default function MTNProductsShowcase() {
               aria-label={`${i + 1}`}
               className={`h-0.5 rounded-full transition-all duration-300 ${
                 activeIndex === i
-                  ? "w-8 bg-[#00A3E0]"
+                  ? "w-8 bg-[#0099ce]"
                   : "w-4 bg-white/20 hover:bg-white/40"
               }`}
             />

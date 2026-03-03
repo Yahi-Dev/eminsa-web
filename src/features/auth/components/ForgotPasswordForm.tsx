@@ -17,7 +17,7 @@ export default function ForgotPasswordForm() {
     setError("");
     setIsSubmitting(true);
 
-    const result = await authClient.forgetPassword({
+    const result = await authClient.requestPasswordReset({
       email,
       redirectTo: `${window.location.origin}/reset-password`,
     });
@@ -32,7 +32,7 @@ export default function ForgotPasswordForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#001689] via-[#000E53] to-[#001689] p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#00269b] via-[#00175d] to-[#00269b] p-4">
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -61,7 +61,7 @@ export default function ForgotPasswordForm() {
 
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#001689] to-[#000E53] p-8 text-center">
+          <div className="bg-gradient-to-r from-[#00269b] to-[#00175d] p-8 text-center">
             <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Mail className="w-8 h-8 text-white" />
             </div>
@@ -93,7 +93,7 @@ export default function ForgotPasswordForm() {
               </p>
               <Link
                 href="/login"
-                className="inline-flex items-center gap-2 text-[#001689] hover:text-[#000E53] font-medium transition-colors"
+                className="inline-flex items-center gap-2 text-[#00269b] hover:text-[#00175d] font-medium transition-colors"
               >
                 <ArrowLeft size={16} />
                 Volver al inicio de sesión
@@ -119,7 +119,7 @@ export default function ForgotPasswordForm() {
               </p>
 
               <div>
-                <label className="block text-sm font-medium text-[#76777A] mb-2">
+                <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                   Correo Electrónico
                 </label>
                 <div className="relative">
@@ -129,7 +129,7 @@ export default function ForgotPasswordForm() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689] transition-colors"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b] transition-colors"
                     placeholder="correo@ejemplo.com"
                   />
                 </div>
@@ -138,7 +138,7 @@ export default function ForgotPasswordForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 bg-[#001689] text-white font-semibold rounded-lg hover:bg-[#000E53] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-3 bg-[#00269b] text-white font-semibold rounded-lg hover:bg-[#00175d] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>

@@ -175,7 +175,7 @@ export default async function RecursoDetailPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-12">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-12">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -217,7 +217,7 @@ export default async function RecursoDetailPage({ params }: Props) {
                   <input
                     type="text"
                     placeholder="Buscar artículos..."
-                    className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#001689] focus:border-transparent"
+                    className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#00269b] focus:border-transparent"
                   />
                 </div>
               </div>
@@ -228,12 +228,12 @@ export default async function RecursoDetailPage({ params }: Props) {
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
-                        <span className="bg-[#001689]/10 text-[#001689] text-xs font-medium px-2 py-1 rounded">
+                        <span className="bg-[#00269b]/10 text-[#00269b] text-xs font-medium px-2 py-1 rounded">
                           {article.category || ''}
                         </span>
                         <span className="text-sm text-gray-500">{article.date || ''}</span>
                       </div>
-                      <h2 className="text-xl font-bold text-gray-900 hover:text-[#001689] transition-colors cursor-pointer">
+                      <h2 className="text-xl font-bold text-gray-900 hover:text-[#00269b] transition-colors cursor-pointer">
                         {article.title}
                       </h2>
                       <p className="text-gray-600">{article.excerpt || ''}</p>
@@ -262,7 +262,7 @@ export default async function RecursoDetailPage({ params }: Props) {
                         </p>
                       </div>
                     </div>
-                    <button className="flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-4 py-2 rounded-lg transition-colors">
+                    <button className="flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-4 py-2 rounded-lg transition-colors">
                       <Download size={18} />
                       Descargar
                     </button>
@@ -271,10 +271,10 @@ export default async function RecursoDetailPage({ params }: Props) {
               </div>
 
               {/* Catalog download */}
-              <div className="mt-8 bg-gradient-to-r from-[#001689] to-[#00A3E0] rounded-2xl p-8 text-white text-center">
+              <div className="mt-8 bg-gradient-to-r from-[#00269b] to-[#0099ce] rounded-2xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-2">Catálogo Completo</h3>
                 <p className="text-white/80 mb-6">Descargue todas las fichas técnicas en un solo archivo</p>
-                <button className="inline-flex items-center gap-2 bg-white text-[#001689] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors">
+                <button className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors">
                   <Download size={20} />
                   Descargar Catálogo (PDF)
                 </button>
@@ -296,7 +296,7 @@ export default async function RecursoDetailPage({ params }: Props) {
                       <ul className="space-y-2">
                         {section.items.map((item, i) => (
                           <li key={i} className="flex items-start gap-3">
-                            <div className="w-2 h-2 bg-[#001689] rounded-full mt-2" />
+                            <div className="w-2 h-2 bg-[#00269b] rounded-full mt-2" />
                             <span className="text-gray-600">{item}</span>
                           </li>
                         ))}
@@ -307,7 +307,7 @@ export default async function RecursoDetailPage({ params }: Props) {
 
                 {/* Download warranty document */}
                 <div className="pt-6">
-                  <button className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                  <button className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
                     <Download size={20} />
                     Descargar Términos de Garantía (PDF)
                   </button>
@@ -328,7 +328,7 @@ export default async function RecursoDetailPage({ params }: Props) {
                   {content.chapters.map((chapter) => (
                     <div key={chapter.number} className="p-6 hover:bg-gray-50 transition-colors cursor-pointer">
                       <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 bg-[#001689] text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0">
+                        <div className="w-10 h-10 bg-[#00269b] text-white rounded-lg flex items-center justify-center font-bold flex-shrink-0">
                           {chapter.number}
                         </div>
                         <div>
@@ -343,13 +343,13 @@ export default async function RecursoDetailPage({ params }: Props) {
               </div>
 
               {/* Download full manual */}
-              <div className="mt-8 bg-gradient-to-r from-[#001689] to-[#00A3E0] rounded-2xl p-8 text-white">
+              <div className="mt-8 bg-gradient-to-r from-[#00269b] to-[#0099ce] rounded-2xl p-8 text-white">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Manual Completo</h3>
                     <p className="text-white/80">Descargue el manual completo de mantenimiento</p>
                   </div>
-                  <button className="inline-flex items-center gap-2 bg-white text-[#001689] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors whitespace-nowrap">
+                  <button className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors whitespace-nowrap">
                     <Download size={20} />
                     Descargar PDF
                   </button>
@@ -369,7 +369,7 @@ export default async function RecursoDetailPage({ params }: Props) {
           </p>
           <Link
             href="/mtn/cotizaciones"
-            className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
           >
             Contactar Soporte Técnico
             <ArrowRight size={20} />

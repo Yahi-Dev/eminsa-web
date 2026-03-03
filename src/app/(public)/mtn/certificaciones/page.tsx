@@ -20,7 +20,7 @@ export default function CertificacionesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-16">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -65,7 +65,7 @@ export default function CertificacionesPage() {
                       className="object-contain"
                     />
                   ) : (
-                    <Award size={36} className="text-[#001689]" />
+                    <Award size={36} className="text-[#00269b]" />
                   )}
                 </div>
                 <span className="mt-2 font-semibold text-gray-900">{cert.name}</span>
@@ -86,7 +86,7 @@ export default function CertificacionesPage() {
               >
                 <div className={`grid lg:grid-cols-3 gap-0 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                   {/* Image/Visual Side */}
-                  <div className={`bg-gradient-to-br from-[#001689]/5 to-[#00A3E0]/10 p-8 lg:p-12 flex items-center justify-center ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                  <div className={`bg-gradient-to-br from-[#00269b]/5 to-[#0099ce]/10 p-8 lg:p-12 flex items-center justify-center ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                     <div className="text-center">
                       <div className="w-32 h-32 bg-white rounded-2xl shadow-lg flex items-center justify-center mx-auto mb-4">
                         {cert.image ? (
@@ -98,7 +98,7 @@ export default function CertificacionesPage() {
                             className="object-contain"
                           />
                         ) : (
-                          <Award size={64} className="text-[#001689]" />
+                          <Award size={64} className="text-[#00269b]" />
                         )}
                       </div>
                       <p className="text-sm text-gray-500">Emitido por</p>
@@ -111,7 +111,7 @@ export default function CertificacionesPage() {
                     <div className="space-y-6">
                       {/* Header */}
                       <div>
-                        <span className="inline-block text-[#00A3E0] font-semibold text-sm uppercase tracking-wider mb-2">
+                        <span className="inline-block text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-2">
                           Certificación
                         </span>
                         <h2 className="text-3xl font-bold text-gray-900">
@@ -168,8 +168,8 @@ export default function CertificacionesPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#001689]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Shield size={32} className="text-[#001689]" />
+                <div className="w-16 h-16 bg-[#00269b]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Shield size={32} className="text-[#00269b]" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">Seguridad</h3>
                 <p className="text-gray-600 text-sm">
@@ -177,8 +177,8 @@ export default function CertificacionesPage() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#00A3E0]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Award size={32} className="text-[#00A3E0]" />
+                <div className="w-16 h-16 bg-[#0099ce]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Award size={32} className="text-[#0099ce]" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">Calidad</h3>
                 <p className="text-gray-600 text-sm">
@@ -186,8 +186,8 @@ export default function CertificacionesPage() {
                 </p>
               </div>
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#00B140]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <ExternalLink size={32} className="text-[#00B140]" />
+                <div className="w-16 h-16 bg-[#009e49]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <ExternalLink size={32} className="text-[#009e49]" />
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">Acceso Global</h3>
                 <p className="text-gray-600 text-sm">
@@ -200,7 +200,7 @@ export default function CertificacionesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#00A3E0] to-[#001689] text-white">
+      <section className="py-16 bg-gradient-to-br from-[#0099ce] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-3xl font-bold mb-4">
             Confíe en la Calidad Certificada
@@ -212,7 +212,7 @@ export default function CertificacionesPage() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/mtn/cotizaciones"
-              className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+              className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
             >
               Solicitar Cotización
               <ArrowRight size={20} />

@@ -81,7 +81,7 @@ function InquiryTypeButton({
   description
 }: InquiryTypeButtonProps) {
   const baseClasses = 'flex flex-col items-center justify-center p-6 rounded-xl border-2 transition-all';
-  const selectedClasses = 'border-[#001689] bg-[#001689]/10';
+  const selectedClasses = 'border-[#00269b] bg-[#00269b]/10';
   const unselectedClasses = 'border-gray-200 hover:border-gray-300 hover:bg-gray-50';
 
   return (
@@ -90,10 +90,10 @@ function InquiryTypeButton({
       onClick={() => onSelect(type)}
       className={`${baseClasses} ${isSelected ? selectedClasses : unselectedClasses}`}
     >
-      <div className={`mb-3 ${isSelected ? 'text-[#001689]' : 'text-gray-400'}`}>
+      <div className={`mb-3 ${isSelected ? 'text-[#00269b]' : 'text-gray-400'}`}>
         {icon}
       </div>
-      <span className={`font-semibold ${isSelected ? 'text-[#001689]' : 'text-gray-700'}`}>
+      <span className={`font-semibold ${isSelected ? 'text-[#00269b]' : 'text-gray-700'}`}>
         {label}
       </span>
       <span className="text-sm text-gray-500 mt-1">

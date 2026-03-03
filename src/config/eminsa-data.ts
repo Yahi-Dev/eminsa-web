@@ -148,7 +148,7 @@ export const eminsaDivisions: EminsaDivision[] = [
     fullName: "Manufactura Transformadores Nuevos",
     description: "Fabricación de transformadores de distribución con los más altos estándares de calidad internacional.",
     href: "/mtn",
-    color: "#001689",
+    color: "#00269b",
   },
   {
     id: "rst",
@@ -156,7 +156,7 @@ export const eminsaDivisions: EminsaDivision[] = [
     fullName: "Reparación y Servicio de Transformadores",
     description: "Especialistas en reparación y remanufactura de transformadores de distribución e industriales.",
     href: "/etrys",
-    color: "#00A3E0",
+    color: "#0099ce",
   },
   {
     id: "eic",
@@ -164,7 +164,7 @@ export const eminsaDivisions: EminsaDivision[] = [
     fullName: "Eminsa International Corporation",
     description: "Representantes exclusivos de las mejores marcas internacionales en equipos eléctricos.",
     href: "/eic",
-    color: "#00B140",
+    color: "#009e49",
   },
   {
     id: "servicios",
@@ -172,7 +172,7 @@ export const eminsaDivisions: EminsaDivision[] = [
     fullName: "Servicios Técnicos Especializados",
     description: "Mantenimiento, reparación y soporte técnico de transformadores eléctricos en campo.",
     href: "/servicios",
-    color: "#FF5500",
+    color: "#e9862c",
   },
 ];
 

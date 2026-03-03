@@ -153,9 +153,9 @@ function CotizacionesContent() {
             ¡Solicitud Enviada!
           </h2>
           {codigo && (
-            <div className="bg-[#001689]/5 border border-[#001689]/20 rounded-xl p-4 mb-4">
-              <p className="text-xs text-[#001689] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
-              <p className="text-2xl font-bold text-[#001689] tracking-widest">{codigo}</p>
+            <div className="bg-[#00269b]/5 border border-[#00269b]/20 rounded-xl p-4 mb-4">
+              <p className="text-xs text-[#00269b] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+              <p className="text-2xl font-bold text-[#00269b] tracking-widest">{codigo}</p>
               <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
             </div>
           )}
@@ -166,7 +166,7 @@ function CotizacionesContent() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/mtn/productos"
-              className="inline-flex items-center justify-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+              className="inline-flex items-center justify-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
             >
               Ver Productos
             </Link>
@@ -189,7 +189,7 @@ function CotizacionesContent() {
                   urgente: false,
                 });
               }}
-              className="inline-flex items-center justify-center gap-2 border-2 border-[#001689] text-[#001689] hover:bg-[#001689] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+              className="inline-flex items-center justify-center gap-2 border-2 border-[#00269b] text-[#00269b] hover:bg-[#00269b] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
             >
               Nueva Cotización
             </button>
@@ -207,7 +207,7 @@ function CotizacionesContent() {
           {/* Información de Contacto */}
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#001689] text-white rounded-lg flex items-center justify-center text-sm font-bold">1</div>
+              <div className="w-8 h-8 bg-[#00269b] text-white rounded-lg flex items-center justify-center text-sm font-bold">1</div>
               Información de Contacto
             </h2>
             <div className="grid sm:grid-cols-2 gap-4">
@@ -220,7 +220,7 @@ function CotizacionesContent() {
                   name="nombre"
                   value={formData.nombre}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
                     errors.nombre ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="Su nombre"
@@ -236,7 +236,7 @@ function CotizacionesContent() {
                   name="empresa"
                   value={formData.empresa}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
                   placeholder="Nombre de su empresa"
                 />
               </div>
@@ -249,7 +249,7 @@ function CotizacionesContent() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
                     errors.email ? "border-red-500" : "border-gray-300"
                   }`}
                   placeholder="correo@ejemplo.com"
@@ -263,7 +263,7 @@ function CotizacionesContent() {
                   label="Teléfono"
                   required
                   error={errors.telefono}
-                  focusColor="#001689"
+                  focusColor="#00269b"
                 />
               </div>
             </div>
@@ -272,7 +272,7 @@ function CotizacionesContent() {
           {/* Especificaciones del Transformador */}
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#001689] text-white rounded-lg flex items-center justify-center text-sm font-bold">2</div>
+              <div className="w-8 h-8 bg-[#00269b] text-white rounded-lg flex items-center justify-center text-sm font-bold">2</div>
               Especificaciones del Transformador
             </h2>
             <div className="grid sm:grid-cols-2 gap-4">
@@ -284,7 +284,7 @@ function CotizacionesContent() {
                   name="tipoTransformador"
                   value={formData.tipoTransformador}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
                     errors.tipoTransformador ? "border-red-500" : "border-gray-300"
                   }`}
                 >
@@ -305,7 +305,7 @@ function CotizacionesContent() {
                   name="configuracion"
                   value={formData.configuracion}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
                 >
                   <option value="">Seleccione configuración</option>
                   <option value="monofasico">Monofásico</option>
@@ -321,7 +321,7 @@ function CotizacionesContent() {
                   name="capacidad"
                   value={formData.capacidad}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all ${
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
                     errors.capacidad ? "border-red-500" : "border-gray-300"
                   }`}
                 >
@@ -344,7 +344,7 @@ function CotizacionesContent() {
                   value={formData.cantidad}
                   onChange={handleInputChange}
                   min="1"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
                 />
               </div>
               <div>
@@ -356,7 +356,7 @@ function CotizacionesContent() {
                   name="voltajePrimario"
                   value={formData.voltajePrimario}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
                   placeholder="Ej: 13.2 kV"
                 />
               </div>
@@ -369,7 +369,7 @@ function CotizacionesContent() {
                   name="voltajeSecundario"
                   value={formData.voltajeSecundario}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
                   placeholder="Ej: 120/240 V"
                 />
               </div>
@@ -379,7 +379,7 @@ function CotizacionesContent() {
           {/* Detalles Adicionales */}
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#001689] text-white rounded-lg flex items-center justify-center text-sm font-bold">3</div>
+              <div className="w-8 h-8 bg-[#00269b] text-white rounded-lg flex items-center justify-center text-sm font-bold">3</div>
               Detalles Adicionales
             </h2>
             <div className="space-y-4">
@@ -392,7 +392,7 @@ function CotizacionesContent() {
                   name="ubicacion"
                   value={formData.ubicacion}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
                   placeholder="Ciudad, provincia o dirección"
                 />
               </div>
@@ -405,7 +405,7 @@ function CotizacionesContent() {
                   value={formData.descripcion}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all resize-none"
                   placeholder="Describa cualquier requerimiento especial, accesorios adicionales, o información relevante para su cotización..."
                 />
               </div>
@@ -415,10 +415,10 @@ function CotizacionesContent() {
                   name="urgente"
                   checked={formData.urgente}
                   onChange={handleInputChange}
-                  className="w-5 h-5 rounded border-gray-300 text-[#001689] focus:ring-[#001689]"
+                  className="w-5 h-5 rounded border-gray-300 text-[#00269b] focus:ring-[#00269b]"
                 />
                 <span className="text-gray-700">
-                  <span className="font-medium text-[#001689]">Urgente</span> - Necesito respuesta lo antes posible
+                  <span className="font-medium text-[#00269b]">Urgente</span> - Necesito respuesta lo antes posible
                 </span>
               </label>
             </div>
@@ -435,7 +435,7 @@ function CotizacionesContent() {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-2 bg-[#001689] hover:bg-[#000E53] disabled:bg-gray-400 text-white px-8 py-4 rounded-xl font-semibold transition-colors text-lg"
+            className="w-full flex items-center justify-center gap-2 bg-[#00269b] hover:bg-[#00175d] disabled:bg-gray-400 text-white px-8 py-4 rounded-xl font-semibold transition-colors text-lg"
           >
             {isSubmitting ? (
               <>
@@ -463,7 +463,7 @@ function CotizacionesContent() {
               href={`tel:${contactInfo.phone}`}
               className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
             >
-              <div className="w-10 h-10 bg-[#001689] rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#00269b] rounded-lg flex items-center justify-center">
                 <Phone size={20} className="text-white" />
               </div>
               <div>
@@ -491,15 +491,15 @@ function CotizacionesContent() {
           {/* Benefits */}
           <div className="mt-6 pt-6 border-t border-gray-100 space-y-3">
             <div className="flex items-center gap-3 text-sm">
-              <Clock size={18} className="text-[#001689]" />
+              <Clock size={18} className="text-[#00269b]" />
               <span className="text-gray-600">Respuesta en menos de 24 horas</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Zap size={18} className="text-[#001689]" />
+              <Zap size={18} className="text-[#00269b]" />
               <span className="text-gray-600">Cotización sin compromiso</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
-              <Shield size={18} className="text-[#001689]" />
+              <Shield size={18} className="text-[#00269b]" />
               <span className="text-gray-600">Asesoría técnica incluida</span>
             </div>
           </div>
@@ -529,7 +529,7 @@ export default function CotizacionesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-12">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-12">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -545,7 +545,7 @@ export default function CotizacionesPage() {
               <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
                 <FileText size={24} />
               </div>
-              <span className="text-[#00A3E0] font-semibold">Solicitar Cotización</span>
+              <span className="text-[#0099ce] font-semibold">Solicitar Cotización</span>
             </div>
             <h1 className="text-3xl lg:text-4xl font-bold mb-4">
               Cotice su Transformador
@@ -562,7 +562,7 @@ export default function CotizacionesPage() {
         <div className="container-eminsa">
           <Suspense fallback={
             <div className="flex items-center justify-center py-20">
-              <Loader2 size={40} className="animate-spin text-[#001689]" />
+              <Loader2 size={40} className="animate-spin text-[#00269b]" />
             </div>
           }>
             <CotizacionesContent />

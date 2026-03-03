@@ -54,10 +54,10 @@ export default function WhatsAppButton() {
                 >
                   <X size={16} />
                 </button>
-                <p className="text-[#001689] font-semibold mb-1">
+                <p className="text-[#00269b] font-semibold mb-1">
                   ¿Necesita ayuda?
                 </p>
-                <p className="text-[#76777A] text-sm">
+                <p className="text-[#6d6e6d] text-sm">
                   Chatea con nosotros por WhatsApp para una respuesta inmediata.
                 </p>
                 {/* Arrow */}

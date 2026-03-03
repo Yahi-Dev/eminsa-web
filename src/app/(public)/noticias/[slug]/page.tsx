@@ -9,11 +9,11 @@ import type { NoticiaAPI } from "@/features/admin/types";
 import { useTranslations, useLocale } from "next-intl";
 
 const categoriaColors: { [key: string]: string } = {
-  empresa: "#001689",
-  productos: "#00A3E0",
-  servicios: "#696969",
-  eventos: "#00B140",
-  industria: "#76777A",
+  empresa: "#00269b",
+  productos: "#0099ce",
+  servicios: "#6d6e6d",
+  eventos: "#009e49",
+  industria: "#6d6e6d",
 };
 
 function formatFecha(dateStr: string, locale: string) {
@@ -65,7 +65,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-8 h-8 border-4 border-[#001689] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[#00269b] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -74,11 +74,11 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-[#001689] mb-4">{t("notFound.title")}</h1>
-          <p className="text-[#76777A] mb-8">{t("notFound.description")}</p>
+          <h1 className="text-3xl font-bold text-[#00269b] mb-4">{t("notFound.title")}</h1>
+          <p className="text-[#6d6e6d] mb-8">{t("notFound.description")}</p>
           <Link
             href="/noticias"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#001689] text-white font-semibold rounded-xl"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#00269b] text-white font-semibold rounded-xl"
           >
             <ArrowLeft size={18} />
             {t("notFound.back")}
@@ -88,7 +88,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
     );
   }
 
-  const catColor = categoriaColors[noticia.categoria ?? ""] || "#001689";
+  const catColor = categoriaColors[noticia.categoria ?? ""] || "#00269b";
   const catLabel =
     categoriasNoticias.find((c) => c.value === noticia.categoria)?.label ||
     noticia.categoria ||
@@ -97,7 +97,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
   return (
     <>
       {/* Hero */}
-      <section className="relative py-20 bg-gradient-to-br from-[#001689] to-[#000E53] text-white overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-[#00269b] to-[#00175d] text-white overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -105,7 +105,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
             backgroundSize: "60px 60px",
           }}
         />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00A3E0]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0099ce]/10 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="container-eminsa relative">
           <motion.div
@@ -178,26 +178,26 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
                 </div>
               )}
 
-              <p className="text-lg text-[#001689] font-medium leading-relaxed mb-8 pb-8 border-b border-gray-100">
+              <p className="text-lg text-[#00269b] font-medium leading-relaxed mb-8 pb-8 border-b border-gray-100">
                 {noticia.resumen}
               </p>
 
               {noticia.contenido ? (
                 <div
-                  className="prose prose-lg max-w-none text-[#4a4a4a] leading-relaxed
-                    prose-headings:text-[#001689] prose-headings:font-bold
-                    prose-a:text-[#00A3E0] prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-[#001689]"
+                  className="prose prose-lg max-w-none text-[#414241] leading-relaxed
+                    prose-headings:text-[#00269b] prose-headings:font-bold
+                    prose-a:text-[#0099ce] prose-a:no-underline hover:prose-a:underline
+                    prose-strong:text-[#00269b]"
                   dangerouslySetInnerHTML={{ __html: noticia.contenido }}
                 />
               ) : (
-                <p className="text-[#76777A] italic">{t("contentUnavailable")}</p>
+                <p className="text-[#6d6e6d] italic">{t("contentUnavailable")}</p>
               )}
 
               <div className="mt-12 pt-8 border-t border-gray-100">
                 <Link
                   href="/noticias"
-                  className="inline-flex items-center gap-2 text-[#001689] font-semibold hover:gap-3 transition-all group"
+                  className="inline-flex items-center gap-2 text-[#00269b] font-semibold hover:gap-3 transition-all group"
                 >
                   <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
                   {t("backToNews")}
@@ -213,10 +213,10 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
               className="lg:col-span-1 space-y-8"
             >
               <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                <h3 className="font-bold text-[#001689] mb-4">{t("info")}</h3>
+                <h3 className="font-bold text-[#00269b] mb-4">{t("info")}</h3>
                 <dl className="space-y-3">
                   <div>
-                    <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">{t("category")}</dt>
+                    <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">{t("category")}</dt>
                     <dd>
                       <span
                         className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold"
@@ -227,13 +227,13 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">{t("published")}</dt>
-                    <dd className="text-sm text-[#4a4a4a] font-medium">{formatFecha(noticia.createdAt, locale)}</dd>
+                    <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">{t("published")}</dt>
+                    <dd className="text-sm text-[#414241] font-medium">{formatFecha(noticia.createdAt, locale)}</dd>
                   </div>
                   {noticia.autor && (
                     <div>
-                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">{t("author")}</dt>
-                      <dd className="text-sm text-[#4a4a4a] font-medium">{noticia.autor}</dd>
+                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">{t("author")}</dt>
+                      <dd className="text-sm text-[#414241] font-medium">{noticia.autor}</dd>
                     </div>
                   )}
                 </dl>
@@ -241,18 +241,18 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
 
               {relacionadas.length > 0 && (
                 <div>
-                  <h3 className="font-bold text-[#001689] mb-4">{t("relatedNews")}</h3>
+                  <h3 className="font-bold text-[#00269b] mb-4">{t("relatedNews")}</h3>
                   <div className="space-y-4">
                     {relacionadas.map((rel) => (
                       <Link
                         key={rel.id}
                         href={`/noticias/${rel.slug}`}
-                        className="group block p-4 bg-white rounded-xl border border-gray-100 hover:border-[#001689]/20 hover:shadow-md transition-all"
+                        className="group block p-4 bg-white rounded-xl border border-gray-100 hover:border-[#00269b]/20 hover:shadow-md transition-all"
                       >
-                        <p className="font-semibold text-sm text-[#001689] group-hover:text-[#00A3E0] transition-colors line-clamp-2 mb-1">
+                        <p className="font-semibold text-sm text-[#00269b] group-hover:text-[#0099ce] transition-colors line-clamp-2 mb-1">
                           {rel.titulo}
                         </p>
-                        <span className="text-xs text-[#76777A]">{formatFecha(rel.createdAt, locale)}</span>
+                        <span className="text-xs text-[#6d6e6d]">{formatFecha(rel.createdAt, locale)}</span>
                       </Link>
                     ))}
                   </div>

@@ -54,7 +54,7 @@ export default function EICPage() {
       {/* ================================================================ */}
       {/* HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white py-20 lg:py-28 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-20 lg:py-28 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -75,15 +75,15 @@ export default function EICPage() {
               className="space-y-8"
             >
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <Globe size={18} className="text-[#00B140]" />
+                <Globe size={18} className="text-[#009e49]" />
                 <span className="text-sm font-medium">{eicInfo.tagline}</span>
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
+                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
                   <span className="text-white">Eminsa International Corporation</span>
                 </h1>
-                <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
+                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed">
                   {eicInfo.description}
                 </p>
               </div>
@@ -92,7 +92,7 @@ export default function EICPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/eic/productos"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00B140] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#009e49] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
                   Ver Productos
                   <ArrowRight size={20} />
@@ -118,14 +118,14 @@ export default function EICPage() {
                 {/* Decorative circles */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-80 h-80 border-2 border-white/10 rounded-full animate-pulse" />
-                  <div className="absolute w-64 h-64 border-2 border-[#00B140]/30 rounded-full animate-pulse delay-150" />
+                  <div className="absolute w-64 h-64 border-2 border-[#009e49]/30 rounded-full animate-pulse delay-150" />
                   <div className="absolute w-48 h-48 border-2 border-white/20 rounded-full animate-pulse delay-300" />
                 </div>
 
                 {/* Center card */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2">
-                    <Globe size={48} className="mx-auto text-[#00B140]" />
+                    <Globe size={48} className="mx-auto text-[#009e49]" />
                     <p className="text-4xl font-bold">8+</p>
                     <p className="text-white/70 text-sm">Marcas internacionales</p>
                   </div>
@@ -158,10 +158,10 @@ export default function EICPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-[#00B140]/10 text-[#00B140] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#009e49]/10 text-[#009e49] text-sm font-medium rounded-full mb-4">
               Aliados Estratégicos
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Marcas Representadas
             </h2>
             <p className="text-gray-600 text-lg">
@@ -182,7 +182,7 @@ export default function EICPage() {
               >
                 <Link
                   href={`/eic/marcas/${brand.slug}`}
-                  className="block bg-gray-50 hover:bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-all group h-full border border-gray-100 hover:border-[#00B140]/30"
+                  className="block bg-gray-50 hover:bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-all group h-full border border-gray-100 hover:border-[#009e49]/30"
                 >
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-xl">
@@ -192,13 +192,13 @@ export default function EICPage() {
                       {brand.country}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#00B140] transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#009e49] transition-colors">
                     {brand.name}
                   </h3>
                   <p className="text-sm text-gray-600 line-clamp-3 mb-3">
                     {brand.description.substring(0, 150)}...
                   </p>
-                  <div className="flex items-center gap-1 text-[#00B140] text-sm font-medium mt-auto">
+                  <div className="flex items-center gap-1 text-[#009e49] text-sm font-medium mt-auto">
                     Ver marca
                     <ArrowRight
                       size={14}
@@ -224,10 +224,10 @@ export default function EICPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-[#00B140]/10 text-[#00B140] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#009e49]/10 text-[#009e49] text-sm font-medium rounded-full mb-4">
               Nuestro Portafolio
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Categorías de Productos
             </h2>
             <p className="text-gray-600 text-lg">
@@ -303,7 +303,7 @@ export default function EICPage() {
                           >
                             <CheckCircle2
                               size={14}
-                              className="text-[#00B140]"
+                              className="text-[#009e49]"
                             />
                             {brandName}
                           </span>
@@ -311,7 +311,7 @@ export default function EICPage() {
                       </div>
                       <Link
                         href={`/eic/productos/${category.slug}`}
-                        className="inline-flex items-center gap-2 text-[#00B140] font-semibold hover:gap-3 transition-all"
+                        className="inline-flex items-center gap-2 text-[#009e49] font-semibold hover:gap-3 transition-all"
                       >
                         Ver productos de esta categoría
                         <ArrowRight size={18} />
@@ -328,7 +328,7 @@ export default function EICPage() {
       {/* ================================================================ */}
       {/* VENTAJAS EIC */}
       {/* ================================================================ */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#001689] text-white">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#00269b] text-white">
         <div className="container-eminsa">
           {/* Header */}
           <motion.div
@@ -340,7 +340,7 @@ export default function EICPage() {
             <span className="inline-block px-3 py-1 bg-white/10 text-white text-sm font-medium rounded-full mb-4">
               ¿Por qué EIC?
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               Ventajas de Trabajar con EIC
             </h2>
             <p className="text-white/70 text-lg">
@@ -363,16 +363,16 @@ export default function EICPage() {
                   transition={{ delay: index * 0.1 }}
                   className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all group"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-[#00B140]/20 flex items-center justify-center mb-4 group-hover:bg-[#00B140] transition-colors">
+                  <div className="w-14 h-14 rounded-xl bg-[#009e49]/20 flex items-center justify-center mb-4 group-hover:bg-[#009e49] transition-colors">
                     <Icon
                       size={28}
-                      className="text-[#00B140] group-hover:text-white transition-colors"
+                      className="text-[#009e49] group-hover:text-white transition-colors"
                     />
                   </div>
                   <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
                     {adv.title}
                     {adv.highlight && (
-                      <span className="text-xs font-normal px-2 py-0.5 bg-[#00B140] text-white rounded">
+                      <span className="text-xs font-normal px-2 py-0.5 bg-[#009e49] text-white rounded">
                         {adv.highlight}
                       </span>
                     )}
@@ -396,7 +396,7 @@ export default function EICPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
+            className="relative bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
           >
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
@@ -404,7 +404,7 @@ export default function EICPage() {
 
             <div className="relative z-10 max-w-2xl mx-auto">
               <Globe size={48} className="mx-auto mb-6 text-white/80" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
                 ¿Necesita Equipos Eléctricos Internacionales?
               </h2>
               <p className="text-white/90 text-lg mb-8 leading-relaxed">
@@ -417,7 +417,7 @@ export default function EICPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
                 <Link
                   href="/eic/cotizaciones"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#00B140] hover:bg-white/90 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#009e49] hover:bg-white/90 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={22} />

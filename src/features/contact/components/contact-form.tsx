@@ -124,7 +124,7 @@ export function ContactForm({ form }: ContactFormProps) {
           label={t('form.fields.phone.label')}
           required
           error={formErrors.telefono}
-          focusColor="#001689"
+          focusColor="#00269b"
         />
       </div>
 
@@ -301,7 +301,7 @@ function TextInputField({
         <p className="text-red-500 text-xs mt-1">{error}</p>
       )}
       {showCounter && (
-        <p className="text-[#76777A] text-xs mt-2">
+        <p className="text-[#6d6e6d] text-xs mt-2">
           {value.length} / {counterText}
         </p>
       )}
@@ -332,7 +332,7 @@ function IdentificationField({
       <label className="input-label">
         {t('form.fields.identification.label')} <span className="text-red-500">*</span>
         {value && (
-          <span className="ml-2 text-xs font-semibold text-[#001689]">
+          <span className="ml-2 text-xs font-semibold text-[#00269b]">
             ({identificationType})
           </span>
         )}
@@ -352,7 +352,7 @@ function IdentificationField({
       {error && (
         <p className="text-red-500 text-xs mt-1">{error}</p>
       )}
-      <div className="text-[#76777A] text-xs mt-2 space-y-1">
+      <div className="text-[#6d6e6d] text-xs mt-2 space-y-1">
         <p>{t('form.fields.identification.rncInfo')}</p>
         <p>{t('form.fields.identification.idInfo')}</p>
         <p className="mt-1 font-medium">
@@ -413,7 +413,7 @@ function CategorySelector({
       {error && (
         <p className="text-red-500 text-xs mt-1">{error}</p>
       )}
-      <p className="text-[#76777A] text-xs mt-2">{helpText}</p>
+      <p className="text-[#6d6e6d] text-xs mt-2">{helpText}</p>
     </div>
   );
 }
@@ -447,7 +447,7 @@ function MessageField({ value, error, onChange, disabled }: MessageFieldProps) {
       {error && (
         <p className="text-red-500 text-xs mt-1">{error}</p>
       )}
-      <p className="text-[#76777A] text-xs mt-2">
+      <p className="text-[#6d6e6d] text-xs mt-2">
         {value.length} / {t('form.characters', { max: FIELD_LIMITS.mensaje })}
       </p>
     </div>
@@ -483,7 +483,7 @@ function OtrosDescripcionField({ value, error, onChange, disabled }: OtrosDescri
       {error && (
         <p className="text-red-500 text-xs mt-1">{error}</p>
       )}
-      <p className="text-[#76777A] text-xs mt-2">
+      <p className="text-[#6d6e6d] text-xs mt-2">
         {value.length} / {t('form.characters', { max: FIELD_LIMITS.mensaje })}
       </p>
     </div>
@@ -523,13 +523,13 @@ function LegalNotice() {
   const t = useTranslations('contact');
 
   return (
-    <p className="text-[#76777A] text-xs text-center">
+    <p className="text-[#6d6e6d] text-xs text-center">
       {t('form.legalNotice.part1')}{' '}
-      <a href="/privacidad" className="text-[#001689] hover:underline font-semibold">
+      <a href="/privacidad" className="text-[#00269b] hover:underline font-semibold">
         {t('form.legalNotice.privacyPolicy')}
       </a>
       {' '}{t('form.legalNotice.and')}{' '}
-      <a href="/terminos" className="text-[#001689] hover:underline font-semibold">
+      <a href="/terminos" className="text-[#00269b] hover:underline font-semibold">
         {t('form.legalNotice.termsOfService')}
       </a>
     </p>

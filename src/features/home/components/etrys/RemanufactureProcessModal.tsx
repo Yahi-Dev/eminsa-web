@@ -70,7 +70,7 @@ export default function RemanufactureProcessModal({
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="bg-linear-to-br from-[#00A3E0] to-[#001689] p-6 text-white relative">
+              <div className="bg-linear-to-br from-[#0099ce] to-[#00269b] p-6 text-white relative">
                 <button
                   onClick={onClose}
                   className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
@@ -111,7 +111,7 @@ export default function RemanufactureProcessModal({
                       <li key={detail} className="flex items-start gap-3">
                         <CheckCircle2
                           size={18}
-                          className="text-[#00A3E0] shrink-0 mt-0.5"
+                          className="text-[#0099ce] shrink-0 mt-0.5"
                         />
                         <span className="text-gray-700 text-sm">{detail}</span>
                       </li>
@@ -125,7 +125,7 @@ export default function RemanufactureProcessModal({
                 <button
                   onClick={() => activeIndex !== null && activeIndex > 0 && onNavigate(activeIndex - 1)}
                   disabled={activeIndex === 0}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-600 hover:border-[#00A3E0] hover:text-[#00A3E0] disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-600 hover:border-[#0099ce] hover:text-[#0099ce] disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm font-medium"
                 >
                   <ChevronLeft size={16} />
                   Anterior
@@ -139,7 +139,7 @@ export default function RemanufactureProcessModal({
                       onClick={() => onNavigate(i)}
                       className={`rounded-full transition-all duration-300 ${
                         i === activeIndex
-                          ? "w-5 h-2 bg-[#00A3E0]"
+                          ? "w-5 h-2 bg-[#0099ce]"
                           : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
                       }`}
                     />
@@ -149,7 +149,7 @@ export default function RemanufactureProcessModal({
                 <button
                   onClick={() => activeIndex !== null && activeIndex < steps.length - 1 && onNavigate(activeIndex + 1)}
                   disabled={activeIndex === steps.length - 1}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-600 hover:border-[#00A3E0] hover:text-[#00A3E0] disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm font-medium"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-600 hover:border-[#0099ce] hover:text-[#0099ce] disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm font-medium"
                 >
                   Siguiente
                   <ChevronRight size={16} />

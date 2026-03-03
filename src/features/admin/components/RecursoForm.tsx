@@ -74,6 +74,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify(formData),
       });
       const data = await res.json();
@@ -100,7 +101,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
             >
               <ArrowLeft className="w-5 h-5" />
             </Link>
-            <FileText className="w-5 h-5 text-[#001689]" />
+            <FileText className="w-5 h-5 text-[#00269b]" />
             <h1 className="text-xl font-bold text-gray-900">
               {isEditing ? "Editar Recurso" : "Nuevo Recurso"}
             </h1>
@@ -131,7 +132,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
                 required
                 maxLength={200}
                 placeholder="Ej. Manual de instalación de transformadores"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#001689] text-sm"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00269b] text-sm"
               />
               <p className="text-right text-xs text-gray-400 mt-1">{formData.nombre.length}/200</p>
             </div>
@@ -145,7 +146,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
                 rows={3}
                 maxLength={500}
                 placeholder="Breve descripción del recurso"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#001689] text-sm resize-none"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00269b] text-sm resize-none"
               />
               <p className="text-right text-xs text-gray-400 mt-1">{formData.descripcion.length}/500</p>
             </div>
@@ -159,6 +160,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
               nombreArchivo={formData.nombreArchivo}
               onChange={handleFileUpload}
               onClear={handleFileClear}
+              folder="eminsa/recursos"
             />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -168,7 +170,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
                   name="tipo"
                   value={formData.tipo}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#001689] text-sm"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00269b] text-sm"
                 >
                   {tiposRecurso.map((t) => (
                     <option key={t.value} value={t.value}>{t.emoji} {t.label}</option>
@@ -181,7 +183,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
                   name="division"
                   value={formData.division}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#001689] text-sm"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#00269b] text-sm"
                 >
                   {divisionesRecurso.map((d) => (
                     <option key={d.value} value={d.value}>{d.label}</option>
@@ -206,7 +208,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
                 type="button"
                 onClick={() => setFormData((prev) => ({ ...prev, activo: !prev.activo }))}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                  formData.activo ? "bg-[#001689]" : "bg-gray-200"
+                  formData.activo ? "bg-[#00269b]" : "bg-gray-200"
                 }`}
               >
                 <span
@@ -229,7 +231,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
               type="submit"
               disabled={isSubmitting}
               className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-white text-sm font-medium transition-colors disabled:opacity-60"
-              style={{ backgroundColor: "#001689" }}
+              style={{ backgroundColor: "#00269b" }}
             >
               {isSubmitting ? (
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

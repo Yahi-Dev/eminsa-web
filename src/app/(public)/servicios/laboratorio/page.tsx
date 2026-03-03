@@ -21,7 +21,7 @@ export default function LaboratorioPage() {
     <>
       {/* Hero Section */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#696969] via-[#5a5a5a] to-[#4a4a4a]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#6d6e6d] via-[#575857] to-[#414241]">
           <div
             className="absolute inset-0 opacity-[0.03]"
             style={{
@@ -61,7 +61,7 @@ export default function LaboratorioPage() {
               <FlaskConical size={16} />
               <span>{servicio.nombreCorto}</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6">
               {servicio.nombre}
             </h1>
             <p className="text-xl text-white/80">{servicio.descripcion}</p>
@@ -78,13 +78,13 @@ export default function LaboratorioPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
                 Descripcion del Servicio
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-6">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-6">
                 ¿En que consiste?
               </h2>
-              <p className="text-[#76777A] leading-relaxed text-lg">
+              <p className="text-[#6d6e6d] leading-relaxed text-lg">
                 {servicio.descripcionLarga}
               </p>
             </motion.div>
@@ -94,16 +94,16 @@ export default function LaboratorioPage() {
               viewport={{ once: true }}
             >
               <div className="bg-gray-50 rounded-2xl p-8">
-                <h3 className="text-xl font-bold text-[#001689] mb-6">
+                <h3 className="text-xl font-bold text-[#00269b] mb-6">
                   Beneficios Principales
                 </h3>
                 <div className="space-y-4">
                   {servicio.beneficios.map((b, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#001689]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <CheckCircle2 size={14} className="text-[#001689]" />
+                      <div className="w-6 h-6 rounded-full bg-[#00269b]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <CheckCircle2 size={14} className="text-[#00269b]" />
                       </div>
-                      <span className="text-[#76777A]">{b}</span>
+                      <span className="text-[#6d6e6d]">{b}</span>
                     </div>
                   ))}
                 </div>
@@ -115,7 +115,7 @@ export default function LaboratorioPage() {
 
       {/* Etapas Section */}
       {servicio.etapas && (
-        <section className="py-16 lg:py-24 bg-gray-50">
+        <section className="py-16 lg:py-24 bg-white">
           <div className="container-eminsa">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -123,7 +123,7 @@ export default function LaboratorioPage() {
               viewport={{ once: true }}
               className="text-center max-w-3xl mx-auto mb-12"
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
                 Etapas del Servicio
               </h2>
             </motion.div>
@@ -137,13 +137,13 @@ export default function LaboratorioPage() {
                   transition={{ delay: i * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all"
                 >
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#001689] to-[#000E53] text-white flex items-center justify-center font-bold mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#00269b] to-[#00175d] text-white flex items-center justify-center font-bold mb-4">
                     {i + 1}
                   </div>
-                  <h3 className="text-lg font-bold text-[#001689] mb-2">
+                  <h3 className="text-lg font-bold text-[#00269b] mb-2">
                     {etapa.titulo}
                   </h3>
-                  <p className="text-[#76777A] text-sm">{etapa.descripcion}</p>
+                  <p className="text-[#6d6e6d] text-sm">{etapa.descripcion}</p>
                 </motion.div>
               ))}
             </div>
@@ -160,7 +160,7 @@ export default function LaboratorioPage() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-3xl font-bold text-[#001689] mb-8 text-center"
+                className="text-3xl font-bold text-[#00269b] mb-8 text-center"
               >
                 Alcance de Nuestros Servicios
               </motion.h2>
@@ -174,10 +174,10 @@ export default function LaboratorioPage() {
                     transition={{ delay: i * 0.1 }}
                     className="flex items-start gap-4 bg-white p-5 rounded-xl shadow-sm"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-[#001689]/10 flex items-center justify-center flex-shrink-0">
-                      <CheckCircle2 size={16} className="text-[#001689]" />
+                    <div className="w-8 h-8 rounded-lg bg-[#00269b]/10 flex items-center justify-center flex-shrink-0">
+                      <CheckCircle2 size={16} className="text-[#00269b]" />
                     </div>
-                    <span className="text-[#76777A]">{item}</span>
+                    <span className="text-[#6d6e6d]">{item}</span>
                   </motion.div>
                 ))}
               </div>
@@ -187,7 +187,7 @@ export default function LaboratorioPage() {
       )}
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-[#001689] to-[#000E53]">
+      <section className="py-16 bg-gradient-to-r from-[#00269b] to-[#00175d]">
         <div className="container-eminsa text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -215,7 +215,7 @@ export default function LaboratorioPage() {
           >
             <Link
               href="/servicios/cotizacion"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#001689] hover:bg-[#000E53] text-white font-bold rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#00269b] hover:bg-[#00175d] text-white font-bold rounded-xl transition-colors"
             >
               Solicitar Cotizacion <ArrowRight size={20} />
             </Link>

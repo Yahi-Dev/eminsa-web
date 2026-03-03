@@ -56,7 +56,7 @@ export default async function NormativaDetailPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-16">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-8">
@@ -125,8 +125,8 @@ export default async function NormativaDetailPage({ params }: Props) {
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Beneficios</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {standard.benefits.map((benefit, idx) => (
-                    <div key={idx} className="flex items-center gap-3 p-4 bg-[#001689]/5 rounded-xl">
-                      <div className="w-2 h-2 bg-[#00A3E0] rounded-full" />
+                    <div key={idx} className="flex items-center gap-3 p-4 bg-[#00269b]/5 rounded-xl">
+                      <div className="w-2 h-2 bg-[#0099ce] rounded-full" />
                       <span className="text-gray-700 font-medium">{benefit}</span>
                     </div>
                   ))}
@@ -138,8 +138,8 @@ export default async function NormativaDetailPage({ params }: Props) {
                 <h2 className="text-xl font-bold text-gray-900 mb-4">Recursos Relacionados</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
-                    <div className="w-12 h-12 bg-[#001689]/10 rounded-lg flex items-center justify-center">
-                      <FileText size={24} className="text-[#001689]" />
+                    <div className="w-12 h-12 bg-[#00269b]/10 rounded-lg flex items-center justify-center">
+                      <FileText size={24} className="text-[#00269b]" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">Documento {standard.name}</p>
@@ -147,8 +147,8 @@ export default async function NormativaDetailPage({ params }: Props) {
                     </div>
                   </div>
                   <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
-                    <div className="w-12 h-12 bg-[#001689]/10 rounded-lg flex items-center justify-center">
-                      <Download size={24} className="text-[#001689]" />
+                    <div className="w-12 h-12 bg-[#00269b]/10 rounded-lg flex items-center justify-center">
+                      <Download size={24} className="text-[#00269b]" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900">Fichas Técnicas</p>
@@ -163,7 +163,7 @@ export default async function NormativaDetailPage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#001689] text-white">
+      <section className="py-16 bg-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-3xl font-bold mb-4">
             Transformadores que Cumplen con {standard.name}
@@ -174,14 +174,14 @@ export default async function NormativaDetailPage({ params }: Props) {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/mtn/productos"
-              className="inline-flex items-center gap-2 bg-white text-[#001689] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors"
+              className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors"
             >
               Ver Productos
               <ArrowRight size={20} />
             </Link>
             <Link
               href="/mtn/cotizaciones"
-              className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+              className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
             >
               Solicitar Cotización
             </Link>
