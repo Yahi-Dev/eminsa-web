@@ -22,6 +22,17 @@ import { cn } from "@/lib/utils";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 
+function useScrolled(threshold = 10) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [threshold]);
+  return scrolled;
+}
+
 // Tipos para los items del menú
 interface NavItem {
   name: string;
@@ -162,12 +173,19 @@ export default function EtrysLayout({
     }
   }, [pathname]);
 
+  const scrolled = useScrolled(20);
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Subnavegación ETRYS - Desktop */}
-      <nav 
+      <nav
         ref={menuRef}
-        className="hidden lg:block bg-[#0099ce]/10 border-t-2 border-t-[#0099ce]/30 border-b border-b-[#0099ce]/20 sticky top-20 xl:top-28 z-40 shadow-sm"
+        className={cn(
+          "hidden lg:block sticky z-40 transition-all duration-300",
+          scrolled
+            ? "top-14 xl:top-16 bg-white/90 backdrop-blur-xl border-b border-gray-200 shadow-md"
+            : "top-20 xl:top-28 bg-white/60 backdrop-blur-sm"
+        )}
       >
         <div className="container-eminsa">
           <div className="flex items-center justify-center py-2">
@@ -301,9 +319,14 @@ export default function EtrysLayout({
       </nav>
 
       {/* Subnavegación ETRYS - Mobile */}
-      <div 
+      <div
         ref={menuRef}
-        className="lg:hidden sticky top-20 z-40 bg-[#0099ce]/10 border-t-2 border-t-[#0099ce]/30 border-b border-b-[#0099ce]/20 shadow-sm"
+        className={cn(
+          "lg:hidden sticky z-40 transition-all duration-300",
+          scrolled
+            ? "top-14 bg-white/90 backdrop-blur-xl border-b border-gray-200 shadow-md"
+            : "top-20 bg-white/60 backdrop-blur-sm"
+        )}
       >
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">

@@ -48,13 +48,15 @@ export default function MTNPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#00269b] via-[#00175d] to-[#00269b] text-white overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
+      <section className="relative bg-gradient-to-b from-[#00175d] via-[#00269b] to-[#001a6e] text-white overflow-hidden">
+        {/* Subtle grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
+            backgroundSize: "60px 60px",
+          }}
+        />
 
         <div className="container-eminsa relative z-10 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -84,14 +86,14 @@ export default function MTNPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/mtn/cotizaciones"
-                  className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
                 </Link>
                 <Link
                   href="/mtn/productos"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/30"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/20"
                 >
                   Ver Productos
                   <ChevronRight size={20} />
@@ -102,18 +104,20 @@ export default function MTNPage() {
             {/* Hero Image/Visual */}
             <div className="relative hidden lg:block">
               <div className="relative aspect-square">
-                {/* Decorative circles */}
+                {/* Water ripple circles - expanding outward from center */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-80 h-80 border-2 border-white/10 rounded-full animate-pulse" />
-                  <div className="absolute w-64 h-64 border-2 border-[#0099ce]/30 rounded-full animate-pulse delay-150" />
-                  <div className="absolute w-48 h-48 border-2 border-white/20 rounded-full animate-pulse delay-300" />
+                  <div className="absolute w-125 h-125 border-2 border-white/50 rounded-full animate-ripple" />
+                  <div className="absolute w-125 h-125 border-2 border-white/40 rounded-full animate-ripple" style={{ animationDelay: "0.6s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/35 rounded-full animate-ripple" style={{ animationDelay: "1.2s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/30 rounded-full animate-ripple" style={{ animationDelay: "1.8s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/25 rounded-full animate-ripple" style={{ animationDelay: "2.4s" }} />
                 </div>
-                
+
                 {/* Center content */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Link
                     href="/mtn/certificaciones"
-                    className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
+                    className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 group relative z-10"
                   >
                     <div className="text-center space-y-2">
                       <Zap size={48} className="mx-auto text-[#0099ce]" />
@@ -134,7 +138,7 @@ export default function MTNPage() {
       </section>
 
       {/* Productos Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" id="productos">
         <div className="container-eminsa">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block text-[#00269b] font-semibold text-sm uppercase tracking-wider mb-4">
@@ -153,12 +157,12 @@ export default function MTNPage() {
               <Link
                 key={product.id}
                 href={`/mtn/productos/${product.slug}`}
-                className="group relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden border border-gray-200 hover:border-[#00269b]/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                className="group relative bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#00269b]/20 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
                 {/* Product image placeholder */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-[#00269b]/5 to-[#0099ce]/5 flex items-center justify-center">
-                  <div className="w-24 h-24 bg-[#00269b]/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Zap size={40} className="text-[#00269b]" />
+                <div className="aspect-[4/3] bg-gradient-to-br from-[#00269b]/3 to-[#0099ce]/6 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-[#00269b]/8 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-[#00269b]/12 transition-all duration-300">
+                    <Zap size={36} className="text-[#00269b]" />
                   </div>
                 </div>
 
@@ -217,7 +221,7 @@ export default function MTNPage() {
       </section>
 
       {/* Normativas y Certificaciones */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#00269b]/3">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Normativas */}
@@ -237,7 +241,7 @@ export default function MTNPage() {
                   <Link
                     key={standard.id}
                     href={`/mtn/normativa/${standard.slug}`}
-                    className="group block bg-white rounded-xl p-6 border border-gray-200 hover:border-[#00269b]/30 hover:shadow-lg transition-all duration-300"
+                    className="group block bg-white rounded-xl p-6 border border-gray-100 hover:border-[#00269b]/20 hover:shadow-lg transition-all duration-300"
                   >
                     <div className="flex items-start justify-between">
                       <div className="space-y-2">
@@ -283,7 +287,7 @@ export default function MTNPage() {
       </section>
 
       {/* Recursos Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" id="recursos">
         <div className="container-eminsa">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -301,7 +305,7 @@ export default function MTNPage() {
                 <Link
                   key={resource.id}
                   href={`/mtn/recursos/${resource.slug}`}
-                  className="group flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl hover:bg-[#00269b] transition-all duration-300"
+                  className="group flex flex-col items-center text-center p-6 bg-white rounded-xl border border-gray-100 hover:bg-[#00269b] hover:border-[#00269b] transition-all duration-300 hover:shadow-lg"
                 >
                   <div className="w-14 h-14 bg-[#00269b]/10 group-hover:bg-white/20 rounded-full flex items-center justify-center mb-4 transition-colors">
                     <Icon size={24} className="text-[#00269b] group-hover:text-white transition-colors" />
@@ -320,7 +324,7 @@ export default function MTNPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[#00269b] to-[#00175d] text-white">
+      <section className="py-20 bg-[#00175d] text-white">
         <div className="container-eminsa">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h2 className="text-4xl font-bold">
@@ -333,14 +337,14 @@ export default function MTNPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/mtn/cotizaciones"
-                className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />
               </Link>
               <a
                 href={`tel:${contactInfo.phone}`}
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/30"
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/20"
               >
                 <Phone size={20} />
                 Llamar Ahora

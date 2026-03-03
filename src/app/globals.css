@@ -225,3 +225,46 @@
   border-color: var(--phone-focus-color, #00269b) !important;
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--phone-focus-color, #00269b) 20%, transparent);
 }
+
+/* Water ripple animation */
+@keyframes ripple {
+  0% {
+    transform: scale(0.25);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple 3.5s cubic-bezier(0, 0.2, 0.8, 1) infinite backwards;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 3.5s ease-in-out 0.5s infinite;
+}
+
+.animate-float-slow {
+  animation: float 4s ease-in-out 1s infinite;
+}

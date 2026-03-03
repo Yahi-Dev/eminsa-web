@@ -139,10 +139,13 @@ export default function Header() {
       <header
         className={cn(
           "sticky top-0 z-50 transition-all duration-300 bg-white",
-          isScrolled && "shadow-lg"
+          isScrolled ? "shadow-lg" : ""
         )}
       >
-        <div className="flex items-center h-20 xl:h-28 px-4 lg:px-6 xl:px-10 w-full gap-3 lg:gap-4 xl:gap-8">
+        <div className={cn(
+          "flex items-center px-4 lg:px-6 xl:px-10 w-full gap-3 lg:gap-4 xl:gap-8 transition-all duration-300",
+          isScrolled ? "h-14 xl:h-16" : "h-20 xl:h-28"
+        )}>
           {/* Logo - Left */}
           <motion.div
             className="shrink-0"
@@ -155,7 +158,10 @@ export default function Header() {
                 alt="Grupo EMINSA"
                 width={240}
                 height={240}
-                className="w-auto h-16 lg:h-20 xl:h-24"
+                className={cn(
+                  "w-auto transition-all duration-300",
+                  isScrolled ? "h-10 lg:h-11 xl:h-12" : "h-16 lg:h-20 xl:h-24"
+                )}
                 priority
               />
             </Link>

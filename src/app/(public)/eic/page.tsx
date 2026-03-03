@@ -107,7 +107,7 @@ export default function EICPage() {
               </div>
             </motion.div>
 
-            {/* Visual - Animated Circles */}
+            {/* Visual - Ripple Animation + Floating Cards */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -115,29 +115,31 @@ export default function EICPage() {
               className="relative hidden lg:block"
             >
               <div className="relative aspect-square">
-                {/* Decorative circles */}
+                {/* Water ripple circles */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-80 h-80 border-2 border-white/10 rounded-full animate-pulse" />
-                  <div className="absolute w-64 h-64 border-2 border-[#009e49]/30 rounded-full animate-pulse delay-150" />
-                  <div className="absolute w-48 h-48 border-2 border-white/20 rounded-full animate-pulse delay-300" />
+                  <div className="absolute w-125 h-125 border-2 border-white/50 rounded-full animate-ripple" />
+                  <div className="absolute w-125 h-125 border-2 border-white/40 rounded-full animate-ripple" style={{ animationDelay: "0.6s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/35 rounded-full animate-ripple" style={{ animationDelay: "1.2s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/30 rounded-full animate-ripple" style={{ animationDelay: "1.8s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/25 rounded-full animate-ripple" style={{ animationDelay: "2.4s" }} />
                 </div>
 
                 {/* Center card */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2">
-                    <Globe size={48} className="mx-auto text-[#009e49]" />
+                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2 animate-float relative z-10">
+                    <Globe size={48} className="mx-auto text-white" />
                     <p className="text-4xl font-bold">8+</p>
                     <p className="text-white/70 text-sm">Marcas internacionales</p>
                   </div>
                 </div>
 
                 {/* Floating stat cards */}
-                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
-                  <p className="text-2xl font-bold">500+</p>
+                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-delayed z-10">
+                  <p className="text-3xl font-bold">500+</p>
                   <p className="text-xs text-white/70">Clientes satisfechos</p>
                 </div>
-                <div className="absolute bottom-8 left-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
-                  <p className="text-2xl font-bold">50+</p>
+                <div className="absolute bottom-12 left-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-slow z-10">
+                  <p className="text-3xl font-bold">50+</p>
                   <p className="text-xs text-white/70">Años de trayectoria</p>
                 </div>
               </div>
