@@ -56,7 +56,7 @@ export default function EtrysPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-20 lg:py-28 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-20 lg:py-28 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -74,15 +74,15 @@ export default function EtrysPage() {
               className="space-y-8"
             >
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <Wrench size={18} className="text-[#00A3E0]" />
+                <Wrench size={18} className="text-[#0099ce]" />
                 <span className="text-sm font-medium">{etrysInfo.slogan}</span>
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
+                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
                   <span className="text-white">{etrysInfo.tagline}</span>
                 </h1>
-                <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
+                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed">
                   En RST combinamos la experiencia de un equipo técnico altamente calificado con tecnología de última generación para darle a sus transformadores una nueva vida.
                 </p>
               </div>
@@ -95,7 +95,7 @@ export default function EtrysPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/etrys/cotizaciones"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00A3E0] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#0099ce] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -112,7 +112,7 @@ export default function EtrysPage() {
               </div>
             </motion.div>
 
-            {/* Visual - Animated Circles */}
+            {/* Visual - Ripple Animation + Floating Cards */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -120,29 +120,31 @@ export default function EtrysPage() {
               className="relative hidden lg:block"
             >
               <div className="relative aspect-square">
-                {/* Decorative circles */}
+                {/* Water ripple circles */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-80 h-80 border-2 border-white/10 rounded-full animate-pulse" />
-                  <div className="absolute w-64 h-64 border-2 border-[#00A3E0]/30 rounded-full animate-pulse delay-150" />
-                  <div className="absolute w-48 h-48 border-2 border-white/20 rounded-full animate-pulse delay-300" />
+                  <div className="absolute w-125 h-125 border-2 border-white/50 rounded-full animate-ripple" />
+                  <div className="absolute w-125 h-125 border-2 border-white/40 rounded-full animate-ripple" style={{ animationDelay: "0.6s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/35 rounded-full animate-ripple" style={{ animationDelay: "1.2s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/30 rounded-full animate-ripple" style={{ animationDelay: "1.8s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/25 rounded-full animate-ripple" style={{ animationDelay: "2.4s" }} />
                 </div>
 
                 {/* Center card */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2">
-                    <Wrench size={48} className="mx-auto text-[#00A3E0]" />
+                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2 animate-float relative z-10">
+                    <Wrench size={48} className="mx-auto text-white" />
                     <p className="text-4xl font-bold">18 meses</p>
                     <p className="text-white/70 text-sm">Garantía certificada</p>
                   </div>
                 </div>
 
                 {/* Floating stat cards */}
-                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
-                  <p className="text-2xl font-bold">50+</p>
+                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-delayed z-10">
+                  <p className="text-3xl font-bold">50+</p>
                   <p className="text-xs text-white/70">Años de experiencia</p>
                 </div>
-                <div className="absolute bottom-8 left-8 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 text-center">
-                  <p className="text-2xl font-bold">10K+</p>
+                <div className="absolute bottom-12 left-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-slow z-10">
+                  <p className="text-3xl font-bold">10K+</p>
                   <p className="text-xs text-white/70">Transformadores restaurados</p>
                 </div>
               </div>
@@ -152,7 +154,7 @@ export default function EtrysPage() {
       </section>
 
       {/* Reparación Section */}
-      <section className="">
+      <section className="bg-white">
         <TransformadorRestauracionSection />
       </section>
 
@@ -166,7 +168,7 @@ export default function EtrysPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-[#00A3E0]/10 text-[#00A3E0] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
               Transformadores Remanufacturados
             </span>
             <p className="text-gray-600 text-lg font-bold">
@@ -188,13 +190,13 @@ export default function EtrysPage() {
                   transition={{ delay: index * 0.1 }}
                   className="bg-white rounded-xl p-5 shadow-md hover:shadow-lg transition-all group"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-[#00A3E0]/10 flex items-center justify-center mb-3 group-hover:bg-[#00A3E0] transition-colors">
-                    <Icon size={24} className="text-[#00A3E0] group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 rounded-lg bg-[#0099ce]/10 flex items-center justify-center mb-3 group-hover:bg-[#0099ce] transition-colors">
+                    <Icon size={24} className="text-[#0099ce] group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="font-bold text-gray-900 mb-1">{adv.title}</h3>
                   <p className="text-sm text-gray-600">{adv.description}</p>
                   {adv.highlight && (
-                    <span className="inline-block mt-2 px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded">
+                    <span className="inline-block mt-2 px-2 py-0.5 bg-[#0099ce]/10 text-[#0099ce] text-xs font-semibold rounded">
                       {adv.highlight}
                     </span>
                   )}
@@ -225,13 +227,13 @@ export default function EtrysPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 right-3">
-                      <span className="px-3 py-1 bg-[#00A3E0] text-white text-xs font-bold rounded-full">
+                      <span className="px-3 py-1 bg-[#0099ce] text-white text-xs font-bold rounded-full">
                         ETRYS
                       </span>
                     </div>
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#00A3E0] transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0099ce] transition-colors">
                       {product.shortName}
                     </h3>
                     <p className="text-gray-600 text-sm mb-4 line-clamp-2">
@@ -245,7 +247,7 @@ export default function EtrysPage() {
                         {product.voltageRange}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-[#00A3E0] font-medium">
+                    <div className="flex items-center gap-2 text-[#0099ce] font-medium">
                       Ver detalles
                       <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -264,7 +266,7 @@ export default function EtrysPage() {
           >
             <Link
               href="/etrys/productos"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
             >
               Ver Todos los Productos
               <ArrowRight size={20} />
@@ -282,10 +284,10 @@ export default function EtrysPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <span className="inline-block px-3 py-1 bg-[#00A3E0]/10 text-[#00A3E0] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
               Proceso Certificado
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Nuestro Proceso de Remanufactura
             </h2>
             <p className="text-gray-600 text-lg">
@@ -308,16 +310,16 @@ export default function EtrysPage() {
                   onClick={() => setActiveStepIndex(index)}
                   className="relative text-center group cursor-pointer"
                 >
-                  <div className="relative z-10 w-12 h-12 mx-auto mb-3 rounded-full bg-linear-to-br from-[#00A3E0] to-[#001689] flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-200">
+                  <div className="relative z-10 w-12 h-12 mx-auto mb-3 rounded-full bg-linear-to-br from-[#0099ce] to-[#00269b] flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-200">
                     {step.id}
                   </div>
-                  <h3 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-[#00A3E0] transition-colors">
+                  <h3 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-[#0099ce] transition-colors">
                     {step.shortTitle}
                   </h3>
                   <p className="text-xs text-gray-500 hidden md:block line-clamp-2">
                     {step.description}
                   </p>
-                  <p className="text-xs text-[#00A3E0] font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                  <p className="text-xs text-[#0099ce] font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
                     Ver detalle →
                   </p>
                 </motion.button>
@@ -328,7 +330,7 @@ export default function EtrysPage() {
       </section>
 
       {/* Ventaja ETRYS */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#001689] text-white">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#00269b] text-white">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
@@ -340,7 +342,7 @@ export default function EtrysPage() {
               <span className="inline-block px-3 py-1 bg-white/10 text-white text-sm font-medium rounded-full mb-4">
                 ¿Por qué ETRYS?
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-8">
                 ¿Cuál es la Ventaja ETRYS?
               </h2>
 
@@ -354,16 +356,16 @@ export default function EtrysPage() {
                     transition={{ delay: index * 0.15 }}
                     className="flex gap-4"
                   >
-                    <div className="w-14 h-14 rounded-xl bg-[#00A3E0]/20 flex items-center justify-center shrink-0">
-                      {adv.icon === "award" && <Award size={28} className="text-[#00A3E0]" />}
-                      {adv.icon === "users" && <Users size={28} className="text-[#00A3E0]" />}
-                      {adv.icon === "shield-check" && <ShieldCheck size={28} className="text-[#00A3E0]" />}
+                    <div className="w-14 h-14 rounded-xl bg-[#0099ce]/20 flex items-center justify-center shrink-0">
+                      {adv.icon === "award" && <Award size={28} className="text-[#0099ce]" />}
+                      {adv.icon === "users" && <Users size={28} className="text-[#0099ce]" />}
+                      {adv.icon === "shield-check" && <ShieldCheck size={28} className="text-[#0099ce]" />}
                     </div>
                     <div>
                       <h3 className="text-xl font-bold mb-1 flex items-center gap-2">
                         {adv.title}
                         {adv.highlight && (
-                          <span className="text-sm font-normal px-2 py-0.5 bg-amber-500 text-white rounded">
+                          <span className="text-sm font-normal px-2 py-0.5 bg-gray-500 text-white rounded">
                             {adv.highlight}
                           </span>
                         )}
@@ -393,23 +395,23 @@ export default function EtrysPage() {
                   placeholder="Nombre completo"
                   value={quoteForm.nombre}
                   onChange={(e) => setQuoteForm((p) => ({ ...p, nombre: e.target.value }))}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                 />
                 <input
                   type="email"
                   placeholder="Correo electrónico"
                   value={quoteForm.email}
                   onChange={(e) => setQuoteForm((p) => ({ ...p, email: e.target.value }))}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                 />
                 <PhoneInputField
                   value={quoteForm.telefono}
                   onChange={(val) => setQuoteForm((p) => ({ ...p, telefono: val }))}
-                  focusColor="#00A3E0"
+                  focusColor="#0099ce"
                 />
                 <button
                   type="submit"
-                  className="block w-full px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors text-center"
+                  className="block w-full px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors text-center"
                 >
                   Continuar Cotización
                 </button>
@@ -424,7 +426,7 @@ export default function EtrysPage() {
       </section>
 
       {/* Alquiler Section */}
-      <section className="py-16 lg:py-24 bg-amber-50">
+      <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Image */}
@@ -442,7 +444,7 @@ export default function EtrysPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-amber-500 text-white px-6 py-4 rounded-xl shadow-lg">
+              <div className="absolute -bottom-4 -right-4 bg-gray-500 text-white px-6 py-4 rounded-xl shadow-lg">
                 <Phone size={24} className="mb-1" />
                 <span className="font-bold block">{rentalInfo.phone}</span>
               </div>
@@ -454,10 +456,10 @@ export default function EtrysPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block px-3 py-1 bg-amber-200 text-amber-800 text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-[#0099ce]/20 text-[#007ba8] text-sm font-medium rounded-full mb-4">
                 Solución Temporal
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 ¿Necesita Energía Temporalmente?
               </h2>
               <p className="text-gray-600 text-lg mb-6">
@@ -468,7 +470,7 @@ export default function EtrysPage() {
               <ul className="space-y-3 mb-8">
                 {rentalInfo.benefits.slice(0, 4).map((benefit) => (
                   <li key={benefit.id} className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-amber-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={20} className="text-[#0099ce] shrink-0 mt-0.5" />
                     <div>
                       <span className="font-medium text-gray-900">{benefit.title}</span>
                       <span className="text-gray-600 text-sm block">{benefit.description}</span>
@@ -480,14 +482,14 @@ export default function EtrysPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/etrys/alquiler"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gray-500 hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                 >
                   Más Información
                   <ArrowRight size={20} />
                 </Link>
                 <a
                   href={`tel:${rentalInfo.phone}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 border-2 border-amber-500 text-amber-700 hover:bg-amber-500 hover:text-white font-semibold rounded-xl transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#0099ce] text-[#0099ce] hover:bg-gray-500 hover:text-white font-semibold rounded-xl transition-colors"
                 >
                   <Phone size={20} />
                   Llamar Ahora

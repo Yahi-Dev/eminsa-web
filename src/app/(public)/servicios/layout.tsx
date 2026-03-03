@@ -22,6 +22,17 @@ import { cn } from "@/lib/utils";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 
+function useScrolled(threshold = 10) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [threshold]);
+  return scrolled;
+}
+
 interface NavItem {
   name: string;
   href: string;
@@ -168,12 +179,19 @@ export default function ServiciosLayout({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
+  const scrolled = useScrolled(20);
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Subnavegación Servicios - Desktop */}
       <nav
         ref={menuRef}
-        className="hidden lg:block bg-[#696969]/10 border-t-2 border-t-[#696969]/30 border-b border-b-[#696969]/20 sticky top-20 xl:top-28 z-40 shadow-sm"
+        className={cn(
+          "hidden lg:block sticky z-40 transition-all duration-300",
+          scrolled
+            ? "top-14 xl:top-16 bg-white/90 backdrop-blur-xl border-b border-gray-200 shadow-md"
+            : "top-20 xl:top-28 bg-white/60 backdrop-blur-sm"
+        )}
       >
         <div className="container-eminsa">
           <div className="flex items-center justify-center py-2">
@@ -205,8 +223,8 @@ export default function ServiciosLayout({
                               className={cn(
                                 "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                                 active
-                                  ? "bg-[#696969] text-white"
-                                  : "text-gray-600 hover:bg-gray-100 hover:text-[#696969]"
+                                  ? "bg-[#6d6e6d] text-white"
+                                  : "text-gray-600 hover:bg-gray-100 hover:text-[#6d6e6d]"
                               )}
                             >
                               <Icon size={16} />
@@ -239,7 +257,7 @@ export default function ServiciosLayout({
                                     className={cn(
                                       "block px-4 py-2.5 text-sm transition-colors hover:bg-gray-50 group",
                                       pathname === subItem.href || pathname.startsWith(subItem.href + "/")
-                                        ? "bg-[#696969]/10"
+                                        ? "bg-[#6d6e6d]/10"
                                         : "text-gray-600"
                                     )}
                                   >
@@ -247,7 +265,7 @@ export default function ServiciosLayout({
                                       <span className={cn(
                                         "font-medium",
                                         (pathname === subItem.href || pathname.startsWith(subItem.href + "/"))
-                                          ? "text-[#696969]"
+                                          ? "text-[#6d6e6d]"
                                           : "text-gray-800"
                                       )}>
                                         {subItem.name}
@@ -270,8 +288,8 @@ export default function ServiciosLayout({
                           className={cn(
                             "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                             active
-                              ? "bg-[#696969] text-white"
-                              : "text-gray-600 hover:bg-gray-100 hover:text-[#696969]"
+                              ? "bg-[#6d6e6d] text-white"
+                              : "text-gray-600 hover:bg-gray-100 hover:text-[#6d6e6d]"
                           )}
                         >
                           <Icon size={16} />
@@ -289,15 +307,20 @@ export default function ServiciosLayout({
 
       {/* Subnavegación Servicios - Mobile */}
       <div
-        className="lg:hidden sticky top-20 z-40 bg-[#696969]/10 border-t-2 border-t-[#696969]/30 border-b border-b-[#696969]/20 shadow-sm"
+        className={cn(
+          "lg:hidden sticky z-40 transition-all duration-300",
+          scrolled
+            ? "top-14 bg-white/90 backdrop-blur-xl border-b border-gray-200 shadow-md"
+            : "top-20 bg-white/60 backdrop-blur-sm"
+        )}
       >
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#696969] to-[#4a4a4a] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6d6e6d] to-[#414241] flex items-center justify-center">
               <span className="text-white font-bold text-sm">S</span>
             </div>
             <div>
-              <span className="text-[#696969] font-bold">Servicios</span>
+              <span className="text-[#6d6e6d] font-bold">Servicios</span>
               <span className="text-gray-400 text-xs block -mt-1">by EMINSA</span>
             </div>
           </div>
@@ -336,7 +359,7 @@ export default function ServiciosLayout({
                               className={cn(
                                 "flex-1 flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                                 active
-                                  ? "bg-[#696969]/10 text-[#696969]"
+                                  ? "bg-[#6d6e6d]/10 text-[#6d6e6d]"
                                   : "text-gray-600 hover:bg-gray-50"
                               )}
                             >
@@ -370,7 +393,7 @@ export default function ServiciosLayout({
                                   onClick={() => { setMobileMenuOpen(false); setOpenSubmenu(null); }}
                                   className={cn(
                                     "block px-8 py-2.5 rounded-lg text-sm transition-colors",
-                                    pathname === "/servicios" ? "bg-[#696969] text-white" : "text-gray-600 hover:bg-gray-50"
+                                    pathname === "/servicios" ? "bg-[#6d6e6d] text-white" : "text-gray-600 hover:bg-gray-50"
                                   )}
                                 >
                                   Ver todos
@@ -382,7 +405,7 @@ export default function ServiciosLayout({
                                     onClick={() => { setMobileMenuOpen(false); setOpenSubmenu(null); }}
                                     className={cn(
                                       "block px-8 py-2.5 rounded-lg text-sm transition-colors group",
-                                      pathname === subItem.href ? "bg-[#696969] text-white" : "text-gray-600 hover:bg-gray-50"
+                                      pathname === subItem.href ? "bg-[#6d6e6d] text-white" : "text-gray-600 hover:bg-gray-50"
                                     )}
                                   >
                                     <div className="flex flex-col">
@@ -403,7 +426,7 @@ export default function ServiciosLayout({
                           onClick={() => setMobileMenuOpen(false)}
                           className={cn(
                             "flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors",
-                            active ? "bg-[#696969] text-white" : "text-gray-600 hover:bg-gray-50"
+                            active ? "bg-[#6d6e6d] text-white" : "text-gray-600 hover:bg-gray-50"
                           )}
                         >
                           <Icon size={18} />
@@ -427,7 +450,7 @@ export default function ServiciosLayout({
                   </a>
                   <a
                     href={`tel:${contactInfo.phone}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#696969] border border-[#696969] rounded-lg hover:bg-[#696969] hover:text-white transition-all font-medium"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#6d6e6d] border border-[#6d6e6d] rounded-lg hover:bg-[#6d6e6d] hover:text-white transition-all font-medium"
                   >
                     <Phone size={20} />
                     {contactInfo.phone}
@@ -435,7 +458,7 @@ export default function ServiciosLayout({
                   <Link
                     href="/servicios/cotizacion"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center w-full px-4 py-3 bg-[#696969] hover:bg-[#5a5a5a] text-white rounded-lg transition-all font-medium"
+                    className="flex items-center justify-center w-full px-4 py-3 bg-[#6d6e6d] hover:bg-[#575857] text-white rounded-lg transition-all font-medium"
                   >
                     Solicitar Cotización
                   </Link>

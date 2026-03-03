@@ -13,6 +13,7 @@ import {
   ExternalLink
 } from "lucide-react";
 import { resources } from "@/config/mtn-data";
+import RecursosDinamicos from "@/components/shared/RecursosDinamicos";
 
 export const metadata: Metadata = {
   title: "Recursos - MTN | Grupo EMINSA",
@@ -30,18 +31,18 @@ const resourceIcons: Record<string, React.ElementType> = {
 
 // Colores para cada recurso
 const resourceColors: Record<string, string> = {
-  articles: "from-[#001689] to-[#000E53]",
-  datasheets: "from-[#001689] to-[#000E53]",
-  warranty: "from-[#001689] to-[#000E53]",
-  manual: "from-[#001689] to-[#000E53]",
-  calculator: "from-[#001689] to-[#000E53]",
+  articles: "from-[#00269b] to-[#00175d]",
+  datasheets: "from-[#00269b] to-[#00175d]",
+  warranty: "from-[#00269b] to-[#00175d]",
+  manual: "from-[#00269b] to-[#00175d]",
+  calculator: "from-[#00269b] to-[#00175d]",
 };
 
 export default function RecursosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-16">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -57,7 +58,7 @@ export default function RecursosPage() {
               <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
                 <FolderOpen size={24} />
               </div>
-              <span className="text-[#00A3E0] font-semibold">Centro de Recursos</span>
+              <span className="text-[#0099ce] font-semibold">Centro de Recursos</span>
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
               Recursos Técnicos
@@ -76,7 +77,7 @@ export default function RecursosPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {resources.map((resource) => {
               const Icon = resourceIcons[resource.icon] || FileText;
-              const gradient = resourceColors[resource.type] || "from-[#001689] to-[#00A3E0]";
+              const gradient = resourceColors[resource.type] || "from-[#00269b] to-[#0099ce]";
               
               return (
                 <Link
@@ -96,7 +97,7 @@ export default function RecursosPage() {
 
                   {/* Content */}
                   <div className="p-6 space-y-3">
-                    <h2 className="text-xl font-bold text-gray-900 group-hover:text-[#001689] transition-colors">
+                    <h2 className="text-xl font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
                       {resource.name}
                     </h2>
                     <p className="text-gray-600">
@@ -104,7 +105,7 @@ export default function RecursosPage() {
                     </p>
 
                     {/* Action hint */}
-                    <div className="flex items-center gap-2 text-sm text-[#001689] font-medium pt-2">
+                    <div className="flex items-center gap-2 text-sm text-[#00269b] font-medium pt-2">
                       {resource.type === 'calculator' ? (
                         <>
                           <ExternalLink size={16} />
@@ -125,51 +126,14 @@ export default function RecursosPage() {
         </div>
       </section>
 
-      {/* Quick Downloads */}
+      {/* Recursos Dinámicos del Admin */}
       <section className="py-16 bg-white">
         <div className="container-eminsa">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">
-            Descargas Rápidas
-          </h2>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
-              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                <FileText size={24} className="text-red-600" />
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900">Catálogo General</p>
-                <p className="text-sm text-gray-500">PDF • 5.2 MB</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <FileText size={24} className="text-blue-600" />
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900">Ficha Tipo Poste</p>
-                <p className="text-sm text-gray-500">PDF • 1.8 MB</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <FileText size={24} className="text-green-600" />
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900">Ficha Pad Mounted</p>
-                <p className="text-sm text-gray-500">PDF • 2.1 MB</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4 bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <FileText size={24} className="text-purple-600" />
-              </div>
-              <div>
-                <p className="font-semibold text-gray-900">Términos de Garantía</p>
-                <p className="text-sm text-gray-500">PDF • 320 KB</p>
-              </div>
-            </div>
-          </div>
+          <RecursosDinamicos
+            division="MTN"
+            accentColor="#00269b"
+            title="Fichas Técnicas y Documentos"
+          />
         </div>
       </section>
 
@@ -181,7 +145,7 @@ export default function RecursosPage() {
               <div className="grid lg:grid-cols-2 gap-0">
                 {/* Info Side */}
                 <div className="p-8 lg:p-12 space-y-6">
-                  <div className="inline-flex items-center gap-2 bg-[#001689]/10 text-[#001689] px-4 py-2 rounded-full text-sm font-medium">
+                  <div className="inline-flex items-center gap-2 bg-[#00269b]/10 text-[#00269b] px-4 py-2 rounded-full text-sm font-medium">
                     <Calculator size={16} />
                     Herramienta Interactiva
                   </div>
@@ -213,7 +177,7 @@ export default function RecursosPage() {
 
                   <Link
                     href="/mtn/recursos/calculadora"
-                    className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                    className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                   >
                     Usar Calculadora
                     <ArrowRight size={18} />
@@ -221,7 +185,7 @@ export default function RecursosPage() {
                 </div>
 
                 {/* Visual Side */}
-                <div className="bg-gradient-to-br from-[#001689] to-[#00A3E0] p-8 lg:p-12 flex items-center justify-center">
+                <div className="bg-gradient-to-br from-[#00269b] to-[#0099ce] p-8 lg:p-12 flex items-center justify-center">
                   <div className="text-center text-white">
                     <div className="w-24 h-24 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
                       <Calculator size={48} />
@@ -237,7 +201,7 @@ export default function RecursosPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#001689] text-white">
+      <section className="py-16 bg-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-3xl font-bold mb-4">¿No encuentra lo que busca?</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
@@ -246,7 +210,7 @@ export default function RecursosPage() {
           </p>
           <Link
             href="/mtn/cotizaciones"
-            className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
           >
             Contactar Soporte Técnico
             <ArrowRight size={20} />

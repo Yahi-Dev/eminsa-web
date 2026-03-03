@@ -6,13 +6,13 @@
   --font-montserrat: 'Montserrat', sans-serif;
   
   /* Colores corporativos */
-  --eminsa-blue: #001689;
-  --eminsa-blue-dark: #000E53;
-  --eminsa-blue-light: #1A239E;
-  --eminsa-gray: #76777A;
-  --eminsa-cyan: #00A3E0;
-  --eminsa-orange: #FF5500;
-  --eminsa-green: #00B140;
+  --eminsa-blue: #00269b;
+  --eminsa-blue-dark: #00175d;
+  --eminsa-blue-light: #2846af;
+  --eminsa-gray: #6d6e6d;
+  --eminsa-cyan: #0099ce;
+  --eminsa-orange: #e9862c;
+  --eminsa-green: #009e49;
   
   /* Backgrounds */
   --background: #ffffff;
@@ -47,35 +47,35 @@
   /* Botones */
   .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3 
-           bg-[#001689] text-white font-semibold rounded-lg
+           bg-[#00269b] text-white font-semibold rounded-lg
            transition-all duration-300 ease-out
-           hover:bg-[#000E53] hover:shadow-lg hover:-translate-y-0.5
-           focus:outline-none focus:ring-2 focus:ring-[#001689]/50 focus:ring-offset-2
+           hover:bg-[#00175d] hover:shadow-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-[#00269b]/50 focus:ring-offset-2
            active:scale-[0.98];
   }
   
   .btn-secondary {
     @apply inline-flex items-center justify-center px-6 py-3 
-           bg-transparent text-[#001689] font-semibold rounded-lg
-           border-2 border-[#001689]
+           bg-transparent text-[#00269b] font-semibold rounded-lg
+           border-2 border-[#00269b]
            transition-all duration-300 ease-out
-           hover:bg-[#001689] hover:text-white hover:shadow-lg
-           focus:outline-none focus:ring-2 focus:ring-[#001689]/50 focus:ring-offset-2
+           hover:bg-[#00269b] hover:text-white hover:shadow-lg
+           focus:outline-none focus:ring-2 focus:ring-[#00269b]/50 focus:ring-offset-2
            active:scale-[0.98];
   }
   
   .btn-accent {
     @apply inline-flex items-center justify-center px-6 py-3 
-           bg-[#00A3E0] text-white font-semibold rounded-lg
+           bg-[#0099ce] text-white font-semibold rounded-lg
            transition-all duration-300 ease-out
            hover:bg-cyan-600 hover:shadow-lg hover:-translate-y-0.5
-           focus:outline-none focus:ring-2 focus:ring-[#00A3E0]/50 focus:ring-offset-2
+           focus:outline-none focus:ring-2 focus:ring-[#0099ce]/50 focus:ring-offset-2
            active:scale-[0.98];
   }
   
   .btn-white {
     @apply inline-flex items-center justify-center px-6 py-3 
-           bg-white text-[#001689] font-semibold rounded-lg
+           bg-white text-[#00269b] font-semibold rounded-lg
            transition-all duration-300 ease-out
            hover:bg-gray-100 hover:shadow-lg hover:-translate-y-0.5
            focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2
@@ -100,18 +100,18 @@
   
   /* Container */
   .container-eminsa {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10;
   }
   
   /* Navigation */
   .nav-link {
-    @apply relative text-[#76777A] font-medium transition-colors duration-300
-           hover:text-[#001689];
+    @apply relative text-[#6d6e6d] font-medium transition-colors duration-300
+           hover:text-[#00269b];
   }
   
   .nav-link::after {
     content: '';
-    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-[#001689]
+    @apply absolute left-0 bottom-0 w-0 h-0.5 bg-[#00269b]
            transition-all duration-300;
   }
   
@@ -123,12 +123,12 @@
   .input-field {
     @apply w-full px-4 py-3 border border-gray-300 rounded-lg
            transition-all duration-300
-           focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]
+           focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b]
            placeholder:text-gray-400;
   }
   
   .input-label {
-    @apply block text-sm font-medium text-[#76777A] mb-2;
+    @apply block text-sm font-medium text-[#6d6e6d] mb-2;
   }
 }
 
@@ -222,6 +222,49 @@
 
 /* Focus state via wrapper */
 .phone-input-wrapper:focus-within {
-  border-color: var(--phone-focus-color, #001689) !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--phone-focus-color, #001689) 20%, transparent);
+  border-color: var(--phone-focus-color, #00269b) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--phone-focus-color, #00269b) 20%, transparent);
+}
+
+/* Water ripple animation */
+@keyframes ripple {
+  0% {
+    transform: scale(0.25);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  animation: ripple 3.5s cubic-bezier(0, 0.2, 0.8, 1) infinite backwards;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 3.5s ease-in-out 0.5s infinite;
+}
+
+.animate-float-slow {
+  animation: float 4s ease-in-out 1s infinite;
 }

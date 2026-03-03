@@ -11,7 +11,7 @@ interface ScheduledPublishPickerProps {
 export default function ScheduledPublishPicker({
   value,
   onChange,
-  accentColor = "#001689",
+  accentColor = "#00269b",
 }: ScheduledPublishPickerProps) {
   // Min datetime: now (rounded to next minute)
   const now = new Date();

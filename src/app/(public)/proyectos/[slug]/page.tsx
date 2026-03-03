@@ -7,10 +7,10 @@ import { ArrowLeft, MapPin, Calendar, User, Zap, ChevronRight } from "lucide-rea
 import type { ProyectoAPI } from "@/features/admin/types";
 
 const divisionColors: { [key: string]: string } = {
-  MTN: "#001689",
-  RST: "#00A3E0",
-  EIC: "#00B140",
-  SRV: "#696969",
+  MTN: "#00269b",
+  RST: "#0099ce",
+  EIC: "#009e49",
+  SRV: "#6d6e6d",
 };
 
 const divisionLabels: { [key: string]: string } = {
@@ -58,7 +58,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-8 h-8 border-4 border-[#00A3E0] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[#0099ce] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -67,11 +67,11 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-[#001689] mb-4">Proyecto no encontrado</h1>
-          <p className="text-[#76777A] mb-8">El proyecto que buscas no existe o no está disponible.</p>
+          <h1 className="text-3xl font-bold text-[#00269b] mb-4">Proyecto no encontrado</h1>
+          <p className="text-[#6d6e6d] mb-8">El proyecto que buscas no existe o no está disponible.</p>
           <Link
             href="/proyectos"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#001689] text-white font-semibold rounded-xl"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#00269b] text-white font-semibold rounded-xl"
           >
             <ArrowLeft size={18} />
             Volver a Proyectos
@@ -81,7 +81,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
     );
   }
 
-  const divColor = divisionColors[proyecto.division] || "#001689";
+  const divColor = divisionColors[proyecto.division] || "#00269b";
   const divLabel = divisionLabels[proyecto.division] || proyecto.division;
   const imagenesGaleria = Array.isArray(proyecto.imagenes) ? (proyecto.imagenes as string[]) : [];
 
@@ -180,19 +180,19 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
               {proyecto.descripcion ? (
                 <div
-                  className="prose prose-lg max-w-none text-[#4a4a4a] leading-relaxed
-                    prose-headings:text-[#001689] prose-headings:font-bold
-                    prose-a:text-[#00A3E0] prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-[#001689]"
+                  className="prose prose-lg max-w-none text-[#414241] leading-relaxed
+                    prose-headings:text-[#00269b] prose-headings:font-bold
+                    prose-a:text-[#0099ce] prose-a:no-underline hover:prose-a:underline
+                    prose-strong:text-[#00269b]"
                   dangerouslySetInnerHTML={{ __html: proyecto.descripcion }}
                 />
               ) : (
-                <p className="text-[#76777A] italic">Descripción completa no disponible.</p>
+                <p className="text-[#6d6e6d] italic">Descripción completa no disponible.</p>
               )}
 
               {imagenesGaleria.length > 0 && (
                 <div className="mt-12">
-                  <h3 className="text-xl font-bold text-[#001689] mb-6">Galería del Proyecto</h3>
+                  <h3 className="text-xl font-bold text-[#00269b] mb-6">Galería del Proyecto</h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {imagenesGaleria.map((img, i) => (
                       <motion.div
@@ -217,7 +217,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
               <div className="mt-12 pt-8 border-t border-gray-100">
                 <Link
                   href="/proyectos"
-                  className="inline-flex items-center gap-2 text-[#001689] font-semibold hover:gap-3 transition-all group"
+                  className="inline-flex items-center gap-2 text-[#00269b] font-semibold hover:gap-3 transition-all group"
                 >
                   <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
                   Volver a Proyectos
@@ -233,10 +233,10 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
               className="lg:col-span-1 space-y-8"
             >
               <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                <h3 className="font-bold text-[#001689] mb-4">Detalles del Proyecto</h3>
+                <h3 className="font-bold text-[#00269b] mb-4">Detalles del Proyecto</h3>
                 <dl className="space-y-4">
                   <div>
-                    <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">División</dt>
+                    <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">División</dt>
                     <dd>
                       <span
                         className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold"
@@ -249,9 +249,9 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
                   {proyecto.cliente && (
                     <div>
-                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Cliente</dt>
-                      <dd className="text-sm text-[#4a4a4a] font-medium flex items-center gap-2">
-                        <User size={14} className="text-[#76777A]" />
+                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">Cliente</dt>
+                      <dd className="text-sm text-[#414241] font-medium flex items-center gap-2">
+                        <User size={14} className="text-[#6d6e6d]" />
                         {proyecto.cliente}
                       </dd>
                     </div>
@@ -259,9 +259,9 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
                   {proyecto.ubicacion && (
                     <div>
-                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Ubicación</dt>
-                      <dd className="text-sm text-[#4a4a4a] font-medium flex items-center gap-2">
-                        <MapPin size={14} className="text-[#76777A]" />
+                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">Ubicación</dt>
+                      <dd className="text-sm text-[#414241] font-medium flex items-center gap-2">
+                        <MapPin size={14} className="text-[#6d6e6d]" />
                         {proyecto.ubicacion}
                       </dd>
                     </div>
@@ -269,9 +269,9 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
                   {proyecto.capacidad && (
                     <div>
-                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Capacidad</dt>
-                      <dd className="text-sm text-[#4a4a4a] font-medium flex items-center gap-2">
-                        <Zap size={14} className="text-[#76777A]" />
+                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">Capacidad</dt>
+                      <dd className="text-sm text-[#414241] font-medium flex items-center gap-2">
+                        <Zap size={14} className="text-[#6d6e6d]" />
                         {proyecto.capacidad}
                       </dd>
                     </div>
@@ -279,9 +279,9 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
                   {proyecto.anio && (
                     <div>
-                      <dt className="text-xs text-[#76777A] uppercase tracking-wide mb-1">Año</dt>
-                      <dd className="text-sm text-[#4a4a4a] font-medium flex items-center gap-2">
-                        <Calendar size={14} className="text-[#76777A]" />
+                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">Año</dt>
+                      <dd className="text-sm text-[#414241] font-medium flex items-center gap-2">
+                        <Calendar size={14} className="text-[#6d6e6d]" />
                         {proyecto.anio}
                       </dd>
                     </div>
@@ -291,13 +291,13 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
               {relacionados.length > 0 && (
                 <div>
-                  <h3 className="font-bold text-[#001689] mb-4">Proyectos Relacionados</h3>
+                  <h3 className="font-bold text-[#00269b] mb-4">Proyectos Relacionados</h3>
                   <div className="space-y-4">
                     {relacionados.map((rel) => (
                       <Link
                         key={rel.id}
                         href={`/proyectos/${rel.slug}`}
-                        className="group block p-4 bg-white rounded-xl border border-gray-100 hover:border-[#001689]/20 hover:shadow-md transition-all"
+                        className="group block p-4 bg-white rounded-xl border border-gray-100 hover:border-[#00269b]/20 hover:shadow-md transition-all"
                       >
                         {rel.imagen && (
                           <div className="rounded-lg overflow-hidden mb-3 h-24">
@@ -308,10 +308,10 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
                             />
                           </div>
                         )}
-                        <p className="font-semibold text-sm text-[#001689] group-hover:text-[#00A3E0] transition-colors line-clamp-2 mb-1">
+                        <p className="font-semibold text-sm text-[#00269b] group-hover:text-[#0099ce] transition-colors line-clamp-2 mb-1">
                           {rel.titulo}
                         </p>
-                        <span className="text-xs text-[#76777A]">{rel.ubicacion}</span>
+                        <span className="text-xs text-[#6d6e6d]">{rel.ubicacion}</span>
                       </Link>
                     ))}
                   </div>

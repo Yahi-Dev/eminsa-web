@@ -4,7 +4,7 @@ export const mainNavigation = [
     name: "MTN",
     href: "/mtn",
     description: "Manufactura Transformadores Nuevos",
-    color: "#001689",
+    color: "#00269b",
     submenu: [
       {
         name: "Productos",
@@ -32,7 +32,7 @@ export const mainNavigation = [
     name: "RST",
     href: "/etrys",
     description: "Reparación y Servicio de Transformadores",
-    color: "#00A3E0",
+    color: "#0099ce",
     submenu: [
       { name: "Reparación", href: "/etrys/reparacion" },
       { name: "Remanufacturados", href: "/etrys/remanufacturados" },
@@ -45,7 +45,7 @@ export const mainNavigation = [
     name: "EIC",
     href: "/eic",
     description: "Eminsa International Corporation",
-    color: "#00B140",
+    color: "#009e49",
     submenu: [
       {
         name: "Productos",
@@ -67,7 +67,7 @@ export const mainNavigation = [
     name: "Servicios",
     href: "/servicios",
     description: "Servicios técnicos especializados",
-    color: "#696969",
+    color: "#6d6e6d",
     submenu: [
       { name: "Preventivo - Predictivo", href: "/servicios/preventivo" },
       { name: "Correctivo en Campo", href: "/servicios/correctivo" },
@@ -102,8 +102,8 @@ export const divisions = [
     tagline: "Manufactura Transformadores Nuevos",
     description: "Soluciones en transformación eléctrica con tecnología de alto desempeño, eficiencia garantizada y fabricación local bajo normas ANSI y DOE 2016.",
     href: "/mtn",
-    color: "#001689",
-    gradient: "from-[#001689] to-[#000E53]",
+    color: "#00269b",
+    gradient: "from-[#00269b] to-[#00175d]",
     icon: "factory",
     features: [
       "Transformadores Tipo Poste",
@@ -119,8 +119,8 @@ export const divisions = [
     tagline: "Reparación y Servicio de Transformadores",
     description: "En RST combinamos la experiencia de un equipo técnico altamente calificado con tecnología de última generación para darle a sus transformadores una nueva vida.",
     href: "/etrys",
-    color: "#00A3E0",
-    gradient: "from-[#00A3E0] to-[#0077A8]",
+    color: "#0099ce",
+    gradient: "from-[#0099ce] to-[#007ba8]",
     icon: "wrench",
     features: [
       "Reparación Especializada",
@@ -136,8 +136,8 @@ export const divisions = [
     tagline: "Eminsa International Corporation",
     description: "Conectamos a Eminsa con el mundo, expandiendo nuestras soluciones energéticas a través de una sólida red global de aliados estratégicos, garantizando presencia internacional, servicio especializado y un acompañamiento cercano en cada proyecto.",
     href: "/eic",
-    color: "#00B140",
-    gradient: "from-[#00B140] to-[#008F33]",
+    color: "#009e49",
+    gradient: "from-[#009e49] to-[#007d3a]",
     icon: "globe",
     features: [
       "INATRA",
@@ -153,8 +153,8 @@ export const divisions = [
     tagline: "Soluciones Integrales en Campo",
     description: "SERVICIOS es la unidad de negocios de Grupo EMINSA enfocada en brindar atención técnica especializada en sitio, ofreciendo mantenimiento, reparación y soporte integral para garantizar la eficiencia, seguridad y continuidad operativa de los transformadores eléctricos de nuestros clientes.",
     href: "/servicios",
-    color: "#696969",
-    gradient: "from-[#696969] to-[#4a4a4a]",
+    color: "#6d6e6d",
+    gradient: "from-[#6d6e6d] to-[#414241]",
     icon: "settings",
     features: [
       "Mantenimiento Preventivo",

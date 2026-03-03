@@ -26,7 +26,7 @@ export default function NoticiaEditLoader() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-8 h-8 border-4 border-[#001689] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[#00269b] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }

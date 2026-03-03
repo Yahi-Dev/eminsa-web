@@ -1,7 +1,7 @@
 // ============================================================================
 // EIC - Eminsa International Corporation
 // Configuración de datos completa
-// Color corporativo: #00B140 (Pantone Hexachrome Green C)
+// Color corporativo: #009e49 (Pantone Hexachrome Green C)
 // ============================================================================
 
 // ============================================================================
@@ -94,7 +94,7 @@ export const eicInfo: EICInfo = {
   tagline: "Suplidores Eléctricos Internacionales",
   description:
     "Conectamos a Eminsa con el mundo, expandiendo nuestras soluciones energéticas a través de una sólida red global de aliados estratégicos, garantizando presencia internacional, servicio especializado y un acompañamiento cercano en cada proyecto.",
-  color: "#00B140",
+  color: "#009e49",
   stats: [
     { value: "8", label: "Marcas Representadas", suffix: "+" },
     { value: "40", label: "Países de Presencia", suffix: "+" },
@@ -145,7 +145,7 @@ export const eicProductCategories: EICProductCategory[] = [
     description: "Transformadores de distribución de marcas líderes internacionales, incluyendo tipo poste, pad mounted, secos y secos en resina.",
     icon: "zap",
     brands: ["INATRA", "Hammond", "Elpitalia"],
-    color: "#001689",
+    color: "#00269b",
   },
   {
     id: "cables",
@@ -155,7 +155,7 @@ export const eicProductCategories: EICProductCategory[] = [
     description: "Cables eléctricos de alta calidad para transmisión y distribución de energía, desde baja hasta media tensión.",
     icon: "cable",
     brands: ["Top Cable", "Southwire", "Cabelte"],
-    color: "#00A3E0",
+    color: "#0099ce",
   },
   {
     id: "distribucion-mt",
@@ -175,7 +175,7 @@ export const eicProductCategories: EICProductCategory[] = [
     description: "Breakers y paneles de baja tensión para protección, continuidad operativa y seguridad en instalaciones.",
     icon: "shield",
     brands: ["Schneider Electric"],
-    color: "#FF5500",
+    color: "#e9862c",
   },
   {
     id: "accesorios",
@@ -185,7 +185,7 @@ export const eicProductCategories: EICProductCategory[] = [
     description: "Accesorios para cables de media tensión: codos, boquillas, adaptadores, cajas derivadoras, empalmes y terminales.",
     icon: "plug",
     brands: ["Chardon"],
-    color: "#76777A",
+    color: "#6d6e6d",
   },
 ];
 
@@ -531,42 +531,6 @@ export const eicProducts: EICProduct[] = [
 // ============================================================================
 
 export const eicResources: EICResource[] = [
-  {
-    id: "articulos",
-    slug: "articulos",
-    name: "Artículos y Publicaciones",
-    description: "Noticias, artículos técnicos y publicaciones del sector eléctrico internacional.",
-    icon: "newspaper",
-    type: "article",
-    downloadable: false,
-  },
-  {
-    id: "fichas-tecnicas",
-    slug: "fichas-tecnicas",
-    name: "Fichas Técnicas",
-    description: "Documentación técnica de productos y marcas representadas.",
-    icon: "file-text",
-    type: "manual",
-    downloadable: true,
-  },
-  {
-    id: "catalogos",
-    slug: "catalogos",
-    name: "Catálogos de Marcas",
-    description: "Catálogos completos de las marcas internacionales que representamos.",
-    icon: "book-open",
-    type: "manual",
-    downloadable: true,
-  },
-  {
-    id: "bolsa-trabajo",
-    slug: "bolsa-trabajo",
-    name: "Bolsa de Trabajo",
-    description: "Ofertas de empleo y formulario de aplicación.",
-    icon: "briefcase",
-    type: "job",
-    downloadable: false,
-  },
   {
     id: "cotizacion",
     slug: "cotizacion",

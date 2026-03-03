@@ -88,7 +88,7 @@ export default function FichasTecnicasPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-12">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-12">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -123,14 +123,14 @@ export default function FichasTecnicasPage() {
               <input
                 type="text"
                 placeholder="Buscar fichas técnicas..."
-                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent"
+                className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent"
               />
             </div>
             
             {/* Category Filter */}
             <div className="flex items-center gap-2">
               <Filter size={18} className="text-gray-400" />
-              <select className="px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#001689] focus:border-transparent">
+              <select className="px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent">
                 {categories.map((cat) => (
                   <option key={cat} value={cat}>{cat}</option>
                 ))}
@@ -155,7 +155,7 @@ export default function FichasTecnicasPage() {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="bg-[#001689]/10 text-[#001689] text-xs font-medium px-2 py-0.5 rounded">
+                      <span className="bg-[#00269b]/10 text-[#00269b] text-xs font-medium px-2 py-0.5 rounded">
                         {sheet.category}
                       </span>
                       <span className="text-xs text-gray-500">
@@ -169,7 +169,7 @@ export default function FichasTecnicasPage() {
 
                 <div className="flex items-center gap-4 flex-shrink-0">
                   <span className="text-sm text-gray-500 hidden sm:block">{sheet.size}</span>
-                  <button className="flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-5 py-2.5 rounded-lg transition-colors">
+                  <button className="flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-5 py-2.5 rounded-lg transition-colors">
                     <Download size={18} />
                     <span className="hidden sm:inline">Descargar</span>
                   </button>
@@ -181,14 +181,14 @@ export default function FichasTecnicasPage() {
       </section>
 
       {/* Bulk Download */}
-      <section className="py-12 bg-gradient-to-r from-[#001689] to-[#00A3E0]">
+      <section className="py-12 bg-gradient-to-r from-[#00269b] to-[#0099ce]">
         <div className="container-eminsa">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-white">
             <div>
               <h2 className="text-2xl font-bold mb-2">Descarga Completa</h2>
               <p className="text-white/80">Obtenga todas las fichas técnicas en un solo archivo ZIP.</p>
             </div>
-            <button className="flex items-center gap-2 bg-white text-[#001689] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors whitespace-nowrap">
+            <button className="flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors whitespace-nowrap">
               <Download size={20} />
               Descargar Todo (15.2 MB)
             </button>
@@ -207,7 +207,7 @@ export default function FichasTecnicasPage() {
               <Link
                 key={product.id}
                 href={`/mtn/productos/${product.slug}`}
-                className="bg-gray-50 hover:bg-[#001689] rounded-xl p-6 text-center group transition-colors"
+                className="bg-gray-50 hover:bg-[#00269b] rounded-xl p-6 text-center group transition-colors"
               >
                 <h3 className="font-bold text-gray-900 group-hover:text-white transition-colors">
                   {product.shortName}

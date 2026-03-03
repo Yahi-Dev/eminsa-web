@@ -12,7 +12,7 @@ export default function ProductosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#000E53] text-white py-16">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -45,21 +45,21 @@ export default function ProductosPage() {
                 <div key={product.id} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
                   <div className="grid lg:grid-cols-2 gap-0">
                     {/* Image/Visual Side */}
-                    <div className={`bg-gradient-to-br from-[#001689]/5 to-[#00A3E0]/10 p-8 lg:p-12 flex items-center justify-center ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <div className={`bg-gradient-to-br from-[#00269b]/5 to-[#0099ce]/10 p-8 lg:p-12 flex items-center justify-center ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                       <div className="relative">
                         {/* Decorative circles */}
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-64 h-64 border-2 border-[#001689]/10 rounded-full" />
-                          <div className="absolute w-48 h-48 border-2 border-[#00A3E0]/20 rounded-full" />
+                          <div className="w-64 h-64 border-2 border-[#00269b]/10 rounded-full" />
+                          <div className="absolute w-48 h-48 border-2 border-[#0099ce]/20 rounded-full" />
                         </div>
                         
                         {/* Center icon */}
                         <div className="relative w-40 h-40 bg-white rounded-2xl shadow-xl flex items-center justify-center">
-                          <Zap size={64} className="text-[#001689]" />
+                          <Zap size={64} className="text-[#00269b]" />
                         </div>
 
                         {/* Floating badges */}
-                        <div className="absolute -top-4 -right-4 bg-[#001689] text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <div className="absolute -top-4 -right-4 bg-[#00269b] text-white px-3 py-1 rounded-full text-sm font-medium">
                           DOE 2016
                         </div>
                       </div>
@@ -70,7 +70,7 @@ export default function ProductosPage() {
                       <div className="space-y-6">
                         {/* Header */}
                         <div>
-                          <span className="inline-block text-[#00A3E0] font-semibold text-sm uppercase tracking-wider mb-2">
+                          <span className="inline-block text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-2">
                             Transformador
                           </span>
                           <h2 className="text-3xl font-bold text-gray-900">
@@ -104,7 +104,7 @@ export default function ProductosPage() {
                                 <Link
                                   key={variant.id}
                                   href={`/mtn/productos/${product.slug}/${variant.slug}`}
-                                  className="inline-flex items-center gap-1 bg-gray-100 hover:bg-[#001689] hover:text-white text-gray-700 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
+                                  className="inline-flex items-center gap-1 bg-gray-100 hover:bg-[#00269b] hover:text-white text-gray-700 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
                                 >
                                   {variant.name.replace('Transformadores Tipo Poste ', '').replace('Transformadores Pad Mounted ', '')}
                                 </Link>
@@ -130,14 +130,14 @@ export default function ProductosPage() {
                         <div className="flex flex-wrap gap-4 pt-4">
                           <Link
                             href={`/mtn/productos/${product.slug}`}
-                            className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                            className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                           >
                             Ver Detalles
                             <ArrowRight size={18} />
                           </Link>
                           <Link
                             href={`/mtn/cotizaciones?producto=${product.slug}`}
-                            className="inline-flex items-center gap-2 border-2 border-[#001689] text-[#001689] hover:bg-[#001689] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                            className="inline-flex items-center gap-2 border-2 border-[#00269b] text-[#00269b] hover:bg-[#00269b] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                           >
                             Cotizar
                           </Link>
@@ -194,7 +194,7 @@ export default function ProductosPage() {
                     <td key={product.id} className="text-center py-4 px-4">
                       <div className="flex flex-wrap justify-center gap-1">
                         {product.phases.map((phase) => (
-                          <span key={phase} className="bg-[#001689]/10 text-[#001689] text-xs px-2 py-0.5 rounded">
+                          <span key={phase} className="bg-[#00269b]/10 text-[#00269b] text-xs px-2 py-0.5 rounded">
                             {phase === 'monofasico' ? '1Φ' : phase === 'trifasico' ? '3Φ' : 'CSP'}
                           </span>
                         ))}
@@ -223,7 +223,7 @@ export default function ProductosPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#001689] text-white">
+      <section className="py-16 bg-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-3xl font-bold mb-4">¿No encuentra lo que busca?</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
@@ -231,7 +231,7 @@ export default function ProductosPage() {
           </p>
           <Link
             href="/mtn/cotizaciones"
-            className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
           >
             Solicitar Cotización Personalizada
             <ArrowRight size={20} />

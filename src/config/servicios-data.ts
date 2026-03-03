@@ -10,7 +10,7 @@ export const serviciosInfo = {
   slogan: "Más de 50 años de experiencia y servicio",
   description:
     "SERVICIOS es la unidad de negocios de Grupo EMINSA enfocada en brindar atención técnica especializada en sitio, ofreciendo mantenimiento, reparación y soporte integral para garantizar la eficiencia, seguridad y continuidad operativa de los transformadores eléctricos de nuestros clientes.",
-  color: "#696969",
+  color: "#6d6e6d",
   colorName: "Gray",
   stats: [
     { value: "50", suffix: "+", label: "Años de Experiencia" },
@@ -789,41 +789,5 @@ export const recursosServicios: RecursoServicio[] = [
     icon: "calculator",
     href: "/mtn/recursos/calculadora",
     tipo: "herramienta",
-  },
-  {
-    id: "r3",
-    nombre: "Programar Visita",
-    descripcion:
-      "Agende una visita técnica para evaluación en sitio de sus equipos eléctricos.",
-    icon: "calendar",
-    href: "/servicios/cotizacion",
-    tipo: "formulario",
-  },
-  {
-    id: "r5",
-    nombre: "Términos y Condiciones",
-    descripcion:
-      "Conozca los términos y condiciones de nuestros servicios y contratos.",
-    icon: "file-text",
-    href: "#",
-    tipo: "documento",
-  },
-  {
-    id: "r6",
-    nombre: "Política de Garantía",
-    descripcion:
-      "Información sobre nuestra política de garantía para servicios y reparaciones.",
-    icon: "shield",
-    href: "#",
-    tipo: "documento",
-  },
-  {
-    id: "r7",
-    nombre: "Artículos y Publicaciones",
-    descripcion:
-      "Artículos técnicos, publicaciones y noticias del sector eléctrico.",
-    icon: "newspaper",
-    href: "/noticias",
-    tipo: "enlace",
   },
 ];

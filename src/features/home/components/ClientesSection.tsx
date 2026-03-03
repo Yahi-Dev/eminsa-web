@@ -57,10 +57,10 @@ export default function ClientesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block px-4 py-2 bg-[#001689]/10 text-[#001689] rounded-full text-sm font-semibold mb-4 uppercase">
+          <span className="inline-block px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-4 uppercase">
             {t("clients.sectionLabel")}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00269b]">
             {t("clients.title")}
           </h2>
         </motion.div>
@@ -82,7 +82,7 @@ export default function ClientesSection() {
           style={{ width: "max-content" }}
         >
           {clientesLoop.map((cliente, index) => {
-            const color = sectorColors[cliente.sector] ?? "#001689";
+            const color = sectorColors[cliente.sector] ?? "#00269b";
             return (
               <div
                 key={`${cliente.id}-${index}`}
@@ -104,7 +104,7 @@ export default function ClientesSection() {
 
                 {/* Name + sector badge */}
                 <div className="px-4 pb-4 flex flex-col items-center gap-2 text-center">
-                  <p className="text-xs font-semibold text-[#001689] leading-tight line-clamp-2">
+                  <p className="text-xs font-semibold text-[#00269b] leading-tight line-clamp-2">
                     {cliente.nombre}
                   </p>
                   <span

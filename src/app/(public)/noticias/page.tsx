@@ -41,7 +41,7 @@ export default function NoticiasPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-20 bg-gradient-to-br from-[#001689] to-[#000E53]">
+      <section className="relative py-20 bg-gradient-to-br from-[#00269b] to-[#00175d]">
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -57,7 +57,7 @@ export default function NoticiasPage() {
           </div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t("noticias.title")}</h1>
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold text-white mb-4">{t("noticias.title")}</h1>
             <p className="text-xl text-white/80">
               {t("noticias.description")}
             </p>
@@ -78,8 +78,8 @@ export default function NoticiasPage() {
               onClick={() => setFilterCategoria("")}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 !filterCategoria
-                  ? "bg-[#001689] text-white"
-                  : "bg-white text-[#76777A] hover:bg-gray-100"
+                  ? "bg-[#00269b] text-white"
+                  : "bg-white text-[#6d6e6d] hover:bg-gray-100"
               }`}
             >
               {t("noticias.filterAll")}
@@ -91,7 +91,7 @@ export default function NoticiasPage() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   filterCategoria === cat.value
                     ? "text-white"
-                    : "bg-white text-[#76777A] hover:bg-gray-100"
+                    : "bg-white text-[#6d6e6d] hover:bg-gray-100"
                 }`}
                 style={filterCategoria === cat.value ? { backgroundColor: cat.color } : {}}
               >
@@ -102,7 +102,7 @@ export default function NoticiasPage() {
 
           {loading ? (
             <div className="flex justify-center py-16">
-              <div className="w-8 h-8 border-4 border-[#001689] border-t-transparent rounded-full animate-spin" />
+              <div className="w-8 h-8 border-4 border-[#00269b] border-t-transparent rounded-full animate-spin" />
             </div>
           ) : (
             <>
@@ -114,7 +114,7 @@ export default function NoticiasPage() {
                   transition={{ delay: 0.1 }}
                   className="mb-12"
                 >
-                  <h2 className="text-2xl font-bold text-[#001689] mb-6 flex items-center gap-2">
+                  <h2 className="text-2xl font-bold text-[#00269b] mb-6 flex items-center gap-2">
                     <Star className="text-yellow-500" size={24} />
                     {t("noticias.featured")}
                   </h2>
@@ -122,7 +122,7 @@ export default function NoticiasPage() {
                     {noticiasDestacadas.slice(0, 2).map((noticia) => (
                       <Link key={noticia.id} href={`/noticias/${noticia.slug}`} className="group">
                         <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                          <div className="h-48 bg-gradient-to-br from-[#001689] to-[#000E53] relative">
+                          <div className="h-48 bg-gradient-to-br from-[#00269b] to-[#00175d] relative">
                             {noticia.imagen && (
                               <img src={noticia.imagen} alt="" className="w-full h-full object-cover" />
                             )}
@@ -136,11 +136,11 @@ export default function NoticiasPage() {
                             </div>
                           </div>
                           <div className="p-6">
-                            <h3 className="text-xl font-bold text-[#001689] mb-2 group-hover:text-[#00A3E0] transition-colors">
+                            <h3 className="text-xl font-bold text-[#00269b] mb-2 group-hover:text-[#0099ce] transition-colors">
                               {noticia.titulo}
                             </h3>
-                            <p className="text-[#76777A] text-sm mb-4 line-clamp-2">{noticia.resumen}</p>
-                            <div className="flex items-center justify-between text-xs text-[#76777A]">
+                            <p className="text-[#6d6e6d] text-sm mb-4 line-clamp-2">{noticia.resumen}</p>
+                            <div className="flex items-center justify-between text-xs text-[#6d6e6d]">
                               <div className="flex items-center gap-4">
                                 <span className="flex items-center gap-1">
                                   <Calendar size={14} />
@@ -153,7 +153,7 @@ export default function NoticiasPage() {
                                   </span>
                                 )}
                               </div>
-                              <ArrowRight size={16} className="text-[#001689] group-hover:translate-x-1 transition-transform" />
+                              <ArrowRight size={16} className="text-[#00269b] group-hover:translate-x-1 transition-transform" />
                             </div>
                           </div>
                         </div>
@@ -170,12 +170,12 @@ export default function NoticiasPage() {
                 transition={{ delay: 0.2 }}
               >
                 {!filterCategoria && noticiasDestacadas.length > 0 && (
-                  <h2 className="text-2xl font-bold text-[#001689] mb-6">{t("noticias.allNews")}</h2>
+                  <h2 className="text-2xl font-bold text-[#00269b] mb-6">{t("noticias.allNews")}</h2>
                 )}
 
                 {noticiasPublicadas.length === 0 ? (
                   <div className="text-center py-12">
-                    <p className="text-[#76777A]">{t("noticias.empty")}</p>
+                    <p className="text-[#6d6e6d]">{t("noticias.empty")}</p>
                   </div>
                 ) : (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -192,8 +192,8 @@ export default function NoticiasPage() {
                               {noticia.imagen ? (
                                 <img src={noticia.imagen} alt="" className="w-full h-full object-cover" />
                               ) : (
-                                <div className="w-full h-full bg-gradient-to-br from-[#001689]/10 to-[#00A3E0]/10 flex items-center justify-center">
-                                  <span className="text-[#001689]/50 text-sm">Grupo EMINSA</span>
+                                <div className="w-full h-full bg-gradient-to-br from-[#00269b]/10 to-[#0099ce]/10 flex items-center justify-center">
+                                  <span className="text-[#00269b]/50 text-sm">Grupo EMINSA</span>
                                 </div>
                               )}
                               <div className="absolute top-3 left-3">
@@ -206,11 +206,11 @@ export default function NoticiasPage() {
                               </div>
                             </div>
                             <div className="p-5">
-                              <h3 className="font-bold text-[#001689] mb-2 group-hover:text-[#00A3E0] transition-colors line-clamp-2">
+                              <h3 className="font-bold text-[#00269b] mb-2 group-hover:text-[#0099ce] transition-colors line-clamp-2">
                                 {noticia.titulo}
                               </h3>
-                              <p className="text-[#76777A] text-sm mb-4 line-clamp-2">{noticia.resumen}</p>
-                              <div className="flex items-center gap-2 text-xs text-[#76777A]">
+                              <p className="text-[#6d6e6d] text-sm mb-4 line-clamp-2">{noticia.resumen}</p>
+                              <div className="flex items-center gap-2 text-xs text-[#6d6e6d]">
                                 <Calendar size={12} />
                                 {formatFecha(noticia.createdAt, locale)}
                               </div>

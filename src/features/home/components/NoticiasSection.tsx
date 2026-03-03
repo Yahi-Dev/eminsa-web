@@ -19,11 +19,11 @@ interface Noticia {
 }
 
 const categoriaColors: Record<string, string> = {
-  empresa: "#001689",
-  productos: "#00A3E0",
-  servicios: "#696969",
-  eventos: "#00B140",
-  industria: "#76777A",
+  empresa: "#00269b",
+  productos: "#0099ce",
+  servicios: "#6d6e6d",
+  eventos: "#009e49",
+  industria: "#6d6e6d",
 };
 
 const categoriaLabels: Record<string, string> = {
@@ -52,8 +52,8 @@ export default function NoticiasSection() {
   useEffect(() => {
     fetch("/api/noticias?publicado=true")
       .then((r) => r.json())
-      .then((data: Noticia[]) => {
-        setNoticias(data.slice(0, 4));
+      .then((data) => {
+        if (data.success) setNoticias((data.noticias ?? []).slice(0, 4));
       })
       .catch(() => setNoticias([]))
       .finally(() => setLoading(false));
@@ -61,7 +61,7 @@ export default function NoticiasSection() {
 
   return (
     <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#001689]/3 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00269b]/3 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-eminsa relative">
 
@@ -74,16 +74,16 @@ export default function NoticiasSection() {
           className="flex items-end justify-between mb-12"
         >
           <div>
-            <span className="inline-block px-4 py-2 bg-[#001689]/10 text-[#001689] rounded-full text-sm font-semibold mb-4 uppercase">
+            <span className="inline-block px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-4 uppercase">
               {t("news.sectionLabel")}
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689]">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00269b]">
               {t("news.title")}
             </h2>
           </div>
           <Link
             href="/noticias"
-            className="hidden sm:inline-flex items-center gap-2 px-6 py-3 border-2 border-[#001689] text-[#001689] font-semibold rounded-xl hover:bg-[#001689] hover:text-white transition-all duration-300 group"
+            className="hidden sm:inline-flex items-center gap-2 px-6 py-3 border-2 border-[#00269b] text-[#00269b] font-semibold rounded-xl hover:bg-[#00269b] hover:text-white transition-all duration-300 group"
           >
             {t("news.viewAll")}
             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
@@ -108,7 +108,7 @@ export default function NoticiasSection() {
 
         {/* ── No noticias ──────────────────────────────────────── */}
         {!loading && noticias.length === 0 && (
-          <div className="text-center py-20 text-[#76777A]">
+          <div className="text-center py-20 text-[#6d6e6d]">
             <Newspaper size={48} className="mx-auto mb-4 opacity-30" />
             <p className="text-lg">No hay noticias publicadas aún.</p>
           </div>
@@ -118,7 +118,7 @@ export default function NoticiasSection() {
         {!loading && noticias.length > 0 && (
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {noticias.map((noticia, i) => {
-              const color = categoriaColors[noticia.categoria] ?? "#001689";
+              const color = categoriaColors[noticia.categoria] ?? "#00269b";
               const fecha = noticia.fechaPublicacion ?? noticia.createdAt;
               return (
                 <motion.div
@@ -169,17 +169,17 @@ export default function NoticiasSection() {
                     {/* Content */}
                     <div className="flex flex-col flex-1 p-5 gap-3">
                       {fecha && (
-                        <div className="flex items-center gap-1.5 text-[#76777A] text-xs">
+                        <div className="flex items-center gap-1.5 text-[#6d6e6d] text-xs">
                           <Calendar size={12} />
                           {formatFecha(fecha)}
                         </div>
                       )}
 
-                      <h3 className="text-sm font-bold text-[#001689] leading-snug line-clamp-3 group-hover:text-[#00A3E0] transition-colors">
+                      <h3 className="text-sm font-bold text-[#00269b] leading-snug line-clamp-3 group-hover:text-[#0099ce] transition-colors">
                         {noticia.titulo}
                       </h3>
 
-                      <p className="text-xs text-[#76777A] leading-relaxed line-clamp-2 flex-1">
+                      <p className="text-xs text-[#6d6e6d] leading-relaxed line-clamp-2 flex-1">
                         {noticia.resumen}
                       </p>
 
@@ -203,7 +203,7 @@ export default function NoticiasSection() {
           <div className="sm:hidden text-center mt-8">
             <Link
               href="/noticias"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#001689] text-white font-semibold rounded-xl"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#00269b] text-white font-semibold rounded-xl"
             >
               {t("news.viewAll")}
               <ArrowRight size={18} />

@@ -34,10 +34,10 @@ interface Cotizacion {
 }
 
 const UNIT_COLORS: Record<string, string> = {
-  MTN: "bg-[#001689] text-white",
-  RST: "bg-[#00A3E0] text-white",
-  EIC: "bg-[#00B140] text-white",
-  SRV: "bg-[#696969] text-white",
+  MTN: "bg-[#00269b] text-white",
+  RST: "bg-[#0099ce] text-white",
+  EIC: "bg-[#009e49] text-white",
+  SRV: "bg-[#6d6e6d] text-white",
 };
 
 const UNIT_LABELS: Record<string, string> = {
@@ -117,7 +117,7 @@ export default function AdminCotizacionesView() {
   if (isLoading || !isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-8 h-8 border-4 border-[#001689] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[#00269b] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -131,7 +131,7 @@ export default function AdminCotizacionesView() {
             <div className="flex items-center gap-4">
               <Link
                 href="/admin"
-                className="flex items-center gap-2 text-[#76777A] hover:text-[#001689] transition-colors"
+                className="flex items-center gap-2 text-[#6d6e6d] hover:text-[#00269b] transition-colors"
               >
                 <ArrowLeft size={20} />
                 <span className="hidden sm:inline">Dashboard</span>
@@ -141,7 +141,7 @@ export default function AdminCotizacionesView() {
                 <div className="w-8 h-8 bg-violet-100 rounded-lg flex items-center justify-center">
                   <FileText className="w-4 h-4 text-violet-600" />
                 </div>
-                <span className="font-bold text-[#001689]">Cotizaciones</span>
+                <span className="font-bold text-[#00269b]">Cotizaciones</span>
                 <span className="px-2 py-0.5 bg-violet-100 text-violet-700 text-xs font-semibold rounded-full">
                   {total}
                 </span>
@@ -206,7 +206,7 @@ export default function AdminCotizacionesView() {
               <div className="w-8 h-8 border-4 border-violet-600 border-t-transparent rounded-full animate-spin" />
             </div>
           ) : filtered.length === 0 ? (
-            <div className="text-center py-20 text-[#76777A]">
+            <div className="text-center py-20 text-[#6d6e6d]">
               <FileText size={48} className="mx-auto mb-4 opacity-30" />
               <p className="font-medium">No hay cotizaciones</p>
               <p className="text-sm mt-1">
@@ -238,7 +238,7 @@ export default function AdminCotizacionesView() {
                       </span>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
-                          <span className="font-semibold text-[#001689] truncate">
+                          <span className="font-semibold text-[#00269b] truncate">
                             {cot.nombre}
                           </span>
                           {cot.urgente && (
@@ -249,12 +249,12 @@ export default function AdminCotizacionesView() {
                           )}
                         </div>
                         {cot.empresa && (
-                          <p className="text-xs text-[#76777A] truncate mt-0.5">
+                          <p className="text-xs text-[#6d6e6d] truncate mt-0.5">
                             {cot.empresa}
                           </p>
                         )}
                       </div>
-                      <div className="shrink-0 hidden md:flex items-center gap-1 text-xs text-[#76777A]">
+                      <div className="shrink-0 hidden md:flex items-center gap-1 text-xs text-[#6d6e6d]">
                         <Clock size={12} />
                         {formatDate(cot.createdAt)}
                       </div>
@@ -272,31 +272,31 @@ export default function AdminCotizacionesView() {
                     <div className="px-6 pb-6 bg-gray-50 border-t border-gray-100">
                       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4">
                         <div className="bg-white rounded-xl p-4 border border-gray-100">
-                          <h4 className="text-xs font-bold text-[#76777A] uppercase tracking-wider mb-3">
+                          <h4 className="text-xs font-bold text-[#6d6e6d] uppercase tracking-wider mb-3">
                             Contacto
                           </h4>
                           <div className="space-y-2">
                             <div className="flex items-center gap-2 text-sm">
-                              <Mail size={14} className="text-[#76777A] shrink-0" />
+                              <Mail size={14} className="text-[#6d6e6d] shrink-0" />
                               <a
                                 href={`mailto:${cot.email}`}
-                                className="text-[#001689] hover:underline truncate"
+                                className="text-[#00269b] hover:underline truncate"
                               >
                                 {cot.email}
                               </a>
                             </div>
                             <div className="flex items-center gap-2 text-sm">
-                              <Phone size={14} className="text-[#76777A] shrink-0" />
+                              <Phone size={14} className="text-[#6d6e6d] shrink-0" />
                               <a
                                 href={`tel:${cot.telefono}`}
-                                className="text-[#001689] hover:underline"
+                                className="text-[#00269b] hover:underline"
                               >
                                 {cot.telefono}
                               </a>
                             </div>
                             {cot.empresa && (
                               <div className="flex items-center gap-2 text-sm">
-                                <Building2 size={14} className="text-[#76777A] shrink-0" />
+                                <Building2 size={14} className="text-[#6d6e6d] shrink-0" />
                                 <span className="text-gray-700">{cot.empresa}</span>
                               </div>
                             )}
@@ -304,13 +304,13 @@ export default function AdminCotizacionesView() {
                         </div>
 
                         <div className="bg-white rounded-xl p-4 border border-gray-100">
-                          <h4 className="text-xs font-bold text-[#76777A] uppercase tracking-wider mb-3">
+                          <h4 className="text-xs font-bold text-[#6d6e6d] uppercase tracking-wider mb-3">
                             Referencia
                           </h4>
-                          <p className="font-mono text-lg font-bold text-[#001689] mb-1">
+                          <p className="font-mono text-lg font-bold text-[#00269b] mb-1">
                             {cot.codigo}
                           </p>
-                          <p className="text-xs text-[#76777A]">{formatDate(cot.createdAt)}</p>
+                          <p className="text-xs text-[#6d6e6d]">{formatDate(cot.createdAt)}</p>
                           {cot.urgente && (
                             <span className="inline-flex items-center gap-1 mt-2 px-2.5 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">
                               <AlertTriangle size={10} />
@@ -321,7 +321,7 @@ export default function AdminCotizacionesView() {
 
                         {Object.keys(cot.detalles).length > 0 && (
                           <div className="bg-white rounded-xl p-4 border border-gray-100 sm:col-span-2 lg:col-span-1">
-                            <h4 className="text-xs font-bold text-[#76777A] uppercase tracking-wider mb-3">
+                            <h4 className="text-xs font-bold text-[#6d6e6d] uppercase tracking-wider mb-3">
                               Detalles Técnicos
                             </h4>
                             <div className="space-y-1">
@@ -330,7 +330,7 @@ export default function AdminCotizacionesView() {
                                 .slice(0, 8)
                                 .map(([k, v]) => (
                                   <div key={k} className="flex gap-2 text-xs">
-                                    <span className="text-[#76777A] shrink-0 capitalize">
+                                    <span className="text-[#6d6e6d] shrink-0 capitalize">
                                       {k.replace(/([A-Z])/g, " $1").trim()}:
                                     </span>
                                     <span className="text-gray-700 font-medium truncate">
@@ -353,7 +353,7 @@ export default function AdminCotizacionesView() {
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="flex items-center justify-between mt-6">
-            <p className="text-sm text-[#76777A]">
+            <p className="text-sm text-[#6d6e6d]">
               Mostrando {(page - 1) * 15 + 1}–{Math.min(page * 15, total)} de{" "}
               {total} solicitudes
             </p>
@@ -365,7 +365,7 @@ export default function AdminCotizacionesView() {
               >
                 <ChevronLeft size={16} />
               </button>
-              <span className="px-4 py-2 text-sm font-medium text-[#001689]">
+              <span className="px-4 py-2 text-sm font-medium text-[#00269b]">
                 {page} / {totalPages}
               </span>
               <button

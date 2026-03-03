@@ -123,9 +123,9 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
               <Link href="/admin/noticias" className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                <ArrowLeft size={20} className="text-[#76777A]" />
+                <ArrowLeft size={20} className="text-[#6d6e6d]" />
               </Link>
-              <h1 className="text-xl font-bold text-[#001689]">
+              <h1 className="text-xl font-bold text-[#00269b]">
                 {isEditing ? "Editar Noticia" : "Nueva Noticia"}
               </h1>
             </div>
@@ -144,7 +144,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
           <div className="p-6 space-y-6">
             {/* Título */}
             <div>
-              <label className="block text-sm font-medium text-[#76777A] mb-2">
+              <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                 Título *
               </label>
               <input
@@ -154,7 +154,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                 onChange={handleTituloChange}
                 required
                 maxLength={200}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b]"
                 placeholder="Título de la noticia"
               />
               <p className="text-right text-xs text-gray-400 mt-1">{formData.titulo.length}/200</p>
@@ -162,7 +162,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
 
             {/* Slug */}
             <div>
-              <label className="block text-sm font-medium text-[#76777A] mb-2">
+              <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                 URL Amigable (Slug)
               </label>
               <input
@@ -170,7 +170,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                 name="slug"
                 value={formData.slug}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689] font-mono text-sm"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b] font-mono text-sm"
                 placeholder="url-de-la-noticia"
               />
             </div>
@@ -186,7 +186,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
             {/* Categoría y Autor */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-[#76777A] mb-2">
+                <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                   Categoría *
                 </label>
                 <select
@@ -194,7 +194,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                   value={formData.categoria}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b]"
                 >
                   {categoriasNoticias.map((cat) => (
                     <option key={cat.value} value={cat.value}>{cat.label}</option>
@@ -202,7 +202,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#76777A] mb-2">
+                <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                   Autor
                 </label>
                 <input
@@ -211,7 +211,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                   value={formData.autor}
                   onChange={handleChange}
                   maxLength={100}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b]"
                   placeholder="Nombre del autor"
                 />
               </div>
@@ -219,14 +219,14 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
 
             {/* División */}
             <div>
-              <label className="block text-sm font-medium text-[#76777A] mb-2">
+              <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                 División (opcional)
               </label>
               <select
                 name="division"
                 value={formData.division}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b]"
               >
                 <option value="">Sin división específica</option>
                 <option value="MTN">MTN — Manufactura Transformadores Nuevos</option>
@@ -241,12 +241,13 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
               label="Imagen"
               value={formData.imagen}
               onChange={(val) => setFormData(prev => ({ ...prev, imagen: val }))}
-              accentColor="#001689"
+              accentColor="#00269b"
+              folder="eminsa/noticias"
             />
 
             {/* Resumen */}
             <div>
-              <label className="block text-sm font-medium text-[#76777A] mb-2">
+              <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                 Resumen *
               </label>
               <textarea
@@ -256,7 +257,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                 required
                 rows={3}
                 maxLength={500}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689] resize-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b] resize-none"
                 placeholder="Breve descripción de la noticia (se mostrará en la lista)"
               />
               <p className="text-right text-xs text-gray-400 mt-1">{formData.resumen.length}/500</p>
@@ -264,7 +265,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
 
             {/* Contenido */}
             <div>
-              <label className="block text-sm font-medium text-[#76777A] mb-2">
+              <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
                 Contenido *
               </label>
               <textarea
@@ -274,7 +275,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                 required
                 rows={10}
                 maxLength={20000}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689] resize-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b] resize-none"
                 placeholder="Contenido completo de la noticia..."
               />
               <p className="text-right text-xs text-gray-400 mt-1">{formData.contenido.length}/20000</p>
@@ -289,9 +290,9 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                     name="publicado"
                     checked={formData.publicado}
                     onChange={handleChange}
-                    className="w-5 h-5 rounded border-gray-300 text-[#001689] focus:ring-[#001689]"
+                    className="w-5 h-5 rounded border-gray-300 text-[#00269b] focus:ring-[#00269b]"
                   />
-                  <span className="text-[#76777A]">Publicar inmediatamente</span>
+                  <span className="text-[#6d6e6d]">Publicar inmediatamente</span>
                 </label>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input
@@ -301,7 +302,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                     onChange={handleChange}
                     className="w-5 h-5 rounded border-gray-300 text-yellow-500 focus:ring-yellow-500"
                   />
-                  <span className="text-[#76777A]">Marcar como destacada</span>
+                  <span className="text-[#6d6e6d]">Marcar como destacada</span>
                 </label>
               </div>
 
@@ -319,7 +320,7 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
                     <ScheduledPublishPicker
                       value={formData.scheduledAt}
                       onChange={(val) => setFormData(prev => ({ ...prev, scheduledAt: val }))}
-                      accentColor="#001689"
+                      accentColor="#00269b"
                     />
                   </motion.div>
                 )}
@@ -331,14 +332,14 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
           <div className="px-6 py-4 bg-gray-50 border-t flex items-center justify-between">
             <Link
               href="/admin/noticias"
-              className="px-4 py-2 text-[#76777A] hover:text-[#001689] transition-colors"
+              className="px-4 py-2 text-[#6d6e6d] hover:text-[#00269b] transition-colors"
             >
               Cancelar
             </Link>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex items-center gap-2 px-6 py-2 bg-[#001689] text-white rounded-lg hover:bg-[#000E53] transition-colors disabled:opacity-50"
+              className="flex items-center gap-2 px-6 py-2 bg-[#00269b] text-white rounded-lg hover:bg-[#00175d] transition-colors disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>

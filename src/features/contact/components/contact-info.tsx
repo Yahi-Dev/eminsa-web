@@ -32,7 +32,7 @@ export function ContactInfo() {
       transition={{ duration: 0.6 }}
       className="lg:col-span-2"
     >
-      <div className="bg-linear-to-br from-[#001689] to-[#000E53] rounded-3xl p-8 text-white h-full">
+      <div className="bg-linear-to-br from-[#00269b] to-[#00175d] rounded-3xl p-8 text-white h-full">
         <h3 className="text-2xl font-bold mb-6">{t('contactInfo.title')}</h3>
 
         {/* Información de contacto */}
@@ -101,7 +101,7 @@ function ContactInfoItem({ href, icon, label, value, external }: ContactInfoItem
       </div>
       <div>
         <p className="text-white/60 text-sm mb-1">{label}</p>
-        <p className="font-semibold group-hover:text-[#00A3E0] transition-colors">
+        <p className="font-semibold group-hover:text-[#0099ce] transition-colors">
           {value}
         </p>
       </div>
@@ -200,7 +200,7 @@ function GoogleMap() {
         href={mapsLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 text-sm text-white/70 hover:text-[#00A3E0] transition-colors mt-3"
+        className="flex items-center justify-center gap-2 text-sm text-white/70 hover:text-[#0099ce] transition-colors mt-3"
       >
         <MapPin size={14} />
         {t('contactInfo.viewMap')}

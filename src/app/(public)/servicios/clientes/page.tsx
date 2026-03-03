@@ -23,12 +23,12 @@ const sectorMeta: Record<
   string,
   { icon: React.ElementType; gradient: string }
 > = {
-  Energía:           { icon: Zap,       gradient: "from-[#001689] to-[#0026CC]" },
-  Turismo:           { icon: Hotel,     gradient: "from-[#00A3E0] to-[#0077AA]" },
+  Energía:           { icon: Zap,       gradient: "from-[#00269b] to-[#0026CC]" },
+  Turismo:           { icon: Hotel,     gradient: "from-[#0099ce] to-[#0077AA]" },
   Manufactura:       { icon: Factory,   gradient: "from-[#D97706] to-[#B45309]" },
   Construcción:      { icon: HardHat,   gradient: "from-[#7C3AED] to-[#5B21B6]" },
   Retail:            { icon: ShoppingBag, gradient: "from-[#0F766E] to-[#0D5A54]" },
-  Alimentación:      { icon: Utensils,  gradient: "from-[#00B140] to-[#007A2D]" },
+  Alimentación:      { icon: Utensils,  gradient: "from-[#009e49] to-[#007A2D]" },
   Telecomunicaciones:{ icon: Wifi,      gradient: "from-[#DC2626] to-[#991B1B]" },
   Industrial:        { icon: Factory,   gradient: "from-[#374151] to-[#1F2937]" },
   Automotriz:        { icon: Car,       gradient: "from-[#1D4ED8] to-[#1E3A8A]" },
@@ -51,7 +51,7 @@ export default function ClientesServiciosPage() {
     <div className="min-h-screen">
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
-      <section className="relative bg-linear-to-br from-[#696969] via-[#5a5a5a] to-[#4a4a4a] text-white py-16 lg:py-24 overflow-hidden">
+      <section className="relative bg-linear-to-br from-[#6d6e6d] via-[#575857] to-[#414241] text-white py-16 lg:py-24 overflow-hidden">
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -79,7 +79,7 @@ export default function ClientesServiciosPage() {
             transition={{ delay: 0.1 }}
             className="max-w-3xl"
           >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
               Nuestros Clientes
             </h1>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
@@ -110,10 +110,10 @@ export default function ClientesServiciosPage() {
                 transition={{ delay: i * 0.08 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-1">
+                <div className="text-4xl md:text-5xl font-bold text-[#00269b] mb-1">
                   {stat.value}
                 </div>
-                <div className="text-[#76777A] text-sm">{stat.label}</div>
+                <div className="text-[#6d6e6d] text-sm">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -129,13 +129,13 @@ export default function ClientesServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
               Portafolio de Clientes
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
               Empresas que Confían en Nosotros
             </h2>
-            <p className="text-[#76777A] text-lg">
+            <p className="text-[#6d6e6d] text-lg">
               Organizados por sector, estos son los clientes que respaldan
               nuestra trayectoria de más de 50 años.
             </p>
@@ -149,7 +149,7 @@ export default function ClientesServiciosPage() {
                 gradient: "from-gray-500 to-gray-600",
               };
               const Icon = meta.icon;
-              const color = sectorColors[sector] ?? "#001689";
+              const color = sectorColors[sector] ?? "#00269b";
 
               return (
                 <motion.div
@@ -167,8 +167,8 @@ export default function ClientesServiciosPage() {
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-[#001689]">{sector}</h3>
-                      <p className="text-[#76777A] text-sm">
+                      <h3 className="text-2xl font-bold text-[#00269b]">{sector}</h3>
+                      <p className="text-[#6d6e6d] text-sm">
                         {sectClientes.length} cliente{sectClientes.length > 1 ? "s" : ""}
                       </p>
                     </div>
@@ -202,7 +202,7 @@ export default function ClientesServiciosPage() {
                         </div>
 
                         {/* Name */}
-                        <p className="text-xs font-semibold text-[#001689] text-center leading-tight line-clamp-2">
+                        <p className="text-xs font-semibold text-[#00269b] text-center leading-tight line-clamp-2">
                           {cliente.nombre}
                         </p>
 
@@ -230,14 +230,14 @@ export default function ClientesServiciosPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative bg-linear-to-br from-[#001689] via-[#000E53] to-[#001689] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
+            className="relative bg-linear-to-br from-[#00269b] via-[#00175d] to-[#00269b] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
             <div className="relative z-10 max-w-2xl mx-auto">
-              <Building2 size={44} className="mx-auto mb-6 text-[#00A3E0]" />
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <Building2 size={44} className="mx-auto mb-6 text-[#0099ce]" />
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
                 ¿Quiere Ser Nuestro Próximo Cliente?
               </h2>
               <p className="text-white/80 text-lg mb-8 leading-relaxed">
@@ -249,7 +249,7 @@ export default function ClientesServiciosPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#00A3E0] hover:bg-[#0091C7] text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-base group"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#0091C7] text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-base group"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} className="group-hover:translate-x-0.5 transition-transform" />

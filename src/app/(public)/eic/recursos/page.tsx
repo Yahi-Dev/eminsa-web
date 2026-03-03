@@ -6,10 +6,7 @@ import {
   ArrowRight,
   ChevronRight,
   Home,
-  Newspaper,
   FileText,
-  BookOpen,
-  Briefcase,
   FileCheck,
   Download,
   ExternalLink,
@@ -20,12 +17,10 @@ import {
 import { eicResources, eicBrands } from "@/config/eic-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import RecursosDinamicos from "@/components/shared/RecursosDinamicos";
 
 const resourceIcons: { [key: string]: React.ElementType } = {
-  newspaper: Newspaper,
   "file-text": FileText,
-  "book-open": BookOpen,
-  briefcase: Briefcase,
   "file-check": FileCheck,
 };
 
@@ -33,7 +28,7 @@ export default function EICRecursosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white py-16 lg:py-20">
+      <section className="bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-16 lg:py-20">
         <div className="container-eminsa">
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
             <Link href="/" className="hover:text-white transition-colors">
@@ -55,19 +50,19 @@ export default function EICRecursosPage() {
             <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
               Centro de Recursos
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
               Recursos y Documentación
             </h1>
             <p className="text-xl text-white/90">
-              Acceda a documentación técnica, catálogos de marcas, artículos del sector
-              y más recursos para sus proyectos eléctricos.
+              Acceda a documentación técnica, catálogos de marcas y más recursos
+              para sus proyectos eléctricos.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Recursos Grid */}
-      <section className="py-16">
+      {/* Acciones rápidas */}
+      <section className="py-16 bg-white">
         <div className="container-eminsa">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {eicResources.map((resource, index) => {
@@ -79,10 +74,10 @@ export default function EICRecursosPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group"
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100"
                 >
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00B140]/20 to-[#008F33]/20 flex items-center justify-center mb-4">
-                    <Icon size={32} className="text-[#00B140]" />
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#009e49]/20 to-[#007d3a]/20 flex items-center justify-center mb-4">
+                    <Icon size={32} className="text-[#009e49]" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
                     {resource.name}
@@ -94,27 +89,33 @@ export default function EICRecursosPage() {
                     {resource.url ? (
                       <Link
                         href={resource.url}
-                        className="flex items-center gap-2 text-[#00B140] font-medium text-sm hover:underline"
+                        className="flex items-center gap-2 text-[#009e49] font-medium text-sm hover:underline"
                       >
                         <ExternalLink size={16} />
                         Acceder
                       </Link>
                     ) : resource.downloadable ? (
-                      <button className="flex items-center gap-2 text-[#00B140] font-medium text-sm hover:underline">
+                      <button className="flex items-center gap-2 text-[#009e49] font-medium text-sm hover:underline">
                         <Download size={16} />
                         Descargar
                       </button>
-                    ) : (
-                      <span className="flex items-center gap-2 text-gray-400 text-sm">
-                        <FileText size={16} />
-                        Próximamente
-                      </span>
-                    )}
+                    ) : null}
                   </div>
                 </motion.div>
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Fichas Técnicas Dinámicas */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="container-eminsa">
+          <RecursosDinamicos
+            division="EIC"
+            accentColor="#009e49"
+            title="Fichas Técnicas y Recursos"
+          />
         </div>
       </section>
 
@@ -131,7 +132,8 @@ export default function EICRecursosPage() {
               Catálogos por Marca
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Descargue los catálogos y fichas técnicas de las marcas internacionales que representamos.
+              Descargue los catálogos y fichas técnicas de las marcas
+              internacionales que representamos.
             </p>
           </motion.div>
 
@@ -143,21 +145,23 @@ export default function EICRecursosPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-gray-50 rounded-xl p-5 hover:bg-[#00B140]/5 transition-all duration-200 group border border-gray-100"
+                className="bg-gray-50 rounded-xl p-5 hover:bg-[#009e49]/5 transition-all duration-200 group border border-gray-100"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-[#00B140]/10 flex items-center justify-center">
-                    <Globe size={20} className="text-[#00B140]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#009e49]/10 flex items-center justify-center">
+                    <Globe size={20} className="text-[#009e49]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 text-sm">{brand.name}</h3>
+                    <h3 className="font-bold text-gray-900 text-sm">
+                      {brand.name}
+                    </h3>
                     <p className="text-xs text-gray-500">{brand.country}</p>
                   </div>
                 </div>
                 <p className="text-xs text-gray-600 mb-3 line-clamp-2">
                   {brand.description.substring(0, 100)}...
                 </p>
-                <button className="flex items-center gap-1 text-[#00B140] text-xs font-medium hover:underline">
+                <button className="flex items-center gap-1 text-[#009e49] text-xs font-medium hover:underline">
                   <Download size={14} />
                   Catálogo
                 </button>
@@ -168,25 +172,26 @@ export default function EICRecursosPage() {
       </section>
 
       {/* CTA de Contacto */}
-      <section className="py-16 bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white">
+      <section className="py-16 bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               ¿Necesita más información?
             </h2>
             <p className="text-white/90 text-lg max-w-2xl mx-auto mb-8">
-              Nuestro equipo técnico está disponible para ayudarle con documentación adicional,
-              especificaciones técnicas y asesoría personalizada.
+              Nuestro equipo técnico está disponible para ayudarle con
+              documentación adicional, especificaciones técnicas y asesoría
+              personalizada.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/eic/cotizaciones"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B140] hover:bg-[#008F33] text-white rounded-xl font-semibold transition-all shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#009e49] hover:bg-[#007d3a] text-white rounded-xl font-semibold transition-all shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

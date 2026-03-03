@@ -70,7 +70,7 @@ export default async function VariantPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#001689] to-[#00A3E0] text-white py-16">
+      <section className="bg-gradient-to-br from-[#00269b] to-[#0099ce] text-white py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center flex-wrap gap-2 text-sm text-white/60 mb-8">
@@ -117,7 +117,7 @@ export default async function VariantPage({ params }: Props) {
               <div className="flex flex-wrap gap-4 pt-4">
                 <Link
                   href={`/mtn/cotizaciones?producto=${product.slug}&config=${variant.slug}`}
-                  className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -199,7 +199,7 @@ export default async function VariantPage({ params }: Props) {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {variant.applications.map((app, idx) => (
               <div key={idx} className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm">
-                <div className="w-2 h-2 bg-[#001689] rounded-full" />
+                <div className="w-2 h-2 bg-[#00269b] rounded-full" />
                 <span className="text-gray-700">{app}</span>
               </div>
             ))}
@@ -218,7 +218,7 @@ export default async function VariantPage({ params }: Props) {
               {variant.capacities.map((cap) => (
                 <span
                   key={cap}
-                  className="bg-gray-100 text-gray-700 font-medium px-4 py-2 rounded-lg hover:bg-[#001689] hover:text-white transition-colors cursor-default"
+                  className="bg-gray-100 text-gray-700 font-medium px-4 py-2 rounded-lg hover:bg-[#00269b] hover:text-white transition-colors cursor-default"
                 >
                   {cap} kVA
                 </span>
@@ -236,21 +236,21 @@ export default async function VariantPage({ params }: Props) {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="flex items-center gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-              <Download size={24} className="text-[#001689]" />
+              <Download size={24} className="text-[#00269b]" />
               <div>
                 <p className="font-semibold text-gray-900">Ficha Técnica</p>
                 <p className="text-sm text-gray-500">PDF</p>
               </div>
             </div>
             <div className="flex items-center gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-              <Shield size={24} className="text-[#001689]" />
+              <Shield size={24} className="text-[#00269b]" />
               <div>
                 <p className="font-semibold text-gray-900">Garantía</p>
                 <p className="text-sm text-gray-500">Términos</p>
               </div>
             </div>
             <div className="flex items-center gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-              <Settings size={24} className="text-[#001689]" />
+              <Settings size={24} className="text-[#00269b]" />
               <div>
                 <p className="font-semibold text-gray-900">Manual</p>
                 <p className="text-sm text-gray-500">Instalación</p>
@@ -260,7 +260,7 @@ export default async function VariantPage({ params }: Props) {
               href="/mtn/recursos/calculadora"
               className="flex items-center gap-4 bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
             >
-              <Zap size={24} className="text-[#001689]" />
+              <Zap size={24} className="text-[#00269b]" />
               <div>
                 <p className="font-semibold text-gray-900">Calculadora</p>
                 <p className="text-sm text-gray-500">kVA</p>
@@ -271,7 +271,7 @@ export default async function VariantPage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#001689] to-[#00A3E0] text-white">
+      <section className="py-16 bg-gradient-to-br from-[#00269b] to-[#0099ce] text-white">
         <div className="container-eminsa">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-bold">
@@ -284,7 +284,7 @@ export default async function VariantPage({ params }: Props) {
             <div className="flex flex-wrap justify-center gap-4 pt-4">
               <Link
                 href={`/mtn/cotizaciones?producto=${product.slug}&config=${variant.slug}`}
-                className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+                className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

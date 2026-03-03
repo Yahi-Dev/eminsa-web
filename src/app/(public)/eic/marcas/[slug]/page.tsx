@@ -81,8 +81,8 @@ function DownloadButton({
         rel="noopener noreferrer"
         className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
           variant === "solid"
-            ? "bg-[#00B140] hover:bg-[#008F33] text-white"
-            : "border border-[#00B140] text-[#00B140] hover:bg-[#00B140]/10"
+            ? "bg-[#009e49] hover:bg-[#007d3a] text-white"
+            : "border border-[#009e49] text-[#009e49] hover:bg-[#009e49]/10"
         }`}
       >
         <Download size={15} />
@@ -96,8 +96,8 @@ function DownloadButton({
       href={fallbackUrl}
       className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
         variant === "solid"
-          ? "bg-[#00B140] hover:bg-[#008F33] text-white"
-          : "border border-[#00B140] text-[#00B140] hover:bg-[#00B140]/10"
+          ? "bg-[#009e49] hover:bg-[#007d3a] text-white"
+          : "border border-[#009e49] text-[#009e49] hover:bg-[#009e49]/10"
       }`}
     >
       <FileText size={15} />
@@ -121,7 +121,7 @@ export default function MarcaDetailPage({
 
   const products = getEICProductsByBrand(slug);
   const category = eicProductCategories.find((c) => c.id === brand.category);
-  const categoryColor = category?.color ?? "#00B140";
+  const categoryColor = category?.color ?? "#009e49";
   const CategoryIcon = categoryIcons[category?.icon ?? "zap"] ?? Zap;
 
   const flag = countryFlags[brand.country] ?? "🌍";
@@ -134,7 +134,7 @@ export default function MarcaDetailPage({
       <section
         className="text-white py-16 lg:py-20"
         style={{
-          background: `linear-gradient(135deg, ${categoryColor} 0%, ${categoryColor}CC 50%, #001689 100%)`,
+          background: `linear-gradient(135deg, ${categoryColor} 0%, ${categoryColor}CC 50%, #00269b 100%)`,
         }}
       >
         <div className="container-eminsa">
@@ -191,7 +191,7 @@ export default function MarcaDetailPage({
               <div className="flex flex-wrap gap-3">
                 <Link
                   href={`/eic/cotizaciones?marca=${slug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={18} />
@@ -285,7 +285,7 @@ export default function MarcaDetailPage({
               </p>
               <Link
                 href={`/eic/cotizaciones?marca=${slug}`}
-                className="inline-flex items-center gap-2 mt-4 text-[#00B140] font-medium hover:underline"
+                className="inline-flex items-center gap-2 mt-4 text-[#009e49] font-medium hover:underline"
               >
                 Consultar disponibilidad
                 <ArrowRight size={16} />
@@ -446,7 +446,7 @@ export default function MarcaDetailPage({
                         </Link>
                         <Link
                           href={`/eic/cotizaciones?producto=${product.slug}`}
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-[#00B140] hover:bg-[#008F33] text-white text-sm font-semibold rounded-lg transition-colors"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-[#009e49] hover:bg-[#007d3a] text-white text-sm font-semibold rounded-lg transition-colors"
                         >
                           Solicitar Cotización
                           <ArrowRight size={14} />
@@ -514,7 +514,7 @@ export default function MarcaDetailPage({
       <section
         className="py-14 text-white"
         style={{
-          background: `linear-gradient(135deg, ${categoryColor} 0%, ${categoryColor}CC 50%, #001689 100%)`,
+          background: `linear-gradient(135deg, ${categoryColor} 0%, ${categoryColor}CC 50%, #00269b 100%)`,
         }}
       >
         <div className="container-eminsa text-center">
@@ -533,7 +533,7 @@ export default function MarcaDetailPage({
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/eic/cotizaciones?marca=${slug}`}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

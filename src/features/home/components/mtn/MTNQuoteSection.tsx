@@ -42,11 +42,11 @@ const quickInfo = [
 
 export default function MTNQuoteSection() {
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-br from-[#001689] via-[#001070] to-[#000E53] relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-gradient-to-br from-[#00269b] via-[#001070] to-[#00175d] relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-5" />
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#00A3E0]/10 rounded-full blur-[150px]" />
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#0099ce]/10 rounded-full blur-[150px]" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px]" />
       </div>
 
@@ -66,7 +66,7 @@ export default function MTNQuoteSection() {
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
               ¿Listo para{" "}
-              <span className="text-[#00A3E0]">Transformar</span> su Proyecto?
+              <span className="text-[#0099ce]">Transformar</span> su Proyecto?
             </h2>
 
             <p className="text-white/80 text-lg mb-8 leading-relaxed">
@@ -87,8 +87,8 @@ export default function MTNQuoteSection() {
                   transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
                   className="group flex items-start gap-3 p-4 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="w-10 h-10 bg-[#00A3E0]/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#00A3E0]/30 transition-colors">
-                    <item.icon className="w-5 h-5 text-[#00A3E0]" />
+                  <div className="w-10 h-10 bg-[#0099ce]/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#0099ce]/30 transition-colors">
+                    <item.icon className="w-5 h-5 text-[#0099ce]" />
                   </div>
                   <div>
                     <p className="text-white/60 text-xs mb-1">{item.label}</p>
@@ -125,7 +125,7 @@ export default function MTNQuoteSection() {
           >
             <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl">
               <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#001689] to-[#00A3E0] rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#00269b] to-[#0099ce] rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <svg
                     className="w-8 h-8 text-white"
                     fill="none"
@@ -140,10 +140,10 @@ export default function MTNQuoteSection() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-[#001689] mb-2">
+                <h3 className="text-2xl font-bold text-[#00269b] mb-2">
                   Cotización Personalizada
                 </h3>
-                <p className="text-[#76777A]">
+                <p className="text-[#6d6e6d]">
                   Complete el formulario y reciba una propuesta a la medida de
                   sus necesidades.
                 </p>
@@ -165,9 +165,9 @@ export default function MTNQuoteSection() {
                     transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                     className="flex items-center gap-3"
                   >
-                    <div className="w-6 h-6 bg-[#00A3E0]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 bg-[#0099ce]/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <svg
-                        className="w-4 h-4 text-[#00A3E0]"
+                        className="w-4 h-4 text-[#0099ce]"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -180,7 +180,7 @@ export default function MTNQuoteSection() {
                         />
                       </svg>
                     </div>
-                    <span className="text-[#76777A]">{benefit}</span>
+                    <span className="text-[#6d6e6d]">{benefit}</span>
                   </motion.div>
                 ))}
               </div>
@@ -188,7 +188,7 @@ export default function MTNQuoteSection() {
               {/* CTA Button */}
               <Link
                 href="/cotizar"
-                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#001689] text-white font-semibold rounded-xl hover:bg-[#000E53] transition-all duration-300 hover:shadow-lg hover:shadow-[#001689]/30 group"
+                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#00269b] text-white font-semibold rounded-xl hover:bg-[#00175d] transition-all duration-300 hover:shadow-lg hover:shadow-[#00269b]/30 group"
               >
                 Solicitar Cotización
                 <ArrowRight
@@ -197,7 +197,7 @@ export default function MTNQuoteSection() {
                 />
               </Link>
 
-              <p className="text-center text-sm text-[#76777A] mt-4">
+              <p className="text-center text-sm text-[#6d6e6d] mt-4">
                 Sin compromiso - Respuesta garantizada
               </p>
             </div>

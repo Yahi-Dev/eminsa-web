@@ -10,7 +10,7 @@ export function ContactHero() {
   const t = useTranslations('contact');
 
   return (
-    <section className="pt-32 pb-16 bg-gradient-to-br from-[#001689] to-[#000E53] text-white">
+    <section className="pt-32 pb-16 bg-gradient-to-br from-[#00269b] to-[#00175d] text-white">
       <div className="container-eminsa">
         <div className="max-w-2xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">

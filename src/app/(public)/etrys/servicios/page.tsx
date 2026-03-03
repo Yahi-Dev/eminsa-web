@@ -40,7 +40,7 @@ export default function EtrysServiciosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-16 lg:py-20">
+      <section className="bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-16 lg:py-20">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
@@ -63,7 +63,7 @@ export default function EtrysServiciosPage() {
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
                 Servicios de Reparación
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
                 Nuestros Servicios de Reparación
               </h1>
               <p className="text-xl text-white/90 mb-6">
@@ -74,7 +74,7 @@ export default function EtrysServiciosPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/etrys/cotizaciones?servicio=reparacion"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                 >
                   Solicitar Servicio
                   <ArrowRight size={20} />
@@ -157,7 +157,7 @@ export default function EtrysServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Servicios Integrales
             </h2>
             <p className="text-gray-600 text-lg">
@@ -178,8 +178,8 @@ export default function EtrysServiciosPage() {
                   transition={{ delay: index * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all group"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-[#00A3E0]/10 flex items-center justify-center mb-4 group-hover:bg-[#00A3E0] transition-colors">
-                    <Icon size={28} className="text-[#00A3E0] group-hover:text-white transition-colors" />
+                  <div className="w-14 h-14 rounded-xl bg-[#0099ce]/10 flex items-center justify-center mb-4 group-hover:bg-[#0099ce] transition-colors">
+                    <Icon size={28} className="text-[#0099ce] group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
                     {service.shortName}
@@ -190,7 +190,7 @@ export default function EtrysServiciosPage() {
                   <ul className="space-y-2">
                     {service.details.slice(0, 3).map((detail, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                        <CheckCircle2 size={14} className="text-[#00A3E0] shrink-0 mt-0.5" />
+                        <CheckCircle2 size={14} className="text-[#0099ce] shrink-0 mt-0.5" />
                         {detail}
                       </li>
                     ))}
@@ -236,10 +236,10 @@ export default function EtrysServiciosPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block px-3 py-1 bg-[#00A3E0]/10 text-[#00A3E0] text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
                 Nuestras Instalaciones
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 {repairCenter.name}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
@@ -250,7 +250,7 @@ export default function EtrysServiciosPage() {
               <div className="space-y-3 mb-6">
                 {repairCenter.capabilities.map((cap) => (
                   <div key={cap.type} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
-                    <CheckCircle2 size={20} className="text-[#00A3E0] shrink-0 mt-0.5" />
+                    <CheckCircle2 size={20} className="text-[#0099ce] shrink-0 mt-0.5" />
                     <div>
                       <span className="font-semibold text-gray-900">{cap.type}</span>
                       {cap.capacity && (
@@ -263,7 +263,7 @@ export default function EtrysServiciosPage() {
 
               <Link
                 href="/etrys/servicios/centro-reparacion"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
               >
                 Ver Instalaciones Completas
                 <ArrowRight size={20} />
@@ -282,7 +282,7 @@ export default function EtrysServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Equipamiento Especializado
             </h2>
             <p className="text-gray-600 text-lg">
@@ -304,7 +304,7 @@ export default function EtrysServiciosPage() {
                 <h3 className="font-semibold text-gray-900 mb-1">{equip.name}</h3>
                 <p className="text-sm text-gray-600 mb-2">{equip.description}</p>
                 {equip.specs && (
-                  <span className="inline-block px-2 py-1 bg-[#00A3E0]/10 text-[#00A3E0] text-xs font-medium rounded">
+                  <span className="inline-block px-2 py-1 bg-[#0099ce]/10 text-[#0099ce] text-xs font-medium rounded">
                     {equip.specs}
                   </span>
                 )}
@@ -315,7 +315,7 @@ export default function EtrysServiciosPage() {
       </section> */}
 
       {/* Warranty Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 text-white">
+      <section className="py-16 lg:py-24 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -332,7 +332,7 @@ export default function EtrysServiciosPage() {
                   <span className="text-2xl font-medium ml-2">meses</span>
                 </div>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
                 Garantía Líder en la Industria
               </h2>
               <p className="text-xl text-white/90 mb-6">
@@ -368,14 +368,14 @@ export default function EtrysServiciosPage() {
               <div className="space-y-4">
                 <Link
                   href="/etrys/cotizaciones?servicio=reparacion"
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
+                  className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                 >
                   Solicitar Diagnóstico
                   <ArrowRight size={20} />
                 </Link>
                 <a
                   href={`tel:${contactInfo.phone}`}
-                  className="flex items-center justify-center gap-2 w-full px-6 py-3 border-2 border-gray-200 text-gray-700 hover:border-[#00A3E0] hover:text-[#00A3E0] font-medium rounded-xl transition-colors"
+                  className="flex items-center justify-center gap-2 w-full px-6 py-3 border-2 border-gray-200 text-gray-700 hover:border-[#0099ce] hover:text-[#0099ce] font-medium rounded-xl transition-colors"
                 >
                   <Phone size={20} />
                   {contactInfo.phone}
@@ -400,14 +400,14 @@ export default function EtrysServiciosPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white">
+      <section className="py-16 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               ¿Necesita reparar su transformador?
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
@@ -416,7 +416,7 @@ export default function EtrysServiciosPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/etrys/cotizaciones?servicio=reparacion"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={20} />

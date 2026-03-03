@@ -26,7 +26,7 @@ export const auth = betterAuth({
         subject: "Restablecer contraseña - Grupo EMINSA",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <div style="background: linear-gradient(to right, #001689, #000E53); padding: 30px; border-radius: 12px 12px 0 0; text-align: center;">
+            <div style="background: linear-gradient(to right, #00269b, #00175d); padding: 30px; border-radius: 12px 12px 0 0; text-align: center;">
               <h1 style="color: white; margin: 0; font-size: 24px;">Grupo EMINSA</h1>
             </div>
             <div style="background: #f9fafb; padding: 30px; border-radius: 0 0 12px 12px; border: 1px solid #e5e7eb;">
@@ -34,7 +34,7 @@ export const auth = betterAuth({
               <p style="color: #6b7280;">Hola <strong>${user.name}</strong>,</p>
               <p style="color: #6b7280;">Hemos recibido una solicitud para restablecer la contraseña de tu cuenta. Haz clic en el botón a continuación para continuar:</p>
               <div style="text-align: center; margin: 30px 0;">
-                <a href="${url}" style="display: inline-block; padding: 14px 32px; background: #001689; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">
+                <a href="${url}" style="display: inline-block; padding: 14px 32px; background: #00269b; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 16px;">
                   Restablecer contraseña
                 </a>
               </div>

@@ -1,32 +1,35 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Upload, X, Link as LinkIcon, Image as ImageIcon } from "lucide-react";
+import { Upload, X, Link as LinkIcon, Image as ImageIcon, Loader2 } from "lucide-react";
 
 interface ImageUploadFieldProps {
   value: string;
   onChange: (value: string) => void;
   label: string;
-  accentColor?: string; // hex, e.g. "#001689"
+  accentColor?: string;
+  folder?: string;
 }
 
-const MAX_SIZE_MB = 1;
+const MAX_SIZE_MB = 10;
 const MAX_SIZE_BYTES = MAX_SIZE_MB * 1024 * 1024;
 
 export default function ImageUploadField({
   value,
   onChange,
   label,
-  accentColor = "#001689",
+  accentColor = "#00269b",
+  folder = "eminsa/noticias",
 }: ImageUploadFieldProps) {
   const [mode, setMode] = useState<"upload" | "url">(
-    value && !value.startsWith("data:") ? "url" : "upload"
+    value && !value.startsWith("data:") && value.length > 0 ? "url" : "upload"
   );
   const [error, setError] = useState("");
+  const [uploading, setUploading] = useState(false);
   const [dragging, setDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const processFile = (file: File) => {
+  const processFile = async (file: File) => {
     if (!file.type.startsWith("image/")) {
       setError("El archivo debe ser una imagen (JPG, PNG, WebP, etc.)");
       return;
@@ -36,15 +39,37 @@ export default function ImageUploadField({
       return;
     }
     setError("");
-    const reader = new FileReader();
-    reader.onload = () => onChange(reader.result as string);
-    reader.readAsDataURL(file);
+    setUploading(true);
+
+    try {
+      const body = new FormData();
+      body.append("file", file);
+      body.append("folder", folder);
+      body.append("resourceType", "image");
+
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        credentials: "include",
+        body,
+      });
+
+      const data = await res.json();
+      if (!data.success) {
+        setError(data.message || "Error al subir imagen");
+        return;
+      }
+
+      onChange(data.url);
+    } catch {
+      setError("Error de conexión al subir imagen");
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) processFile(file);
-    // reset input so same file can be re-selected
     e.target.value = "";
   };
 
@@ -62,11 +87,10 @@ export default function ImageUploadField({
   };
 
   const borderColor = dragging ? accentColor : "#D1D5DB";
-  const focusStyle = `focus:outline-none focus:ring-2 focus:border-[${accentColor}]`;
 
   return (
     <div>
-      <label className="block text-sm font-medium text-[#76777A] mb-2">
+      <label className="block text-sm font-medium text-[#6d6e6d] mb-2">
         {label}
       </label>
 
@@ -77,8 +101,8 @@ export default function ImageUploadField({
           onClick={() => setMode("upload")}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition-colors ${
             mode === "upload"
-              ? "bg-white text-[#001689] shadow-sm font-medium"
-              : "text-[#76777A] hover:text-[#001689]"
+              ? "bg-white text-[#00269b] shadow-sm font-medium"
+              : "text-[#6d6e6d] hover:text-[#00269b]"
           }`}
         >
           <Upload size={14} />
@@ -89,8 +113,8 @@ export default function ImageUploadField({
           onClick={() => setMode("url")}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition-colors ${
             mode === "url"
-              ? "bg-white text-[#001689] shadow-sm font-medium"
-              : "text-[#76777A] hover:text-[#001689]"
+              ? "bg-white text-[#00269b] shadow-sm font-medium"
+              : "text-[#6d6e6d] hover:text-[#00269b]"
           }`}
         >
           <LinkIcon size={14} />
@@ -100,14 +124,20 @@ export default function ImageUploadField({
 
       {mode === "upload" ? (
         <div
-          onClick={() => inputRef.current?.click()}
+          onClick={() => !uploading && inputRef.current?.click()}
           onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
           onDragLeave={() => setDragging(false)}
           onDrop={handleDrop}
-          className="border-2 border-dashed rounded-lg cursor-pointer transition-colors"
+          className={`border-2 border-dashed rounded-lg transition-colors ${uploading ? "cursor-wait" : "cursor-pointer"}`}
           style={{ borderColor }}
         >
-          {value ? (
+          {uploading ? (
+            <div className="p-8 text-center">
+              <Loader2 className="w-8 h-8 animate-spin mx-auto mb-3 text-[#00269b]" />
+              <p className="text-sm font-medium text-[#00269b]">Subiendo imagen...</p>
+              <p className="text-xs text-[#6d6e6d] mt-1">Esto puede tomar unos segundos</p>
+            </div>
+          ) : value ? (
             <div className="relative group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -126,7 +156,7 @@ export default function ImageUploadField({
                   </button>
                   <button
                     onClick={(e) => { e.stopPropagation(); inputRef.current?.click(); }}
-                    className="bg-white text-[#001689] rounded-full p-1.5 hover:bg-gray-100 transition-colors"
+                    className="bg-white text-[#00269b] rounded-full p-1.5 hover:bg-gray-100 transition-colors"
                     title="Cambiar imagen"
                   >
                     <Upload size={16} />
@@ -139,10 +169,10 @@ export default function ImageUploadField({
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
                 <ImageIcon className="w-6 h-6 text-gray-400" />
               </div>
-              <p className="text-sm font-medium text-[#001689] mb-1">
+              <p className="text-sm font-medium text-[#00269b] mb-1">
                 {dragging ? "Suelte la imagen aquí" : "Clic para seleccionar"}
               </p>
-              <p className="text-xs text-[#76777A]">
+              <p className="text-xs text-[#6d6e6d]">
                 o arrastre y suelte — JPG, PNG, WebP · máx. {MAX_SIZE_MB}MB
               </p>
             </div>
@@ -161,7 +191,7 @@ export default function ImageUploadField({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="https://ejemplo.com/imagen.jpg"
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#001689]/30 focus:border-[#001689]"
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00269b]/30 focus:border-[#00269b]"
         />
       )}
 
@@ -172,9 +202,9 @@ export default function ImageUploadField({
         </p>
       )}
 
-      {mode === "upload" && !value && (
-        <p className="text-xs text-[#76777A] mt-1.5">
-          Imagen almacenada localmente (mock). Máx. {MAX_SIZE_MB}MB para evitar límites de almacenamiento.
+      {mode === "upload" && !value && !uploading && (
+        <p className="text-xs text-[#6d6e6d] mt-1.5">
+          Imagen almacenada en Cloudinary. Máx. {MAX_SIZE_MB}MB.
         </p>
       )}
     </div>

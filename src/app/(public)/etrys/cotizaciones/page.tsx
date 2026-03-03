@@ -150,9 +150,9 @@ function CotizacionesForm() {
             ¡Solicitud Enviada!
           </h2>
           {codigo && (
-            <div className="bg-[#00A3E0]/5 border border-[#00A3E0]/20 rounded-xl p-4 mb-4">
-              <p className="text-xs text-[#00A3E0] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
-              <p className="text-2xl font-bold text-[#00A3E0] tracking-widest">{codigo}</p>
+            <div className="bg-[#0099ce]/5 border border-[#0099ce]/20 rounded-xl p-4 mb-4">
+              <p className="text-xs text-[#0099ce] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+              <p className="text-2xl font-bold text-[#0099ce] tracking-widest">{codigo}</p>
               <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
             </div>
           )}
@@ -160,7 +160,7 @@ function CotizacionesForm() {
             Hemos recibido su solicitud de cotización. Nuestro equipo le contactará
             en breve con un presupuesto personalizado.
           </p>
-          <div className="bg-[#00A3E0]/10 rounded-xl p-4 mb-6">
+          <div className="bg-[#0099ce]/10 rounded-xl p-4 mb-6">
             <p className="text-sm text-gray-700">
               <strong>Tiempo de respuesta estimado:</strong><br />
               Menos de 30 minutos en horario laboral
@@ -169,7 +169,7 @@ function CotizacionesForm() {
           <div className="space-y-3">
             <Link
               href="/etrys"
-              className="block w-full px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
+              className="block w-full px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
             >
               Volver a ETRYS
             </Link>
@@ -188,7 +188,7 @@ function CotizacionesForm() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-12 lg:py-16">
+      <section className="bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-12 lg:py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
@@ -208,7 +208,7 @@ function CotizacionesForm() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               Solicitar Cotización
             </h1>
             <p className="text-lg text-white/90">
@@ -247,7 +247,7 @@ function CotizacionesForm() {
                         required
                         value={formData.nombre}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                         placeholder="Ej: Juan Pérez"
                       />
                     </div>
@@ -260,7 +260,7 @@ function CotizacionesForm() {
                         name="empresa"
                         value={formData.empresa}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                         placeholder="Nombre de su empresa"
                       />
                     </div>
@@ -274,7 +274,7 @@ function CotizacionesForm() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                         placeholder="correo@ejemplo.com"
                       />
                     </div>
@@ -284,7 +284,7 @@ function CotizacionesForm() {
                         onChange={handlePhoneChange}
                         label="Teléfono"
                         required
-                        focusColor="#00A3E0"
+                        focusColor="#0099ce"
                       />
                     </div>
                     <div className="sm:col-span-2">
@@ -296,7 +296,7 @@ function CotizacionesForm() {
                         name="cargo"
                         value={formData.cargo}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                         placeholder="Ej: Gerente de Mantenimiento"
                       />
                     </div>
@@ -318,7 +318,7 @@ function CotizacionesForm() {
                         required
                         value={formData.tipoServicio}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                       >
                         <option value="">Seleccione...</option>
                         <option value="remanufactura">Remanufactura de Transformador</option>
@@ -337,7 +337,7 @@ function CotizacionesForm() {
                         name="tipoProducto"
                         value={formData.tipoProducto}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                       >
                         <option value="">Seleccione...</option>
                         <option value="tipo-poste">Tipo Poste</option>
@@ -356,7 +356,7 @@ function CotizacionesForm() {
                         name="marca"
                         value={formData.marca}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                         placeholder="Ej: MTN, ABB, Siemens..."
                       />
                     </div>
@@ -369,7 +369,7 @@ function CotizacionesForm() {
                         name="potencia"
                         value={formData.potencia}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                         placeholder="Ej: 500 kVA"
                       />
                     </div>
@@ -382,7 +382,7 @@ function CotizacionesForm() {
                         name="voltajePrimario"
                         value={formData.voltajePrimario}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                         placeholder="Ej: 13.2 kV"
                       />
                     </div>
@@ -395,7 +395,7 @@ function CotizacionesForm() {
                         name="voltajeSecundario"
                         value={formData.voltajeSecundario}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                         placeholder="Ej: 120/240 V"
                       />
                     </div>
@@ -409,7 +409,7 @@ function CotizacionesForm() {
                         min="1"
                         value={formData.cantidadUnidades}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                       />
                     </div>
                     <div>
@@ -420,7 +420,7 @@ function CotizacionesForm() {
                         name="urgencia"
                         value={formData.urgencia}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                       >
                         <option value="normal">Normal (2-4 semanas)</option>
                         <option value="prioritario">Prioritario (1-2 semanas)</option>
@@ -445,7 +445,7 @@ function CotizacionesForm() {
                         name="ubicacion"
                         value={formData.ubicacion}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                         placeholder="Ciudad, Provincia"
                       />
                     </div>
@@ -458,7 +458,7 @@ function CotizacionesForm() {
                         value={formData.descripcion}
                         onChange={handleChange}
                         rows={4}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all resize-none"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all resize-none"
                         placeholder="Describa el problema, síntomas, historial de fallas, o cualquier información relevante..."
                       />
                     </div>
@@ -468,7 +468,7 @@ function CotizacionesForm() {
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
                         Adjuntar Archivos (opcional)
                       </label>
-                      <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#00A3E0] transition-colors">
+                      <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#0099ce] transition-colors">
                         <input
                           type="file"
                           multiple
@@ -521,7 +521,7 @@ function CotizacionesForm() {
                         name="comoNosConocio"
                         value={formData.comoNosConocio}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00A3E0] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                       >
                         <option value="">Seleccione...</option>
                         <option value="google">Google / Búsqueda web</option>
@@ -546,7 +546,7 @@ function CotizacionesForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-4 bg-[#00A3E0] hover:bg-[#0077A8] disabled:bg-[#00A3E0]/50 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 bg-[#0099ce] hover:bg-[#007ba8] disabled:bg-[#0099ce]/50 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -578,10 +578,10 @@ function CotizacionesForm() {
                 <div className="space-y-4">
                   <a
                     href={`tel:${contactInfo.phone}`}
-                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#00A3E0]/10 transition-colors"
+                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#0099ce]/10 transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#00A3E0]/20 flex items-center justify-center">
-                      <Phone size={20} className="text-[#00A3E0]" />
+                    <div className="w-10 h-10 rounded-lg bg-[#0099ce]/20 flex items-center justify-center">
+                      <Phone size={20} className="text-[#0099ce]" />
                     </div>
                     <div>
                       <span className="text-xs text-gray-500 block">Teléfono</span>
@@ -590,10 +590,10 @@ function CotizacionesForm() {
                   </a>
                   <a
                     href={`mailto:${contactInfo.email}`}
-                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#00A3E0]/10 transition-colors"
+                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#0099ce]/10 transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#00A3E0]/20 flex items-center justify-center">
-                      <Mail size={20} className="text-[#00A3E0]" />
+                    <div className="w-10 h-10 rounded-lg bg-[#0099ce]/20 flex items-center justify-center">
+                      <Mail size={20} className="text-[#0099ce]" />
                     </div>
                     <div>
                       <span className="text-xs text-gray-500 block">Email</span>
@@ -617,10 +617,10 @@ function CotizacionesForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-[#00A3E0]/10 rounded-2xl p-6"
+                className="bg-[#0099ce]/10 rounded-2xl p-6"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <Clock size={24} className="text-[#00A3E0]" />
+                  <Clock size={24} className="text-[#0099ce]" />
                   <h3 className="font-bold text-gray-900">Respuesta Rápida</h3>
                 </div>
                 <p className="text-gray-600 text-sm">
@@ -637,7 +637,7 @@ function CotizacionesForm() {
                 className="bg-white rounded-2xl p-6 shadow-lg"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <MapPin size={24} className="text-[#00A3E0]" />
+                  <MapPin size={24} className="text-[#0099ce]" />
                   <h3 className="font-bold text-gray-900">Ubicación</h3>
                 </div>
                 <p className="text-gray-600 text-sm">
@@ -656,7 +656,7 @@ export default function EtrysCotizacionesPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <Loader2 size={40} className="animate-spin text-[#00A3E0]" />
+        <Loader2 size={40} className="animate-spin text-[#0099ce]" />
       </div>
     }>
       <CotizacionesForm />

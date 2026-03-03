@@ -55,7 +55,7 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
         >
           <Link
             href={`/etrys/productos/${current.slug}`}
-            className="flex gap-6 bg-gray-50 hover:bg-[#00A3E0]/5 rounded-2xl p-6 transition-colors group border border-transparent hover:border-[#00A3E0]/20"
+            className="flex gap-6 bg-gray-50 hover:bg-[#0099ce]/5 rounded-2xl p-6 transition-colors group border border-transparent hover:border-[#0099ce]/20"
           >
             <div className="relative w-32 h-32 rounded-xl overflow-hidden bg-gray-200 shrink-0">
               <Image
@@ -66,10 +66,10 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
               />
             </div>
             <div className="flex-1 min-w-0">
-              <span className="text-xs font-semibold text-[#00A3E0] uppercase tracking-wider">
+              <span className="text-xs font-semibold text-[#0099ce] uppercase tracking-wider">
                 RST by EMINSA
               </span>
-              <h3 className="font-bold text-gray-900 group-hover:text-[#00A3E0] transition-colors text-lg mt-1">
+              <h3 className="font-bold text-gray-900 group-hover:text-[#0099ce] transition-colors text-lg mt-1">
                 {current.shortName}
               </h3>
               <p className="text-sm text-gray-600 mt-1 line-clamp-2">{current.description}</p>
@@ -77,7 +77,7 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
                 <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full font-medium">
                   {current.powerRange}
                 </span>
-                <span className="inline-flex items-center gap-1 text-sm text-[#00A3E0] font-semibold">
+                <span className="inline-flex items-center gap-1 text-sm text-[#0099ce] font-semibold">
                   Ver producto <ArrowRight size={14} />
                 </span>
               </div>
@@ -97,7 +97,7 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
                   setIndex(i);
                 }}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  i === index ? "w-8 bg-[#00A3E0]" : "w-2 bg-gray-300 hover:bg-gray-400"
+                  i === index ? "w-8 bg-[#0099ce]" : "w-2 bg-gray-300 hover:bg-gray-400"
                 }`}
               />
             ))}
@@ -105,13 +105,13 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
           <div className="flex gap-2">
             <button
               onClick={prev}
-              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-[#00A3E0] hover:text-[#00A3E0] transition-colors"
+              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-[#0099ce] hover:text-[#0099ce] transition-colors"
             >
               <ChevronLeft size={16} />
             </button>
             <button
               onClick={next}
-              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-[#00A3E0] hover:text-[#00A3E0] transition-colors"
+              className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-[#0099ce] hover:text-[#0099ce] transition-colors"
             >
               <ChevronRight size={18} />
             </button>
@@ -142,7 +142,7 @@ export default function EtrysProductoDetailPage({
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-12 lg:py-16">
+      <section className="bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-12 lg:py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6 flex-wrap">
@@ -201,7 +201,7 @@ export default function EtrysProductoDetailPage({
               <div className="flex flex-wrap gap-4">
                 <Link
                   href={`/etrys/cotizaciones?producto=${product.slug}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
@@ -272,7 +272,7 @@ export default function EtrysProductoDetailPage({
                 <div className="grid sm:grid-cols-2 gap-3">
                   {product.features.map((feature) => (
                     <div key={feature} className="flex items-start gap-3 bg-white rounded-xl p-4 shadow-sm">
-                      <CheckCircle2 size={20} className="text-[#00A3E0] shrink-0 mt-0.5" />
+                      <CheckCircle2 size={20} className="text-[#0099ce] shrink-0 mt-0.5" />
                       <span className="text-gray-700">{feature}</span>
                     </div>
                   ))}
@@ -291,7 +291,7 @@ export default function EtrysProductoDetailPage({
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {product.applications.map((app) => (
                     <div key={app} className="flex items-center gap-2 text-gray-700">
-                      <div className="w-2 h-2 rounded-full bg-[#00A3E0]" />
+                      <div className="w-2 h-2 rounded-full bg-[#0099ce]" />
                       {app}
                     </div>
                   ))}
@@ -332,14 +332,14 @@ export default function EtrysProductoDetailPage({
                     <button
                       key={step.id}
                       onClick={() => setActiveStepIndex(i)}
-                      className="bg-white rounded-xl p-4 shadow-sm text-left group hover:shadow-md hover:ring-1 hover:ring-[#00A3E0]/30 transition-all duration-200"
+                      className="bg-white rounded-xl p-4 shadow-sm text-left group hover:shadow-md hover:ring-1 hover:ring-[#0099ce]/30 transition-all duration-200"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-linear-to-br from-[#00A3E0] to-[#001689] flex items-center justify-center text-white font-bold mb-3 group-hover:scale-110 transition-transform duration-200">
+                      <div className="w-10 h-10 rounded-lg bg-linear-to-br from-[#0099ce] to-[#00269b] flex items-center justify-center text-white font-bold mb-3 group-hover:scale-110 transition-transform duration-200">
                         {step.id}
                       </div>
-                      <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#00A3E0] transition-colors">{step.shortTitle}</h3>
+                      <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#0099ce] transition-colors">{step.shortTitle}</h3>
                       <p className="text-sm text-gray-600">{step.description}</p>
-                      <p className="text-xs text-[#00A3E0] font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Ver detalle →</p>
+                      <p className="text-xs text-[#0099ce] font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Ver detalle →</p>
                     </button>
                   ))}
                 </div>
@@ -361,13 +361,13 @@ export default function EtrysProductoDetailPage({
                 <div className="space-y-3 mb-6">
                   <Link
                     href={`/etrys/cotizaciones?producto=${product.slug}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                   >
                     Solicitar Cotización
                   </Link>
                   <a
                     href={`tel:${contactInfo.phone}`}
-                    className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-gray-200 text-gray-700 hover:border-[#00A3E0] hover:text-[#00A3E0] font-medium rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-gray-200 text-gray-700 hover:border-[#0099ce] hover:text-[#0099ce] font-medium rounded-xl transition-colors"
                   >
                     <Phone size={18} />
                     {contactInfo.phone}
@@ -386,11 +386,11 @@ export default function EtrysProductoDetailPage({
                 {/* Resources */}
                 <h4 className="font-semibold text-gray-900 mb-3">Recursos</h4>
                 <div className="space-y-2">
-                  <a href="#" className="flex items-center gap-2 text-gray-600 hover:text-[#00A3E0] transition-colors">
+                  <a href="#" className="flex items-center gap-2 text-gray-600 hover:text-[#0099ce] transition-colors">
                     <FileText size={16} />
                     <span className="text-sm">Ficha Técnica</span>
                   </a>
-                  <a href="#" className="flex items-center gap-2 text-gray-600 hover:text-[#00A3E0] transition-colors">
+                  <a href="#" className="flex items-center gap-2 text-gray-600 hover:text-[#0099ce] transition-colors">
                     <FileText size={16} />
                     <span className="text-sm">Manual de Instrucciones</span>
                   </a>
@@ -398,11 +398,11 @@ export default function EtrysProductoDetailPage({
 
                 {/* Warranty Badge */}
                 <div className="mt-6 pt-6 border-t border-gray-100">
-                  <div className="flex items-center gap-3 bg-amber-50 rounded-xl p-4">
-                    <ShieldCheck size={32} className="text-amber-600" />
+                  <div className="flex items-center gap-3 bg-[#0099ce]/5 rounded-xl p-4">
+                    <ShieldCheck size={32} className="text-[#0099ce]" />
                     <div>
-                      <span className="font-bold text-amber-800 block">Garantía 18 meses</span>
-                      <span className="text-sm text-amber-700">Líder en la industria</span>
+                      <span className="font-bold text-[#007ba8] block">Garantía 18 meses</span>
+                      <span className="text-sm text-[#0099ce]">Líder en la industria</span>
                     </div>
                   </div>
                 </div>
@@ -421,7 +421,7 @@ export default function EtrysProductoDetailPage({
             </h2>
             <Link
               href="/etrys/productos"
-              className="inline-flex items-center gap-1 text-[#00A3E0] hover:text-[#0092C7] font-semibold text-sm transition-colors"
+              className="inline-flex items-center gap-1 text-[#0099ce] hover:text-[#0092C7] font-semibold text-sm transition-colors"
             >
               Ver todos <ArrowRight size={16} />
             </Link>
@@ -431,7 +431,7 @@ export default function EtrysProductoDetailPage({
       </section>
 
       {/* CTA */}
-      <section className="py-12 bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white">
+      <section className="py-12 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             ¿Interesado en este producto?
@@ -441,7 +441,7 @@ export default function EtrysProductoDetailPage({
           </p>
           <Link
             href={`/etrys/cotizaciones?producto=${product.slug}`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors shadow-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
           >
             Solicitar Cotización
             <ArrowRight size={20} />

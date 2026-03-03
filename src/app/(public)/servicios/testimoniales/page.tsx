@@ -18,7 +18,7 @@ export default function TestimonialesServiciosPage() {
       {/* ================================================================ */}
       {/* 1. HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#696969] via-[#5a5a5a] to-[#4a4a4a] text-white py-16 lg:py-24 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#6d6e6d] via-[#575857] to-[#414241] text-white py-16 lg:py-24 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -55,7 +55,7 @@ export default function TestimonialesServiciosPage() {
             transition={{ delay: 0.1 }}
             className="max-w-3xl"
           >
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
               Testimonios de Nuestros Clientes
             </h1>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
@@ -78,10 +78,10 @@ export default function TestimonialesServiciosPage() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#00269b] mb-2">
                 500+
               </div>
-              <div className="text-[#76777A]">Clientes Satisfechos</div>
+              <div className="text-[#6d6e6d]">Clientes Satisfechos</div>
             </motion.div>
 
             <motion.div
@@ -91,10 +91,10 @@ export default function TestimonialesServiciosPage() {
               transition={{ delay: 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#00269b] mb-2">
                 4.9/5
               </div>
-              <div className="text-[#76777A]">Calificación Promedio</div>
+              <div className="text-[#6d6e6d]">Calificación Promedio</div>
             </motion.div>
 
             <motion.div
@@ -104,10 +104,10 @@ export default function TestimonialesServiciosPage() {
               transition={{ delay: 0.2 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#00269b] mb-2">
                 50+
               </div>
-              <div className="text-[#76777A]">Años de Experiencia</div>
+              <div className="text-[#6d6e6d]">Años de Experiencia</div>
             </motion.div>
 
             <motion.div
@@ -117,10 +117,10 @@ export default function TestimonialesServiciosPage() {
               transition={{ delay: 0.3 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-5xl font-bold text-[#001689] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#00269b] mb-2">
                 100%
               </div>
-              <div className="text-[#76777A]">Recomendación</div>
+              <div className="text-[#6d6e6d]">Recomendación</div>
             </motion.div>
           </div>
         </div>
@@ -137,13 +137,13 @@ export default function TestimonialesServiciosPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <span className="inline-block px-3 py-1 bg-[#001689]/10 text-[#001689] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
               Testimonios
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
               Lo que Dicen Nuestros Clientes
             </h2>
-            <p className="text-[#76777A] text-lg">
+            <p className="text-[#6d6e6d] text-lg">
               Cada testimonio refleja nuestro compromiso con la excelencia y el
               servicio de calidad que ofrecemos día a día.
             </p>
@@ -162,11 +162,11 @@ export default function TestimonialesServiciosPage() {
                 {/* Large Quote Icon */}
                 <Quote
                   size={64}
-                  className="absolute top-6 right-6 text-[#001689]/10"
+                  className="absolute top-6 right-6 text-[#00269b]/10"
                 />
 
                 {/* Testimonial Text */}
-                <p className="text-[#76777A] italic leading-relaxed mb-6 relative z-10">
+                <p className="text-[#6d6e6d] italic leading-relaxed mb-6 relative z-10">
                   &ldquo;{testimonial.testimonio}&rdquo;
                 </p>
 
@@ -178,7 +178,7 @@ export default function TestimonialesServiciosPage() {
                       size={16}
                       className={
                         i < testimonial.rating
-                          ? "text-[#001689] fill-[#001689]"
+                          ? "text-[#00269b] fill-[#00269b]"
                           : "text-gray-200 fill-gray-200"
                       }
                     />
@@ -187,14 +187,14 @@ export default function TestimonialesServiciosPage() {
 
                 {/* Author Info */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#001689] to-[#000E53] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#00269b] to-[#00175d] rounded-full flex items-center justify-center text-white font-bold text-sm">
                     {testimonial.iniciales}
                   </div>
                   <div>
-                    <div className="font-bold text-[#001689] text-sm">
+                    <div className="font-bold text-[#00269b] text-sm">
                       {testimonial.nombre}
                     </div>
-                    <div className="text-xs text-[#76777A]">
+                    <div className="text-xs text-[#6d6e6d]">
                       {testimonial.cargo} - {testimonial.empresa}
                     </div>
                   </div>
@@ -202,11 +202,11 @@ export default function TestimonialesServiciosPage() {
 
                 {/* Service Badge & Date */}
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#001689]/10 text-[#001689] text-xs font-medium rounded-full">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-xs font-medium rounded-full">
                     <Settings size={10} />
                     {testimonial.servicio}
                   </span>
-                  <span className="flex items-center gap-1.5 text-xs text-[#76777A]">
+                  <span className="flex items-center gap-1.5 text-xs text-[#6d6e6d]">
                     <Calendar size={12} />
                     {testimonial.fecha}
                   </span>
@@ -226,13 +226,13 @@ export default function TestimonialesServiciosPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative bg-gradient-to-br from-[#001689] via-[#000E53] to-[#001689] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
+            className="relative bg-gradient-to-br from-[#00269b] via-[#00175d] to-[#00269b] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#001689]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#001689]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#00269b]/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#00269b]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
 
             <div className="relative z-10 max-w-2xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
                 ¿Listo para Trabajar con Nosotros?
               </h2>
               <p className="text-white/80 text-lg mb-8 leading-relaxed">
@@ -243,7 +243,7 @@ export default function TestimonialesServiciosPage() {
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href="/servicios/cotizacion"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#001689] text-white hover:bg-[#000E53] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#00269b] text-white hover:bg-[#00175d] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
                   Solicitar Cotización
                   <ArrowRight size={22} />

@@ -25,7 +25,7 @@ export default function EtrysProductosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-linear-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-16">
+      <section className="bg-linear-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
@@ -61,13 +61,13 @@ export default function EtrysProductosPage() {
                 key={adv.id}
                 className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl"
               >
-                <div className="w-12 h-12 rounded-lg bg-[#00A3E0]/10 flex items-center justify-center shrink-0">
-                  <Zap size={24} className="text-[#00A3E0]" />
+                <div className="w-12 h-12 rounded-lg bg-[#0099ce]/10 flex items-center justify-center shrink-0">
+                  <Zap size={24} className="text-[#0099ce]" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900">{adv.title}</h3>
                   {adv.highlight && (
-                    <p className="text-sm font-semibold text-[#00A3E0]">{adv.highlight}</p>
+                    <p className="text-sm font-semibold text-[#0099ce]">{adv.highlight}</p>
                   )}
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function EtrysProductosPage() {
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1.5 bg-[#00A3E0] text-white text-sm font-bold rounded-full shadow-lg">
+                      <span className="px-3 py-1.5 bg-[#0099ce] text-white text-sm font-bold rounded-full shadow-lg">
                         RST by EMINSA
                       </span>
                     </div>
@@ -128,7 +128,7 @@ export default function EtrysProductosPage() {
                     <div className="space-y-6">
                       {/* Header */}
                       <div>
-                        <span className="inline-block text-[#00A3E0] font-semibold text-sm uppercase tracking-wider mb-2">
+                        <span className="inline-block text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-2">
                           Transformador Remanufacturado
                         </span>
                         <h2 className="text-3xl font-bold text-gray-900">
@@ -161,7 +161,7 @@ export default function EtrysProductosPage() {
                         <div className="grid grid-cols-1 gap-1.5">
                           {product.features.slice(0, 4).map((feature) => (
                             <div key={feature} className="flex items-center gap-2">
-                              <CheckCircle2 size={16} className="text-[#00A3E0] shrink-0" />
+                              <CheckCircle2 size={16} className="text-[#0099ce] shrink-0" />
                               <span className="text-sm text-gray-700">{feature}</span>
                             </div>
                           ))}
@@ -169,13 +169,13 @@ export default function EtrysProductosPage() {
                       </div>
 
                       {/* Warranty Badge */}
-                      <div className="flex items-center gap-3 bg-amber-50 rounded-xl p-3">
-                        <ShieldCheck size={24} className="text-amber-600 shrink-0" />
+                      <div className="flex items-center gap-3 bg-[#0099ce]/5 rounded-xl p-3">
+                        <ShieldCheck size={24} className="text-[#0099ce] shrink-0" />
                         <div>
-                          <span className="font-bold text-amber-800 block text-sm">
+                          <span className="font-bold text-[#007ba8] block text-sm">
                             Garantía 18 meses
                           </span>
-                          <span className="text-xs text-amber-700">Líder en la industria</span>
+                          <span className="text-xs text-[#0099ce]">Líder en la industria</span>
                         </div>
                       </div>
 
@@ -183,14 +183,14 @@ export default function EtrysProductosPage() {
                       <div className="flex flex-wrap gap-4 pt-2">
                         <Link
                           href={`/etrys/productos/${product.slug}`}
-                          className="inline-flex items-center gap-2 bg-[#00A3E0] hover:bg-[#0077A8] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                          className="inline-flex items-center gap-2 bg-[#0099ce] hover:bg-[#007ba8] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                         >
                           Ver Detalles
                           <ArrowRight size={18} />
                         </Link>
                         <Link
                           href={`/etrys/cotizaciones?producto=${product.slug}`}
-                          className="inline-flex items-center gap-2 border-2 border-[#00A3E0] text-[#00A3E0] hover:bg-[#00A3E0] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                          className="inline-flex items-center gap-2 border-2 border-[#0099ce] text-[#0099ce] hover:bg-[#0099ce] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                         >
                           Cotizar
                         </Link>
@@ -253,7 +253,7 @@ export default function EtrysProductosPage() {
                         {p.standards.map((std) => (
                           <span
                             key={std}
-                            className="bg-[#00A3E0]/10 text-[#00A3E0] text-xs px-2 py-0.5 rounded"
+                            className="bg-[#0099ce]/10 text-[#0099ce] text-xs px-2 py-0.5 rounded"
                           >
                             {std}
                           </span>
@@ -266,7 +266,7 @@ export default function EtrysProductosPage() {
                   <td className="py-4 px-4 text-gray-600">Garantía</td>
                   {remanufacturedProducts.map((p) => (
                     <td key={p.id} className="text-center py-4 px-4">
-                      <span className="bg-amber-100 text-amber-700 text-xs px-2 py-0.5 rounded font-medium">
+                      <span className="bg-[#0099ce]/10 text-[#0099ce] text-xs px-2 py-0.5 rounded font-medium">
                         18 meses
                       </span>
                     </td>
@@ -282,7 +282,7 @@ export default function EtrysProductosPage() {
       <section className="py-16 bg-gray-50">
         <div className="container-eminsa">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-block px-3 py-1 bg-[#00A3E0]/10 text-[#00A3E0] text-sm font-medium rounded-full mb-4">
+            <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
               Control de Calidad
             </span>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
@@ -298,12 +298,12 @@ export default function EtrysProductosPage() {
             {testsPerformed.map((test) => (
               <div
                 key={test.id}
-                className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-[#00A3E0]/30 transition-colors"
+                className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-[#0099ce]/30 transition-colors"
               >
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="font-semibold text-gray-900">{test.shortName}</h3>
                   {test.isOptional && (
-                    <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-medium rounded">
+                    <span className="px-2 py-0.5 bg-[#0099ce]/10 text-[#0099ce] text-xs font-medium rounded">
                       Opcional
                     </span>
                   )}
@@ -316,7 +316,7 @@ export default function EtrysProductosPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#00A3E0] text-white">
+      <section className="py-16 bg-[#0099ce] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-3xl font-bold mb-4">¿No encuentra lo que busca?</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
@@ -325,7 +325,7 @@ export default function EtrysProductosPage() {
           </p>
           <Link
             href="/etrys/cotizaciones"
-            className="inline-flex items-center gap-2 bg-[#00A3E0] hover:bg-[#0077A8] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
+            className="inline-flex items-center gap-2 bg-[#0099ce] hover:bg-[#007ba8] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
           >
             Solicitar Cotización Personalizada
             <ArrowRight size={20} />

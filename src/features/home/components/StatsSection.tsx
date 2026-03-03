@@ -51,11 +51,11 @@ export default function StatsSection() {
   const isInView = useInView(statsRef, { once: true, margin: "-15%" });
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-br from-[#001689] to-[#000E53] relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-gradient-to-br from-[#00269b] to-[#00175d] relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#00A3E0]/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#00B140]/10 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#0099ce]/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#009e49]/10 rounded-full blur-[100px]" />
         
         {/* Grid pattern */}
         <div 
@@ -90,7 +90,7 @@ export default function StatsSection() {
                   transition={{ type: "spring", stiffness: 300 }}
                   className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl mb-6"
                 >
-                  <IconComponent className="w-8 h-8 text-[#00A3E0]" />
+                  <IconComponent className="w-8 h-8 text-[#0099ce]" />
                 </motion.div>
                 <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
                   <AnimatedStatValue value={stat.value} started={isInView} />
@@ -153,7 +153,7 @@ export default function StatsSection() {
 
             {/* ANSI */}
             <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4">
-              <div className="w-16 h-16 bg-[#001689] rounded-lg flex items-center justify-center">
+              <div className="w-16 h-16 bg-[#00269b] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">ANSI</span>
               </div>
               <div>
@@ -164,7 +164,7 @@ export default function StatsSection() {
 
             {/* DOE */}
             <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4">
-              <div className="w-16 h-16 bg-[#00B140] rounded-lg flex items-center justify-center">
+              <div className="w-16 h-16 bg-[#009e49] rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">DOE</span>
               </div>
               <div>

@@ -66,7 +66,7 @@ export function ContactSection() {
 function BackgroundDecoration() {
   return (
     <div className="absolute inset-0">
-      <div className="absolute top-0 right-0 w-150 h-150 bg-[#001689]/5 rounded-full blur-[100px]" />
+      <div className="absolute top-0 right-0 w-150 h-150 bg-[#00269b]/5 rounded-full blur-[100px]" />
     </div>
   );
 }
@@ -82,11 +82,11 @@ function SectionHeader() {
       transition={{ duration: 0.6 }}
       className="text-center max-w-3xl mx-auto mb-16"
     >
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#001689] mb-4">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00269b] mb-4">
         {t('form.sectionTitle.part1')}{' '}
-        <span className="text-[#00A3E0]">{t('form.sectionTitle.part2')}</span>
+        <span className="text-[#0099ce]">{t('form.sectionTitle.part2')}</span>
       </h2>
-      <p className="text-[#76777A]">
+      <p className="text-[#6d6e6d]">
         {t('form.sectionDescription')}
       </p>
     </motion.div>

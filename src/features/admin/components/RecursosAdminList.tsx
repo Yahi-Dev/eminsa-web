@@ -51,6 +51,7 @@ export default function RecursosAdminList() {
     const res = await fetch(`/api/recursos/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify({ activo: !current }),
     });
     if (res.ok) {
@@ -61,7 +62,7 @@ export default function RecursosAdminList() {
   }
 
   async function handleDelete(id: number) {
-    const res = await fetch(`/api/recursos/${id}`, { method: "DELETE" });
+    const res = await fetch(`/api/recursos/${id}`, { method: "DELETE", credentials: "include" });
     if (res.ok) {
       setRecursos((prev) => prev.filter((r) => r.id !== id));
       setDeleteConfirm(null);
@@ -86,7 +87,7 @@ export default function RecursosAdminList() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="w-8 h-8 border-4 border-[#001689] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-4 border-[#00269b] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
@@ -105,7 +106,7 @@ export default function RecursosAdminList() {
           <Link
             href="/admin/recursos/nuevo"
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium"
-            style={{ backgroundColor: "#001689" }}
+            style={{ backgroundColor: "#00269b" }}
           >
             <Plus className="w-4 h-4" />
             Nuevo Recurso
@@ -117,9 +118,9 @@ export default function RecursosAdminList() {
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
           {[
-            { label: "Total", value: total, color: "#001689" },
-            { label: "Activos", value: activos, color: "#00B140" },
-            { label: "Inactivos", value: inactivos, color: "#696969" },
+            { label: "Total", value: total, color: "#00269b" },
+            { label: "Activos", value: activos, color: "#009e49" },
+            { label: "Inactivos", value: inactivos, color: "#6d6e6d" },
             { label: "PDFs", value: pdfs, color: "#E53E3E" },
           ].map((stat) => (
             <div key={stat.label} className="bg-white rounded-xl p-4 shadow-sm text-center">
@@ -138,13 +139,13 @@ export default function RecursosAdminList() {
               placeholder="Buscar recursos..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#001689]"
+              className="w-full pl-9 pr-4 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#00269b]"
             />
           </div>
           <select
             value={filterDivision}
             onChange={(e) => setFilterDivision(e.target.value)}
-            className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#001689]"
+            className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#00269b]"
           >
             <option value="">Todas las divisiones</option>
             {divisionesRecurso.map((d) => (
@@ -154,7 +155,7 @@ export default function RecursosAdminList() {
           <select
             value={filterTipo}
             onChange={(e) => setFilterTipo(e.target.value)}
-            className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#001689]"
+            className="px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-[#00269b]"
           >
             <option value="">Todos los tipos</option>
             {tiposRecurso.map((t) => (
@@ -209,13 +210,13 @@ export default function RecursosAdminList() {
                       <button
                         onClick={() => toggleActivo(recurso.id, recurso.activo)}
                         title={recurso.activo ? "Desactivar" : "Activar"}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#001689] hover:bg-blue-50 transition-colors text-xs font-medium"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#00269b] hover:bg-blue-50 transition-colors text-xs font-medium"
                       >
                         {recurso.activo ? "Off" : "On"}
                       </button>
                       <Link
                         href={`/admin/recursos/${recurso.id}/edit`}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#001689] hover:bg-blue-50 transition-colors"
+                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#00269b] hover:bg-blue-50 transition-colors"
                       >
                         <Edit className="w-4 h-4" />
                       </Link>

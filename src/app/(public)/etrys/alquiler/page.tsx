@@ -89,7 +89,7 @@ export default function EtrysAlquilerPage() {
           <div className="space-y-3">
             <Link
               href="/etrys"
-              className="block w-full px-6 py-3 bg-[#00A3E0] hover:bg-[#0077A8] text-white font-semibold rounded-xl transition-colors"
+              className="block w-full px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
             >
               Volver a ETRYS
             </Link>
@@ -108,7 +108,7 @@ export default function EtrysAlquilerPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00A3E0] via-[#0077A8] to-[#001689] text-white py-16 lg:py-20">
+      <section className="bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-16 lg:py-20">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
@@ -131,7 +131,7 @@ export default function EtrysAlquilerPage() {
               <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
                 Solución Temporal
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
                 {rentalInfo.title}
               </h1>
               <p className="text-xl text-white/90 mb-6">
@@ -142,7 +142,7 @@ export default function EtrysAlquilerPage() {
               <div className="flex flex-wrap gap-4">
                 <a
                   href={`tel:${rentalInfo.phone}`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-amber-700 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#0099ce] font-semibold rounded-xl hover:bg-gray-100 transition-colors"
                 >
                   <Phone size={20} />
                   {rentalInfo.phone}
@@ -174,7 +174,7 @@ export default function EtrysAlquilerPage() {
                   priority
                 />
                 <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl p-4">
-                  <span className="text-amber-700 font-bold text-lg block">
+                  <span className="text-[#0099ce] font-bold text-lg block">
                     Disponibilidad Inmediata
                   </span>
                   <span className="text-gray-600 text-sm">
@@ -196,7 +196,7 @@ export default function EtrysAlquilerPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               ¿Por qué Alquilar con ETRYS?
             </h2>
             <p className="text-gray-600 text-lg">
@@ -217,8 +217,8 @@ export default function EtrysAlquilerPage() {
                   transition={{ delay: index * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-amber-100 flex items-center justify-center mb-4">
-                    <Icon size={28} className="text-amber-600" />
+                  <div className="w-14 h-14 rounded-xl bg-[#0099ce]/10 flex items-center justify-center mb-4">
+                    <Icon size={28} className="text-[#0099ce]" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
                     {benefit.title}
@@ -243,10 +243,10 @@ export default function EtrysAlquilerPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block px-3 py-1 bg-amber-100 text-amber-700 text-sm font-medium rounded-full mb-4">
+              <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
                 Casos de Uso
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 ¿Cuándo Necesita Alquilar?
               </h2>
               <p className="text-gray-600 text-lg mb-6">
@@ -256,7 +256,7 @@ export default function EtrysAlquilerPage() {
               <ul className="space-y-3">
                 {rentalInfo.useCases.map((useCase) => (
                   <li key={useCase} className="flex items-start gap-3">
-                    <CheckCircle2 size={20} className="text-amber-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={20} className="text-[#0099ce] shrink-0 mt-0.5" />
                     <span className="text-gray-700">{useCase}</span>
                   </li>
                 ))}
@@ -280,7 +280,7 @@ export default function EtrysAlquilerPage() {
                   />
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2">
-                      <HardHat size={18} className="text-amber-600" />
+                      <HardHat size={18} className="text-[#0099ce]" />
                       <span className="text-sm font-medium text-gray-800">Construcción</span>
                     </div>
                   </div>
@@ -296,7 +296,7 @@ export default function EtrysAlquilerPage() {
                   />
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2">
-                      <Zap size={18} className="text-amber-600" />
+                      <Zap size={18} className="text-[#0099ce]" />
                       <span className="text-sm font-medium text-gray-800">Eventos</span>
                     </div>
                   </div>
@@ -310,7 +310,7 @@ export default function EtrysAlquilerPage() {
                   />
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2">
-                      <Building2 size={18} className="text-amber-600" />
+                      <Building2 size={18} className="text-[#0099ce]" />
                       <span className="text-sm font-medium text-gray-800">Industria</span>
                     </div>
                   </div>
@@ -330,7 +330,7 @@ export default function EtrysAlquilerPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
               Proceso de Alquiler
             </h2>
             <p className="text-gray-600 text-lg">
@@ -353,7 +353,7 @@ export default function EtrysAlquilerPage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-amber-500 text-white flex items-center justify-center text-2xl font-bold shadow-lg">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#0099ce]/50 text-white flex items-center justify-center text-2xl font-bold shadow-lg">
                   {item.step}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
@@ -394,7 +394,7 @@ export default function EtrysAlquilerPage() {
                       required
                       value={formData.nombre}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                       placeholder="Su nombre"
                     />
                   </div>
@@ -407,7 +407,7 @@ export default function EtrysAlquilerPage() {
                       name="empresa"
                       value={formData.empresa}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                       placeholder="Nombre de su empresa"
                     />
                   </div>
@@ -424,7 +424,7 @@ export default function EtrysAlquilerPage() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                       placeholder="su@email.com"
                     />
                   </div>
@@ -434,7 +434,7 @@ export default function EtrysAlquilerPage() {
                       onChange={handlePhoneChange}
                       label="Teléfono"
                       required
-                      focusColor="#00A3E0"
+                      focusColor="#0099ce"
                     />
                   </div>
                 </div>
@@ -448,7 +448,7 @@ export default function EtrysAlquilerPage() {
                       name="capacidad"
                       value={formData.capacidad}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                     >
                       <option value="">Seleccione...</option>
                       <option value="15-50">15 - 50 kVA</option>
@@ -467,7 +467,7 @@ export default function EtrysAlquilerPage() {
                       name="duracion"
                       value={formData.duracion}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                     >
                       <option value="">Seleccione...</option>
                       <option value="dias">Días</option>
@@ -488,7 +488,7 @@ export default function EtrysAlquilerPage() {
                     value={formData.mensaje}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all resize-none"
                     placeholder="Describa su proyecto o necesidades específicas..."
                   />
                 </div>
@@ -496,7 +496,7 @@ export default function EtrysAlquilerPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-4 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-300 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 bg-[#0099ce]/50 hover:bg-[#007ba8] disabled:bg-[#0099ce]/40 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -521,7 +521,7 @@ export default function EtrysAlquilerPage() {
               className="space-y-6"
             >
               {/* Quick Contact */}
-              <div className="bg-amber-50 rounded-2xl p-6 border border-amber-200">
+              <div className="bg-[#0099ce]/5 rounded-2xl p-6 border border-[#0099ce]/20">
                 <h3 className="text-lg font-bold text-gray-900 mb-4">
                   ¿Necesita Respuesta Inmediata?
                 </h3>
@@ -530,7 +530,7 @@ export default function EtrysAlquilerPage() {
                 </p>
                 <a
                   href={`tel:${rentalInfo.phone}`}
-                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-colors"
+                  className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#0099ce]/50 hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                 >
                   <Phone size={20} />
                   {rentalInfo.phone}
@@ -554,7 +554,7 @@ export default function EtrysAlquilerPage() {
                 <ul className="space-y-3">
                   {rentalInfo.availableEquipment.map((equip) => (
                     <li key={equip} className="flex items-start gap-3">
-                      <CheckCircle2 size={18} className="text-amber-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 size={18} className="text-[#0099ce] shrink-0 mt-0.5" />
                       <span className="text-gray-700 text-sm">{equip}</span>
                     </li>
                   ))}
@@ -562,9 +562,9 @@ export default function EtrysAlquilerPage() {
               </div>
 
               {/* Response Time */}
-              <div className="bg-[#00A3E0]/10 rounded-2xl p-6">
+              <div className="bg-[#0099ce]/10 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <Clock size={24} className="text-[#00A3E0]" />
+                  <Clock size={24} className="text-[#0099ce]" />
                   <h3 className="text-lg font-bold text-gray-900">
                     Tiempo de Respuesta
                   </h3>
@@ -580,14 +580,14 @@ export default function EtrysAlquilerPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-amber-500 via-amber-600 to-amber-700 text-white">
+      <section className="py-16 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               ¿Listo para Alquilar?
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
@@ -595,7 +595,7 @@ export default function EtrysAlquilerPage() {
             </p>
             <a
               href={`tel:${rentalInfo.phone}`}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-amber-700 font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0099ce] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
             >
               <Phone size={20} />
               Llamar Ahora: {rentalInfo.phone}

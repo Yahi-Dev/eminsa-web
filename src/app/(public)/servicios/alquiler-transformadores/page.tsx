@@ -35,7 +35,7 @@ const transformadoresDisponibles = [
       "Bajo mantenimiento"
     ],
     aplicaciones: ["Residencial", "Comercial ligero", "Industrial ligero"],
-    color: "#001689"
+    color: "#00269b"
   },
   {
     id: "pad-mounted",
@@ -54,7 +54,7 @@ const transformadoresDisponibles = [
       "Operación bajo carga"
     ],
     aplicaciones: ["Distribución subterránea", "Centros comerciales", "Urbanizaciones"],
-    color: "#00A3E0"
+    color: "#0099ce"
   },
   {
     id: "tipo-seco",
@@ -73,7 +73,7 @@ const transformadoresDisponibles = [
       "Ideal para interiores"
     ],
     aplicaciones: ["Centros comerciales", "Edificios", "Industrias", "Hospitales"],
-    color: "#001689"
+    color: "#00269b"
   },
 ];
 
@@ -143,7 +143,7 @@ export default function AlquilerTransformadoresPage() {
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#696969] via-[#555555] to-[#4a4a4a]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#6d6e6d] via-[#575857] to-[#414241]">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/20 rounded-full blur-[100px]" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[100px]" />
@@ -184,7 +184,7 @@ export default function AlquilerTransformadoresPage() {
               <Zap size={16} />
               <span>Soluciones Temporales</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6">
               Alquiler de Transformadores
             </h1>
             <p className="text-xl text-white/80 mb-8">
@@ -195,7 +195,7 @@ export default function AlquilerTransformadoresPage() {
             <div className="flex flex-wrap gap-4">
               <Link 
                 href="/servicios/cotizacion" 
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#001689] font-semibold rounded-lg hover:bg-gray-100 transition-all hover:shadow-lg"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00269b] font-semibold rounded-lg hover:bg-gray-100 transition-all hover:shadow-lg"
               >
                 Solicitar Cotización
                 <ArrowRight size={18} />
@@ -223,10 +223,10 @@ export default function AlquilerTransformadoresPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
               ¿Por qué Alquilar con EMINSA?
             </h2>
-            <p className="text-[#76777A] text-lg">
+            <p className="text-[#6d6e6d] text-lg">
               Beneficios y ventajas de nuestro servicio de alquiler de transformadores
             </p>
           </motion.div>
@@ -243,13 +243,13 @@ export default function AlquilerTransformadoresPage() {
                   transition={{ delay: index * 0.1 }}
                   className="p-6 bg-gray-50 rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#001689]/10 to-[#001689]/5 rounded-xl flex items-center justify-center mb-4">
-                    <IconComponent className="w-7 h-7 text-[#001689]" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-[#00269b]/10 to-[#00269b]/5 rounded-xl flex items-center justify-center mb-4">
+                    <IconComponent className="w-7 h-7 text-[#00269b]" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#001689] mb-2">
+                  <h3 className="text-xl font-bold text-[#00269b] mb-2">
                     {beneficio.titulo}
                   </h3>
-                  <p className="text-[#76777A]">
+                  <p className="text-[#6d6e6d]">
                     {beneficio.descripcion}
                   </p>
                 </motion.div>
@@ -260,7 +260,7 @@ export default function AlquilerTransformadoresPage() {
       </section>
 
       {/* Catálogo de Transformadores */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="container-eminsa">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -268,10 +268,10 @@ export default function AlquilerTransformadoresPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
               Transformadores Disponibles
             </h2>
-            <p className="text-[#76777A] text-lg">
+            <p className="text-[#6d6e6d] text-lg">
               Amplio inventario de transformadores para satisfacer sus necesidades
             </p>
           </motion.div>
@@ -301,7 +301,7 @@ export default function AlquilerTransformadoresPage() {
                       {/* Badge de disponibilidad */}
                       <div className="absolute top-6 left-6 z-10">
                         <span className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-xs font-semibold flex items-center gap-2 shadow-lg">
-                          <div className="w-2 h-2 bg-[#00B140] rounded-full animate-pulse"></div>
+                          <div className="w-2 h-2 bg-[#009e49] rounded-full animate-pulse"></div>
                           Disponible para Alquiler
                         </span>
                       </div>
@@ -354,18 +354,18 @@ export default function AlquilerTransformadoresPage() {
                             className="w-1 h-8 rounded-full"
                             style={{ backgroundColor: transformador.color }}
                           />
-                          <h3 className="text-2xl lg:text-3xl font-bold text-[#001689]">
+                          <h3 className="text-2xl lg:text-3xl font-bold text-[#00269b]">
                             {transformador.nombre}
                           </h3>
                         </div>
-                        <p className="text-[#76777A] text-sm lg:text-base leading-relaxed">
+                        <p className="text-[#6d6e6d] text-sm lg:text-base leading-relaxed">
                           {transformador.descripcion}
                         </p>
                       </div>
 
                       {/* Potencias */}
                       <div className="mb-6">
-                        <h4 className="text-xs font-bold text-[#001689] uppercase tracking-wide mb-3 flex items-center gap-2">
+                        <h4 className="text-xs font-bold text-[#00269b] uppercase tracking-wide mb-3 flex items-center gap-2">
                           <Zap size={14} style={{ color: transformador.color }} />
                           Potencias Disponibles
                         </h4>
@@ -388,13 +388,13 @@ export default function AlquilerTransformadoresPage() {
 
                       {/* Características */}
                       <div className="mb-6">
-                        <h4 className="text-xs font-bold text-[#001689] uppercase tracking-wide mb-3 flex items-center gap-2">
+                        <h4 className="text-xs font-bold text-[#00269b] uppercase tracking-wide mb-3 flex items-center gap-2">
                           <CheckCircle size={14} style={{ color: transformador.color }} />
                           Características Técnicas
                         </h4>
                         <div className="grid grid-cols-1 gap-2">
                           {transformador.caracteristicas.map((caracteristica, i) => (
-                            <div key={i} className="flex items-start gap-2 text-sm text-[#76777A]">
+                            <div key={i} className="flex items-start gap-2 text-sm text-[#6d6e6d]">
                               <div 
                                 className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
                                 style={{ backgroundColor: transformador.color }}
@@ -407,7 +407,7 @@ export default function AlquilerTransformadoresPage() {
 
                       {/* Aplicaciones */}
                       <div className="mb-8">
-                        <h4 className="text-xs font-bold text-[#001689] uppercase tracking-wide mb-3 flex items-center gap-2">
+                        <h4 className="text-xs font-bold text-[#00269b] uppercase tracking-wide mb-3 flex items-center gap-2">
                           <Building2 size={14} style={{ color: transformador.color }} />
                           Aplicaciones
                         </h4>
@@ -456,10 +456,10 @@ export default function AlquilerTransformadoresPage() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#001689] mb-4">
+            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
               Casos de Uso
             </h2>
-            <p className="text-[#76777A] text-lg">
+            <p className="text-[#6d6e6d] text-lg">
               Soluciones de alquiler para diferentes sectores y necesidades
             </p>
           </motion.div>
@@ -477,19 +477,19 @@ export default function AlquilerTransformadoresPage() {
                   className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 bg-[#001689]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <IconComponent className="w-6 h-6 text-[#001689]" />
+                    <div className="w-12 h-12 bg-[#00269b]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <IconComponent className="w-6 h-6 text-[#00269b]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-[#001689] mb-2">{caso.titulo}</h3>
-                      <p className="text-[#76777A] text-sm mb-4">{caso.descripcion}</p>
+                      <h3 className="text-xl font-bold text-[#00269b] mb-2">{caso.titulo}</h3>
+                      <p className="text-[#6d6e6d] text-sm mb-4">{caso.descripcion}</p>
                     </div>
                   </div>
                   <div className="pl-16">
-                    <h4 className="text-xs font-semibold text-[#001689] mb-2">Ejemplos:</h4>
+                    <h4 className="text-xs font-semibold text-[#00269b] mb-2">Ejemplos:</h4>
                     <div className="flex flex-wrap gap-2">
                       {caso.ejemplos.map((ejemplo, i) => (
-                        <span key={i} className="px-3 py-1 bg-gray-100 text-[#76777A] rounded-full text-xs">
+                        <span key={i} className="px-3 py-1 bg-gray-100 text-[#6d6e6d] rounded-full text-xs">
                           {ejemplo}
                         </span>
                       ))}

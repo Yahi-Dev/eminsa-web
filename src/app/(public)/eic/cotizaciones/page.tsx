@@ -202,9 +202,9 @@ function CotizacionesForm() {
             ¡Solicitud Enviada!
           </h2>
           {codigo && (
-            <div className="bg-[#00B140]/5 border border-[#00B140]/20 rounded-xl p-4 mb-4">
-              <p className="text-xs text-[#00B140] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
-              <p className="text-2xl font-bold text-[#00B140] tracking-widest">{codigo}</p>
+            <div className="bg-[#009e49]/5 border border-[#009e49]/20 rounded-xl p-4 mb-4">
+              <p className="text-xs text-[#009e49] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+              <p className="text-2xl font-bold text-[#009e49] tracking-widest">{codigo}</p>
               <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
             </div>
           )}
@@ -213,7 +213,7 @@ function CotizacionesForm() {
             comercio internacional le contactará en breve con un presupuesto
             personalizado.
           </p>
-          <div className="bg-[#00B140]/10 rounded-xl p-4 mb-6">
+          <div className="bg-[#009e49]/10 rounded-xl p-4 mb-6">
             <p className="text-sm text-gray-700">
               <strong>Tiempo de respuesta estimado:</strong>
               <br />
@@ -223,7 +223,7 @@ function CotizacionesForm() {
           <div className="space-y-3">
             <Link
               href="/eic"
-              className="block w-full px-6 py-3 bg-[#00B140] hover:bg-[#008F33] text-white font-semibold rounded-xl transition-colors"
+              className="block w-full px-6 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors"
             >
               Volver a EIC
             </Link>
@@ -248,7 +248,7 @@ function CotizacionesForm() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#00B140] via-[#008F33] to-[#001689] text-white py-12 lg:py-16">
+      <section className="bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-12 lg:py-16">
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
@@ -274,7 +274,7 @@ function CotizacionesForm() {
                 Eminsa International Corporation
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
+            <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               Solicitar Cotización Internacional
             </h1>
             <p className="text-lg text-white/90">
@@ -314,7 +314,7 @@ function CotizacionesForm() {
                         required
                         value={formData.nombre}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                         placeholder="Ej: Juan Pérez"
                       />
                     </div>
@@ -328,7 +328,7 @@ function CotizacionesForm() {
                         required
                         value={formData.empresa}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                         placeholder="Nombre de su empresa"
                       />
                     </div>
@@ -342,7 +342,7 @@ function CotizacionesForm() {
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                         placeholder="correo@ejemplo.com"
                       />
                     </div>
@@ -352,7 +352,7 @@ function CotizacionesForm() {
                         onChange={handlePhoneChange}
                         label="Teléfono"
                         required
-                        focusColor="#00B140"
+                        focusColor="#009e49"
                       />
                     </div>
                     <div className="sm:col-span-2">
@@ -364,7 +364,7 @@ function CotizacionesForm() {
                         name="cargo"
                         value={formData.cargo}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                         placeholder="Ej: Gerente de Proyectos"
                       />
                     </div>
@@ -386,7 +386,7 @@ function CotizacionesForm() {
                         required
                         value={formData.categoriaProducto}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
                         <option value="">Seleccione...</option>
                         {eicProductCategories.map((cat) => (
@@ -404,7 +404,7 @@ function CotizacionesForm() {
                         name="productoEspecifico"
                         value={formData.productoEspecifico}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
                         <option value="">Seleccione...</option>
                         {filteredProducts.map((prod) => (
@@ -423,7 +423,7 @@ function CotizacionesForm() {
                         name="marca"
                         value={formData.marca}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
                         <option value="">Sin preferencia</option>
                         {filteredBrands.map((brand) => (
@@ -443,7 +443,7 @@ function CotizacionesForm() {
                         min="1"
                         value={formData.cantidad}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       />
                     </div>
                     <div className="sm:col-span-2">
@@ -454,7 +454,7 @@ function CotizacionesForm() {
                         name="urgencia"
                         value={formData.urgencia}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
                         <option value="normal">Normal (3-6 semanas)</option>
                         <option value="prioritario">
@@ -473,10 +473,10 @@ function CotizacionesForm() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       transition={{ duration: 0.3 }}
-                      className="mt-6 bg-[#00B140]/5 border border-[#00B140]/20 rounded-xl p-5 overflow-hidden"
+                      className="mt-6 bg-[#009e49]/5 border border-[#009e49]/20 rounded-xl p-5 overflow-hidden"
                     >
                       <div className="flex items-center gap-2 mb-4">
-                        <Zap className="w-5 h-5 text-[#00B140]" />
+                        <Zap className="w-5 h-5 text-[#009e49]" />
                         <h3 className="font-semibold text-gray-800">Especificaciones del Transformador</h3>
                       </div>
                       <div className="grid sm:grid-cols-2 gap-4">
@@ -489,7 +489,7 @@ function CotizacionesForm() {
                             name="potencia"
                             value={formData.potencia}
                             onChange={handleChange}
-                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                             placeholder="Ej: 500 kVA"
                           />
                         </div>
@@ -501,7 +501,7 @@ function CotizacionesForm() {
                             name="configuracion"
                             value={formData.configuracion}
                             onChange={handleChange}
-                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                           >
                             <option value="">Seleccione...</option>
                             <option value="monofasico">Monofásico</option>
@@ -518,7 +518,7 @@ function CotizacionesForm() {
                             name="voltajePrimario"
                             value={formData.voltajePrimario}
                             onChange={handleChange}
-                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                             placeholder="Ej: 13.2 kV"
                           />
                         </div>
@@ -531,7 +531,7 @@ function CotizacionesForm() {
                             name="voltajeSecundario"
                             value={formData.voltajeSecundario}
                             onChange={handleChange}
-                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                             placeholder="Ej: 120/240 V"
                           />
                         </div>
@@ -555,7 +555,7 @@ function CotizacionesForm() {
                         name="ubicacion"
                         value={formData.ubicacion}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                         placeholder="Ciudad, Provincia / País"
                       />
                     </div>
@@ -568,7 +568,7 @@ function CotizacionesForm() {
                         value={formData.descripcion}
                         onChange={handleChange}
                         rows={4}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all resize-none"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all resize-none"
                         placeholder="Describa su proyecto, especificaciones técnicas requeridas, condiciones de operación, o cualquier información relevante..."
                       />
                     </div>
@@ -578,7 +578,7 @@ function CotizacionesForm() {
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
                         Adjuntar Archivos (opcional)
                       </label>
-                      <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#00B140] transition-colors">
+                      <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#009e49] transition-colors">
                         <input
                           type="file"
                           multiple
@@ -631,7 +631,7 @@ function CotizacionesForm() {
                         name="comoNosConocio"
                         value={formData.comoNosConocio}
                         onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00B140] focus:border-transparent transition-all"
+                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
                         <option value="">Seleccione...</option>
                         <option value="google">Google / Búsqueda web</option>
@@ -661,7 +661,7 @@ function CotizacionesForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-4 bg-[#00B140] hover:bg-[#008F33] disabled:bg-[#00B140]/50 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+                  className="w-full px-6 py-4 bg-[#009e49] hover:bg-[#007d3a] disabled:bg-[#009e49]/50 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
@@ -693,10 +693,10 @@ function CotizacionesForm() {
                 <div className="space-y-4">
                   <a
                     href={`tel:${contactInfo.phone}`}
-                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#00B140]/10 transition-colors"
+                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#009e49]/10 transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#00B140]/20 flex items-center justify-center">
-                      <Phone size={20} className="text-[#00B140]" />
+                    <div className="w-10 h-10 rounded-lg bg-[#009e49]/20 flex items-center justify-center">
+                      <Phone size={20} className="text-[#009e49]" />
                     </div>
                     <div>
                       <span className="text-xs text-gray-500 block">
@@ -709,10 +709,10 @@ function CotizacionesForm() {
                   </a>
                   <a
                     href={`mailto:${contactInfo.email}`}
-                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#00B140]/10 transition-colors"
+                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-[#009e49]/10 transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-[#00B140]/20 flex items-center justify-center">
-                      <Mail size={20} className="text-[#00B140]" />
+                    <div className="w-10 h-10 rounded-lg bg-[#009e49]/20 flex items-center justify-center">
+                      <Mail size={20} className="text-[#009e49]" />
                     </div>
                     <div>
                       <span className="text-xs text-gray-500 block">Email</span>
@@ -738,10 +738,10 @@ function CotizacionesForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-[#00B140]/10 rounded-2xl p-6"
+                className="bg-[#009e49]/10 rounded-2xl p-6"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <Clock size={24} className="text-[#00B140]" />
+                  <Clock size={24} className="text-[#009e49]" />
                   <h3 className="font-bold text-gray-900">Respuesta Rápida</h3>
                 </div>
                 <p className="text-gray-600 text-sm">
@@ -755,7 +755,7 @@ function CotizacionesForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                className="bg-gradient-to-br from-[#00B140] to-[#008F33] rounded-2xl p-6 text-white"
+                className="bg-gradient-to-br from-[#009e49] to-[#007d3a] rounded-2xl p-6 text-white"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Globe size={24} />
@@ -790,7 +790,7 @@ function CotizacionesForm() {
                 className="bg-white rounded-2xl p-6 shadow-lg"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <MapPin size={24} className="text-[#00B140]" />
+                  <MapPin size={24} className="text-[#009e49]" />
                   <h3 className="font-bold text-gray-900">Ubicación</h3>
                 </div>
                 <p className="text-gray-600 text-sm">{contactInfo.address}</p>
@@ -808,7 +808,7 @@ export default function EICCotizacionesPage() {
     <Suspense
       fallback={
         <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-          <Loader2 size={40} className="animate-spin text-[#00B140]" />
+          <Loader2 size={40} className="animate-spin text-[#009e49]" />
         </div>
       }
     >

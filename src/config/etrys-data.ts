@@ -1,7 +1,7 @@
 // ============================================================================
 // ETRYS - Reparación y Reacondicionamiento de Transformadores
 // Configuración de datos completa
-// Color corporativo: #00A3E0 (Pantone 2995C)
+// Color corporativo: #0099ce (Pantone 2995C)
 // ============================================================================
 
 // ============================================================================
@@ -150,7 +150,7 @@ export const etrysInfo: EtrysInfo = {
   slogan: "Reparación y Servicio de Transformadores",
   description:
     "GRUPO EMINSA cuenta con más de 50 años de trayectoria en el sector de transformadores eléctricos de distribución y equipos relacionados. A través de nuestra división RST, nos especializamos en la reparación y remanufactura de transformadores de distribución e industriales, ofreciendo soluciones que devuelven la potencia y la confiabilidad a sus equipos.",
-  color: "#00A3E0",
+  color: "#0099ce",
   colorName: "Pantone 2995C",
   stats: [
     { value: "50", label: "Años de Experiencia", suffix: "+" },
@@ -522,12 +522,7 @@ export const rentalInfo: RentalInfo = {
 // ============================================================================
 
 export const etrysResources: EtrysResource[] = [
-  { id: "articulos", slug: "articulos", name: "Artículos y Publicaciones", description: "Noticias y artículos técnicos del sector.", icon: "newspaper", type: "article", downloadable: false },
-  { id: "manuales", slug: "manuales", name: "Manuales de Instrucciones", description: "Manuales para Tipo Poste, Pad-Mounted y Subestación.", icon: "book-open", type: "manual", downloadable: true },
-  { id: "garantia", slug: "garantia", name: "Política de Garantía", description: "Garantía líder de 18 meses.", icon: "shield-check", type: "policy", downloadable: true },
   { id: "calculadora", slug: "calculadora", name: "Calculadora kVA", description: "Herramienta para calcular capacidad requerida.", icon: "calculator", type: "tool", downloadable: false, url: "/etrys/recursos/calculadora" },
-  { id: "terminos", slug: "terminos", name: "Términos y Condiciones", description: "Términos comerciales para compra y servicios.", icon: "file-text", type: "policy", downloadable: true },
-  { id: "transporte", slug: "transporte", name: "Política de Transporte", description: "Información sobre envío y costos.", icon: "truck", type: "policy", downloadable: true },
 ];
 
 // ============================================================================

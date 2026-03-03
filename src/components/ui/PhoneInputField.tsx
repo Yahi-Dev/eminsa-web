@@ -19,7 +19,7 @@ export function PhoneInputField({
   error,
   label = "Teléfono",
   required = false,
-  focusColor = "#001689",
+  focusColor = "#00269b",
   className,
 }: PhoneInputFieldProps) {
   return (

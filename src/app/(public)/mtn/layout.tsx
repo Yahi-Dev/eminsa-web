@@ -4,18 +4,29 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  ChevronDown, 
-  Package, 
-  Shield, 
-  Award, 
-  FolderOpen, 
+import {
+  ChevronDown,
+  Package,
+  Shield,
+  Award,
+  FolderOpen,
   FileText,
   Home,
   Menu,
   X
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+function useScrolled(threshold = 10) {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > threshold);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [threshold]);
+  return scrolled;
+}
 
 // Tipos para los items del menú
 interface NavItem {
@@ -138,12 +149,19 @@ export default function MTNLayout({
   // Nota: No incluimos openSubmenu y mobileMenuOpen en las dependencias
   // para evitar re-renders cíclicos
 
+  const scrolled = useScrolled(20);
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Subnavegación MTN - Desktop */}
-      <nav 
+      <nav
         ref={menuRef}
-        className="hidden lg:block bg-[#001689]/10 border-t-2 border-t-[#001689]/30 border-b border-b-[#001689]/20 sticky top-20 xl:top-28 z-40 shadow-sm"
+        className={cn(
+          "hidden lg:block sticky z-40 transition-all duration-300",
+          scrolled
+            ? "top-14 xl:top-16 bg-white/90 backdrop-blur-xl border-b border-gray-200 shadow-md"
+            : "top-20 xl:top-28 bg-white/60 backdrop-blur-sm"
+        )}
       >
         <div className="container-eminsa">
           <div className="flex items-center gap-1 py-2 justify-center">
@@ -180,8 +198,8 @@ export default function MTNLayout({
                           className={cn(
                             "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                             active
-                              ? "bg-[#001689] text-white"
-                              : "text-gray-600 hover:bg-gray-100 hover:text-[#001689]"
+                              ? "bg-[#00269b] text-white"
+                              : "text-gray-600 hover:bg-gray-100 hover:text-[#00269b]"
                           )}
                         >
                           <Icon size={16} />
@@ -217,7 +235,7 @@ export default function MTNLayout({
                               className={cn(
                                 "block px-4 py-2 text-sm transition-colors hover:bg-gray-50 border-b border-gray-100",
                                 pathname === item.href
-                                  ? "bg-[#001689]/10 text-[#001689] font-medium"
+                                  ? "bg-[#00269b]/10 text-[#00269b] font-medium"
                                   : "text-gray-600"
                               )}
                             >
@@ -233,7 +251,7 @@ export default function MTNLayout({
                                 className={cn(
                                   "block px-4 py-2 text-sm transition-colors hover:bg-gray-50",
                                   pathname === subItem.href || pathname.startsWith(subItem.href + "/")
-                                    ? "bg-[#001689]/10 text-[#001689] font-medium"
+                                    ? "bg-[#00269b]/10 text-[#00269b] font-medium"
                                     : "text-gray-600"
                                 )}
                               >
@@ -250,8 +268,8 @@ export default function MTNLayout({
                       className={cn(
                         "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap",
                         active
-                          ? "bg-[#001689] text-white"
-                          : "text-gray-600 hover:bg-gray-100 hover:text-[#001689]"
+                          ? "bg-[#00269b] text-white"
+                          : "text-gray-600 hover:bg-gray-100 hover:text-[#00269b]"
                       )}
                     >
                       <Icon size={16} />
@@ -266,16 +284,21 @@ export default function MTNLayout({
       </nav>
 
       {/* Subnavegación MTN - Mobile */}
-      <div 
+      <div
         ref={menuRef}
-        className="lg:hidden sticky top-20 z-40 bg-[#001689]/10 border-t-2 border-t-[#001689]/30 border-b border-b-[#001689]/20 shadow-sm"
+        className={cn(
+          "lg:hidden sticky z-40 transition-all duration-300",
+          scrolled
+            ? "top-14 bg-white/90 backdrop-blur-xl border-b border-gray-200 shadow-md"
+            : "top-20 bg-white/60 backdrop-blur-sm"
+        )}
       >
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-[#001689] rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-[#00269b] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xs">MTN</span>
             </div>
-            <span className="font-semibold text-[#001689]">
+            <span className="font-semibold text-[#00269b]">
               {mtnNavItems.find(item => isActive(item.href, item.exact))?.name || "MTN"}
             </span>
           </div>
@@ -315,7 +338,7 @@ export default function MTNLayout({
                               className={cn(
                                 "flex-1 flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                                 active
-                                  ? "bg-[#001689]/10 text-[#001689]"
+                                  ? "bg-[#00269b]/10 text-[#00269b]"
                                   : "text-gray-600 hover:bg-gray-50"
                               )}
                             >
@@ -354,7 +377,7 @@ export default function MTNLayout({
                                   className={cn(
                                     "block px-8 py-2.5 rounded-lg text-sm transition-colors",
                                     pathname === item.href
-                                      ? "bg-[#001689] text-white"
+                                      ? "bg-[#00269b] text-white"
                                       : "text-gray-600 hover:bg-gray-50"
                                   )}
                                 >
@@ -372,7 +395,7 @@ export default function MTNLayout({
                                     className={cn(
                                       "block px-8 py-2.5 rounded-lg text-sm transition-colors",
                                       pathname === subItem.href
-                                        ? "bg-[#001689] text-white"
+                                        ? "bg-[#00269b] text-white"
                                         : "text-gray-600 hover:bg-gray-50"
                                     )}
                                   >
@@ -390,7 +413,7 @@ export default function MTNLayout({
                           className={cn(
                             "flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                             active
-                              ? "bg-[#001689] text-white"
+                              ? "bg-[#00269b] text-white"
                               : "text-gray-600 hover:bg-gray-50"
                           )}
                         >

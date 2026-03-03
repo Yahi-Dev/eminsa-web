@@ -48,29 +48,31 @@ export default function MTNPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#001689] via-[#000E53] to-[#001689] text-white overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
+      <section className="relative bg-gradient-to-b from-[#00175d] via-[#00269b] to-[#001a6e] text-white overflow-hidden">
+        {/* Subtle grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
+            backgroundSize: "60px 60px",
+          }}
+        />
 
         <div className="container-eminsa relative z-10 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <Factory size={18} className="text-[#00A3E0]" />
+                <Factory size={18} className="text-[#0099ce]" />
                 <span className="text-sm font-medium">Fabricación 100% Nacional</span>
               </div>
 
               {/* Title */}
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
-                  <span className="text-[#00A3E0]">Manufactura Transformadores Nuevos</span>
+                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+                  <span className="text-[#0099ce]">Manufactura Transformadores Nuevos</span>
                 </h1>
-                <p className="text-2xl lg:text-3xl font-light text-white/90 leading-relaxed">
+                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed">
                   {mtnInfo.heroDescription}
                 </p>
               </div>
@@ -84,14 +86,14 @@ export default function MTNPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/mtn/cotizaciones"
-                  className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
                   Solicitar Cotización
                   <ArrowRight size={20} />
                 </Link>
                 <Link
                   href="/mtn/productos"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/30"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/20"
                 >
                   Ver Productos
                   <ChevronRight size={20} />
@@ -102,21 +104,23 @@ export default function MTNPage() {
             {/* Hero Image/Visual */}
             <div className="relative hidden lg:block">
               <div className="relative aspect-square">
-                {/* Decorative circles */}
+                {/* Water ripple circles - expanding outward from center */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-80 h-80 border-2 border-white/10 rounded-full animate-pulse" />
-                  <div className="absolute w-64 h-64 border-2 border-[#00A3E0]/30 rounded-full animate-pulse delay-150" />
-                  <div className="absolute w-48 h-48 border-2 border-white/20 rounded-full animate-pulse delay-300" />
+                  <div className="absolute w-125 h-125 border-2 border-white/50 rounded-full animate-ripple" />
+                  <div className="absolute w-125 h-125 border-2 border-white/40 rounded-full animate-ripple" style={{ animationDelay: "0.6s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/35 rounded-full animate-ripple" style={{ animationDelay: "1.2s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/30 rounded-full animate-ripple" style={{ animationDelay: "1.8s" }} />
+                  <div className="absolute w-125 h-125 border-2 border-white/25 rounded-full animate-ripple" style={{ animationDelay: "2.4s" }} />
                 </div>
-                
+
                 {/* Center content */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Link
                     href="/mtn/certificaciones"
-                    className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 group"
+                    className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 group relative z-10"
                   >
                     <div className="text-center space-y-2">
-                      <Zap size={48} className="mx-auto text-[#00A3E0]" />
+                      <Zap size={48} className="mx-auto text-[#0099ce]" />
                       <p className="text-4xl font-bold">DOE 2016</p>
                       <p className="text-sm text-white/70">Certificación de Eficiencia</p>
                       <p className="text-xs text-white/50 group-hover:text-white/80 transition-colors pt-1">
@@ -134,41 +138,47 @@ export default function MTNPage() {
       </section>
 
       {/* Productos Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" id="productos">
         <div className="container-eminsa">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block text-[#001689] font-semibold text-sm uppercase tracking-wider mb-4">
+            <span className="inline-flex items-center gap-2 bg-[#0099ce]/10 text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-4 px-4 py-1.5 rounded-full">
+              <Zap size={14} />
               Nuestros Productos
             </span>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Transformadores de Alta Calidad
+            <h2 className="text-4xl font-bold mb-4">
+              <span className="text-[#00269b]">Transformadores</span>{" "}
+              <span className="text-gray-900">de Alta Calidad</span>
             </h2>
+            <div className="w-16 h-1 bg-[#0099ce] mx-auto rounded-full mb-4" />
             <p className="text-lg text-gray-600">
               Diseñados para optimizar el rendimiento y la eficiencia energética en sus instalaciones
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {transformerProducts.map((product, index) => (
+            {transformerProducts.map((product) => (
               <Link
                 key={product.id}
                 href={`/mtn/productos/${product.slug}`}
-                className="group relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden border border-gray-200 hover:border-[#001689]/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                className="group relative bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#0099ce]/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               >
+                {/* Colored top accent */}
+                <div className="h-1 bg-linear-to-r from-[#00269b] to-[#0099ce]" />
+
                 {/* Product image placeholder */}
-                <div className="aspect-[4/3] bg-gradient-to-br from-[#001689]/5 to-[#00A3E0]/5 flex items-center justify-center">
-                  <div className="w-24 h-24 bg-[#001689]/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Zap size={40} className="text-[#001689]" />
+                <div className="aspect-[4/3] bg-gradient-to-br from-[#00269b]/3 to-[#0099ce]/6 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-[#00269b]/8 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-[#0099ce]/15 transition-all duration-300">
+                    <Zap size={36} className="text-[#00269b] group-hover:text-[#0099ce] transition-colors" />
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 space-y-4">
                   <div className="flex items-start justify-between">
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#001689] transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
                       {product.shortName}
                     </h3>
-                    <ArrowRight size={20} className="text-gray-400 group-hover:text-[#001689] group-hover:translate-x-1 transition-all" />
+                    <ArrowRight size={20} className="text-gray-400 group-hover:text-[#0099ce] group-hover:translate-x-1 transition-all" />
                   </div>
 
                   <p className="text-gray-600 text-sm line-clamp-2">
@@ -192,7 +202,7 @@ export default function MTNPage() {
                     {product.standards.slice(0, 2).map((std) => (
                       <span
                         key={std}
-                        className="inline-flex items-center gap-1 bg-[#001689]/10 text-[#001689] text-xs font-medium px-2 py-1 rounded-full"
+                        className="inline-flex items-center gap-1 bg-[#0099ce]/10 text-[#0099ce] text-xs font-medium px-2.5 py-1 rounded-full"
                       >
                         <CheckCircle2 size={12} />
                         {std}
@@ -207,49 +217,65 @@ export default function MTNPage() {
           <div className="text-center mt-12">
             <Link
               href="/mtn/productos"
-              className="inline-flex items-center gap-2 text-[#001689] hover:text-[#000E53] font-semibold transition-colors"
+              className="inline-flex items-center gap-2 bg-[#00269b] text-white hover:bg-[#00175d] px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Ver todos los productos
-              <ArrowRight size={20} />
+              <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="container-eminsa"><div className="h-px bg-gray-200" /></div>
+
       {/* Normativas y Certificaciones */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="container-eminsa">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Normativas */}
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-[#001689] rounded-xl flex items-center justify-center">
-                  <Shield size={24} className="text-white" />
+          {/* Section header */}
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="inline-flex items-center gap-2 bg-[#00269b]/10 text-[#00269b] font-semibold text-sm uppercase tracking-wider mb-4 px-4 py-1.5 rounded-full">
+              <Shield size={14} />
+              Calidad Garantizada
+            </span>
+            <h2 className="text-4xl font-bold mb-4">
+              <span className="text-gray-900">Normativas y </span>
+              <span className="text-[#0099ce]">Certificaciones</span>
+            </h2>
+            <div className="w-16 h-1 bg-[#00269b] mx-auto rounded-full mb-4" />
+            <p className="text-lg text-gray-600">
+              Cumplimos con los más altos estándares internacionales de fabricación y eficiencia
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Normativas Card */}
+            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-11 h-11 bg-[#00269b] rounded-lg flex items-center justify-center">
+                  <Shield size={22} className="text-white" />
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900">Normativas</h2>
-                  <p className="text-gray-600">Estándares que garantizan calidad</p>
-                </div>
+                <h3 className="text-xl font-bold text-[#00269b]">Normativas</h3>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {standards.map((standard) => (
                   <Link
                     key={standard.id}
                     href={`/mtn/normativa/${standard.slug}`}
-                    className="group block bg-white rounded-xl p-6 border border-gray-200 hover:border-[#001689]/30 hover:shadow-lg transition-all duration-300"
+                    className="group block bg-white rounded-xl p-5 border border-gray-100 hover:border-[#00269b]/20 hover:shadow-lg transition-all duration-300 border-l-4 border-l-[#00269b]/20 hover:border-l-[#00269b]"
                   >
                     <div className="flex items-start justify-between">
-                      <div className="space-y-2">
-                        <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#001689] transition-colors">
+                      <div className="space-y-1.5">
+                        <h4 className="text-lg font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
                           {standard.name}
-                        </h3>
-                        <p className="text-sm text-gray-500">{standard.fullName}</p>
+                        </h4>
+                        <p className="text-sm text-[#0099ce] font-medium">{standard.fullName}</p>
                         <p className="text-gray-600 text-sm line-clamp-2">
                           {standard.description}
                         </p>
                       </div>
-                      <ChevronRight size={20} className="text-gray-400 group-hover:text-[#001689] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+                      <ChevronRight size={20} className="text-gray-400 group-hover:text-[#0099ce] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
                     </div>
                   </Link>
                 ))}
@@ -257,23 +283,20 @@ export default function MTNPage() {
 
               <Link
                 href="/mtn/normativa"
-                className="inline-flex items-center gap-2 text-[#001689] hover:text-[#000E53] font-semibold mt-6 transition-colors"
+                className="inline-flex items-center gap-2 text-[#00269b] hover:text-[#0099ce] font-semibold mt-6 transition-colors"
               >
                 Ver todas las normativas
                 <ArrowRight size={18} />
               </Link>
             </div>
 
-            {/* Certificaciones */}
-            <div>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-[#00A3E0] rounded-xl flex items-center justify-center">
-                  <Award size={24} className="text-white" />
+            {/* Certificaciones Card */}
+            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-11 h-11 bg-[#0099ce] rounded-lg flex items-center justify-center">
+                  <Award size={22} className="text-white" />
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900">Certificaciones</h2>
-                  <p className="text-gray-600">Respaldo de calidad internacional</p>
-                </div>
+                <h3 className="text-xl font-bold text-[#0099ce]">Certificaciones</h3>
               </div>
 
               <CertificationsTabSelector certifications={certifications} />
@@ -282,36 +305,56 @@ export default function MTNPage() {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="container-eminsa"><div className="h-px bg-gray-200" /></div>
+
       {/* Recursos Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white" id="recursos">
         <div className="container-eminsa">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Recursos Técnicos
+            <span className="inline-flex items-center gap-2 bg-[#0099ce]/10 text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-4 px-4 py-1.5 rounded-full">
+              <BookOpen size={14} />
+              Herramientas y Documentación
+            </span>
+            <h2 className="text-3xl font-bold mb-4">
+              <span className="text-[#00269b]">Recursos</span>{" "}
+              <span className="text-gray-900">Técnicos</span>
             </h2>
+            <div className="w-16 h-1 bg-[#0099ce] mx-auto rounded-full mb-4" />
             <p className="text-lg text-gray-600">
               Acceda a documentación técnica, herramientas y guías para sus proyectos
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {resources.map((resource) => {
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {resources.map((resource, index) => {
               const Icon = resourceIcons[resource.icon] || FileText;
+              const accentColors = ["#00269b", "#0099ce", "#00175d", "#00269b"];
+              const color = accentColors[index % accentColors.length];
               return (
                 <Link
                   key={resource.id}
                   href={`/mtn/recursos/${resource.slug}`}
-                  className="group flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl hover:bg-[#001689] transition-all duration-300"
+                  className="group flex flex-col items-center text-center p-6 bg-white rounded-2xl border border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                 >
-                  <div className="w-14 h-14 bg-[#001689]/10 group-hover:bg-white/20 rounded-full flex items-center justify-center mb-4 transition-colors">
-                    <Icon size={24} className="text-[#001689] group-hover:text-white transition-colors" />
+                  <div
+                    className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: `${color}12` }}
+                  >
+                    <Icon size={24} style={{ color }} className="transition-colors" />
                   </div>
-                  <h3 className="font-semibold text-gray-900 group-hover:text-white transition-colors">
+                  <h3 className="font-semibold text-gray-900 transition-colors group-hover:text-[#00269b]">
                     {resource.name}
                   </h3>
-                  <p className="text-sm text-gray-500 group-hover:text-white/70 mt-1 line-clamp-2 transition-colors">
+                  <p className="text-sm text-gray-500 mt-1 line-clamp-2">
                     {resource.description}
                   </p>
+                  <span
+                    className="mt-3 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1"
+                    style={{ color }}
+                  >
+                    Ver más <ArrowRight size={12} />
+                  </span>
                 </Link>
               );
             })}
@@ -320,40 +363,46 @@ export default function MTNPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-[#001689] to-[#000E53] text-white">
+      <section className="pt-12 pb-20 bg-white">
         <div className="container-eminsa">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl font-bold">
-              ¿Necesita un Transformador a Medida?
-            </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto">
-              Nuestro equipo de ingenieros está listo para diseñar la solución perfecta para su proyecto. Contáctenos hoy mismo.
-            </p>
+          <div className="relative bg-linear-to-br from-[#00269b] to-[#00175d] rounded-3xl p-10 md:p-16 text-white text-center overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#0099ce]/10 rounded-full -translate-y-1/2 translate-x-1/3" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#0099ce]/5 rounded-full translate-y-1/2 -translate-x-1/4" />
 
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/mtn/cotizaciones"
-                className="inline-flex items-center gap-2 bg-[#001689] hover:bg-[#000E53] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                Solicitar Cotización
-                <ArrowRight size={20} />
-              </Link>
-              <a
-                href={`tel:${contactInfo.phone}`}
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/30"
-              >
-                <Phone size={20} />
-                Llamar Ahora
-              </a>
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300"
-              >
-                <MessageCircle size={20} />
-                WhatsApp
-              </a>
+            <div className="relative max-w-3xl mx-auto space-y-8">
+              <h2 className="text-3xl md:text-4xl font-bold">
+                ¿Necesita un Transformador <span className="text-[#0099ce]">a Medida</span>?
+              </h2>
+              <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+                Nuestro equipo de ingenieros está listo para diseñar la solución perfecta para su proyecto. Contáctenos hoy mismo.
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link
+                  href="/mtn/cotizaciones"
+                  className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  Solicitar Cotización
+                  <ArrowRight size={20} />
+                </Link>
+                <a
+                  href={`tel:${contactInfo.phone}`}
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/20"
+                >
+                  <Phone size={20} />
+                  Llamar Ahora
+                </a>
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300"
+                >
+                  <MessageCircle size={20} />
+                  WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </div>

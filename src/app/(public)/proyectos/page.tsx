@@ -8,14 +8,14 @@ import type { ProyectoAPI } from "@/features/admin/types";
 import { useTranslations } from "next-intl";
 
 const divisionOptions = [
-  { id: "MTN", name: "MTN", color: "#001689" },
-  { id: "RST", name: "ETRYS", color: "#00A3E0" },
-  { id: "EIC", name: "EIC", color: "#00B140" },
-  { id: "SRV", name: "Servicios", color: "#696969" },
+  { id: "MTN", name: "MTN", color: "#00269b" },
+  { id: "RST", name: "ETRYS", color: "#0099ce" },
+  { id: "EIC", name: "EIC", color: "#009e49" },
+  { id: "SRV", name: "Servicios", color: "#6d6e6d" },
 ];
 
 function getDivisionColor(division: string) {
-  return divisionOptions.find((d) => d.id === division)?.color ?? "#001689";
+  return divisionOptions.find((d) => d.id === division)?.color ?? "#00269b";
 }
 
 function getDivisionName(division: string) {
@@ -46,7 +46,7 @@ export default function ProyectosPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-20 bg-gradient-to-br from-[#00A3E0] to-[#0077A8]">
+      <section className="relative py-20 bg-gradient-to-br from-[#0099ce] to-[#007ba8]">
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -62,7 +62,7 @@ export default function ProyectosPage() {
           </div>
 
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{t("proyectos.title")}</h1>
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold text-white mb-4">{t("proyectos.title")}</h1>
             <p className="text-xl text-white/80">
               {t("proyectos.description")}
             </p>
@@ -83,8 +83,8 @@ export default function ProyectosPage() {
               onClick={() => setFilterDivision("")}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 !filterDivision
-                  ? "bg-[#00A3E0] text-white"
-                  : "bg-white text-[#76777A] hover:bg-gray-100"
+                  ? "bg-[#0099ce] text-white"
+                  : "bg-white text-[#6d6e6d] hover:bg-gray-100"
               }`}
             >
               {t("proyectos.filterAll")}
@@ -96,7 +96,7 @@ export default function ProyectosPage() {
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   filterDivision === div.id
                     ? "text-white"
-                    : "bg-white text-[#76777A] hover:bg-gray-100"
+                    : "bg-white text-[#6d6e6d] hover:bg-gray-100"
                 }`}
                 style={filterDivision === div.id ? { backgroundColor: div.color } : {}}
               >
@@ -107,7 +107,7 @@ export default function ProyectosPage() {
 
           {loading ? (
             <div className="flex justify-center py-16">
-              <div className="w-8 h-8 border-4 border-[#00A3E0] border-t-transparent rounded-full animate-spin" />
+              <div className="w-8 h-8 border-4 border-[#0099ce] border-t-transparent rounded-full animate-spin" />
             </div>
           ) : (
             <>
@@ -119,7 +119,7 @@ export default function ProyectosPage() {
                   transition={{ delay: 0.1 }}
                   className="mb-12"
                 >
-                  <h2 className="text-2xl font-bold text-[#001689] mb-6 flex items-center gap-2">
+                  <h2 className="text-2xl font-bold text-[#00269b] mb-6 flex items-center gap-2">
                     <Star className="text-yellow-500" size={24} />
                     {t("proyectos.featured")}
                   </h2>
@@ -127,7 +127,7 @@ export default function ProyectosPage() {
                     {proyectosDestacados.slice(0, 2).map((proyecto) => (
                       <Link key={proyecto.id} href={`/proyectos/${proyecto.slug}`} className="group">
                         <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                          <div className="h-56 bg-gradient-to-br from-[#001689] to-[#000E53] relative">
+                          <div className="h-56 bg-gradient-to-br from-[#00269b] to-[#00175d] relative">
                             {proyecto.imagen && (
                               <img src={proyecto.imagen} alt="" className="w-full h-full object-cover" />
                             )}
@@ -140,17 +140,17 @@ export default function ProyectosPage() {
                               </span>
                             </div>
                             {proyecto.capacidad && (
-                              <div className="absolute bottom-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-lg text-[#001689] font-bold text-sm">
+                              <div className="absolute bottom-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-lg text-[#00269b] font-bold text-sm">
                                 {proyecto.capacidad}
                               </div>
                             )}
                           </div>
                           <div className="p-6">
-                            <h3 className="text-xl font-bold text-[#001689] mb-2 group-hover:text-[#00A3E0] transition-colors">
+                            <h3 className="text-xl font-bold text-[#00269b] mb-2 group-hover:text-[#0099ce] transition-colors">
                               {proyecto.titulo}
                             </h3>
-                            <p className="text-[#76777A] text-sm mb-4 line-clamp-2">{proyecto.resumen}</p>
-                            <div className="flex items-center justify-between text-xs text-[#76777A]">
+                            <p className="text-[#6d6e6d] text-sm mb-4 line-clamp-2">{proyecto.resumen}</p>
+                            <div className="flex items-center justify-between text-xs text-[#6d6e6d]">
                               <div className="flex items-center gap-4">
                                 {proyecto.cliente && (
                                   <span className="flex items-center gap-1">
@@ -165,7 +165,7 @@ export default function ProyectosPage() {
                                   </span>
                                 )}
                               </div>
-                              <ArrowRight size={16} className="text-[#00A3E0] group-hover:translate-x-1 transition-transform" />
+                              <ArrowRight size={16} className="text-[#0099ce] group-hover:translate-x-1 transition-transform" />
                             </div>
                           </div>
                         </div>
@@ -182,12 +182,12 @@ export default function ProyectosPage() {
                 transition={{ delay: 0.2 }}
               >
                 {!filterDivision && proyectosDestacados.length > 0 && (
-                  <h2 className="text-2xl font-bold text-[#001689] mb-6">{t("proyectos.allProjects")}</h2>
+                  <h2 className="text-2xl font-bold text-[#00269b] mb-6">{t("proyectos.allProjects")}</h2>
                 )}
 
                 {proyectosPublicados.length === 0 ? (
                   <div className="text-center py-12">
-                    <p className="text-[#76777A]">{t("proyectos.empty")}</p>
+                    <p className="text-[#6d6e6d]">{t("proyectos.empty")}</p>
                   </div>
                 ) : (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -222,17 +222,17 @@ export default function ProyectosPage() {
                                 </span>
                               </div>
                               {proyecto.capacidad && (
-                                <div className="absolute bottom-3 right-3 px-2 py-1 bg-white/90 backdrop-blur-sm rounded text-[#001689] font-bold text-xs">
+                                <div className="absolute bottom-3 right-3 px-2 py-1 bg-white/90 backdrop-blur-sm rounded text-[#00269b] font-bold text-xs">
                                   {proyecto.capacidad}
                                 </div>
                               )}
                             </div>
                             <div className="p-5">
-                              <h3 className="font-bold text-[#001689] mb-2 group-hover:text-[#00A3E0] transition-colors line-clamp-2">
+                              <h3 className="font-bold text-[#00269b] mb-2 group-hover:text-[#0099ce] transition-colors line-clamp-2">
                                 {proyecto.titulo}
                               </h3>
-                              <p className="text-[#76777A] text-sm mb-4 line-clamp-2">{proyecto.resumen}</p>
-                              <div className="flex items-center gap-3 text-xs text-[#76777A]">
+                              <p className="text-[#6d6e6d] text-sm mb-4 line-clamp-2">{proyecto.resumen}</p>
+                              <div className="flex items-center gap-3 text-xs text-[#6d6e6d]">
                                 {proyecto.cliente && (
                                   <span className="flex items-center gap-1">
                                     <Building size={12} />
@@ -260,7 +260,7 @@ export default function ProyectosPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-[#001689] to-[#000E53]">
+      <section className="py-16 bg-gradient-to-r from-[#00269b] to-[#00175d]">
         <div className="container-eminsa text-center">
           <h2 className="text-3xl font-bold text-white mb-4">{t("proyectos.cta.title")}</h2>
           <p className="text-white/80 mb-8 max-w-xl mx-auto">
