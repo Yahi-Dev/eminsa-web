@@ -2108,42 +2108,78 @@
       "inatra": {
         "name": "INATRA",
         "country": "Ecuador",
-        "description": "Una marca ecuatoriana que se encarga de fabricar transformadores de distribución con uno de los estándares más alto del mercado. Su producción se caracteriza por el uso de tecnología de punta, un estricto enfoque en la calidad y un equipo técnico altamente calificado, lo que les permite cumplir con normas nacionales e internacionales y atender las demandas del sector eléctrico con soluciones confiables e innovadoras. Como representantes exclusivos de INATRA en la República Dominicana, ofrecemos acceso directo a su portafolio de transformadores y soluciones eléctricas, garantizando soporte especializado, acompañamiento técnico y una atención personalizada para proyectos del sector público y privado."
+        "description": "Una marca ecuatoriana que se encarga de fabricar transformadores de distribución con uno de los estándares más alto del mercado. Su producción se caracteriza por el uso de tecnología de punta, un estricto enfoque en la calidad y un equipo técnico altamente calificado, lo que les permite cumplir con normas nacionales e internacionales y atender las demandas del sector eléctrico con soluciones confiables e innovadoras. Como representantes exclusivos de INATRA en la República Dominicana, ofrecemos acceso directo a su portafolio de transformadores y soluciones eléctricas, garantizando soporte especializado, acompañamiento técnico y una atención personalizada para proyectos del sector público y privado.",
+        "products": {
+          "0": "Transformador Pad Mounted",
+          "1": "Transformador Tipo Poste"
+        }
       },
       "hammond": {
         "name": "Hammond",
         "country": "Canadá / Norteamérica",
-        "description": "Hammond Power Solutions (HPS) es el mayor fabricante de transformadores secos en Norteamérica, reconocido por su ingeniería avanzada y la fabricación de una amplia gama de transformadores estándar y personalizados que se exportan globalmente. La empresa se especializa en transformadores secos de alta calidad para aplicaciones industriales, comerciales y de energía renovable, destacándose por su durabilidad, eficiencia y capacidad para operar en ambientes exigentes."
+        "description": "Hammond Power Solutions (HPS) es el mayor fabricante de transformadores secos en Norteamérica, reconocido por su ingeniería avanzada y la fabricación de una amplia gama de transformadores estándar y personalizados que se exportan globalmente. La empresa se especializa en transformadores secos de alta calidad para aplicaciones industriales, comerciales y de energía renovable, destacándose por su durabilidad, eficiencia y capacidad para operar en ambientes exigentes.",
+        "products": {
+          "0": "Transformadores Secos"
+        }
       },
       "elpitalia": {
         "name": "Elpitalia",
         "country": "Italia",
-        "description": "Elpitalia es un fabricante italiano especializado en la ingeniería, diseño y producción de transformadores secos en resina y de media-baja tensión, con una trayectoria consolidada desde 1962. Su gama de transformadores en resina abarca potencias desde 50 kVA hasta 3150 kVA, diseñados bajo estrictas normas europeas y fabricados exclusivamente con materiales de origen europeo, garantizando alta confiabilidad, seguridad y rendimiento incluso en aplicaciones exigentes."
+        "description": "Elpitalia es un fabricante italiano especializado en la ingeniería, diseño y producción de transformadores secos en resina y de media-baja tensión, con una trayectoria consolidada desde 1962. Su gama de transformadores en resina abarca potencias desde 50 kVA hasta 3150 kVA, diseñados bajo estrictas normas europeas y fabricados exclusivamente con materiales de origen europeo, garantizando alta confiabilidad, seguridad y rendimiento incluso en aplicaciones exigentes.",
+        "products": {
+          "0": "Transformadores Secos en Resina"
+        }
       },
       "topcable": {
         "name": "Top Cable",
         "country": "España",
-        "description": "Top Cable es uno de los principales fabricantes europeos de cables eléctricos de alta calidad, con plantas de producción ubicadas en España y una amplia presencia internacional. La empresa produce una extensa gama de cables —incluyendo cables de potencia, solares, armados, libres de halógenos (LSZH), resistentes al fuego, marinos y de media tensión— diseñados para cumplir con las normativas europeas e internacionales más exigentes. Reconocida como un socio global en soluciones de cableado, Top Cable suministra cables para sectores como construcción, infraestructura, industria, energías renovables, transporte y proyectos marinos."
+        "description": "Top Cable es uno de los principales fabricantes europeos de cables eléctricos de alta calidad, con plantas de producción ubicadas en España y una amplia presencia internacional. La empresa produce una extensa gama de cables —incluyendo cables de potencia, solares, armados, libres de halógenos (LSZH), resistentes al fuego, marinos y de media tensión— diseñados para cumplir con las normativas europeas e internacionales más exigentes. Reconocida como un socio global en soluciones de cableado, Top Cable suministra cables para sectores como construcción, infraestructura, industria, energías renovables, transporte y proyectos marinos.",
+        "products": {
+          "0": "Cables de Potencia",
+          "1": "Cables Solares",
+          "2": "Cables de Media Tensión"
+        }
       },
       "southwire": {
         "name": "Southwire",
         "country": "Estados Unidos",
-        "description": "Southwire es uno de los principales fabricantes estadounidenses de cables y conductores eléctricos utilizados en la transmisión y distribución de energía, suministrando electricidad a millones de personas en todo el mundo. La compañía produce una amplia gama de soluciones de cableado, incluyendo cables de baja, media y alta tensión, cables especiales para aplicaciones industriales, petroleras, mineras, aeroportuarias y fotovoltaicas, además de herramientas eléctricas y equipos asociados."
+        "description": "Southwire es uno de los principales fabricantes estadounidenses de cables y conductores eléctricos utilizados en la transmisión y distribución de energía, suministrando electricidad a millones de personas en todo el mundo. La compañía produce una amplia gama de soluciones de cableado, incluyendo cables de baja, media y alta tensión, cables especiales para aplicaciones industriales, petroleras, mineras, aeroportuarias y fotovoltaicas, además de herramientas eléctricas y equipos asociados.",
+        "products": {
+          "0": "Cables Baja Tensión",
+          "1": "Cables Media Tensión",
+          "2": "Cables Alta Tensión"
+        }
       },
       "cabelte": {
         "name": "Cabelte",
         "country": "Portugal",
-        "description": "Cabelte es un fabricante portugués de referencia especializado en la producción de cables eléctricos de baja y media tensión, diseñados para aplicaciones industriales, comerciales, residenciales y redes de distribución. Con más de cinco décadas de experiencia y presencia en más de 40 países, Cabelte destaca por su enfoque en calidad, sostenibilidad e innovación, desarrollando cables eficientes, seguros y adaptados a las necesidades energéticas modernas."
+        "description": "Cabelte es un fabricante portugués de referencia especializado en la producción de cables eléctricos de baja y media tensión, diseñados para aplicaciones industriales, comerciales, residenciales y redes de distribución. Con más de cinco décadas de experiencia y presencia en más de 40 países, Cabelte destaca por su enfoque en calidad, sostenibilidad e innovación, desarrollando cables eficientes, seguros y adaptados a las necesidades energéticas modernas.",
+        "products": {
+          "0": "Cables Baja Tensión",
+          "1": "Cables Media Tensión"
+        }
       },
       "schneider": {
         "name": "Schneider Electric",
         "country": "Francia / Global",
-        "description": "Schneider Electric es líder global en soluciones para la distribución eléctrica. Dentro de su portafolio destaca una completa gama de celdas de media tensión (MV switchgear) diseñadas para operar entre 3 kV y 36 kV, disponibles en tecnologías AIS (aisladas en aire) y GIS (aisladas en gas). También ofrece una de las líneas más completas y confiables de breakers y paneles de baja tensión del mercado, diseñados para garantizar protección, continuidad operativa y seguridad en instalaciones comerciales, industriales y residenciales."
+        "description": "Schneider Electric es líder global en soluciones para la distribución eléctrica. Dentro de su portafolio destaca una completa gama de celdas de media tensión (MV switchgear) diseñadas para operar entre 3 kV y 36 kV, disponibles en tecnologías AIS (aisladas en aire) y GIS (aisladas en gas). También ofrece una de las líneas más completas y confiables de breakers y paneles de baja tensión del mercado, diseñados para garantizar protección, continuidad operativa y seguridad en instalaciones comerciales, industriales y residenciales.",
+        "products": {
+          "0": "Celdas de Media Tensión",
+          "1": "Breakers de Baja Tensión",
+          "2": "Paneles de Distribución"
+        }
       },
       "chardon": {
         "name": "Chardon",
         "country": "Internacional",
-        "description": "Chardon Group es uno de los principales fabricantes mundiales de accesorios para cables de media tensión, especializado en productos bajo normas IEEE/ANSI e IEC. La empresa diseña y fabrica componentes de alta calidad como codos, boquillas, adaptadores, cajas derivadoras, empalmes y terminales, utilizados en redes eléctricas subterráneas, aéreas y subestaciones. Destaca por desarrollar sus propias formulaciones de EPDM, garantizar certificaciones internacionales y ofrecer soluciones confiables para la industria energética."
+        "description": "Chardon Group es uno de los principales fabricantes mundiales de accesorios para cables de media tensión, especializado en productos bajo normas IEEE/ANSI e IEC. La empresa diseña y fabrica componentes de alta calidad como codos, boquillas, adaptadores, cajas derivadoras, empalmes y terminales, utilizados en redes eléctricas subterráneas, aéreas y subestaciones. Destaca por desarrollar sus propias formulaciones de EPDM, garantizar certificaciones internacionales y ofrecer soluciones confiables para la industria energética.",
+        "products": {
+          "0": "Codos",
+          "1": "Boquillas",
+          "2": "Adaptadores",
+          "3": "Empalmes",
+          "4": "Terminales"
+        }
       },
       "green-transfo": {
         "description": "Green Transfo es un fabricante global de transformadores con más de 60 años de experiencia industrial, consolidado en 2023 bajo el Groupe Cahors tras integrar plantas con legado bajo marcas como AEG, Alstom, Areva y Schneider Electric. La empresa se especializa en transformadores de subestación de hasta 135 MVA y 170 kV, fabricados con tecnología avanzada en instalaciones modernas en Polonia y Turquía.",

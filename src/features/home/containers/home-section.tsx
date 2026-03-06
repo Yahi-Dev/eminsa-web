@@ -26,7 +26,7 @@ export default function HomeSection() {
       <TransformadorRestauracionSection />
 
       {/* 5. Catálogo de productos MTN */}
-      <MTNProductsShowcase />
+      {/* <MTNProductsShowcase /> */}
 
       {/* 6. Marcas internacionales EIC */}
       <EICBrandsShowcase />

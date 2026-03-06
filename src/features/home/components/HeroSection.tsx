@@ -23,8 +23,13 @@ function AnimatedStat({ value, label, delay }: { value: string; label: string; d
 
   return (
     <div className="text-center md:text-left">
-      <div className="text-3xl md:text-4xl xl:text-5xl font-bold text-white mb-1">
-        {isSpecialCase ? value : `${count}${suffix}`}
+      <div className="text-2xl md:text-3xl font-bold text-white mb-1 flex items-center justify-center md:justify-start gap-1">
+        {isSpecialCase ? value : (
+          <>
+            <span>{count}</span>
+            <span>{suffix}</span>
+          </>
+        )}
       </div>
       <div className="text-sm text-white/70">{label}</div>
     </div>
@@ -148,7 +153,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6"
+              className="grid grid-cols-2 xl:grid-cols-4 gap-4"
             >
               {stats.map((stat, index) => (
                 <AnimatedStat

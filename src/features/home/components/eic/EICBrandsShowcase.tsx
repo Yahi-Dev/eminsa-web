@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Globe2, Building2, Award } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useMessages } from "next-intl";
 
 const brands = [
   {
@@ -93,6 +93,16 @@ const brands = [
 export default function EICBrandsShowcase() {
   const t = useTranslations("home.eic.showcase");
   const tc = useTranslations("eicConfig.brands");
+  const messages = useMessages();
+
+  function getBrandProducts(brandId: string): string[] {
+    const brandsMessages = (messages as Record<string, unknown>)?.eicConfig as Record<string, unknown>;
+    const brandsMap = brandsMessages?.brands as Record<string, unknown>;
+    const brand = brandsMap?.[brandId] as Record<string, unknown>;
+    const products = brand?.products as Record<string, string> | undefined;
+    if (!products) return [];
+    return Object.keys(products).sort().map((k) => tc(`${brandId}.products.${k}`));
+  }
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -240,22 +250,14 @@ export default function EICBrandsShowcase() {
                   Productos
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {Array.from({ length: 5 }).map((_, i) => {
-                    try {
-                      const product = tc(`${activeBrand.id}.products.${i}`);
-                      if (!product || product.includes('.products.')) return null;
-                      return (
-                        <span
-                          key={i}
-                          className="px-3 py-1.5 bg-[#009e49]/8 border border-[#009e49]/15 text-[#009e49] rounded-lg text-xs font-bold"
-                        >
-                          {product}
-                        </span>
-                      );
-                    } catch {
-                      return null;
-                    }
-                  })}
+                  {getBrandProducts(activeBrand.id).map((product, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1.5 bg-[#009e49]/8 border border-[#009e49]/15 text-[#009e49] rounded-lg text-xs font-bold"
+                    >
+                      {product}
+                    </span>
+                  ))}
                 </div>
               </div>
 
