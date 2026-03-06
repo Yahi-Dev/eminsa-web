@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { contactInfo } from "@/config/navigation";
+import { useTranslations } from "next-intl";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 function useScrolled(threshold = 10) {
@@ -47,96 +48,29 @@ interface SubMenuItem {
   description?: string;
 }
 
-const serviciosNavItems: NavItem[] = [
-  {
-    name: "Inicio",
-    href: "/servicios",
-    icon: Home,
-    exact: true,
-  },
-  {
-    name: "Servicios",
-    href: "/servicios/preventivo",
-    icon: Settings,
-    submenu: [
-      {
-        name: "Preventivo - Predictivo",
-        href: "/servicios/preventivo",
-        description: "Inspecciones y monitoreo",
-      },
-      {
-        name: "Correctivo en Campo",
-        href: "/servicios/correctivo",
-        description: "Reparación en sitio",
-      },
-      {
-        name: "Mantenimiento Integral",
-        href: "/servicios/mantenimiento",
-        description: "Atención completa",
-      },
-      {
-        name: "Revisiones y Diagnósticos",
-        href: "/servicios/revisiones",
-        description: "Evaluación técnica",
-      },
-      {
-        name: "Asesoría Técnica",
-        href: "/servicios/asesoria",
-        description: "Consultoría especializada",
-      },
-      {
-        name: "Servicios Especiales",
-        href: "/servicios/especiales",
-        description: "Soluciones a medida",
-      },
-      {
-        name: "Emergencias",
-        href: "/servicios/emergencias",
-        description: "Respuesta 24/7",
-      },
-      {
-        name: "Ingeniería y Proyectos",
-        href: "/servicios/ingenieria",
-        description: "Diseño y gestión",
-      },
-      {
-        name: "Pruebas de Laboratorio",
-        href: "/servicios/laboratorio",
-        description: "Análisis de aceite",
-      },
-      {
-        name: "Alquiler de Equipos",
-        href: "/servicios/alquiler-transformadores",
-        description: "Equipos temporales",
-      },
-    ],
-  },
-  {
-    name: "Recursos",
-    href: "/servicios/recursos",
-    icon: FolderOpen,
-  },
-  // {
-  //   name: "Proyectos",
-  //   href: "/servicios/proyectos",
-  //   icon: Briefcase,
-  // },
-  // {
-  //   name: "Testimoniales",
-  //   href: "/servicios/testimoniales",
-  //   icon: MessageSquareQuote,
-  // },
-  // {
-  //   name: "Clientes",
-  //   href: "/servicios/clientes",
-  //   icon: Users,
-  // },
-  {
-    name: "Cotizaciones",
-    href: "/servicios/cotizacion",
-    icon: FileText,
-  },
-];
+function useServiciosNavItems(): NavItem[] {
+  const t = useTranslations("pages.servicios.layout");
+  return [
+    { name: t("home"), href: "/servicios", icon: Home, exact: true },
+    {
+      name: t("services"), href: "/servicios/preventivo", icon: Settings,
+      submenu: [
+        { name: t("submenu.preventivo"), href: "/servicios/preventivo", description: t("submenu.preventivoDesc") },
+        { name: t("submenu.correctivo"), href: "/servicios/correctivo", description: t("submenu.correctivoDesc") },
+        { name: t("submenu.mantenimiento"), href: "/servicios/mantenimiento", description: t("submenu.mantenimientoDesc") },
+        { name: t("submenu.revisiones"), href: "/servicios/revisiones", description: t("submenu.revisionesDesc") },
+        { name: t("submenu.asesoria"), href: "/servicios/asesoria", description: t("submenu.asesoriaDesc") },
+        { name: t("submenu.especiales"), href: "/servicios/especiales", description: t("submenu.especialesDesc") },
+        { name: t("submenu.emergencias"), href: "/servicios/emergencias", description: t("submenu.emergenciasDesc") },
+        { name: t("submenu.ingenieria"), href: "/servicios/ingenieria", description: t("submenu.ingenieriaDesc") },
+        { name: t("submenu.laboratorio"), href: "/servicios/laboratorio", description: t("submenu.laboratorioDesc") },
+        { name: t("submenu.alquiler"), href: "/servicios/alquiler-transformadores", description: t("submenu.alquilerDesc") },
+      ],
+    },
+    { name: t("resources"), href: "/servicios/recursos", icon: FolderOpen },
+    { name: t("quotes"), href: "/servicios/cotizacion", icon: FileText },
+  ];
+}
 
 export default function ServiciosLayout({
   children,
@@ -144,6 +78,8 @@ export default function ServiciosLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const t = useTranslations("pages.servicios.layout");
+  const serviciosNavItems = useServiciosNavItems();
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -193,10 +129,8 @@ export default function ServiciosLayout({
             : "top-20 xl:top-28 bg-white/60 backdrop-blur-sm"
         )}
       >
-        <div className="container-eminsa">
-          <div className="flex items-center justify-center py-2">
+        <div className="flex items-center justify-center px-4 lg:px-6 xl:px-10 w-full py-2">
             <div className="flex items-center gap-1">
-              <div className="flex items-center gap-1">
                 {serviciosNavItems.map((item) => {
                   const Icon = item.icon;
                   const active = isActive(item.href, item.exact);
@@ -299,9 +233,7 @@ export default function ServiciosLayout({
                     </div>
                   );
                 })}
-              </div>
             </div>
-          </div>
         </div>
       </nav>
 
@@ -320,14 +252,14 @@ export default function ServiciosLayout({
               <span className="text-white font-bold text-sm">S</span>
             </div>
             <div>
-              <span className="text-[#6d6e6d] font-bold">Servicios</span>
+              <span className="text-[#6d6e6d] font-bold">{t("services")}</span>
               <span className="text-gray-400 text-xs block -mt-1">by EMINSA</span>
             </div>
           </div>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={mobileMenuOpen ? t("closeMenu") : t("openMenu")}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -396,7 +328,7 @@ export default function ServiciosLayout({
                                     pathname === "/servicios" ? "bg-[#6d6e6d] text-white" : "text-gray-600 hover:bg-gray-50"
                                   )}
                                 >
-                                  Ver todos
+                                  {t("viewAll")}
                                 </Link>
                                 {item.submenu?.map((subItem) => (
                                   <Link
@@ -460,7 +392,7 @@ export default function ServiciosLayout({
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center justify-center w-full px-4 py-3 bg-[#6d6e6d] hover:bg-[#575857] text-white rounded-lg transition-all font-medium"
                   >
-                    Solicitar Cotización
+                    {t("requestQuote")}
                   </Link>
                 </div>
               </div>

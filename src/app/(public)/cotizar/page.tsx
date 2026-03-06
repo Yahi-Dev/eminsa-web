@@ -30,9 +30,9 @@ export default function CotizarPage() {
 
   const tiposServicio = [
     { value: "mtn-transformador", labelKey: "tiposServicio.mtnTransformador", category: "MTN" },
-    { value: "etrys-reparacion", labelKey: "tiposServicio.etrysReparacion", category: "ETRYS" },
-    { value: "etrys-remanufacturado", labelKey: "tiposServicio.etrysRemanufacturado", category: "ETRYS" },
-    { value: "etrys-alquiler", labelKey: "tiposServicio.etrysAlquiler", category: "ETRYS" },
+    { value: "etrys-reparacion", labelKey: "tiposServicio.etrysReparacion", category: "RST" },
+    { value: "etrys-remanufacturado", labelKey: "tiposServicio.etrysRemanufacturado", category: "RST" },
+    { value: "etrys-alquiler", labelKey: "tiposServicio.etrysAlquiler", category: "RST" },
     { value: "eic-importacion", labelKey: "tiposServicio.eicImportacion", category: "EIC" },
     { value: "servicio-preventivo", labelKey: "tiposServicio.servicioPreventivo", category: "Servicios" },
     { value: "servicio-correctivo", labelKey: "tiposServicio.servicioCorrectivo", category: "Servicios" },

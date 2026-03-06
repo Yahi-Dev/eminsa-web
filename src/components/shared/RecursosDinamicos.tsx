@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FileText, Download, File, Image, Link2, Table, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface Recurso {
   id: number;
@@ -22,13 +23,15 @@ const tipoIcons: Record<string, React.ElementType> = {
   link: Link2,
 };
 
-const tipoLabels: Record<string, string> = {
-  pdf: "PDF",
-  doc: "Documento",
-  xls: "Hoja de cálculo",
-  img: "Imagen",
-  link: "Enlace",
-};
+function getTipoLabels(t: ReturnType<typeof useTranslations>): Record<string, string> {
+  return {
+    pdf: "PDF",
+    doc: t("typeDoc"),
+    xls: t("typeSpreadsheet"),
+    img: t("typeImage"),
+    link: t("typeLink"),
+  };
+}
 
 interface RecursosDinamicosProps {
   division: "MTN" | "RST" | "EIC" | "SRV";
@@ -39,8 +42,11 @@ interface RecursosDinamicosProps {
 export default function RecursosDinamicos({
   division,
   accentColor,
-  title = "Fichas Técnicas y Recursos",
+  title,
 }: RecursosDinamicosProps) {
+  const t = useTranslations("common.recursos");
+  const displayTitle = title || t("defaultTitle");
+  const tipoLabels = getTipoLabels(t);
   const [recursos, setRecursos] = useState<Recurso[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -55,10 +61,10 @@ export default function RecursosDinamicos({
         if (data.success) {
           setRecursos(data.recursos);
         } else {
-          setError("No se pudieron cargar los recursos.");
+          setError(t("loadError"));
         }
       } catch {
-        setError("Error de conexión.");
+        setError(t("connectionError"));
       } finally {
         setLoading(false);
       }
@@ -112,7 +118,7 @@ export default function RecursosDinamicos({
   return (
     <div>
       <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-        {title}
+        {displayTitle}
       </h2>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {recursos.map((recurso) => {
@@ -161,7 +167,7 @@ export default function RecursosDinamicos({
                   }}
                 >
                   <Download size={16} />
-                  {recurso.tipo === "link" ? "Ver recurso" : "Descargar"}
+                  {recurso.tipo === "link" ? t("viewResource") : t("download")}
                 </button>
               )}
             </div>

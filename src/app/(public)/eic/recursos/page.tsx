@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -25,6 +26,8 @@ const resourceIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function EICRecursosPage() {
+  const t = useTranslations("eicPage.recursos");
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -39,7 +42,7 @@ export default function EICRecursosPage() {
               EIC
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Recursos</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <motion.div
@@ -48,14 +51,13 @@ export default function EICRecursosPage() {
             className="max-w-3xl"
           >
             <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-              Centro de Recursos
+              {t("heroBadge")}
             </span>
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
-              Recursos y Documentación
+              {t("heroTitle")}
             </h1>
             <p className="text-xl text-white/90">
-              Acceda a documentación técnica, catálogos de marcas y más recursos
-              para sus proyectos eléctricos.
+              {t("heroDescription")}
             </p>
           </motion.div>
         </div>
@@ -92,12 +94,12 @@ export default function EICRecursosPage() {
                         className="flex items-center gap-2 text-[#009e49] font-medium text-sm hover:underline"
                       >
                         <ExternalLink size={16} />
-                        Acceder
+                        {t("access")}
                       </Link>
                     ) : resource.downloadable ? (
                       <button className="flex items-center gap-2 text-[#009e49] font-medium text-sm hover:underline">
                         <Download size={16} />
-                        Descargar
+                        {t("download")}
                       </button>
                     ) : null}
                   </div>
@@ -114,7 +116,7 @@ export default function EICRecursosPage() {
           <RecursosDinamicos
             division="EIC"
             accentColor="#009e49"
-            title="Fichas Técnicas y Recursos"
+            title={t("dynamicResourcesTitle")}
           />
         </div>
       </section>
@@ -129,11 +131,10 @@ export default function EICRecursosPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Catálogos por Marca
+              {t("brandCatalogsTitle")}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Descargue los catálogos y fichas técnicas de las marcas
-              internacionales que representamos.
+              {t("brandCatalogsDescription")}
             </p>
           </motion.div>
 
@@ -163,7 +164,7 @@ export default function EICRecursosPage() {
                 </p>
                 <button className="flex items-center gap-1 text-[#009e49] text-xs font-medium hover:underline">
                   <Download size={14} />
-                  Catálogo
+                  {t("catalogLabel")}
                 </button>
               </motion.div>
             ))}
@@ -180,12 +181,10 @@ export default function EICRecursosPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              ¿Necesita más información?
+              {t("ctaTitle")}
             </h2>
             <p className="text-white/90 text-lg max-w-2xl mx-auto mb-8">
-              Nuestro equipo técnico está disponible para ayudarle con
-              documentación adicional, especificaciones técnicas y asesoría
-              personalizada.
+              {t("ctaDescription")}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -193,7 +192,7 @@ export default function EICRecursosPage() {
                 href="/eic/cotizaciones"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#009e49] hover:bg-[#007d3a] text-white rounded-xl font-semibold transition-all shadow-lg"
               >
-                Solicitar Cotización
+                {t("requestQuote")}
                 <ArrowRight size={20} />
               </Link>
               <a
@@ -210,7 +209,7 @@ export default function EICRecursosPage() {
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white rounded-xl font-semibold transition-all border border-white/20"
               >
                 <Phone size={20} />
-                Llamar
+                {t("call")}
               </a>
             </div>
           </motion.div>

@@ -163,6 +163,13 @@ export default function MTNPageContent() {
                     </div>
                   </Link>
                 </div>
+
+                {/* 30-month warranty badge */}
+                <div className="absolute bottom-12 left-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-slow z-10">
+                  <Shield size={28} className="mx-auto text-[#0099ce] mb-1" />
+                  <p className="text-3xl font-bold">30</p>
+                  <p className="text-xs text-white/70">{t("hero.warrantyMonths")}</p>
+                </div>
               </div>
             </motion.div>
           </div>

@@ -20,8 +20,10 @@ import {
 import { services, contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
+import { useTranslations } from "next-intl";
 
 export default function CotizacionServiciosPage() {
+  const t = useTranslations("pages.servicios.cotizacionPage");
   const [formData, setFormData] = useState({
     nombre: "",
     empresa: "",
@@ -50,17 +52,17 @@ export default function CotizacionServiciosPage() {
     const newErrors: Record<string, string> = {};
 
     if (!formData.nombre.trim())
-      newErrors.nombre = "El nombre es requerido";
-    if (!formData.email.trim()) newErrors.email = "El email es requerido";
+      newErrors.nombre = t("validationName");
+    if (!formData.email.trim()) newErrors.email = t("validationEmail");
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Email inválido";
+      newErrors.email = t("validationEmailInvalid");
     }
     if (!formData.telefono.trim())
-      newErrors.telefono = "El teléfono es requerido";
+      newErrors.telefono = t("validationPhone");
     if (!formData.tipoServicio)
-      newErrors.tipoServicio = "Seleccione un servicio";
+      newErrors.tipoServicio = t("validationService");
     if (!formData.descripcion.trim())
-      newErrors.descripcion = "Describa sus requerimientos";
+      newErrors.descripcion = t("validationDescription");
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -109,10 +111,10 @@ export default function CotizacionServiciosPage() {
         setCodigo(result.codigo);
         setIsSubmitted(true);
       } else {
-        setErrors((prev) => ({ ...prev, general: result.message || "Error al enviar la solicitud" }));
+        setErrors((prev) => ({ ...prev, general: result.message || t("errorGeneral") }));
       }
     } catch {
-      setErrors((prev) => ({ ...prev, general: "Error de conexión. Por favor intenta de nuevo." }));
+      setErrors((prev) => ({ ...prev, general: t("errorConnection") }));
     } finally {
       setIsSubmitting(false);
     }
@@ -155,12 +157,12 @@ export default function CotizacionServiciosPage() {
   const showTransformadorDetails = ['distribucion', 'potencia', 'pad-mounted', 'tipo-poste', 'subestacion'].includes(formData.tipoEquipo);
 
   const equipoOptions = [
-    { value: 'distribucion', label: 'Transformador de Distribución' },
-    { value: 'potencia', label: 'Transformador de Potencia' },
-    { value: 'pad-mounted', label: 'Pad Mounted' },
-    { value: 'tipo-poste', label: 'Tipo Poste' },
-    { value: 'subestacion', label: 'Subestación', excludeAlquiler: true },
-    { value: 'otro', label: 'Otro' },
+    { value: 'distribucion', label: t("equipmentOptions.distribucion") },
+    { value: 'potencia', label: t("equipmentOptions.potencia") },
+    { value: 'pad-mounted', label: t("equipmentOptions.padMounted") },
+    { value: 'tipo-poste', label: t("equipmentOptions.tipoPoste") },
+    { value: 'subestacion', label: t("equipmentOptions.subestacion"), excludeAlquiler: true },
+    { value: 'otro', label: t("equipmentOptions.otro") },
   ];
 
   if (isSubmitted) {
@@ -174,17 +176,17 @@ export default function CotizacionServiciosPage() {
               className="flex items-center gap-2 text-white/60 text-sm mb-8"
             >
               <Link href="/" className="hover:text-white transition-colors">
-                Inicio
+                {t("breadcrumbHome")}
               </Link>
               <ChevronRight size={16} />
               <Link
                 href="/servicios"
                 className="hover:text-white transition-colors"
               >
-                Servicios
+                {t("breadcrumbServicios")}
               </Link>
               <ChevronRight size={16} />
-              <span className="text-white">Cotización</span>
+              <span className="text-white">{t("breadcrumbTitle")}</span>
             </motion.div>
           </div>
         </section>
@@ -199,42 +201,40 @@ export default function CotizacionServiciosPage() {
               <CheckCircle2 size={40} className="text-green-600" />
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              ¡Solicitud Enviada Exitosamente!
+              {t("successTitle")}
             </h2>
             {codigo && (
               <div className="bg-[#00269b]/5 border border-[#00269b]/20 rounded-xl p-4 mb-6">
-                <p className="text-xs text-[#00269b] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+                <p className="text-xs text-[#00269b] uppercase tracking-wider font-semibold mb-1">{t("referenceNumber")}</p>
                 <p className="text-2xl font-bold text-[#00269b] tracking-widest">{codigo}</p>
-                <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
+                <p className="text-xs text-gray-500 mt-1">{t("saveCode")}</p>
               </div>
             )}
             <p className="text-gray-600 mb-8 text-lg">
-              Hemos recibido su solicitud de cotización. Nuestro equipo de
-              expertos se pondrá en contacto con usted en menos de 24 horas
-              para discutir sus requerimientos.
+              {t("successDescription")}
             </p>
 
             <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm mb-8">
               <h3 className="font-bold text-[#00269b] mb-4">
-                Mientras tanto...
+                {t("meanwhile")}
               </h3>
               <div className="space-y-3 text-left">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={20} className="text-[#00269b]" />
                   <span className="text-gray-600">
-                    Revise su email para confirmación
+                    {t("checkEmail")}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={20} className="text-[#00269b]" />
                   <span className="text-gray-600">
-                    Prepárese con información adicional del equipo
+                    {t("prepareInfo")}
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={20} className="text-[#00269b]" />
                   <span className="text-gray-600">
-                    Si es urgente, contáctenos directamente
+                    {t("ifUrgent")}
                   </span>
                 </div>
               </div>
@@ -245,7 +245,7 @@ export default function CotizacionServiciosPage() {
                 href="/servicios"
                 className="inline-flex items-center justify-center gap-2 bg-[#00269b] hover:bg-[#575857] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
               >
-                Ver Nuestros Servicios
+                {t("viewOurServices")}
               </Link>
               <button
                 onClick={() => {
@@ -270,13 +270,13 @@ export default function CotizacionServiciosPage() {
                 }}
                 className="inline-flex items-center justify-center gap-2 border-2 border-[#00269b] text-[#00269b] hover:bg-[#575857] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
               >
-                Nueva Cotización
+                {t("newQuote")}
               </button>
             </div>
 
             <div className="mt-8 pt-8 border-t border-gray-200">
               <p className="text-sm text-gray-600 mb-4">
-                ¿Necesita atención inmediata?
+                {t("needImmediate")}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
@@ -323,17 +323,17 @@ export default function CotizacionServiciosPage() {
             className="flex items-center gap-2 text-white/60 text-sm mb-8"
           >
             <Link href="/" className="hover:text-white transition-colors">
-              Inicio
+              {t("breadcrumbHome")}
             </Link>
             <ChevronRight size={16} />
             <Link
               href="/servicios"
               className="hover:text-white transition-colors"
             >
-              Servicios
+              {t("breadcrumbServicios")}
             </Link>
             <ChevronRight size={16} />
-            <span className="text-white">Cotización</span>
+            <span className="text-white">{t("breadcrumbTitle")}</span>
           </motion.div>
 
           <motion.div
@@ -343,11 +343,10 @@ export default function CotizacionServiciosPage() {
             className="max-w-3xl"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 leading-tight">
-              Solicitar Cotización
+              {t("title")}
             </h1>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Complete el formulario a continuación y nuestro equipo de expertos
-              le contactará para ofrecerle una solución personalizada.
+              {t("description")}
             </p>
           </motion.div>
         </div>
@@ -369,13 +368,13 @@ export default function CotizacionServiciosPage() {
                   className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100"
                 >
                   <h2 className="text-2xl font-bold text-[#00269b] mb-6">
-                    Información de Contacto
+                    {t("contactInfo")}
                   </h2>
 
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Nombre Completo <span className="text-red-500">*</span>
+                        {t("fullName")} <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
@@ -387,7 +386,7 @@ export default function CotizacionServiciosPage() {
                             ? "border-red-300 focus:border-red-500"
                             : "border-gray-300 focus:border-[#00269b]"
                         } focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors`}
-                        placeholder="Juan Pérez"
+                        placeholder={t("namePlaceholder")}
                       />
                       {errors.nombre && (
                         <p className="mt-1 text-sm text-red-500">
@@ -398,7 +397,7 @@ export default function CotizacionServiciosPage() {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Empresa
+                        {t("company")}
                       </label>
                       <input
                         type="text"
@@ -406,7 +405,7 @@ export default function CotizacionServiciosPage() {
                         value={formData.empresa}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#00269b] focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors"
-                        placeholder="Nombre de su empresa"
+                        placeholder={t("companyPlaceholder")}
                       />
                     </div>
                   </div>
@@ -414,7 +413,7 @@ export default function CotizacionServiciosPage() {
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email <span className="text-red-500">*</span>
+                        {t("email")} <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="email"
@@ -426,7 +425,7 @@ export default function CotizacionServiciosPage() {
                             ? "border-red-300 focus:border-red-500"
                             : "border-gray-300 focus:border-[#00269b]"
                         } focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors`}
-                        placeholder="juan@ejemplo.com"
+                        placeholder={t("emailPlaceholder")}
                       />
                       {errors.email && (
                         <p className="mt-1 text-sm text-red-500">
@@ -439,7 +438,7 @@ export default function CotizacionServiciosPage() {
                       <PhoneInputField
                         value={formData.telefono}
                         onChange={handlePhoneChange}
-                        label="Teléfono"
+                        label={t("phoneLabel")}
                         required
                         error={errors.telefono}
                         focusColor="#00269b"
@@ -450,13 +449,13 @@ export default function CotizacionServiciosPage() {
                   <div className="border-t border-gray-200 my-8"></div>
 
                   <h2 className="text-2xl font-bold text-[#00269b] mb-6">
-                    Detalles del Servicio
+                    {t("serviceDetails")}
                   </h2>
 
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Tipo de Servicio <span className="text-red-500">*</span>
+                        {t("serviceType")} <span className="text-red-500">*</span>
                       </label>
                       <select
                         name="tipoServicio"
@@ -468,7 +467,7 @@ export default function CotizacionServiciosPage() {
                             : "border-gray-300 focus:border-[#00269b]"
                         } focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors`}
                       >
-                        <option value="">Seleccione un servicio...</option>
+                        <option value="">{t("selectService")}</option>
                         {services.map((service) => (
                           <option key={service.id} value={service.id}>
                             {service.name}
@@ -484,7 +483,7 @@ export default function CotizacionServiciosPage() {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Tipo de Equipo
+                        {t("equipmentType")}
                       </label>
                       <select
                         name="tipoEquipo"
@@ -492,7 +491,7 @@ export default function CotizacionServiciosPage() {
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#00269b] focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors"
                       >
-                        <option value="">Seleccione tipo de equipo...</option>
+                        <option value="">{t("selectEquipment")}</option>
                         {equipoOptions
                           .filter((opt) => !('excludeAlquiler' in opt && opt.excludeAlquiler && formData.tipoServicio === 'alquiler'))
                           .map((opt) => (
@@ -513,12 +512,12 @@ export default function CotizacionServiciosPage() {
                     >
                       <div className="flex items-center gap-2 mb-4">
                         <Zap className="w-5 h-5 text-[#00269b]" />
-                        <h3 className="font-semibold text-gray-800">Especificaciones del Equipo</h3>
+                        <h3 className="font-semibold text-gray-800">{t("equipmentSpecs")}</h3>
                       </div>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Potencia (kVA)
+                            {t("power")}
                           </label>
                           <input
                             type="text"
@@ -526,12 +525,12 @@ export default function CotizacionServiciosPage() {
                             value={formData.potencia}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#00269b] focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors"
-                            placeholder="Ej: 500 kVA"
+                            placeholder={t("powerPlaceholder")}
                           />
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Configuración
+                            {t("configuration")}
                           </label>
                           <select
                             name="configuracion"
@@ -539,15 +538,15 @@ export default function CotizacionServiciosPage() {
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#00269b] focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors"
                           >
-                            <option value="">Seleccione...</option>
-                            <option value="monofasico">Monofásico</option>
-                            <option value="trifasico">Trifásico</option>
-                            <option value="autoprotegido">Autoprotegido (CSP)</option>
+                            <option value="">{t("selectConfig")}</option>
+                            <option value="monofasico">{t("singlePhase")}</option>
+                            <option value="trifasico">{t("threePhase")}</option>
+                            <option value="autoprotegido">{t("selfProtected")}</option>
                           </select>
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Voltaje Primario (kV)
+                            {t("primaryVoltage")}
                           </label>
                           <input
                             type="text"
@@ -555,12 +554,12 @@ export default function CotizacionServiciosPage() {
                             value={formData.voltajePrimario}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#00269b] focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors"
-                            placeholder="Ej: 13.2 kV"
+                            placeholder={t("primaryVoltagePlaceholder")}
                           />
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Voltaje Secundario (V)
+                            {t("secondaryVoltage")}
                           </label>
                           <input
                             type="text"
@@ -568,12 +567,12 @@ export default function CotizacionServiciosPage() {
                             value={formData.voltajeSecundario}
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#00269b] focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors"
-                            placeholder="Ej: 120/240 V"
+                            placeholder={t("secondaryVoltagePlaceholder")}
                           />
                         </div>
                         <div className="md:col-span-2">
                           <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Distribuidora de Energía
+                            {t("energyDistributor")}
                           </label>
                           <select
                             name="distribuidora"
@@ -581,14 +580,14 @@ export default function CotizacionServiciosPage() {
                             onChange={handleInputChange}
                             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#00269b] focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors"
                           >
-                            <option value="">Seleccione la distribuidora</option>
+                            <option value="">{t("selectDistributor")}</option>
                             <option value="EDENORTE">EDENORTE</option>
                             <option value="EDESUR">EDESUR</option>
                             <option value="EDEESTE">EDEESTE</option>
                             <option value="CEPM">CEPM</option>
                             <option value="CAPCANA">CAPCANA</option>
-                            <option value="USO INTERNO">USO INTERNO</option>
-                            <option value="OTROS">OTROS (ESPECIFICAR)</option>
+                            <option value="USO INTERNO">{t("internalUse")}</option>
+                            <option value="OTROS">{t("othersSpecify")}</option>
                           </select>
                         </div>
                       </div>
@@ -597,7 +596,7 @@ export default function CotizacionServiciosPage() {
 
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Ubicación del Equipo
+                      {t("equipmentLocation")}
                     </label>
                     <input
                       type="text"
@@ -605,13 +604,13 @@ export default function CotizacionServiciosPage() {
                       value={formData.ubicacion}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#00269b] focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors"
-                      placeholder="Ciudad, Provincia o Dirección"
+                      placeholder={t("locationPlaceholder")}
                     />
                   </div>
 
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Descripción de Requerimientos{" "}
+                      {t("requirementsDescription")}{" "}
                       <span className="text-red-500">*</span>
                     </label>
                     <textarea
@@ -624,7 +623,7 @@ export default function CotizacionServiciosPage() {
                           ? "border-red-300 focus:border-red-500"
                           : "border-gray-300 focus:border-[#00269b]"
                       } focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors resize-none`}
-                      placeholder="Describa el servicio que necesita, el estado del equipo, síntomas o problemas identificados, y cualquier información relevante..."
+                      placeholder={t("requirementsPlaceholder")}
                     />
                     {errors.descripcion && (
                       <p className="mt-1 text-sm text-red-500">
@@ -635,7 +634,7 @@ export default function CotizacionServiciosPage() {
 
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Adjuntar documento (opcional)
+                      {t("attachDocument")}
                     </label>
                     <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#00269b] transition-colors">
                       <input
@@ -648,8 +647,8 @@ export default function CotizacionServiciosPage() {
                       />
                       <label htmlFor="file-upload-srv" className="flex flex-col items-center cursor-pointer">
                         <Upload size={32} className="text-gray-400 mb-2" />
-                        <span className="text-sm text-gray-600">Haga clic para subir archivos</span>
-                        <span className="text-xs text-gray-400 mt-1">PDF, DOC, JPG, PNG, Excel (máx. 5 archivos)</span>
+                        <span className="text-sm text-gray-600">{t("clickToUpload")}</span>
+                        <span className="text-xs text-gray-400 mt-1">{t("fileTypes")}</span>
                       </label>
                     </div>
                     {files.length > 0 && (
@@ -676,7 +675,7 @@ export default function CotizacionServiciosPage() {
                         className="w-5 h-5 rounded border-gray-300 text-[#00269b] focus:ring-[#00269b]"
                       />
                       <span className="text-sm font-medium text-gray-700">
-                        Este servicio es urgente (requiere atención inmediata)
+                        {t("urgentService")}
                       </span>
                     </label>
                   </div>
@@ -689,12 +688,12 @@ export default function CotizacionServiciosPage() {
                     {isSubmitting ? (
                       <>
                         <Loader2 size={20} className="animate-spin" />
-                        Enviando...
+                        {t("sending")}
                       </>
                     ) : (
                       <>
                         <Send size={20} />
-                        Enviar Solicitud
+                        {t("sendRequest")}
                       </>
                     )}
                   </button>
@@ -716,14 +715,13 @@ export default function CotizacionServiciosPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-[#00269b]">
-                      Respuesta Rápida
+                      {t("quickResponse")}
                     </h3>
-                    <p className="text-sm text-gray-600">En menos de 24 horas</p>
+                    <p className="text-sm text-gray-600">{t("quickResponseTime")}</p>
                   </div>
                 </div>
                 <p className="text-sm text-gray-600">
-                  Nuestro equipo revisará su solicitud y se pondrá en contacto
-                  con una cotización personalizada.
+                  {t("quickResponseDesc")}
                 </p>
               </motion.div>
 
@@ -739,14 +737,13 @@ export default function CotizacionServiciosPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-[#00269b]">
-                      50+ Años de Experiencia
+                      {t("experience")}
                     </h3>
-                    <p className="text-sm text-gray-600">Servicio garantizado</p>
+                    <p className="text-sm text-gray-600">{t("experienceSubtitle")}</p>
                   </div>
                 </div>
                 <p className="text-sm text-gray-600">
-                  Respaldados por décadas de experiencia en servicios eléctricos
-                  especializados.
+                  {t("experienceDesc")}
                 </p>
               </motion.div>
 
@@ -762,13 +759,13 @@ export default function CotizacionServiciosPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-[#00269b]">
-                      Servicio de Emergencia
+                      {t("emergencyService")}
                     </h3>
-                    <p className="text-sm text-gray-600">Disponible 24/7</p>
+                    <p className="text-sm text-gray-600">{t("emergencyAvailable")}</p>
                   </div>
                 </div>
                 <p className="text-sm text-gray-600 mb-4">
-                  Para emergencias, contáctenos directamente:
+                  {t("emergencyDesc")}
                 </p>
                 <div className="space-y-2">
                   <a
@@ -798,18 +795,17 @@ export default function CotizacionServiciosPage() {
               >
                 <Settings size={32} className="mb-4 opacity-80" />
                 <h3 className="font-bold text-lg mb-2">
-                  ¿Necesita Ayuda para Completar el Formulario?
+                  {t("needHelp")}
                 </h3>
                 <p className="text-white/90 text-sm mb-4">
-                  Nuestro equipo puede asistirle telefónicamente para recopilar
-                  la información necesaria.
+                  {t("needHelpDesc")}
                 </p>
                 <a
                   href={`tel:${contactInfo.phone}`}
                   className="inline-flex items-center gap-2 bg-white text-[#00269b] px-4 py-2 rounded-lg font-semibold hover:bg-white/90 transition-colors text-sm"
                 >
                   <Phone size={16} />
-                  Llamar Ahora
+                  {t("callNow")}
                 </a>
               </motion.div>
             </div>

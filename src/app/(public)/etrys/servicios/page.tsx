@@ -24,6 +24,7 @@ import {
 import { repairServices, repairCenter, etrysInfo } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { useTranslations } from "next-intl";
 
 const serviceIcons: { [key: string]: React.ElementType } = {
   coil: Wrench,
@@ -37,6 +38,7 @@ const serviceIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function EtrysServiciosPage() {
+  const t = useTranslations("etrysPage.serviciosFullPage");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -52,7 +54,7 @@ export default function EtrysServiciosPage() {
               ETRYS
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Servicios</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -61,29 +63,27 @@ export default function EtrysServiciosPage() {
               animate={{ opacity: 1, x: 0 }}
             >
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                Servicios de Reparación
+                {t("heroBadge")}
               </span>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
-                Nuestros Servicios de Reparación
+                {t("heroTitle")}
               </h1>
               <p className="text-xl text-white/90 mb-6">
-                Ofrecemos un servicio integral de inspección, diagnóstico, 
-                reparación y mantenimiento de transformadores con más de 50 años 
-                de experiencia en el sector.
+                {t("heroDescription")}
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/etrys/cotizaciones?servicio=reparacion"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                 >
-                  Solicitar Servicio
+                  {t("requestService")}
                   <ArrowRight size={20} />
                 </Link>
                 <Link
                   href="/etrys/servicios/centro-reparacion"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-colors"
                 >
-                  Ver Centro de Reparación
+                  {t("viewRepairCenter")}
                 </Link>
               </div>
             </motion.div>
@@ -104,7 +104,7 @@ export default function EtrysServiciosPage() {
                     className="object-cover"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
-                    ANTES
+                    {t("before")}
                   </span>
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden">
@@ -115,7 +115,7 @@ export default function EtrysServiciosPage() {
                     className="object-cover"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
-                    ANTES
+                    {t("before")}
                   </span>
                 </div>
               </div>
@@ -128,7 +128,7 @@ export default function EtrysServiciosPage() {
                     className="object-cover"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
-                    DESPUÉS
+                    {t("after")}
                   </span>
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden">
@@ -139,7 +139,7 @@ export default function EtrysServiciosPage() {
                     className="object-cover"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
-                    DESPUÉS
+                    {t("after")}
                   </span>
                 </div>
               </div>
@@ -158,11 +158,10 @@ export default function EtrysServiciosPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Servicios Integrales
+              {t("servicesTitle")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Nuestro equipo de técnicos especializados ofrece una amplia gama de 
-              servicios para mantener sus transformadores en óptimas condiciones.
+              {t("servicesDescription")}
             </p>
           </motion.div>
 
@@ -237,7 +236,7 @@ export default function EtrysServiciosPage() {
               viewport={{ once: true }}
             >
               <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
-                Nuestras Instalaciones
+                {t("facilitiesBadge")}
               </span>
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
                 {repairCenter.name}
@@ -265,7 +264,7 @@ export default function EtrysServiciosPage() {
                 href="/etrys/servicios/centro-reparacion"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
               >
-                Ver Instalaciones Completas
+                {t("viewFullFacilities")}
                 <ArrowRight size={20} />
               </Link>
             </motion.div>
@@ -329,22 +328,21 @@ export default function EtrysServiciosPage() {
                 </div>
                 <div>
                   <span className="text-5xl font-bold">18</span>
-                  <span className="text-2xl font-medium ml-2">meses</span>
+                  <span className="text-2xl font-medium ml-2">{t("months")}</span>
                 </div>
               </div>
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-                Garantía Líder en la Industria
+                {t("warrantyTitle")}
               </h2>
               <p className="text-xl text-white/90 mb-6">
-                Todos nuestros trabajos de reparación y remanufactura cuentan con 
-                una garantía de 18 meses, la más extensa del mercado.
+                {t("warrantyDescription")}
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Cobertura completa de mano de obra",
-                  "Garantía en componentes reemplazados",
-                  "Soporte técnico incluido",
-                  "Respuesta rápida ante cualquier incidencia",
+                  t("warrantyItem1"),
+                  t("warrantyItem2"),
+                  t("warrantyItem3"),
+                  t("warrantyItem4"),
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3">
                     <CheckCircle2 size={20} className="shrink-0" />
@@ -360,17 +358,16 @@ export default function EtrysServiciosPage() {
               viewport={{ once: true }}
               className="bg-white rounded-2xl p-8 text-gray-900"
             >
-              <h3 className="text-2xl font-bold mb-4">Solicite un Diagnóstico</h3>
+              <h3 className="text-2xl font-bold mb-4">{t("diagnosisTitle")}</h3>
               <p className="text-gray-600 mb-6">
-                Nuestros especialistas evaluarán su equipo y le proporcionarán un 
-                presupuesto detallado sin compromiso.
+                {t("diagnosisDescription")}
               </p>
               <div className="space-y-4">
                 <Link
                   href="/etrys/cotizaciones?servicio=reparacion"
                   className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                 >
-                  Solicitar Diagnóstico
+                  {t("requestDiagnosis")}
                   <ArrowRight size={20} />
                 </Link>
                 <a
@@ -392,7 +389,7 @@ export default function EtrysServiciosPage() {
               </div>
               <p className="text-xs text-gray-500 mt-4 flex items-center gap-2">
                 <Clock size={14} />
-                Respuesta en menos de 30 minutos en horario laboral
+                {t("responseTime")}
               </p>
             </motion.div>
           </div>
@@ -408,24 +405,24 @@ export default function EtrysServiciosPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              ¿Necesita reparar su transformador?
+              {t("ctaTitle")}
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              Confíe en los expertos con más de 50 años de experiencia.
+              {t("ctaDescription")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/etrys/cotizaciones?servicio=reparacion"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
-                Solicitar Cotización
+                {t("requestQuote")}
                 <ArrowRight size={20} />
               </Link>
               <Link
                 href="/etrys/servicios/centro-reparacion"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-colors"
               >
-                Ver Centro de Reparación
+                {t("viewRepairCenter")}
               </Link>
             </div>
           </motion.div>

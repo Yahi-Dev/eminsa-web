@@ -64,7 +64,7 @@ export const tiposRecurso = [
 export const divisionesRecurso = [
   { value: "general", label: "General" },
   { value: "mtn", label: "MTN" },
-  { value: "etrys", label: "ETRYS / RST" },
+  { value: "etrys", label: "RST" },
   { value: "eic", label: "EIC" },
   { value: "servicios", label: "Servicios" },
 ] as const;

@@ -1,4 +1,5 @@
-import { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -14,14 +15,10 @@ import {
   remanufacturedAdvantages,
   testsPerformed,
 } from "@/config/etrys-data";
-
-export const metadata: Metadata = {
-  title: "Productos - Transformadores RST | ETRYS by EMINSA",
-  description:
-    "Explore nuestra línea completa de transformadores remanufacturados: Tipo Poste, Pad-Mounted y Subestación. Disponibilidad inmediata, garantía de 18 meses y cumplimiento con normas ANSI/IEEE.",
-};
+import { useTranslations } from "next-intl";
 
 export default function EtrysProductosPage() {
+  const t = useTranslations("etrysPage.productosPage");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -37,16 +34,15 @@ export default function EtrysProductosPage() {
               RST
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Productos</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <div className="max-w-3xl">
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              Transformadores Remanufacturados
+              {t("heroTitle")}
             </h1>
             <p className="text-xl text-white/80">
-              Unidades restauradas bajo estándares de clase mundial. Disponibilidad
-              inmediata, costos competitivos y garantía de 18 meses.
+              {t("heroDescription")}
             </p>
           </div>
         </div>
@@ -129,7 +125,7 @@ export default function EtrysProductosPage() {
                       {/* Header */}
                       <div>
                         <span className="inline-block text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-2">
-                          Transformador Remanufacturado
+                          {t("remanufacturedLabel")}
                         </span>
                         <h2 className="text-3xl font-bold text-gray-900">
                           {product.name}
@@ -144,11 +140,11 @@ export default function EtrysProductosPage() {
                       {/* Specs Grid */}
                       <div className="grid grid-cols-2 gap-4 py-4 border-y border-gray-100">
                         <div>
-                          <p className="text-sm text-gray-500">Potencia</p>
+                          <p className="text-sm text-gray-500">{t("power")}</p>
                           <p className="font-semibold text-gray-900">{product.powerRange}</p>
                         </div>
                         <div>
-                          <p className="text-sm text-gray-500">Voltaje</p>
+                          <p className="text-sm text-gray-500">{t("voltage")}</p>
                           <p className="font-semibold text-gray-900">{product.voltageRange}</p>
                         </div>
                       </div>
@@ -156,7 +152,7 @@ export default function EtrysProductosPage() {
                       {/* Features */}
                       <div className="space-y-2">
                         <p className="text-sm font-semibold text-gray-700">
-                          Características principales:
+                          {t("mainFeatures")}
                         </p>
                         <div className="grid grid-cols-1 gap-1.5">
                           {product.features.slice(0, 4).map((feature) => (
@@ -173,9 +169,9 @@ export default function EtrysProductosPage() {
                         <ShieldCheck size={24} className="text-[#0099ce] shrink-0" />
                         <div>
                           <span className="font-bold text-[#007ba8] block text-sm">
-                            Garantía 18 meses
+                            {t("warranty18")}
                           </span>
-                          <span className="text-xs text-[#0099ce]">Líder en la industria</span>
+                          <span className="text-xs text-[#0099ce]">{t("industryLeader")}</span>
                         </div>
                       </div>
 
@@ -185,14 +181,14 @@ export default function EtrysProductosPage() {
                           href={`/etrys/productos/${product.slug}`}
                           className="inline-flex items-center gap-2 bg-[#0099ce] hover:bg-[#007ba8] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                         >
-                          Ver Detalles
+                          {t("viewDetails")}
                           <ArrowRight size={18} />
                         </Link>
                         <Link
                           href={`/etrys/cotizaciones?producto=${product.slug}`}
                           className="inline-flex items-center gap-2 border-2 border-[#0099ce] text-[#0099ce] hover:bg-[#0099ce] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                         >
-                          Cotizar
+                          {t("quote")}
                         </Link>
                       </div>
                     </div>
@@ -208,7 +204,7 @@ export default function EtrysProductosPage() {
       <section className="py-16 bg-white">
         <div className="container-eminsa">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Comparativa Rápida
+            {t("quickComparison")}
           </h2>
 
           <div className="overflow-x-auto">
@@ -216,7 +212,7 @@ export default function EtrysProductosPage() {
               <thead>
                 <tr className="border-b-2 border-gray-200">
                   <th className="text-left py-4 px-4 font-semibold text-gray-900">
-                    Característica
+                    {t("feature")}
                   </th>
                   {remanufacturedProducts.map((p) => (
                     <th
@@ -230,7 +226,7 @@ export default function EtrysProductosPage() {
               </thead>
               <tbody className="divide-y divide-gray-100">
                 <tr>
-                  <td className="py-4 px-4 text-gray-600">Potencia</td>
+                  <td className="py-4 px-4 text-gray-600">{t("power")}</td>
                   {remanufacturedProducts.map((p) => (
                     <td key={p.id} className="text-center py-4 px-4 font-medium">
                       {p.powerRange}
@@ -238,7 +234,7 @@ export default function EtrysProductosPage() {
                   ))}
                 </tr>
                 <tr className="bg-gray-50">
-                  <td className="py-4 px-4 text-gray-600">Voltaje</td>
+                  <td className="py-4 px-4 text-gray-600">{t("voltage")}</td>
                   {remanufacturedProducts.map((p) => (
                     <td key={p.id} className="text-center py-4 px-4 font-medium">
                       {p.voltageRange}
@@ -246,7 +242,7 @@ export default function EtrysProductosPage() {
                   ))}
                 </tr>
                 <tr>
-                  <td className="py-4 px-4 text-gray-600">Normativas</td>
+                  <td className="py-4 px-4 text-gray-600">{t("standards")}</td>
                   {remanufacturedProducts.map((p) => (
                     <td key={p.id} className="text-center py-4 px-4">
                       <div className="flex flex-wrap justify-center gap-1">
@@ -263,11 +259,11 @@ export default function EtrysProductosPage() {
                   ))}
                 </tr>
                 <tr className="bg-gray-50">
-                  <td className="py-4 px-4 text-gray-600">Garantía</td>
+                  <td className="py-4 px-4 text-gray-600">{t("warranty")}</td>
                   {remanufacturedProducts.map((p) => (
                     <td key={p.id} className="text-center py-4 px-4">
                       <span className="bg-[#0099ce]/10 text-[#0099ce] text-xs px-2 py-0.5 rounded font-medium">
-                        18 meses
+                        {t("18months")}
                       </span>
                     </td>
                   ))}
@@ -283,14 +279,13 @@ export default function EtrysProductosPage() {
         <div className="container-eminsa">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
-              Control de Calidad
+              {t("qualityControl")}
             </span>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Pruebas Realizadas
+              {t("testsPerformed")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Cada transformador remanufacturado pasa por un riguroso programa de
-              pruebas para garantizar su rendimiento y seguridad.
+              {t("testsDescription")}
             </p>
           </div>
 
@@ -304,7 +299,7 @@ export default function EtrysProductosPage() {
                   <h3 className="font-semibold text-gray-900">{test.shortName}</h3>
                   {test.isOptional && (
                     <span className="px-2 py-0.5 bg-[#0099ce]/10 text-[#0099ce] text-xs font-medium rounded">
-                      Opcional
+                      {t("optional")}
                     </span>
                   )}
                 </div>
@@ -318,16 +313,15 @@ export default function EtrysProductosPage() {
       {/* CTA */}
       <section className="py-16 bg-[#0099ce] text-white">
         <div className="container-eminsa text-center">
-          <h2 className="text-3xl font-bold mb-4">¿No encuentra lo que busca?</h2>
+          <h2 className="text-3xl font-bold mb-4">{t("ctaTitle")}</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            Fabricamos y remanufacturamos transformadores a medida según sus
-            especificaciones. Contáctenos para una solución personalizada.
+            {t("ctaDescription")}
           </p>
           <Link
             href="/etrys/cotizaciones"
             className="inline-flex items-center gap-2 bg-[#0099ce] hover:bg-[#007ba8] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
           >
-            Solicitar Cotización Personalizada
+            {t("ctaButton")}
             <ArrowRight size={20} />
           </Link>
         </div>

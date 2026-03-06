@@ -22,6 +22,7 @@ import {
 import { aboutEtrys, etrysInfo } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { useTranslations } from "next-intl";
 
 const valueIcons: { [key: string]: React.ElementType } = {
   award: Award,
@@ -31,6 +32,7 @@ const valueIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function EtrysNosotrosPage() {
+  const t = useTranslations("etrysPage.nosotrosFullPage");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -46,7 +48,7 @@ export default function EtrysNosotrosPage() {
               ETRYS
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Nosotros</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -55,7 +57,7 @@ export default function EtrysNosotrosPage() {
               animate={{ opacity: 1, x: 0 }}
             >
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                Quiénes Somos
+                {t("heroBadge")}
               </span>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
                 {aboutEtrys.title}
@@ -109,7 +111,7 @@ export default function EtrysNosotrosPage() {
                 <Target size={32} className="text-[#0099ce]" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Nuestra Misión
+                {t("missionTitle")}
               </h2>
               <p className="text-gray-600 text-lg">
                 {aboutEtrys.mission}
@@ -128,7 +130,7 @@ export default function EtrysNosotrosPage() {
                 <Eye size={32} className="text-[#0099ce]" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Nuestra Visión
+                {t("visionTitle")}
               </h2>
               <p className="text-gray-600 text-lg">
                 {aboutEtrys.vision}
@@ -191,10 +193,10 @@ export default function EtrysNosotrosPage() {
               className="order-1 lg:order-2"
             >
               <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
-                Nuestra Posición
+                {t("positionBadge")}
               </span>
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-                Líderes en el Mercado
+                {t("positionTitle")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
                 {aboutEtrys.position}
@@ -227,14 +229,13 @@ export default function EtrysNosotrosPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
-              Lo Que Nos Define
+              {t("valuesBadge")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Nuestros Valores
+              {t("valuesTitle")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Los principios que guían cada una de nuestras acciones y nos 
-              permiten ofrecer un servicio de excelencia.
+              {t("valuesDescription")}
             </p>
           </motion.div>
 
@@ -276,10 +277,10 @@ export default function EtrysNosotrosPage() {
               viewport={{ once: true }}
             >
               <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
-                Nuestro Equipo
+                {t("teamBadge")}
               </span>
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-                Profesionales Comprometidos
+                {t("teamTitle")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
                 {aboutEtrys.team}
@@ -287,10 +288,10 @@ export default function EtrysNosotrosPage() {
 
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { icon: Users, label: "Técnicos Certificados", value: "25+" },
-                  { icon: Award, label: "Años Promedio Exp.", value: "15+" },
-                  { icon: Clock, label: "Capacitación Anual", value: "200+ hrs" },
-                  { icon: ShieldCheck, label: "Certificaciones", value: "ISO 9001" },
+                  { icon: Users, label: t("technicians"), value: "25+" },
+                  { icon: Award, label: t("avgExperience"), value: "15+" },
+                  { icon: Clock, label: t("annualTraining"), value: "200+ hrs" },
+                  { icon: ShieldCheck, label: t("certifications"), value: "ISO 9001" },
                 ].map((item) => (
                   <div
                     key={item.label}
@@ -332,10 +333,10 @@ export default function EtrysNosotrosPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              Nuestra Trayectoria
+              {t("trajectoryTitle")}
             </h2>
             <p className="text-xl text-white/90">
-              Más de cinco décadas de compromiso con la excelencia.
+              {t("trajectoryDescription")}
             </p>
           </motion.div>
 
@@ -345,12 +346,12 @@ export default function EtrysNosotrosPage() {
 
             <div className="space-y-8">
               {[
-                { year: "1970s", event: "Fundación de EMINSA como fabricante de transformadores" },
-                { year: "1980s", event: "Inicio de servicios de reparación y mantenimiento" },
-                { year: "1990s", event: "Expansión del centro de reparación" },
-                { year: "2000s", event: "Certificación ISO 9001 y modernización de equipos" },
-                { year: "2010s", event: "Lanzamiento de ETRYS como marca de remanufactura" },
-                { year: "2020s", event: "Líder del mercado en República Dominicana" },
+                { year: "1970s", event: t("milestone1") },
+                { year: "1980s", event: t("milestone2") },
+                { year: "1990s", event: t("milestone3") },
+                { year: "2000s", event: t("milestone4") },
+                { year: "2010s", event: t("milestone5") },
+                { year: "2020s", event: t("milestone6") },
               ].map((milestone, index) => (
                 <motion.div
                   key={milestone.year}
@@ -387,18 +388,17 @@ export default function EtrysNosotrosPage() {
             className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 lg:p-12 text-white text-center"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              ¿Listo para trabajar con nosotros?
+              {t("ctaTitle")}
             </h2>
             <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-              Descubra por qué somos la elección preferida para reparación y 
-              remanufactura de transformadores.
+              {t("ctaDescription")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/etrys/cotizaciones"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
-                Solicitar Cotización
+                {t("requestQuote")}
                 <ArrowRight size={20} />
               </Link>
               <a
@@ -406,7 +406,7 @@ export default function EtrysNosotrosPage() {
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-100 transition-colors"
               >
                 <Phone size={20} />
-                Llamar Ahora
+                {t("callNow")}
               </a>
               <a
                 href={getWhatsAppUrl()}

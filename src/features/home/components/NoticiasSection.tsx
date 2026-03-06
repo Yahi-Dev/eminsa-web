@@ -110,7 +110,7 @@ export default function NoticiasSection() {
         {!loading && noticias.length === 0 && (
           <div className="text-center py-20 text-[#6d6e6d]">
             <Newspaper size={48} className="mx-auto mb-4 opacity-30" />
-            <p className="text-lg">No hay noticias publicadas aún.</p>
+            <p className="text-lg">{t("news.empty")}</p>
           </div>
         )}
 

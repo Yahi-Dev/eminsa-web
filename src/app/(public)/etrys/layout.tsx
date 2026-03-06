@@ -147,10 +147,8 @@ export default function EtrysLayout({
             : "top-20 xl:top-28 bg-white/60 backdrop-blur-sm"
         )}
       >
-        <div className="container-eminsa">
-          <div className="flex items-center justify-center py-2">
+        <div className="flex items-center justify-center px-4 lg:px-6 xl:px-10 w-full py-2">
             <div className="flex items-center gap-1">
-              <div className="flex items-center gap-1">
                 {etrysNavItems.map((item) => {
                   const Icon = item.icon;
                   const active = isActive(item.href, item.exact);
@@ -272,9 +270,7 @@ export default function EtrysLayout({
                     </div>
                   );
                 })}
-              </div>
             </div>
-          </div>
         </div>
       </nav>
 
@@ -291,10 +287,10 @@ export default function EtrysLayout({
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0099ce] to-[#007ba8] flex items-center justify-center">
-              <span className="text-white font-bold text-sm">E</span>
+              <span className="text-white font-bold text-sm">R</span>
             </div>
             <div>
-              <span className="text-[#0099ce] font-bold">ETRYS</span>
+              <span className="text-[#0099ce] font-bold">RST</span>
               <span className="text-gray-400 text-xs block -mt-1">by EMINSA</span>
             </div>
           </div>

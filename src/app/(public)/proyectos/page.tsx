@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 
 const divisionOptions = [
   { id: "MTN", name: "MTN", color: "#00269b" },
-  { id: "RST", name: "ETRYS", color: "#0099ce" },
+  { id: "RST", name: "RST", color: "#0099ce" },
   { id: "EIC", name: "EIC", color: "#009e49" },
   { id: "SRV", name: "Servicios", color: "#6d6e6d" },
 ];

@@ -3,6 +3,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -116,6 +117,8 @@ export default function MarcaDetailPage({
 }) {
   const { slug } = React.use(params);
 
+  const t = useTranslations("eicPage.brandSlug");
+
   const brand = getEICBrandBySlug(slug);
   if (!brand) notFound();
 
@@ -148,7 +151,7 @@ export default function MarcaDetailPage({
               EIC
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white/50">Marcas Representadas</span>
+            <span className="text-white/50">{t("breadcrumbBrands")}</span>
             <ChevronRight size={14} />
             <span className="text-white font-medium">{brand.name}</span>
           </nav>
@@ -193,7 +196,7 @@ export default function MarcaDetailPage({
                   href={`/eic/cotizaciones?marca=${slug}`}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
-                  Solicitar Cotización
+                  {t("requestQuote")}
                   <ArrowRight size={18} />
                 </Link>
                 <a
@@ -213,7 +216,7 @@ export default function MarcaDetailPage({
                     className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-colors"
                   >
                     <BookOpen size={18} />
-                    Catálogo {brand.name}
+                    {t("catalog", { brand: brand.name })}
                   </a>
                 ) : (
                   <Link
@@ -221,7 +224,7 @@ export default function MarcaDetailPage({
                     className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-colors"
                   >
                     <BookOpen size={18} />
-                    Solicitar Catálogo
+                    {t("requestCatalog")}
                   </Link>
                 )}
               </div>
@@ -266,14 +269,13 @@ export default function MarcaDetailPage({
               className="inline-block px-3 py-1 text-sm font-medium rounded-full mb-4"
               style={{ backgroundColor: `${categoryColor}15`, color: categoryColor }}
             >
-              Portafolio de Productos
+              {t("productPortfolio")}
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Productos {brand.name}
+              {t("productsBrand", { brand: brand.name })}
             </h2>
             <p className="text-gray-500 mt-2">
-              {products.length} producto{products.length !== 1 ? "s" : ""}{" "}
-              disponible{products.length !== 1 ? "s" : ""}
+              {t("productsAvailable", { count: products.length })}
             </p>
           </motion.div>
 
@@ -281,13 +283,13 @@ export default function MarcaDetailPage({
             <div className="text-center py-16 text-gray-400">
               <Globe size={48} className="mx-auto mb-4 opacity-40" />
               <p className="text-lg">
-                Próximamente productos de {brand.name}.
+                {t("comingSoon", { brand: brand.name })}
               </p>
               <Link
                 href={`/eic/cotizaciones?marca=${slug}`}
                 className="inline-flex items-center gap-2 mt-4 text-[#009e49] font-medium hover:underline"
               >
-                Consultar disponibilidad
+                {t("checkAvailability")}
                 <ArrowRight size={16} />
               </Link>
             </div>
@@ -356,7 +358,7 @@ export default function MarcaDetailPage({
                         {/* Download ficha técnica */}
                         <DownloadButton
                           url={product.datasheetUrl}
-                          label="Ficha Técnica"
+                          label={t("datasheet")}
                           brandSlug={slug}
                           productSlug={product.slug}
                           variant="outline"
@@ -371,7 +373,7 @@ export default function MarcaDetailPage({
                       {product.specs.length > 0 && (
                         <div className="mb-5">
                           <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
-                            Especificaciones
+                            {t("specifications")}
                           </h4>
                           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                             {product.specs.map((spec) => (
@@ -396,7 +398,7 @@ export default function MarcaDetailPage({
                         {product.features.length > 0 && (
                           <div>
                             <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
-                              Características
+                              {t("features")}
                             </h4>
                             <ul className="space-y-1.5">
                               {product.features.map((f) => (
@@ -419,7 +421,7 @@ export default function MarcaDetailPage({
                         {product.applications.length > 0 && (
                           <div>
                             <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">
-                              Aplicaciones
+                              {t("applications")}
                             </h4>
                             <div className="flex flex-wrap gap-1.5">
                               {product.applications.map((app) => (
@@ -442,13 +444,13 @@ export default function MarcaDetailPage({
                           className="inline-flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-lg transition-colors"
                         >
                           <ExternalLink size={14} />
-                          Ver detalle completo
+                          {t("viewFullDetail")}
                         </Link>
                         <Link
                           href={`/eic/cotizaciones?producto=${product.slug}`}
                           className="inline-flex items-center gap-2 px-4 py-2 bg-[#009e49] hover:bg-[#007d3a] text-white text-sm font-semibold rounded-lg transition-colors"
                         >
-                          Solicitar Cotización
+                          {t("requestQuote")}
                           <ArrowRight size={14} />
                         </Link>
                       </div>
@@ -481,18 +483,17 @@ export default function MarcaDetailPage({
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900">
-                  Documentación Completa — {brand.name}
+                  {t("fullDocumentation", { brand: brand.name })}
                 </h3>
                 <p className="text-gray-500 text-sm mt-1">
-                  Accede al catálogo completo de productos y fichas técnicas de{" "}
-                  {brand.name}.
+                  {t("accessCatalog", { brand: brand.name })}
                 </p>
               </div>
             </div>
             <div className="flex flex-wrap gap-3 shrink-0">
               <DownloadButton
                 url={brand.catalogUrl}
-                label={`Catálogo ${brand.name}`}
+                label={t("catalog", { brand: brand.name })}
                 brandSlug={slug}
                 variant="solid"
               />
@@ -501,7 +502,7 @@ export default function MarcaDetailPage({
                 className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-sm font-medium rounded-lg transition-colors"
               >
                 <Mail size={15} />
-                Contactar especialista
+                {t("contactSpecialist")}
               </Link>
             </div>
           </motion.div>
@@ -524,18 +525,17 @@ export default function MarcaDetailPage({
             viewport={{ once: true }}
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              ¿Necesita productos {brand.name}?
+              {t("ctaTitle", { brand: brand.name })}
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-              Somos representantes exclusivos en República Dominicana. Solicite
-              cotización y reciba asesoría especializada para su proyecto.
+              {t("ctaDescription")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/eic/cotizaciones?marca=${slug}`}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
-                Solicitar Cotización
+                {t("requestQuote")}
                 <ArrowRight size={20} />
               </Link>
               <a

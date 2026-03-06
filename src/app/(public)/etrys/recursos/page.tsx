@@ -15,6 +15,7 @@ import { etrysResources } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import RecursosDinamicos from "@/components/shared/RecursosDinamicos";
+import { useTranslations } from "next-intl";
 
 const resourceIcons: { [key: string]: React.ElementType } = {
   "file-text": FileText,
@@ -22,6 +23,7 @@ const resourceIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function EtrysRecursosPage() {
+  const t = useTranslations("etrysPage.recursosPage");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -36,7 +38,7 @@ export default function EtrysRecursosPage() {
               ETRYS
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Recursos</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <motion.div
@@ -45,14 +47,13 @@ export default function EtrysRecursosPage() {
             className="max-w-3xl"
           >
             <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-              Centro de Recursos
+              {t("heroBadge")}
             </span>
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
-              Recursos y Documentación
+              {t("heroTitle")}
             </h1>
             <p className="text-xl text-white/90">
-              Acceda a fichas técnicas, herramientas de cálculo y documentación
-              útil para el mantenimiento de sus transformadores.
+              {t("heroDescription")}
             </p>
           </motion.div>
         </div>
@@ -88,7 +89,7 @@ export default function EtrysRecursosPage() {
                       href={resource.url}
                       className="inline-flex items-center gap-2 text-[#0099ce] font-semibold hover:text-[#007ba8] transition-colors"
                     >
-                      Acceder
+                      {t("access")}
                       <ArrowRight size={18} />
                     </Link>
                   ) : null}
@@ -105,7 +106,7 @@ export default function EtrysRecursosPage() {
           <RecursosDinamicos
             division="RST"
             accentColor="#0099ce"
-            title="Fichas Técnicas"
+            title={t("dataSheetsTitle")}
           />
         </div>
       </section>
@@ -120,11 +121,10 @@ export default function EtrysRecursosPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-                ¿No encuentra lo que busca?
+                {t("ctaTitle")}
               </h2>
               <p className="text-xl text-white/90 mb-6">
-                Nuestro equipo técnico está disponible para responder cualquier
-                consulta sobre nuestros productos y servicios.
+                {t("ctaDescription")}
               </p>
             </motion.div>
 
@@ -154,7 +154,7 @@ export default function EtrysRecursosPage() {
                 href="/etrys/cotizaciones"
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
               >
-                Solicitar Cotización
+                {t("requestQuote")}
                 <ArrowRight size={20} />
               </Link>
             </motion.div>

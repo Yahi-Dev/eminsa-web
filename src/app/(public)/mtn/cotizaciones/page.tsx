@@ -129,11 +129,11 @@ function CotizacionesContent() {
       });
 
       const json = await res.json();
-      if (!json.success) throw new Error(json.message || 'Error al enviar');
+      if (!json.success) throw new Error(json.message || t("errorSubmit"));
       setCodigo(json.codigo);
       setIsSubmitted(true);
     } catch (err) {
-      setErrors(prev => ({ ...prev, general: err instanceof Error ? err.message : 'Error de conexión. Intente de nuevo.' }));
+      setErrors(prev => ({ ...prev, general: err instanceof Error ? err.message : t("errorConnection") }));
     } finally {
       setIsSubmitting(false);
     }
@@ -371,7 +371,7 @@ function CotizacionesContent() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Capacidad (kVA) *
+                      {t("capacityKva")}
                     </label>
                     <select
                       name="capacidad"
@@ -381,10 +381,10 @@ function CotizacionesContent() {
                         errors.capacidad ? "border-red-500" : "border-gray-300"
                       }`}
                     >
-                      <option value="">Seleccione capacidad</option>
+                      <option value="">{t("selectCapacity")}</option>
                       {capacities.map((cap) => (
                         <option key={cap} value={cap}>
-                          {cap === "Otro" ? "Otro (especificar)" : `${cap} kVA`}
+                          {cap === "Otro" ? t("otherSpecify") : `${cap} kVA`}
                         </option>
                       ))}
                     </select>
@@ -392,7 +392,7 @@ function CotizacionesContent() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Cantidad
+                      {t("quantity")}
                     </label>
                     <input
                       type="number"
@@ -405,7 +405,7 @@ function CotizacionesContent() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Voltaje Primario
+                      {t("primaryVoltage")}
                     </label>
                     <input
                       type="text"
@@ -413,12 +413,12 @@ function CotizacionesContent() {
                       value={formData.voltajePrimario}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
-                      placeholder="Ej: 13.2 kV"
+                      placeholder={t("primaryVoltagePlaceholder")}
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Voltaje Secundario
+                      {t("secondaryVoltage")}
                     </label>
                     <input
                       type="text"
@@ -426,12 +426,12 @@ function CotizacionesContent() {
                       value={formData.voltajeSecundario}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
-                      placeholder="Ej: 120/240 V"
+                      placeholder={t("secondaryVoltagePlaceholder")}
                     />
                   </div>
                   <div className="sm:col-span-2">
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Distribuidora de Energía
+                      {t("distributor")}
                     </label>
                     <select
                       name="distribuidora"
@@ -439,14 +439,14 @@ function CotizacionesContent() {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
                     >
-                      <option value="">Seleccione la distribuidora</option>
+                      <option value="">{t("selectDistributor")}</option>
                       <option value="EDENORTE">EDENORTE</option>
                       <option value="EDESUR">EDESUR</option>
                       <option value="EDEESTE">EDEESTE</option>
                       <option value="CEPM">CEPM</option>
                       <option value="CAPCANA">CAPCANA</option>
-                      <option value="USO INTERNO">USO INTERNO</option>
-                      <option value="OTROS">OTROS (ESPECIFICAR)</option>
+                      <option value="USO INTERNO">{t("internalUse")}</option>
+                      <option value="OTROS">{t("othersSpecify")}</option>
                     </select>
                   </div>
                 </div>
@@ -457,7 +457,7 @@ function CotizacionesContent() {
                 <div className="space-y-4 pt-2">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Descripción de su solicitud *
+                      {t("requestDescription")}
                     </label>
                     <textarea
                       name="descripcion"
@@ -467,13 +467,13 @@ function CotizacionesContent() {
                       className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all resize-none ${
                         errors.descripcion ? "border-red-500" : "border-gray-300"
                       }`}
-                      placeholder="Describa el producto o servicio que necesita cotizar..."
+                      placeholder={t("requestDescPlaceholder")}
                     />
                     {errors.descripcion && <p className="text-red-500 text-sm mt-1">{errors.descripcion}</p>}
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Adjuntar documento (opcional)
+                      {t("attachDocument")}
                     </label>
                     <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#00269b] transition-colors">
                       <input
@@ -486,8 +486,8 @@ function CotizacionesContent() {
                       />
                       <label htmlFor="file-upload-mtn" className="flex flex-col items-center cursor-pointer">
                         <Upload size={32} className="text-gray-400 mb-2" />
-                        <span className="text-sm text-gray-600">Haga clic para subir archivos</span>
-                        <span className="text-xs text-gray-400 mt-1">PDF, DOC, JPG, PNG, Excel (máx. 5 archivos)</span>
+                        <span className="text-sm text-gray-600">{t("clickUpload")}</span>
+                        <span className="text-xs text-gray-400 mt-1">{t("fileTypes")}</span>
                       </label>
                     </div>
                     {files.length > 0 && (
@@ -512,12 +512,12 @@ function CotizacionesContent() {
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
               <div className="w-8 h-8 bg-[#00269b] text-white rounded-lg flex items-center justify-center text-sm font-bold">3</div>
-              Detalles Adicionales
+              {t("additionalDetails")}
             </h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Ubicación del proyecto
+                  {t("projectLocation")}
                 </label>
                 <input
                   type="text"
@@ -525,13 +525,13 @@ function CotizacionesContent() {
                   value={formData.ubicacion}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
-                  placeholder="Ciudad, provincia o dirección"
+                  placeholder={t("locationPlaceholder")}
                 />
               </div>
               {formData.tipoSolicitud === 'transformador' && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Descripción o requerimientos especiales
+                    {t("specialRequirements")}
                   </label>
                   <textarea
                     name="descripcion"
@@ -539,7 +539,7 @@ function CotizacionesContent() {
                     onChange={handleInputChange}
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all resize-none"
-                    placeholder="Describa cualquier requerimiento especial, accesorios adicionales, o información relevante para su cotización..."
+                    placeholder={t("specialReqPlaceholder")}
                   />
                 </div>
               )}
@@ -552,7 +552,7 @@ function CotizacionesContent() {
                   className="w-5 h-5 rounded border-gray-300 text-[#00269b] focus:ring-[#00269b]"
                 />
                 <span className="text-gray-700">
-                  <span className="font-medium text-[#00269b]">Urgente</span> - Necesito respuesta lo antes posible
+                  <span className="font-medium text-[#00269b]">{t("urgent")}</span> - {t("urgentDesc")}
                 </span>
               </label>
             </div>
@@ -574,12 +574,12 @@ function CotizacionesContent() {
             {isSubmitting ? (
               <>
                 <Loader2 size={24} className="animate-spin" />
-                Enviando...
+                {t("sending")}
               </>
             ) : (
               <>
                 <Send size={24} />
-                Enviar Solicitud de Cotización
+                {t("submitQuote")}
               </>
             )}
           </button>
@@ -590,7 +590,7 @@ function CotizacionesContent() {
       <div className="space-y-6">
         {/* Contact Card */}
         <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-40">
-          <h3 className="font-bold text-gray-900 mb-4">¿Prefiere contactarnos directamente?</h3>
+          <h3 className="font-bold text-gray-900 mb-4">{t("preferContact")}</h3>
           
           <div className="space-y-4">
             <a
@@ -601,7 +601,7 @@ function CotizacionesContent() {
                 <Phone size={20} className="text-white" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Llámenos</p>
+                <p className="text-sm text-gray-500">{t("callUs")}</p>
                 <p className="font-semibold text-gray-900">{contactInfo.phone}</p>
               </div>
             </a>
@@ -617,7 +617,7 @@ function CotizacionesContent() {
               </div>
               <div>
                 <p className="text-sm text-gray-500">WhatsApp</p>
-                <p className="font-semibold text-[#25D366]">Chatea con nosotros</p>
+                <p className="font-semibold text-[#25D366]">{t("chatWithUs")}</p>
               </div>
             </a>
           </div>
@@ -626,21 +626,21 @@ function CotizacionesContent() {
           <div className="mt-6 pt-6 border-t border-gray-100 space-y-3">
             <div className="flex items-center gap-3 text-sm">
               <Clock size={18} className="text-[#00269b]" />
-              <span className="text-gray-600">Respuesta en menos de 24 horas</span>
+              <span className="text-gray-600">{t("responseTime")}</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
               <Zap size={18} className="text-[#00269b]" />
-              <span className="text-gray-600">Cotización sin compromiso</span>
+              <span className="text-gray-600">{t("noCommitment")}</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
               <Shield size={18} className="text-[#00269b]" />
-              <span className="text-gray-600">Asesoría técnica incluida</span>
+              <span className="text-gray-600">{t("technicalAdvice")}</span>
             </div>
           </div>
 
           {/* Certifications */}
           <div className="mt-6 pt-6 border-t border-gray-100">
-            <p className="text-sm text-gray-500 mb-3">Certificaciones</p>
+            <p className="text-sm text-gray-500 mb-3">{t("certificationsLabel")}</p>
             <div className="flex gap-4">
               <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
                 <span className="text-xs font-bold text-gray-600">ISO 9001</span>
@@ -660,6 +660,7 @@ function CotizacionesContent() {
 }
 
 export default function CotizacionesPage() {
+  const t = useTranslations("mtnPage.cotizacionesPage");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -667,11 +668,11 @@ export default function CotizacionesPage() {
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("home")}</Link>
             <ChevronRight size={14} />
             <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Cotizaciones</span>
+            <span className="text-white">{t("quotesLabel")}</span>
           </nav>
 
           <div className="max-w-2xl">
@@ -679,13 +680,13 @@ export default function CotizacionesPage() {
               <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
                 <FileText size={24} />
               </div>
-              <span className="text-[#0099ce] font-semibold">Solicitar Cotización</span>
+              <span className="text-[#0099ce] font-semibold">{t("requestQuoteLabel")}</span>
             </div>
             <h1 className="text-3xl lg:text-4xl font-bold mb-4">
-              Cotice su Transformador
+              {t("pageTitle")}
             </h1>
             <p className="text-lg text-white/80">
-              Complete el formulario y reciba una cotización personalizada en menos de 24 horas.
+              {t("pageDescription")}
             </p>
           </div>
         </div>

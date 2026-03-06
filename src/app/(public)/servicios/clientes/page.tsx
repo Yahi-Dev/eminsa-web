@@ -17,6 +17,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { clientes, sectorColors } from "@/config/clientes-data";
+import { useTranslations } from "next-intl";
 
 // ── Sector metadata ──────────────────────────────────────────────────────────
 const sectorMeta: Record<
@@ -45,6 +46,7 @@ const clientesPorSector = clientes.reduce<Record<string, typeof clientes>>(
 );
 
 export default function ClientesServiciosPage() {
+  const t = useTranslations("pages.servicios.clientesPage");
   const sectores = Object.keys(clientesPorSector);
 
   return (
@@ -66,11 +68,11 @@ export default function ClientesServiciosPage() {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 text-white/60 text-sm mb-8"
           >
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("breadcrumbHome")}</Link>
             <ChevronRight size={16} />
-            <Link href="/servicios" className="hover:text-white transition-colors">Servicios</Link>
+            <Link href="/servicios" className="hover:text-white transition-colors">{t("breadcrumbServicios")}</Link>
             <ChevronRight size={16} />
-            <span className="text-white">Clientes</span>
+            <span className="text-white">{t("breadcrumbTitle")}</span>
           </motion.div>
 
           <motion.div
@@ -80,13 +82,10 @@ export default function ClientesServiciosPage() {
             className="max-w-3xl"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-              Nuestros Clientes
+              {t("title")}
             </h1>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              La confianza de empresas líderes en{" "}
-              <strong>{sectores.length} sectores</strong> nos respalda. Conoce
-              las organizaciones que han confiado en Grupo EMINSA para el
-              cuidado de su infraestructura eléctrica.
+              {t("description", { count: sectores.length })}
             </p>
           </motion.div>
         </div>
@@ -97,10 +96,10 @@ export default function ClientesServiciosPage() {
         <div className="container-eminsa">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: "500+",  label: "Clientes Atendidos" },
-              { value: sectores.length.toString(), label: "Sectores Industriales" },
-              { value: "50+",   label: "Años de Experiencia" },
-              { value: "100%",  label: "Satisfacción" },
+              { value: "500+",  label: t("clientsServed") },
+              { value: sectores.length.toString(), label: t("industrialSectors") },
+              { value: "50+",   label: t("yearsExperience") },
+              { value: "100%",  label: t("satisfaction") },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}
@@ -130,14 +129,13 @@ export default function ClientesServiciosPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
-              Portafolio de Clientes
+              {t("clientPortfolio")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-              Empresas que Confían en Nosotros
+              {t("companiesTrustUs")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
-              Organizados por sector, estos son los clientes que respaldan
-              nuestra trayectoria de más de 50 años.
+              {t("companiesTrustUsDesc")}
             </p>
           </motion.div>
 
@@ -169,7 +167,7 @@ export default function ClientesServiciosPage() {
                     <div>
                       <h3 className="text-2xl font-bold text-[#00269b]">{sector}</h3>
                       <p className="text-[#6d6e6d] text-sm">
-                        {sectClientes.length} cliente{sectClientes.length > 1 ? "s" : ""}
+                        {sectClientes.length} {sectClientes.length > 1 ? t("clients") : t("client")}
                       </p>
                     </div>
                     <div
@@ -238,12 +236,10 @@ export default function ClientesServiciosPage() {
             <div className="relative z-10 max-w-2xl mx-auto">
               <Building2 size={44} className="mx-auto mb-6 text-[#0099ce]" />
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-                ¿Quiere Ser Nuestro Próximo Cliente?
+                {t("wantToBeClient")}
               </h2>
               <p className="text-white/80 text-lg mb-8 leading-relaxed">
-                Únase a nuestra cartera de clientes satisfechos y experimente
-                el nivel de servicio que nos ha convertido en líderes del sector
-                durante más de 50 años.
+                {t("wantToBeClientDesc")}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -251,14 +247,14 @@ export default function ClientesServiciosPage() {
                   href="/servicios/cotizacion"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#0091C7] text-white font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-base group"
                 >
-                  Solicitar Cotización
+                  {t("requestQuote")}
                   <ArrowRight size={20} className="group-hover:translate-x-0.5 transition-transform" />
                 </Link>
                 <Link
                   href="/servicios"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold rounded-xl transition-all text-base"
                 >
-                  Ver Nuestros Servicios
+                  {t("viewOurServices")}
                 </Link>
               </div>
             </div>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft, MapPin, Calendar, User, Zap, ChevronRight } from "lucide-react";
 import type { ProyectoAPI } from "@/features/admin/types";
+import { useTranslations } from "next-intl";
 
 const divisionColors: { [key: string]: string } = {
   MTN: "#00269b",
@@ -15,13 +16,14 @@ const divisionColors: { [key: string]: string } = {
 
 const divisionLabels: { [key: string]: string } = {
   MTN: "MTN",
-  RST: "ETRYS",
+  RST: "RST",
   EIC: "EIC",
   SRV: "Servicios",
 };
 
 export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
+  const t = useTranslations("pages.proyectos.detail");
   const [proyecto, setProyecto] = useState<ProyectoAPI | null>(null);
   const [relacionados, setRelacionados] = useState<ProyectoAPI[]>([]);
   const [loading, setLoading] = useState(true);
@@ -67,14 +69,14 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-[#00269b] mb-4">Proyecto no encontrado</h1>
-          <p className="text-[#6d6e6d] mb-8">El proyecto que buscas no existe o no está disponible.</p>
+          <h1 className="text-3xl font-bold text-[#00269b] mb-4">{t("notFound")}</h1>
+          <p className="text-[#6d6e6d] mb-8">{t("notFoundDesc")}</p>
           <Link
             href="/proyectos"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#00269b] text-white font-semibold rounded-xl"
           >
             <ArrowLeft size={18} />
-            Volver a Proyectos
+            {t("backToProjects")}
           </Link>
         </div>
       </div>
@@ -107,9 +109,9 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 text-white/60 text-sm mb-8"
           >
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("breadcrumbHome")}</Link>
             <ChevronRight size={14} />
-            <Link href="/proyectos" className="hover:text-white transition-colors">Proyectos</Link>
+            <Link href="/proyectos" className="hover:text-white transition-colors">{t("breadcrumbProjects")}</Link>
             <ChevronRight size={14} />
             <span className="text-white/80 line-clamp-1 max-w-xs">{proyecto.titulo}</span>
           </motion.div>
@@ -187,12 +189,12 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
                   dangerouslySetInnerHTML={{ __html: proyecto.descripcion }}
                 />
               ) : (
-                <p className="text-[#6d6e6d] italic">Descripción completa no disponible.</p>
+                <p className="text-[#6d6e6d] italic">{t("noDescription")}</p>
               )}
 
               {imagenesGaleria.length > 0 && (
                 <div className="mt-12">
-                  <h3 className="text-xl font-bold text-[#00269b] mb-6">Galería del Proyecto</h3>
+                  <h3 className="text-xl font-bold text-[#00269b] mb-6">{t("gallery")}</h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {imagenesGaleria.map((img, i) => (
                       <motion.div
@@ -220,7 +222,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
                   className="inline-flex items-center gap-2 text-[#00269b] font-semibold hover:gap-3 transition-all group"
                 >
                   <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
-                  Volver a Proyectos
+                  {t("backToProjects")}
                 </Link>
               </div>
             </motion.article>
@@ -233,10 +235,10 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
               className="lg:col-span-1 space-y-8"
             >
               <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-                <h3 className="font-bold text-[#00269b] mb-4">Detalles del Proyecto</h3>
+                <h3 className="font-bold text-[#00269b] mb-4">{t("projectDetails")}</h3>
                 <dl className="space-y-4">
                   <div>
-                    <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">División</dt>
+                    <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">{t("division")}</dt>
                     <dd>
                       <span
                         className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold"
@@ -249,7 +251,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
                   {proyecto.cliente && (
                     <div>
-                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">Cliente</dt>
+                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">{t("client")}</dt>
                       <dd className="text-sm text-[#414241] font-medium flex items-center gap-2">
                         <User size={14} className="text-[#6d6e6d]" />
                         {proyecto.cliente}
@@ -259,7 +261,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
                   {proyecto.ubicacion && (
                     <div>
-                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">Ubicación</dt>
+                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">{t("location")}</dt>
                       <dd className="text-sm text-[#414241] font-medium flex items-center gap-2">
                         <MapPin size={14} className="text-[#6d6e6d]" />
                         {proyecto.ubicacion}
@@ -269,7 +271,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
                   {proyecto.capacidad && (
                     <div>
-                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">Capacidad</dt>
+                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">{t("capacity")}</dt>
                       <dd className="text-sm text-[#414241] font-medium flex items-center gap-2">
                         <Zap size={14} className="text-[#6d6e6d]" />
                         {proyecto.capacidad}
@@ -279,7 +281,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
                   {proyecto.anio && (
                     <div>
-                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">Año</dt>
+                      <dt className="text-xs text-[#6d6e6d] uppercase tracking-wide mb-1">{t("year")}</dt>
                       <dd className="text-sm text-[#414241] font-medium flex items-center gap-2">
                         <Calendar size={14} className="text-[#6d6e6d]" />
                         {proyecto.anio}
@@ -291,7 +293,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
               {relacionados.length > 0 && (
                 <div>
-                  <h3 className="font-bold text-[#00269b] mb-4">Proyectos Relacionados</h3>
+                  <h3 className="font-bold text-[#00269b] mb-4">{t("relatedProjects")}</h3>
                   <div className="space-y-4">
                     {relacionados.map((rel) => (
                       <Link
@@ -322,16 +324,16 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
                 className="rounded-2xl p-6 text-white text-center"
                 style={{ background: `linear-gradient(135deg, ${divColor}, ${divColor}bb)` }}
               >
-                <h3 className="font-bold mb-2">¿Proyecto similar?</h3>
+                <h3 className="font-bold mb-2">{t("similarProject")}</h3>
                 <p className="text-white/80 text-sm mb-4">
-                  Contáctenos para discutir su próximo proyecto eléctrico.
+                  {t("similarProjectDesc")}
                 </p>
                 <Link
                   href="/cotizar"
                   className="inline-block px-5 py-2.5 bg-white font-semibold rounded-xl text-sm transition-opacity hover:opacity-90"
                   style={{ color: divColor }}
                 >
-                  Solicitar Cotización
+                  {t("requestQuote")}
                 </Link>
               </div>
             </motion.aside>

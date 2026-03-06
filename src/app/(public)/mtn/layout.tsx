@@ -168,8 +168,8 @@ export default function MTNLayout({
             : "top-20 xl:top-28 bg-white/60 backdrop-blur-sm"
         )}
       >
-        <div className="container-eminsa">
-          <div className="flex items-center gap-1 py-2 justify-center">
+        <div className="flex items-center justify-center px-4 lg:px-6 xl:px-10 w-full py-2">
+          <div className="flex items-center gap-1">
             {mtnNavItems.map((item) => {
               const Icon = item.icon;
               const active = isActive(item.href, item.exact);

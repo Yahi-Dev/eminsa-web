@@ -135,7 +135,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/recursos/calculadora" className="text-white/70 hover:text-white transition-colors">
+                <Link href="/mtn/recursos/calculadora" className="text-white/70 hover:text-white transition-colors">
                   {t('quickLinks.kvaCalculator')}
                 </Link>
               </li>

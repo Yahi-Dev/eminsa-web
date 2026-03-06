@@ -20,6 +20,7 @@ import {
   proyectosServicios,
   type ProyectoServicio,
 } from "@/config/servicios-data";
+import { useTranslations } from "next-intl";
 
 const formatDate = (dateStr: string) => {
   const date = new Date(dateStr + "T00:00:00");
@@ -27,6 +28,7 @@ const formatDate = (dateStr: string) => {
 };
 
 export default function ProyectosServiciosPage() {
+  const t = useTranslations("pages.servicios.proyectosPage");
   const [selectedProject, setSelectedProject] =
     useState<ProyectoServicio | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -87,17 +89,17 @@ export default function ProyectosServiciosPage() {
             className="flex items-center gap-2 text-white/60 text-sm mb-8"
           >
             <Link href="/" className="hover:text-white transition-colors">
-              Inicio
+              {t("breadcrumbHome")}
             </Link>
             <ChevronRight size={16} />
             <Link
               href="/servicios"
               className="hover:text-white transition-colors"
             >
-              Servicios
+              {t("breadcrumbServicios")}
             </Link>
             <ChevronRight size={16} />
-            <span className="text-white">Proyectos</span>
+            <span className="text-white">{t("breadcrumbTitle")}</span>
           </motion.div>
 
           <motion.div
@@ -108,17 +110,14 @@ export default function ProyectosServiciosPage() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6 border border-white/20">
               <Briefcase size={16} />
-              Proyectos Realizados
+              {t("badge")}
             </span>
 
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-              Nuestros Proyectos
+              {t("title")}
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-8 leading-relaxed max-w-xl">
-              Descubra nuestro portafolio de proyectos ejecutados exitosamente.
-              Cada intervención refleja el compromiso de EMINSA con la
-              excelencia, la seguridad y la confiabilidad en el sector
-              eléctrico.
+              {t("description")}
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -126,7 +125,7 @@ export default function ProyectosServiciosPage() {
                 href="/servicios/cotizacion"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00269b] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
               >
-                Solicitar Cotización
+                {t("requestQuote")}
                 <ArrowRight size={20} />
               </Link>
             </div>
@@ -147,14 +146,13 @@ export default function ProyectosServiciosPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
-              Casos de Éxito
+              {t("successCases")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-              Proyectos Destacados
+              {t("featuredProjects")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
-              Explore nuestros proyectos más representativos. Haga clic en
-              cualquier proyecto para conocer todos los detalles.
+              {t("featuredDescription")}
             </p>
           </motion.div>
 
@@ -164,14 +162,14 @@ export default function ProyectosServiciosPage() {
             <button
               onClick={() => scrollCarousel("left")}
               className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-[#00269b] hover:text-[#00269b] transition-all duration-300 hover:scale-110 hidden md:flex"
-              aria-label="Anterior"
+              aria-label={t("previous")}
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={() => scrollCarousel("right")}
               className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl flex items-center justify-center text-[#00269b] hover:text-[#00269b] transition-all duration-300 hover:scale-110 hidden md:flex"
-              aria-label="Siguiente"
+              aria-label={t("next")}
             >
               <ChevronRight size={24} />
             </button>
@@ -241,7 +239,7 @@ export default function ProyectosServiciosPage() {
 
                       {/* View more hint */}
                       <div className="flex items-center gap-2 text-[#00269b] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        Ver detalles del proyecto
+                        {t("viewDetails")}
                         <ArrowRight
                           size={14}
                           className="group-hover:translate-x-1 transition-transform"
@@ -264,7 +262,7 @@ export default function ProyectosServiciosPage() {
                       ? "w-8 h-3 bg-[#00269b]"
                       : "w-3 h-3 bg-gray-300 hover:bg-[#00269b]/50"
                   }`}
-                  aria-label={`Ir al proyecto ${index + 1}`}
+                  aria-label={`${t("goToProject")} ${index + 1}`}
                 />
               ))}
             </div>
@@ -296,7 +294,7 @@ export default function ProyectosServiciosPage() {
               <button
                 onClick={() => setSelectedProject(null)}
                 className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center z-10 text-[#00269b] hover:text-[#00269b] transition-all hover:scale-110"
-                aria-label="Cerrar"
+                aria-label={t("close")}
               >
                 <X size={24} />
               </button>
@@ -324,7 +322,7 @@ export default function ProyectosServiciosPage() {
                   <div className="space-y-4">
                     <div>
                       <label className="text-xs font-bold text-[#00269b] uppercase tracking-wider">
-                        Cliente
+                        {t("client")}
                       </label>
                       <p className="text-[#6d6e6d] flex items-center gap-2 mt-1">
                         <Building2
@@ -336,7 +334,7 @@ export default function ProyectosServiciosPage() {
                     </div>
                     <div>
                       <label className="text-xs font-bold text-[#00269b] uppercase tracking-wider">
-                        Ubicación
+                        {t("location")}
                       </label>
                       <p className="text-[#6d6e6d] flex items-center gap-2 mt-1">
                         <MapPin
@@ -348,7 +346,7 @@ export default function ProyectosServiciosPage() {
                     </div>
                     <div>
                       <label className="text-xs font-bold text-[#00269b] uppercase tracking-wider">
-                        Tipo de Producto
+                        {t("productType")}
                       </label>
                       <p className="text-[#6d6e6d] flex items-center gap-2 mt-1">
                         <Wrench
@@ -362,7 +360,7 @@ export default function ProyectosServiciosPage() {
                   <div className="space-y-4">
                     <div>
                       <label className="text-xs font-bold text-[#00269b] uppercase tracking-wider">
-                        Período
+                        {t("period")}
                       </label>
                       <p className="text-[#6d6e6d] flex items-center gap-2 mt-1">
                         <Calendar
@@ -376,7 +374,7 @@ export default function ProyectosServiciosPage() {
                     {selectedProject.capacidad && (
                       <div>
                         <label className="text-xs font-bold text-[#00269b] uppercase tracking-wider">
-                          Capacidad
+                          {t("capacity")}
                         </label>
                         <p className="text-[#6d6e6d] flex items-center gap-2 mt-1">
                           <Settings
@@ -393,7 +391,7 @@ export default function ProyectosServiciosPage() {
                 {/* Description */}
                 <div className="mb-8">
                   <h3 className="text-lg font-bold text-[#00269b] mb-3">
-                    Descripción del Proyecto
+                    {t("projectDescription")}
                   </h3>
                   <p className="text-[#6d6e6d] leading-relaxed">
                     {selectedProject.detalles}
@@ -403,7 +401,7 @@ export default function ProyectosServiciosPage() {
                 {/* Results */}
                 <div>
                   <h3 className="text-lg font-bold text-[#00269b] mb-4">
-                    Resultados Obtenidos
+                    {t("resultsObtained")}
                   </h3>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {selectedProject.resultados.map((resultado, i) => (
@@ -432,14 +430,14 @@ export default function ProyectosServiciosPage() {
                     href="/servicios/cotizacion"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#00269b] text-white font-semibold rounded-xl hover:bg-[#00175d] transition-all shadow-md hover:shadow-lg"
                   >
-                    Solicitar un Servicio Similar
+                    {t("requestSimilar")}
                     <ArrowRight size={18} />
                   </Link>
                   <button
                     onClick={() => setSelectedProject(null)}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-gray-100 text-[#6d6e6d] font-semibold rounded-xl hover:bg-gray-200 transition-all"
                   >
-                    Cerrar
+                    {t("close")}
                   </button>
                 </div>
               </div>
@@ -461,14 +459,13 @@ export default function ProyectosServiciosPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
-              Portafolio Completo
+              {t("fullPortfolio")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-              Todos los Proyectos
+              {t("allProjects")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
-              Explore nuestro catálogo completo de proyectos de servicios
-              ejecutados para clientes en toda la República Dominicana.
+              {t("allProjectsDescription")}
             </p>
           </motion.div>
 
@@ -497,7 +494,7 @@ export default function ProyectosServiciosPage() {
                       </span>
                       {project.destacado && (
                         <span className="px-2 py-0.5 bg-[#00269b]/10 text-[#00269b] text-xs font-bold rounded-full">
-                          Destacado
+                          {t("featured")}
                         </span>
                       )}
                     </div>
@@ -547,7 +544,7 @@ export default function ProyectosServiciosPage() {
 
                     {/* View more hint */}
                     <div className="flex items-center gap-2 text-[#00269b] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 pt-2 border-t border-gray-100">
-                      Ver proyecto completo
+                      {t("viewFullProject")}
                       <ArrowRight
                         size={14}
                         className="group-hover:translate-x-1 transition-transform"
@@ -580,12 +577,10 @@ export default function ProyectosServiciosPage() {
             <div className="relative z-10 max-w-2xl mx-auto">
               <Settings size={48} className="mx-auto mb-6 text-[#00269b]" />
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-                ¿Tiene un Proyecto en Mente?
+                {t("haveProject")}
               </h2>
               <p className="text-white/80 text-lg mb-8 leading-relaxed">
-                Nuestro equipo de ingenieros especializados está listo para
-                ayudarle a planificar y ejecutar su próximo proyecto. Solicite
-                una consulta sin compromiso.
+                {t("haveProjectDesc")}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -593,14 +588,14 @@ export default function ProyectosServiciosPage() {
                   href="/servicios/cotizacion"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#00269b] text-white hover:bg-[#00175d] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
-                  Solicitar Cotización
+                  {t("requestQuote")}
                   <ArrowRight size={22} />
                 </Link>
                 <Link
                   href="/servicios"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold rounded-xl transition-all text-lg"
                 >
-                  Ver Nuestros Servicios
+                  {t("viewOurServices")}
                 </Link>
               </div>
             </div>

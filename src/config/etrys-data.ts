@@ -522,7 +522,7 @@ export const rentalInfo: RentalInfo = {
 // ============================================================================
 
 export const etrysResources: EtrysResource[] = [
-  { id: "calculadora", slug: "calculadora", name: "Calculadora kVA", description: "Herramienta para calcular capacidad requerida.", icon: "calculator", type: "tool", downloadable: false, url: "/etrys/recursos/calculadora" },
+  { id: "calculadora", slug: "calculadora", name: "Calculadora kVA", description: "Herramienta para calcular capacidad requerida.", icon: "calculator", type: "tool", downloadable: false, url: "/mtn/recursos/calculadora" },
 ];
 
 // ============================================================================

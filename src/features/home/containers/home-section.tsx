@@ -5,6 +5,7 @@ import {
   MTNHeroSection,
   MTNProductsShowcase,
 } from "../components/mtn";
+import { EICBrandsShowcase } from "../components/eic";
 import DivisionsSection from "../components/DivisionsSection";
 import ServicesSection from "../components/ServicesSection";
 import StatsSection from "../components/StatsSection";
@@ -27,7 +28,10 @@ export default function HomeSection() {
       {/* 5. Catálogo de productos MTN */}
       <MTNProductsShowcase />
 
-      {/* 6. Servicios adicionales */}
+      {/* 6. Marcas internacionales EIC */}
+      <EICBrandsShowcase />
+
+      {/* 7. Servicios adicionales */}
       <ServicesSection />
 
       {/* 7. Clientes — prueba social con logos */}

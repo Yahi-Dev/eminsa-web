@@ -26,6 +26,7 @@ import { rentalInfo } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
+import { useTranslations } from "next-intl";
 
 const benefitIcons: { [key: string]: React.ElementType } = {
   clock: Clock,
@@ -37,6 +38,7 @@ const benefitIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function EtrysAlquilerPage() {
+  const t = useTranslations("etrysPage.alquilerPage");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
@@ -80,24 +82,23 @@ export default function EtrysAlquilerPage() {
             <CheckCircle2 size={40} className="text-green-600" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            ¡Solicitud Enviada!
+            {t("successTitle")}
           </h2>
           <p className="text-gray-600 mb-6">
-            Hemos recibido su solicitud de alquiler. Nuestro equipo le contactará 
-            en breve con un presupuesto personalizado.
+            {t("successDescription")}
           </p>
           <div className="space-y-3">
             <Link
               href="/etrys"
               className="block w-full px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
             >
-              Volver a ETRYS
+              {t("backToEtrys")}
             </Link>
             <Link
               href="/"
               className="block w-full px-6 py-3 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium rounded-xl transition-colors"
             >
-              Ir al Inicio
+              {t("goHome")}
             </Link>
           </div>
         </motion.div>
@@ -120,7 +121,7 @@ export default function EtrysAlquilerPage() {
               ETRYS
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Alquiler</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -129,15 +130,13 @@ export default function EtrysAlquilerPage() {
               animate={{ opacity: 1, x: 0 }}
             >
               <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                Solución Temporal
+                {t("heroBadge")}
               </span>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
                 {rentalInfo.title}
               </h1>
               <p className="text-xl text-white/90 mb-6">
-                ¿Necesita energía temporalmente? Obtenga energía a corto plazo con 
-                una unidad de alquiler ETRYS. Equipos certificados, disponibilidad 
-                inmediata y soporte técnico 24/7.
+                {t("heroDescription")}
               </p>
               <div className="flex flex-wrap gap-4">
                 <a
@@ -175,10 +174,10 @@ export default function EtrysAlquilerPage() {
                 />
                 <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl p-4">
                   <span className="text-[#0099ce] font-bold text-lg block">
-                    Disponibilidad Inmediata
+                    {t("immediateAvailability")}
                   </span>
                   <span className="text-gray-600 text-sm">
-                    Equipos listos para entrega
+                    {t("readyForDelivery")}
                   </span>
                 </div>
               </div>
@@ -197,11 +196,10 @@ export default function EtrysAlquilerPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              ¿Por qué Alquilar con ETRYS?
+              {t("benefitsTitle")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Ofrecemos soluciones de alquiler flexibles y confiables para 
-              satisfacer sus necesidades temporales de energía.
+              {t("benefitsDescription")}
             </p>
           </motion.div>
 
@@ -244,14 +242,13 @@ export default function EtrysAlquilerPage() {
               viewport={{ once: true }}
             >
               <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">
-                Casos de Uso
+                {t("useCasesBadge")}
               </span>
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-                ¿Cuándo Necesita Alquilar?
+                {t("useCasesTitle")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
-                Nuestro servicio de alquiler es ideal para diversas situaciones 
-                donde necesita una solución temporal de energía.
+                {t("useCasesDescription")}
               </p>
               <ul className="space-y-3">
                 {rentalInfo.useCases.map((useCase) => (
@@ -281,7 +278,7 @@ export default function EtrysAlquilerPage() {
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2">
                       <HardHat size={18} className="text-[#0099ce]" />
-                      <span className="text-sm font-medium text-gray-800">Construcción</span>
+                      <span className="text-sm font-medium text-gray-800">{t("construction")}</span>
                     </div>
                   </div>
                 </div>
@@ -297,7 +294,7 @@ export default function EtrysAlquilerPage() {
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2">
                       <Zap size={18} className="text-[#0099ce]" />
-                      <span className="text-sm font-medium text-gray-800">Eventos</span>
+                      <span className="text-sm font-medium text-gray-800">{t("events")}</span>
                     </div>
                   </div>
                 </div>
@@ -311,7 +308,7 @@ export default function EtrysAlquilerPage() {
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2">
                       <Building2 size={18} className="text-[#0099ce]" />
-                      <span className="text-sm font-medium text-gray-800">Industria</span>
+                      <span className="text-sm font-medium text-gray-800">{t("industry")}</span>
                     </div>
                   </div>
                 </div>
@@ -331,19 +328,19 @@ export default function EtrysAlquilerPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Proceso de Alquiler
+              {t("processTitle")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Alquilar un transformador con ETRYS es rápido y sencillo.
+              {t("processDescription")}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { step: 1, title: "Solicitud", desc: "Complete el formulario o llámenos" },
-              { step: 2, title: "Cotización", desc: "Reciba un presupuesto en 30 min" },
-              { step: 3, title: "Instalación", desc: "Técnicos expertos instalan el equipo" },
-              { step: 4, title: "Soporte", desc: "Asistencia técnica 24/7" },
+              { step: 1, title: t("step1Title"), desc: t("step1Desc") },
+              { step: 2, title: t("step2Title"), desc: t("step2Desc") },
+              { step: 3, title: t("step3Title"), desc: t("step3Desc") },
+              { step: 4, title: t("step4Title"), desc: t("step4Desc") },
             ].map((item, index) => (
               <motion.div
                 key={item.step}
@@ -375,18 +372,17 @@ export default function EtrysAlquilerPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Solicitar Presupuesto
+                {t("formTitle")}
               </h2>
               <p className="text-gray-600 mb-8">
-                Complete el formulario y le responderemos con un presupuesto 
-                personalizado en menos de 30 minutos durante horario laboral.
+                {t("formDescription")}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Nombre Completo *
+                      {t("fullName")} *
                     </label>
                     <input
                       type="text"
@@ -395,12 +391,12 @@ export default function EtrysAlquilerPage() {
                       value={formData.nombre}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
-                      placeholder="Su nombre"
+                      placeholder={t("namePlaceholder")}
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Empresa
+                      {t("company")}
                     </label>
                     <input
                       type="text"
@@ -408,7 +404,7 @@ export default function EtrysAlquilerPage() {
                       value={formData.empresa}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
-                      placeholder="Nombre de su empresa"
+                      placeholder={t("companyPlaceholder")}
                     />
                   </div>
                 </div>
@@ -416,7 +412,7 @@ export default function EtrysAlquilerPage() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email *
+                      {t("emailLabel")} *
                     </label>
                     <input
                       type="email"
@@ -425,14 +421,14 @@ export default function EtrysAlquilerPage() {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
-                      placeholder="su@email.com"
+                      placeholder={t("emailPlaceholder")}
                     />
                   </div>
                   <div>
                     <PhoneInputField
                       value={formData.telefono}
                       onChange={handlePhoneChange}
-                      label="Teléfono"
+                      label={t("phoneLabel")}
                       required
                       focusColor="#0099ce"
                     />
@@ -442,7 +438,7 @@ export default function EtrysAlquilerPage() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Capacidad Requerida
+                      {t("requiredCapacity")}
                     </label>
                     <select
                       name="capacidad"
@@ -450,18 +446,18 @@ export default function EtrysAlquilerPage() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                     >
-                      <option value="">Seleccione...</option>
+                      <option value="">{t("select")}</option>
                       <option value="15-50">15 - 50 kVA</option>
                       <option value="50-100">50 - 100 kVA</option>
                       <option value="100-500">100 - 500 kVA</option>
                       <option value="500-1000">500 - 1,000 kVA</option>
-                      <option value="1000+">Más de 1,000 kVA</option>
-                      <option value="no-se">No estoy seguro</option>
+                      <option value="1000+">{t("moreThan1000")}</option>
+                      <option value="no-se">{t("notSure")}</option>
                     </select>
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Duración Estimada
+                      {t("estimatedDuration")}
                     </label>
                     <select
                       name="duracion"
@@ -469,19 +465,19 @@ export default function EtrysAlquilerPage() {
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
                     >
-                      <option value="">Seleccione...</option>
-                      <option value="dias">Días</option>
-                      <option value="semanas">Semanas</option>
-                      <option value="1-3-meses">1 - 3 meses</option>
-                      <option value="3-6-meses">3 - 6 meses</option>
-                      <option value="6+-meses">Más de 6 meses</option>
+                      <option value="">{t("select")}</option>
+                      <option value="dias">{t("days")}</option>
+                      <option value="semanas">{t("weeks")}</option>
+                      <option value="1-3-meses">{t("1to3months")}</option>
+                      <option value="3-6-meses">{t("3to6months")}</option>
+                      <option value="6+-meses">{t("moreThan6months")}</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Mensaje / Detalles Adicionales
+                    {t("messageLabel")}
                   </label>
                   <textarea
                     name="mensaje"
@@ -489,7 +485,7 @@ export default function EtrysAlquilerPage() {
                     onChange={handleChange}
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all resize-none"
-                    placeholder="Describa su proyecto o necesidades específicas..."
+                    placeholder={t("messagePlaceholder")}
                   />
                 </div>
 
@@ -501,11 +497,11 @@ export default function EtrysAlquilerPage() {
                   {isSubmitting ? (
                     <>
                       <Loader2 size={20} className="animate-spin" />
-                      Enviando...
+                      {t("sending")}
                     </>
                   ) : (
                     <>
-                      Solicitar Presupuesto
+                      {t("submitBudget")}
                       <ArrowRight size={20} />
                     </>
                   )}
@@ -523,10 +519,10 @@ export default function EtrysAlquilerPage() {
               {/* Quick Contact */}
               <div className="bg-[#0099ce]/5 rounded-2xl p-6 border border-[#0099ce]/20">
                 <h3 className="text-lg font-bold text-gray-900 mb-4">
-                  ¿Necesita Respuesta Inmediata?
+                  {t("needImmediateResponse")}
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Llámenos directamente para una atención más rápida.
+                  {t("callDirectly")}
                 </p>
                 <a
                   href={`tel:${rentalInfo.phone}`}
@@ -549,7 +545,7 @@ export default function EtrysAlquilerPage() {
               {/* Available Equipment */}
               <div className="bg-gray-50 rounded-2xl p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-4">
-                  Equipos Disponibles
+                  {t("availableEquipment")}
                 </h3>
                 <ul className="space-y-3">
                   {rentalInfo.availableEquipment.map((equip) => (
@@ -566,12 +562,11 @@ export default function EtrysAlquilerPage() {
                 <div className="flex items-center gap-3 mb-3">
                   <Clock size={24} className="text-[#0099ce]" />
                   <h3 className="text-lg font-bold text-gray-900">
-                    Tiempo de Respuesta
+                    {t("responseTimeTitle")}
                   </h3>
                 </div>
                 <p className="text-gray-600">
-                  Respondemos a su solicitud en menos de <strong>30 minutos</strong> durante 
-                  horario laboral (Lunes a Viernes 8am - 5pm).
+                  {t("responseTimeDescription")}
                 </p>
               </div>
             </motion.div>
@@ -588,17 +583,17 @@ export default function EtrysAlquilerPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              ¿Listo para Alquilar?
+              {t("ctaTitle")}
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              Contáctenos hoy y obtenga su transformador de alquiler rápidamente.
+              {t("ctaDescription")}
             </p>
             <a
               href={`tel:${rentalInfo.phone}`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0099ce] font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"
             >
               <Phone size={20} />
-              Llamar Ahora: {rentalInfo.phone}
+              {t("callNow")}: {rentalInfo.phone}
             </a>
           </motion.div>
         </div>

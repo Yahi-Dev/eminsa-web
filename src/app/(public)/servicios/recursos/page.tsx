@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { recursosServicios } from "@/config/servicios-data";
 import RecursosDinamicos from "@/components/shared/RecursosDinamicos";
+import { useTranslations } from "next-intl";
 
 const iconMap: { [key: string]: React.ElementType } = {
   "clipboard-list": ClipboardList,
@@ -20,6 +21,8 @@ const iconMap: { [key: string]: React.ElementType } = {
 };
 
 export default function RecursosServiciosPage() {
+  const t = useTranslations("pages.servicios.recursosPage");
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -40,17 +43,17 @@ export default function RecursosServiciosPage() {
             className="flex items-center gap-2 text-white/60 text-sm mb-8"
           >
             <Link href="/" className="hover:text-white transition-colors">
-              Inicio
+              {t("breadcrumbHome")}
             </Link>
             <ChevronRight size={16} />
             <Link
               href="/servicios"
               className="hover:text-white transition-colors"
             >
-              Servicios
+              {t("breadcrumbServicios")}
             </Link>
             <ChevronRight size={16} />
-            <span className="text-white">Recursos</span>
+            <span className="text-white">{t("breadcrumbTitle")}</span>
           </motion.div>
 
           <motion.div
@@ -60,11 +63,10 @@ export default function RecursosServiciosPage() {
             className="max-w-3xl"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-              Recursos y Herramientas
+              {t("title")}
             </h1>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              Acceda a nuestros recursos, formularios y herramientas diseñados
-              para facilitar su experiencia con EMINSA Servicios.
+              {t("description")}
             </p>
           </motion.div>
         </div>
@@ -109,7 +111,7 @@ export default function RecursosServiciosPage() {
                       </p>
 
                       <div className="flex items-center gap-2 text-[#00269b] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {isExternal ? "Visitar" : "Acceder"}
+                        {isExternal ? t("visit") : t("access")}
                         {isExternal ? (
                           <ExternalLink
                             size={16}
@@ -137,7 +139,7 @@ export default function RecursosServiciosPage() {
           <RecursosDinamicos
             division="SRV"
             accentColor="#6d6e6d"
-            title="Fichas Técnicas"
+            title={t("technicalSheets")}
           />
         </div>
       </section>
@@ -156,11 +158,10 @@ export default function RecursosServiciosPage() {
 
             <div className="relative z-10 max-w-2xl mx-auto">
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-                ¿Necesita Asistencia?
+                {t("needAssistance")}
               </h2>
               <p className="text-white/80 text-lg mb-8">
-                Nuestro equipo está disponible para ayudarle con cualquier
-                consulta o requerimiento. Contáctenos hoy mismo.
+                {t("needAssistanceDesc")}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -168,14 +169,14 @@ export default function RecursosServiciosPage() {
                   href="/servicios/cotizacion"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#00269b] hover:bg-gray-100 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
-                  Solicitar Cotización
+                  {t("requestQuote")}
                   <ArrowRight size={20} />
                 </Link>
                 <Link
                   href="/servicios"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold rounded-xl transition-all"
                 >
-                  Ver Nuestros Servicios
+                  {t("viewOurServices")}
                 </Link>
               </div>
             </div>

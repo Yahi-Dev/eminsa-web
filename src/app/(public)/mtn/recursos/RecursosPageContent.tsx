@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { resources } from "@/config/mtn-data";
 import RecursosDinamicos from "@/components/shared/RecursosDinamicos";
+import { useTranslations } from "next-intl";
 
 const resourceIcons: Record<string, React.ElementType> = {
   newspaper: Newspaper,
@@ -39,6 +40,7 @@ const fadeUp = {
 };
 
 export default function RecursosPageContent() {
+  const t = useTranslations("pages.mtn.recursos.main");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -50,11 +52,11 @@ export default function RecursosPageContent() {
             transition={{ duration: 0.4 }}
             className="flex items-center gap-2 text-sm text-white/60 mb-6"
           >
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("breadcrumb.home")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
+            <Link href="/mtn" className="hover:text-white transition-colors">{t("breadcrumb.mtn")}</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Recursos</span>
+            <span className="text-white">{t("breadcrumb.recursos")}</span>
           </motion.nav>
 
           <motion.div
@@ -67,11 +69,11 @@ export default function RecursosPageContent() {
               <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
                 <FolderOpen size={24} />
               </div>
-              <span className="text-[#0099ce] font-semibold">Centro de Recursos</span>
+              <span className="text-[#0099ce] font-semibold">{t("hero.badge")}</span>
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">Recursos Técnicos</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4">{t("hero.title")}</h1>
             <p className="text-xl text-white/80">
-              Documentación técnica, herramientas y guías para apoyar sus proyectos con transformadores EMINSA.
+              {t("hero.description")}
             </p>
           </motion.div>
         </div>
@@ -114,12 +116,12 @@ export default function RecursosPageContent() {
                         {resource.type === "calculator" ? (
                           <>
                             <ExternalLink size={16} />
-                            <span>Usar herramienta</span>
+                            <span>{t("useTool")}</span>
                           </>
                         ) : (
                           <>
                             <Download size={16} />
-                            <span>Ver recursos</span>
+                            <span>{t("viewResources")}</span>
                           </>
                         )}
                       </div>
@@ -138,7 +140,7 @@ export default function RecursosPageContent() {
           <RecursosDinamicos
             division="MTN"
             accentColor="#00269b"
-            title="Fichas Técnicas y Documentos"
+            title={t("datasheetsTitle")}
           />
         </div>
       </section>
@@ -159,18 +161,18 @@ export default function RecursosPageContent() {
                 <div className="p-8 lg:p-12 space-y-6">
                   <div className="inline-flex items-center gap-2 bg-[#00269b]/10 text-[#00269b] px-4 py-2 rounded-full text-sm font-medium">
                     <Calculator size={16} />
-                    Herramienta Interactiva
+                    {t("calculator.badge")}
                   </div>
-                  <h2 className="text-3xl font-bold text-gray-900">Calculadora de kVA</h2>
+                  <h2 className="text-3xl font-bold text-gray-900">{t("calculator.title")}</h2>
                   <p className="text-gray-600 leading-relaxed">
-                    ¿No sabe qué capacidad de transformador necesita? Use nuestra calculadora interactiva para determinar la potencia requerida según su carga.
+                    {t("calculator.description")}
                   </p>
                   <ul className="space-y-3">
                     {[
-                      "Cálculo para cargas residenciales",
-                      "Cálculo para cargas comerciales",
-                      "Cálculo para cargas industriales",
-                      "Factor de demanda incluido",
+                      t("calculator.residential"),
+                      t("calculator.commercial"),
+                      t("calculator.industrial"),
+                      t("calculator.demandFactor"),
                     ].map((item, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-gray-700">
                         <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">
@@ -184,7 +186,7 @@ export default function RecursosPageContent() {
                     href="/mtn/recursos/calculadora"
                     className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                   >
-                    Usar Calculadora
+                    {t("calculator.cta")}
                     <ArrowRight size={18} />
                   </Link>
                 </div>
@@ -194,7 +196,7 @@ export default function RecursosPageContent() {
                       <Calculator size={48} />
                     </div>
                     <p className="text-4xl font-bold mb-2">kVA</p>
-                    <p className="text-white/80">Calcule la capacidad ideal</p>
+                    <p className="text-white/80">{t("calculator.calculateIdeal")}</p>
                   </div>
                 </div>
               </div>
@@ -213,15 +215,15 @@ export default function RecursosPageContent() {
         className="py-16 bg-[#00269b] text-white"
       >
         <div className="container-eminsa text-center">
-          <h2 className="text-3xl font-bold mb-4">¿No encuentra lo que busca?</h2>
+          <h2 className="text-3xl font-bold mb-4">{t("cta.title")}</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            Nuestro equipo técnico puede proporcionarle documentación adicional o información específica para su proyecto.
+            {t("cta.description")}
           </p>
           <Link
             href="/mtn/cotizaciones"
             className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors"
           >
-            Contactar Soporte Técnico
+            {t("cta.contactSupport")}
             <ArrowRight size={20} />
           </Link>
         </div>

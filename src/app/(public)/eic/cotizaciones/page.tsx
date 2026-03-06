@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -30,6 +31,7 @@ import {
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
 
 function CotizacionesForm() {
+  const t = useTranslations("eicPage.cotizaciones");
   const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -143,11 +145,11 @@ function CotizacionesForm() {
       });
 
       const json = await res.json();
-      if (!json.success) throw new Error(json.message || 'Error al enviar');
+      if (!json.success) throw new Error(json.message || t("errorSubmit"));
       setCodigo(json.codigo);
       setIsSuccess(true);
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : 'Error de conexión. Intente de nuevo.');
+      setSubmitError(err instanceof Error ? err.message : t("errorConnection"));
     } finally {
       setIsSubmitting(false);
     }
@@ -202,25 +204,23 @@ function CotizacionesForm() {
             <CheckCircle2 size={40} className="text-green-600" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            ¡Solicitud Enviada!
+            {t("successTitle")}
           </h2>
           {codigo && (
             <div className="bg-[#009e49]/5 border border-[#009e49]/20 rounded-xl p-4 mb-4">
-              <p className="text-xs text-[#009e49] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+              <p className="text-xs text-[#009e49] uppercase tracking-wider font-semibold mb-1">{t("referenceNumber")}</p>
               <p className="text-2xl font-bold text-[#009e49] tracking-widest">{codigo}</p>
-              <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
+              <p className="text-xs text-gray-500 mt-1">{t("saveCode")}</p>
             </div>
           )}
           <p className="text-gray-600 mb-6">
-            Hemos recibido su solicitud de cotización. Nuestro equipo de
-            comercio internacional le contactará en breve con un presupuesto
-            personalizado.
+            {t("successDescription")}
           </p>
           <div className="bg-[#009e49]/10 rounded-xl p-4 mb-6">
             <p className="text-sm text-gray-700">
-              <strong>Tiempo de respuesta estimado:</strong>
+              <strong>{t("estimatedResponseTime")}</strong>
               <br />
-              Menos de 30 minutos en horario laboral
+              {t("responseTimeValue")}
             </p>
           </div>
           <div className="space-y-3">
@@ -228,19 +228,19 @@ function CotizacionesForm() {
               href="/eic"
               className="block w-full px-6 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors"
             >
-              Volver a EIC
+              {t("backToEic")}
             </Link>
             <Link
               href="/eic/productos"
               className="block w-full px-6 py-3 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium rounded-xl transition-colors"
             >
-              Ver Productos
+              {t("viewProducts")}
             </Link>
             <Link
               href="/"
               className="block w-full px-6 py-3 border border-gray-300 text-gray-700 hover:bg-gray-50 font-medium rounded-xl transition-colors"
             >
-              Ir al Inicio
+              {t("goHome")}
             </Link>
           </div>
         </motion.div>
@@ -263,7 +263,7 @@ function CotizacionesForm() {
               EIC
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Cotizaciones</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <motion.div
@@ -278,12 +278,10 @@ function CotizacionesForm() {
               </span>
             </div>
             <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              Solicitar Cotización Internacional
+              {t("heroTitle")}
             </h1>
             <p className="text-lg text-white/90">
-              Complete el formulario y reciba un presupuesto personalizado para
-              productos eléctricos internacionales. Respondemos en menos de 30
-              minutos durante horario laboral.
+              {t("heroDescription")}
             </p>
           </motion.div>
         </div>
@@ -304,12 +302,12 @@ function CotizacionesForm() {
                 {/* Section: Información de Contacto */}
                 <div className="mb-8">
                   <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b">
-                    Información de Contacto
+                    {t("contactInfo")}
                   </h2>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Nombre Completo *
+                        {t("fullName")} *
                       </label>
                       <input
                         type="text"
@@ -318,12 +316,12 @@ function CotizacionesForm() {
                         value={formData.nombre}
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
-                        placeholder="Ej: Juan Pérez"
+                        placeholder={t("namePlaceholder")}
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Empresa *
+                        {t("company")} *
                       </label>
                       <input
                         type="text"
@@ -332,12 +330,12 @@ function CotizacionesForm() {
                         value={formData.empresa}
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
-                        placeholder="Nombre de su empresa"
+                        placeholder={t("companyPlaceholder")}
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Email *
+                        {t("email")} *
                       </label>
                       <input
                         type="email"
@@ -346,21 +344,21 @@ function CotizacionesForm() {
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
-                        placeholder="correo@ejemplo.com"
+                        placeholder={t("emailPlaceholder")}
                       />
                     </div>
                     <div>
                       <PhoneInputField
                         value={formData.telefono}
                         onChange={handlePhoneChange}
-                        label="Teléfono"
+                        label={t("phone")}
                         required
                         focusColor="#009e49"
                       />
                     </div>
                     <div className="sm:col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Cargo / Posición
+                        {t("position")}
                       </label>
                       <input
                         type="text"
@@ -368,7 +366,7 @@ function CotizacionesForm() {
                         value={formData.cargo}
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
-                        placeholder="Ej: Gerente de Proyectos"
+                        placeholder={t("positionPlaceholder")}
                       />
                     </div>
                   </div>
@@ -377,12 +375,12 @@ function CotizacionesForm() {
                 {/* Section: Detalles del Producto */}
                 <div className="mb-8">
                   <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b">
-                    Detalles del Producto
+                    {t("productDetails")}
                   </h2>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Categoría de Producto *
+                        {t("productCategory")} *
                       </label>
                       <select
                         name="categoriaProducto"
@@ -391,7 +389,7 @@ function CotizacionesForm() {
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
-                        <option value="">Seleccione...</option>
+                        <option value="">{t("select")}</option>
                         {eicProductCategories.map((cat) => (
                           <option key={cat.id} value={cat.slug}>
                             {cat.name}
@@ -401,7 +399,7 @@ function CotizacionesForm() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Producto Específico
+                        {t("specificProduct")}
                       </label>
                       <select
                         name="productoEspecifico"
@@ -409,18 +407,18 @@ function CotizacionesForm() {
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
-                        <option value="">Seleccione...</option>
+                        <option value="">{t("select")}</option>
                         {filteredProducts.map((prod) => (
                           <option key={prod.id} value={prod.slug}>
                             {prod.shortName} ({prod.brand})
                           </option>
                         ))}
-                        <option value="otro">Otro / No estoy seguro</option>
+                        <option value="otro">{t("otherNotSure")}</option>
                       </select>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Marca Preferida
+                        {t("preferredBrand")}
                       </label>
                       <select
                         name="marca"
@@ -428,7 +426,7 @@ function CotizacionesForm() {
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
-                        <option value="">Sin preferencia</option>
+                        <option value="">{t("noPreference")}</option>
                         {filteredBrands.map((brand) => (
                           <option key={brand.id} value={brand.name}>
                             {brand.name} ({brand.country})
@@ -438,7 +436,7 @@ function CotizacionesForm() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Cantidad
+                        {t("quantity")}
                       </label>
                       <input
                         type="number"
@@ -451,7 +449,7 @@ function CotizacionesForm() {
                     </div>
                     <div className="sm:col-span-2">
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Urgencia
+                        {t("urgency")}
                       </label>
                       <select
                         name="urgencia"
@@ -459,12 +457,12 @@ function CotizacionesForm() {
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
-                        <option value="normal">Normal (3-6 semanas)</option>
+                        <option value="normal">{t("urgencyNormal")}</option>
                         <option value="prioritario">
-                          Prioritario (2-3 semanas)
+                          {t("urgencyPriority")}
                         </option>
                         <option value="urgente">
-                          Urgente (menos de 2 semanas)
+                          {t("urgencyUrgent")}
                         </option>
                       </select>
                     </div>
@@ -480,12 +478,12 @@ function CotizacionesForm() {
                     >
                       <div className="flex items-center gap-2 mb-4">
                         <Zap className="w-5 h-5 text-[#009e49]" />
-                        <h3 className="font-semibold text-gray-800">Especificaciones del Transformador</h3>
+                        <h3 className="font-semibold text-gray-800">{t("transformerSpecs")}</h3>
                       </div>
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                            Potencia (kVA)
+                            {t("power")}
                           </label>
                           <input
                             type="text"
@@ -493,12 +491,12 @@ function CotizacionesForm() {
                             value={formData.potencia}
                             onChange={handleChange}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
-                            placeholder="Ej: 500 kVA"
+                            placeholder={t("powerPlaceholder")}
                           />
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                            Configuración
+                            {t("configuration")}
                           </label>
                           <select
                             name="configuracion"
@@ -506,15 +504,15 @@ function CotizacionesForm() {
                             onChange={handleChange}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                           >
-                            <option value="">Seleccione...</option>
-                            <option value="monofasico">Monofásico</option>
-                            <option value="trifasico">Trifásico</option>
-                            <option value="autoprotegido">Autoprotegido (CSP)</option>
+                            <option value="">{t("select")}</option>
+                            <option value="monofasico">{t("singlePhase")}</option>
+                            <option value="trifasico">{t("threePhase")}</option>
+                            <option value="autoprotegido">{t("selfProtected")}</option>
                           </select>
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                            Voltaje Primario (kV)
+                            {t("primaryVoltage")}
                           </label>
                           <input
                             type="text"
@@ -522,12 +520,12 @@ function CotizacionesForm() {
                             value={formData.voltajePrimario}
                             onChange={handleChange}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
-                            placeholder="Ej: 13.2 kV"
+                            placeholder={t("primaryVoltagePlaceholder")}
                           />
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                            Voltaje Secundario (V)
+                            {t("secondaryVoltage")}
                           </label>
                           <input
                             type="text"
@@ -535,12 +533,12 @@ function CotizacionesForm() {
                             value={formData.voltajeSecundario}
                             onChange={handleChange}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
-                            placeholder="Ej: 120/240 V"
+                            placeholder={t("secondaryVoltagePlaceholder")}
                           />
                         </div>
                         <div className="sm:col-span-2">
                           <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                            Distribuidora de Energía
+                            {t("energyDistributor")}
                           </label>
                           <select
                             name="distribuidora"
@@ -548,14 +546,14 @@ function CotizacionesForm() {
                             onChange={handleChange}
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                           >
-                            <option value="">Seleccione la distribuidora</option>
+                            <option value="">{t("selectDistributor")}</option>
                             <option value="EDENORTE">EDENORTE</option>
                             <option value="EDESUR">EDESUR</option>
                             <option value="EDEESTE">EDEESTE</option>
                             <option value="CEPM">CEPM</option>
                             <option value="CAPCANA">CAPCANA</option>
-                            <option value="USO INTERNO">USO INTERNO</option>
-                            <option value="OTROS">OTROS (ESPECIFICAR)</option>
+                            <option value="USO INTERNO">{t("internalUse")}</option>
+                            <option value="OTROS">{t("othersSpecify")}</option>
                           </select>
                         </div>
                       </div>
@@ -566,12 +564,12 @@ function CotizacionesForm() {
                 {/* Section: Información Adicional */}
                 <div className="mb-8">
                   <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b">
-                    Información Adicional
+                    {t("additionalInfo")}
                   </h2>
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Ubicación del Proyecto
+                        {t("projectLocation")}
                       </label>
                       <input
                         type="text"
@@ -579,12 +577,12 @@ function CotizacionesForm() {
                         value={formData.ubicacion}
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
-                        placeholder="Ciudad, Provincia / País"
+                        placeholder={t("locationPlaceholder")}
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Descripción del Proyecto / Requerimiento
+                        {t("projectDescription")}
                       </label>
                       <textarea
                         name="descripcion"
@@ -592,14 +590,14 @@ function CotizacionesForm() {
                         onChange={handleChange}
                         rows={4}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all resize-none"
-                        placeholder="Describa su proyecto, especificaciones técnicas requeridas, condiciones de operación, o cualquier información relevante..."
+                        placeholder={t("projectDescriptionPlaceholder")}
                       />
                     </div>
 
                     {/* File Upload */}
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Adjuntar Archivos (opcional)
+                        {t("attachFiles")}
                       </label>
                       <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#009e49] transition-colors">
                         <input
@@ -616,10 +614,10 @@ function CotizacionesForm() {
                         >
                           <Upload size={32} className="text-gray-400 mb-2" />
                           <span className="text-sm text-gray-600">
-                            Haga clic para subir archivos
+                            {t("clickToUpload")}
                           </span>
                           <span className="text-xs text-gray-400 mt-1">
-                            PDF, DOC, JPG, PNG, DWG, Excel (máx. 5 archivos)
+                            {t("fileTypes")}
                           </span>
                         </label>
                       </div>
@@ -648,7 +646,7 @@ function CotizacionesForm() {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        ¿Cómo nos conoció?
+                        {t("howDidYouFindUs")}
                       </label>
                       <select
                         name="comoNosConocio"
@@ -656,18 +654,18 @@ function CotizacionesForm() {
                         onChange={handleChange}
                         className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                       >
-                        <option value="">Seleccione...</option>
-                        <option value="google">Google / Búsqueda web</option>
+                        <option value="">{t("select")}</option>
+                        <option value="google">{t("sourceGoogle")}</option>
                         <option value="referido">
-                          Referido por un cliente
+                          {t("sourceReferral")}
                         </option>
-                        <option value="redes">Redes sociales</option>
-                        <option value="evento">Evento / Feria</option>
-                        <option value="publicidad">Publicidad</option>
+                        <option value="redes">{t("sourceSocial")}</option>
+                        <option value="evento">{t("sourceEvent")}</option>
+                        <option value="publicidad">{t("sourceAdvertising")}</option>
                         <option value="representante">
-                          Representante de marca
+                          {t("sourceBrandRep")}
                         </option>
-                        <option value="otro">Otro</option>
+                        <option value="otro">{t("sourceOther")}</option>
                       </select>
                     </div>
                   </div>
@@ -689,11 +687,11 @@ function CotizacionesForm() {
                   {isSubmitting ? (
                     <>
                       <Loader2 size={20} className="animate-spin" />
-                      Enviando solicitud...
+                      {t("submitting")}
                     </>
                   ) : (
                     <>
-                      Enviar Solicitud de Cotización
+                      {t("submitButton")}
                       <ArrowRight size={20} />
                     </>
                   )}
@@ -711,7 +709,7 @@ function CotizacionesForm() {
                 className="bg-white rounded-2xl p-6 shadow-lg"
               >
                 <h3 className="text-lg font-bold text-gray-900 mb-4">
-                  Contacto Directo
+                  {t("directContact")}
                 </h3>
                 <div className="space-y-4">
                   <a
@@ -723,7 +721,7 @@ function CotizacionesForm() {
                     </div>
                     <div>
                       <span className="text-xs text-gray-500 block">
-                        Teléfono
+                        {t("phone")}
                       </span>
                       <span className="font-semibold text-gray-900">
                         {contactInfo.phone}
@@ -765,11 +763,10 @@ function CotizacionesForm() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Clock size={24} className="text-[#009e49]" />
-                  <h3 className="font-bold text-gray-900">Respuesta Rápida</h3>
+                  <h3 className="font-bold text-gray-900">{t("fastResponse")}</h3>
                 </div>
                 <p className="text-gray-600 text-sm">
-                  Respondemos en menos de <strong>30 minutos</strong> durante
-                  horario laboral (Lunes a Viernes 8am - 5pm).
+                  {t("fastResponseDescription")}
                 </p>
               </motion.div>
 
@@ -782,11 +779,10 @@ function CotizacionesForm() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <Globe size={24} />
-                  <h3 className="font-bold">Suplidores Internacionales</h3>
+                  <h3 className="font-bold">{t("internationalSuppliers")}</h3>
                 </div>
                 <p className="text-white/90 text-sm mb-3">
-                  Representamos más de 8 marcas líderes del sector eléctrico con
-                  presencia en más de 40 países.
+                  {t("internationalSuppliersDescription")}
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {["INATRA", "Hammond", "Elpitalia", "Top Cable", "Schneider"].map(
@@ -814,7 +810,7 @@ function CotizacionesForm() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <MapPin size={24} className="text-[#009e49]" />
-                  <h3 className="font-bold text-gray-900">Ubicación</h3>
+                  <h3 className="font-bold text-gray-900">{t("location")}</h3>
                 </div>
                 <p className="text-gray-600 text-sm">{contactInfo.address}</p>
               </motion.div>

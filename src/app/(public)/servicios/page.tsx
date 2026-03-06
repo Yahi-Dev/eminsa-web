@@ -108,12 +108,12 @@ export default function ServiciosPage() {
                   <span className="text-white">{t("hero.title")}</span>
                 </h1>
                 <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed">
-                  {serviciosInfo.description}
+                  {t("hero.subtitle")}
                 </p>
               </div>
 
               <p className="text-lg text-white/70 leading-relaxed max-w-xl">
-                Con más de 50 años de trayectoria, nuestro equipo de técnicos especializados opera en campo y en taller para brindar mantenimiento preventivo, correctivo y de emergencia, asegurando la continuidad operativa de sus sistemas eléctricos.
+                {t("hero.description")}
               </p>
 
               {/* CTAs */}

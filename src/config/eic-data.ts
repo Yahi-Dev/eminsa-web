@@ -96,7 +96,7 @@ export const eicInfo: EICInfo = {
     "Conectamos a Eminsa con el mundo, expandiendo nuestras soluciones energéticas a través de una sólida red global de aliados estratégicos, garantizando presencia internacional, servicio especializado y un acompañamiento cercano en cada proyecto.",
   color: "#009e49",
   stats: [
-    { value: "8", label: "Marcas Representadas", suffix: "+" },
+    { value: "9", label: "Marcas Representadas", suffix: "+" },
     { value: "40", label: "Países de Presencia", suffix: "+" },
     { value: "50", label: "Años de Experiencia", suffix: "+" },
     { value: "24", label: "Soporte Técnico", suffix: "/7" },
@@ -104,10 +104,10 @@ export const eicInfo: EICInfo = {
   advantages: [
     {
       id: "global",
-      title: "Red Global",
+      title: "Marcas Internacionales",
       description: "Acceso a las mejores marcas internacionales del sector eléctrico.",
       icon: "globe",
-      highlight: "8+ Marcas",
+      highlight: "9+ Marcas",
     },
     {
       id: "soporte",
@@ -144,7 +144,7 @@ export const eicProductCategories: EICProductCategory[] = [
     shortName: "Transformadores",
     description: "Transformadores de distribución de marcas líderes internacionales, incluyendo tipo poste, pad mounted, secos y secos en resina.",
     icon: "zap",
-    brands: ["INATRA", "Hammond", "Elpitalia"],
+    brands: ["INATRA", "Hammond", "Elpitalia", "Green Transfo"],
     color: "#00269b",
   },
   {
@@ -273,6 +273,16 @@ export const eicBrands: EICBrand[] = [
       "Chardon Group es uno de los principales fabricantes mundiales de accesorios para cables de media tensión, especializado en productos bajo normas IEEE/ANSI e IEC. La empresa diseña y fabrica componentes de alta calidad como codos, boquillas, adaptadores, cajas derivadoras, empalmes y terminales, utilizados en redes eléctricas subterráneas, aéreas y subestaciones. Destaca por desarrollar sus propias formulaciones de EPDM, garantizar certificaciones internacionales y ofrecer soluciones confiables para la industria energética.",
     category: "accesorios",
     products: ["Codos", "Boquillas", "Adaptadores", "Empalmes", "Terminales"],
+  },
+  {
+    id: "green-transfo",
+    slug: "green-transfo",
+    name: "Green Transfo",
+    country: "Francia / Polonia / Turquía",
+    description:
+      "Green Transfo es un fabricante global de transformadores con más de 60 años de experiencia industrial, consolidado en 2023 bajo el Groupe Cahors tras integrar plantas con legado bajo marcas como AEG, Alstom, Areva y Schneider Electric. La empresa se especializa en el diseño y producción de transformadores de alta calidad, incluyendo transformadores de subestación, que forman parte de su línea de transformadores de potencia y media potencia. Estas unidades pueden alcanzar capacidades de hasta 135 MVA y 170 kV, fabricadas con tecnología avanzada y procesos que cumplen los estándares internacionales más exigentes. Los transformadores de subestación de Green Transfo se desarrollan en instalaciones modernas ubicadas en Polonia y Turquía, donde se aplican métodos de manufactura sostenibles y materiales eco-amigables para garantizar eficiencia, confiabilidad y larga vida útil.",
+    category: "transformadores",
+    products: ["Transformadores tipo Subestación"],
   },
 ];
 
@@ -522,6 +532,33 @@ export const eicProducts: EICProduct[] = [
       { label: "Productos", value: "Codos, Boquillas, Empalmes" },
       { label: "Material", value: "EPDM propio" },
       { label: "Normas", value: "IEEE / ANSI / IEC" },
+    ],
+  },
+  // --- GREEN TRANSFO ---
+  {
+    id: "green-transfo-subestacion",
+    slug: "green-transfo-subestacion",
+    name: "Transformadores de Subestación Green Transfo",
+    shortName: "Subestación Green Transfo",
+    description: "Transformadores de subestación de alta potencia fabricados por Green Transfo, con capacidades de hasta 135 MVA y 170 kV.",
+    fullDescription: [
+      "Green Transfo es un fabricante global de transformadores con más de 60 años de experiencia industrial, consolidado en 2023 bajo el Groupe Cahors tras integrar plantas con legado bajo marcas como AEG, Alstom, Areva y Schneider Electric.",
+      "La empresa se especializa en el diseño y producción de transformadores de alta calidad, incluyendo transformadores de subestación que forman parte de su línea de transformadores de potencia y media potencia. Estas unidades pueden alcanzar capacidades de hasta 135 MVA y 170 kV.",
+      "Los transformadores de subestación de Green Transfo se desarrollan en instalaciones modernas ubicadas en Polonia y Turquía, donde se aplican métodos de manufactura sostenibles y materiales eco-amigables para garantizar eficiencia, confiabilidad y larga vida útil.",
+    ],
+    brand: "Green Transfo",
+    brandSlug: "green-transfo",
+    category: "Transformadores",
+    categorySlug: "transformadores",
+    features: ["Hasta 135 MVA", "Hasta 170 kV", "Manufactura sostenible", "Materiales eco-amigables", "Legado AEG/Alstom/Areva", "60+ años de experiencia"],
+    applications: ["Subestaciones eléctricas", "Generación de energía", "Transmisión de potencia", "Infraestructura industrial", "Proyectos de gran escala"],
+    specs: [
+      { label: "Marca", value: "Green Transfo (Groupe Cahors)" },
+      { label: "Tipo", value: "Subestación / Potencia" },
+      { label: "Capacidad", value: "Hasta 135 MVA" },
+      { label: "Voltaje", value: "Hasta 170 kV" },
+      { label: "Origen", value: "Polonia / Turquía" },
+      { label: "Normas", value: "IEC / ANSI" },
     ],
   },
 ];

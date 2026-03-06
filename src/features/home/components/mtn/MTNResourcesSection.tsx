@@ -10,61 +10,17 @@ import {
   ArrowRight,
   ExternalLink,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-interface Resource {
-  id: string;
-  name: string;
-  description: string;
-  icon: React.ElementType;
-  href: string;
-  color: string;
-  cta: string;
-}
-
-const resources: Resource[] = [
-  {
-    id: "noticias",
-    name: "Noticias",
-    description:
-      "Mantente al día con las últimas novedades del sector eléctrico y actualizaciones de EMINSA.",
-    icon: Newspaper,
-    href: "/noticias?categoria=mtn",
-    color: "#00269b",
-    cta: "Ver Noticias",
-  },
-  {
-    id: "fichas",
-    name: "Fichas Técnicas",
-    description:
-      "Descarga las especificaciones técnicas completas de nuestros transformadores.",
-    icon: FileText,
-    href: "/mtn/recursos/fichas-tecnicas",
-    color: "#0099ce",
-    cta: "Descargar Fichas",
-  },
-  {
-    id: "garantias",
-    name: "Garantías",
-    description:
-      "Conoce nuestras políticas de garantía y respaldo técnico para tu tranquilidad.",
-    icon: ShieldCheck,
-    href: "/mtn/recursos/garantias",
-    color: "#009e49",
-    cta: "Ver Garantías",
-  },
-  {
-    id: "calculadora",
-    name: "Calculadora",
-    description:
-      "Herramienta para dimensionar el transformador ideal según tus necesidades.",
-    icon: Calculator,
-    href: "/mtn/recursos/calculadora",
-    color: "#00269b",
-    cta: "Usar Calculadora",
-  },
+const resources = [
+  { id: "noticias", icon: Newspaper, href: "/noticias?categoria=mtn", color: "#00269b" },
+  { id: "fichas", icon: FileText, href: "/mtn/recursos/fichas-tecnicas", color: "#0099ce" },
+  { id: "garantias", icon: ShieldCheck, href: "/mtn/recursos/garantias", color: "#009e49" },
+  { id: "calculadora", icon: Calculator, href: "/mtn/recursos/calculadora", color: "#00269b" },
 ];
 
 export default function MTNResourcesSection() {
+  const t = useTranslations("mtnPage.resourcesSection");
   return (
     <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
       {/* Background */}
@@ -84,16 +40,15 @@ export default function MTNResourcesSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-6">
             <FileText className="w-4 h-4" />
-            Centro de Recursos
+            {t("badge")}
           </span>
 
           <h2 className="text-4xl md:text-5xl font-bold text-[#00269b] mb-4">
-            Todo lo que <span className="text-[#0099ce]">Necesitas</span>
+            {t("title")} <span className="text-[#0099ce]">{t("titleAccent")}</span>
           </h2>
 
           <p className="text-[#6d6e6d] text-lg">
-            Accede a información técnica, noticias y herramientas para tomar las
-            mejores decisiones.
+            {t("description")}
           </p>
         </motion.div>
 
@@ -122,12 +77,12 @@ export default function MTNResourcesSection() {
 
                   {/* Title */}
                   <h3 className="text-xl font-bold text-[#00269b] mb-2 group-hover:text-[#0099ce] transition-colors">
-                    {resource.name}
+                    {t(`resources.${resource.id}.name`)}
                   </h3>
 
                   {/* Description */}
                   <p className="text-[#6d6e6d] text-sm mb-4 leading-relaxed">
-                    {resource.description}
+                    {t(`resources.${resource.id}.description`)}
                   </p>
 
                   {/* CTA */}
@@ -135,7 +90,7 @@ export default function MTNResourcesSection() {
                     className="flex items-center gap-2 font-semibold text-sm transition-colors"
                     style={{ color: resource.color }}
                   >
-                    {resource.cta}
+                    {t(`resources.${resource.id}.cta`)}
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
@@ -160,10 +115,10 @@ export default function MTNResourcesSection() {
                 </div>
                 <div>
                   <h4 className="font-bold text-white text-xl mb-1">
-                    Noticias por Categoría
+                    {t("newsByCategory")}
                   </h4>
                   <p className="text-white/70">
-                    Filtra noticias por: MTN, ETRYS, EIC, Servicios, Generales
+                    {t("newsCategoryFilter")}
                   </p>
                 </div>
               </div>
@@ -172,7 +127,7 @@ export default function MTNResourcesSection() {
                 href="/noticias"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00269b] font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 group"
               >
-                Explorar Noticias
+                {t("exploreNews")}
                 <ExternalLink size={18} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>

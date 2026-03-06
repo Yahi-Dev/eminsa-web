@@ -18,6 +18,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { useTranslations } from "next-intl";
 
 // Datos de transformadores disponibles para alquiler
 const transformadoresDisponibles = [
@@ -138,6 +139,7 @@ const casosDeUso = [
 ];
 
 export default function AlquilerTransformadoresPage() {
+  const t = useTranslations("pages.servicios.alquiler");
   return (
     <>
       {/* Hero Section */}
@@ -167,11 +169,11 @@ export default function AlquilerTransformadoresPage() {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2 text-white/60 text-sm mb-8"
           >
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("breadcrumbHome")}</Link>
             <ChevronRight size={16} />
-            <Link href="/servicios" className="hover:text-white transition-colors">Servicios</Link>
+            <Link href="/servicios" className="hover:text-white transition-colors">{t("breadcrumbServicios")}</Link>
             <ChevronRight size={16} />
-            <span className="text-white">Alquiler de Transformadores</span>
+            <span className="text-white">{t("breadcrumbTitle")}</span>
           </motion.div>
 
           <motion.div
@@ -182,32 +184,30 @@ export default function AlquilerTransformadoresPage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-6">
               <Zap size={16} />
-              <span>Soluciones Temporales</span>
+              <span>{t("badge")}</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6">
-              Alquiler de Transformadores
+              {t("title")}
             </h1>
             <p className="text-xl text-white/80 mb-8">
-              Soluciones flexibles de energía eléctrica para proyectos temporales, 
-              emergencias y mantenimiento. Más de 50 años de experiencia garantizando 
-              la continuidad operativa de su proyecto.
+              {t("description")}
             </p>
             <div className="flex flex-wrap gap-4">
               <Link 
                 href="/servicios/cotizacion" 
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#00269b] font-semibold rounded-lg hover:bg-gray-100 transition-all hover:shadow-lg"
               >
-                Solicitar Cotización
+                {t("requestQuote")}
                 <ArrowRight size={18} />
               </Link>
-              <a 
+              <a
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white font-semibold rounded-lg hover:bg-[#20BD5A] transition-all"
               >
                 <MessageCircle size={18} />
-                Consulta por WhatsApp
+                {t("whatsappConsult")}
               </a>
             </div>
           </motion.div>
@@ -224,10 +224,10 @@ export default function AlquilerTransformadoresPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-              ¿Por qué Alquilar con EMINSA?
+              {t("whyRent")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
-              Beneficios y ventajas de nuestro servicio de alquiler de transformadores
+              {t("whyRentDesc")}
             </p>
           </motion.div>
 
@@ -269,10 +269,10 @@ export default function AlquilerTransformadoresPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-              Transformadores Disponibles
+              {t("availableTransformers")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
-              Amplio inventario de transformadores para satisfacer sus necesidades
+              {t("availableTransformersDesc")}
             </p>
           </motion.div>
 
@@ -302,7 +302,7 @@ export default function AlquilerTransformadoresPage() {
                       <div className="absolute top-6 left-6 z-10">
                         <span className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-xs font-semibold flex items-center gap-2 shadow-lg">
                           <div className="w-2 h-2 bg-[#009e49] rounded-full animate-pulse"></div>
-                          Disponible para Alquiler
+                          {t("availableForRent")}
                         </span>
                       </div>
 
@@ -367,7 +367,7 @@ export default function AlquilerTransformadoresPage() {
                       <div className="mb-6">
                         <h4 className="text-xs font-bold text-[#00269b] uppercase tracking-wide mb-3 flex items-center gap-2">
                           <Zap size={14} style={{ color: transformador.color }} />
-                          Potencias Disponibles
+                          {t("availablePowers")}
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {transformador.potencias.map((potencia, i) => (
@@ -390,7 +390,7 @@ export default function AlquilerTransformadoresPage() {
                       <div className="mb-6">
                         <h4 className="text-xs font-bold text-[#00269b] uppercase tracking-wide mb-3 flex items-center gap-2">
                           <CheckCircle size={14} style={{ color: transformador.color }} />
-                          Características Técnicas
+                          {t("technicalSpecs")}
                         </h4>
                         <div className="grid grid-cols-1 gap-2">
                           {transformador.caracteristicas.map((caracteristica, i) => (
@@ -409,7 +409,7 @@ export default function AlquilerTransformadoresPage() {
                       <div className="mb-8">
                         <h4 className="text-xs font-bold text-[#00269b] uppercase tracking-wide mb-3 flex items-center gap-2">
                           <Building2 size={14} style={{ color: transformador.color }} />
-                          Aplicaciones
+                          {t("applications")}
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {transformador.aplicaciones.map((aplicacion, i) => (
@@ -434,7 +434,7 @@ export default function AlquilerTransformadoresPage() {
                           className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all group shadow-md hover:shadow-lg text-white"
                           style={{ backgroundColor: transformador.color }}
                         >
-                          Solicitar Cotización
+                          {t("requestQuote")}
                           <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                       </div>
@@ -457,10 +457,10 @@ export default function AlquilerTransformadoresPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-              Casos de Uso
+              {t("useCases")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
-              Soluciones de alquiler para diferentes sectores y necesidades
+              {t("useCasesDesc")}
             </p>
           </motion.div>
 
@@ -486,7 +486,7 @@ export default function AlquilerTransformadoresPage() {
                     </div>
                   </div>
                   <div className="pl-16">
-                    <h4 className="text-xs font-semibold text-[#00269b] mb-2">Ejemplos:</h4>
+                    <h4 className="text-xs font-semibold text-[#00269b] mb-2">{t("examples")}</h4>
                     <div className="flex flex-wrap gap-2">
                       {caso.ejemplos.map((ejemplo, i) => (
                         <span key={i} className="px-3 py-1 bg-gray-100 text-[#6d6e6d] rounded-full text-xs">

@@ -1,7 +1,8 @@
-import { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
-import { 
-  ChevronRight, 
+import {
+  ChevronRight,
   BookOpen,
   Download,
   ArrowRight,
@@ -14,115 +15,31 @@ import {
   Thermometer,
   Zap
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-export const metadata: Metadata = {
-  title: "Manual de Mantenimiento - Recursos MTN | Grupo EMINSA",
-  description: "Guías completas de mantenimiento preventivo y correctivo para transformadores EMINSA.",
-};
-
-// Capítulos del manual
-const chapters = [
-  {
-    number: 1,
-    title: "Introducción y Seguridad",
-    description: "Normas de seguridad fundamentales y precauciones generales para trabajar con transformadores.",
-    icon: AlertTriangle,
-  },
-  {
-    number: 2,
-    title: "Inspección Visual",
-    description: "Procedimientos de inspección visual periódica, qué buscar y cómo documentar hallazgos.",
-    icon: Eye,
-  },
-  {
-    number: 3,
-    title: "Mantenimiento Preventivo",
-    description: "Rutinas de mantenimiento preventivo recomendadas según frecuencia (mensual, trimestral, anual).",
-    icon: Wrench,
-  },
-  {
-    number: 4,
-    title: "Aceite Dieléctrico",
-    description: "Análisis, tratamiento y reemplazo del aceite dieléctrico. Valores de referencia.",
-    icon: Droplet,
-  },
-  {
-    number: 5,
-    title: "Pruebas Eléctricas",
-    description: "Pruebas de resistencia de aislamiento, relación de transformación y resistencia de devanados.",
-    icon: Zap,
-  },
-  {
-    number: 6,
-    title: "Control de Temperatura",
-    description: "Monitoreo de temperatura, interpretación de lecturas y acciones correctivas.",
-    icon: Thermometer,
-  },
-];
-
-// Programa de mantenimiento
-const maintenanceSchedule = [
-  {
-    frequency: "Mensual",
-    tasks: [
-      "Inspección visual del transformador",
-      "Verificar nivel de aceite",
-      "Revisar indicadores de temperatura",
-      "Inspeccionar conexiones visibles",
-      "Verificar estado de bushings",
-    ],
-  },
-  {
-    frequency: "Trimestral",
-    tasks: [
-      "Limpieza exterior del transformador",
-      "Verificar sistema de ventilación",
-      "Inspeccionar válvulas de alivio",
-      "Revisar estado de pintura",
-      "Verificar puesta a tierra",
-    ],
-  },
-  {
-    frequency: "Anual",
-    tasks: [
-      "Análisis de aceite dieléctrico",
-      "Prueba de resistencia de aislamiento",
-      "Termografía infrarroja",
-      "Verificación de relación de transformación",
-      "Inspección detallada de accesorios",
-    ],
-  },
-];
-
-// Documentos descargables
-const downloads = [
-  {
-    title: "Manual Completo de Mantenimiento",
-    description: "Guía completa con todos los procedimientos de mantenimiento.",
-    size: "5.2 MB",
-    type: "PDF",
-  },
-  {
-    title: "Checklist de Inspección Visual",
-    description: "Formulario imprimible para inspecciones periódicas.",
-    size: "320 KB",
-    type: "PDF",
-  },
-  {
-    title: "Guía de Análisis de Aceite",
-    description: "Interpretación de resultados de análisis de aceite.",
-    size: "1.1 MB",
-    type: "PDF",
-  },
-  {
-    title: "Registro de Mantenimiento",
-    description: "Plantilla para documentar actividades de mantenimiento.",
-    size: "180 KB",
-    type: "Excel",
-  },
-];
+const chapterIcons = [AlertTriangle, Eye, Wrench, Droplet, Zap, Thermometer];
 
 export default function ManualMantenimientoPage() {
+  const t = useTranslations("pages.mtn.recursos.manual");
+
+  const chapters = Array.from({ length: 6 }, (_, i) => ({
+    number: i + 1,
+    title: t(`chapters.${i}.title`),
+    description: t(`chapters.${i}.description`),
+    icon: chapterIcons[i],
+  }));
+
+  const maintenanceSchedule = Array.from({ length: 3 }, (_, i) => ({
+    frequency: t(`schedule.${i}.frequency`),
+    tasks: Array.from({ length: 5 }, (_, j) => t(`schedule.${i}.tasks.${j}`)),
+  }));
+
+  const downloads = Array.from({ length: 4 }, (_, i) => ({
+    title: t(`downloads.${i}.title`),
+    description: t(`downloads.${i}.description`),
+    size: t(`downloads.${i}.size`),
+    type: t(`downloads.${i}.type`),
+  }));
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -130,13 +47,13 @@ export default function ManualMantenimientoPage() {
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("breadcrumb.home")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
+            <Link href="/mtn" className="hover:text-white transition-colors">{t("breadcrumb.mtn")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn/recursos" className="hover:text-white transition-colors">Recursos</Link>
+            <Link href="/mtn/recursos" className="hover:text-white transition-colors">{t("breadcrumb.recursos")}</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Manual de Mantenimiento</span>
+            <span className="text-white">{t("breadcrumb.manual")}</span>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -144,8 +61,8 @@ export default function ManualMantenimientoPage() {
               <BookOpen size={28} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold">Manual de Mantenimiento</h1>
-              <p className="text-white/70">Guías para el cuidado de sus transformadores</p>
+              <h1 className="text-3xl font-bold">{t("hero.title")}</h1>
+              <p className="text-white/70">{t("hero.subtitle")}</p>
             </div>
           </div>
         </div>
@@ -157,10 +74,9 @@ export default function ManualMantenimientoPage() {
           <div className="flex items-start gap-4">
             <AlertTriangle size={24} className="text-amber-600 flex-shrink-0" />
             <div>
-              <p className="font-semibold text-amber-800">Importancia del Mantenimiento Preventivo</p>
+              <p className="font-semibold text-amber-800">{t("banner.title")}</p>
               <p className="text-amber-700 text-sm mt-1">
-                El mantenimiento regular puede extender la vida útil de su transformador hasta 30 años y prevenir fallas costosas. 
-                Un transformador bien mantenido es más eficiente y seguro.
+                {t("banner.description")}
               </p>
             </div>
           </div>
@@ -170,7 +86,7 @@ export default function ManualMantenimientoPage() {
       {/* Chapters */}
       <section className="py-12">
         <div className="container-eminsa">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Contenido del Manual</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">{t("manualContent")}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {chapters.map((chapter) => {
               const Icon = chapter.icon;
@@ -185,7 +101,7 @@ export default function ManualMantenimientoPage() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-medium text-[#0099ce]">Capítulo {chapter.number}</span>
+                        <span className="text-xs font-medium text-[#0099ce]">{t("chapterLabel", { number: chapter.number })}</span>
                       </div>
                       <h3 className="font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
                         {chapter.title}
@@ -206,7 +122,7 @@ export default function ManualMantenimientoPage() {
       <section className="py-12 bg-white">
         <div className="container-eminsa">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Programa de Mantenimiento Recomendado
+            {t("scheduleTitle")}
           </h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {maintenanceSchedule.map((schedule, idx) => (
@@ -232,7 +148,7 @@ export default function ManualMantenimientoPage() {
       {/* Downloads */}
       <section className="py-12">
         <div className="container-eminsa">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">Documentos Descargables</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">{t("downloadsTitle")}</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {downloads.map((doc, idx) => (
               <div

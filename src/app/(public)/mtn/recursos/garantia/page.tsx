@@ -1,7 +1,8 @@
-import { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
-import { 
-  ChevronRight, 
+import {
+  ChevronRight,
   Shield,
   CheckCircle2,
   XCircle,
@@ -12,67 +13,29 @@ import {
   ArrowRight,
   FileText
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-export const metadata: Metadata = {
-  title: "Garantía - Recursos MTN | Grupo EMINSA",
-  description: "Información sobre términos, cobertura y proceso de garantía para transformadores EMINSA.",
-};
-
-// Información de garantía
-const warrantyPeriods = [
-  { product: "Transformadores Tipo Poste", period: "3 años", icon: "🔌" },
-  { product: "Transformadores Pad Mounted", period: "3 años", icon: "📦" },
-  { product: "Transformadores de Subestación", period: "2 años", icon: "⚡" },
-  { product: "Accesorios", period: "1 año", icon: "🔧" },
-];
-
-const coverage = [
-  "Defectos de fabricación en materiales",
-  "Defectos de mano de obra",
-  "Fallas en el núcleo magnético",
-  "Fallas en devanados primarios y secundarios",
-  "Fugas en tanque hermético (primeros 2 años)",
-  "Fallas en bushings y conectores",
-  "Defectos en aceite dieléctrico",
-  "Fallas en indicadores de nivel y temperatura",
-];
-
-const exclusions = [
-  "Daños por sobrecarga eléctrica",
-  "Daños por cortocircuito externo",
-  "Daños por fenómenos naturales (rayos, inundaciones, terremotos)",
-  "Daños por vandalismo o robo",
-  "Modificaciones no autorizadas por EMINSA",
-  "Falta de mantenimiento preventivo según manual",
-  "Operación fuera de los parámetros especificados",
-  "Daños durante transporte o instalación incorrecta",
-  "Desgaste normal de componentes consumibles",
-];
-
-const claimProcess = [
-  {
-    step: 1,
-    title: "Reporte el problema",
-    description: "Contacte a nuestro departamento de servicio técnico con el número de serie del equipo.",
-  },
-  {
-    step: 2,
-    title: "Evaluación técnica",
-    description: "Un técnico evaluará el equipo para determinar la causa de la falla.",
-  },
-  {
-    step: 3,
-    title: "Diagnóstico",
-    description: "Recibirá un informe con el diagnóstico y la decisión sobre cobertura de garantía.",
-  },
-  {
-    step: 4,
-    title: "Reparación o reemplazo",
-    description: "Si aplica la garantía, procederemos con la reparación o reemplazo del equipo.",
-  },
-];
+const warrantyIcons = ["🔌", "📦", "⚡", "🔧"];
 
 export default function GarantiaPage() {
+  const t = useTranslations("pages.mtn.recursos.garantia");
+
+  const warrantyPeriods = [
+    { product: t("periods.0.product"), period: t("periods.0.period"), icon: warrantyIcons[0] },
+    { product: t("periods.1.product"), period: t("periods.1.period"), icon: warrantyIcons[1] },
+    { product: t("periods.2.product"), period: t("periods.2.period"), icon: warrantyIcons[2] },
+    { product: t("periods.3.product"), period: t("periods.3.period"), icon: warrantyIcons[3] },
+  ];
+
+  const coverage = Array.from({ length: 8 }, (_, i) => t(`coverage.${i}`));
+  const exclusions = Array.from({ length: 9 }, (_, i) => t(`exclusions.${i}`));
+
+  const claimProcess = [
+    { step: 1, title: t("claimProcess.0.title"), description: t("claimProcess.0.description") },
+    { step: 2, title: t("claimProcess.1.title"), description: t("claimProcess.1.description") },
+    { step: 3, title: t("claimProcess.2.title"), description: t("claimProcess.2.description") },
+    { step: 4, title: t("claimProcess.3.title"), description: t("claimProcess.3.description") },
+  ];
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -80,13 +43,13 @@ export default function GarantiaPage() {
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("breadcrumb.home")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
+            <Link href="/mtn" className="hover:text-white transition-colors">{t("breadcrumb.mtn")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn/recursos" className="hover:text-white transition-colors">Recursos</Link>
+            <Link href="/mtn/recursos" className="hover:text-white transition-colors">{t("breadcrumb.recursos")}</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Garantía</span>
+            <span className="text-white">{t("breadcrumb.garantia")}</span>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -94,8 +57,8 @@ export default function GarantiaPage() {
               <Shield size={28} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold">Garantía</h1>
-              <p className="text-white/70">Términos y condiciones de garantía</p>
+              <h1 className="text-3xl font-bold">{t("hero.title")}</h1>
+              <p className="text-white/70">{t("hero.subtitle")}</p>
             </div>
           </div>
         </div>
@@ -105,7 +68,7 @@ export default function GarantiaPage() {
       <section className="py-12 bg-white">
         <div className="container-eminsa">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Períodos de Garantía
+            {t("periodsTitle")}
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {warrantyPeriods.map((item, idx) => (
@@ -129,7 +92,7 @@ export default function GarantiaPage() {
                 <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                   <CheckCircle2 size={24} className="text-green-600" />
                 </div>
-                <h2 className="text-xl font-bold text-gray-900">Cobertura</h2>
+                <h2 className="text-xl font-bold text-gray-900">{t("coverageTitle")}</h2>
               </div>
               <ul className="space-y-3">
                 {coverage.map((item, idx) => (
@@ -147,7 +110,7 @@ export default function GarantiaPage() {
                 <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
                   <XCircle size={24} className="text-red-600" />
                 </div>
-                <h2 className="text-xl font-bold text-gray-900">Exclusiones</h2>
+                <h2 className="text-xl font-bold text-gray-900">{t("exclusionsTitle")}</h2>
               </div>
               <ul className="space-y-3">
                 {exclusions.map((item, idx) => (
@@ -166,7 +129,7 @@ export default function GarantiaPage() {
       <section className="py-12 bg-white">
         <div className="container-eminsa">
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-            Proceso de Reclamación
+            {t("claimProcessTitle")}
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -197,24 +160,24 @@ export default function GarantiaPage() {
           <div className="max-w-3xl mx-auto bg-[#00269b]/5 rounded-2xl p-8">
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
               <Clock size={24} className="text-[#00269b]" />
-              Requisitos para Validar la Garantía
+              {t("requirements.title")}
             </h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <div className="w-6 h-6 bg-[#00269b] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
-                <span className="text-gray-700">Presentar factura original de compra o documento equivalente.</span>
+                <span className="text-gray-700">{t("requirements.0")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-6 h-6 bg-[#00269b] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
-                <span className="text-gray-700">Proporcionar número de serie del equipo visible en la placa de datos.</span>
+                <span className="text-gray-700">{t("requirements.1")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-6 h-6 bg-[#00269b] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
-                <span className="text-gray-700">Documentar registros de mantenimiento preventivo según el manual.</span>
+                <span className="text-gray-700">{t("requirements.2")}</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-6 h-6 bg-[#00269b] text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
-                <span className="text-gray-700">Reportar la falla dentro del período de garantía vigente.</span>
+                <span className="text-gray-700">{t("requirements.3")}</span>
               </li>
             </ul>
           </div>
@@ -227,14 +190,14 @@ export default function GarantiaPage() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Contact */}
             <div className="bg-gray-50 rounded-2xl p-8">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">Contacto de Servicio Técnico</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-6">{t("contact.title")}</h2>
               <div className="space-y-4">
                 <a href="tel:809-555-0123" className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 bg-[#00269b] rounded-lg flex items-center justify-center">
                     <Phone size={24} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Teléfono</p>
+                    <p className="text-sm text-gray-500">{t("contact.phone")}</p>
                     <p className="font-semibold text-gray-900">(809) 555-0123</p>
                   </div>
                 </a>
@@ -243,7 +206,7 @@ export default function GarantiaPage() {
                     <Mail size={24} className="text-white" />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Correo Electrónico</p>
+                    <p className="text-sm text-gray-500">{t("contact.email")}</p>
                     <p className="font-semibold text-gray-900">servicio@eminsa.com</p>
                   </div>
                 </a>
@@ -252,17 +215,17 @@ export default function GarantiaPage() {
 
             {/* Download */}
             <div className="bg-gradient-to-br from-[#00269b] to-[#00269b] rounded-2xl p-8 text-white">
-              <h2 className="text-xl font-bold mb-4">Documento de Garantía</h2>
+              <h2 className="text-xl font-bold mb-4">{t("document.title")}</h2>
               <p className="text-white/80 mb-6">
-                Descargue el documento completo con todos los términos y condiciones de garantía.
+                {t("document.description")}
               </p>
               <button className="flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors">
                 <Download size={20} />
-                Descargar PDF
+                {t("document.download")}
               </button>
               <p className="text-sm text-white/60 mt-4">
                 <FileText size={14} className="inline mr-1" />
-                Términos_Garantía_EMINSA.pdf (320 KB)
+                {t("document.filename")}
               </p>
             </div>
           </div>
@@ -272,15 +235,15 @@ export default function GarantiaPage() {
       {/* CTA */}
       <section className="py-12 bg-[#00269b] text-white">
         <div className="container-eminsa text-center">
-          <h2 className="text-2xl font-bold mb-4">¿Tiene preguntas sobre la garantía?</h2>
+          <h2 className="text-2xl font-bold mb-4">{t("cta.title")}</h2>
           <p className="text-white/80 mb-6 max-w-xl mx-auto">
-            Nuestro equipo está disponible para resolver cualquier duda.
+            {t("cta.description")}
           </p>
           <Link
             href="/mtn/cotizaciones"
             className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
           >
-            Contactar Soporte
+            {t("cta.contactSupport")}
             <ArrowRight size={18} />
           </Link>
         </div>

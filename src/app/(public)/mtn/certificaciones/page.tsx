@@ -1,22 +1,20 @@
-import { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { 
-  ChevronRight, 
-  Award, 
+import {
+  ChevronRight,
+  Award,
   ArrowRight,
   CheckCircle2,
   ExternalLink,
   Shield
 } from "lucide-react";
 import { certifications } from "@/config/mtn-data";
-
-export const metadata: Metadata = {
-  title: "Certificaciones - MTN | Grupo EMINSA",
-  description: "Conoce las certificaciones ISO 9001:2015, CIDET y UL que respaldan la calidad de nuestros transformadores.",
-};
+import { useTranslations } from "next-intl";
 
 export default function CertificacionesPage() {
+  const t = useTranslations("pages.mtn.certificaciones");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -24,11 +22,11 @@ export default function CertificacionesPage() {
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("breadcrumb.home")}</Link>
             <ChevronRight size={14} />
             <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Certificaciones</span>
+            <span className="text-white">{t("breadcrumb.certificaciones")}</span>
           </nav>
 
           <div className="max-w-3xl">
@@ -36,14 +34,13 @@ export default function CertificacionesPage() {
               <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
                 <Award size={24} />
               </div>
-              <span className="text-white/90 font-semibold">Respaldo de Calidad</span>
+              <span className="text-white/90 font-semibold">{t("hero.badge")}</span>
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              Certificaciones
+              {t("hero.title")}
             </h1>
             <p className="text-xl text-white/80">
-              Nuestro compromiso con la calidad está respaldado por certificaciones 
-              internacionales reconocidas que avalan nuestros procesos y productos.
+              {t("hero.description")}
             </p>
           </div>
         </div>
@@ -101,8 +98,8 @@ export default function CertificacionesPage() {
                           <Award size={64} className="text-[#00269b]" />
                         )}
                       </div>
-                      <p className="text-sm text-gray-500">Emitido por</p>
-                      <p className="font-semibold text-gray-900">{cert.issuingBody}</p>
+                      <p className="text-sm text-gray-500">{t("issuedBy")}</p>
+                      <p className="font-semibold text-gray-900">{t(`certs.${cert.id}.issuingBody`)}</p>
                     </div>
                   </div>
 
@@ -112,27 +109,27 @@ export default function CertificacionesPage() {
                       {/* Header */}
                       <div>
                         <span className="inline-block text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-2">
-                          Certificación
+                          {t("certificationLabel")}
                         </span>
                         <h2 className="text-3xl font-bold text-gray-900">
                           {cert.name}
                         </h2>
-                        <p className="text-gray-500 mt-1">{cert.fullName}</p>
+                        <p className="text-gray-500 mt-1">{t(`certs.${cert.id}.fullName`)}</p>
                       </div>
 
                       {/* Description */}
                       <p className="text-gray-600 leading-relaxed text-lg">
-                        {cert.description}
+                        {t(`certs.${cert.id}.description`)}
                       </p>
 
                       {/* Benefits */}
                       <div>
-                        <h3 className="font-semibold text-gray-900 mb-4">Beneficios que Garantiza:</h3>
+                        <h3 className="font-semibold text-gray-900 mb-4">{t("benefitsTitle")}</h3>
                         <div className="grid sm:grid-cols-2 gap-3">
-                          {cert.benefits.map((benefit, idx) => (
+                          {cert.benefits.map((_, idx) => (
                             <div key={idx} className="flex items-start gap-3 bg-gray-50 p-3 rounded-lg">
                               <CheckCircle2 size={18} className="text-green-500 flex-shrink-0 mt-0.5" />
-                              <span className="text-gray-700 text-sm">{benefit}</span>
+                              <span className="text-gray-700 text-sm">{t(`certs.${cert.id}.benefits.${idx}`)}</span>
                             </div>
                           ))}
                         </div>
@@ -141,7 +138,7 @@ export default function CertificacionesPage() {
                       {/* Valid until if applicable */}
                       {cert.validUntil && (
                         <p className="text-sm text-gray-500">
-                          Válido hasta: <span className="font-medium">{cert.validUntil}</span>
+                          {t("validUntil")} <span className="font-medium">{cert.validUntil}</span>
                         </p>
                       )}
                     </div>
@@ -159,10 +156,10 @@ export default function CertificacionesPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                ¿Por Qué Son Importantes las Certificaciones?
+                {t("why.title")}
               </h2>
               <p className="text-lg text-gray-600">
-                Las certificaciones son más que documentos, son garantía de calidad y confianza.
+                {t("why.description")}
               </p>
             </div>
 
@@ -171,27 +168,27 @@ export default function CertificacionesPage() {
                 <div className="w-16 h-16 bg-[#00269b]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Shield size={32} className="text-[#00269b]" />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2">Seguridad</h3>
+                <h3 className="font-bold text-gray-900 mb-2">{t("why.security.title")}</h3>
                 <p className="text-gray-600 text-sm">
-                  Productos probados y verificados bajo estrictos estándares de seguridad.
+                  {t("why.security.description")}
                 </p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#0099ce]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Award size={32} className="text-[#0099ce]" />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2">Calidad</h3>
+                <h3 className="font-bold text-gray-900 mb-2">{t("why.quality.title")}</h3>
                 <p className="text-gray-600 text-sm">
-                  Procesos de fabricación controlados y estandarizados.
+                  {t("why.quality.description")}
                 </p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#009e49]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <ExternalLink size={32} className="text-[#009e49]" />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2">Acceso Global</h3>
+                <h3 className="font-bold text-gray-900 mb-2">{t("why.global.title")}</h3>
                 <p className="text-gray-600 text-sm">
-                  Cumplimiento de requisitos para mercados internacionales.
+                  {t("why.global.description")}
                 </p>
               </div>
             </div>
@@ -203,25 +200,24 @@ export default function CertificacionesPage() {
       <section className="py-16 bg-gradient-to-br from-[#0099ce] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Confíe en la Calidad Certificada
+            {t("cta.title")}
           </h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            Todos nuestros transformadores están respaldados por estas certificaciones. 
-            Solicite su cotización y reciba un producto de calidad garantizada.
+            {t("cta.description")}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/mtn/cotizaciones"
               className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
             >
-              Solicitar Cotización
+              {t("cta.requestQuote")}
               <ArrowRight size={20} />
             </Link>
             <Link
               href="/mtn/productos"
               className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-semibold transition-colors border border-white/30"
             >
-              Ver Productos
+              {t("cta.viewProducts")}
             </Link>
           </div>
         </div>

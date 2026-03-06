@@ -13,8 +13,10 @@ import {
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { serviciosDetalle } from "@/config/servicios-data";
+import { useTranslations } from "next-intl";
 
 export default function RevisionesPage() {
+  const t = useTranslations("pages.servicios.servicioDetail");
   const servicio = serviciosDetalle.find((s) => s.id === "revisiones")!;
 
   return (
@@ -38,14 +40,14 @@ export default function RevisionesPage() {
             className="flex items-center gap-2 text-white/60 text-sm mb-8"
           >
             <Link href="/" className="hover:text-white transition-colors">
-              Inicio
+              {t("breadcrumbHome")}
             </Link>
             <ChevronRight size={16} />
             <Link
               href="/servicios"
               className="hover:text-white transition-colors"
             >
-              Servicios
+              {t("breadcrumbServicios")}
             </Link>
             <ChevronRight size={16} />
             <span className="text-white">{servicio.nombreCorto}</span>
@@ -79,10 +81,10 @@ export default function RevisionesPage() {
               viewport={{ once: true }}
             >
               <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
-                Descripcion del Servicio
+                {t("serviceDescriptionBadge")}
               </span>
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-6">
-                ¿En que consiste?
+                {t("whatIsIt")}
               </h2>
               <p className="text-[#6d6e6d] leading-relaxed text-lg">
                 {servicio.descripcionLarga}
@@ -95,7 +97,7 @@ export default function RevisionesPage() {
             >
               <div className="bg-gray-50 rounded-2xl p-8">
                 <h3 className="text-xl font-bold text-[#00269b] mb-6">
-                  Beneficios Principales
+                  {t("mainBenefits")}
                 </h3>
                 <div className="space-y-4">
                   {servicio.beneficios.map((b, i) => (
@@ -124,7 +126,7 @@ export default function RevisionesPage() {
               className="text-center max-w-3xl mx-auto mb-12"
             >
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-                Etapas del Servicio
+                {t("serviceStages")}
               </h2>
             </motion.div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -162,7 +164,7 @@ export default function RevisionesPage() {
                 viewport={{ once: true }}
                 className="text-3xl font-bold text-[#00269b] mb-8 text-center"
               >
-                Alcance de Nuestros Servicios
+                {t("serviceScope")}
               </motion.h2>
               <div className="space-y-4">
                 {servicio.alcance.map((item, i) => (
@@ -195,7 +197,7 @@ export default function RevisionesPage() {
             viewport={{ once: true }}
             className="text-3xl font-bold text-white mb-4"
           >
-            ¿Necesita este servicio?
+            {t("needService")}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -204,7 +206,7 @@ export default function RevisionesPage() {
             transition={{ delay: 0.1 }}
             className="text-white/70 mb-8 max-w-2xl mx-auto"
           >
-            Contactenos para una evaluacion sin compromiso
+            {t("contactNoCommitment")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -217,7 +219,7 @@ export default function RevisionesPage() {
               href="/servicios/cotizacion"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#00269b] hover:bg-[#00175d] text-white font-bold rounded-xl transition-colors"
             >
-              Solicitar Cotizacion <ArrowRight size={20} />
+              {t("requestQuote")} <ArrowRight size={20} />
             </Link>
             <a
               href={getWhatsAppUrl()}

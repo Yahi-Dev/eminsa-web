@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -29,6 +30,8 @@ const categoryIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function EICProductosPage() {
+  const t = useTranslations("eicPage.productos");
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -44,7 +47,7 @@ export default function EICProductosPage() {
               EIC
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Productos</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <motion.div
@@ -53,14 +56,13 @@ export default function EICProductosPage() {
             className="max-w-3xl"
           >
             <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-              Suplidores Eléctricos Internacionales
+              {t("heroBadge")}
             </span>
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
-              Productos y Soluciones
+              {t("heroTitle")}
             </h1>
             <p className="text-xl text-white/90">
-              Representamos las mejores marcas internacionales del sector
-              eléctrico
+              {t("heroDescription")}
             </p>
           </motion.div>
         </div>
@@ -76,15 +78,13 @@ export default function EICProductosPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <span className="inline-block px-3 py-1 bg-[#009e49]/10 text-[#009e49] text-sm font-medium rounded-full mb-4">
-              Catálogo de Productos
+              {t("catalogBadge")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Categorías de Productos
+              {t("catalogTitle")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Explore nuestro portafolio completo de productos eléctricos
-              organizados por categoría, respaldados por las marcas más
-              reconocidas del mercado internacional.
+              {t("catalogDescription")}
             </p>
           </motion.div>
 
@@ -220,14 +220,13 @@ export default function EICProductosPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <span className="inline-block px-3 py-1 bg-[#009e49]/10 text-[#009e49] text-sm font-medium rounded-full mb-4">
-              Nuestros Aliados
+              {t("brandsBadge")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Marcas que Representamos
+              {t("brandsTitle")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Somos representantes exclusivos en República Dominicana de marcas
-              líderes del sector eléctrico internacional.
+              {t("brandsDescription")}
             </p>
           </motion.div>
 
@@ -275,7 +274,7 @@ export default function EICProductosPage() {
                       href={`/eic/productos#${brand.category}`}
                       className="inline-flex items-center gap-1 text-sm font-medium text-[#009e49] group-hover:underline"
                     >
-                      Ver productos
+                      {t("viewProducts")}
                       <ArrowRight size={14} />
                     </Link>
                   </div>
@@ -295,18 +294,16 @@ export default function EICProductosPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              ¿Necesita productos eléctricos internacionales?
+              {t("ctaTitle")}
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              Contáctenos para recibir una cotización personalizada. Nuestro
-              equipo de especialistas le asesorará con la mejor solución para su
-              proyecto.
+              {t("ctaDescription")}
             </p>
             <Link
               href="/eic/cotizaciones"
               className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-gray-100 text-[#009e49] font-semibold rounded-xl transition-colors shadow-lg"
             >
-              Solicitar Cotización
+              {t("ctaButton")}
               <ArrowRight size={20} />
             </Link>
           </motion.div>

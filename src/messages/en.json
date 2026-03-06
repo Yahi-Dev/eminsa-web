@@ -23,12 +23,26 @@
     "certifications": {
       "title": "Certifications and Standards",
       "subtitle": "We comply with the highest international quality standards",
-      "iso9001": "Quality Management",
-      "iqnet": "International Certification",
-      "ansi": "American Standards",
-      "doe": "Energy Efficiency",
       "certificationsLabel": "Certifications",
-      "standardsLabel": "Standards"
+      "standardsLabel": "Standards",
+      "active": "Active",
+      "iso9001Name": "ISO 9001:2015",
+      "iso9001": "Certified Quality Management System ensuring consistent processes and continuous improvement.",
+      "iqnetName": "IQNET",
+      "iqnet": "International certification network validating our standards at a global level.",
+      "ansiName": "ANSI C57",
+      "ansi": "American transformer standards",
+      "ansiDetail": "ANSI/IEEE C57 standards establish the technical requirements for design, performance, and testing of distribution and power transformers.",
+      "doeName": "DOE-2016",
+      "doe": "Mandatory energy efficiency",
+      "doeDetail": "U.S. Department of Energy regulation establishing minimum efficiency levels, reducing losses and emissions.",
+      "ulName": "UL Listed",
+      "ul": "Certified electrical safety",
+      "ulDetail": "Underwriters Laboratories certification ensuring the safety and compliance of electrical equipment.",
+      "ieeeName": "IEEE C57",
+      "ieee": "Transformer technical guides",
+      "ieeeDetail": "Institute of Electrical and Electronics Engineers guidelines and recommendations for transformer design, operation, and maintenance.",
+      "viewAll": "View All Certifications"
     },
     "divisions": {
       "sectionLabel": "Our Divisions",
@@ -53,7 +67,8 @@
       "sectionLabel": "News",
       "title": "Latest news",
       "viewAll": "View all news",
-      "readMore": "Read more"
+      "readMore": "Read more",
+      "empty": "No news published yet."
     },
     "mtn": {
       "sectionLabel": "Manufacturing of New Transformers",
@@ -125,6 +140,18 @@
       "restorationDesc": "Repair, painting, component replacement, and quality certification",
       "guaranteeTitle": "Performance Guarantee",
       "guaranteeDesc": "Complete electrical testing and guarantee on all our services"
+    },
+    "eic": {
+      "showcase": {
+        "sectionLabel": "International Brands",
+        "title": "We Represent the Best Brands",
+        "viewBrand": "View Brand",
+        "viewAllBrands": "View All Brands",
+        "requestQuote": "Request a Quote",
+        "exclusiveRep": "Exclusive Representative in DR",
+        "countries": "countries of presence",
+        "brandCount": "9+ Represented Brands"
+      }
     }
   },
   "general": {
@@ -361,6 +388,16 @@
       "learnMore": "Learn more",
       "viewDetails": "View details"
     },
+    "fichasTecnicas": {
+      "title": "Technical Datasheets",
+      "subtitle": "Detailed product specifications",
+      "breadcrumbResources": "Resources",
+      "searchPlaceholder": "Search datasheets...",
+      "empty": "No datasheets available at this time.",
+      "download": "Download",
+      "noFile": "Not available",
+      "relatedProducts": "View Related Products"
+    },
     "noticias": {
       "title": "News",
       "description": "Stay informed about the latest news from Grupo EMINSA, product launches, and updates from the electrical sector.",
@@ -400,6 +437,25 @@
         "title": "Have a project in mind?",
         "description": "Contact us to discuss how we can help you with your next transformer or electrical systems project.",
         "button": "Request a Quote"
+      },
+      "detail": {
+        "notFound": "Project not found",
+        "notFoundDesc": "The project you are looking for does not exist or is not available.",
+        "backToProjects": "Back to Projects",
+        "gallery": "Project Gallery",
+        "projectDetails": "Project Details",
+        "division": "Division",
+        "client": "Client",
+        "location": "Location",
+        "capacity": "Capacity",
+        "year": "Year",
+        "relatedProjects": "Related Projects",
+        "similarProject": "Similar project?",
+        "similarProjectDesc": "Contact us to discuss your next electrical project.",
+        "requestQuote": "Request a Quote",
+        "breadcrumbHome": "Home",
+        "breadcrumbProjects": "Projects",
+        "noDescription": "Full description not available."
       }
     },
     "nosotros": {
@@ -452,6 +508,8 @@
       "hero": {
         "badge": "Specialized Services",
         "title": "Specialized Technical Services",
+        "subtitle": "SERVICES is the business unit of Grupo EMINSA focused on providing specialized on-site technical support, offering maintenance, repair, and comprehensive support to ensure the efficiency, safety, and operational continuity of our clients' electrical transformers.",
+        "description": "With over 50 years of experience, our team of specialized technicians operates in the field and in the workshop to provide preventive, corrective, and emergency maintenance, ensuring the operational continuity of your electrical systems.",
         "requestQuote": "Request a Quote"
       },
       "grid": {
@@ -565,6 +623,8 @@
         "requestQuote": "Request a Quote"
       },
       "alquiler": {
+        "breadcrumbHome": "Home",
+        "breadcrumbServicios": "Services",
         "breadcrumbTitle": "Transformer Rental",
         "badge": "Temporary Solutions",
         "title": "Transformer Rental",
@@ -620,6 +680,8 @@
         }
       },
       "proyectosPage": {
+        "breadcrumbHome": "Home",
+        "breadcrumbServicios": "Services",
         "breadcrumbTitle": "Projects",
         "badge": "Completed Projects",
         "title": "Our Projects",
@@ -651,6 +713,8 @@
         "viewOurServices": "View Our Services"
       },
       "testimonialesPage": {
+        "breadcrumbHome": "Home",
+        "breadcrumbServicios": "Services",
         "breadcrumbTitle": "Testimonials",
         "title": "Client Testimonials",
         "description": "Our clients' trust is our greatest endorsement. Learn about their experiences working with EMINSA Services.",
@@ -667,6 +731,8 @@
         "viewOurServices": "View Our Services"
       },
       "recursosPage": {
+        "breadcrumbHome": "Home",
+        "breadcrumbServicios": "Services",
         "breadcrumbTitle": "Resources",
         "title": "Resources and Tools",
         "description": "Access our resources, forms, and tools designed to enhance your experience with EMINSA Services.",
@@ -679,6 +745,8 @@
         "viewOurServices": "View Our Services"
       },
       "clientesPage": {
+        "breadcrumbHome": "Home",
+        "breadcrumbServicios": "Services",
         "breadcrumbTitle": "Clients",
         "title": "Our Clients",
         "description": "The trust of leading companies across {count} sectors supports us. Meet the organizations that have trusted Grupo EMINSA with the care of their electrical infrastructure.",
@@ -697,6 +765,8 @@
         "viewOurServices": "View Our Services"
       },
       "cotizacionPage": {
+        "breadcrumbHome": "Home",
+        "breadcrumbServicios": "Services",
         "breadcrumbTitle": "Quote",
         "title": "Request a Quote",
         "description": "Fill out the form below and our team of experts will contact you to offer a personalized solution.",
@@ -767,6 +837,9 @@
         "validationDescription": "Describe your requirements",
         "errorGeneral": "Error submitting request",
         "errorConnection": "Connection error. Please try again.",
+        "namePlaceholder": "John Smith",
+        "emailPlaceholder": "john@example.com",
+        "phoneLabel": "Phone",
         "equipmentOptions": {
           "distribucion": "Distribution Transformer",
           "potencia": "Power Transformer",
@@ -846,6 +919,628 @@
         "responseDetail": "during business hours",
         "businessHours": "Monday to Friday 8:00 AM to 5:00 PM",
         "certifications": "Certifications"
+      }
+    },
+    "mtn": {
+      "productDetail": {
+        "home": "Home",
+        "products": "Products",
+        "transformer": "Transformer",
+        "power": "Power",
+        "voltage": "Voltage",
+        "requestQuote": "Request a Quote",
+        "availableConfigurations": "Available Configurations",
+        "description": "Description",
+        "features": "Features",
+        "applications": "Applications",
+        "technicalResources": "Technical Resources",
+        "datasheet": "Data Sheet",
+        "downloadPdf": "Download PDF",
+        "manual": "Manual",
+        "maintenance": "Maintenance",
+        "warranty": "Warranty",
+        "viewTerms": "View terms",
+        "calculator": "Calculator",
+        "calculateKva": "Calculate kVA",
+        "interestedIn": "Interested in {product}?",
+        "contactUsForQuote": "Contact us to get a personalized quote or resolve any technical questions.",
+        "whatsappMessage": "Hello, I am interested in information about {product}"
+      },
+      "variantDetail": {
+        "home": "Home",
+        "products": "Products",
+        "requestQuote": "Request a Quote",
+        "whatsappMessage": "Hello, I am interested in information about {product}",
+        "technicalSpecs": "Technical Specifications",
+        "features": "Features",
+        "applications": "Applications",
+        "availableCapacities": "Available Capacities (kVA)",
+        "technicalResources": "Technical Resources",
+        "datasheet": "Data Sheet",
+        "warranty": "Warranty",
+        "terms": "Terms",
+        "manual": "Manual",
+        "installation": "Installation",
+        "calculator": "Calculator",
+        "interestedInProduct": "Interested in this product?",
+        "contactUsForQuote": "Contact us to get a personalized quote."
+      },
+      "certificaciones": {
+        "breadcrumb": {
+          "home": "Home",
+          "certificaciones": "Certifications"
+        },
+        "hero": {
+          "badge": "Quality Assurance",
+          "title": "Certifications",
+          "description": "Our commitment to quality is backed by internationally recognized certifications that validate our processes and products."
+        },
+        "issuedBy": "Issued by",
+        "certificationLabel": "Certification",
+        "benefitsTitle": "Guaranteed Benefits:",
+        "validUntil": "Valid until:",
+        "certs": {
+          "iso-9001": {
+            "fullName": "ISO 9001:2015 Quality Management System",
+            "description": "International certification that guarantees our manufacturing processes meet the highest quality and continuous improvement standards.",
+            "issuingBody": "AENOR / IQNET",
+            "benefits": {
+              "0": "Standardized manufacturing processes",
+              "1": "Rigorous quality control",
+              "2": "Complete product traceability",
+              "3": "Continuous process improvement",
+              "4": "Guaranteed customer satisfaction"
+            }
+          },
+          "cidet": {
+            "fullName": "Center for Research and Technological Development of the Electrical Sector",
+            "description": "Colombian certification that validates compliance with technical standards for electrical equipment in the Latin American market.",
+            "issuingBody": "CIDET - Colombia",
+            "benefits": {
+              "0": "Access to the Colombian market",
+              "1": "Regional technical validation",
+              "2": "NTC standards compliance",
+              "3": "Recognition in Latin America"
+            }
+          },
+          "ul": {
+            "fullName": "Underwriters Laboratories",
+            "description": "Globally recognized safety certification that guarantees our products meet the strictest safety standards.",
+            "issuingBody": "Underwriters Laboratories Inc.",
+            "benefits": {
+              "0": "Worldwide recognition",
+              "1": "Safety guarantee",
+              "2": "Access to international markets",
+              "3": "UL standards compliance",
+              "4": "Consumer confidence"
+            }
+          }
+        },
+        "why": {
+          "title": "Why Are Certifications Important?",
+          "description": "Certifications are more than documents — they are a guarantee of quality and trust.",
+          "security": {
+            "title": "Safety",
+            "description": "Products tested and verified under strict safety standards."
+          },
+          "quality": {
+            "title": "Quality",
+            "description": "Controlled and standardized manufacturing processes."
+          },
+          "global": {
+            "title": "Global Access",
+            "description": "Compliance with requirements for international markets."
+          }
+        },
+        "cta": {
+          "title": "Trust in Certified Quality",
+          "description": "All our transformers are backed by these certifications. Request your quote and receive a product of guaranteed quality.",
+          "requestQuote": "Request a Quote",
+          "viewProducts": "View Products"
+        }
+      },
+      "normativa": {
+        "breadcrumb": {
+          "home": "Home",
+          "mtn": "MTN",
+          "normativa": "Standards"
+        },
+        "hero": {
+          "badge": "Quality Standards",
+          "title": "Standards",
+          "description": "Our transformers comply with the most demanding international standards, guaranteeing quality, safety, and energy efficiency."
+        },
+        "labels": {
+          "details": "Details",
+          "benefits": "Benefits",
+          "viewMore": "View more information"
+        },
+        "documentation": {
+          "title": "Technical Documentation",
+          "description": "Access all documentation related to the standards applicable to our products.",
+          "technicalSheets": "Technical Data Sheets",
+          "certifications": "Certifications"
+        },
+        "cta": {
+          "title": "Need more information?",
+          "description": "Our technical team is available to answer any questions about the standards and specifications of our transformers.",
+          "button": "Contact Technical Team"
+        },
+        "detail": {
+          "internationalStandard": "International Standard",
+          "description": "Description",
+          "relatedResources": "Related Resources",
+          "document": "{name} Document",
+          "pdfView": "PDF • View document",
+          "specifications": "Specifications",
+          "ctaTitle": "Transformers That Comply with {name}",
+          "ctaDescription": "All our transformers are designed and manufactured in compliance with this standard.",
+          "viewProducts": "View Products",
+          "requestQuote": "Request a Quote"
+        },
+        "standards": {
+          "ansi": {
+            "fullName": "American National Standards Institute",
+            "description": "ANSI/IEEE standards for transformers establish the technical, design, performance, and testing requirements that transformers used in electrical systems in the United States must meet.",
+            "details": {
+              "0": "Published primarily by the Institute of Electrical and Electronics Engineers (IEEE)",
+              "1": "Accredited by the American National Standards Institute (ANSI)",
+              "2": "Ensure the safety, reliability, compatibility, and standardization of equipment",
+              "3": "Applicable in distribution and power",
+              "4": "Main standards: IEEE C57.12.00, IEEE C57.12.90"
+            },
+            "benefits": {
+              "0": "International quality guarantee",
+              "1": "Compatibility with American electrical systems",
+              "2": "Standardization of tests and specifications",
+              "3": "Longer equipment lifespan",
+              "4": "Ease of maintenance and spare parts"
+            }
+          },
+          "doe-2016": {
+            "fullName": "Department of Energy - Efficiency Standards 2016",
+            "description": "The DOE 2016 regulation establishes the mandatory minimum energy efficiency levels that transformers must meet in order to be manufactured, imported, or marketed in the United States.",
+            "details": {
+              "0": "Issued by the United States Department of Energy (DOE)",
+              "1": "Requires reduction of losses in liquid and dry transformers",
+              "2": "Objective: reduce electricity consumption and associated emissions",
+              "3": "Applicable to distribution transformers since January 2016",
+              "4": "Establishes efficiency levels by capacity and voltage"
+            },
+            "benefits": {
+              "0": "Lower energy consumption",
+              "1": "Reduced operating costs",
+              "2": "Lower environmental impact",
+              "3": "International regulatory compliance",
+              "4": "Long-term return on investment"
+            }
+          }
+        }
+      },
+      "recursos": {
+        "main": {
+          "breadcrumb": {
+            "home": "Home",
+            "mtn": "MTN",
+            "recursos": "Resources"
+          },
+          "hero": {
+            "badge": "Resource Center",
+            "title": "Technical Resources",
+            "description": "Technical documentation, tools, and guides to support your projects with EMINSA transformers."
+          },
+          "useTool": "Use tool",
+          "viewResources": "View resources",
+          "datasheetsTitle": "Data Sheets & Documents",
+          "calculator": {
+            "badge": "Interactive Tool",
+            "title": "kVA Calculator",
+            "description": "Don't know what transformer capacity you need? Use our interactive calculator to determine the required power based on your load.",
+            "residential": "Residential load calculation",
+            "commercial": "Commercial load calculation",
+            "industrial": "Industrial load calculation",
+            "demandFactor": "Demand factor included",
+            "cta": "Use Calculator",
+            "calculateIdeal": "Calculate the ideal capacity"
+          },
+          "cta": {
+            "title": "Can't find what you're looking for?",
+            "description": "Our technical team can provide you with additional documentation or specific information for your project.",
+            "contactSupport": "Contact Technical Support"
+          }
+        },
+        "slug": {
+          "breadcrumb": {
+            "home": "Home",
+            "mtn": "MTN",
+            "recursos": "Resources"
+          },
+          "searchPlaceholder": "Search articles...",
+          "download": "Download",
+          "catalog": {
+            "title": "Complete Catalog",
+            "description": "Download all data sheets in a single file",
+            "download": "Download Catalog (PDF)"
+          },
+          "downloadWarrantyPdf": "Download Warranty Terms (PDF)",
+          "manualContent": "Manual Contents",
+          "fullManual": {
+            "title": "Complete Manual",
+            "description": "Download the complete maintenance manual"
+          },
+          "downloadPdf": "Download PDF",
+          "cta": {
+            "title": "Need additional help?",
+            "description": "Our technical team is available to answer any questions.",
+            "contactSupport": "Contact Technical Support"
+          },
+          "articulos": {
+            "title": "Articles & Publications",
+            "description": "Stay informed with our latest technical publications and industry news.",
+            "items": {
+              "0": {
+                "title": "Energy Efficiency in Transformers: DOE 2016 Standards",
+                "date": "Jan 15, 2025",
+                "category": "Standards",
+                "excerpt": "Learn about the efficiency requirements transformers must meet according to DOE 2016 regulations."
+              },
+              "1": {
+                "title": "Preventive Maintenance for Pole-Type Transformers",
+                "date": "Jan 10, 2025",
+                "category": "Maintenance",
+                "excerpt": "Complete guide for preventive maintenance that extends the lifespan of your transformers."
+              },
+              "2": {
+                "title": "Pad Mounted Transformers: The Solution for Underground Distribution",
+                "date": "Jan 5, 2025",
+                "category": "Products",
+                "excerpt": "Discover the advantages of pad mounted transformers in residential and commercial projects."
+              },
+              "3": {
+                "title": "EMINSA Celebrates 50 Years of Excellence in Transformers",
+                "date": "Dec 1, 2024",
+                "category": "Company",
+                "excerpt": "Half a century of experience manufacturing high-quality transformers in the Dominican Republic."
+              }
+            }
+          },
+          "fichasTecnicas": {
+            "title": "Data Sheets",
+            "description": "Download detailed technical specifications for all our products.",
+            "itemPrefix": "Data Sheet"
+          },
+          "garantia": {
+            "title": "Warranty",
+            "description": "Information about coverage, terms, and warranty conditions.",
+            "sections": {
+              "coverage": {
+                "title": "Warranty Coverage",
+                "content": "EMINSA warrants its transformers against manufacturing and material defects for a period of 5 years from the date of delivery."
+              },
+              "conditions": {
+                "title": "Conditions",
+                "items": {
+                  "0": "Installation performed by qualified personnel",
+                  "1": "Operation within specified parameters",
+                  "2": "Maintenance according to manufacturer's manual",
+                  "3": "Use under normal environmental conditions"
+                }
+              },
+              "exclusions": {
+                "title": "Exclusions",
+                "items": {
+                  "0": "Damage from overload or short circuit",
+                  "1": "Damage from natural phenomena",
+                  "2": "Unauthorized modifications",
+                  "3": "Lack of proper maintenance"
+                }
+              },
+              "claimProcess": {
+                "title": "Claim Process",
+                "content": "To validate the warranty, contact our technical service department with the equipment serial number and problem description."
+              }
+            }
+          },
+          "manual": {
+            "title": "Maintenance Manual",
+            "description": "Complete guides for the care and maintenance of transformers.",
+            "chapters": {
+              "0": {
+                "title": "Introduction & Safety",
+                "description": "Safety standards and general precautions for transformer maintenance."
+              },
+              "1": {
+                "title": "Visual Inspection",
+                "description": "Periodic visual inspection procedures and what to look for."
+              },
+              "2": {
+                "title": "Preventive Maintenance",
+                "description": "Recommended preventive maintenance routines by frequency."
+              },
+              "3": {
+                "title": "Electrical Tests",
+                "description": "Basic and advanced electrical tests to verify the transformer's condition."
+              },
+              "4": {
+                "title": "Dielectric Oil",
+                "description": "Analysis, treatment, and replacement of dielectric oil."
+              },
+              "5": {
+                "title": "Troubleshooting",
+                "description": "Diagnosis and resolution of common problems."
+              }
+            }
+          }
+        },
+        "calculadora": {
+          "breadcrumb": {
+            "home": "Home",
+            "mtn": "MTN",
+            "recursos": "Resources",
+            "calculadora": "Calculator"
+          },
+          "hero": {
+            "badge": "Interactive Tool",
+            "title": "kVA Calculator",
+            "description": "Determine the ideal transformer capacity for your project based on your electrical load."
+          },
+          "loadType": "Load Type",
+          "loadTypes": {
+            "residential": "Residential",
+            "commercial": "Commercial",
+            "industrial": "Industrial"
+          },
+          "electricLoads": "Electrical Loads",
+          "reset": "Reset",
+          "addCustomLoad": "Add custom load",
+          "namePlaceholder": "Name",
+          "add": "Add",
+          "parameters": "Parameters",
+          "powerFactor": "Power factor",
+          "pfOptions": {
+            "industrial": "0.8 (Typical industrial)",
+            "commercial": "0.9 (Typical commercial)",
+            "residential": "0.95 (Typical residential)",
+            "resistive": "1.0 (Resistive load)"
+          },
+          "systemVoltage": "System voltage",
+          "voltageOptions": {
+            "120": "120V (Single-phase)",
+            "208": "208V (Three-phase)",
+            "240": "240V (Single-phase)",
+            "480": "480V (Three-phase)"
+          },
+          "result": "Result",
+          "calculatedCapacity": "Calculated capacity",
+          "recommendedSize": "Recommended size",
+          "safetyMargin": "Includes 25% safety margin",
+          "breakdown": {
+            "totalLoad": "Total load",
+            "demandFactor": "Demand factor",
+            "adjustedLoad": "Adjusted load",
+            "powerFactor": "Power factor"
+          },
+          "quote": "Quote {size} kVA",
+          "disclaimer": "* This calculation is an estimate. Consult with our technical team for a precise evaluation.",
+          "loads": {
+            "residential": {
+              "lighting": "Lighting",
+              "ac": "Air Conditioning (1 Ton)",
+              "fridge": "Refrigerator",
+              "tv": "Television",
+              "washer": "Washing Machine",
+              "microwave": "Microwave",
+              "computer": "Computer",
+              "waterPump": "Water Pump"
+            },
+            "commercial": {
+              "lighting": "General Lighting",
+              "ac": "Air Conditioning (5 Ton)",
+              "office": "Office Equipment",
+              "computing": "Computing Systems",
+              "refrigeration": "Commercial Refrigeration",
+              "elevators": "Elevators"
+            },
+            "industrial": {
+              "smallMotors": "Small Motors (<5HP)",
+              "mediumMotors": "Medium Motors (5-25HP)",
+              "largeMotors": "Large Motors (>25HP)",
+              "lighting": "Industrial Lighting",
+              "welders": "Welders",
+              "compressors": "Compressors"
+            }
+          }
+        },
+        "garantia": {
+          "breadcrumb": {
+            "home": "Home",
+            "mtn": "MTN",
+            "recursos": "Resources",
+            "garantia": "Warranty"
+          },
+          "hero": {
+            "title": "Warranty",
+            "subtitle": "Warranty terms and conditions"
+          },
+          "periodsTitle": "Warranty Periods",
+          "periods": {
+            "0": { "product": "Pole-Type Transformers", "period": "3 years" },
+            "1": { "product": "Pad Mounted Transformers", "period": "3 years" },
+            "2": { "product": "Substation Transformers", "period": "2 years" },
+            "3": { "product": "Accessories", "period": "1 year" }
+          },
+          "coverageTitle": "Coverage",
+          "coverage": {
+            "0": "Manufacturing defects in materials",
+            "1": "Workmanship defects",
+            "2": "Magnetic core failures",
+            "3": "Primary and secondary winding failures",
+            "4": "Hermetic tank leaks (first 2 years)",
+            "5": "Bushing and connector failures",
+            "6": "Dielectric oil defects",
+            "7": "Level and temperature indicator failures"
+          },
+          "exclusionsTitle": "Exclusions",
+          "exclusions": {
+            "0": "Damage from electrical overload",
+            "1": "Damage from external short circuit",
+            "2": "Damage from natural phenomena (lightning, floods, earthquakes)",
+            "3": "Damage from vandalism or theft",
+            "4": "Unauthorized modifications by EMINSA",
+            "5": "Lack of preventive maintenance per manual",
+            "6": "Operation outside specified parameters",
+            "7": "Damage during transport or incorrect installation",
+            "8": "Normal wear of consumable components"
+          },
+          "claimProcessTitle": "Claim Process",
+          "claimProcess": {
+            "0": { "title": "Report the problem", "description": "Contact our technical service department with the equipment serial number." },
+            "1": { "title": "Technical evaluation", "description": "A technician will evaluate the equipment to determine the cause of the failure." },
+            "2": { "title": "Diagnosis", "description": "You will receive a report with the diagnosis and warranty coverage decision." },
+            "3": { "title": "Repair or replacement", "description": "If the warranty applies, we will proceed with the repair or replacement of the equipment." }
+          },
+          "requirements": {
+            "title": "Requirements to Validate the Warranty",
+            "0": "Present original purchase invoice or equivalent document.",
+            "1": "Provide the equipment serial number visible on the data plate.",
+            "2": "Document preventive maintenance records according to the manual.",
+            "3": "Report the failure within the current warranty period."
+          },
+          "contact": {
+            "title": "Technical Service Contact",
+            "phone": "Phone",
+            "email": "Email"
+          },
+          "document": {
+            "title": "Warranty Document",
+            "description": "Download the complete document with all warranty terms and conditions.",
+            "download": "Download PDF",
+            "filename": "Warranty_Terms_EMINSA.pdf (320 KB)"
+          },
+          "cta": {
+            "title": "Have questions about the warranty?",
+            "description": "Our team is available to answer any questions.",
+            "contactSupport": "Contact Support"
+          }
+        },
+        "manual": {
+          "breadcrumb": {
+            "home": "Home",
+            "mtn": "MTN",
+            "recursos": "Resources",
+            "manual": "Maintenance Manual"
+          },
+          "hero": {
+            "title": "Maintenance Manual",
+            "subtitle": "Guides for the care of your transformers"
+          },
+          "banner": {
+            "title": "Importance of Preventive Maintenance",
+            "description": "Regular maintenance can extend the lifespan of your transformer up to 30 years and prevent costly failures. A well-maintained transformer is more efficient and safer."
+          },
+          "manualContent": "Manual Contents",
+          "chapterLabel": "Chapter {number}",
+          "chapters": {
+            "0": { "title": "Introduction & Safety", "description": "Fundamental safety standards and general precautions for working with transformers." },
+            "1": { "title": "Visual Inspection", "description": "Periodic visual inspection procedures, what to look for, and how to document findings." },
+            "2": { "title": "Preventive Maintenance", "description": "Recommended preventive maintenance routines by frequency (monthly, quarterly, annual)." },
+            "3": { "title": "Dielectric Oil", "description": "Analysis, treatment, and replacement of dielectric oil. Reference values." },
+            "4": { "title": "Electrical Tests", "description": "Insulation resistance, transformation ratio, and winding resistance tests." },
+            "5": { "title": "Temperature Control", "description": "Temperature monitoring, interpretation of readings, and corrective actions." }
+          },
+          "scheduleTitle": "Recommended Maintenance Schedule",
+          "schedule": {
+            "0": {
+              "frequency": "Monthly",
+              "tasks": {
+                "0": "Visual inspection of the transformer",
+                "1": "Check oil level",
+                "2": "Review temperature indicators",
+                "3": "Inspect visible connections",
+                "4": "Check bushing condition"
+              }
+            },
+            "1": {
+              "frequency": "Quarterly",
+              "tasks": {
+                "0": "Exterior cleaning of the transformer",
+                "1": "Check ventilation system",
+                "2": "Inspect relief valves",
+                "3": "Review paint condition",
+                "4": "Check grounding"
+              }
+            },
+            "2": {
+              "frequency": "Annual",
+              "tasks": {
+                "0": "Dielectric oil analysis",
+                "1": "Insulation resistance test",
+                "2": "Infrared thermography",
+                "3": "Transformation ratio verification",
+                "4": "Detailed accessory inspection"
+              }
+            }
+          },
+          "downloadsTitle": "Downloadable Documents",
+          "downloads": {
+            "0": { "title": "Complete Maintenance Manual", "description": "Complete guide with all maintenance procedures.", "size": "5.2 MB", "type": "PDF" },
+            "1": { "title": "Visual Inspection Checklist", "description": "Printable form for periodic inspections.", "size": "320 KB", "type": "PDF" },
+            "2": { "title": "Oil Analysis Guide", "description": "Interpretation of oil analysis results.", "size": "1.1 MB", "type": "PDF" },
+            "3": { "title": "Maintenance Log", "description": "Template to document maintenance activities.", "size": "180 KB", "type": "Excel" }
+          }
+        },
+        "articulos": {
+          "breadcrumb": {
+            "home": "Home",
+            "mtn": "MTN",
+            "recursos": "Resources",
+            "articulos": "Articles"
+          },
+          "hero": {
+            "title": "Articles & Publications",
+            "subtitle": "Technical knowledge from the electrical sector"
+          },
+          "categories": {
+            "all": "All",
+            "standards": "Standards",
+            "maintenance": "Maintenance",
+            "products": "Products",
+            "industry": "Industry"
+          },
+          "articles": {
+            "0": {
+              "title": "DOE 2016 Energy Efficiency: What You Need to Know",
+              "excerpt": "Learn about the energy efficiency requirements established by the U.S. Department of Energy and how they affect distribution transformers.",
+              "author": "Eng. Carlos Méndez",
+              "category": "Standards"
+            },
+            "1": {
+              "title": "Preventive Maintenance for Transformers: Complete Guide",
+              "excerpt": "Learn the best practices for preventive maintenance of transformers and how to extend their lifespan.",
+              "author": "Eng. María Santos",
+              "category": "Maintenance"
+            },
+            "2": {
+              "title": "Pad Mounted vs Pole-Type Transformers: Which to Choose?",
+              "excerpt": "Comparative analysis of the advantages and applications of each transformer type to help you make the best decision.",
+              "author": "Eng. Roberto Pérez",
+              "category": "Products"
+            },
+            "3": {
+              "title": "New Trends in Distribution Transformers",
+              "excerpt": "Discover the latest technological innovations in the transformer sector and where the industry is heading.",
+              "author": "Eng. Ana García",
+              "category": "Industry"
+            }
+          },
+          "readMore": "Read more",
+          "loadMore": "Load more articles",
+          "cta": {
+            "title": "Have technical questions?",
+            "description": "Our engineering team is available to assist you.",
+            "contactSupport": "Contact Support"
+          }
+        }
       }
     }
   },
@@ -1363,8 +2058,9 @@
       },
       "advantages": {
         "global": {
-          "title": "Global Network",
-          "description": "Access to the best international brands in the electrical sector."
+          "title": "International Brands",
+          "description": "Access to the best international brands in the electrical sector.",
+          "highlight": "9+ Brands"
         },
         "soporte": {
           "title": "Specialized Support",
@@ -1468,6 +2164,12 @@
           "3": "Splices",
           "4": "Terminals"
         }
+      },
+      "green-transfo": {
+        "description": "Green Transfo is a global transformer manufacturer with over 60 years of industrial experience, consolidated in 2023 under Groupe Cahors after integrating plants with legacy from brands like AEG, Alstom, Areva, and Schneider Electric. The company specializes in substation transformers up to 135 MVA and 170 kV, manufactured with advanced technology in modern facilities in Poland and Turkey.",
+        "products": {
+          "0": "Substation Transformers"
+        }
       }
     },
     "products": {
@@ -1520,6 +2222,11 @@
         "name": "Chardon MV Cable Accessories",
         "shortName": "Chardon MV",
         "description": "MV cable accessories: elbows, bushings, adapters, splices, terminals."
+      },
+      "green-transfo-subestacion": {
+        "name": "Green Transfo Substation Transformers",
+        "shortName": "Green Transfo Substation",
+        "description": "High-power substation transformers manufactured by Green Transfo, with capacities up to 135 MVA and 170 kV."
       }
     }
   },
@@ -2089,7 +2796,8 @@
       "requestQuote": "Request a Quote",
       "viewProducts": "View Products",
       "efficiencyCert": "Efficiency Certification",
-      "viewCertifications": "View certifications →"
+      "viewCertifications": "View certifications →",
+      "warrantyMonths": "Months warranty"
     },
     "products": {
       "badge": "Our Products",
@@ -2251,79 +2959,93 @@
       "notFoundDesc": "Our technical team can provide additional documentation or specific information for your project.",
       "contactSupport": "Contact Technical Support"
     },
-    "cotizacionesPage": {
-      "home": "Home",
-      "quotesLabel": "Quotes",
-      "requestQuoteLabel": "Request a Quote",
-      "pageTitle": "Quote Your Transformer",
-      "pageDescription": "Complete the form and receive a personalized quote in less than 24 hours.",
-      "successTitle": "Request Sent!",
-      "referenceNumber": "Reference Number",
-      "saveCode": "Save this code to track your request",
-      "successDesc": "We have received your quote request. Our team will contact you within 24 hours.",
-      "viewProducts": "View Products",
-      "newQuote": "New Quote",
-      "contactInfo": "Contact Information",
-      "fullName": "Full name *",
-      "namePlaceholder": "Your name",
-      "company": "Company",
-      "companyPlaceholder": "Company name",
-      "email": "Email address *",
-      "emailPlaceholder": "email@example.com",
-      "phone": "Phone",
-      "requestType": "Request Type",
-      "whatToQuote": "What would you like to quote? *",
-      "select": "Select...",
-      "newTransformer": "New Transformer",
-      "otherProduct": "Other product or service",
-      "transformerType": "Transformer Type *",
-      "selectType": "Select a type",
-      "configuration": "Configuration",
-      "selectConfig": "Select configuration",
-      "singlePhase": "Single Phase",
-      "threePhase": "Three Phase",
-      "selfProtected": "Self-Protected (CSP)",
-      "capacityKva": "Capacity (kVA) *",
-      "selectCapacity": "Select capacity",
-      "otherSpecify": "Other (specify)",
-      "quantity": "Quantity",
-      "primaryVoltage": "Primary Voltage",
-      "primaryVoltagePlaceholder": "E.g.: 13.2 kV",
-      "secondaryVoltage": "Secondary Voltage",
-      "secondaryVoltagePlaceholder": "E.g.: 120/240 V",
-      "distributor": "Energy Distributor",
-      "selectDistributor": "Select distributor",
-      "internalUse": "INTERNAL USE",
-      "othersSpecify": "OTHERS (SPECIFY)",
-      "requestDescription": "Description of your request *",
-      "requestDescPlaceholder": "Describe the product or service you need a quote for...",
-      "attachDocument": "Attach document (optional)",
-      "clickUpload": "Click to upload files",
-      "fileTypes": "PDF, DOC, JPG, PNG, Excel (max. 5 files)",
-      "additionalDetails": "Additional Details",
-      "projectLocation": "Project location",
-      "locationPlaceholder": "City, province, or address",
-      "specialRequirements": "Description or special requirements",
-      "specialReqPlaceholder": "Describe any special requirements, additional accessories, or relevant information for your quote...",
-      "urgent": "Urgent",
-      "urgentDesc": "I need a response as soon as possible",
-      "sending": "Sending...",
-      "submitQuote": "Send Quote Request",
-      "preferContact": "Prefer to contact us directly?",
-      "callUs": "Call us",
-      "chatWithUs": "Chat with us",
-      "responseTime": "Response in less than 24 hours",
-      "noCommitment": "No-obligation quote",
-      "technicalAdvice": "Technical advice included",
-      "certificationsLabel": "Certifications",
-      "nameRequired": "Name is required",
-      "emailRequired": "Email is required",
-      "emailInvalid": "Invalid email",
-      "phoneRequired": "Phone is required",
-      "selectRequestType": "Select request type",
-      "selectTransformerType": "Select a type",
-      "selectCapacityError": "Select a capacity",
-      "describeRequest": "Describe your request"
+    "certificationsSection": {
+      "badge": "Standards and Certifications",
+      "title": "World-Class",
+      "titleAccent": "Standards",
+      "description": "Our transformers comply with the most demanding certifications in the international electrical industry.",
+      "activeBadge": "Active Certificate",
+      "features": {
+        "0": "International Validation",
+        "1": "Periodic Audits",
+        "2": "Continuous Improvement"
+      },
+      "alsoCertified": "Also certified by:",
+      "viewAll": "View All Certifications",
+      "certs": {
+        "ansi": {
+          "fullName": "American National Standards Institute",
+          "description": "ANSI/IEEE standards for transformers establish the technical, design, performance, and testing requirements."
+        },
+        "doe-2016": {
+          "fullName": "Department of Energy Efficiency Standards",
+          "description": "The DOE 2016 regulation establishes the minimum mandatory energy efficiency levels."
+        },
+        "iso-9001": {
+          "fullName": "Quality Management Systems",
+          "description": "Certified Quality Management System that guarantees consistent processes and continuous improvement."
+        },
+        "cidet": {
+          "fullName": "Center for Research and Technological Development",
+          "description": "Certification that validates our transformers under Latin American electrical sector standards."
+        }
+      }
+    },
+    "quoteSection": {
+      "badge": "Request a Quote",
+      "title1": "Ready to",
+      "titleAccent": "Transform",
+      "title2": "Your Project?",
+      "description": "Our team of experts is ready to advise you on selecting the ideal transformer for your needs.",
+      "quickInfo": {
+        "phone": "Phone",
+        "email": "Email",
+        "location": "Location",
+        "schedule": "Schedule",
+        "scheduleValue": "Mon - Fri: 8:00 AM - 5:00 PM"
+      },
+      "whatsapp": "Chat on WhatsApp",
+      "cardTitle": "Personalized Quote",
+      "cardDescription": "Complete the form and receive a proposal tailored to your needs.",
+      "benefits": {
+        "0": "Response within 24 hours",
+        "1": "Technical advice with no obligation",
+        "2": "Competitive market prices",
+        "3": "Guaranteed after-sales support"
+      },
+      "requestQuote": "Request a Quote",
+      "noCommitment": "No obligation - Guaranteed response"
+    },
+    "resourcesSection": {
+      "badge": "Resource Center",
+      "title": "Everything You",
+      "titleAccent": "Need",
+      "description": "Access technical information, news, and tools to make the best decisions.",
+      "resources": {
+        "noticias": {
+          "name": "News",
+          "description": "Stay up to date with the latest electrical sector news.",
+          "cta": "View News"
+        },
+        "fichas": {
+          "name": "Technical Sheets",
+          "description": "Download complete technical specifications of our transformers.",
+          "cta": "Download Sheets"
+        },
+        "garantias": {
+          "name": "Warranties",
+          "description": "Learn about our warranty policies and technical support.",
+          "cta": "View Warranties"
+        },
+        "calculadora": {
+          "name": "kVA Calculator",
+          "description": "Tool to size the ideal transformer for your needs.",
+          "cta": "Use Calculator"
+        }
+      },
+      "newsByCategory": "News by Category",
+      "newsCategoryFilter": "Filter news by: MTN, RST, EIC, Services, General",
+      "exploreNews": "Explore News"
     }
   },
   "eicPage": {
@@ -2369,6 +3091,157 @@
       "closeMenu": "Close menu",
       "openMenu": "Open menu",
       "requestQuote": "Request a Quote"
+    },
+    "productos": {
+      "breadcrumb": "Products",
+      "heroBadge": "International Electrical Suppliers",
+      "heroTitle": "Products and Solutions",
+      "heroDescription": "We represent the best international brands in the electrical sector",
+      "catalogBadge": "Product Catalog",
+      "catalogTitle": "Product Categories",
+      "catalogDescription": "Explore our complete portfolio of electrical products organized by category, backed by the most recognized brands in the international market.",
+      "brandsBadge": "Our Partners",
+      "brandsTitle": "Brands We Represent",
+      "brandsDescription": "We are exclusive representatives in the Dominican Republic of leading brands in the international electrical sector.",
+      "viewProducts": "View products",
+      "ctaTitle": "Need international electrical products?",
+      "ctaDescription": "Contact us to receive a personalized quote. Our team of specialists will advise you with the best solution for your project.",
+      "ctaButton": "Request a Quote"
+    },
+    "productSlug": {
+      "breadcrumbProducts": "Products",
+      "productsAvailable": "{count} Product(s) Available",
+      "requestQuote": "Request a Quote",
+      "representedBrands": "Represented Brands",
+      "alliesIn": "Our Partners in {category}",
+      "productCatalog": "Product Catalog",
+      "productsOf": "{category} Products",
+      "ctaCategoryTitle": "Need {category}?",
+      "ctaCategoryDescription": "Request a personalized quote. Our team of specialists will advise you with the best solution for your project.",
+      "description": "Description",
+      "features": "Features",
+      "applications": "Applications",
+      "quickContact": "Quick Contact",
+      "brand": "Brand",
+      "internationalSuppliers": "International Suppliers",
+      "specializedSupport": "Specialized support and consulting",
+      "otherProducts": "Other EIC Products",
+      "ctaProductTitle": "Interested in this product?",
+      "ctaProductDescription": "Request a quote and we will respond in less than 30 minutes."
+    },
+    "brandSlug": {
+      "breadcrumbBrands": "Represented Brands",
+      "requestQuote": "Request a Quote",
+      "catalog": "{brand} Catalog",
+      "requestCatalog": "Request Catalog",
+      "productPortfolio": "Product Portfolio",
+      "productsBrand": "{brand} Products",
+      "productsAvailable": "{count} product(s) available",
+      "comingSoon": "Coming soon: {brand} products.",
+      "checkAvailability": "Check availability",
+      "specifications": "Specifications",
+      "features": "Features",
+      "applications": "Applications",
+      "viewFullDetail": "View full detail",
+      "datasheet": "Data Sheet",
+      "fullDocumentation": "Complete Documentation — {brand}",
+      "accessCatalog": "Access the complete product catalog and data sheets for {brand}.",
+      "contactSpecialist": "Contact specialist",
+      "ctaTitle": "Need {brand} products?",
+      "ctaDescription": "We are exclusive representatives in the Dominican Republic. Request a quote and receive specialized consulting for your project."
+    },
+    "recursos": {
+      "breadcrumb": "Resources",
+      "heroBadge": "Resource Center",
+      "heroTitle": "Resources and Documentation",
+      "heroDescription": "Access technical documentation, brand catalogs, and more resources for your electrical projects.",
+      "access": "Access",
+      "download": "Download",
+      "dynamicResourcesTitle": "Data Sheets and Resources",
+      "brandCatalogsTitle": "Catalogs by Brand",
+      "brandCatalogsDescription": "Download catalogs and data sheets from the international brands we represent.",
+      "catalogLabel": "Catalog",
+      "ctaTitle": "Need more information?",
+      "ctaDescription": "Our technical team is available to help you with additional documentation, technical specifications, and personalized consulting.",
+      "requestQuote": "Request a Quote",
+      "call": "Call"
+    },
+    "cotizaciones": {
+      "breadcrumb": "Quotes",
+      "heroTitle": "Request an International Quote",
+      "heroDescription": "Complete the form and receive a personalized quote for international electrical products. We respond in less than 30 minutes during business hours.",
+      "successTitle": "Request Sent!",
+      "referenceNumber": "Reference Number",
+      "saveCode": "Save this code to track your request",
+      "successDescription": "We have received your quote request. Our international trade team will contact you shortly with a personalized quote.",
+      "estimatedResponseTime": "Estimated response time:",
+      "responseTimeValue": "Less than 30 minutes during business hours",
+      "backToEic": "Back to EIC",
+      "viewProducts": "View Products",
+      "goHome": "Go to Home",
+      "contactInfo": "Contact Information",
+      "fullName": "Full Name",
+      "namePlaceholder": "E.g.: John Smith",
+      "company": "Company",
+      "companyPlaceholder": "Your company name",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "phone": "Phone",
+      "position": "Title / Position",
+      "positionPlaceholder": "E.g.: Project Manager",
+      "productDetails": "Product Details",
+      "productCategory": "Product Category",
+      "select": "Select...",
+      "specificProduct": "Specific Product",
+      "otherNotSure": "Other / Not sure",
+      "preferredBrand": "Preferred Brand",
+      "noPreference": "No preference",
+      "quantity": "Quantity",
+      "urgency": "Urgency",
+      "urgencyNormal": "Normal (3-6 weeks)",
+      "urgencyPriority": "Priority (2-3 weeks)",
+      "urgencyUrgent": "Urgent (less than 2 weeks)",
+      "transformerSpecs": "Transformer Specifications",
+      "power": "Power (kVA)",
+      "powerPlaceholder": "E.g.: 500 kVA",
+      "configuration": "Configuration",
+      "singlePhase": "Single Phase",
+      "threePhase": "Three Phase",
+      "selfProtected": "Self-Protected (CSP)",
+      "primaryVoltage": "Primary Voltage (kV)",
+      "primaryVoltagePlaceholder": "E.g.: 13.2 kV",
+      "secondaryVoltage": "Secondary Voltage (V)",
+      "secondaryVoltagePlaceholder": "E.g.: 120/240 V",
+      "energyDistributor": "Energy Distributor",
+      "selectDistributor": "Select the distributor",
+      "internalUse": "INTERNAL USE",
+      "othersSpecify": "OTHERS (SPECIFY)",
+      "additionalInfo": "Additional Information",
+      "projectLocation": "Project Location",
+      "locationPlaceholder": "City, Province / Country",
+      "projectDescription": "Project Description / Requirements",
+      "projectDescriptionPlaceholder": "Describe your project, required technical specifications, operating conditions, or any relevant information...",
+      "attachFiles": "Attach Files (optional)",
+      "clickToUpload": "Click to upload files",
+      "fileTypes": "PDF, DOC, JPG, PNG, DWG, Excel (max. 5 files)",
+      "howDidYouFindUs": "How did you find us?",
+      "sourceGoogle": "Google / Web search",
+      "sourceReferral": "Referred by a client",
+      "sourceSocial": "Social media",
+      "sourceEvent": "Event / Trade show",
+      "sourceAdvertising": "Advertising",
+      "sourceBrandRep": "Brand representative",
+      "sourceOther": "Other",
+      "submitting": "Submitting request...",
+      "submitButton": "Submit Quote Request",
+      "directContact": "Direct Contact",
+      "fastResponse": "Fast Response",
+      "fastResponseDescription": "We respond in less than 30 minutes during business hours (Monday to Friday 8am - 5pm).",
+      "internationalSuppliers": "International Suppliers",
+      "internationalSuppliersDescription": "We represent more than 8 leading brands in the electrical sector with presence in more than 40 countries.",
+      "location": "Location",
+      "errorSubmit": "Error submitting request",
+      "errorConnection": "Connection error. Please try again."
     }
   },
   "etrysPage": {
@@ -2470,6 +3343,283 @@
       "activitiesIncluded": "Activities included",
       "previous": "Previous",
       "next": "Next"
+    },
+    "productosPage": {
+      "breadcrumb": "Products",
+      "heroTitle": "Remanufactured Transformers",
+      "heroDescription": "Units restored under world-class standards. Immediate availability, competitive costs, and 18-month warranty.",
+      "remanufacturedLabel": "Remanufactured Transformer",
+      "power": "Power",
+      "voltage": "Voltage",
+      "mainFeatures": "Main features:",
+      "warranty18": "18-month warranty",
+      "industryLeader": "Industry leader",
+      "viewDetails": "View Details",
+      "quote": "Get Quote",
+      "quickComparison": "Quick Comparison",
+      "feature": "Feature",
+      "standards": "Standards",
+      "warranty": "Warranty",
+      "18months": "18 months",
+      "qualityControl": "Quality Control",
+      "testsPerformed": "Tests Performed",
+      "testsDescription": "Every remanufactured transformer goes through a rigorous testing program to ensure its performance and safety.",
+      "optional": "Optional",
+      "ctaTitle": "Can't find what you're looking for?",
+      "ctaDescription": "We manufacture and remanufacture custom transformers to your specifications. Contact us for a personalized solution.",
+      "ctaButton": "Request Custom Quote"
+    },
+    "productDetailPage": {
+      "breadcrumbProducts": "Products",
+      "standards": "Standards",
+      "requestQuote": "Request a Quote",
+      "description": "Description",
+      "features": "Features",
+      "applications": "Applications",
+      "availableCapacities": "Available Capacities",
+      "remanufactureProcess": "Remanufacturing Process",
+      "viewDetail": "View detail →",
+      "quickContact": "Quick Contact",
+      "resources": "Resources",
+      "dataSheet": "Data Sheet",
+      "instructionManual": "Instruction Manual",
+      "warranty18": "18-month warranty",
+      "industryLeader": "Industry leader",
+      "otherProducts": "Other ETRYS Products",
+      "viewAll": "View all",
+      "viewProduct": "View product",
+      "ctaTitle": "Interested in this product?",
+      "ctaDescription": "Request a quote and we'll respond within 30 minutes."
+    },
+    "serviciosFullPage": {
+      "breadcrumb": "Services",
+      "heroBadge": "Repair Services",
+      "heroTitle": "Our Repair Services",
+      "heroDescription": "We offer comprehensive inspection, diagnosis, repair, and maintenance services for transformers with over 50 years of experience in the industry.",
+      "requestService": "Request Service",
+      "viewRepairCenter": "View Repair Center",
+      "before": "BEFORE",
+      "after": "AFTER",
+      "servicesTitle": "Comprehensive Services",
+      "servicesDescription": "Our team of specialized technicians offers a wide range of services to keep your transformers in optimal condition.",
+      "facilitiesBadge": "Our Facilities",
+      "viewFullFacilities": "View Full Facilities",
+      "months": "months",
+      "warrantyTitle": "Industry-Leading Warranty",
+      "warrantyDescription": "All our repair and remanufacturing work comes with an 18-month warranty, the most extensive on the market.",
+      "warrantyItem1": "Complete labor coverage",
+      "warrantyItem2": "Warranty on replaced components",
+      "warrantyItem3": "Technical support included",
+      "warrantyItem4": "Fast response to any incident",
+      "diagnosisTitle": "Request a Diagnosis",
+      "diagnosisDescription": "Our specialists will evaluate your equipment and provide a detailed no-obligation estimate.",
+      "requestDiagnosis": "Request Diagnosis",
+      "responseTime": "Response within 30 minutes during business hours",
+      "ctaTitle": "Need to repair your transformer?",
+      "ctaDescription": "Trust the experts with over 50 years of experience.",
+      "requestQuote": "Request a Quote"
+    },
+    "centroReparacionPage": {
+      "breadcrumbServices": "Services",
+      "breadcrumb": "Repair Center",
+      "heroBadge": "Our Facilities",
+      "requestService": "Request Service",
+      "callNow": "Call Now",
+      "galleryTitle": "Facilities Gallery",
+      "galleryDescription": "Discover our modern facilities equipped with state-of-the-art technology.",
+      "capabilitiesTitle": "Service Capabilities",
+      "capabilitiesDescription": "Our center is prepared to handle a wide variety of transformers and electrical equipment.",
+      "location": "Location",
+      "country": "Dominican Republic",
+      "contactInfo": "Contact Information",
+      "businessHours": "Business Hours",
+      "weekdayHours": "Monday to Friday: 8:00 AM - 5:00 PM",
+      "saturdayHours": "Saturdays: 8:00 AM - 12:00 PM",
+      "phone": "Phone",
+      "email": "Email",
+      "chatWithUs": "Chat with us",
+      "ctaTitle": "Ready to repair your transformer?",
+      "ctaDescription": "Visit our center or request a quote online.",
+      "requestQuote": "Request a Quote",
+      "viewAllServices": "View All Services"
+    },
+    "nosotrosFullPage": {
+      "breadcrumb": "About Us",
+      "heroBadge": "Who We Are",
+      "missionTitle": "Our Mission",
+      "visionTitle": "Our Vision",
+      "positionBadge": "Our Position",
+      "positionTitle": "Market Leaders",
+      "valuesBadge": "What Defines Us",
+      "valuesTitle": "Our Values",
+      "valuesDescription": "The principles that guide each of our actions and allow us to deliver excellent service.",
+      "teamBadge": "Our Team",
+      "teamTitle": "Committed Professionals",
+      "technicians": "Certified Technicians",
+      "avgExperience": "Avg. Years Exp.",
+      "annualTraining": "Annual Training",
+      "certifications": "Certifications",
+      "trajectoryTitle": "Our History",
+      "trajectoryDescription": "Over five decades of commitment to excellence.",
+      "milestone1": "Founding of EMINSA as a transformer manufacturer",
+      "milestone2": "Start of repair and maintenance services",
+      "milestone3": "Expansion of the repair center",
+      "milestone4": "ISO 9001 certification and equipment modernization",
+      "milestone5": "Launch of ETRYS as remanufacturing brand",
+      "milestone6": "Market leader in the Dominican Republic",
+      "ctaTitle": "Ready to work with us?",
+      "ctaDescription": "Discover why we are the preferred choice for transformer repair and remanufacturing.",
+      "requestQuote": "Request a Quote",
+      "callNow": "Call Now"
+    },
+    "alquilerPage": {
+      "breadcrumb": "Rental",
+      "heroBadge": "Temporary Solution",
+      "heroDescription": "Need temporary power? Get short-term power with an ETRYS rental unit. Certified equipment, immediate availability, and 24/7 technical support.",
+      "immediateAvailability": "Immediate Availability",
+      "readyForDelivery": "Equipment ready for delivery",
+      "benefitsTitle": "Why Rent with ETRYS?",
+      "benefitsDescription": "We offer flexible and reliable rental solutions to meet your temporary power needs.",
+      "useCasesBadge": "Use Cases",
+      "useCasesTitle": "When Do You Need to Rent?",
+      "useCasesDescription": "Our rental service is ideal for various situations where you need a temporary power solution.",
+      "construction": "Construction",
+      "events": "Events",
+      "industry": "Industry",
+      "processTitle": "Rental Process",
+      "processDescription": "Renting a transformer with ETRYS is quick and easy.",
+      "step1Title": "Request",
+      "step1Desc": "Complete the form or call us",
+      "step2Title": "Quote",
+      "step2Desc": "Receive a quote in 30 min",
+      "step3Title": "Installation",
+      "step3Desc": "Expert technicians install the equipment",
+      "step4Title": "Support",
+      "step4Desc": "24/7 technical assistance",
+      "formTitle": "Request a Quote",
+      "formDescription": "Complete the form and we'll respond with a personalized quote within 30 minutes during business hours.",
+      "fullName": "Full Name",
+      "namePlaceholder": "Your name",
+      "company": "Company",
+      "companyPlaceholder": "Company name",
+      "requiredCapacity": "Required Capacity",
+      "select": "Select...",
+      "moreThan1000": "More than 1,000 kVA",
+      "notSure": "I'm not sure",
+      "estimatedDuration": "Estimated Duration",
+      "days": "Days",
+      "weeks": "Weeks",
+      "1to3months": "1 - 3 months",
+      "3to6months": "3 - 6 months",
+      "moreThan6months": "More than 6 months",
+      "messageLabel": "Message / Additional Details",
+      "messagePlaceholder": "Describe your project or specific needs...",
+      "sending": "Sending...",
+      "submitBudget": "Request Quote",
+      "needImmediateResponse": "Need an Immediate Response?",
+      "callDirectly": "Call us directly for faster service.",
+      "availableEquipment": "Available Equipment",
+      "responseTimeTitle": "Response Time",
+      "responseTimeDescription": "We respond to your request within 30 minutes during business hours (Monday to Friday 8am - 5pm).",
+      "ctaTitle": "Ready to Rent?",
+      "ctaDescription": "Contact us today and get your rental transformer quickly.",
+      "callNow": "Call Now",
+      "successTitle": "Request Sent!",
+      "successDescription": "We have received your rental request. Our team will contact you shortly with a personalized quote.",
+      "backToEtrys": "Back to ETRYS",
+      "goHome": "Go to Home",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your@email.com"
+    },
+    "recursosPage": {
+      "breadcrumb": "Resources",
+      "heroBadge": "Resource Center",
+      "heroTitle": "Resources & Documentation",
+      "heroDescription": "Access data sheets, calculation tools, and useful documentation for the maintenance of your transformers.",
+      "access": "Access",
+      "dataSheetsTitle": "Data Sheets",
+      "ctaTitle": "Can't find what you're looking for?",
+      "ctaDescription": "Our technical team is available to answer any questions about our products and services.",
+      "requestQuote": "Request a Quote"
+    },
+    "cotizacionesPage": {
+      "breadcrumb": "Quotes",
+      "heroTitle": "Request a Quote",
+      "heroDescription": "Complete the form and receive a personalized quote within 30 minutes during business hours.",
+      "successTitle": "Request Sent!",
+      "referenceNumber": "Reference Number",
+      "saveCode": "Save this code to track your request",
+      "successDescription": "We have received your quote request. Our team will contact you shortly with a personalized quote.",
+      "estimatedResponseTime": "Estimated response time:",
+      "lessThan30Min": "Less than 30 minutes during business hours",
+      "backToEtrys": "Back to ETRYS",
+      "goHome": "Go to Home",
+      "contactInfoSection": "Contact Information",
+      "fullName": "Full Name",
+      "company": "Company",
+      "companyPlaceholder": "Company name",
+      "position": "Position / Title",
+      "serviceDetailsSection": "Service Details",
+      "serviceType": "Service Type",
+      "select": "Select...",
+      "serviceRemanufacture": "Transformer Remanufacturing",
+      "serviceRepair": "Transformer Repair",
+      "serviceRental": "Transformer Rental",
+      "serviceDiagnosis": "Diagnosis / Evaluation",
+      "serviceMaintenance": "Preventive Maintenance",
+      "serviceOther": "Other",
+      "transformerType": "Transformer Type",
+      "poleType": "Pole Type",
+      "substation": "Substation",
+      "dryType": "Dry Type",
+      "otherNotSure": "Other / Not sure",
+      "equipmentBrand": "Equipment Brand",
+      "power": "Power (kVA)",
+      "primaryVoltage": "Primary Voltage (kV)",
+      "secondaryVoltage": "Secondary Voltage (V)",
+      "unitQuantity": "Number of Units",
+      "energyDistributor": "Energy Distributor",
+      "selectDistributor": "Select distributor",
+      "internalUse": "INTERNAL USE",
+      "othersSpecify": "OTHERS (SPECIFY)",
+      "urgency": "Urgency",
+      "urgencyNormal": "Normal (2-4 weeks)",
+      "urgencyPriority": "Priority (1-2 weeks)",
+      "urgencyUrgent": "Urgent (less than 1 week)",
+      "additionalInfoSection": "Additional Information",
+      "equipmentLocation": "Equipment Location",
+      "problemDescription": "Problem Description / Requirement",
+      "problemPlaceholder": "Describe the problem, symptoms, failure history, or any relevant information...",
+      "attachFiles": "Attach Files (optional)",
+      "clickToUpload": "Click to upload files",
+      "fileTypes": "PDF, DOC, JPG, PNG (max. 5 files)",
+      "howDidYouFind": "How did you find us?",
+      "findGoogle": "Google / Web search",
+      "findReferral": "Referred by a client",
+      "findSocial": "Social media",
+      "findEvent": "Event / Trade show",
+      "findAdvertising": "Advertising",
+      "findOther": "Other",
+      "submitting": "Submitting request...",
+      "submitButton": "Submit Quote Request",
+      "directContact": "Direct Contact",
+      "phone": "Phone",
+      "quickResponse": "Quick Response",
+      "responseTimeDescription": "We respond within 30 minutes during business hours (Monday to Friday 8am - 5pm).",
+      "location": "Location",
+      "errorSubmit": "Error submitting request",
+      "errorConnection": "Connection error. Please try again.",
+      "phoneLabel": "Phone",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "email@example.com",
+      "positionPlaceholder": "E.g.: Purchasing Manager",
+      "brandPlaceholder": "E.g.: MTN, ABB, Siemens...",
+      "powerPlaceholder": "E.g.: 500 kVA",
+      "primaryVoltagePlaceholder": "E.g.: 13.2 kV",
+      "secondaryVoltagePlaceholder": "E.g.: 120/240 V",
+      "locationPlaceholder": "City, Province",
+      "emailLabel": "Email"
     }
   },
   "common": {
@@ -2504,7 +3654,18 @@
     "values": "Values",
     "ourTeam": "Our Team",
     "history": "History",
-    "aboutUs": "About Us"
+    "aboutUs": "About Us",
+    "recursos": {
+      "defaultTitle": "Technical Sheets & Resources",
+      "loadError": "Could not load resources.",
+      "connectionError": "Connection error.",
+      "viewResource": "View resource",
+      "download": "Download",
+      "typeDoc": "Document",
+      "typeSpreadsheet": "Spreadsheet",
+      "typeImage": "Image",
+      "typeLink": "Link"
+    }
   },
   "serviciosConfig": {
     "info": {

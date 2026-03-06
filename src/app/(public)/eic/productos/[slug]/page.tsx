@@ -2,6 +2,7 @@
 
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -46,6 +47,7 @@ const categoryIcons: { [key: string]: React.ElementType } = {
 // ============================================================================
 
 function CategoryPage({ categorySlug }: { categorySlug: string }) {
+  const t = useTranslations("eicPage.productSlug");
   const category = getEICCategoryBySlug(categorySlug)!;
   const categoryProducts = getEICProductsByCategory(categorySlug);
   const categoryBrands = getEICBrandsByCategory(category.id);
@@ -75,7 +77,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
               href="/eic/productos"
               className="hover:text-white transition-colors"
             >
-              Productos
+              {t("breadcrumbProducts")}
             </Link>
             <ChevronRight size={14} />
             <span className="text-white">{category.name}</span>
@@ -91,9 +93,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                   <Icon size={28} className="text-white" />
                 </div>
                 <span className="px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium">
-                  {categoryProducts.length} Producto
-                  {categoryProducts.length !== 1 ? "s" : ""} Disponible
-                  {categoryProducts.length !== 1 ? "s" : ""}
+                  {t("productsAvailable", { count: categoryProducts.length })}
                 </span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -121,7 +121,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                   href={`/eic/cotizaciones?categoria=${categorySlug}`}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
-                  Solicitar Cotización
+                  {t("requestQuote")}
                   <ArrowRight size={20} />
                 </Link>
                 <a
@@ -175,10 +175,10 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                   color: category.color,
                 }}
               >
-                Marcas Representadas
+                {t("representedBrands")}
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                Nuestros Aliados en {category.shortName}
+                {t("alliesIn", { category: category.shortName })}
               </h2>
             </motion.div>
 
@@ -239,10 +239,10 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                 color: category.color,
               }}
             >
-              Catálogo de Productos
+              {t("productCatalog")}
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              Productos de {category.name}
+              {t("productsOf", { category: category.name })}
             </h2>
           </motion.div>
 
@@ -338,18 +338,17 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
             viewport={{ once: true }}
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              ¿Necesita {category.name.toLowerCase()}?
+              {t("ctaCategoryTitle", { category: category.name.toLowerCase() })}
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
-              Solicite una cotización personalizada. Nuestro equipo de
-              especialistas le asesorará con la mejor solución para su proyecto.
+              {t("ctaCategoryDescription")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href={`/eic/cotizaciones?categoria=${categorySlug}`}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
-                Solicitar Cotización
+                {t("requestQuote")}
                 <ArrowRight size={20} />
               </Link>
               <a
@@ -372,6 +371,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
 // ============================================================================
 
 function ProductPage({ slug }: { slug: string }) {
+  const t = useTranslations("eicPage.productSlug");
   const product = getEICProductBySlug(slug)!;
   const otherProducts = getOtherEICProducts(slug).slice(0, 3);
   const brand = eicBrands.find((b) => b.slug === product.brandSlug);
@@ -395,7 +395,7 @@ function ProductPage({ slug }: { slug: string }) {
               href="/eic/productos"
               className="hover:text-white transition-colors"
             >
-              Productos
+              {t("breadcrumbProducts")}
             </Link>
             <ChevronRight size={14} />
             <Link
@@ -446,7 +446,7 @@ function ProductPage({ slug }: { slug: string }) {
                   href={`/eic/cotizaciones?producto=${product.slug}`}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
-                  Solicitar Cotización
+                  {t("requestQuote")}
                   <ArrowRight size={20} />
                 </Link>
                 <a
@@ -497,7 +497,7 @@ function ProductPage({ slug }: { slug: string }) {
                 viewport={{ once: true }}
               >
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Descripción
+                  {t("description")}
                 </h2>
                 <div className="prose prose-lg max-w-none text-gray-600">
                   {product.fullDescription.map((para, i) => (
@@ -515,7 +515,7 @@ function ProductPage({ slug }: { slug: string }) {
                 viewport={{ once: true }}
               >
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Características
+                  {t("features")}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {product.features.map((feature) => (
@@ -540,7 +540,7 @@ function ProductPage({ slug }: { slug: string }) {
                 viewport={{ once: true }}
               >
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Aplicaciones
+                  {t("applications")}
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {product.applications.map((app) => (
@@ -566,14 +566,14 @@ function ProductPage({ slug }: { slug: string }) {
                 className="bg-white rounded-2xl p-6 shadow-lg sticky top-40"
               >
                 <h3 className="text-lg font-bold text-gray-900 mb-4">
-                  Contacto Rápido
+                  {t("quickContact")}
                 </h3>
                 <div className="space-y-3 mb-6">
                   <Link
                     href={`/eic/cotizaciones?producto=${product.slug}`}
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors"
                   >
-                    Solicitar Cotización
+                    {t("requestQuote")}
                   </Link>
                   <a
                     href={`tel:${contactInfo.phone}`}
@@ -605,7 +605,7 @@ function ProductPage({ slug }: { slug: string }) {
                   <div className="pt-6 border-t border-gray-100">
                     <h4 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
                       <Building2 size={16} className="text-[#009e49]" />
-                      Marca
+                      {t("brand")}
                     </h4>
                     <div className="bg-gray-50 rounded-xl p-4 space-y-2">
                       <p className="font-bold text-gray-900">{brand.name}</p>
@@ -626,10 +626,10 @@ function ProductPage({ slug }: { slug: string }) {
                     <Globe size={32} className="text-[#009e49]" />
                     <div>
                       <span className="font-bold text-green-800 block">
-                        Suplidores Internacionales
+                        {t("internationalSuppliers")}
                       </span>
                       <span className="text-sm text-green-700">
-                        Soporte y asesoría especializada
+                        {t("specializedSupport")}
                       </span>
                     </div>
                   </div>
@@ -644,7 +644,7 @@ function ProductPage({ slug }: { slug: string }) {
       <section className="py-12 lg:py-16 bg-white">
         <div className="container-eminsa">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">
-            Otros Productos EIC
+            {t("otherProducts")}
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {otherProducts.map((prod) => (
@@ -679,17 +679,17 @@ function ProductPage({ slug }: { slug: string }) {
       <section className="py-12 bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            ¿Interesado en este producto?
+            {t("ctaProductTitle")}
           </h2>
           <p className="text-lg text-white/90 mb-6">
-            Solicite una cotización y le responderemos en menos de 30 minutos.
+            {t("ctaProductDescription")}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href={`/eic/cotizaciones?producto=${product.slug}`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#009e49] hover:bg-[#007d3a] text-white font-semibold rounded-xl transition-colors shadow-lg"
             >
-              Solicitar Cotización
+              {t("requestQuote")}
               <ArrowRight size={20} />
             </Link>
             <a

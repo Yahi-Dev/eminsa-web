@@ -11,6 +11,7 @@ import {
   FileText,
 } from "lucide-react";
 import { standards } from "@/config/mtn-data";
+import { useTranslations } from "next-intl";
 
 const standardIcons: Record<string, React.ElementType> = {
   shield: Shield,
@@ -23,6 +24,7 @@ const fadeUp = {
 };
 
 export default function NormativaPageContent() {
+  const t = useTranslations("pages.mtn.normativa");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -34,11 +36,11 @@ export default function NormativaPageContent() {
             transition={{ duration: 0.4 }}
             className="flex items-center gap-2 text-sm text-white/60 mb-6"
           >
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("breadcrumb.home")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
+            <Link href="/mtn" className="hover:text-white transition-colors">{t("breadcrumb.mtn")}</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Normativa</span>
+            <span className="text-white">{t("breadcrumb.normativa")}</span>
           </motion.nav>
 
           <motion.div
@@ -51,12 +53,11 @@ export default function NormativaPageContent() {
               <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
                 <Shield size={24} />
               </div>
-              <span className="text-[#0099ce] font-semibold">Estándares de Calidad</span>
+              <span className="text-[#0099ce] font-semibold">{t("hero.badge")}</span>
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">Normativas</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4">{t("hero.title")}</h1>
             <p className="text-xl text-white/80">
-              Nuestros transformadores cumplen con los estándares internacionales más exigentes,
-              garantizando calidad, seguridad y eficiencia energética.
+              {t("hero.description")}
             </p>
           </motion.div>
         </div>
@@ -85,18 +86,18 @@ export default function NormativaPageContent() {
                       </div>
                       <div>
                         <h2 className="text-2xl font-bold">{standard.name}</h2>
-                        <p className="text-white/80 text-sm">{standard.fullName}</p>
+                        <p className="text-white/80 text-sm">{t(`standards.${standard.id}.fullName`)}</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="p-6 space-y-6">
-                    <p className="text-gray-600 leading-relaxed">{standard.description}</p>
+                    <p className="text-gray-600 leading-relaxed">{t(`standards.${standard.id}.description`)}</p>
 
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-3">Detalles</h3>
+                      <h3 className="font-semibold text-gray-900 mb-3">{t("labels.details")}</h3>
                       <ul className="space-y-2">
-                        {standard.details.map((detail, idx) => (
+                        {standard.details.map((_detail, idx) => (
                           <motion.li
                             key={idx}
                             initial={{ opacity: 0, x: -10 }}
@@ -106,16 +107,16 @@ export default function NormativaPageContent() {
                             className="flex items-start gap-2 text-sm text-gray-600"
                           >
                             <CheckCircle2 size={16} className="text-green-500 flex-shrink-0 mt-0.5" />
-                            <span>{detail}</span>
+                            <span>{t(`standards.${standard.id}.details.${idx}`)}</span>
                           </motion.li>
                         ))}
                       </ul>
                     </div>
 
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-3">Beneficios</h3>
+                      <h3 className="font-semibold text-gray-900 mb-3">{t("labels.benefits")}</h3>
                       <div className="grid grid-cols-2 gap-2">
-                        {standard.benefits.map((benefit, idx) => (
+                        {standard.benefits.map((_benefit, idx) => (
                           <motion.div
                             key={idx}
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -125,7 +126,7 @@ export default function NormativaPageContent() {
                             className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg text-sm"
                           >
                             <div className="w-2 h-2 bg-[#0099ce] rounded-full" />
-                            <span className="text-gray-700">{benefit}</span>
+                            <span className="text-gray-700">{t(`standards.${standard.id}.benefits.${idx}`)}</span>
                           </motion.div>
                         ))}
                       </div>
@@ -135,7 +136,7 @@ export default function NormativaPageContent() {
                       href={`/mtn/normativa/${standard.slug}`}
                       className="inline-flex items-center gap-2 text-[#00269b] hover:text-[#0099ce] font-semibold transition-colors"
                     >
-                      Ver más información
+                      {t("labels.viewMore")}
                       <ArrowRight size={18} />
                     </Link>
                   </div>
@@ -163,16 +164,16 @@ export default function NormativaPageContent() {
                   <FileText size={24} className="text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">Documentación Técnica</h2>
+                  <h2 className="text-2xl font-bold text-gray-900">{t("documentation.title")}</h2>
                   <p className="text-gray-600 mt-1">
-                    Acceda a toda la documentación relacionada con las normativas aplicables a nuestros productos.
+                    {t("documentation.description")}
                   </p>
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
-                  { href: "/mtn/recursos/fichas-tecnicas", icon: FileText, label: "Fichas Técnicas" },
-                  { href: "/mtn/certificaciones", icon: Shield, label: "Certificaciones" },
+                  { href: "/mtn/recursos/fichas-tecnicas", icon: FileText, label: t("documentation.technicalSheets") },
+                  { href: "/mtn/certificaciones", icon: Shield, label: t("documentation.certifications") },
                 ].map(({ href, icon: Icon, label }, idx) => (
                   <motion.div
                     key={label}
@@ -209,15 +210,15 @@ export default function NormativaPageContent() {
         className="py-16 bg-[#00269b] text-white"
       >
         <div className="container-eminsa text-center">
-          <h2 className="text-3xl font-bold mb-4">¿Necesita más información?</h2>
+          <h2 className="text-3xl font-bold mb-4">{t("cta.title")}</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            Nuestro equipo técnico está disponible para resolver cualquier duda sobre las normativas y especificaciones de nuestros transformadores.
+            {t("cta.description")}
           </p>
           <Link
             href="/mtn/cotizaciones"
             className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors"
           >
-            Contactar Equipo Técnico
+            {t("cta.button")}
             <ArrowRight size={20} />
           </Link>
         </div>

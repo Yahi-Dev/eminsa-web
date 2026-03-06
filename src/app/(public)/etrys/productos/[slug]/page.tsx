@@ -24,9 +24,11 @@ import {
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import RemanufactureProcessModal from "@/features/home/components/etrys/RemanufactureProcessModal";
 
 function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[] }) {
+  const t = useTranslations("etrysPage.productDetailPage");
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const current = products[index];
@@ -78,7 +80,7 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
                   {current.powerRange}
                 </span>
                 <span className="inline-flex items-center gap-1 text-sm text-[#0099ce] font-semibold">
-                  Ver producto <ArrowRight size={14} />
+                  {t("viewProduct")} <ArrowRight size={14} />
                 </span>
               </div>
             </div>
@@ -127,9 +129,10 @@ export default function EtrysProductoDetailPage({
 }: {
   params: Promise<{ slug: string }>; // Parámetro como Promise
 }) {
+  const t = useTranslations("etrysPage.productDetailPage");
   // Desenvolver params con React.use()
   const { slug } = React.use(params);
-  
+
   const product = getRemanufacturedProductBySlug(slug);
 
   if (!product) {
@@ -155,7 +158,7 @@ export default function EtrysProductoDetailPage({
             </Link>
             <ChevronRight size={14} />
             <Link href="/etrys/productos" className="hover:text-white transition-colors">
-              Productos
+              {t("breadcrumbProducts")}
             </Link>
             <ChevronRight size={14} />
             <span className="text-white">{product.shortName}</span>
@@ -189,7 +192,7 @@ export default function EtrysProductoDetailPage({
 
               {/* Standards */}
               <div className="flex items-center gap-2 mb-6">
-                <span className="text-white/70">Normas:</span>
+                <span className="text-white/70">{t("standards")}:</span>
                 {product.standards.map((std) => (
                   <span key={std} className="px-3 py-1 bg-white/20 rounded-full text-sm font-medium">
                     {std}
@@ -203,7 +206,7 @@ export default function EtrysProductoDetailPage({
                   href={`/etrys/cotizaciones?producto=${product.slug}`}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
                 >
-                  Solicitar Cotización
+                  {t("requestQuote")}
                   <ArrowRight size={20} />
                 </Link>
                 <a
@@ -251,7 +254,7 @@ export default function EtrysProductoDetailPage({
                 viewport={{ once: true }}
               >
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Descripción
+                  {t("description")}
                 </h2>
                 <div className="prose prose-lg max-w-none text-gray-600">
                   {product.fullDescription.map((para, i) => (
@@ -267,7 +270,7 @@ export default function EtrysProductoDetailPage({
                 viewport={{ once: true }}
               >
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Características
+                  {t("features")}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {product.features.map((feature) => (
@@ -286,7 +289,7 @@ export default function EtrysProductoDetailPage({
                 viewport={{ once: true }}
               >
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Aplicaciones
+                  {t("applications")}
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {product.applications.map((app) => (
@@ -306,7 +309,7 @@ export default function EtrysProductoDetailPage({
                   viewport={{ once: true }}
                 >
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                    Capacidades Disponibles
+                    {t("availableCapacities")}
                   </h2>
                   <div className="flex flex-wrap gap-2">
                     {product.capacities.map((cap) => (
@@ -325,7 +328,7 @@ export default function EtrysProductoDetailPage({
                 viewport={{ once: true }}
               >
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Proceso de Remanufactura
+                  {t("remanufactureProcess")}
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {remanufactureProcess.slice(0, 6).map((step, i) => (
@@ -339,7 +342,7 @@ export default function EtrysProductoDetailPage({
                       </div>
                       <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#0099ce] transition-colors">{step.shortTitle}</h3>
                       <p className="text-sm text-gray-600">{step.description}</p>
-                      <p className="text-xs text-[#0099ce] font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Ver detalle →</p>
+                      <p className="text-xs text-[#0099ce] font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">{t("viewDetail")}</p>
                     </button>
                   ))}
                 </div>
@@ -356,14 +359,14 @@ export default function EtrysProductoDetailPage({
                 className="bg-white rounded-2xl p-6 shadow-lg sticky top-40"
               >
                 <h3 className="text-lg font-bold text-gray-900 mb-4">
-                  Contacto Rápido
+                  {t("quickContact")}
                 </h3>
                 <div className="space-y-3 mb-6">
                   <Link
                     href={`/etrys/cotizaciones?producto=${product.slug}`}
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                   >
-                    Solicitar Cotización
+                    {t("requestQuote")}
                   </Link>
                   <a
                     href={`tel:${contactInfo.phone}`}
@@ -384,15 +387,15 @@ export default function EtrysProductoDetailPage({
                 </div>
 
                 {/* Resources */}
-                <h4 className="font-semibold text-gray-900 mb-3">Recursos</h4>
+                <h4 className="font-semibold text-gray-900 mb-3">{t("resources")}</h4>
                 <div className="space-y-2">
                   <a href="#" className="flex items-center gap-2 text-gray-600 hover:text-[#0099ce] transition-colors">
                     <FileText size={16} />
-                    <span className="text-sm">Ficha Técnica</span>
+                    <span className="text-sm">{t("dataSheet")}</span>
                   </a>
                   <a href="#" className="flex items-center gap-2 text-gray-600 hover:text-[#0099ce] transition-colors">
                     <FileText size={16} />
-                    <span className="text-sm">Manual de Instrucciones</span>
+                    <span className="text-sm">{t("instructionManual")}</span>
                   </a>
                 </div>
 
@@ -401,8 +404,8 @@ export default function EtrysProductoDetailPage({
                   <div className="flex items-center gap-3 bg-[#0099ce]/5 rounded-xl p-4">
                     <ShieldCheck size={32} className="text-[#0099ce]" />
                     <div>
-                      <span className="font-bold text-[#007ba8] block">Garantía 18 meses</span>
-                      <span className="text-sm text-[#0099ce]">Líder en la industria</span>
+                      <span className="font-bold text-[#007ba8] block">{t("warranty18")}</span>
+                      <span className="text-sm text-[#0099ce]">{t("industryLeader")}</span>
                     </div>
                   </div>
                 </div>
@@ -417,13 +420,13 @@ export default function EtrysProductoDetailPage({
         <div className="container-eminsa max-w-2xl mx-auto">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold text-gray-900">
-              Otros Productos ETRYS
+              {t("otherProducts")}
             </h2>
             <Link
               href="/etrys/productos"
               className="inline-flex items-center gap-1 text-[#0099ce] hover:text-[#0092C7] font-semibold text-sm transition-colors"
             >
-              Ver todos <ArrowRight size={16} />
+              {t("viewAll")} <ArrowRight size={16} />
             </Link>
           </div>
           <OtherProductsCarousel products={otherProducts} />
@@ -434,16 +437,16 @@ export default function EtrysProductoDetailPage({
       <section className="py-12 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            ¿Interesado en este producto?
+            {t("ctaTitle")}
           </h2>
           <p className="text-lg text-white/90 mb-6">
-            Solicite una cotización y le responderemos en menos de 30 minutos.
+            {t("ctaDescription")}
           </p>
           <Link
             href={`/etrys/cotizaciones?producto=${product.slug}`}
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
           >
-            Solicitar Cotización
+            {t("requestQuote")}
             <ArrowRight size={20} />
           </Link>
         </div>

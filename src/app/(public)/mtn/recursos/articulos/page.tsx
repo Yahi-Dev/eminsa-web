@@ -1,62 +1,38 @@
-import { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
-import { 
-  ChevronRight, 
+import {
+  ChevronRight,
   Newspaper,
   ArrowRight,
   Calendar,
   User,
   Tag
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-export const metadata: Metadata = {
-  title: "Artículos - Recursos MTN | Grupo EMINSA",
-  description: "Artículos técnicos, noticias y publicaciones sobre transformadores y el sector eléctrico.",
-};
-
-// Artículos de ejemplo
-const articles = [
-  {
-    id: 1,
-    title: "Eficiencia Energética DOE 2016: Lo que necesita saber",
-    excerpt: "Conozca los requisitos de eficiencia energética establecidos por el Departamento de Energía de EE.UU. y cómo afectan a los transformadores de distribución.",
-    date: "2024-01-15",
-    author: "Ing. Carlos Méndez",
-    category: "Normativas",
-    image: null,
-  },
-  {
-    id: 2,
-    title: "Mantenimiento preventivo de transformadores: Guía completa",
-    excerpt: "Aprenda las mejores prácticas para el mantenimiento preventivo de transformadores y cómo extender su vida útil.",
-    date: "2024-01-10",
-    author: "Ing. María Santos",
-    category: "Mantenimiento",
-    image: null,
-  },
-  {
-    id: 3,
-    title: "Transformadores Pad Mounted vs Tipo Poste: ¿Cuál elegir?",
-    excerpt: "Análisis comparativo de las ventajas y aplicaciones de cada tipo de transformador para ayudarle a tomar la mejor decisión.",
-    date: "2024-01-05",
-    author: "Ing. Roberto Pérez",
-    category: "Productos",
-    image: null,
-  },
-  {
-    id: 4,
-    title: "Nuevas tendencias en transformadores de distribución",
-    excerpt: "Descubra las últimas innovaciones tecnológicas en el sector de transformadores y hacia dónde se dirige la industria.",
-    date: "2023-12-20",
-    author: "Ing. Ana García",
-    category: "Industria",
-    image: null,
-  },
-];
-
-const categories = ["Todas", "Normativas", "Mantenimiento", "Productos", "Industria"];
+const articleDates = ["2024-01-15", "2024-01-10", "2024-01-05", "2023-12-20"];
 
 export default function ArticulosPage() {
+  const t = useTranslations("pages.mtn.recursos.articulos");
+
+  const articles = Array.from({ length: 4 }, (_, i) => ({
+    id: i + 1,
+    title: t(`articles.${i}.title`),
+    excerpt: t(`articles.${i}.excerpt`),
+    date: articleDates[i],
+    author: t(`articles.${i}.author`),
+    category: t(`articles.${i}.category`),
+    image: null,
+  }));
+
+  const categories = [
+    t("categories.all"),
+    t("categories.standards"),
+    t("categories.maintenance"),
+    t("categories.products"),
+    t("categories.industry"),
+  ];
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -64,13 +40,13 @@ export default function ArticulosPage() {
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("breadcrumb.home")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
+            <Link href="/mtn" className="hover:text-white transition-colors">{t("breadcrumb.mtn")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn/recursos" className="hover:text-white transition-colors">Recursos</Link>
+            <Link href="/mtn/recursos" className="hover:text-white transition-colors">{t("breadcrumb.recursos")}</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Artículos</span>
+            <span className="text-white">{t("breadcrumb.articulos")}</span>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -78,8 +54,8 @@ export default function ArticulosPage() {
               <Newspaper size={28} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold">Artículos y Publicaciones</h1>
-              <p className="text-white/70">Conocimiento técnico del sector eléctrico</p>
+              <h1 className="text-3xl font-bold">{t("hero.title")}</h1>
+              <p className="text-white/70">{t("hero.subtitle")}</p>
             </div>
           </div>
         </div>
@@ -153,7 +129,7 @@ export default function ArticulosPage() {
                     href={`/mtn/recursos/articulos/${article.id}`}
                     className="inline-flex items-center gap-2 text-[#00269b] font-semibold hover:text-[#0099ce] transition-colors"
                   >
-                    Leer más
+                    {t("readMore")}
                     <ArrowRight size={16} />
                   </Link>
                 </div>
@@ -164,7 +140,7 @@ export default function ArticulosPage() {
           {/* Load More */}
           <div className="text-center mt-12">
             <button className="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-medium transition-colors">
-              Cargar más artículos
+              {t("loadMore")}
             </button>
           </div>
         </div>
@@ -173,13 +149,13 @@ export default function ArticulosPage() {
       {/* CTA */}
       <section className="py-12 bg-[#00269b] text-white">
         <div className="container-eminsa text-center">
-          <h2 className="text-2xl font-bold mb-4">¿Tiene preguntas técnicas?</h2>
-          <p className="text-white/80 mb-6">Nuestro equipo de ingenieros está disponible para asistirle.</p>
+          <h2 className="text-2xl font-bold mb-4">{t("cta.title")}</h2>
+          <p className="text-white/80 mb-6">{t("cta.description")}</p>
           <Link
             href="/mtn/cotizaciones"
             className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
           >
-            Contactar Soporte
+            {t("cta.contactSupport")}
             <ArrowRight size={18} />
           </Link>
         </div>

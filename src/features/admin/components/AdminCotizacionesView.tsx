@@ -42,7 +42,7 @@ const UNIT_COLORS: Record<string, string> = {
 
 const UNIT_LABELS: Record<string, string> = {
   MTN: "MTN",
-  RST: "ETRYS",
+  RST: "RST",
   EIC: "EIC",
   SRV: "Servicios",
 };

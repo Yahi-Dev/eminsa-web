@@ -11,8 +11,11 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { testimoniales } from "@/config/servicios-data";
+import { useTranslations } from "next-intl";
 
 export default function TestimonialesServiciosPage() {
+  const t = useTranslations("pages.servicios.testimonialesPage");
+
   return (
     <div className="min-h-screen">
       {/* ================================================================ */}
@@ -36,17 +39,17 @@ export default function TestimonialesServiciosPage() {
             className="flex items-center gap-2 text-white/60 text-sm mb-8"
           >
             <Link href="/" className="hover:text-white transition-colors">
-              Inicio
+              {t("breadcrumbHome")}
             </Link>
             <ChevronRight size={16} />
             <Link
               href="/servicios"
               className="hover:text-white transition-colors"
             >
-              Servicios
+              {t("breadcrumbServicios")}
             </Link>
             <ChevronRight size={16} />
-            <span className="text-white">Testimoniales</span>
+            <span className="text-white">{t("breadcrumbTitle")}</span>
           </motion.div>
 
           <motion.div
@@ -56,11 +59,10 @@ export default function TestimonialesServiciosPage() {
             className="max-w-3xl"
           >
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-              Testimonios de Nuestros Clientes
+              {t("title")}
             </h1>
             <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-              La confianza de nuestros clientes es nuestro mayor respaldo.
-              Conozca sus experiencias trabajando con EMINSA Servicios.
+              {t("description")}
             </p>
           </motion.div>
         </div>
@@ -81,7 +83,7 @@ export default function TestimonialesServiciosPage() {
               <div className="text-4xl md:text-5xl font-bold text-[#00269b] mb-2">
                 500+
               </div>
-              <div className="text-[#6d6e6d]">Clientes Satisfechos</div>
+              <div className="text-[#6d6e6d]">{t("satisfiedClients")}</div>
             </motion.div>
 
             <motion.div
@@ -94,7 +96,7 @@ export default function TestimonialesServiciosPage() {
               <div className="text-4xl md:text-5xl font-bold text-[#00269b] mb-2">
                 4.9/5
               </div>
-              <div className="text-[#6d6e6d]">Calificación Promedio</div>
+              <div className="text-[#6d6e6d]">{t("averageRating")}</div>
             </motion.div>
 
             <motion.div
@@ -107,7 +109,7 @@ export default function TestimonialesServiciosPage() {
               <div className="text-4xl md:text-5xl font-bold text-[#00269b] mb-2">
                 50+
               </div>
-              <div className="text-[#6d6e6d]">Años de Experiencia</div>
+              <div className="text-[#6d6e6d]">{t("yearsExperience")}</div>
             </motion.div>
 
             <motion.div
@@ -120,7 +122,7 @@ export default function TestimonialesServiciosPage() {
               <div className="text-4xl md:text-5xl font-bold text-[#00269b] mb-2">
                 100%
               </div>
-              <div className="text-[#6d6e6d]">Recomendación</div>
+              <div className="text-[#6d6e6d]">{t("recommendation")}</div>
             </motion.div>
           </div>
         </div>
@@ -138,14 +140,13 @@ export default function TestimonialesServiciosPage() {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
-              Testimonios
+              {t("testimonialsBadge")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-              Lo que Dicen Nuestros Clientes
+              {t("whatClientsSay")}
             </h2>
             <p className="text-[#6d6e6d] text-lg">
-              Cada testimonio refleja nuestro compromiso con la excelencia y el
-              servicio de calidad que ofrecemos día a día.
+              {t("whatClientsSayDesc")}
             </p>
           </motion.div>
 
@@ -233,11 +234,10 @@ export default function TestimonialesServiciosPage() {
 
             <div className="relative z-10 max-w-2xl mx-auto">
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-                ¿Listo para Trabajar con Nosotros?
+                {t("readyToWork")}
               </h2>
               <p className="text-white/80 text-lg mb-8 leading-relaxed">
-                Únase a nuestros más de 500 clientes satisfechos y experimente
-                el nivel de servicio que nos distingue en la industria.
+                {t("readyToWorkDesc")}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -245,14 +245,14 @@ export default function TestimonialesServiciosPage() {
                   href="/servicios/cotizacion"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#00269b] text-white hover:bg-[#00175d] font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
-                  Solicitar Cotización
+                  {t("requestQuote")}
                   <ArrowRight size={22} />
                 </Link>
                 <Link
                   href="/servicios"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-bold rounded-xl transition-all text-lg"
                 >
-                  Ver Nuestros Servicios
+                  {t("viewOurServices")}
                 </Link>
               </div>
             </div>

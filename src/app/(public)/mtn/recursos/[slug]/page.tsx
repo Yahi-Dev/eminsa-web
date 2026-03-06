@@ -1,8 +1,10 @@
-import { Metadata } from "next";
+"use client";
+
+import { use } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { 
-  ChevronRight, 
+import {
+  ChevronRight,
   ArrowRight,
   FileText,
   Shield,
@@ -13,33 +15,10 @@ import {
   Search
 } from "lucide-react";
 import { getResourceBySlug, ResourceContent, resources, transformerProducts } from "@/config/mtn-data";
+import { useTranslations } from "next-intl";
 
 interface Props {
   params: Promise<{ slug: string }>;
-}
-
-export async function generateStaticParams() {
-  return resources
-    .filter(r => r.type !== 'calculator') // Calculator has its own page
-    .map((resource) => ({
-      slug: resource.slug,
-    }));
-}
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const resource = getResourceBySlug(slug);
-  
-  if (!resource) {
-    return {
-      title: "Recurso no encontrado | Grupo EMINSA",
-    };
-  }
-
-  return {
-    title: `${resource.name} - Recursos | MTN - Grupo EMINSA`,
-    description: resource.description,
-  };
 }
 
 const resourceIcons: Record<string, React.ElementType> = {
@@ -49,120 +28,123 @@ const resourceIcons: Record<string, React.ElementType> = {
   "book-open": BookOpen,
 };
 
-// Datos de ejemplo para cada tipo de recurso
-const resourceContent: Record<string, ResourceContent> = {
-  articulos: {
-    title: "Artículos y Publicaciones",
-    description: "Manténgase informado con nuestras últimas publicaciones técnicas y noticias del sector.",
-    items: [
-      {
-        title: "Eficiencia Energética en Transformadores: Normativa DOE 2016",
-        date: "15 Ene 2025",
-        category: "Normativas",
-        excerpt: "Conozca los requisitos de eficiencia que deben cumplir los transformadores según la regulación DOE 2016.",
-      },
-      {
-        title: "Mantenimiento Preventivo de Transformadores Tipo Poste",
-        date: "10 Ene 2025",
-        category: "Mantenimiento",
-        excerpt: "Guía completa para el mantenimiento preventivo que prolonga la vida útil de sus transformadores.",
-      },
-      {
-        title: "Transformadores Pad Mounted: La Solución para Distribución Subterránea",
-        date: "5 Ene 2025",
-        category: "Productos",
-        excerpt: "Descubra las ventajas de los transformadores pad mounted en proyectos residenciales y comerciales.",
-      },
-      {
-        title: "EMINSA Celebra 50 Años de Excelencia en Transformadores",
-        date: "1 Dic 2024",
-        category: "Empresa",
-        excerpt: "Medio siglo de experiencia fabricando transformadores de alta calidad en República Dominicana.",
-      },
-    ],
-  },
-  "fichas-tecnicas": {
-    title: "Fichas Técnicas",
-    description: "Descargue las especificaciones técnicas detalladas de todos nuestros productos.",
-    items: transformerProducts.map(product => ({
-      title: `Ficha Técnica - ${product.name}`,
-      format: "PDF",
-      size: `${(Math.random() * 3 + 1).toFixed(1)} MB`,
-      description: product.description,
-    })),
-  },
-  garantia: {
-    title: "Garantía",
-    description: "Información sobre cobertura, términos y condiciones de garantía.",
-    sections: [
-      {
-        title: "Cobertura de Garantía",
-        content: "EMINSA garantiza sus transformadores contra defectos de fabricación y materiales por un período de 5 años a partir de la fecha de entrega.",
-      },
-      {
-        title: "Condiciones",
-        items: [
-          "Instalación realizada por personal calificado",
-          "Operación dentro de los parámetros especificados",
-          "Mantenimiento según manual del fabricante",
-          "Uso en condiciones ambientales normales",
-        ],
-      },
-      {
-        title: "Exclusiones",
-        items: [
-          "Daños por sobrecarga o cortocircuito",
-          "Daños por fenómenos naturales",
-          "Modificaciones no autorizadas",
-          "Falta de mantenimiento adecuado",
-        ],
-      },
-      {
-        title: "Proceso de Reclamación",
-        content: "Para hacer válida la garantía, contacte a nuestro departamento de servicio técnico con el número de serie del equipo y descripción del problema.",
-      },
-    ],
-  },
-  "manual-mantenimiento": {
-    title: "Manual de Mantenimiento",
-    description: "Guías completas para el cuidado y mantenimiento de transformadores.",
-    chapters: [
-      {
-        number: 1,
-        title: "Introducción y Seguridad",
-        description: "Normas de seguridad y precauciones generales para el mantenimiento de transformadores.",
-      },
-      {
-        number: 2,
-        title: "Inspección Visual",
-        description: "Procedimientos de inspección visual periódica y qué buscar.",
-      },
-      {
-        number: 3,
-        title: "Mantenimiento Preventivo",
-        description: "Rutinas de mantenimiento preventivo recomendadas según frecuencia.",
-      },
-      {
-        number: 4,
-        title: "Pruebas Eléctricas",
-        description: "Pruebas eléctricas básicas y avanzadas para verificar el estado del transformador.",
-      },
-      {
-        number: 5,
-        title: "Aceite Dieléctrico",
-        description: "Análisis, tratamiento y reemplazo del aceite dieléctrico.",
-      },
-      {
-        number: 6,
-        title: "Solución de Problemas",
-        description: "Diagnóstico y solución de problemas comunes.",
-      },
-    ],
-  },
-};
+// Function to build resource content using translations
+function useResourceContent(t: ReturnType<typeof useTranslations>): Record<string, ResourceContent> {
+  return {
+    articulos: {
+      title: t("slug.articulos.title"),
+      description: t("slug.articulos.description"),
+      items: [
+        {
+          title: t("slug.articulos.items.0.title"),
+          date: t("slug.articulos.items.0.date"),
+          category: t("slug.articulos.items.0.category"),
+          excerpt: t("slug.articulos.items.0.excerpt"),
+        },
+        {
+          title: t("slug.articulos.items.1.title"),
+          date: t("slug.articulos.items.1.date"),
+          category: t("slug.articulos.items.1.category"),
+          excerpt: t("slug.articulos.items.1.excerpt"),
+        },
+        {
+          title: t("slug.articulos.items.2.title"),
+          date: t("slug.articulos.items.2.date"),
+          category: t("slug.articulos.items.2.category"),
+          excerpt: t("slug.articulos.items.2.excerpt"),
+        },
+        {
+          title: t("slug.articulos.items.3.title"),
+          date: t("slug.articulos.items.3.date"),
+          category: t("slug.articulos.items.3.category"),
+          excerpt: t("slug.articulos.items.3.excerpt"),
+        },
+      ],
+    },
+    "fichas-tecnicas": {
+      title: t("slug.fichasTecnicas.title"),
+      description: t("slug.fichasTecnicas.description"),
+      items: transformerProducts.map(product => ({
+        title: `${t("slug.fichasTecnicas.itemPrefix")} - ${product.name}`,
+        format: "PDF",
+        size: `${(Math.random() * 3 + 1).toFixed(1)} MB`,
+        description: product.description,
+      })),
+    },
+    garantia: {
+      title: t("slug.garantia.title"),
+      description: t("slug.garantia.description"),
+      sections: [
+        {
+          title: t("slug.garantia.sections.coverage.title"),
+          content: t("slug.garantia.sections.coverage.content"),
+        },
+        {
+          title: t("slug.garantia.sections.conditions.title"),
+          items: [
+            t("slug.garantia.sections.conditions.items.0"),
+            t("slug.garantia.sections.conditions.items.1"),
+            t("slug.garantia.sections.conditions.items.2"),
+            t("slug.garantia.sections.conditions.items.3"),
+          ],
+        },
+        {
+          title: t("slug.garantia.sections.exclusions.title"),
+          items: [
+            t("slug.garantia.sections.exclusions.items.0"),
+            t("slug.garantia.sections.exclusions.items.1"),
+            t("slug.garantia.sections.exclusions.items.2"),
+            t("slug.garantia.sections.exclusions.items.3"),
+          ],
+        },
+        {
+          title: t("slug.garantia.sections.claimProcess.title"),
+          content: t("slug.garantia.sections.claimProcess.content"),
+        },
+      ],
+    },
+    "manual-mantenimiento": {
+      title: t("slug.manual.title"),
+      description: t("slug.manual.description"),
+      chapters: [
+        {
+          number: 1,
+          title: t("slug.manual.chapters.0.title"),
+          description: t("slug.manual.chapters.0.description"),
+        },
+        {
+          number: 2,
+          title: t("slug.manual.chapters.1.title"),
+          description: t("slug.manual.chapters.1.description"),
+        },
+        {
+          number: 3,
+          title: t("slug.manual.chapters.2.title"),
+          description: t("slug.manual.chapters.2.description"),
+        },
+        {
+          number: 4,
+          title: t("slug.manual.chapters.3.title"),
+          description: t("slug.manual.chapters.3.description"),
+        },
+        {
+          number: 5,
+          title: t("slug.manual.chapters.4.title"),
+          description: t("slug.manual.chapters.4.description"),
+        },
+        {
+          number: 6,
+          title: t("slug.manual.chapters.5.title"),
+          description: t("slug.manual.chapters.5.description"),
+        },
+      ],
+    },
+  };
+}
 
-export default async function RecursoDetailPage({ params }: Props) {
-  const { slug } = await params;
+export default function RecursoDetailPage({ params }: Props) {
+  const { slug } = use(params);
+  const t = useTranslations("pages.mtn.recursos");
   const resource = getResourceBySlug(slug);
 
   if (!resource || resource.type === 'calculator') {
@@ -170,6 +152,7 @@ export default async function RecursoDetailPage({ params }: Props) {
   }
 
   const Icon = resourceIcons[resource.icon] || FileText;
+  const resourceContent = useResourceContent(t);
   const content = resourceContent[slug as keyof typeof resourceContent];
 
   return (
@@ -179,11 +162,11 @@ export default async function RecursoDetailPage({ params }: Props) {
         <div className="container-eminsa">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/60 mb-6">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("slug.breadcrumb.home")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
+            <Link href="/mtn" className="hover:text-white transition-colors">{t("slug.breadcrumb.mtn")}</Link>
             <ChevronRight size={14} />
-            <Link href="/mtn/recursos" className="hover:text-white transition-colors">Recursos</Link>
+            <Link href="/mtn/recursos" className="hover:text-white transition-colors">{t("slug.breadcrumb.recursos")}</Link>
             <ChevronRight size={14} />
             <span className="text-white">{resource.name}</span>
           </nav>
@@ -216,7 +199,7 @@ export default async function RecursoDetailPage({ params }: Props) {
                   <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                   <input
                     type="text"
-                    placeholder="Buscar artículos..."
+                    placeholder={t("slug.searchPlaceholder")}
                     className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#00269b] focus:border-transparent"
                   />
                 </div>
@@ -264,7 +247,7 @@ export default async function RecursoDetailPage({ params }: Props) {
                     </div>
                     <button className="flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-4 py-2 rounded-lg transition-colors">
                       <Download size={18} />
-                      Descargar
+                      {t("slug.download")}
                     </button>
                   </div>
                 ))}
@@ -272,11 +255,11 @@ export default async function RecursoDetailPage({ params }: Props) {
 
               {/* Catalog download */}
               <div className="mt-8 bg-gradient-to-r from-[#00269b] to-[#0099ce] rounded-2xl p-8 text-white text-center">
-                <h3 className="text-2xl font-bold mb-2">Catálogo Completo</h3>
-                <p className="text-white/80 mb-6">Descargue todas las fichas técnicas en un solo archivo</p>
+                <h3 className="text-2xl font-bold mb-2">{t("slug.catalog.title")}</h3>
+                <p className="text-white/80 mb-6">{t("slug.catalog.description")}</p>
                 <button className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors">
                   <Download size={20} />
-                  Descargar Catálogo (PDF)
+                  {t("slug.catalog.download")}
                 </button>
               </div>
             </div>
@@ -309,7 +292,7 @@ export default async function RecursoDetailPage({ params }: Props) {
                 <div className="pt-6">
                   <button className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
                     <Download size={20} />
-                    Descargar Términos de Garantía (PDF)
+                    {t("slug.downloadWarrantyPdf")}
                   </button>
                 </div>
               </div>
@@ -322,7 +305,7 @@ export default async function RecursoDetailPage({ params }: Props) {
               {/* Chapter list */}
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                 <div className="p-6 bg-gray-50 border-b border-gray-200">
-                  <h2 className="text-xl font-bold text-gray-900">Contenido del Manual</h2>
+                  <h2 className="text-xl font-bold text-gray-900">{t("slug.manualContent")}</h2>
                 </div>
                 <div className="divide-y divide-gray-100">
                   {content.chapters.map((chapter) => (
@@ -346,12 +329,12 @@ export default async function RecursoDetailPage({ params }: Props) {
               <div className="mt-8 bg-gradient-to-r from-[#00269b] to-[#0099ce] rounded-2xl p-8 text-white">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">Manual Completo</h3>
-                    <p className="text-white/80">Descargue el manual completo de mantenimiento</p>
+                    <h3 className="text-2xl font-bold mb-2">{t("slug.fullManual.title")}</h3>
+                    <p className="text-white/80">{t("slug.fullManual.description")}</p>
                   </div>
                   <button className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-colors whitespace-nowrap">
                     <Download size={20} />
-                    Descargar PDF
+                    {t("slug.downloadPdf")}
                   </button>
                 </div>
               </div>
@@ -363,15 +346,15 @@ export default async function RecursoDetailPage({ params }: Props) {
       {/* CTA */}
       <section className="py-12 bg-white">
         <div className="container-eminsa text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Necesita ayuda adicional?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t("slug.cta.title")}</h2>
           <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-            Nuestro equipo técnico está disponible para resolver cualquier duda.
+            {t("slug.cta.description")}
           </p>
           <Link
             href="/mtn/cotizaciones"
             className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-8 py-4 rounded-xl font-semibold transition-colors"
           >
-            Contactar Soporte Técnico
+            {t("slug.cta.contactSupport")}
             <ArrowRight size={20} />
           </Link>
         </div>

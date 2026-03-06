@@ -24,6 +24,7 @@ import {
 import { repairCenter } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { useTranslations } from "next-intl";
 
 const equipmentIcons: { [key: string]: React.ElementType } = {
   activity: Activity,
@@ -37,6 +38,7 @@ const equipmentIcons: { [key: string]: React.ElementType } = {
 };
 
 export default function CentroReparacionPage() {
+  const t = useTranslations("etrysPage.centroReparacionPage");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -53,10 +55,10 @@ export default function CentroReparacionPage() {
             </Link>
             <ChevronRight size={14} />
             <Link href="/etrys/servicios" className="hover:text-white transition-colors">
-              Servicios
+              {t("breadcrumbServices")}
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Centro de Reparación</span>
+            <span className="text-white">{t("breadcrumb")}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -65,7 +67,7 @@ export default function CentroReparacionPage() {
               animate={{ opacity: 1, x: 0 }}
             >
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                Nuestras Instalaciones
+                {t("heroBadge")}
               </span>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
                 {repairCenter.name}
@@ -82,7 +84,7 @@ export default function CentroReparacionPage() {
                   href="/etrys/cotizaciones?servicio=reparacion"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
                 >
-                  Solicitar Servicio
+                  {t("requestService")}
                   <ArrowRight size={20} />
                 </Link>
                 <a
@@ -90,7 +92,7 @@ export default function CentroReparacionPage() {
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-colors"
                 >
                   <Phone size={20} />
-                  Llamar Ahora
+                  {t("callNow")}
                 </a>
               </div>
             </motion.div>
@@ -125,11 +127,10 @@ export default function CentroReparacionPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Galería de Instalaciones
+              {t("galleryTitle")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Conozca nuestras modernas instalaciones equipadas con tecnología 
-              de última generación.
+              {t("galleryDescription")}
             </p>
           </motion.div>
 
@@ -168,11 +169,10 @@ export default function CentroReparacionPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Capacidades de Servicio
+              {t("capabilitiesTitle")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Nuestro centro está preparado para atender una amplia variedad de 
-              transformadores y equipos eléctricos.
+              {t("capabilitiesDescription")}
             </p>
           </motion.div>
 
@@ -257,7 +257,7 @@ export default function CentroReparacionPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Ubicación
+                {t("location")}
               </h2>
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg bg-gray-200">
                 <iframe
@@ -275,7 +275,7 @@ export default function CentroReparacionPage() {
                 <MapPin size={20} className="text-[#0099ce] shrink-0 mt-1" />
                 <div>
                   <p className="font-semibold text-gray-900">{repairCenter.location}</p>
-                  <p className="text-gray-600">República Dominicana</p>
+                  <p className="text-gray-600">{t("country")}</p>
                 </div>
               </div>
             </motion.div>
@@ -287,21 +287,21 @@ export default function CentroReparacionPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Información de Contacto
+                {t("contactInfo")}
               </h2>
-              
+
               <div className="bg-gray-50 rounded-2xl p-6 mb-6">
                 <h3 className="font-semibold text-gray-900 mb-4">
-                  Horario de Atención
+                  {t("businessHours")}
                 </h3>
                 <div className="space-y-2 text-gray-600">
                   <div className="flex items-center gap-3">
                     <Clock size={18} className="text-[#0099ce]" />
-                    <span>Lunes a Viernes: 8:00 AM - 5:00 PM</span>
+                    <span>{t("weekdayHours")}</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock size={18} className="text-[#0099ce]" />
-                    <span>Sábados: 8:00 AM - 12:00 PM</span>
+                    <span>{t("saturdayHours")}</span>
                   </div>
                 </div>
               </div>
@@ -315,7 +315,7 @@ export default function CentroReparacionPage() {
                     <Phone size={24} className="text-[#0099ce]" />
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500 block">Teléfono</span>
+                    <span className="text-sm text-gray-500 block">{t("phone")}</span>
                     <span className="font-semibold text-gray-900">{contactInfo.phone}</span>
                   </div>
                 </a>
@@ -328,7 +328,7 @@ export default function CentroReparacionPage() {
                     <Mail size={24} className="text-[#0099ce]" />
                   </div>
                   <div>
-                    <span className="text-sm text-gray-500 block">Email</span>
+                    <span className="text-sm text-gray-500 block">{t("email")}</span>
                     <span className="font-semibold text-gray-900">{contactInfo.email}</span>
                   </div>
                 </a>
@@ -344,7 +344,7 @@ export default function CentroReparacionPage() {
                   </div>
                   <div>
                     <span className="text-sm text-gray-500 block">WhatsApp</span>
-                    <span className="font-semibold text-gray-900">Chatea con nosotros</span>
+                    <span className="font-semibold text-gray-900">{t("chatWithUs")}</span>
                   </div>
                 </a>
               </div>
@@ -353,7 +353,7 @@ export default function CentroReparacionPage() {
                 href="/etrys/cotizaciones?servicio=reparacion"
                 className="flex items-center justify-center gap-2 w-full mt-6 px-6 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
               >
-                Solicitar Servicio
+                {t("requestService")}
                 <ArrowRight size={20} />
               </Link>
             </motion.div>
@@ -370,24 +370,24 @@ export default function CentroReparacionPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              ¿Listo para reparar su transformador?
+              {t("ctaTitle")}
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              Visite nuestro centro o solicite una cotización en línea.
+              {t("ctaDescription")}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/etrys/cotizaciones?servicio=reparacion"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
               >
-                Solicitar Cotización
+                {t("requestQuote")}
                 <ArrowRight size={20} />
               </Link>
               <Link
                 href="/etrys/servicios"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-colors"
               >
-                Ver Todos los Servicios
+                {t("viewAllServices")}
               </Link>
             </div>
           </motion.div>
