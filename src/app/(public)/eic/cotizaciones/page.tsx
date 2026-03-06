@@ -52,6 +52,7 @@ function CotizacionesForm() {
     voltajePrimario: "",
     voltajeSecundario: "",
     configuracion: "",
+    distribuidora: "",
     urgencia: "normal",
     // Additional
     ubicacion: "",
@@ -132,6 +133,7 @@ function CotizacionesForm() {
               configuracion: formData.configuracion,
               voltajePrimario: formData.voltajePrimario,
               voltajeSecundario: formData.voltajeSecundario,
+              distribuidora: formData.distribuidora,
             } : {}),
             ...(files.length > 0 && {
               archivos: files.map(f => `${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join(' • '),
@@ -171,6 +173,7 @@ function CotizacionesForm() {
         updated.voltajePrimario = "";
         updated.voltajeSecundario = "";
         updated.configuracion = "";
+        updated.distribuidora = "";
       }
       return updated;
     });
@@ -534,6 +537,26 @@ function CotizacionesForm() {
                             className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
                             placeholder="Ej: 120/240 V"
                           />
+                        </div>
+                        <div className="sm:col-span-2">
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Distribuidora de Energía
+                          </label>
+                          <select
+                            name="distribuidora"
+                            value={formData.distribuidora}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#009e49] focus:border-transparent transition-all"
+                          >
+                            <option value="">Seleccione la distribuidora</option>
+                            <option value="EDENORTE">EDENORTE</option>
+                            <option value="EDESUR">EDESUR</option>
+                            <option value="EDEESTE">EDEESTE</option>
+                            <option value="CEPM">CEPM</option>
+                            <option value="CAPCANA">CAPCANA</option>
+                            <option value="USO INTERNO">USO INTERNO</option>
+                            <option value="OTROS">OTROS (ESPECIFICAR)</option>
+                          </select>
                         </div>
                       </div>
                     </motion.div>

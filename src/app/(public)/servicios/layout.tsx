@@ -116,21 +116,21 @@ const serviciosNavItems: NavItem[] = [
     href: "/servicios/recursos",
     icon: FolderOpen,
   },
-  {
-    name: "Proyectos",
-    href: "/servicios/proyectos",
-    icon: Briefcase,
-  },
-  {
-    name: "Testimoniales",
-    href: "/servicios/testimoniales",
-    icon: MessageSquareQuote,
-  },
-  {
-    name: "Clientes",
-    href: "/servicios/clientes",
-    icon: Users,
-  },
+  // {
+  //   name: "Proyectos",
+  //   href: "/servicios/proyectos",
+  //   icon: Briefcase,
+  // },
+  // {
+  //   name: "Testimoniales",
+  //   href: "/servicios/testimoniales",
+  //   icon: MessageSquareQuote,
+  // },
+  // {
+  //   name: "Clientes",
+  //   href: "/servicios/clientes",
+  //   icon: Users,
+  // },
   {
     name: "Cotizaciones",
     href: "/servicios/cotizacion",

@@ -77,7 +77,7 @@ export default function ServiciosPage() {
       {/* ================================================================ */}
       {/* 1. HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#6d6e6d] via-[#575857] to-[#414241] text-white py-20 lg:py-28 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#6d6e6d] via-[#575857] to-[#414241] text-white py-12 lg:py-16 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -105,12 +105,16 @@ export default function ServiciosPage() {
 
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
-                  {t("hero.title")}
+                  <span className="text-white">{t("hero.title")}</span>
                 </h1>
                 <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed">
                   {serviciosInfo.description}
                 </p>
               </div>
+
+              <p className="text-lg text-white/70 leading-relaxed max-w-xl">
+                Con más de 50 años de trayectoria, nuestro equipo de técnicos especializados opera en campo y en taller para brindar mantenimiento preventivo, correctivo y de emergencia, asegurando la continuidad operativa de sus sistemas eléctricos.
+              </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">

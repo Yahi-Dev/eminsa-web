@@ -9,12 +9,9 @@ import type { SelectOption, ContactFormState } from '../types';
  */
 export const CATEGORIAS_PRODUCTOS = [
   'Transformadores',
-  'Capacitores',
-  'Paneles',
-  'Seccionadores',
+  'Cables',
+  'Celdas de media tensión',
   'Materiales Eléctricos',
-  'Reguladores de Voltaje',
-  'Otros productos o servicios'
 ] as const;
 
 /**
@@ -24,7 +21,6 @@ export const CATEGORIAS_SERVICIOS = [
   'Mantenimiento & Reparación',
   'Diagnóstico & Asesoría',
   'Instalaciones y montajes eléctricos',
-  'Diseño de instalaciones eléctricas',
   'Análisis de aceite Dieléctrico',
   'Alquiler de transformadores',
   'Otros productos o servicios'
@@ -62,10 +58,13 @@ export const NORMAS: SelectOption[] = [
  * Zonas de instalación
  */
 export const ZONAS_INSTALACION: SelectOption[] = [
-  { value: 'urbana', label: 'Zona Urbana' },
-  { value: 'rural', label: 'Zona Rural' },
-  { value: 'industrial', label: 'Zona Industrial' },
-  { value: 'comercial', label: 'Zona Comercial' }
+  { value: 'edenorte', label: 'EDENORTE' },
+  { value: 'edesur', label: 'EDESUR' },
+  { value: 'edeeste', label: 'EDEESTE' },
+  { value: 'cepm', label: 'CEPM' },
+  { value: 'capcana', label: 'CAPCANA' },
+  { value: 'uso_interno', label: 'USO INTERNO' },
+  { value: 'otros', label: 'OTROS (ESPECIFICAR)' },
 ];
 
 /**

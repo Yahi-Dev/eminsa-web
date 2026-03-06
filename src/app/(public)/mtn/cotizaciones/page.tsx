@@ -4,9 +4,9 @@ import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { 
-  ChevronRight, 
-  FileText, 
+import {
+  ChevronRight,
+  FileText,
   Phone,
   MessageCircle,
   CheckCircle2,
@@ -14,7 +14,9 @@ import {
   Clock,
   Shield,
   Send,
-  Loader2
+  Loader2,
+  Upload,
+  X,
 } from "lucide-react";
 import { transformerProducts } from "@/config/mtn-data";
 import { contactInfo } from "@/config/navigation";
@@ -37,17 +39,20 @@ function CotizacionesContent() {
     empresa: "",
     email: "",
     telefono: "",
+    tipoSolicitud: "",
     tipoTransformador: preselectedProduct || "",
     configuracion: "",
     capacidad: "",
     cantidad: "1",
     voltajePrimario: "",
     voltajeSecundario: "",
+    distribuidora: "",
     ubicacion: "",
     descripcion: "",
     urgente: false,
   });
 
+  const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [codigo, setCodigo] = useState("");
@@ -69,8 +74,14 @@ function CotizacionesContent() {
       newErrors.email = "Email inválido";
     }
     if (!formData.telefono.trim()) newErrors.telefono = "El teléfono es requerido";
-    if (!formData.tipoTransformador) newErrors.tipoTransformador = "Seleccione un tipo";
-    if (!formData.capacidad) newErrors.capacidad = "Seleccione una capacidad";
+    if (!formData.tipoSolicitud) newErrors.tipoSolicitud = "Seleccione el tipo de solicitud";
+    if (formData.tipoSolicitud === 'transformador') {
+      if (!formData.tipoTransformador) newErrors.tipoTransformador = "Seleccione un tipo";
+      if (!formData.capacidad) newErrors.capacidad = "Seleccione una capacidad";
+    }
+    if (formData.tipoSolicitud === 'otro' && !formData.descripcion.trim()) {
+      newErrors.descripcion = "Describa su solicitud";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -94,15 +105,22 @@ function CotizacionesContent() {
           email: formData.email,
           telefono: formData.telefono,
           urgente: formData.urgente,
-          detalles: {
+          detalles: formData.tipoSolicitud === 'transformador' ? {
             tipoTransformador: formData.tipoTransformador,
             configuracion: formData.configuracion,
             capacidad: formData.capacidad ? `${formData.capacidad} kVA` : '',
             cantidad: formData.cantidad,
             voltajePrimario: formData.voltajePrimario,
             voltajeSecundario: formData.voltajeSecundario,
+            distribuidora: formData.distribuidora,
             ubicacion: formData.ubicacion,
             descripcion: formData.descripcion,
+          } : {
+            descripcion: formData.descripcion,
+            ubicacion: formData.ubicacion,
+            ...(files.length > 0 && {
+              archivos: files.map(f => `${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join(' • '),
+            }),
           },
         }),
       });
@@ -136,6 +154,17 @@ function CotizacionesContent() {
   const handlePhoneChange = (value: string) => {
     setFormData(prev => ({ ...prev, telefono: value }));
     if (errors.telefono) setErrors(prev => ({ ...prev, telefono: "" }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setFiles(prev => [...prev, ...newFiles].slice(0, 5));
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   if (isSubmitted) {
@@ -178,16 +207,19 @@ function CotizacionesContent() {
                   empresa: "",
                   email: "",
                   telefono: "",
+                  tipoSolicitud: "",
                   tipoTransformador: "",
                   configuracion: "",
                   capacidad: "",
                   cantidad: "1",
                   voltajePrimario: "",
                   voltajeSecundario: "",
+                  distribuidora: "",
                   ubicacion: "",
                   descripcion: "",
                   urgente: false,
                 });
+                setFiles([]);
               }}
               className="inline-flex items-center justify-center gap-2 border-2 border-[#00269b] text-[#00269b] hover:bg-[#00269b] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
             >
@@ -269,110 +301,208 @@ function CotizacionesContent() {
             </div>
           </div>
 
-          {/* Especificaciones del Transformador */}
+          {/* Tipo de Solicitud */}
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
               <div className="w-8 h-8 bg-[#00269b] text-white rounded-lg flex items-center justify-center text-sm font-bold">2</div>
-              Especificaciones del Transformador
+              Tipo de Solicitud
             </h2>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Tipo de Transformador *
+                  ¿Qué desea cotizar? *
                 </label>
                 <select
-                  name="tipoTransformador"
-                  value={formData.tipoTransformador}
+                  name="tipoSolicitud"
+                  value={formData.tipoSolicitud}
                   onChange={handleInputChange}
                   className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
-                    errors.tipoTransformador ? "border-red-500" : "border-gray-300"
+                    errors.tipoSolicitud ? "border-red-500" : "border-gray-300"
                   }`}
                 >
-                  <option value="">Seleccione un tipo</option>
-                  {transformerProducts.map((product) => (
-                    <option key={product.id} value={product.slug}>
-                      {product.name}
-                    </option>
-                  ))}
+                  <option value="">Seleccione...</option>
+                  <option value="transformador">Transformador Nuevo</option>
+                  <option value="otro">Otro producto o servicio</option>
                 </select>
-                {errors.tipoTransformador && <p className="text-red-500 text-sm mt-1">{errors.tipoTransformador}</p>}
+                {errors.tipoSolicitud && <p className="text-red-500 text-sm mt-1">{errors.tipoSolicitud}</p>}
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Configuración
-                </label>
-                <select
-                  name="configuracion"
-                  value={formData.configuracion}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
-                >
-                  <option value="">Seleccione configuración</option>
-                  <option value="monofasico">Monofásico</option>
-                  <option value="trifasico">Trifásico</option>
-                  <option value="autoprotegido">Autoprotegido (CSP)</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Capacidad (kVA) *
-                </label>
-                <select
-                  name="capacidad"
-                  value={formData.capacidad}
-                  onChange={handleInputChange}
-                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
-                    errors.capacidad ? "border-red-500" : "border-gray-300"
-                  }`}
-                >
-                  <option value="">Seleccione capacidad</option>
-                  {capacities.map((cap) => (
-                    <option key={cap} value={cap}>
-                      {cap === "Otro" ? "Otro (especificar)" : `${cap} kVA`}
-                    </option>
-                  ))}
-                </select>
-                {errors.capacidad && <p className="text-red-500 text-sm mt-1">{errors.capacidad}</p>}
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Cantidad
-                </label>
-                <input
-                  type="number"
-                  name="cantidad"
-                  value={formData.cantidad}
-                  onChange={handleInputChange}
-                  min="1"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Voltaje Primario
-                </label>
-                <input
-                  type="text"
-                  name="voltajePrimario"
-                  value={formData.voltajePrimario}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
-                  placeholder="Ej: 13.2 kV"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Voltaje Secundario
-                </label>
-                <input
-                  type="text"
-                  name="voltajeSecundario"
-                  value={formData.voltajeSecundario}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
-                  placeholder="Ej: 120/240 V"
-                />
-              </div>
+
+              {/* Transformer fields */}
+              {formData.tipoSolicitud === 'transformador' && (
+                <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Tipo de Transformador *
+                    </label>
+                    <select
+                      name="tipoTransformador"
+                      value={formData.tipoTransformador}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
+                        errors.tipoTransformador ? "border-red-500" : "border-gray-300"
+                      }`}
+                    >
+                      <option value="">Seleccione un tipo</option>
+                      {transformerProducts.map((product) => (
+                        <option key={product.id} value={product.slug}>
+                          {product.name}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.tipoTransformador && <p className="text-red-500 text-sm mt-1">{errors.tipoTransformador}</p>}
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Configuración
+                    </label>
+                    <select
+                      name="configuracion"
+                      value={formData.configuracion}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
+                    >
+                      <option value="">Seleccione configuración</option>
+                      <option value="monofasico">Monofásico</option>
+                      <option value="trifasico">Trifásico</option>
+                      <option value="autoprotegido">Autoprotegido (CSP)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Capacidad (kVA) *
+                    </label>
+                    <select
+                      name="capacidad"
+                      value={formData.capacidad}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
+                        errors.capacidad ? "border-red-500" : "border-gray-300"
+                      }`}
+                    >
+                      <option value="">Seleccione capacidad</option>
+                      {capacities.map((cap) => (
+                        <option key={cap} value={cap}>
+                          {cap === "Otro" ? "Otro (especificar)" : `${cap} kVA`}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.capacidad && <p className="text-red-500 text-sm mt-1">{errors.capacidad}</p>}
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Cantidad
+                    </label>
+                    <input
+                      type="number"
+                      name="cantidad"
+                      value={formData.cantidad}
+                      onChange={handleInputChange}
+                      min="1"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Voltaje Primario
+                    </label>
+                    <input
+                      type="text"
+                      name="voltajePrimario"
+                      value={formData.voltajePrimario}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
+                      placeholder="Ej: 13.2 kV"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Voltaje Secundario
+                    </label>
+                    <input
+                      type="text"
+                      name="voltajeSecundario"
+                      value={formData.voltajeSecundario}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
+                      placeholder="Ej: 120/240 V"
+                    />
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Distribuidora de Energía
+                    </label>
+                    <select
+                      name="distribuidora"
+                      value={formData.distribuidora}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
+                    >
+                      <option value="">Seleccione la distribuidora</option>
+                      <option value="EDENORTE">EDENORTE</option>
+                      <option value="EDESUR">EDESUR</option>
+                      <option value="EDEESTE">EDEESTE</option>
+                      <option value="CEPM">CEPM</option>
+                      <option value="CAPCANA">CAPCANA</option>
+                      <option value="USO INTERNO">USO INTERNO</option>
+                      <option value="OTROS">OTROS (ESPECIFICAR)</option>
+                    </select>
+                  </div>
+                </div>
+              )}
+
+              {/* Otro fields */}
+              {formData.tipoSolicitud === 'otro' && (
+                <div className="space-y-4 pt-2">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Descripción de su solicitud *
+                    </label>
+                    <textarea
+                      name="descripcion"
+                      value={formData.descripcion}
+                      onChange={handleInputChange}
+                      rows={5}
+                      className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all resize-none ${
+                        errors.descripcion ? "border-red-500" : "border-gray-300"
+                      }`}
+                      placeholder="Describa el producto o servicio que necesita cotizar..."
+                    />
+                    {errors.descripcion && <p className="text-red-500 text-sm mt-1">{errors.descripcion}</p>}
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Adjuntar documento (opcional)
+                    </label>
+                    <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#00269b] transition-colors">
+                      <input
+                        type="file"
+                        multiple
+                        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx,.xls"
+                        onChange={handleFileChange}
+                        className="hidden"
+                        id="file-upload-mtn"
+                      />
+                      <label htmlFor="file-upload-mtn" className="flex flex-col items-center cursor-pointer">
+                        <Upload size={32} className="text-gray-400 mb-2" />
+                        <span className="text-sm text-gray-600">Haga clic para subir archivos</span>
+                        <span className="text-xs text-gray-400 mt-1">PDF, DOC, JPG, PNG, Excel (máx. 5 archivos)</span>
+                      </label>
+                    </div>
+                    {files.length > 0 && (
+                      <div className="mt-3 space-y-2">
+                        {files.map((file, index) => (
+                          <div key={index} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
+                            <span className="text-sm text-gray-700 truncate">{file.name}</span>
+                            <button type="button" onClick={() => removeFile(index)} className="p-1 hover:bg-gray-200 rounded transition-colors">
+                              <X size={16} className="text-gray-500" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
@@ -396,19 +526,21 @@ function CotizacionesContent() {
                   placeholder="Ciudad, provincia o dirección"
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Descripción o requerimientos especiales
-                </label>
-                <textarea
-                  name="descripcion"
-                  value={formData.descripcion}
-                  onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all resize-none"
-                  placeholder="Describa cualquier requerimiento especial, accesorios adicionales, o información relevante para su cotización..."
-                />
-              </div>
+              {formData.tipoSolicitud === 'transformador' && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Descripción o requerimientos especiales
+                  </label>
+                  <textarea
+                    name="descripcion"
+                    value={formData.descripcion}
+                    onChange={handleInputChange}
+                    rows={4}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all resize-none"
+                    placeholder="Describa cualquier requerimiento especial, accesorios adicionales, o información relevante para su cotización..."
+                  />
+                </div>
+              )}
               <label className="flex items-center gap-3 cursor-pointer">
                 <input
                   type="checkbox"

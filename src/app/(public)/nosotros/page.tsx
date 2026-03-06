@@ -537,14 +537,14 @@ export default function NosotrosPage() {
             />
 
             {/* Dialog */}
-            <div className="fixed inset-0 z-50 overflow-y-auto">
-              <div className="flex min-h-full items-center justify-center p-4">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+              <div className="w-full max-w-3xl flex">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95, y: 20 }}
                   transition={{ duration: 0.2 }}
-                  className="relative bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden"
+                  className="relative bg-white rounded-2xl shadow-2xl w-full max-h-[90vh] flex flex-col overflow-hidden"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {/* Header */}
@@ -578,7 +578,7 @@ export default function NosotrosPage() {
                   </div>
 
                   {/* Content */}
-                  <div className="p-6 lg:p-8 overflow-y-auto max-h-[calc(90vh-250px)]">
+                  <div className="p-6 lg:p-8 overflow-y-auto flex-1">
                     {/* Details */}
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">

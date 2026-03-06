@@ -56,7 +56,7 @@ export default function EtrysPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-20 lg:py-28 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -173,7 +173,7 @@ export default function EtrysPage() {
             </span>
             <p className="text-gray-600 text-lg font-bold">
               ¿Necesita disponibilidad inmediata y costos competitivos? Los
-              transformadores remanufacturados ETRYS son la solución.
+              transformadores remanufacturados RST son la solución.
             </p>
           </motion.div>
 
@@ -228,7 +228,7 @@ export default function EtrysPage() {
                     />
                     <div className="absolute top-3 right-3">
                       <span className="px-3 py-1 bg-[#0099ce] text-white text-xs font-bold rounded-full">
-                        ETRYS
+                        RST
                       </span>
                     </div>
                   </div>
@@ -340,10 +340,10 @@ export default function EtrysPage() {
               viewport={{ once: true }}
             >
               <span className="inline-block px-3 py-1 bg-white/10 text-white text-sm font-medium rounded-full mb-4">
-                ¿Por qué ETRYS?
+                ¿Por qué RST?
               </span>
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-8">
-                ¿Cuál es la Ventaja ETRYS?
+                ¿Cuál es la Ventaja RST?
               </h2>
 
               <div className="space-y-6">
@@ -463,7 +463,7 @@ export default function EtrysPage() {
                 ¿Necesita Energía Temporalmente?
               </h2>
               <p className="text-gray-600 text-lg mb-6">
-                Obtenga energía a corto plazo con una unidad de alquiler ETRYS.
+                Obtenga energía a corto plazo con una unidad de alquiler RST.
                 Equipos certificados, disponibilidad inmediata y soporte técnico 24/7.
               </p>
 

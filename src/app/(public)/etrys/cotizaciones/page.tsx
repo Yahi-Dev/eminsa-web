@@ -44,6 +44,7 @@ function CotizacionesForm() {
     voltajePrimario: "",
     voltajeSecundario: "",
     cantidadUnidades: "1",
+    distribuidora: "",
     urgencia: "normal",
     // Additional
     ubicacion: "",
@@ -86,11 +87,14 @@ function CotizacionesForm() {
           detalles: {
             tipoServicio: formData.tipoServicio,
             tipoProducto: formData.tipoProducto,
-            marca: formData.marca,
-            potencia: formData.potencia,
-            voltajePrimario: formData.voltajePrimario,
-            voltajeSecundario: formData.voltajeSecundario,
-            cantidadUnidades: formData.cantidadUnidades,
+            ...(formData.tipoProducto && formData.tipoProducto !== 'otro' ? {
+              marca: formData.marca,
+              potencia: formData.potencia,
+              voltajePrimario: formData.voltajePrimario,
+              voltajeSecundario: formData.voltajeSecundario,
+              cantidadUnidades: formData.cantidadUnidades,
+              distribuidora: formData.distribuidora,
+            } : {}),
             urgencia: formData.urgencia,
             cargo: formData.cargo,
             ubicacion: formData.ubicacion,
@@ -347,72 +351,96 @@ function CotizacionesForm() {
                         <option value="otro">Otro / No estoy seguro</option>
                       </select>
                     </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Marca del Equipo
-                      </label>
-                      <input
-                        type="text"
-                        name="marca"
-                        value={formData.marca}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
-                        placeholder="Ej: MTN, ABB, Siemens..."
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Potencia (kVA)
-                      </label>
-                      <input
-                        type="text"
-                        name="potencia"
-                        value={formData.potencia}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
-                        placeholder="Ej: 500 kVA"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Voltaje Primario (kV)
-                      </label>
-                      <input
-                        type="text"
-                        name="voltajePrimario"
-                        value={formData.voltajePrimario}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
-                        placeholder="Ej: 13.2 kV"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Voltaje Secundario (V)
-                      </label>
-                      <input
-                        type="text"
-                        name="voltajeSecundario"
-                        value={formData.voltajeSecundario}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
-                        placeholder="Ej: 120/240 V"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Cantidad de Unidades
-                      </label>
-                      <input
-                        type="number"
-                        name="cantidadUnidades"
-                        min="1"
-                        value={formData.cantidadUnidades}
-                        onChange={handleChange}
-                        className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
-                      />
-                    </div>
-                    <div>
+                    {formData.tipoProducto && formData.tipoProducto !== 'otro' && (
+                      <>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Marca del Equipo
+                          </label>
+                          <input
+                            type="text"
+                            name="marca"
+                            value={formData.marca}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
+                            placeholder="Ej: MTN, ABB, Siemens..."
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Potencia (kVA)
+                          </label>
+                          <input
+                            type="text"
+                            name="potencia"
+                            value={formData.potencia}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
+                            placeholder="Ej: 500 kVA"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Voltaje Primario (kV)
+                          </label>
+                          <input
+                            type="text"
+                            name="voltajePrimario"
+                            value={formData.voltajePrimario}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
+                            placeholder="Ej: 13.2 kV"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Voltaje Secundario (V)
+                          </label>
+                          <input
+                            type="text"
+                            name="voltajeSecundario"
+                            value={formData.voltajeSecundario}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
+                            placeholder="Ej: 120/240 V"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Cantidad de Unidades
+                          </label>
+                          <input
+                            type="number"
+                            name="cantidadUnidades"
+                            min="1"
+                            value={formData.cantidadUnidades}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                            Distribuidora de Energía
+                          </label>
+                          <select
+                            name="distribuidora"
+                            value={formData.distribuidora}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent transition-all"
+                          >
+                            <option value="">Seleccione la distribuidora</option>
+                            <option value="EDENORTE">EDENORTE</option>
+                            <option value="EDESUR">EDESUR</option>
+                            <option value="EDEESTE">EDEESTE</option>
+                            <option value="CEPM">CEPM</option>
+                            <option value="CAPCANA">CAPCANA</option>
+                            <option value="USO INTERNO">USO INTERNO</option>
+                            <option value="OTROS">OTROS (ESPECIFICAR)</option>
+                          </select>
+                        </div>
+                      </>
+                    )}
+                    <div className={formData.tipoProducto && formData.tipoProducto !== 'otro' ? "" : "sm:col-span-2"}>
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">
                         Urgencia
                       </label>

@@ -247,18 +247,14 @@
       "categories": {
         "products": {
           "transformadores": "Transformadores",
-          "capacitores": "Capacitores",
-          "paneles": "Paneles",
-          "seccionadores": "Seccionadores",
-          "materiales_electricos": "Materiales Eléctricos",
-          "reguladores_de_voltaje": "Reguladores de Voltaje",
-          "otros_productos_o_servicios": "Otros productos o servicios"
+          "cables": "Cables",
+          "celdas_de_media_tension": "Celdas de media tensión",
+          "materiales_electricos": "Materiales Eléctricos"
         },
         "services": {
           "mantenimiento_y_reparacion": "Mantenimiento & Reparación",
           "diagnostico_y_asesoria": "Diagnóstico & Asesoría",
           "instalaciones_y_montajes_electricos": "Instalaciones y montajes eléctricos",
-          "diseno_de_instalaciones_electricas": "Diseño de instalaciones eléctricas",
           "analisis_de_aceite_dielectrico": "Análisis de aceite Dieléctrico",
           "alquiler_de_transformadores": "Alquiler de transformadores",
           "otros_productos_o_servicios": "Otros productos o servicios"
@@ -308,12 +304,15 @@
           "otros": "Otras normas"
         },
         "zone": {
-          "label": "Zona de Instalación",
-          "select": "Seleccione la zona",
-          "urbana": "Zona Urbana",
-          "rural": "Zona Rural",
-          "industrial": "Zona Industrial",
-          "comercial": "Zona Comercial"
+          "label": "Distribuidora de Energía",
+          "select": "Seleccione la distribuidora",
+          "edenorte": "EDENORTE",
+          "edesur": "EDESUR",
+          "edeeste": "EDEESTE",
+          "cepm": "CEPM",
+          "capcana": "CAPCANA",
+          "uso_interno": "USO INTERNO",
+          "otros": "OTROS (ESPECIFICAR)"
         },
         "quantity": {
           "label": "Cantidad",
@@ -446,7 +445,7 @@
     "servicios": {
       "hero": {
         "badge": "Servicios Especializados",
-        "title": "SERVICIOS",
+        "title": "Servicios Técnicos Especializados",
         "requestQuote": "Solicitar Cotización"
       },
       "grid": {

@@ -101,6 +101,12 @@ export async function sendContactEmails(
       transformadores: data.transformadores || []
     };
 
+    // Determinar destinatario según entorno
+    const isProd = process.env.APP_ENV === 'PROD';
+    const adminRecipient = isProd
+      ? 'Info@eminsa.com'
+      : (process.env.ADMIN_EMAIL || 'info@eminsa.com');
+
     // Enviar email de confirmación al cliente
     const customerEmail = {
       to: data.email,
@@ -111,7 +117,7 @@ export async function sendContactEmails(
 
     // Enviar email de notificación al admin
     const adminEmail = {
-      to: process.env.ADMIN_EMAIL || 'info@eminsa.com',
+      to: adminRecipient,
       subject: `Nueva solicitud de contacto - ${data.nombre}`,
       html: adminNotificationTemplate(emailData, ipAddress),
       text: adminNotificationText(emailData, ipAddress)
@@ -122,7 +128,7 @@ export async function sendContactEmails(
       sendEmail(customerEmail),
       sendEmail(adminEmail)
     ]);
-    
+
   } catch (error) {
     console.error('Error sending contact emails:', error);
     throw new Error('Failed to send emails');
@@ -160,7 +166,10 @@ export async function sendCotizacionEmails(
     ipAddress
   );
 
-  const adminEmails = process.env.ADMIN_EMAILS || process.env.ADMIN_EMAIL || 'info@eminsa.com';
+  const isProd = process.env.APP_ENV === 'PROD';
+  const adminEmails = isProd
+    ? 'Ventas@eminsa.com'
+    : (process.env.ADMIN_EMAILS || process.env.ADMIN_EMAIL || 'info@eminsa.com');
   const recipients = adminEmails.split(',').map((e) => e.trim());
 
   const unidadLabel = UNIT_LABELS[data.unidad] ?? data.unidad;

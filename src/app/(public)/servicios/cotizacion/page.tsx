@@ -14,6 +14,8 @@ import {
   Shield,
   Zap,
   Settings,
+  Upload,
+  X,
 } from "lucide-react";
 import { services, contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
@@ -34,7 +36,10 @@ export default function CotizacionServiciosPage() {
     configuracion: "",
     voltajePrimario: "",
     voltajeSecundario: "",
+    distribuidora: "",
   });
+
+  const [files, setFiles] = useState<File[]>([]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -89,7 +94,11 @@ export default function CotizacionServiciosPage() {
               configuracion: formData.configuracion,
               voltajePrimario: formData.voltajePrimario,
               voltajeSecundario: formData.voltajeSecundario,
+              distribuidora: formData.distribuidora,
             } : {}),
+            ...(files.length > 0 && {
+              archivos: files.map(f => `${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join(' • '),
+            }),
           },
         }),
       });
@@ -130,6 +139,17 @@ export default function CotizacionServiciosPage() {
   const handlePhoneChange = (value: string) => {
     setFormData((prev) => ({ ...prev, telefono: value }));
     if (errors.telefono) setErrors((prev) => ({ ...prev, telefono: "" }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setFiles(prev => [...prev, ...newFiles].slice(0, 5));
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   const showTransformadorDetails = ['distribucion', 'potencia', 'pad-mounted', 'tipo-poste', 'subestacion'].includes(formData.tipoEquipo);
@@ -244,7 +264,9 @@ export default function CotizacionServiciosPage() {
                     configuracion: "",
                     voltajePrimario: "",
                     voltajeSecundario: "",
+                    distribuidora: "",
                   });
+                  setFiles([]);
                 }}
                 className="inline-flex items-center justify-center gap-2 border-2 border-[#00269b] text-[#00269b] hover:bg-[#575857] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
               >
@@ -549,6 +571,26 @@ export default function CotizacionServiciosPage() {
                             placeholder="Ej: 120/240 V"
                           />
                         </div>
+                        <div className="md:col-span-2">
+                          <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Distribuidora de Energía
+                          </label>
+                          <select
+                            name="distribuidora"
+                            value={formData.distribuidora}
+                            onChange={handleInputChange}
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#00269b] focus:outline-none focus:ring-2 focus:ring-[#00269b]/20 transition-colors"
+                          >
+                            <option value="">Seleccione la distribuidora</option>
+                            <option value="EDENORTE">EDENORTE</option>
+                            <option value="EDESUR">EDESUR</option>
+                            <option value="EDEESTE">EDEESTE</option>
+                            <option value="CEPM">CEPM</option>
+                            <option value="CAPCANA">CAPCANA</option>
+                            <option value="USO INTERNO">USO INTERNO</option>
+                            <option value="OTROS">OTROS (ESPECIFICAR)</option>
+                          </select>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -588,6 +630,39 @@ export default function CotizacionServiciosPage() {
                       <p className="mt-1 text-sm text-red-500">
                         {errors.descripcion}
                       </p>
+                    )}
+                  </div>
+
+                  <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Adjuntar documento (opcional)
+                    </label>
+                    <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#00269b] transition-colors">
+                      <input
+                        type="file"
+                        multiple
+                        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx,.xls"
+                        onChange={handleFileChange}
+                        className="hidden"
+                        id="file-upload-srv"
+                      />
+                      <label htmlFor="file-upload-srv" className="flex flex-col items-center cursor-pointer">
+                        <Upload size={32} className="text-gray-400 mb-2" />
+                        <span className="text-sm text-gray-600">Haga clic para subir archivos</span>
+                        <span className="text-xs text-gray-400 mt-1">PDF, DOC, JPG, PNG, Excel (máx. 5 archivos)</span>
+                      </label>
+                    </div>
+                    {files.length > 0 && (
+                      <div className="mt-3 space-y-2">
+                        {files.map((file, index) => (
+                          <div key={index} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
+                            <span className="text-sm text-gray-700 truncate">{file.name}</span>
+                            <button type="button" onClick={() => removeFile(index)} className="p-1 hover:bg-gray-200 rounded transition-colors">
+                              <X size={16} className="text-gray-500" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
                     )}
                   </div>
 

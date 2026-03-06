@@ -247,18 +247,14 @@
       "categories": {
         "products": {
           "transformadores": "Transformers",
-          "capacitores": "Capacitors",
-          "paneles": "Panels",
-          "seccionadores": "Switchgears",
-          "materiales_electricos": "Electrical Materials",
-          "reguladores_de_voltaje": "Voltage Regulators",
-          "otros_productos_o_servicios": "Other products or services"
+          "cables": "Cables",
+          "celdas_de_media_tension": "Medium voltage switchgear",
+          "materiales_electricos": "Electrical Materials"
         },
         "services": {
           "mantenimiento_y_reparacion": "Maintenance & Repair",
           "diagnostico_y_asesoria": "Diagnosis & Advisory",
           "instalaciones_y_montajes_electricos": "Electrical installations and assemblies",
-          "diseno_de_instalaciones_electricas": "Electrical installation design",
           "analisis_de_aceite_dielectrico": "Dielectric Oil Analysis",
           "alquiler_de_transformadores": "Transformer Rental",
           "otros_productos_o_servicios": "Other products or services"
@@ -308,12 +304,15 @@
           "otros": "Other standards"
         },
         "zone": {
-          "label": "Installation Zone",
-          "select": "Select the zone",
-          "urbana": "Urban Zone",
-          "rural": "Rural Zone",
-          "industrial": "Industrial Zone",
-          "comercial": "Commercial Zone"
+          "label": "Energy Distributor",
+          "select": "Select the distributor",
+          "edenorte": "EDENORTE",
+          "edesur": "EDESUR",
+          "edeeste": "EDEESTE",
+          "cepm": "CEPM",
+          "capcana": "CAPCANA",
+          "uso_interno": "USO INTERNO",
+          "otros": "OTHERS (SPECIFY)"
         },
         "quantity": {
           "label": "Quantity",
@@ -446,7 +445,7 @@
     "servicios": {
       "hero": {
         "badge": "Specialized Services",
-        "title": "SERVICES",
+        "title": "Specialized Technical Services",
         "requestQuote": "Request a Quote"
       },
       "grid": {

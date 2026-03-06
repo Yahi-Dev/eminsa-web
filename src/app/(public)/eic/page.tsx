@@ -54,7 +54,7 @@ export default function EICPage() {
       {/* ================================================================ */}
       {/* HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-20 lg:py-28 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -87,6 +87,10 @@ export default function EICPage() {
                   {eicInfo.description}
                 </p>
               </div>
+
+              <p className="text-lg text-white/70 leading-relaxed max-w-xl">
+                Representamos exclusivamente las marcas líderes del sector eléctrico internacional, ofreciendo a nuestros clientes acceso directo a tecnología de punta con el respaldo de nuestro equipo local especializado en República Dominicana.
+              </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">

@@ -182,112 +182,101 @@ export const eminsaDivisions: EminsaDivision[] = [
 
 export const eminsaMilestones = [
   {
-    year: "1970",
-    decade: "1970s",
-    event: "Fundación de EMINSA como fabricante de transformadores eléctricos de distribución",
-    description: "Inicio de operaciones en Santo Domingo, República Dominicana.",
+    year: "14 de septiembre, 1973",
+    decade: "1973",
+    event: "Fundación de EMINSA",
+    description: "Primera empresa en República Dominicana para la fabricación y reparación de transformadores de distribución eléctrica.",
     details: [
-      "Fundación de la empresa con visión de convertirse en líder regional en transformadores",
-      "Construcción de la primera planta de manufactura en Santo Domingo",
-      "Inicio de producción de transformadores tipo poste monofásicos y trifásicos",
-      "Establecimiento de relaciones comerciales con las principales distribuidoras eléctricas del país",
-      "Contratación del primer equipo técnico especializado en ingeniería eléctrica"
+      "El 14 de septiembre de 1973 fue constituida la Empresa de Ingeniería Eléctrica SAS (EMINSA), producto de la fusión de capital dominicano con la empresa multinacional chilena Hernan Briones y Compañía.",
+      "Es la primera empresa establecida en República Dominicana para la fabricación y reparación de transformadores de distribución eléctrica.",
+      "En el año 1979, la empresa adquirió las maquinarias y equipos de la Canadian General Electric, asesorados por la firma canadiense Ferranti Packard Transformers.",
+      "Se introdujo al mercado el transformador Pad Mounted, siendo nuevamente pioneros en este rango."
     ],
     achievements: [
-      "Primeros 100 transformadores fabricados",
-      "Primeros contratos con empresas distribuidoras",
-      "Establecimiento de estándares de calidad"
+      "Primera fábrica de transformadores en RD",
+      "Fusión dominico-chilena pionera en el sector",
+      "Introducción del transformador Pad Mounted al mercado"
     ]
   },
   {
-    year: "1980",
+    year: "Finales de los años 80 – 1996",
     decade: "1980s",
-    event: "Inicio de servicios de reparación y mantenimiento de transformadores",
-    description: "Expansión de servicios técnicos especializados.",
+    event: "Primeras exportaciones y alianzas internacionales",
+    description: "Exportaciones a Haití y Turks & Caicos, y convenio con Energy Internacional Corporation USA.",
     details: [
-      "Creación del departamento de servicios técnicos y reparaciones",
-      "Adquisición de equipamiento especializado para diagnóstico y reparación",
-      "Implementación de programas de capacitación continua para técnicos",
-      "Desarrollo de metodologías propias para reparación y remanufactura",
-      "Ampliación de la cartera de servicios más allá de la manufactura"
+      "A finales de los años 80, EMINSA realizó sus primeras exportaciones a la República de Haití, así como a las islas de Turks & Caicos a través de un contratista eléctrico.",
+      "En 1996 firmó un convenio de asistencia técnica y suministro de materia prima con la división internacional de Energy Internacional Corporation en Estados Unidos, firma con más de 100 años de experiencia.",
+      "El convenio abarcó especialmente el área de subestación eléctrica y proyectos de generación."
     ],
     achievements: [
-      "Más de 500 transformadores reparados",
-      "Reducción de tiempos de reparación en 40%",
-      "Certificación de técnicos especializados"
+      "Primeras exportaciones al Caribe y Haití",
+      "Alianza con Energy Internacional Corporation USA",
+      "Presencia en múltiples mercados del Caribe"
     ]
   },
   {
-    year: "1990",
-    decade: "1990s",
-    event: "Expansión del centro de reparación y modernización de instalaciones",
-    description: "Inversión en equipamiento y capacitación técnica.",
-    details: [
-      "Construcción de nuevas instalaciones con tecnología de punta",
-      "Adquisición de puente grúa de 10 toneladas para manejo de equipos pesados",
-      "Implementación de laboratorio de pruebas eléctricas certificado",
-      "Modernización de procesos de manufactura con nuevos equipos",
-      "Expansión de la capacidad de producción y reparación"
-    ],
-    achievements: [
-      "Aumento de capacidad en 200%",
-      "Nuevas instalaciones de 5,000 m²",
-      "Laboratorio certificado ANSI"
-    ]
-  },
-  {
-    year: "2000",
+    year: "2002 – 2006",
     decade: "2000s",
-    event: "Certificación ISO 9001 y modernización de equipos de producción",
-    description: "Implementación de sistemas de gestión de calidad.",
+    event: "Un nuevo milenio: diversificación y crecimiento",
+    description: "Distribución de Celdas de Media Tensión, asesoría PUM holandesa y distribución oficial ABB.",
     details: [
-      "Obtención de certificación ISO 9001:2000 en sistemas de gestión de calidad",
-      "Implementación de procesos estandarizados y documentados",
-      "Modernización de equipos de producción con tecnología automatizada",
-      "Adopción de normas internacionales ANSI, IEEE y DOE",
-      "Establecimiento de programas de mejora continua"
+      "En el año 2002, gracias al espíritu de innovación constante y las necesidades de los clientes, EMINSA inició la distribución de Celdas de Media Tensión y Centros de Transformación.",
+      "En el 2003, EMINSA recibió asesoría del PUM (Programa de Asesores Holandeses), quienes rediseñaron las operaciones de negocios, enfocándolas hacia la comercialización de servicios basados en la flexibilidad e innovación de subcontratistas experimentados.",
+      "En 2006, EMINSA emprendió la distribución de los transformadores y equipos de ABB, Inc., manteniendo un stock de transformadores disponible para sus clientes.",
+      "EMINSA fue designada empresa autorizada para los servicios de evaluación, diagnósticos y reparación para los equipos manufacturados por General Electric, CO. en República Dominicana."
     ],
     achievements: [
-      "Certificación ISO 9001",
-      "Cumplimiento normas DOE 2016",
-      "Reconocimiento de calidad internacional"
+      "Distribución de Celdas de Media Tensión",
+      "Rediseño operacional con asesoría PUM Holanda",
+      "Distribución oficial ABB Inc.",
+      "Servicio autorizado General Electric en RD"
     ]
   },
   {
-    year: "2010",
-    decade: "2010s",
-    event: "Lanzamiento de marca RST y creación de división EIC",
-    description: "Diversificación y crecimiento del grupo empresarial.",
+    year: "2018 – 2019",
+    decade: "2018–2019",
+    event: "Nuevas representaciones internacionales",
+    description: "Acuerdos con fabricante ecuatoriano, Snyder Electric USA y ELPROM TRAFO Bulgaria.",
     details: [
-      "Lanzamiento de RST (Reparación y Servicio de Transformadores) como marca especializada",
-      "Creación de EIC (Eminsa International Corporation) para representar marcas internacionales",
-      "Establecimiento de alianzas estratégicas con fabricantes globales",
-      "Diversificación de productos: cables, breakers, accesorios eléctricos",
-      "Consolidación como grupo empresarial con múltiples divisiones"
+      "En 2018 se firmó un acuerdo de representación con una industria de Transformadores Ecuatorianos, con tecnología propia de punta y profesionales, técnicos y operarios altamente calificados.",
+      "En 2019, EMINSA firmó un contrato de distribución con Snyder Electric USA, especialista global en manejo de energía y automatización con operaciones en más de 100 países.",
+      "En ese mismo año se firmó un contrato de representación y distribución con la empresa búlgara ELPROM TRAFO, que cuenta con la norma IEC (International Electrotechnical Commission)."
     ],
     achievements: [
-      "3 divisiones operativas",
-      "Representación de 8 marcas internacionales",
-      "Expansión a nuevos segmentos de mercado"
+      "Representación de fabricante ecuatoriano de transformadores",
+      "Distribución oficial Snyder Electric USA",
+      "Representación ELPROM TRAFO Bulgaria (norma IEC)"
     ]
   },
   {
-    year: "2020",
-    decade: "2020s",
-    event: "Consolidación como líder del mercado en República Dominicana y el Caribe",
-    description: "Reconocimiento regional y expansión de operaciones.",
+    year: "2024",
+    decade: "2024",
+    event: "Traslado al Parque Industrial Duarte",
+    description: "Preparación para abrir la primera fábrica de transformadores 100% nuevos en el Caribe.",
     details: [
-      "Reconocimiento como líder del mercado en República Dominicana y el Caribe",
-      "Más de 10,000 transformadores instalados en la región",
-      "Implementación de división de Servicios especializados",
-      "Expansión de cobertura a nivel nacional con servicios 24/7",
-      "Fortalecimiento de relaciones con clientes industriales y comerciales"
+      "EMINSA trasladó sus operaciones al Parque Industrial Duarte.",
+      "Se inició la preparación para abrir la primera fábrica de transformadores 100% nuevos en el Caribe."
     ],
     achievements: [
-      "Líder de mercado regional",
-      "+10,000 transformadores instalados",
-      "Presencia en todo el Caribe",
-      "500+ clientes satisfechos"
+      "Nuevas instalaciones en Parque Industrial Duarte",
+      "Preparación de la primera fábrica MTN del Caribe"
+    ]
+  },
+  {
+    year: "2025",
+    decade: "2025",
+    event: "Primeros prototipos MTN, ISO 9001 y homologación CEPM",
+    description: "Salida de los primeros transformadores nuevos EMINSA fabricados bajo norma ANSI / DOE 2016.",
+    details: [
+      "Salieron los primeros prototipos de la nueva línea de transformadores EMINSA, fabricados bajo la norma ANSI y con eficiencia DOE 2016.",
+      "EMINSA obtuvo la certificación ISO 9001.",
+      "CEPM recibió uno de los prototipos de los transformadores nuevos EMINSA para su evaluación técnica.",
+      "Tras completar el proceso de pruebas y validación, CEPM homologó los transformadores fabricados por EMINSA para ser utilizados en sus redes de distribución."
+    ],
+    achievements: [
+      "Primeros prototipos MTN bajo norma ANSI / DOE 2016",
+      "Certificación ISO 9001 obtenida",
+      "Homologación CEPM para redes de distribución"
     ]
   },
 ];

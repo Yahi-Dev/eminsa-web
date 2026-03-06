@@ -146,7 +146,7 @@ export interface NavItem {
 export const etrysInfo: EtrysInfo = {
   name: "RST",
   fullName: "RST by EMINSA",
-  tagline: "REPARACION Y SERVICIO DE TRANSFORMADORES",
+  tagline: "Reparacion Y Servicio De Transformadores",
   slogan: "Reparación y Servicio de Transformadores",
   description:
     "GRUPO EMINSA cuenta con más de 50 años de trayectoria en el sector de transformadores eléctricos de distribución y equipos relacionados. A través de nuestra división RST, nos especializamos en la reparación y remanufactura de transformadores de distribución e industriales, ofreciendo soluciones que devuelven la potencia y la confiabilidad a sus equipos.",
