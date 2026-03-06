@@ -28,16 +28,17 @@ interface SubMenuItem {
   description?: string;
 }
 
-// Tooltips para las divisiones
-const divisionsTooltips: { [key: string]: { label: string; color: string } } = {
-  MTN: { label: "Manufactura Transformadores Nuevos", color: "#00269b" },
-  RST: { label: "Reparación y Servicio de Transformadores", color: "#0099ce" },
-  EIC: { label: "Eminsa International Corporation", color: "#009e49" },
-  Servicios: { label: "Servicios a Nivel Interno y Externo", color: "#6d6e6d" },
+// Tooltips para las divisiones (colors only, labels come from translations)
+const divisionsTooltipColors: { [key: string]: string } = {
+  MTN: "#00269b",
+  RST: "#0099ce",
+  EIC: "#009e49",
+  Servicios: "#6d6e6d",
 };
 
 export default function Header() {
   const t = useTranslations("nav");
+  const tc = useTranslations("config");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState<string | null>(null);
@@ -175,7 +176,8 @@ export default function Header() {
             transition={{ duration: 0.4, delay: 0.15 }}
           >
             {mainNavigation.map((item) => {
-              const tooltip = divisionsTooltips[item.name as keyof typeof divisionsTooltips];
+              const tooltipColor = divisionsTooltipColors[item.name as keyof typeof divisionsTooltipColors];
+              const tooltipLabel = tooltipColor ? tc(`header.tooltips.${item.name}`) : undefined;
               // Solo mostrar dropdown para "EMINSA"
               const hasSubmenu = item.name === "EMINSA" && item.submenu && item.submenu.length > 0;
 
@@ -215,20 +217,23 @@ export default function Header() {
                           transition={{ duration: 0.18 }}
                           className="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 z-50"
                         >
-                          {item.submenu?.map((subItem: SubMenuItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className={cn(
-                                "block px-5 py-2.5 text-sm font-medium transition-colors hover:bg-[#00269b]/5 hover:text-[#00269b]",
-                                pathname === subItem.href || pathname.startsWith(subItem.href + "/")
-                                  ? "text-[#00269b] bg-[#00269b]/5"
-                                  : "text-[#414241]"
-                              )}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
+                          {item.submenu?.map((subItem: SubMenuItem) => {
+                            const subKey = subItem.href.split('/').pop() || '';
+                            return (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href}
+                                className={cn(
+                                  "block px-5 py-2.5 text-sm font-medium transition-colors hover:bg-[#00269b]/5 hover:text-[#00269b]",
+                                  pathname === subItem.href || pathname.startsWith(subItem.href + "/")
+                                    ? "text-[#00269b] bg-[#00269b]/5"
+                                    : "text-[#414241]"
+                                )}
+                              >
+                                {tc(`nav.eminsa.submenu.${subKey}`)}
+                              </Link>
+                            );
+                          })}
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -237,8 +242,8 @@ export default function Header() {
               }
 
               // Item sin submenú - enlace normal
-              return tooltip ? (
-                <Tooltip key={item.name} content={tooltip.label} color={tooltip.color}>
+              return tooltipColor && tooltipLabel ? (
+                <Tooltip key={item.name} content={tooltipLabel} color={tooltipColor}>
                   <Link
                     href={item.href}
                     className={cn(
@@ -289,7 +294,7 @@ export default function Header() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={isMobileMenuOpen ? t("closeMenu") : t("openMenu")}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -341,21 +346,24 @@ export default function Header() {
                                 transition={{ duration: 0.2 }}
                                 className="overflow-hidden space-y-1 mt-1"
                               >
-                                {item.submenu?.map((subItem) => (
-                                  <Link
-                                    key={subItem.name}
-                                    href={subItem.href}
-                                    onClick={closeMobileMenu}
-                                    className={cn(
-                                      "block px-8 py-2 rounded-lg text-sm transition-colors",
-                                      pathname === subItem.href || pathname.startsWith(subItem.href + "/")
-                                        ? "text-[#00269b] bg-gray-50 font-medium"
-                                        : "text-gray-600 hover:bg-gray-50"
-                                    )}
-                                  >
-                                    {subItem.name}
-                                  </Link>
-                                ))}
+                                {item.submenu?.map((subItem) => {
+                                  const subKey = subItem.href.split('/').pop() || '';
+                                  return (
+                                    <Link
+                                      key={subItem.name}
+                                      href={subItem.href}
+                                      onClick={closeMobileMenu}
+                                      className={cn(
+                                        "block px-8 py-2 rounded-lg text-sm transition-colors",
+                                        pathname === subItem.href || pathname.startsWith(subItem.href + "/")
+                                          ? "text-[#00269b] bg-gray-50 font-medium"
+                                          : "text-gray-600 hover:bg-gray-50"
+                                      )}
+                                    >
+                                      {tc(`nav.eminsa.submenu.${subKey}`)}
+                                    </Link>
+                                  );
+                                })}
                               </motion.div>
                             )}
                           </AnimatePresence>
@@ -402,11 +410,11 @@ export default function Header() {
                       closeMobileMenu();
                     }}
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#00269b] border border-[#00269b] rounded-lg hover:bg-[#00269b] hover:text-white transition-all"
-                    aria-label={language === "en" ? "Switch to Spanish" : "Cambiar a Inglés"}
+                    aria-label={t("switchLanguage")}
                   >
                     <Globe size={18} />
                     <span className="font-medium">
-                      {language === "en" ? "Cambiar a Español" : "Switch to English"}
+                      {t("switchLanguage")}
                     </span>
                   </button>
                 </div>

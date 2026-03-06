@@ -1,179 +1,119 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
-import { stats } from "@/config/navigation";
-import { Award, Shield, CheckCircle2, Users } from "lucide-react";
+import { motion } from "framer-motion";
+import { ShieldCheck, FileCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
-
-function AnimatedStatValue({ value, started }: { value: string; started: boolean }) {
-  const isSpecial = value === "24/7";
-  const numericValue = parseInt(value.replace(/[^0-9]/g, ""), 10);
-  const suffix = value.replace(/[0-9]/g, "");
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!started || isSpecial) return;
-    let startTime: number | null = null;
-    let animId: number;
-    const duration = 2800;
-    const animate = (currentTime: number) => {
-      if (startTime === null) startTime = currentTime;
-      const elapsed = currentTime - startTime;
-      if (elapsed < duration) {
-        const progress = 1 - Math.pow(1 - elapsed / duration, 3);
-        setCount(Math.floor(progress * numericValue));
-        animId = requestAnimationFrame(animate);
-      } else {
-        setCount(numericValue);
-      }
-    };
-    animId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animId);
-  }, [started, numericValue, isSpecial]);
-
-  if (isSpecial) return <>{value}</>;
-  return <>{started ? count : 0}{suffix}</>;
-}
-
-const iconMap = [
-  { icon: Award },
-  { icon: Shield },
-  { icon: Users },
-  { icon: CheckCircle2 },
-];
-
-const statKeys = ["yearsExperience", "transformersInstalled", "satisfiedClients", "techSupport"] as const;
 
 export default function StatsSection() {
   const t = useTranslations("home");
-  const statsRef = useRef(null);
-  const isInView = useInView(statsRef, { once: true, margin: "-15%" });
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-br from-[#00269b] to-[#00175d] relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#0099ce]/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#009e49]/10 rounded-full blur-[100px]" />
-        
-        {/* Grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, white 1px, transparent 1px),
-              linear-gradient(to bottom, white 1px, transparent 1px)
-            `,
-            backgroundSize: "80px 80px",
-          }}
-        />
-      </div>
-
-      <div className="container-eminsa relative">
-        {/* Stats */}
-        <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {stats.map((stat, index) => {
-            const IconComponent = iconMap[index]?.icon || Award;
-
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="inline-flex items-center justify-center w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl mb-6"
-                >
-                  <IconComponent className="w-8 h-8 text-[#0099ce]" />
-                </motion.div>
-                <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
-                  <AnimatedStatValue value={stat.value} started={isInView} />
-                </div>
-                <div className="text-white/60 text-sm md:text-base">
-                  {t(`stats.${statKeys[index]}`)}
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Certifications */}
+    <section className="py-16 lg:py-20 bg-gray-50 border-y border-gray-200">
+      <div className="container-eminsa">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 pt-16 border-t border-white/10"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <div className="text-center mb-10">
-            <h3 className="text-2xl font-bold text-white mb-3">
-              {t('certifications.title')}
-            </h3>
-            <p className="text-white/60 max-w-xl mx-auto">
-              {t('certifications.subtitle')}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16">
-            {/* ISO 9001 */}
-            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4">
-              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
-                <img
-                  src="/images/SelloAENORISO9001_NEG.png"
-                  alt="ISO 9001:2015"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div>
-                <p className="font-bold text-white">ISO 9001:2015</p>
-                <p className="text-white/60 text-sm">{t('certifications.iso9001')}</p>
-              </div>
-            </div>
-
-            {/* IQNET */}
-            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4">
-              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
-                <img
-                  src="/images/IQNET_RCMark_PosCMYK.png"
-                  alt="IQNET"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div>
-                <p className="font-bold text-white">IQNET</p>
-                <p className="text-white/60 text-sm">{t('certifications.iqnet')}</p>
-              </div>
-            </div>
-
-            {/* ANSI */}
-            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4">
-              <div className="w-16 h-16 bg-[#00269b] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">ANSI</span>
-              </div>
-              <div>
-                <p className="font-bold text-white">ANSI C57</p>
-                <p className="text-white/60 text-sm">{t('certifications.ansi')}</p>
-              </div>
-            </div>
-
-            {/* DOE */}
-            <div className="flex items-center gap-4 bg-white/5 backdrop-blur-sm rounded-xl px-6 py-4">
-              <div className="w-16 h-16 bg-[#009e49] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">DOE</span>
-              </div>
-              <div>
-                <p className="font-bold text-white">DOE-2016</p>
-                <p className="text-white/60 text-sm">{t('certifications.doe')}</p>
-              </div>
-            </div>
-          </div>
+          <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">
+            {t("certifications.title")}
+          </h3>
+          <p className="text-gray-500 max-w-xl mx-auto">
+            {t("certifications.subtitle")}
+          </p>
         </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          {/* Certificaciones */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <ShieldCheck className="w-5 h-5 text-[#00269b]" />
+              <h4 className="text-lg font-semibold text-gray-900">
+                {t("certifications.certificationsLabel")}
+              </h4>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 bg-white rounded-xl border border-gray-200 px-5 py-4 shadow-sm">
+                <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center p-1.5 border border-gray-100">
+                  <img
+                    src="/images/SelloAENORISO9001_NEG.png"
+                    alt="ISO 9001:2015"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900 text-sm">
+                    ISO 9001:2015
+                  </p>
+                  <p className="text-gray-500 text-xs">
+                    {t("certifications.iso9001")}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 bg-white rounded-xl border border-gray-200 px-5 py-4 shadow-sm">
+                <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center p-1.5 border border-gray-100">
+                  <img
+                    src="/images/IQNET_RCMark_PosCMYK.png"
+                    alt="IQNET"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900 text-sm">IQNET</p>
+                  <p className="text-gray-500 text-xs">
+                    {t("certifications.iqnet")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Normativas */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="flex items-center gap-2 mb-6">
+              <FileCheck className="w-5 h-5 text-[#009e49]" />
+              <h4 className="text-lg font-semibold text-gray-900">
+                {t("certifications.standardsLabel")}
+              </h4>
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 bg-white rounded-xl border border-gray-200 px-5 py-4 shadow-sm">
+                <div className="w-14 h-14 bg-[#00269b] rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">ANSI</span>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900 text-sm">ANSI C57</p>
+                  <p className="text-gray-500 text-xs">
+                    {t("certifications.ansi")}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 bg-white rounded-xl border border-gray-200 px-5 py-4 shadow-sm">
+                <div className="w-14 h-14 bg-[#009e49] rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">DOE</span>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900 text-sm">DOE-2016</p>
+                  <p className="text-gray-500 text-xs">
+                    {t("certifications.doe")}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

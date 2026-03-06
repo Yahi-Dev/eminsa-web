@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, CheckCircle2, ChevronRight } from "lucide-react";
 import { transformerProducts, getVariantsByProduct } from "@/config/mtn-data";
+import { useTranslations } from "next-intl";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -11,6 +12,9 @@ const fadeUp = {
 };
 
 export default function ProductosPageContent() {
+  const t = useTranslations("mtnPage");
+  const tc = useTranslations("mtnConfig");
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -22,11 +26,11 @@ export default function ProductosPageContent() {
             transition={{ duration: 0.4 }}
             className="flex items-center gap-2 text-sm text-white/60 mb-6"
           >
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+            <Link href="/" className="hover:text-white transition-colors">{t("productsPage.home")}</Link>
             <ChevronRight size={14} />
             <Link href="/mtn" className="hover:text-white transition-colors">MTN</Link>
             <ChevronRight size={14} />
-            <span className="text-white">Productos</span>
+            <span className="text-white">{t("layout.products")}</span>
           </motion.nav>
 
           <motion.div
@@ -35,9 +39,9 @@ export default function ProductosPageContent() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">Transformadores</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4">{t("productsPage.pageTitle")}</h1>
             <p className="text-xl text-white/80">
-              Línea completa de transformadores de distribución fabricados bajo los más altos estándares internacionales.
+              {t("productsPage.pageDescription")}
             </p>
           </motion.div>
         </div>
@@ -79,26 +83,26 @@ export default function ProductosPageContent() {
                       <div className="space-y-6">
                         <div>
                           <span className="inline-block text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-2">
-                            Transformador
+                            {t("productsPage.transformerLabel")}
                           </span>
-                          <h2 className="text-3xl font-bold text-gray-900">{product.name}</h2>
+                          <h2 className="text-3xl font-bold text-gray-900">{tc(`products.${product.slug}.name`)}</h2>
                         </div>
                         <p className="text-gray-600 leading-relaxed">
-                          {product.fullDescription.split("\n")[0]}
+                          {tc(`products.${product.slug}.fullDescription`)}
                         </p>
                         <div className="grid grid-cols-2 gap-4 py-4 border-y border-gray-100">
                           <div>
-                            <p className="text-sm text-gray-500">Potencia</p>
+                            <p className="text-sm text-gray-500">{t("products.power")}</p>
                             <p className="font-semibold text-gray-900">{product.powerRange}</p>
                           </div>
                           <div>
-                            <p className="text-sm text-gray-500">Voltaje</p>
+                            <p className="text-sm text-gray-500">{t("products.voltage")}</p>
                             <p className="font-semibold text-gray-900">{product.voltageRange}</p>
                           </div>
                         </div>
                         {variants.length > 0 && (
                           <div className="space-y-3">
-                            <p className="text-sm font-semibold text-gray-700">Configuraciones disponibles:</p>
+                            <p className="text-sm font-semibold text-gray-700">{t("productsPage.availableConfigs")}</p>
                             <div className="flex flex-wrap gap-2">
                               {variants.map((variant) => (
                                 <Link
@@ -128,14 +132,14 @@ export default function ProductosPageContent() {
                             href={`/mtn/productos/${product.slug}`}
                             className="inline-flex items-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                           >
-                            Ver Detalles
+                            {t("productsPage.viewDetails")}
                             <ArrowRight size={18} />
                           </Link>
                           <Link
                             href={`/mtn/cotizaciones?producto=${product.slug}`}
                             className="inline-flex items-center gap-2 border-2 border-[#00269b] text-[#00269b] hover:bg-[#00269b] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                           >
-                            Cotizar
+                            {t("productsPage.quote")}
                           </Link>
                         </div>
                       </div>
@@ -159,7 +163,7 @@ export default function ProductosPageContent() {
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold text-gray-900 mb-8 text-center"
           >
-            Comparativa Rápida
+            {t("productsPage.quickCompare")}
           </motion.h2>
           <motion.div
             variants={fadeUp}
@@ -172,35 +176,35 @@ export default function ProductosPageContent() {
             <table className="w-full min-w-[600px]">
               <thead>
                 <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-4 px-4 font-semibold text-gray-900">Característica</th>
+                  <th className="text-left py-4 px-4 font-semibold text-gray-900">{t("productsPage.feature")}</th>
                   {transformerProducts.map((product) => (
                     <th key={product.id} className="text-center py-4 px-4 font-semibold text-gray-900">
-                      {product.shortName}
+                      {tc(`products.${product.slug}.shortName`)}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
                 <tr>
-                  <td className="py-4 px-4 text-gray-600">Potencia</td>
+                  <td className="py-4 px-4 text-gray-600">{t("products.power")}</td>
                   {transformerProducts.map((product) => (
                     <td key={product.id} className="text-center py-4 px-4 font-medium">{product.powerRange}</td>
                   ))}
                 </tr>
                 <tr className="bg-gray-50">
-                  <td className="py-4 px-4 text-gray-600">Voltaje</td>
+                  <td className="py-4 px-4 text-gray-600">{t("products.voltage")}</td>
                   {transformerProducts.map((product) => (
                     <td key={product.id} className="text-center py-4 px-4 font-medium">{product.voltageRange}</td>
                   ))}
                 </tr>
                 <tr>
-                  <td className="py-4 px-4 text-gray-600">Fases</td>
+                  <td className="py-4 px-4 text-gray-600">{t("productsPage.phases")}</td>
                   {transformerProducts.map((product) => (
                     <td key={product.id} className="text-center py-4 px-4">
                       <div className="flex flex-wrap justify-center gap-1">
                         {product.phases.map((phase) => (
                           <span key={phase} className="bg-[#00269b]/10 text-[#00269b] text-xs px-2 py-0.5 rounded">
-                            {phase === "monofasico" ? "1Φ" : phase === "trifasico" ? "3Φ" : "CSP"}
+                            {phase === "monofasico" ? "1\u03A6" : phase === "trifasico" ? "3\u03A6" : "CSP"}
                           </span>
                         ))}
                       </div>
@@ -208,7 +212,7 @@ export default function ProductosPageContent() {
                   ))}
                 </tr>
                 <tr className="bg-gray-50">
-                  <td className="py-4 px-4 text-gray-600">Normativas</td>
+                  <td className="py-4 px-4 text-gray-600">{t("productsPage.standards")}</td>
                   {transformerProducts.map((product) => (
                     <td key={product.id} className="text-center py-4 px-4">
                       <div className="flex flex-wrap justify-center gap-1">
@@ -235,15 +239,15 @@ export default function ProductosPageContent() {
         className="py-16 bg-[#00269b] text-white"
       >
         <div className="container-eminsa text-center">
-          <h2 className="text-3xl font-bold mb-4">¿No encuentra lo que busca?</h2>
+          <h2 className="text-3xl font-bold mb-4">{t("productsPage.notFound")}</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-            Fabricamos transformadores a medida según sus especificaciones. Contáctenos para una solución personalizada.
+            {t("productsPage.customDesc")}
           </p>
           <Link
             href="/mtn/cotizaciones"
             className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-colors"
           >
-            Solicitar Cotización Personalizada
+            {t("productsPage.customQuote")}
             <ArrowRight size={20} />
           </Link>
         </div>

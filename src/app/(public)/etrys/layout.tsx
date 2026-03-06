@@ -18,6 +18,7 @@ import {
   Phone,
   MessageCircle
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
@@ -49,73 +50,30 @@ interface SubMenuItem {
 }
 
 // Configuración de navegación ETRYS
-const etrysNavItems: NavItem[] = [
-  {
-    name: "Inicio",
-    href: "/etrys",
-    icon: Home,
-    exact: true,
-  },
-  {
-    name: "Productos",
-    href: "/etrys/productos",
-    icon: Package,
-    submenu: [
-      { 
-        name: "Tipo Poste", 
-        href: "/etrys/productos/tipo-poste", 
-        description: "15 – 500 kVA" 
-      },
-      { 
-        name: "Pad-Mounted", 
-        href: "/etrys/productos/pad-mounted", 
-        description: "30 – 3,000 kVA" 
-      },
-      { 
-        name: "Subestación", 
-        href: "/etrys/productos/subestacion", 
-        description: "Hasta 3,000 kVA" 
-      },
-    ],
-  },
-  {
-    name: "Servicios en Planta",
-    href: "/etrys/servicios",
-    icon: Wrench,
-    submenu: [
-      { 
-        name: "Reparación", 
-        href: "/etrys/servicios", 
-        description: "Servicios de reparación integral" 
-      },
-      { 
-        name: "Centro de Reparación", 
-        href: "/etrys/servicios/centro-reparacion", 
-        description: "Nuestras instalaciones" 
-      },
-    ],
-  },
-  {
-    name: "Alquiler",
-    href: "/etrys/alquiler",
-    icon: Truck,
-  },
-  {
-    name: "Recursos",
-    href: "/etrys/recursos",
-    icon: FolderOpen,
-  },
-  {
-    name: "Cotizaciones",
-    href: "/etrys/cotizaciones",
-    icon: FileText,
-  },
-  // {
-  //   name: "Nosotros",
-  //   href: "/etrys/nosotros",
-  //   icon: Users,
-  // },
-];
+function useEtrysNavItems(): NavItem[] {
+  const t = useTranslations("etrysPage");
+  return [
+    { name: t("layout.home"), href: "/etrys", icon: Home, exact: true },
+    {
+      name: t("layout.products"), href: "/etrys/productos", icon: Package,
+      submenu: [
+        { name: "Tipo Poste", href: "/etrys/productos/tipo-poste", description: "15 – 500 kVA" },
+        { name: "Pad-Mounted", href: "/etrys/productos/pad-mounted", description: "30 – 3,000 kVA" },
+        { name: "Subestación", href: "/etrys/productos/subestacion", description: "Hasta 3,000 kVA" },
+      ],
+    },
+    {
+      name: t("layout.services"), href: "/etrys/servicios", icon: Wrench,
+      submenu: [
+        { name: t("layout.servicesRepair"), href: "/etrys/servicios", description: t("layout.servicesRepairDesc") },
+        { name: t("layout.repairCenter"), href: "/etrys/servicios/centro-reparacion", description: t("layout.repairCenterDesc") },
+      ],
+    },
+    { name: t("layout.rental"), href: "/etrys/alquiler", icon: Truck },
+    { name: t("layout.resources"), href: "/etrys/recursos", icon: FolderOpen },
+    { name: t("layout.quotes"), href: "/etrys/cotizaciones", icon: FileText },
+  ];
+}
 
 export default function EtrysLayout({
   children,
@@ -123,6 +81,8 @@ export default function EtrysLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const t = useTranslations("etrysPage");
+  const etrysNavItems = useEtrysNavItems();
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -258,9 +218,9 @@ export default function EtrysLayout({
                                       : "text-gray-600"
                                   )}
                                 >
-                                  Ver todos
+                                  {t("layout.viewAll")}
                                 </Link>
-                                
+
                                 {/* Submenú items con descripción */}
                                 {item.submenu?.map((subItem) => (
                                   <Link
@@ -341,7 +301,7 @@ export default function EtrysLayout({
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={mobileMenuOpen ? t("layout.closeMenu") : t("layout.openMenu")}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -417,9 +377,9 @@ export default function EtrysLayout({
                                       : "text-gray-600 hover:bg-gray-50"
                                   )}
                                 >
-                                  Ver todos
+                                  {t("layout.viewAll")}
                                 </Link>
-                                
+
                                 {item.submenu?.map((subItem) => (
                                   <Link
                                     key={subItem.name}
@@ -491,7 +451,7 @@ export default function EtrysLayout({
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center justify-center w-full px-4 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white rounded-lg transition-all font-medium"
                   >
-                    Solicitar Cotización
+                    {t("layout.requestQuote")}
                   </Link>
                 </div>
               </div>

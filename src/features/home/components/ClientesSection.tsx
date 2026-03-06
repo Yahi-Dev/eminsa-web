@@ -11,6 +11,7 @@ const clientesLoop = [...clientes, ...clientes];
 
 export default function ClientesSection() {
   const t = useTranslations("home");
+  const tc = useTranslations("clientes");
   const trackRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number>(0);
   const posRef = useRef(0);
@@ -111,7 +112,7 @@ export default function ClientesSection() {
                     className="px-2.5 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wide"
                     style={{ backgroundColor: color }}
                   >
-                    {cliente.sector}
+                    {tc(`sectors.${cliente.sector}`)}
                   </span>
                 </div>
               </div>

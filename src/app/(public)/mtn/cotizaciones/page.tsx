@@ -22,6 +22,7 @@ import { transformerProducts } from "@/config/mtn-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
+import { useTranslations } from "next-intl";
 
 // Capacidades disponibles
 const capacities = [
@@ -31,6 +32,8 @@ const capacities = [
 
 // Componente interno que usa useSearchParams
 function CotizacionesContent() {
+  const t = useTranslations("mtnPage.cotizacionesPage");
+  const tc = useTranslations("mtnConfig");
   const searchParams = useSearchParams();
   const preselectedProduct = searchParams.get("producto");
 
@@ -68,19 +71,19 @@ function CotizacionesContent() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     
-    if (!formData.nombre.trim()) newErrors.nombre = "El nombre es requerido";
-    if (!formData.email.trim()) newErrors.email = "El email es requerido";
+    if (!formData.nombre.trim()) newErrors.nombre = t("nameRequired");
+    if (!formData.email.trim()) newErrors.email = t("emailRequired");
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Email inválido";
+      newErrors.email = t("emailInvalid");
     }
-    if (!formData.telefono.trim()) newErrors.telefono = "El teléfono es requerido";
-    if (!formData.tipoSolicitud) newErrors.tipoSolicitud = "Seleccione el tipo de solicitud";
+    if (!formData.telefono.trim()) newErrors.telefono = t("phoneRequired");
+    if (!formData.tipoSolicitud) newErrors.tipoSolicitud = t("selectRequestType");
     if (formData.tipoSolicitud === 'transformador') {
-      if (!formData.tipoTransformador) newErrors.tipoTransformador = "Seleccione un tipo";
-      if (!formData.capacidad) newErrors.capacidad = "Seleccione una capacidad";
+      if (!formData.tipoTransformador) newErrors.tipoTransformador = t("selectTransformerType");
+      if (!formData.capacidad) newErrors.capacidad = t("selectCapacityError");
     }
     if (formData.tipoSolicitud === 'otro' && !formData.descripcion.trim()) {
-      newErrors.descripcion = "Describa su solicitud";
+      newErrors.descripcion = t("describeRequest");
     }
 
     setErrors(newErrors);
@@ -179,25 +182,24 @@ function CotizacionesContent() {
             <CheckCircle2 size={40} className="text-green-600" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            ¡Solicitud Enviada!
+            {t("successTitle")}
           </h2>
           {codigo && (
             <div className="bg-[#00269b]/5 border border-[#00269b]/20 rounded-xl p-4 mb-4">
-              <p className="text-xs text-[#00269b] uppercase tracking-wider font-semibold mb-1">Número de Referencia</p>
+              <p className="text-xs text-[#00269b] uppercase tracking-wider font-semibold mb-1">{t("referenceNumber")}</p>
               <p className="text-2xl font-bold text-[#00269b] tracking-widest">{codigo}</p>
-              <p className="text-xs text-gray-500 mt-1">Guarde este código para dar seguimiento a su solicitud</p>
+              <p className="text-xs text-gray-500 mt-1">{t("saveCode")}</p>
             </div>
           )}
           <p className="text-gray-600 mb-8">
-            Hemos recibido su solicitud de cotización. Nuestro equipo se pondrá en contacto
-            con usted en menos de 24 horas.
+            {t("successDesc")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/mtn/productos"
               className="inline-flex items-center justify-center gap-2 bg-[#00269b] hover:bg-[#00175d] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
             >
-              Ver Productos
+              {t("viewProducts")}
             </Link>
             <button
               onClick={() => {
@@ -223,7 +225,7 @@ function CotizacionesContent() {
               }}
               className="inline-flex items-center justify-center gap-2 border-2 border-[#00269b] text-[#00269b] hover:bg-[#00269b] hover:text-white px-6 py-3 rounded-xl font-semibold transition-colors"
             >
-              Nueva Cotización
+              {t("newQuote")}
             </button>
           </div>
         </div>
@@ -240,12 +242,12 @@ function CotizacionesContent() {
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
               <div className="w-8 h-8 bg-[#00269b] text-white rounded-lg flex items-center justify-center text-sm font-bold">1</div>
-              Información de Contacto
+              {t("contactInfo")}
             </h2>
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Nombre completo *
+                  {t("fullName")}
                 </label>
                 <input
                   type="text"
@@ -255,13 +257,13 @@ function CotizacionesContent() {
                   className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
                     errors.nombre ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="Su nombre"
+                  placeholder={t("namePlaceholder")}
                 />
                 {errors.nombre && <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>}
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Empresa
+                  {t("company")}
                 </label>
                 <input
                   type="text"
@@ -269,12 +271,12 @@ function CotizacionesContent() {
                   value={formData.empresa}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
-                  placeholder="Nombre de su empresa"
+                  placeholder={t("companyPlaceholder")}
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Correo electrónico *
+                  {t("email")}
                 </label>
                 <input
                   type="email"
@@ -284,7 +286,7 @@ function CotizacionesContent() {
                   className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all ${
                     errors.email ? "border-red-500" : "border-gray-300"
                   }`}
-                  placeholder="correo@ejemplo.com"
+                  placeholder={t("emailPlaceholder")}
                 />
                 {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
@@ -292,7 +294,7 @@ function CotizacionesContent() {
                 <PhoneInputField
                   value={formData.telefono}
                   onChange={handlePhoneChange}
-                  label="Teléfono"
+                  label={t("phone")}
                   required
                   error={errors.telefono}
                   focusColor="#00269b"
@@ -305,12 +307,12 @@ function CotizacionesContent() {
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
               <div className="w-8 h-8 bg-[#00269b] text-white rounded-lg flex items-center justify-center text-sm font-bold">2</div>
-              Tipo de Solicitud
+              {t("requestType")}
             </h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  ¿Qué desea cotizar? *
+                  {t("whatToQuote")}
                 </label>
                 <select
                   name="tipoSolicitud"
@@ -320,9 +322,9 @@ function CotizacionesContent() {
                     errors.tipoSolicitud ? "border-red-500" : "border-gray-300"
                   }`}
                 >
-                  <option value="">Seleccione...</option>
-                  <option value="transformador">Transformador Nuevo</option>
-                  <option value="otro">Otro producto o servicio</option>
+                  <option value="">{t("select")}</option>
+                  <option value="transformador">{t("newTransformer")}</option>
+                  <option value="otro">{t("otherProduct")}</option>
                 </select>
                 {errors.tipoSolicitud && <p className="text-red-500 text-sm mt-1">{errors.tipoSolicitud}</p>}
               </div>
@@ -332,7 +334,7 @@ function CotizacionesContent() {
                 <div className="grid sm:grid-cols-2 gap-4 pt-2">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Tipo de Transformador *
+                      {t("transformerType")}
                     </label>
                     <select
                       name="tipoTransformador"
@@ -342,10 +344,10 @@ function CotizacionesContent() {
                         errors.tipoTransformador ? "border-red-500" : "border-gray-300"
                       }`}
                     >
-                      <option value="">Seleccione un tipo</option>
+                      <option value="">{t("selectType")}</option>
                       {transformerProducts.map((product) => (
                         <option key={product.id} value={product.slug}>
-                          {product.name}
+                          {tc(`products.${product.slug}.name`)}
                         </option>
                       ))}
                     </select>
@@ -353,7 +355,7 @@ function CotizacionesContent() {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Configuración
+                      {t("configuration")}
                     </label>
                     <select
                       name="configuracion"
@@ -361,10 +363,10 @@ function CotizacionesContent() {
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#00269b] focus:border-transparent transition-all"
                     >
-                      <option value="">Seleccione configuración</option>
-                      <option value="monofasico">Monofásico</option>
-                      <option value="trifasico">Trifásico</option>
-                      <option value="autoprotegido">Autoprotegido (CSP)</option>
+                      <option value="">{t("selectConfig")}</option>
+                      <option value="monofasico">{t("singlePhase")}</option>
+                      <option value="trifasico">{t("threePhase")}</option>
+                      <option value="autoprotegido">{t("selfProtected")}</option>
                     </select>
                   </div>
                   <div>

@@ -26,6 +26,7 @@ import {
 import CertificationsTabSelector from "@/features/home/components/mtn/CertificationsTabSelector";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
+import { useTranslations } from "next-intl";
 
 const resourceIcons: Record<string, React.ElementType> = {
   newspaper: FileText,
@@ -46,6 +47,8 @@ const fadeIn = {
 };
 
 export default function MTNPageContent() {
+  const t = useTranslations("mtnPage");
+  const tc = useTranslations("mtnConfig");
   return (
     <div className="min-h-screen">
       {/* ============================================================ */}
@@ -76,7 +79,7 @@ export default function MTNPageContent() {
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20"
               >
                 <Factory size={18} className="text-[#0099ce]" />
-                <span className="text-sm font-medium">Fabricación 100% Nacional</span>
+                <span className="text-sm font-medium">{t("hero.badge")}</span>
               </motion.div>
 
               <div className="space-y-4">
@@ -86,7 +89,7 @@ export default function MTNPageContent() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
                 >
-                  <span className="text-white">Manufactura Transformadores Nuevos</span>
+                  <span className="text-white">{t("hero.title")}</span>
                 </motion.h1>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -94,7 +97,7 @@ export default function MTNPageContent() {
                   transition={{ duration: 0.6, delay: 0.3 }}
                   className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed"
                 >
-                  {mtnInfo.heroDescription}
+                  {tc("info.heroDescription")}
                 </motion.p>
               </div>
 
@@ -104,7 +107,7 @@ export default function MTNPageContent() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-lg text-white/70 leading-relaxed max-w-xl"
               >
-                {mtnInfo.description}
+                {tc("info.description")}
               </motion.p>
 
               <motion.div
@@ -117,14 +120,14 @@ export default function MTNPageContent() {
                   href="/mtn/cotizaciones"
                   className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                 >
-                  Solicitar Cotización
+                  {t("hero.requestQuote")}
                   <ArrowRight size={20} />
                 </Link>
                 <Link
                   href="/mtn/productos"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/20"
                 >
-                  Ver Productos
+                  {t("hero.viewProducts")}
                   <ChevronRight size={20} />
                 </Link>
               </motion.div>
@@ -153,9 +156,9 @@ export default function MTNPageContent() {
                     <div className="text-center space-y-2">
                       <Zap size={48} className="mx-auto text-[#0099ce]" />
                       <p className="text-4xl font-bold">DOE 2016</p>
-                      <p className="text-sm text-white/70">Certificación de Eficiencia</p>
+                      <p className="text-sm text-white/70">{t("hero.efficiencyCert")}</p>
                       <p className="text-xs text-white/50 group-hover:text-white/80 transition-colors pt-1">
-                        Ver certificaciones →
+                        {t("hero.viewCertifications")}
                       </p>
                     </div>
                   </Link>
@@ -181,15 +184,15 @@ export default function MTNPageContent() {
           >
             <span className="inline-flex items-center gap-2 bg-[#0099ce]/10 text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-4 px-4 py-1.5 rounded-full">
               <Zap size={14} />
-              Nuestros Productos
+              {t("products.badge")}
             </span>
             <h2 className="text-4xl font-bold mb-4">
-              <span className="text-[#00269b]">Transformadores</span>{" "}
-              <span className="text-gray-900">de Alta Calidad</span>
+              <span className="text-[#00269b]">{t("products.title1")}</span>{" "}
+              <span className="text-gray-900">{t("products.title2")}</span>
             </h2>
             <div className="w-16 h-1 bg-[#0099ce] mx-auto rounded-full mb-4" />
             <p className="text-lg text-gray-600">
-              Diseñados para optimizar el rendimiento y la eficiencia energética en sus instalaciones
+              {t("products.description")}
             </p>
           </motion.div>
 
@@ -216,18 +219,18 @@ export default function MTNPageContent() {
                   <div className="p-6 space-y-4">
                     <div className="flex items-start justify-between">
                       <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
-                        {product.shortName}
+                        {tc(`products.${product.slug}.shortName`)}
                       </h3>
                       <ArrowRight size={20} className="text-gray-400 group-hover:text-[#0099ce] group-hover:translate-x-1 transition-all" />
                     </div>
-                    <p className="text-gray-600 text-sm line-clamp-2">{product.description}</p>
+                    <p className="text-gray-600 text-sm line-clamp-2">{tc(`products.${product.slug}.description`)}</p>
                     <div className="pt-4 border-t border-gray-200 space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-500">Potencia</span>
+                        <span className="text-gray-500">{t("products.power")}</span>
                         <span className="font-semibold text-gray-900">{product.powerRange}</span>
                       </div>
                       <div className="flex justify-between text-sm">
-                        <span className="text-gray-500">Voltaje</span>
+                        <span className="text-gray-500">{t("products.voltage")}</span>
                         <span className="font-semibold text-gray-900">{product.voltageRange}</span>
                       </div>
                     </div>
@@ -260,7 +263,7 @@ export default function MTNPageContent() {
               href="/mtn/productos"
               className="inline-flex items-center gap-2 bg-[#00269b] text-white hover:bg-[#00175d] px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
             >
-              Ver todos los productos
+              {t("products.viewAll")}
               <ArrowRight size={18} />
             </Link>
           </motion.div>
@@ -285,15 +288,15 @@ export default function MTNPageContent() {
           >
             <span className="inline-flex items-center gap-2 bg-[#00269b]/10 text-[#00269b] font-semibold text-sm uppercase tracking-wider mb-4 px-4 py-1.5 rounded-full">
               <Shield size={14} />
-              Calidad Garantizada
+              {t("standards.badge")}
             </span>
             <h2 className="text-4xl font-bold mb-4">
-              <span className="text-gray-900">Normativas y </span>
-              <span className="text-[#0099ce]">Certificaciones</span>
+              <span className="text-gray-900">{t("standards.title1")}</span>
+              <span className="text-[#0099ce]">{t("standards.title2")}</span>
             </h2>
             <div className="w-16 h-1 bg-[#00269b] mx-auto rounded-full mb-4" />
             <p className="text-lg text-gray-600">
-              Cumplimos con los más altos estándares internacionales de fabricación y eficiencia
+              {t("standards.description")}
             </p>
           </motion.div>
 
@@ -310,7 +313,7 @@ export default function MTNPageContent() {
                 <div className="w-11 h-11 bg-[#00269b] rounded-lg flex items-center justify-center">
                   <Shield size={22} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-[#00269b]">Normativas</h3>
+                <h3 className="text-xl font-bold text-[#00269b]">{t("standards.normativas")}</h3>
               </div>
               <div className="space-y-3">
                 {standards.map((standard) => (
@@ -324,8 +327,8 @@ export default function MTNPageContent() {
                         <h4 className="text-lg font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
                           {standard.name}
                         </h4>
-                        <p className="text-sm text-[#0099ce] font-medium">{standard.fullName}</p>
-                        <p className="text-gray-600 text-sm line-clamp-2">{standard.description}</p>
+                        <p className="text-sm text-[#0099ce] font-medium">{tc(`standards.${standard.slug}.fullName`)}</p>
+                        <p className="text-gray-600 text-sm line-clamp-2">{tc(`standards.${standard.slug}.description`)}</p>
                       </div>
                       <ChevronRight size={20} className="text-gray-400 group-hover:text-[#0099ce] group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
                     </div>
@@ -336,7 +339,7 @@ export default function MTNPageContent() {
                 href="/mtn/normativa"
                 className="inline-flex items-center gap-2 text-[#00269b] hover:text-[#0099ce] font-semibold mt-6 transition-colors"
               >
-                Ver todas las normativas
+                {t("standards.viewAllStandards")}
                 <ArrowRight size={18} />
               </Link>
             </motion.div>
@@ -353,7 +356,7 @@ export default function MTNPageContent() {
                 <div className="w-11 h-11 bg-[#0099ce] rounded-lg flex items-center justify-center">
                   <Award size={22} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-[#0099ce]">Certificaciones</h3>
+                <h3 className="text-xl font-bold text-[#0099ce]">{t("standards.certificaciones")}</h3>
               </div>
               <CertificationsTabSelector certifications={certifications} />
             </motion.div>
@@ -379,15 +382,15 @@ export default function MTNPageContent() {
           >
             <span className="inline-flex items-center gap-2 bg-[#0099ce]/10 text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-4 px-4 py-1.5 rounded-full">
               <BookOpen size={14} />
-              Herramientas y Documentación
+              {t("resources.badge")}
             </span>
             <h2 className="text-3xl font-bold mb-4">
-              <span className="text-[#00269b]">Recursos</span>{" "}
-              <span className="text-gray-900">Técnicos</span>
+              <span className="text-[#00269b]">{t("resources.title1")}</span>{" "}
+              <span className="text-gray-900">{t("resources.title2")}</span>
             </h2>
             <div className="w-16 h-1 bg-[#0099ce] mx-auto rounded-full mb-4" />
             <p className="text-lg text-gray-600">
-              Acceda a documentación técnica, herramientas y guías para sus proyectos
+              {t("resources.description")}
             </p>
           </motion.div>
 
@@ -416,14 +419,14 @@ export default function MTNPageContent() {
                       <Icon size={24} style={{ color }} className="transition-colors" />
                     </div>
                     <h3 className="font-semibold text-gray-900 transition-colors group-hover:text-[#00269b]">
-                      {resource.name}
+                      {tc(`resources.${resource.slug}.name`)}
                     </h3>
-                    <p className="text-sm text-gray-500 mt-1 line-clamp-2">{resource.description}</p>
+                    <p className="text-sm text-gray-500 mt-1 line-clamp-2">{tc(`resources.${resource.slug}.description`)}</p>
                     <span
                       className="mt-3 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1"
                       style={{ color }}
                     >
-                      Ver más <ArrowRight size={12} />
+                      {t("products.viewMore")} <ArrowRight size={12} />
                     </span>
                   </Link>
                 </motion.div>
@@ -451,17 +454,17 @@ export default function MTNPageContent() {
 
             <div className="relative max-w-3xl mx-auto space-y-8">
               <h2 className="text-3xl md:text-4xl font-bold">
-                ¿Necesita un Transformador <span className="text-[#0099ce]">a Medida</span>?
+                {t("cta.title1")}<span className="text-[#0099ce]">{t("cta.title2")}</span>{t("cta.title3")}
               </h2>
               <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-                Nuestro equipo de ingenieros está listo para diseñar la solución perfecta para su proyecto. Contáctenos hoy mismo.
+                {t("cta.description")}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
                   href="/mtn/cotizaciones"
                   className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
-                  Solicitar Cotización
+                  {t("cta.requestQuote")}
                   <ArrowRight size={20} />
                 </Link>
                 <a
@@ -469,7 +472,7 @@ export default function MTNPageContent() {
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/20"
                 >
                   <Phone size={20} />
-                  Llamar Ahora
+                  {t("cta.callNow")}
                 </a>
                 <a
                   href={getWhatsAppUrl()}

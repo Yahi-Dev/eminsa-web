@@ -1,7 +1,10 @@
 {
   "nav": {
     "requestQuote": "Request a Quote",
-    "tagline": "Transformers • Services • Electrical Suppliers"
+    "tagline": "Transformers • Services • Electrical Suppliers",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
+    "switchLanguage": "Cambiar a Español"
   },
   "home": {
     "hero": {
@@ -23,7 +26,9 @@
       "iso9001": "Quality Management",
       "iqnet": "International Certification",
       "ansi": "American Standards",
-      "doe": "Energy Efficiency"
+      "doe": "Energy Efficiency",
+      "certificationsLabel": "Certifications",
+      "standardsLabel": "Standards"
     },
     "divisions": {
       "sectionLabel": "Our Divisions",
@@ -149,9 +154,11 @@
       "kvaCalculator": "kVA Calculator"
     },
     "certifications": {
-      "title": "Certifications",
+      "title": "Certifications & Standards",
       "iso9001": "Quality Management",
-      "iqnet": "International Certification"
+      "iqnet": "International Certification",
+      "ansi": "American Standards",
+      "doe": "Energy Efficiency"
     },
     "bottomBar": {
       "rights": "All rights reserved.",
@@ -262,7 +269,11 @@
       },
       "transformer": {
         "title": "Transformer Specifications",
-        "quantity": "Quantity",
+        "quantity": {
+          "label": "Quantity",
+          "placeholder": "Enter the quantity",
+          "help": "Number of units of this transformer"
+        },
         "addTransformer": "Add another transformer",
         "removeTransformer": "Remove transformer",
         "primaryTransformer": "Primary transformer",
@@ -313,11 +324,6 @@
           "capcana": "CAPCANA",
           "uso_interno": "USO INTERNO",
           "otros": "OTHERS (SPECIFY)"
-        },
-        "quantity": {
-          "label": "Quantity",
-          "placeholder": "Enter the quantity",
-          "help": "Number of units of this transformer"
         }
       },
       "characters": "/ {max} characters",
@@ -513,6 +519,262 @@
         "title": "Need Services for Your Transformers?",
         "description": "Request a quote and receive personalized advice from our team of specialized engineers. More than 50 years of experience at your service.",
         "button": "Request a Quote"
+      },
+      "layout": {
+        "home": "Home",
+        "services": "Services",
+        "resources": "Resources",
+        "quotes": "Quotes",
+        "viewAll": "View all",
+        "closeMenu": "Close menu",
+        "openMenu": "Open menu",
+        "requestQuote": "Request a Quote",
+        "submenu": {
+          "preventivo": "Preventive - Predictive",
+          "preventivoDesc": "Inspections and monitoring",
+          "correctivo": "Field Corrective",
+          "correctivoDesc": "On-site repair",
+          "mantenimiento": "Comprehensive Maintenance",
+          "mantenimientoDesc": "Complete service",
+          "revisiones": "Reviews and Diagnostics",
+          "revisionesDesc": "Technical evaluation",
+          "asesoria": "Technical Advisory",
+          "asesoriaDesc": "Specialized consulting",
+          "especiales": "Special Services",
+          "especialesDesc": "Custom solutions",
+          "emergencias": "Emergencies",
+          "emergenciasDesc": "24/7 response",
+          "ingenieria": "Engineering and Projects",
+          "ingenieriaDesc": "Design and management",
+          "laboratorio": "Laboratory Testing",
+          "laboratorioDesc": "Oil analysis",
+          "alquiler": "Equipment Rental",
+          "alquilerDesc": "Temporary equipment"
+        }
+      },
+      "servicioDetail": {
+        "breadcrumbHome": "Home",
+        "breadcrumbServicios": "Services",
+        "serviceDescriptionBadge": "Service Description",
+        "whatIsIt": "What does it consist of?",
+        "mainBenefits": "Key Benefits",
+        "serviceStages": "Service Stages",
+        "serviceScope": "Scope of Our Services",
+        "needService": "Do you need this service?",
+        "contactNoCommitment": "Contact us for a no-obligation evaluation",
+        "requestQuote": "Request a Quote"
+      },
+      "alquiler": {
+        "breadcrumbTitle": "Transformer Rental",
+        "badge": "Temporary Solutions",
+        "title": "Transformer Rental",
+        "description": "Flexible electrical energy solutions for temporary projects, emergencies, and maintenance. Over 50 years of experience ensuring your project's operational continuity.",
+        "requestQuote": "Request a Quote",
+        "whatsappConsult": "WhatsApp Inquiry",
+        "whyRent": "Why Rent with EMINSA?",
+        "whyRentDesc": "Benefits and advantages of our transformer rental service",
+        "availableTransformers": "Available Transformers",
+        "availableTransformersDesc": "Wide inventory of transformers to meet your needs",
+        "availablePowers": "Available Power Ratings",
+        "technicalSpecs": "Technical Specifications",
+        "applications": "Applications",
+        "availableForRent": "Available for Rent",
+        "useCases": "Use Cases",
+        "useCasesDesc": "Rental solutions for different sectors and needs",
+        "examples": "Examples:",
+        "benefits": {
+          "immediateAvailability": "Immediate Availability",
+          "immediateAvailabilityDesc": "Large stock of transformers ready for quick delivery and installation",
+          "certifiedEquipment": "Certified Equipment",
+          "certifiedEquipmentDesc": "All our transformers comply with ANSI and ISO 9001:2015 standards",
+          "maintenanceIncluded": "Maintenance Included",
+          "maintenanceIncludedDesc": "Technical service and preventive maintenance at no additional cost",
+          "flexibleContracts": "Flexible Contracts",
+          "flexibleContractsDesc": "Rental periods adapted to your needs: short, medium, or long term",
+          "transportInstallation": "Transport and Installation",
+          "transportInstallationDesc": "We handle transport, installation, and commissioning",
+          "support247": "24/7 Support",
+          "support247Desc": "Emergency response 24 hours a day, 7 days a week"
+        },
+        "transformers": {
+          "tipoPoste": "Pole-Type Transformers",
+          "tipoPosteDesc": "Single-phase, 60 Hz, ideal for residential services and light commercial/industrial loads",
+          "padMounted": "Pad Mounted Transformers",
+          "padMountedDesc": "Three-phase and single-phase for underground distribution systems",
+          "tipoSeco": "Dry-Type Transformers",
+          "tipoSecoDesc": "No dielectric oil, ideal for indoor installations with minimized fire risk"
+        },
+        "cases": {
+          "construction": "Construction Projects",
+          "constructionDesc": "Temporary power supply during construction of buildings, shopping centers, and real estate developments",
+          "constructionExamples": "Residential towers, Shopping centers, Hotel complexes",
+          "industrial": "Industrial Expansion",
+          "industrialDesc": "Temporary solutions while permanent electrical infrastructure is completed",
+          "industrialExamples": "Industrial plants, Free trade zones, Capacity expansions",
+          "maintenance": "Maintenance and Emergencies",
+          "maintenanceDesc": "Temporary replacement during repairs or failures of existing equipment",
+          "maintenanceExamples": "Unexpected failures, Scheduled maintenance, Contingencies",
+          "events": "Events and Temporary Projects",
+          "eventsDesc": "Power supply for special events, festivals, or temporary installations",
+          "eventsExamples": "Corporate events, Trade fairs, Special projects"
+        }
+      },
+      "proyectosPage": {
+        "breadcrumbTitle": "Projects",
+        "badge": "Completed Projects",
+        "title": "Our Projects",
+        "description": "Discover our portfolio of successfully executed projects. Each intervention reflects EMINSA's commitment to excellence, safety, and reliability in the electrical sector.",
+        "requestQuote": "Request a Quote",
+        "successCases": "Success Stories",
+        "featuredProjects": "Featured Projects",
+        "featuredDescription": "Explore our most representative projects. Click on any project to see all details.",
+        "viewDetails": "View project details",
+        "previous": "Previous",
+        "next": "Next",
+        "goToProject": "Go to project",
+        "fullPortfolio": "Full Portfolio",
+        "allProjects": "All Projects",
+        "allProjectsDescription": "Explore our complete catalog of service projects executed for clients throughout the Dominican Republic.",
+        "viewFullProject": "View full project",
+        "featured": "Featured",
+        "client": "Client",
+        "location": "Location",
+        "productType": "Product Type",
+        "period": "Period",
+        "capacity": "Capacity",
+        "projectDescription": "Project Description",
+        "resultsObtained": "Results Obtained",
+        "requestSimilar": "Request a Similar Service",
+        "close": "Close",
+        "haveProject": "Have a Project in Mind?",
+        "haveProjectDesc": "Our team of specialized engineers is ready to help you plan and execute your next project. Request a no-obligation consultation.",
+        "viewOurServices": "View Our Services"
+      },
+      "testimonialesPage": {
+        "breadcrumbTitle": "Testimonials",
+        "title": "Client Testimonials",
+        "description": "Our clients' trust is our greatest endorsement. Learn about their experiences working with EMINSA Services.",
+        "satisfiedClients": "Satisfied Clients",
+        "averageRating": "Average Rating",
+        "yearsExperience": "Years of Experience",
+        "recommendation": "Recommendation",
+        "testimonialsBadge": "Testimonials",
+        "whatClientsSay": "What Our Clients Say",
+        "whatClientsSayDesc": "Each testimonial reflects our commitment to excellence and the quality service we provide every day.",
+        "readyToWork": "Ready to Work with Us?",
+        "readyToWorkDesc": "Join our more than 500 satisfied clients and experience the level of service that sets us apart in the industry.",
+        "requestQuote": "Request a Quote",
+        "viewOurServices": "View Our Services"
+      },
+      "recursosPage": {
+        "breadcrumbTitle": "Resources",
+        "title": "Resources and Tools",
+        "description": "Access our resources, forms, and tools designed to enhance your experience with EMINSA Services.",
+        "technicalSheets": "Technical Data Sheets",
+        "visit": "Visit",
+        "access": "Access",
+        "needAssistance": "Need Assistance?",
+        "needAssistanceDesc": "Our team is available to help you with any inquiry or requirement. Contact us today.",
+        "requestQuote": "Request a Quote",
+        "viewOurServices": "View Our Services"
+      },
+      "clientesPage": {
+        "breadcrumbTitle": "Clients",
+        "title": "Our Clients",
+        "description": "The trust of leading companies across {count} sectors supports us. Meet the organizations that have trusted Grupo EMINSA with the care of their electrical infrastructure.",
+        "clientsServed": "Clients Served",
+        "industrialSectors": "Industrial Sectors",
+        "yearsExperience": "Years of Experience",
+        "satisfaction": "Satisfaction",
+        "clientPortfolio": "Client Portfolio",
+        "companiesTrustUs": "Companies That Trust Us",
+        "companiesTrustUsDesc": "Organized by sector, these are the clients that support our more than 50-year track record.",
+        "client": "client",
+        "clients": "clients",
+        "wantToBeClient": "Want to Be Our Next Client?",
+        "wantToBeClientDesc": "Join our portfolio of satisfied clients and experience the level of service that has made us industry leaders for more than 50 years.",
+        "requestQuote": "Request a Quote",
+        "viewOurServices": "View Our Services"
+      },
+      "cotizacionPage": {
+        "breadcrumbTitle": "Quote",
+        "title": "Request a Quote",
+        "description": "Fill out the form below and our team of experts will contact you to offer a personalized solution.",
+        "successTitle": "Request Submitted Successfully!",
+        "referenceNumber": "Reference Number",
+        "saveCode": "Save this code to track your request",
+        "successDescription": "We have received your quote request. Our team of experts will contact you within 24 hours to discuss your requirements.",
+        "meanwhile": "In the meantime...",
+        "checkEmail": "Check your email for confirmation",
+        "prepareInfo": "Prepare additional equipment information",
+        "ifUrgent": "If urgent, contact us directly",
+        "viewOurServices": "View Our Services",
+        "newQuote": "New Quote",
+        "needImmediate": "Need immediate attention?",
+        "contactInfo": "Contact Information",
+        "fullName": "Full Name",
+        "company": "Company",
+        "companyPlaceholder": "Your company name",
+        "email": "Email",
+        "serviceDetails": "Service Details",
+        "serviceType": "Service Type",
+        "selectService": "Select a service...",
+        "equipmentType": "Equipment Type",
+        "selectEquipment": "Select equipment type...",
+        "equipmentSpecs": "Equipment Specifications",
+        "power": "Power (kVA)",
+        "powerPlaceholder": "E.g.: 500 kVA",
+        "configuration": "Configuration",
+        "selectConfig": "Select...",
+        "singlePhase": "Single Phase",
+        "threePhase": "Three Phase",
+        "selfProtected": "Self-Protected (CSP)",
+        "primaryVoltage": "Primary Voltage (kV)",
+        "primaryVoltagePlaceholder": "E.g.: 13.2 kV",
+        "secondaryVoltage": "Secondary Voltage (V)",
+        "secondaryVoltagePlaceholder": "E.g.: 120/240 V",
+        "energyDistributor": "Energy Distributor",
+        "selectDistributor": "Select distributor",
+        "internalUse": "INTERNAL USE",
+        "othersSpecify": "OTHERS (SPECIFY)",
+        "equipmentLocation": "Equipment Location",
+        "locationPlaceholder": "City, Province, or Address",
+        "requirementsDescription": "Requirements Description",
+        "requirementsPlaceholder": "Describe the service you need, equipment condition, symptoms or identified problems, and any relevant information...",
+        "attachDocument": "Attach document (optional)",
+        "clickToUpload": "Click to upload files",
+        "fileTypes": "PDF, DOC, JPG, PNG, Excel (max. 5 files)",
+        "urgentService": "This service is urgent (requires immediate attention)",
+        "sending": "Sending...",
+        "sendRequest": "Submit Request",
+        "quickResponse": "Quick Response",
+        "quickResponseTime": "Within 24 hours",
+        "quickResponseDesc": "Our team will review your request and contact you with a personalized quote.",
+        "experience": "50+ Years of Experience",
+        "experienceSubtitle": "Guaranteed service",
+        "experienceDesc": "Backed by decades of experience in specialized electrical services.",
+        "emergencyService": "Emergency Service",
+        "emergencyAvailable": "Available 24/7",
+        "emergencyDesc": "For emergencies, contact us directly:",
+        "needHelp": "Need Help Completing the Form?",
+        "needHelpDesc": "Our team can assist you by phone to gather the necessary information.",
+        "callNow": "Call Now",
+        "validationName": "Name is required",
+        "validationEmail": "Email is required",
+        "validationEmailInvalid": "Invalid email",
+        "validationPhone": "Phone is required",
+        "validationService": "Select a service",
+        "validationDescription": "Describe your requirements",
+        "errorGeneral": "Error submitting request",
+        "errorConnection": "Connection error. Please try again.",
+        "equipmentOptions": {
+          "distribucion": "Distribution Transformer",
+          "potencia": "Power Transformer",
+          "padMounted": "Pad Mounted",
+          "tipoPoste": "Pole Type",
+          "subestacion": "Substation",
+          "otro": "Other"
+        }
       }
     },
     "cotizar": {
@@ -584,6 +846,2154 @@
         "responseDetail": "during business hours",
         "businessHours": "Monday to Friday 8:00 AM to 5:00 PM",
         "certifications": "Certifications"
+      }
+    }
+  },
+  "config": {
+    "nav": {
+      "mtn": {
+        "name": "MTN",
+        "description": "New Transformer Manufacturing",
+        "submenu": {
+          "productos": "Products",
+          "transformadores": "Transformers",
+          "tipoPoste": "Pole Type",
+          "padMounted": "Pad Mounted",
+          "subestacion": "Substation",
+          "secosResina": "Dry Resin Type",
+          "normativa": "Standards",
+          "certificaciones": "Certifications",
+          "recursos": "Resources",
+          "cotizaciones": "Quotes"
+        }
+      },
+      "etrys": {
+        "name": "RST",
+        "description": "Transformer Repair and Service",
+        "submenu": {
+          "reparacion": "Repair",
+          "remanufacturados": "Remanufactured",
+          "alquiler": "Rental",
+          "recursos": "Resources",
+          "cotizaciones": "Quotes"
+        }
+      },
+      "eic": {
+        "name": "EIC",
+        "description": "Eminsa International Corporation",
+        "submenu": {
+          "productos": "Products",
+          "transformadores": "Transformers",
+          "cables": "Cables",
+          "distribucionMT": "MV Distribution",
+          "breakers": "Breakers & Protection",
+          "accesorios": "Accessories",
+          "marcas": "Brands",
+          "recursos": "Resources",
+          "cotizaciones": "Quotes"
+        }
+      },
+      "servicios": {
+        "name": "Services",
+        "description": "Specialized technical services",
+        "submenu": {
+          "preventivo": "Preventive - Predictive",
+          "correctivo": "Field Corrective",
+          "mantenimiento": "Comprehensive Maintenance",
+          "emergencias": "Emergencies",
+          "ingenieria": "Engineering & Projects",
+          "laboratorio": "Laboratory Testing",
+          "alquiler": "Equipment Rental",
+          "cotizaciones": "Quotes"
+        }
+      },
+      "eminsa": {
+        "name": "EMINSA",
+        "description": "About Grupo EMINSA",
+        "submenu": {
+          "nosotros": "About Us",
+          "proyectos": "Projects",
+          "noticias": "News",
+          "contacto": "Contact"
+        }
+      }
+    },
+    "divisions": {
+      "mtn": {
+        "fullName": "New Transformer Manufacturing",
+        "tagline": "New Transformer Manufacturing",
+        "description": "Electrical transformation solutions with high-performance technology, guaranteed efficiency, and local manufacturing under ANSI and DOE 2016 standards.",
+        "features": {
+          "0": "Pole Type Transformers",
+          "1": "Pad Mounted",
+          "2": "Substation",
+          "3": "ISO 9001 Certification"
+        }
+      },
+      "etrys": {
+        "fullName": "Transformer Repair and Service",
+        "tagline": "Transformer Repair and Service",
+        "description": "At RST we combine the experience of a highly qualified technical team with cutting-edge technology to give your transformers a new life.",
+        "features": {
+          "0": "Specialized Repair",
+          "1": "Remanufactured Transformers",
+          "2": "Equipment Rental",
+          "3": "18-Month Warranty"
+        }
+      },
+      "eic": {
+        "fullName": "Eminsa International Corporation",
+        "tagline": "Eminsa International Corporation",
+        "description": "We connect Eminsa with the world, expanding our energy solutions through a solid global network of strategic partners, ensuring international presence, specialized service, and close support in every project.",
+        "features": {
+          "0": "INATRA",
+          "1": "Schneider Electric",
+          "2": "Hammond",
+          "3": "Top Cable"
+        }
+      },
+      "servicios": {
+        "fullName": "EMINSA Services",
+        "tagline": "Comprehensive Field Solutions",
+        "description": "SERVICES is the business unit of Grupo EMINSA focused on providing specialized on-site technical support, offering maintenance, repair, and comprehensive support to ensure the efficiency, safety, and operational continuity of our clients' electrical transformers.",
+        "features": {
+          "0": "Preventive Maintenance",
+          "1": "24/7 Emergencies",
+          "2": "Laboratory Testing",
+          "3": "Project Engineering"
+        }
+      }
+    },
+    "services": {
+      "preventivo": {
+        "name": "Preventive - Predictive Maintenance",
+        "shortName": "Preventive",
+        "description": "Scheduled inspections, diagnostic testing, and condition monitoring to anticipate failures and extend the useful life of your equipment.",
+        "benefits": {
+          "0": "Prevention of unexpected failures",
+          "1": "Greater transformer availability",
+          "2": "Reduction in repair costs",
+          "3": "Extended useful life"
+        }
+      },
+      "correctivo": {
+        "name": "Field Corrective Maintenance",
+        "shortName": "Corrective",
+        "description": "On-site corrective maintenance solutions, ensuring fast and efficient response to failures.",
+        "benefits": {
+          "0": "Aesthetic rehabilitation",
+          "1": "Oil restoration",
+          "2": "Leak correction",
+          "3": "Component replacement"
+        }
+      },
+      "integral": {
+        "name": "Comprehensive Maintenance",
+        "shortName": "Comprehensive",
+        "description": "Complete service combining inspection, execution, and final verification for maximum reliability.",
+        "benefits": {
+          "0": "Prior technical inspection",
+          "1": "Maintenance based on findings",
+          "2": "Post-maintenance inspection",
+          "3": "Future failure prevention"
+        }
+      },
+      "emergencias": {
+        "name": "Emergency Response",
+        "shortName": "Emergencies",
+        "description": "Specialized rapid response service for critical situations, available 24/7.",
+        "benefits": {
+          "0": "Immediate response",
+          "1": "On-site inspection",
+          "2": "Corrective actions",
+          "3": "Technical reports"
+        }
+      },
+      "ingenieria": {
+        "name": "Engineering & Project Management",
+        "shortName": "Engineering",
+        "description": "Comprehensive solutions from design to execution of complex electrical projects.",
+        "benefits": {
+          "0": "Facility design",
+          "1": "Electrical assembly",
+          "2": "Large-scale projects",
+          "3": "Specialized supervision"
+        }
+      },
+      "laboratorio": {
+        "name": "Laboratory Testing",
+        "shortName": "Laboratory",
+        "description": "Specialized dielectric oil analysis in partnership with SD Myers, a world leader in diagnostics.",
+        "benefits": {
+          "0": "Dissolved gas analysis",
+          "1": "Dielectric strength",
+          "2": "Moisture detection",
+          "3": "Results interpretation"
+        }
+      },
+      "alquiler": {
+        "name": "Transformer Rental",
+        "shortName": "Rental",
+        "description": "Equipment available to cover temporary needs or respond to emergencies.",
+        "benefits": {
+          "0": "Immediate availability",
+          "1": "Flexible options",
+          "2": "Installation included",
+          "3": "Cost-effective alternative"
+        }
+      }
+    },
+    "stats": {
+      "0": {
+        "label": "Years of Experience"
+      },
+      "1": {
+        "label": "Transformers Installed"
+      },
+      "2": {
+        "label": "Satisfied Clients"
+      },
+      "3": {
+        "label": "Technical Support"
+      }
+    },
+    "header": {
+      "tooltips": {
+        "MTN": "New Transformer Manufacturing",
+        "RST": "Transformer Repair and Service",
+        "EIC": "Eminsa International Corporation",
+        "Servicios": "Internal and External Services"
+      },
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "switchToSpanish": "Switch to English",
+      "switchToEnglish": "Cambiar a Español"
+    }
+  },
+  "clientes": {
+    "sectors": {
+      "Energía": "Energy",
+      "Turismo": "Tourism",
+      "Industrial": "Industrial",
+      "Alimentación": "Food & Beverage",
+      "Manufactura": "Manufacturing",
+      "Telecomunicaciones": "Telecommunications",
+      "Construcción": "Construction",
+      "Retail": "Retail",
+      "Automotriz": "Automotive"
+    }
+  },
+  "mtnConfig": {
+    "info": {
+      "fullName": "New Transformer Manufacturing",
+      "tagline": "100% new transformers, manufactured in the Dominican Republic",
+      "description": "100% new transformers, manufactured in the Dominican Republic under the highest international standards and fully complying with the efficiency levels established by ANSI and DOE 2016.",
+      "heroDescription": "Electrical transformation solutions with high-performance technology, guaranteed efficiency, and local manufacturing under ANSI and DOE 2016 standards.",
+      "stats": {
+        "0": "Years of Experience",
+        "1": "Transformers Manufactured",
+        "2": "National Manufacturing",
+        "3": "Efficiency Certification"
+      }
+    },
+    "products": {
+      "tipo-poste": {
+        "name": "Pole Type Transformers",
+        "shortName": "Pole Type",
+        "description": "Transformers for overhead electrical distribution systems with maximum reliability and efficiency.",
+        "fullDescription": "EMINSA pole type transformers are designed to offer maximum reliability, efficiency, and durability in overhead electrical distribution systems. Manufactured with high-quality materials and strictly complying with international standards, with robust designs that meet the efficiency levels established by ANSI and DOE 2016 according to our clients' needs. These units guarantee optimal performance in residential, commercial, and industrial applications.",
+        "applications": {
+          "0": "Residential electrical distribution",
+          "1": "Commercial zones",
+          "2": "Light industrial areas",
+          "3": "Overhead distribution networks",
+          "4": "Rural electrification"
+        },
+        "features": {
+          "0": "High-quality dielectric oil",
+          "1": "Hermetic steel tank",
+          "2": "Low noise level",
+          "3": "High energy efficiency",
+          "4": "Easy installation and maintenance",
+          "5": "Surge protection"
+        }
+      },
+      "pad-mounted": {
+        "name": "Pad Mounted Transformers",
+        "shortName": "Pad Mounted",
+        "description": "Safe and compact solution for underground distribution systems.",
+        "fullDescription": "EMINSA pad-mounted transformers are designed to offer a safe, compact, and highly efficient solution for underground distribution systems in residential, commercial, and industrial areas.",
+        "applications": {
+          "0": "Residential developments",
+          "1": "Hotel projects",
+          "2": "Shopping centers",
+          "3": "Industrial zones",
+          "4": "Business parks",
+          "5": "Underground distribution"
+        },
+        "features": {
+          "0": "Compact and hermetic design",
+          "1": "Ground-level mounting",
+          "2": "Resistant steel enclosure",
+          "3": "Vandal-proof protection",
+          "4": "Low visual profile",
+          "5": "Easy maintenance access",
+          "6": "Compatible with underground networks"
+        }
+      },
+      "subestacion": {
+        "name": "Substation Transformers",
+        "shortName": "Substation",
+        "description": "Maximum reliability and efficiency for medium and high power applications.",
+        "fullDescription": "EMINSA substation transformers are designed to supply power with maximum reliability, safety, and efficiency in medium and high power applications.",
+        "applications": {
+          "0": "Industrial substations",
+          "1": "Commercial substations",
+          "2": "Power generation plants",
+          "3": "Primary distribution",
+          "4": "Large-scale projects"
+        },
+        "features": {
+          "0": "High power capacity",
+          "1": "Advanced cooling systems",
+          "2": "Tap changers",
+          "3": "Optional special enclosures",
+          "4": "High-capacity bushings",
+          "5": "Reinforced design",
+          "6": "Integrated protections"
+        }
+      }
+    },
+    "variants": {
+      "tipo-poste-monofasico": {
+        "name": "Single-Phase Pole Type Transformers",
+        "description": "Single-phase transformers for residential and light commercial distribution.",
+        "features": {
+          "0": "Ideal for residential loads",
+          "1": "DOE 2016 efficiency",
+          "2": "Silicon steel core",
+          "3": "Sealed hermetic tank"
+        },
+        "applications": {
+          "0": "Single-family residences",
+          "1": "Small businesses",
+          "2": "Public lighting"
+        }
+      },
+      "tipo-poste-trifasico": {
+        "name": "Three-Phase Pole Type Transformers",
+        "description": "Three-phase transformers for commercial and industrial applications.",
+        "features": {
+          "0": "Balanced power",
+          "1": "DOE 2016 efficiency",
+          "2": "Delta-Star connections",
+          "3": "Multiple configurations"
+        },
+        "applications": {
+          "0": "Commercial buildings",
+          "1": "Small industries",
+          "2": "Data centers"
+        }
+      },
+      "tipo-poste-autoprotegido": {
+        "name": "Self-Protected Pole Type Transformers (CSP)",
+        "description": "Transformers with built-in overload and short-circuit protection.",
+        "features": {
+          "0": "Integrated MV fuses",
+          "1": "Automatic LV breaker",
+          "2": "Internal surge arrester",
+          "3": "No external equipment needed"
+        },
+        "applications": {
+          "0": "Hard-to-reach areas",
+          "1": "Rural electrification",
+          "2": "Temporary installations"
+        }
+      },
+      "pad-mounted-monofasico": {
+        "name": "Single-Phase Pad Mounted Transformers",
+        "description": "Compact solution for residential underground distribution.",
+        "features": {
+          "0": "Low-profile enclosure",
+          "1": "Separate HV/LV compartments",
+          "2": "Security locks",
+          "3": "Tamper-proof design"
+        },
+        "applications": {
+          "0": "Residential developments",
+          "1": "Condominiums",
+          "2": "Green areas"
+        }
+      },
+      "pad-mounted-trifasico": {
+        "name": "Three-Phase Pad Mounted Transformers",
+        "description": "High capacity for underground commercial and industrial applications.",
+        "features": {
+          "0": "Loop-Feed and Radial configurations",
+          "1": "Optional integrated switchgear",
+          "2": "Full front access",
+          "3": "Ventilation system"
+        },
+        "applications": {
+          "0": "Shopping centers",
+          "1": "Hotels and resorts",
+          "2": "Industrial complexes",
+          "3": "Business parks"
+        }
+      }
+    },
+    "standards": {
+      "ansi": {
+        "fullName": "American National Standards Institute",
+        "description": "ANSI/IEEE standards for transformers establish the technical, design, performance, and testing requirements that transformers used in U.S. electrical systems must meet.",
+        "details": {
+          "0": "Primarily published by the Institute of Electrical and Electronics Engineers (IEEE)",
+          "1": "Accredited by the American National Standards Institute (ANSI)",
+          "2": "Ensure equipment safety, reliability, compatibility, and standardization",
+          "3": "Applicable to distribution and power",
+          "4": "Main standards: IEEE C57.12.00, IEEE C57.12.90"
+        },
+        "benefits": {
+          "0": "International quality guarantee",
+          "1": "Compatibility with American electrical systems",
+          "2": "Standardization of tests and specifications",
+          "3": "Extended equipment lifespan",
+          "4": "Ease of maintenance and spare parts"
+        }
+      },
+      "doe-2016": {
+        "fullName": "Department of Energy - Efficiency Standards 2016",
+        "description": "DOE 2016 regulation establishes the mandatory minimum energy efficiency levels that transformers must meet to be manufactured, imported, or marketed in the United States.",
+        "details": {
+          "0": "Issued by the U.S. Department of Energy (DOE)",
+          "1": "Requires loss reduction in liquid and dry transformers",
+          "2": "Goal: reduce electricity consumption and associated emissions",
+          "3": "Applicable to distribution transformers since January 2016",
+          "4": "Establishes efficiency levels by capacity and voltage"
+        },
+        "benefits": {
+          "0": "Lower energy consumption",
+          "1": "Reduced operating costs",
+          "2": "Lower environmental impact",
+          "3": "International regulatory compliance",
+          "4": "Long-term return on investment"
+        }
+      }
+    },
+    "certifications": {
+      "iso-9001": {
+        "fullName": "ISO 9001:2015 Quality Management System",
+        "description": "International certification that guarantees our manufacturing processes meet the highest standards of quality and continuous improvement.",
+        "benefits": {
+          "0": "Standardized manufacturing processes",
+          "1": "Rigorous quality control",
+          "2": "Complete product traceability",
+          "3": "Continuous process improvement",
+          "4": "Guaranteed customer satisfaction"
+        }
+      },
+      "cidet": {
+        "fullName": "Center for Research and Technological Development of the Electrical Sector",
+        "description": "Colombian certification validating compliance with technical standards for electrical equipment in the Latin American market.",
+        "benefits": {
+          "0": "Access to the Colombian market",
+          "1": "Regional technical validation",
+          "2": "NTC standards compliance",
+          "3": "Recognition in Latin America"
+        }
+      },
+      "ul": {
+        "fullName": "Underwriters Laboratories",
+        "description": "Globally recognized safety certification ensuring our products meet the strictest safety standards.",
+        "benefits": {
+          "0": "Worldwide recognition",
+          "1": "Safety guarantee",
+          "2": "Access to international markets",
+          "3": "UL standards compliance",
+          "4": "Consumer confidence"
+        }
+      }
+    },
+    "resources": {
+      "fichas-tecnicas": {
+        "name": "Technical Data Sheets",
+        "description": "Detailed specifications of all our products for consultation and download."
+      },
+      "garantia": {
+        "name": "Warranty",
+        "description": "Information on coverage, terms, and conditions of our product warranty."
+      },
+      "manual-mantenimiento": {
+        "name": "Maintenance Manual",
+        "description": "Complete guides for the care, preventive, and corrective maintenance of transformers."
+      },
+      "calculadora": {
+        "name": "kVA Calculator",
+        "description": "Interactive tool to calculate the transformer capacity your project needs."
+      }
+    },
+    "specLabels": {
+      "type": "Type",
+      "brand": "Brand",
+      "origin": "Origin",
+      "standards": "Standards",
+      "power": "Power",
+      "primaryVoltage": "Primary Voltage",
+      "phases": "Phases",
+      "frequency": "Frequency",
+      "cooling": "Cooling",
+      "voltage": "Voltage",
+      "technology": "Technology",
+      "products": "Products",
+      "material": "Material",
+      "application": "Application",
+      "types": "Types",
+      "insulation": "Insulation"
+    }
+  },
+  "eicConfig": {
+    "info": {
+      "tagline": "International Electrical Suppliers",
+      "description": "We connect Eminsa with the world, expanding our energy solutions through a solid global network of strategic partners, ensuring international presence, specialized service, and close support in every project.",
+      "stats": {
+        "0": "Represented Brands",
+        "1": "Countries of Presence",
+        "2": "Years of Experience",
+        "3": "Technical Support"
+      },
+      "advantages": {
+        "global": {
+          "title": "Global Network",
+          "description": "Access to the best international brands in the electrical sector."
+        },
+        "soporte": {
+          "title": "Specialized Support",
+          "description": "Technical guidance and personalized attention for every project."
+        },
+        "calidad": {
+          "title": "Certified Quality",
+          "description": "Products that comply with international IEEE, ANSI, and IEC standards."
+        },
+        "exclusividad": {
+          "title": "Exclusive Representation",
+          "description": "Exclusive representatives in the Dominican Republic of leading brands."
+        }
+      }
+    },
+    "categories": {
+      "transformadores": {
+        "name": "Transformers",
+        "description": "Distribution transformers from leading international brands, including pole type, pad mounted, dry, and resin-cast."
+      },
+      "cables": {
+        "name": "Electrical Cables",
+        "description": "High-quality electrical cables for power transmission and distribution, from low to medium voltage."
+      },
+      "distribucion-mt": {
+        "name": "MV Distribution (Switchgear)",
+        "description": "Medium voltage switchgear designed to operate between 3 kV and 36 kV, in AIS and GIS technologies."
+      },
+      "breakers": {
+        "name": "Low Voltage Breakers & Protection",
+        "description": "Low voltage breakers and panels for protection, operational continuity, and facility safety."
+      },
+      "accesorios": {
+        "name": "MV Cable Accessories",
+        "description": "Medium voltage cable accessories: elbows, bushings, adapters, junction boxes, splices, and terminals."
+      }
+    },
+    "resources": {
+      "cotizacion": {
+        "name": "Request a Quote",
+        "description": "Form to request a quote for international products."
+      }
+    },
+    "brands": {
+      "inatra": {
+        "description": "An Ecuadorian brand that manufactures distribution transformers with one of the highest standards in the market. As exclusive representatives of INATRA in the Dominican Republic, we offer direct access to their portfolio.",
+        "products": {
+          "0": "Pad Mounted Transformer",
+          "1": "Pole-Type Transformer"
+        }
+      },
+      "hammond": {
+        "description": "Hammond Power Solutions (HPS) is the largest dry-type transformer manufacturer in North America, recognized for its advanced engineering.",
+        "products": {
+          "0": "Dry-Type Transformers"
+        }
+      },
+      "elpitalia": {
+        "description": "Elpitalia is an Italian manufacturer specialized in cast resin dry-type transformers, with a track record since 1962. Range from 50 kVA to 3150 kVA.",
+        "products": {
+          "0": "Cast Resin Dry-Type Transformers"
+        }
+      },
+      "topcable": {
+        "description": "Top Cable is one of the leading European manufacturers of high-quality electrical cables, with production plants in Spain.",
+        "products": {
+          "0": "Power Cables",
+          "1": "Solar Cables",
+          "2": "Medium Voltage Cables"
+        }
+      },
+      "southwire": {
+        "description": "Southwire is one of the leading American manufacturers of electrical cables and conductors for power transmission and distribution.",
+        "products": {
+          "0": "Low Voltage Cables",
+          "1": "Medium Voltage Cables",
+          "2": "High Voltage Cables"
+        }
+      },
+      "cabelte": {
+        "description": "Cabelte is a leading Portuguese manufacturer of low and medium voltage electrical cables with over five decades of experience.",
+        "products": {
+          "0": "Low Voltage Cables",
+          "1": "Medium Voltage Cables"
+        }
+      },
+      "schneider": {
+        "description": "Schneider Electric is a global leader in electrical distribution solutions, offering MV switchgear and LV breakers.",
+        "products": {
+          "0": "Medium Voltage Switchgear",
+          "1": "Low Voltage Breakers",
+          "2": "Distribution Panels"
+        }
+      },
+      "chardon": {
+        "description": "Chardon Group is a leading manufacturer of medium voltage cable accessories under IEEE/ANSI and IEC standards.",
+        "products": {
+          "0": "Elbows",
+          "1": "Bushings",
+          "2": "Adapters",
+          "3": "Splices",
+          "4": "Terminals"
+        }
+      }
+    },
+    "products": {
+      "inatra-pad-mounted": {
+        "name": "INATRA Pad Mounted Transformer",
+        "shortName": "Pad Mounted",
+        "description": "Pad mounted transformers by INATRA with the highest market standards."
+      },
+      "inatra-poste": {
+        "name": "INATRA Pole-Type Transformer",
+        "shortName": "Pole-Type",
+        "description": "Pole-type transformers by INATRA for overhead distribution."
+      },
+      "hammond-secos": {
+        "name": "Hammond Dry-Type Transformers",
+        "shortName": "Hammond Dry-Type",
+        "description": "High-quality dry-type transformers by Hammond Power Solutions."
+      },
+      "elpitalia-resina": {
+        "name": "Elpitalia Cast Resin Transformers",
+        "shortName": "Cast Resin",
+        "description": "Cast resin dry-type transformers by Elpitalia, Italian specialist since 1962."
+      },
+      "topcable-cables": {
+        "name": "Top Cable Electrical Cables",
+        "shortName": "Top Cable",
+        "description": "High-quality electrical cables manufactured in Spain."
+      },
+      "southwire-cables": {
+        "name": "Southwire Cables and Conductors",
+        "shortName": "Southwire",
+        "description": "Electrical cables for power transmission and distribution, made in the USA."
+      },
+      "cabelte-cables": {
+        "name": "Cabelte Electrical Cables",
+        "shortName": "Cabelte",
+        "description": "Low and medium voltage cables manufactured in Portugal."
+      },
+      "schneider-celdas": {
+        "name": "Schneider Electric MV Switchgear",
+        "shortName": "Schneider MV",
+        "description": "Medium voltage switchgear for 3 kV to 36 kV operation."
+      },
+      "schneider-breakers": {
+        "name": "Schneider Electric LV Breakers",
+        "shortName": "Schneider LV",
+        "description": "Low voltage breakers and panels for protection."
+      },
+      "chardon-accesorios": {
+        "name": "Chardon MV Cable Accessories",
+        "shortName": "Chardon MV",
+        "description": "MV cable accessories: elbows, bushings, adapters, splices, terminals."
+      }
+    }
+  },
+  "etrysConfig": {
+    "info": {
+      "tagline": "Transformer Repair and Service",
+      "slogan": "Transformer Repair and Service",
+      "description": "GRUPO EMINSA has over 50 years of experience in the electrical distribution transformer and related equipment sector. Through our RST division, we specialize in the repair and remanufacturing of distribution and industrial transformers, offering solutions that restore power and reliability to your equipment.",
+      "stats": {
+        "0": "Years of Experience",
+        "1": "Months Warranty",
+        "2": "Min Response Time",
+        "3": "Ton Max Capacity"
+      },
+      "advantages": {
+        "0": {
+          "title": "Experience",
+          "description": "Over 50 years specialized in electrical distribution transformers."
+        },
+        "1": {
+          "title": "Personalized Service",
+          "description": "Custom solutions for each client with dedicated service."
+        },
+        "2": {
+          "title": "Leading Warranty",
+          "description": "18-month warranty on all our repair and remanufacturing work."
+        }
+      }
+    },
+    "remanufacturedAdvantages": {
+      "speed": {
+        "title": "Speed",
+        "description": "Immediate availability for your project"
+      },
+      "savings": {
+        "title": "Savings",
+        "description": "Lower cost than new equipment with the same quality"
+      },
+      "reliability": {
+        "title": "Reliability",
+        "description": "Full compliance with IEEE C57 and ANSI standards"
+      },
+      "environment": {
+        "title": "Environmental Impact",
+        "description": "Waste reduction and material reuse"
+      }
+    },
+    "rental": {
+      "title": "Transformer Rental",
+      "description": "Get short-term power with a rental unit from RST.",
+      "benefits": {
+        "disponibilidad": {
+          "title": "Immediate Availability",
+          "description": "Equipment ready for quick delivery."
+        },
+        "certificados": {
+          "title": "Certified Equipment",
+          "description": "All equipment tested and certified."
+        },
+        "soporte": {
+          "title": "24/7 Technical Support",
+          "description": "Technical assistance available around the clock."
+        },
+        "instalacion": {
+          "title": "Installation Included",
+          "description": "Installation service by expert technicians."
+        },
+        "flexibilidad": {
+          "title": "Flexible Terms",
+          "description": "Contracts adapted to your project."
+        },
+        "emergencias": {
+          "title": "Emergency Service",
+          "description": "Quick response for emergencies."
+        }
+      },
+      "useCases": {
+        "0": "Construction projects",
+        "1": "Special events",
+        "2": "Backup during maintenance",
+        "3": "Electrical emergencies",
+        "4": "Temporary expansion",
+        "5": "Testing and commissioning",
+        "6": "Civil works and mining"
+      }
+    },
+    "about": {
+      "title": "Who We Are",
+      "description": "At RST, we believe that true excellence is not just in what we do, but in how we do it. For over 50 years we have worked with a specialized focus on transformers.",
+      "mission": "Provide reliable solutions and service that exceeds expectations, acting with transparency and dedication at every step.",
+      "vision": "Be the leading reference in the Caribbean for transformer repair and remanufacturing.",
+      "position": "In the Dominican Republic and the Caribbean, we have earned our place as specialists thanks to a passion reflected in every transformer that passes through our hands.",
+      "team": "We are a team of multidisciplinary professionals, dedicated to providing the best possible solutions.",
+      "values": {
+        "0": {
+          "title": "Excellence",
+          "description": "We exceed expectations in every project."
+        },
+        "1": {
+          "title": "Integrity",
+          "description": "Honesty and transparency in everything."
+        },
+        "2": {
+          "title": "Commitment",
+          "description": "We keep promises and take responsibility."
+        },
+        "3": {
+          "title": "Innovation",
+          "description": "We seek better ways to serve."
+        }
+      }
+    },
+    "faq": {
+      "0": {
+        "question": "How long does a repair take?",
+        "answer": "It depends on the scope. A minor repair can take 1-2 weeks, while a complete remanufacture can take 4-6 weeks."
+      },
+      "1": {
+        "question": "What warranty do you offer?",
+        "answer": "We offer a leading 18-month warranty on all our repair and remanufacturing work."
+      },
+      "2": {
+        "question": "Can you repair any brand?",
+        "answer": "Yes, our technicians are trained to repair transformers from all major brands."
+      },
+      "3": {
+        "question": "Do you offer transportation service?",
+        "answer": "Yes, we have specialized transportation service to pick up and deliver transformers."
+      },
+      "4": {
+        "question": "What is the maximum capacity?",
+        "answer": "We can handle transformers up to 10 tons and capacities up to 3,000 kVA."
+      }
+    },
+    "nav": {
+      "inicio": "Home",
+      "productos": "Products",
+      "servicios": "Services",
+      "alquiler": "Rental",
+      "recursos": "Resources",
+      "cotizaciones": "Quotes",
+      "nosotros": "About Us"
+    },
+    "products": {
+      "tipo-poste": {
+        "name": "Remanufactured Pole-Type Transformers",
+        "shortName": "Pole-Type",
+        "description": "RST by EMINSA pole-type transformers offer a reliable and cost-effective solution for overhead distribution."
+      },
+      "pad-mounted": {
+        "name": "Remanufactured Pad-Mounted Transformers",
+        "shortName": "Pad-Mounted",
+        "description": "RST by EMINSA pad-mounted transformers are safe and efficient for underground distribution."
+      },
+      "subestacion": {
+        "name": "Remanufactured Substation Transformers",
+        "shortName": "Substation",
+        "description": "RST by EMINSA substation transformers provide high performance for demanding applications."
+      }
+    },
+    "repairServices": {
+      "bobinas": {
+        "name": "Coil Repair and Replacement",
+        "shortName": "Coils",
+        "description": "Specialized repair and replacement of damaged coils.",
+        "details": {
+          "0": "Complete diagnosis",
+          "1": "Rewinding with high-quality materials",
+          "2": "Full replacement when necessary",
+          "3": "Insulation testing"
+        }
+      },
+      "aceite": {
+        "name": "Dielectric Oil Analysis",
+        "shortName": "Oil Analysis",
+        "description": "Complete oil analysis to evaluate transformer condition.",
+        "details": {
+          "0": "Professional sampling",
+          "1": "Physical-chemical analysis",
+          "2": "Dissolved gas detection (DGA)",
+          "3": "Maintenance recommendations"
+        }
+      },
+      "juntas": {
+        "name": "Gasket Replacement",
+        "shortName": "Gaskets",
+        "description": "Replacement of gaskets to prevent leaks.",
+        "details": {
+          "0": "Surface inspection",
+          "1": "High-quality gaskets",
+          "2": "Hermetic sealing",
+          "3": "Pressure testing"
+        }
+      },
+      "componentes": {
+        "name": "Component Replacement",
+        "shortName": "Components",
+        "description": "Replacement of damaged electrical components.",
+        "details": {
+          "0": "Bushings and insulators",
+          "1": "Level indicators",
+          "2": "Protection valves",
+          "3": "Connectors and terminals"
+        }
+      },
+      "soldaduras": {
+        "name": "Welding and Tank Repair",
+        "shortName": "Welding",
+        "description": "Welding repair and tank deformation correction.",
+        "details": {
+          "0": "Structural evaluation",
+          "1": "Certified welding",
+          "2": "Deformation correction",
+          "3": "Leak testing"
+        }
+      },
+      "filtrado": {
+        "name": "Oil Processing and Filtering",
+        "shortName": "Filtering",
+        "description": "Oil processing to restore dielectric properties.",
+        "details": {
+          "0": "Vacuum filtering",
+          "1": "Dehydration",
+          "2": "Degasification",
+          "3": "Oil regeneration"
+        }
+      },
+      "pintura": {
+        "name": "Equipment Repainting",
+        "shortName": "Painting",
+        "description": "Industrial repainting with high-durability finishes.",
+        "details": {
+          "0": "Surface preparation",
+          "1": "Anti-corrosion primer",
+          "2": "Industrial paint",
+          "3": "Special finishes"
+        }
+      },
+      "especializados": {
+        "name": "Specialized Services",
+        "shortName": "Specialized",
+        "description": "Other specialized services per customer requirements.",
+        "details": {
+          "0": "Voltage modifications",
+          "1": "TAP changes",
+          "2": "Accessory installation",
+          "3": "Technical consulting"
+        }
+      }
+    },
+    "repairCenter": {
+      "name": "RST Repair Center",
+      "description": "At our workshop in Santo Domingo, we service pedestal-type transformers, MV dry-type transformers, and substations up to 10 tons.",
+      "capabilities": {
+        "0": {
+          "type": "Pedestal Transformers",
+          "description": "Complete repair of pedestal-type transformers",
+          "capacity": "All ranges"
+        },
+        "1": {
+          "type": "MV Dry-Type",
+          "description": "Specialized service for MV dry-type transformers",
+          "capacity": "Up to 3,000 kVA"
+        },
+        "2": {
+          "type": "Substations",
+          "description": "Heavy substation transformer handling",
+          "capacity": "Up to 10 tons"
+        }
+      },
+      "equipment": {
+        "0": {
+          "name": "Testing Lab",
+          "description": "ANSI C.57 equipped laboratory"
+        },
+        "1": {
+          "name": "Drying Oven",
+          "description": "Industrial oven for cores and coils"
+        },
+        "2": {
+          "name": "Oil Dehydrators",
+          "description": "Vacuum oil dehydration"
+        },
+        "3": {
+          "name": "Overhead Crane",
+          "description": "Heavy transformer handling"
+        },
+        "4": {
+          "name": "Workshop",
+          "description": "Complete workshop with paint booth"
+        },
+        "5": {
+          "name": "Forklift",
+          "description": "High-capacity equipment handling"
+        },
+        "6": {
+          "name": "Parts Warehouse",
+          "description": "Components and spare parts inventory"
+        },
+        "7": {
+          "name": "Storage Tank",
+          "description": "Dielectric fluid storage"
+        }
+      }
+    },
+    "process": {
+      "1": {
+        "title": "Reception and Diagnosis",
+        "shortTitle": "Diagnosis",
+        "description": "Initial chemical and electrical tests.",
+        "details": {
+          "0": "Visual inspection",
+          "1": "Insulation testing",
+          "2": "Oil analysis",
+          "3": "Diagnostic report"
+        }
+      },
+      "2": {
+        "title": "Disassembly and Inspection",
+        "shortTitle": "Disassembly",
+        "description": "Core and coil removal, baking, rewinding.",
+        "details": {
+          "0": "Oil draining",
+          "1": "Core extraction",
+          "2": "Baking",
+          "3": "Damage identification"
+        }
+      },
+      "3": {
+        "title": "Modifications",
+        "shortTitle": "Modifications",
+        "description": "Radiator replacement, custom parts installation.",
+        "details": {
+          "0": "Rewinding if necessary",
+          "1": "Radiator replacement",
+          "2": "Bushing adaptation",
+          "3": "Custom modifications"
+        }
+      },
+      "4": {
+        "title": "Reassembly",
+        "shortTitle": "Assembly",
+        "description": "Core and coil installation, gasket replacement, new oil.",
+        "details": {
+          "0": "Core reinstallation",
+          "1": "Coil placement",
+          "2": "Gasket replacement",
+          "3": "New oil filling"
+        }
+      },
+      "5": {
+        "title": "Final Testing",
+        "shortTitle": "Testing",
+        "description": "Complete electrical and pressure tests.",
+        "details": {
+          "0": "Ratio tests",
+          "1": "Winding resistance",
+          "2": "Insulation test",
+          "3": "Pressure test"
+        }
+      },
+      "6": {
+        "title": "Finishing and Painting",
+        "shortTitle": "Painting",
+        "description": "Preparation, sanding, protective paint.",
+        "details": {
+          "0": "Surface cleaning",
+          "1": "Primer",
+          "2": "Finish paint",
+          "3": "Labeling"
+        }
+      },
+      "7": {
+        "title": "Quality Control",
+        "shortTitle": "Dispatch",
+        "description": "Final inspection and delivery preparation.",
+        "details": {
+          "0": "Final inspection",
+          "1": "Test certificate",
+          "2": "Nameplate",
+          "3": "Transport preparation"
+        }
+      }
+    },
+    "tests": {
+      "megger": {
+        "name": "Insulation Resistance / Megger",
+        "shortName": "Megger",
+        "description": "Measures insulation resistance."
+      },
+      "ttr": {
+        "name": "Turns Ratio (TTR)",
+        "shortName": "TTR",
+        "description": "Verifies transformation ratio."
+      },
+      "resistencia": {
+        "name": "Winding Resistance",
+        "shortName": "Resistance",
+        "description": "Measures ohmic resistance of windings."
+      },
+      "perdidas": {
+        "name": "Load and No-Load Losses",
+        "shortName": "Losses",
+        "description": "Determines energy losses."
+      },
+      "excitacion": {
+        "name": "Excitation Current",
+        "shortName": "Excitation",
+        "description": "Evaluates magnetic core condition."
+      },
+      "impedancia": {
+        "name": "Impedance",
+        "shortName": "Impedance",
+        "description": "Measures short-circuit impedance."
+      },
+      "dga": {
+        "name": "Dissolved Gas Analysis",
+        "shortName": "DGA",
+        "description": "Detects dissolved gases in oil."
+      },
+      "pcb": {
+        "name": "PCB Detection",
+        "shortName": "PCB",
+        "description": "Analyzes oil for polychlorinated biphenyls."
+      },
+      "factor-potencia": {
+        "name": "Power Factor",
+        "shortName": "Power Factor",
+        "description": "Evaluates insulation quality."
+      }
+    }
+  },
+  "eminsaConfig": {
+    "info": {
+      "tagline": "Over 50 Years of Excellence in the Electrical Sector",
+      "slogan": "Comprehensive Solutions in Transformers and Electrical Equipment",
+      "description": "GRUPO EMINSA is a leader in the Dominican Republic and the Caribbean in the manufacturing, repair, and commercialization of electrical distribution transformers and related equipment. With over 50 years of experience, we offer comprehensive solutions backed by the highest international quality standards."
+    },
+    "stats": {
+      "0": "Years of Experience",
+      "1": "Transformers Installed",
+      "2": "Satisfied Clients",
+      "3": "Technical Support"
+    },
+    "advantages": {
+      "0": {
+        "title": "Proven Experience",
+        "description": "Over 50 years specialized in electrical distribution transformers in the Caribbean."
+      },
+      "1": {
+        "title": "Certified Quality",
+        "description": "ISO 9001:2015 certification and compliance with ANSI, IEEE, and DOE standards."
+      },
+      "2": {
+        "title": "Comprehensive Solutions",
+        "description": "From manufacturing to maintenance, repair, and commercialization services."
+      },
+      "3": {
+        "title": "Regional Reach",
+        "description": "Established presence in the Dominican Republic and the Caribbean."
+      }
+    },
+    "about": {
+      "description": "GRUPO EMINSA is a leading business organization in the Dominican Republic and the Caribbean, with over 50 years of experience in the electrical distribution transformer and related equipment sector. We specialize in offering comprehensive solutions that include manufacturing, repair, remanufacturing, commercialization, and specialized technical services.",
+      "mission": "Provide reliable, innovative, and quality solutions in transformers and electrical equipment, acting with transparency, integrity, and dedication in every project. Our commitment is to exceed our clients' expectations, guaranteeing exceptional technical service backed by decades of experience.",
+      "vision": "Be the leading reference in the Caribbean for the manufacturing, repair, and commercialization of electrical transformers, recognized for our technical excellence, constant innovation, and commitment to the sustainable development of the energy sector.",
+      "values": {
+        "0": {
+          "title": "Excellence",
+          "description": "We strive to exceed expectations in every project, ensuring the highest quality in our products and services."
+        },
+        "1": {
+          "title": "Integrity",
+          "description": "We act with honesty, transparency, and ethics in all our business relationships and operations."
+        },
+        "2": {
+          "title": "Commitment",
+          "description": "We keep our promises and take full responsibility for our products, services, and the impact we generate."
+        },
+        "3": {
+          "title": "Innovation",
+          "description": "We constantly seek better ways to serve our clients, adopting new technologies and improving our processes."
+        }
+      },
+      "team": "We have a team of highly trained multidisciplinary professionals, engineers, technicians, and specialists committed to providing the best possible solutions. Our staff receives constant training to stay up-to-date with the latest technologies and industry standards.",
+      "position": "In the Dominican Republic and the Caribbean, GRUPO EMINSA has established itself as the reference specialist in electrical transformers. Our trajectory of more than five decades, combined with our technical capacity and commitment to quality, has earned us the trust of hundreds of clients in diverse industrial, commercial, and residential sectors."
+    },
+    "divisions": {
+      "mtn": {
+        "fullName": "New Transformer Manufacturing",
+        "description": "Manufacturing distribution transformers with the highest international quality standards."
+      },
+      "rst": {
+        "fullName": "Transformer Repair and Service",
+        "description": "Specialists in repair and remanufacturing of distribution and industrial transformers."
+      },
+      "eic": {
+        "fullName": "Eminsa International Corporation",
+        "description": "Exclusive representatives of the best international brands in electrical equipment."
+      },
+      "servicios": {
+        "fullName": "Specialized Technical Services",
+        "description": "Maintenance, repair, and technical support for electrical transformers in the field."
+      }
+    },
+    "milestones": {
+      "0": {
+        "event": "Founding of EMINSA",
+        "description": "First company in the Dominican Republic for the manufacturing and repair of electrical distribution transformers.",
+        "achievements": {
+          "0": "First transformer factory in DR",
+          "1": "Pioneering Dominican-Chilean merger in the sector",
+          "2": "Introduction of Pad Mounted transformer to the market"
+        }
+      },
+      "1": {
+        "event": "First exports and international partnerships",
+        "description": "Exports to Haiti and Turks & Caicos, and agreement with Energy International Corporation USA.",
+        "achievements": {
+          "0": "First exports to the Caribbean and Haiti",
+          "1": "Partnership with Energy International Corporation USA",
+          "2": "Presence in multiple Caribbean markets"
+        }
+      },
+      "2": {
+        "event": "A new millennium: diversification and growth",
+        "description": "Distribution of Medium Voltage Switchgear, Dutch PUM advisory, and official ABB distribution.",
+        "achievements": {
+          "0": "Distribution of Medium Voltage Switchgear",
+          "1": "Operational redesign with PUM Netherlands advisory",
+          "2": "Official ABB Inc. distribution",
+          "3": "Authorized General Electric service in DR"
+        }
+      },
+      "3": {
+        "event": "New international representations",
+        "description": "Agreements with Ecuadorian manufacturer, Snyder Electric USA, and ELPROM TRAFO Bulgaria.",
+        "achievements": {
+          "0": "Representation of Ecuadorian transformer manufacturer",
+          "1": "Official Snyder Electric USA distribution",
+          "2": "ELPROM TRAFO Bulgaria representation (IEC standard)"
+        }
+      },
+      "4": {
+        "event": "Relocation to Parque Industrial Duarte",
+        "description": "Preparation to open the first 100% new transformer factory in the Caribbean.",
+        "achievements": {
+          "0": "New facilities at Parque Industrial Duarte",
+          "1": "Preparation of the first MTN factory in the Caribbean"
+        }
+      },
+      "5": {
+        "event": "First MTN prototypes, ISO 9001 and CEPM certification",
+        "description": "Launch of the first new EMINSA transformers manufactured under ANSI / DOE 2016 standards.",
+        "achievements": {
+          "0": "First MTN prototypes under ANSI / DOE 2016 standards",
+          "1": "ISO 9001 certification obtained",
+          "2": "CEPM certification for distribution networks"
+        }
+      }
+    }
+  },
+  "mtnPage": {
+    "hero": {
+      "badge": "100% National Manufacturing",
+      "title": "New Transformer Manufacturing",
+      "requestQuote": "Request a Quote",
+      "viewProducts": "View Products",
+      "efficiencyCert": "Efficiency Certification",
+      "viewCertifications": "View certifications →"
+    },
+    "products": {
+      "badge": "Our Products",
+      "title1": "Transformers",
+      "title2": "of High Quality",
+      "description": "Designed to optimize performance and energy efficiency in your facilities",
+      "power": "Power",
+      "voltage": "Voltage",
+      "viewAll": "View all products",
+      "viewMore": "View more"
+    },
+    "standards": {
+      "badge": "Guaranteed Quality",
+      "title1": "Standards and ",
+      "title2": "Certifications",
+      "description": "We comply with the highest international manufacturing and efficiency standards",
+      "normativas": "Standards",
+      "certificaciones": "Certifications",
+      "viewAllStandards": "View all standards"
+    },
+    "resources": {
+      "badge": "Tools and Documentation",
+      "title1": "Technical",
+      "title2": "Resources",
+      "description": "Access technical documentation, tools, and guides for your projects"
+    },
+    "cta": {
+      "title1": "Need a ",
+      "title2": "Custom Transformer",
+      "title3": "?",
+      "description": "Our team of engineers is ready to design the perfect solution for your project. Contact us today.",
+      "requestQuote": "Request a Quote",
+      "callNow": "Call Now"
+    },
+    "layout": {
+      "home": "MTN Home",
+      "products": "Products",
+      "standards": "Standards",
+      "certifications": "Certifications",
+      "resources": "Resources",
+      "quotes": "Quotes",
+      "viewAll": "View all",
+      "closeMenu": "Close menu",
+      "openMenu": "Open menu"
+    },
+    "productsPage": {
+      "pageTitle": "Transformers",
+      "pageDescription": "Complete line of distribution transformers manufactured under the highest international standards.",
+      "transformerLabel": "Transformer",
+      "availableConfigs": "Available configurations:",
+      "viewDetails": "View Details",
+      "quote": "Quote",
+      "quickCompare": "Quick Comparison",
+      "feature": "Feature",
+      "phases": "Phases",
+      "standards": "Standards",
+      "notFound": "Can't find what you're looking for?",
+      "customDesc": "We manufacture custom transformers to your specifications. Contact us for a personalized solution.",
+      "customQuote": "Request Custom Quote",
+      "home": "Home"
+    },
+    "productDetailPage": {
+      "home": "Home",
+      "products": "Products",
+      "transformerLabel": "Transformer",
+      "requestQuote": "Request a Quote",
+      "availableConfigs": "Available Configurations",
+      "description": "Description",
+      "features": "Features",
+      "applications": "Applications",
+      "technicalResources": "Technical Resources",
+      "datasheet": "Data Sheet",
+      "downloadPdf": "Download PDF",
+      "manual": "Manual",
+      "maintenance": "Maintenance",
+      "warranty": "Warranty",
+      "viewTerms": "View terms",
+      "calculator": "Calculator",
+      "calculateKva": "Calculate kVA",
+      "interestedIn": "Interested in {product}?",
+      "contactUs": "Contact us for a custom quote or to resolve any technical questions.",
+      "notFoundTitle": "Product not found"
+    },
+    "normativaPage": {
+      "home": "Home",
+      "normativa": "Standards",
+      "qualityStandards": "Quality Standards",
+      "pageTitle": "Standards",
+      "pageDescription": "Our transformers comply with the most demanding international standards, ensuring quality, safety, and energy efficiency.",
+      "details": "Details",
+      "benefits": "Benefits",
+      "moreInfo": "View more information",
+      "technicalDocs": "Technical Documentation",
+      "technicalDocsDesc": "Access all documentation related to the standards applicable to our products.",
+      "datasheets": "Data Sheets",
+      "certifications": "Certifications",
+      "needMoreInfo": "Need more information?",
+      "needMoreInfoDesc": "Our technical team is available to answer any questions about the standards and specifications of our transformers.",
+      "contactTechnical": "Contact Technical Team"
+    },
+    "normativaDetailPage": {
+      "home": "Home",
+      "normativa": "Standards",
+      "internationalStandard": "International Standard",
+      "description": "Description",
+      "details": "Details",
+      "benefits": "Benefits",
+      "relatedResources": "Related Resources",
+      "document": "Document {name}",
+      "pdfView": "PDF • View document",
+      "datasheets": "Data Sheets",
+      "specifications": "Specifications",
+      "complianceTitle": "Transformers Compliant with {name}",
+      "complianceDesc": "All our transformers are designed and manufactured in compliance with this standard.",
+      "viewProducts": "View Products",
+      "requestQuote": "Request a Quote",
+      "notFoundTitle": "Standard not found"
+    },
+    "certificacionesPage": {
+      "home": "Home",
+      "qualityBadge": "Quality Assurance",
+      "pageTitle": "Certifications",
+      "pageDescription": "Our commitment to quality is backed by internationally recognized certifications that validate our processes and products.",
+      "issuedBy": "Issued by",
+      "certificationLabel": "Certification",
+      "benefitsGuaranteed": "Benefits Guaranteed:",
+      "validUntil": "Valid until:",
+      "whyTitle": "Why Are Certifications Important?",
+      "whyDesc": "Certifications are more than documents, they are a guarantee of quality and trust.",
+      "security": "Security",
+      "securityDesc": "Products tested and verified under strict security standards.",
+      "quality": "Quality",
+      "qualityDesc": "Controlled and standardized manufacturing processes.",
+      "globalAccess": "Global Access",
+      "globalAccessDesc": "Compliance with requirements for international markets.",
+      "trustTitle": "Trust in Certified Quality",
+      "trustDesc": "All our transformers are backed by these certifications. Request your quote and receive a product of guaranteed quality.",
+      "requestQuote": "Request a Quote",
+      "viewProducts": "View Products"
+    },
+    "recursosPage": {
+      "home": "Home",
+      "resourceCenter": "Resource Center",
+      "pageTitle": "Technical Resources",
+      "pageDescription": "Technical documentation, tools, and guides to support your projects with EMINSA transformers.",
+      "useTool": "Use tool",
+      "viewResources": "View resources",
+      "datasheetsTitle": "Data Sheets and Documents",
+      "interactiveTool": "Interactive Tool",
+      "kvaCalculator": "kVA Calculator",
+      "kvaDesc": "Not sure what transformer capacity you need? Use our interactive calculator to determine the required power based on your load.",
+      "residentialCalc": "Residential load calculation",
+      "commercialCalc": "Commercial load calculation",
+      "industrialCalc": "Industrial load calculation",
+      "demandFactor": "Demand factor included",
+      "useCalculator": "Use Calculator",
+      "calculateIdeal": "Calculate the ideal capacity",
+      "notFound": "Can't find what you're looking for?",
+      "notFoundDesc": "Our technical team can provide additional documentation or specific information for your project.",
+      "contactSupport": "Contact Technical Support"
+    },
+    "cotizacionesPage": {
+      "home": "Home",
+      "quotesLabel": "Quotes",
+      "requestQuoteLabel": "Request a Quote",
+      "pageTitle": "Quote Your Transformer",
+      "pageDescription": "Complete the form and receive a personalized quote in less than 24 hours.",
+      "successTitle": "Request Sent!",
+      "referenceNumber": "Reference Number",
+      "saveCode": "Save this code to track your request",
+      "successDesc": "We have received your quote request. Our team will contact you within 24 hours.",
+      "viewProducts": "View Products",
+      "newQuote": "New Quote",
+      "contactInfo": "Contact Information",
+      "fullName": "Full name *",
+      "namePlaceholder": "Your name",
+      "company": "Company",
+      "companyPlaceholder": "Company name",
+      "email": "Email address *",
+      "emailPlaceholder": "email@example.com",
+      "phone": "Phone",
+      "requestType": "Request Type",
+      "whatToQuote": "What would you like to quote? *",
+      "select": "Select...",
+      "newTransformer": "New Transformer",
+      "otherProduct": "Other product or service",
+      "transformerType": "Transformer Type *",
+      "selectType": "Select a type",
+      "configuration": "Configuration",
+      "selectConfig": "Select configuration",
+      "singlePhase": "Single Phase",
+      "threePhase": "Three Phase",
+      "selfProtected": "Self-Protected (CSP)",
+      "capacityKva": "Capacity (kVA) *",
+      "selectCapacity": "Select capacity",
+      "otherSpecify": "Other (specify)",
+      "quantity": "Quantity",
+      "primaryVoltage": "Primary Voltage",
+      "primaryVoltagePlaceholder": "E.g.: 13.2 kV",
+      "secondaryVoltage": "Secondary Voltage",
+      "secondaryVoltagePlaceholder": "E.g.: 120/240 V",
+      "distributor": "Energy Distributor",
+      "selectDistributor": "Select distributor",
+      "internalUse": "INTERNAL USE",
+      "othersSpecify": "OTHERS (SPECIFY)",
+      "requestDescription": "Description of your request *",
+      "requestDescPlaceholder": "Describe the product or service you need a quote for...",
+      "attachDocument": "Attach document (optional)",
+      "clickUpload": "Click to upload files",
+      "fileTypes": "PDF, DOC, JPG, PNG, Excel (max. 5 files)",
+      "additionalDetails": "Additional Details",
+      "projectLocation": "Project location",
+      "locationPlaceholder": "City, province, or address",
+      "specialRequirements": "Description or special requirements",
+      "specialReqPlaceholder": "Describe any special requirements, additional accessories, or relevant information for your quote...",
+      "urgent": "Urgent",
+      "urgentDesc": "I need a response as soon as possible",
+      "sending": "Sending...",
+      "submitQuote": "Send Quote Request",
+      "preferContact": "Prefer to contact us directly?",
+      "callUs": "Call us",
+      "chatWithUs": "Chat with us",
+      "responseTime": "Response in less than 24 hours",
+      "noCommitment": "No-obligation quote",
+      "technicalAdvice": "Technical advice included",
+      "certificationsLabel": "Certifications",
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "phoneRequired": "Phone is required",
+      "selectRequestType": "Select request type",
+      "selectTransformerType": "Select a type",
+      "selectCapacityError": "Select a capacity",
+      "describeRequest": "Describe your request"
+    }
+  },
+  "eicPage": {
+    "hero": {
+      "badge": "International Electrical Suppliers",
+      "title": "Eminsa International Corporation",
+      "requestQuote": "Request a Quote",
+      "viewProducts": "View Products",
+      "heroDescription": "We exclusively represent leading brands in the international electrical sector, offering our clients direct access to cutting-edge technology with the support of our specialized local team in the Dominican Republic.",
+      "internationalBrands": "International brands",
+      "satisfiedClients": "Satisfied clients",
+      "yearsTrajectory": "Years of experience"
+    },
+    "brands": {
+      "badge": "Strategic Partners",
+      "title": "Represented Brands",
+      "description": "We exclusively represent the best international brands in the electrical sector, guaranteeing quality, support, and availability.",
+      "viewBrand": "View brand"
+    },
+    "categories": {
+      "badge": "Our Portfolio",
+      "title": "Product Categories",
+      "description": "We offer a wide range of electrical solutions through our represented brands, covering all sector needs.",
+      "viewCategory": "View products in this category"
+    },
+    "advantages": {
+      "badge": "Why EIC?",
+      "title": "Advantages of Working with EIC",
+      "description": "As the international division of Grupo Eminsa, we offer direct access to the best brands in the electrical sector with local support."
+    },
+    "cta": {
+      "title": "Need International Electrical Equipment?",
+      "description": "Request a quote and gain access to the best brands in the electrical sector with specialized consulting and guaranteed technical support.",
+      "requestQuote": "Request a Quote"
+    },
+    "layout": {
+      "home": "Home",
+      "products": "Products",
+      "brands": "Brands",
+      "resources": "Resources",
+      "quotes": "Quotes",
+      "viewAll": "View all",
+      "closeMenu": "Close menu",
+      "openMenu": "Open menu",
+      "requestQuote": "Request a Quote"
+    }
+  },
+  "etrysPage": {
+    "hero": {
+      "heroSubtitle": "At RST we combine the experience of a highly qualified technical team with cutting-edge technology to give your transformers a new life.",
+      "requestQuote": "Request a Quote",
+      "warranty": "Certified warranty",
+      "yearsExp": "Years of experience",
+      "transformersRestored": "Transformers restored"
+    },
+    "remanufactured": {
+      "badge": "Remanufactured Transformers",
+      "description": "Need immediate availability and competitive costs? RST remanufactured transformers are the solution.",
+      "viewDetails": "View details",
+      "viewAll": "View All Products"
+    },
+    "process": {
+      "badge": "Certified Process",
+      "title": "Our Remanufacturing Process",
+      "description": "Each transformer goes through a rigorous 7-step process that guarantees compliance with original specifications.",
+      "viewDetail": "View detail →"
+    },
+    "whyRst": {
+      "badge": "Why RST?",
+      "title": "What is the RST Advantage?"
+    },
+    "quoteForm": {
+      "title": "Request a Quote",
+      "description": "Complete the form and we will respond within 30 minutes during business hours.",
+      "namePlaceholder": "Full name",
+      "emailPlaceholder": "Email address",
+      "submit": "Continue Quote",
+      "responseTime": "Average response: 30 minutes during business hours"
+    },
+    "rental": {
+      "badge": "Temporary Solution",
+      "title": "Need Temporary Power?",
+      "description": "Get short-term power with an RST rental unit. Certified equipment, immediate availability, and 24/7 technical support.",
+      "moreInfo": "More Information",
+      "callNow": "Call Now"
+    },
+    "layout": {
+      "home": "Home",
+      "products": "Products",
+      "services": "Plant Services",
+      "servicesRepair": "Repair",
+      "servicesRepairDesc": "Comprehensive repair services",
+      "repairCenter": "Repair Center",
+      "repairCenterDesc": "Our facilities",
+      "rental": "Rental",
+      "resources": "Resources",
+      "quotes": "Quotes",
+      "viewAll": "View all",
+      "closeMenu": "Close menu",
+      "openMenu": "Open menu",
+      "requestQuote": "Request a Quote"
+    },
+    "serviciosPage": {
+      "badge": "Repair Services",
+      "title": "Specialized Services",
+      "description": "We offer comprehensive repair and maintenance services for transformers of all brands and capacities.",
+      "viewDetails": "View Details",
+      "processTitle": "Our Process",
+      "processDescription": "Each transformer goes through a rigorous 7-step process.",
+      "testsTitle": "Tests Performed",
+      "testsDescription": "Electrical and diagnostic tests to ensure quality.",
+      "repairCenterTitle": "Repair Center",
+      "repairCenterDescription": "Our specialized facilities.",
+      "viewStep": "View step",
+      "activitiesIncluded": "Activities included",
+      "previous": "Previous",
+      "next": "Next",
+      "stepOf": "Step {step} of {total}"
+    },
+    "nosotrosPage": {
+      "badge": "Who We Are",
+      "missionTitle": "Our Mission",
+      "visionTitle": "Our Vision",
+      "positionBadge": "Our Position",
+      "positionTitle": "Market Leaders",
+      "valuesBadge": "What Defines Us",
+      "valuesTitle": "Our Values",
+      "valuesDescription": "The principles that guide each of our actions and allow us to deliver excellent service.",
+      "teamBadge": "Our Team",
+      "teamTitle": "Committed Professionals",
+      "technicians": "Certified Technicians",
+      "avgExperience": "Avg. Years Exp.",
+      "annualTraining": "Annual Training",
+      "specialties": "Specialties",
+      "trajectoryBadge": "Our History",
+      "trajectoryDescription": "Over five decades of commitment to excellence.",
+      "ctaTitle": "Ready to work with us?",
+      "ctaDescription": "Contact us for a no-obligation evaluation. Our team is ready to help you.",
+      "requestQuote": "Request a Quote",
+      "callNow": "Call Now"
+    },
+    "processModal": {
+      "stepOf": "Step {step} of {total}",
+      "activitiesIncluded": "Activities included",
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "common": {
+    "requestQuote": "Request a Quote",
+    "viewMore": "View more",
+    "viewAll": "View all",
+    "callNow": "Call Now",
+    "contactUs": "Contact Us",
+    "learnMore": "Learn More",
+    "backTo": "Back to",
+    "specifications": "Specifications",
+    "applications": "Applications",
+    "features": "Features",
+    "benefits": "Benefits",
+    "details": "Details",
+    "description": "Description",
+    "products": "Products",
+    "services": "Services",
+    "resources": "Resources",
+    "certifications": "Certifications",
+    "standards": "Standards",
+    "brands": "Brands",
+    "download": "Download",
+    "share": "Share",
+    "relatedProducts": "Related Products",
+    "keyFeatures": "Key Features",
+    "technicalSpecs": "Technical Specifications",
+    "questionsTitle": "Have Questions?",
+    "questionsDesc": "Our team is ready to help you",
+    "mission": "Mission",
+    "vision": "Vision",
+    "values": "Values",
+    "ourTeam": "Our Team",
+    "history": "History",
+    "aboutUs": "About Us"
+  },
+  "serviciosConfig": {
+    "info": {
+      "tagline": "Comprehensive Field Solutions",
+      "slogan": "More than 50 years of experience and service",
+      "description": "SERVICES is Grupo EMINSA's business unit focused on providing specialized on-site technical support, offering maintenance, repair, and comprehensive support to ensure the efficiency, safety, and operational continuity of our clients' electrical transformers.",
+      "stats": {
+        "0": {
+          "label": "Years of Experience"
+        },
+        "1": {
+          "label": "Clients Served"
+        },
+        "2": {
+          "label": "Technical Support"
+        },
+        "3": {
+          "label": "Satisfaction"
+        }
+      },
+      "proceso": {
+        "1": {
+          "titulo": "Technical Inspection",
+          "descripcion": "Assessment of current conditions, detection of potential risks, and preparation of a comprehensive equipment diagnosis."
+        },
+        "2": {
+          "titulo": "Specialized Execution",
+          "descripcion": "Findings-based maintenance: work execution according to the results of the initial diagnosis."
+        },
+        "3": {
+          "titulo": "Final Verification",
+          "descripcion": "Validation of the work performed, confirmation of transformer operability, and delivery of a technical report."
+        }
+      }
+    },
+    "detalle": {
+      "preventivo": {
+        "nombre": "Preventive - Predictive Maintenance",
+        "nombreCorto": "Preventive",
+        "descripcion": "Scheduled inspections, diagnostic testing, and condition monitoring to anticipate failures and extend the useful life of your equipment.",
+        "descripcionLarga": "At EMINSA Services, we understand that the reliability of your transformers is key to the continuity of your operations. Our Preventive and Predictive Maintenance program is designed to anticipate failures, minimize risks, and extend the useful life of your equipment. Through scheduled inspections, diagnostic testing, and condition monitoring, we ensure that each transformer operates at optimal parameters, reducing unplanned downtime and optimizing operating costs.",
+        "beneficios": {
+          "0": "Prevention of unexpected failures",
+          "1": "Greater transformer availability and efficiency",
+          "2": "Reduction of major repair costs",
+          "3": "Extension of equipment useful life",
+          "4": "Safety and continuity in power distribution"
+        },
+        "etapas": {
+          "0": {
+            "titulo": "Visual and Thermographic Inspection",
+            "descripcion": "Assessment of external condition, connections, bushings, and components using infrared thermography."
+          },
+          "1": {
+            "titulo": "Diagnostic Testing",
+            "descripcion": "Dielectric oil analysis, insulation resistance measurement, power factor, and turns ratio testing."
+          },
+          "2": {
+            "titulo": "Condition Monitoring",
+            "descripcion": "Continuous tracking of critical parameters to detect degradation trends."
+          },
+          "3": {
+            "titulo": "Report and Recommendations",
+            "descripcion": "Delivery of a detailed technical report with findings, diagnosis, and recommended action plan."
+          }
+        }
+      },
+      "correctivo": {
+        "nombre": "Field Corrective Maintenance",
+        "nombreCorto": "Corrective",
+        "descripcion": "On-site corrective maintenance solutions, ensuring quick and efficient response to failures.",
+        "descripcionLarga": "At EMINSA Services, we offer on-site corrective maintenance solutions, ensuring quick and efficient response to failures or conditions that compromise the operation of your transformers. Our specialized technicians are trained to intervene directly in the field, reducing downtime and avoiding unnecessary equipment transport.",
+        "beneficios": {
+          "0": "Quick and efficient on-site response",
+          "1": "Reduced downtime",
+          "2": "Avoids unnecessary equipment transport",
+          "3": "Restoration of operational reliability",
+          "4": "Operational continuity"
+        },
+        "alcance": {
+          "0": "Cosmetic rehabilitation: paint application and label replacement",
+          "1": "Oil level restoration and adjustment",
+          "2": "Dielectric oil change",
+          "3": "Leak detection and correction",
+          "4": "Replacement of critical components (bushings, inserts, breathers, valves, connectors)"
+        }
+      },
+      "integral": {
+        "nombre": "Comprehensive Field Maintenance",
+        "nombreCorto": "Comprehensive",
+        "descripcion": "Complete service combining inspection, execution, and final verification for maximum reliability.",
+        "descripcionLarga": "Our Comprehensive Field Maintenance service guarantees complete transformer care, combining inspection, execution, and final verification to ensure maximum equipment reliability. This service is designed to cover all phases necessary in transformer care: from initial assessment to post-maintenance verification.",
+        "beneficios": {
+          "0": "Correction of existing conditions",
+          "1": "Prevention of future failures",
+          "2": "Extension of equipment useful life",
+          "3": "Optimization of electrical system operation",
+          "4": "Complete technical report"
+        },
+        "etapas": {
+          "0": {
+            "titulo": "Prior Technical Inspection",
+            "descripcion": "Assessment of current conditions and detection of potential risks."
+          },
+          "1": {
+            "titulo": "Findings-Based Maintenance",
+            "descripcion": "Execution of work according to the results of the initial diagnosis."
+          },
+          "2": {
+            "titulo": "Post-Maintenance Technical Inspection",
+            "descripcion": "Validation of work performed and confirmation of transformer operability."
+          }
+        }
+      },
+      "revisiones": {
+        "nombre": "Technical Reviews and Diagnostics",
+        "nombreCorto": "Reviews",
+        "descripcion": "Specialized technical evaluations to determine the actual condition and remaining useful life of your transformers.",
+        "descripcionLarga": "Our Technical Reviews and Diagnostics service provides a thorough assessment of your transformers' condition. We use state-of-the-art equipment and advanced diagnostic techniques to precisely determine operating conditions, identify potential problems, and recommend corrective or preventive actions.",
+        "beneficios": {
+          "0": "Accurate diagnosis of equipment condition",
+          "1": "Early identification of problems",
+          "2": "Data for maintenance planning",
+          "3": "Remaining useful life assessment",
+          "4": "Detailed technical reports"
+        },
+        "etapas": {
+          "0": {
+            "titulo": "Dielectric Oil Analysis",
+            "descripcion": "Physicochemical tests, dissolved gas chromatography, and furan analysis."
+          },
+          "1": {
+            "titulo": "Electrical Testing",
+            "descripcion": "Insulation resistance measurement, power factor, turns ratio, and winding resistance."
+          },
+          "2": {
+            "titulo": "Thermographic Inspection",
+            "descripcion": "Detection of hot spots, loose connections, and overheating components."
+          },
+          "3": {
+            "titulo": "Structural Assessment",
+            "descripcion": "Inspection of tank, radiators, bushings, valves, and external accessories."
+          }
+        }
+      },
+      "asesoria": {
+        "nombre": "Technical Advisory",
+        "nombreCorto": "Advisory",
+        "descripcion": "Specialized consulting to optimize the management of your electrical assets and maximize return on investment.",
+        "descripcionLarga": "Our team of engineers and specialists offers comprehensive technical advisory to help you make the best decisions about your transformers and electrical systems. From equipment selection to maintenance planning, we accompany you at every stage to maximize the efficiency and reliability of your infrastructure.",
+        "beneficios": {
+          "0": "Optimization of asset management",
+          "1": "Strategic maintenance planning",
+          "2": "Proper equipment selection",
+          "3": "Reduction of operating costs",
+          "4": "Guaranteed regulatory compliance"
+        }
+      },
+      "especiales": {
+        "nombre": "Special Services",
+        "nombreCorto": "Special",
+        "descripcion": "Customized solutions for unique requirements that go beyond conventional maintenance.",
+        "descripcionLarga": "EMINSA Services offers tailored solutions to meet our clients' special requirements. Whether it is equipment relocation, component modernization, or a particular intervention, we have the experience and resources to execute any special project related to electrical transformers.",
+        "beneficios": {
+          "0": "Customized solutions",
+          "1": "Specialized technical team",
+          "2": "Execution flexibility",
+          "3": "Comprehensive project management",
+          "4": "Quality guarantee"
+        }
+      },
+      "emergencias": {
+        "nombre": "Emergency Response",
+        "nombreCorto": "Emergencies",
+        "descripcion": "Specialized rapid response service for critical situations, available 24/7.",
+        "descripcionLarga": "We understand that emergencies have no schedule. Our rapid response team is available 24 hours a day, 7 days a week, to handle any critical situation that puts your transformers' operation at risk. We guarantee minimal response times and effective actions to restore normal operation as quickly as possible.",
+        "beneficios": {
+          "0": "Immediate 24/7 response",
+          "1": "Dedicated emergency team",
+          "2": "Minimal response times",
+          "3": "On-site corrective actions",
+          "4": "Post-emergency technical reports"
+        }
+      },
+      "ingenieria": {
+        "nombre": "Engineering and Project Management",
+        "nombreCorto": "Engineering",
+        "descripcion": "Comprehensive solutions from design to execution of complex electrical projects.",
+        "descripcionLarga": "Our engineering department offers complete design, planning, and management services for electrical projects. From substations to distribution systems, we cover all project stages ensuring quality, regulatory compliance, and execution efficiency.",
+        "beneficios": {
+          "0": "Electrical facility design",
+          "1": "Assembly and commissioning",
+          "2": "Large-scale projects",
+          "3": "Specialized supervision",
+          "4": "Regulatory compliance"
+        },
+        "etapas": {
+          "0": {
+            "titulo": "Study and Design",
+            "descripcion": "Requirements analysis, solution design, and preparation of plans and technical specifications."
+          },
+          "1": {
+            "titulo": "Planning and Logistics",
+            "descripcion": "Activity scheduling, resource management, and client coordination."
+          },
+          "2": {
+            "titulo": "Execution and Assembly",
+            "descripcion": "Equipment installation, wiring, connections, and commissioning tests."
+          },
+          "3": {
+            "titulo": "Commissioning",
+            "descripcion": "Energization, functional testing, and formal project delivery with technical documentation."
+          }
+        }
+      },
+      "laboratorio": {
+        "nombre": "Laboratory Testing",
+        "nombreCorto": "Laboratory",
+        "descripcion": "Specialized dielectric oil analysis in partnership with SD Myers, a world leader in diagnostics.",
+        "descripcionLarga": "In partnership with SD Myers, the world leader in transformer diagnostics, we offer a complete dielectric oil analysis and laboratory testing service. Our results enable informed decisions about the maintenance and operation of your equipment, anticipating problems before they become costly failures.",
+        "beneficios": {
+          "0": "Dissolved Gas Analysis (DGA)",
+          "1": "Dielectric strength and power factor",
+          "2": "Moisture and particle detection",
+          "3": "Furan analysis (paper useful life)",
+          "4": "Expert interpretation of results"
+        }
+      },
+      "alquiler": {
+        "nombre": "Transformer Rental",
+        "nombreCorto": "Rental",
+        "descripcion": "Equipment available to cover temporary needs or respond to emergencies.",
+        "descripcionLarga": "We have a large inventory of transformers available for temporary rental. Whether for construction projects, industrial expansions, scheduled maintenance, or emergencies, we offer flexible solutions with fast delivery, installation included, and 24/7 technical support.",
+        "beneficios": {
+          "0": "Immediate availability",
+          "1": "Flexible contract options",
+          "2": "Installation included",
+          "3": "24/7 technical support",
+          "4": "Cost-effective alternative"
+        }
+      }
+    },
+    "equipamiento": {
+      "lab": {
+        "name": "Electrical Testing Laboratory",
+        "description": "Laboratory equipped in accordance with ANSI C.57 standards to ensure the quality of every service"
+      },
+      "horno": {
+        "name": "Drying Oven",
+        "description": "Industrial oven for drying transformer cores and coils"
+      },
+      "deshidratadores": {
+        "name": "Oil Dehydrators",
+        "description": "Vacuum oil dehydration system for purification"
+      },
+      "grua": {
+        "name": "Overhead Crane",
+        "description": "Overhead crane for safe handling of heavy transformers in the workshop"
+      },
+      "taller": {
+        "name": "Manufacturing Workshop",
+        "description": "Complete workshop with professional paint booth for high-quality finishes"
+      },
+      "montacargas": {
+        "name": "Industrial Forklift",
+        "description": "High-capacity forklift for handling heavy equipment"
+      },
+      "almacen": {
+        "name": "Component Warehouse",
+        "description": "Complete inventory of components and spare parts for immediate availability"
+      },
+      "tanque": {
+        "name": "Storage Tank",
+        "description": "Large-capacity dielectric fluid storage tank"
+      }
+    },
+    "proyectos": {
+      "p1": {
+        "titulo": "Preventive Maintenance - Industrial Free Trade Zone",
+        "cliente": "Zona Franca Las Americas",
+        "ubicacion": "Santo Domingo Este, Dominican Republic",
+        "tipoServicio": "Preventive Maintenance",
+        "tipoProducto": "Distribution Transformers",
+        "descripcion": "Comprehensive preventive maintenance program for 50 distribution transformers in an industrial free trade zone.",
+        "detalles": "A preventive-predictive maintenance program was implemented that included quarterly thermographic inspections, semi-annual dielectric oil analysis, routine electrical testing, and continuous monitoring of operating conditions. The program reduced unplanned failures by 85% during the first year of implementation.",
+        "resultados": {
+          "0": "85% reduction in unplanned failures",
+          "1": "30% reduction in maintenance costs",
+          "2": "Zero critical service interruptions",
+          "3": "Estimated useful life extension of 8-10 years"
+        }
+      },
+      "p2": {
+        "titulo": "Emergency - Post-Hurricane Restoration",
+        "cliente": "EDENORTE",
+        "ubicacion": "Santiago, Dominican Republic",
+        "tipoServicio": "Emergencies",
+        "tipoProducto": "Pole Type Transformers",
+        "descripcion": "Restoration of electrical service after a hurricane, including assessment, repair, and installation of transformers.",
+        "detalles": "After the hurricane, an emergency team of 25 technicians was mobilized within the first 6 hours. 120 affected transformers were assessed, 85 were repaired on site, and 35 units were replaced with temporary rental equipment. Electrical service was restored to 95% within the first 72 hours.",
+        "resultados": {
+          "0": "95% of service restored in 72 hours",
+          "1": "120 transformers assessed",
+          "2": "85 units repaired in the field",
+          "3": "35 rental units installed"
+        }
+      },
+      "p3": {
+        "titulo": "Engineering - Shopping Mall Substation",
+        "cliente": "Agora Mall",
+        "ubicacion": "Santo Domingo, DN",
+        "tipoServicio": "Engineering and Project Management",
+        "tipoProducto": "Substation Transformers",
+        "descripcion": "Design, installation, and commissioning of a complete electrical substation for a premium shopping mall.",
+        "detalles": "Turnkey project that included substation design, equipment selection, permit management, installation of 3 x 2,500 kVA transformers, medium voltage distribution system, Schneider Electric switchgear, and remote monitoring system. The project was completed 2 weeks ahead of schedule.",
+        "resultados": {
+          "0": "Delivered 2 weeks ahead of schedule",
+          "1": "7,500 kVA installed capacity",
+          "2": "24/7 remote monitoring system",
+          "3": "Zero safety incidents"
+        }
+      },
+      "p4": {
+        "titulo": "Comprehensive Maintenance - Cement Plant",
+        "cliente": "Cementos Santo Domingo",
+        "ubicacion": "San Cristobal, Dominican Republic",
+        "tipoServicio": "Comprehensive Maintenance",
+        "tipoProducto": "Power Transformers",
+        "descripcion": "Comprehensive maintenance of 8 power transformers at a cement production plant.",
+        "detalles": "Comprehensive maintenance was performed on 8 power transformers (2,000-10,000 kVA) during the plant's scheduled shutdown. The scope included tank and radiator cleaning, dielectric oil change, gasket and seal replacement, complete electrical testing, and exterior anticorrosive coating.",
+        "resultados": {
+          "0": "8 transformers successfully serviced",
+          "1": "Compliance with shutdown schedule",
+          "2": "15% improvement in operational efficiency",
+          "3": "Reduction in operating temperature"
+        }
+      },
+      "p5": {
+        "titulo": "Laboratory Testing - Distribution Network",
+        "cliente": "EDESUR",
+        "ubicacion": "Southern Region, Dominican Republic",
+        "tipoServicio": "Laboratory Testing",
+        "tipoProducto": "Distribution Transformers",
+        "descripcion": "Sampling and dielectric oil analysis campaign for 200 transformers in the distribution network.",
+        "detalles": "In partnership with SD Myers, a diagnostic campaign was executed that included oil sampling from 200 transformers, dissolved gas analysis (DGA), dielectric strength, moisture content, acidity, and furan analysis. The results allowed prioritizing 35 units for immediate intervention and planning maintenance for the remaining units.",
+        "resultados": {
+          "0": "200 samples analyzed",
+          "1": "35 units prioritized for intervention",
+          "2": "Condition database updated",
+          "3": "3-year maintenance plan developed"
+        }
+      },
+      "p6": {
+        "titulo": "Temporary Rental - Tourism Project",
+        "cliente": "Hard Rock Hotel & Casino",
+        "ubicacion": "Punta Cana, Dominican Republic",
+        "tipoServicio": "Equipment Rental",
+        "tipoProducto": "Pad Mounted Transformers",
+        "descripcion": "Temporary power supply during the expansion of the hotel complex.",
+        "detalles": "6 Pad Mounted transformers were provided on rental (225-1,000 kVA) for 8 months to cover temporary power needs during the construction phase of the new hotel wing. Transport, installation, commissioning, monthly maintenance, and deinstallation upon project completion were included.",
+        "resultados": {
+          "0": "8 months of uninterrupted service",
+          "1": "Zero power interruptions",
+          "2": "Monthly maintenance included",
+          "3": "Clean deinstallation upon completion"
+        }
+      }
+    },
+    "testimoniales": {
+      "t1": {
+        "cargo": "Maintenance Manager",
+        "testimonio": "Since we implemented the preventive maintenance program with EMINSA, our unplanned failures were reduced by 85%. Their technical team is highly professional and always meets established timelines."
+      },
+      "t2": {
+        "cargo": "Director of Operations",
+        "testimonio": "EMINSA's response during the post-hurricane emergency was exceptional. In less than 6 hours they already had a team in the field, and within 72 hours we had restored 95% of service. They are true strategic allies."
+      },
+      "t3": {
+        "cargo": "Director of Projects",
+        "testimonio": "The substation project was executed flawlessly. EMINSA not only met all technical specifications but delivered 2 weeks ahead of schedule. The quality of their engineering is first-rate."
+      },
+      "t4": {
+        "cargo": "Plant Manager",
+        "testimonio": "The comprehensive maintenance during our scheduled shutdown was executed with military precision. All 8 transformers were left in optimal condition and the plant started up without any setbacks. Excellent service."
+      },
+      "t5": {
+        "cargo": "Distribution Supervisor",
+        "testimonio": "EMINSA's laboratory analyses, in partnership with SD Myers, allowed us to identify 35 transformers that required urgent intervention. Thanks to that, we avoided failures that would have cost us millions."
+      },
+      "t6": {
+        "cargo": "Project Manager",
+        "testimonio": "The transformer rental service was key to our expansion project. EMINSA provided us with reliable equipment, professional installation, and impeccable maintenance throughout the 8-month contract."
+      }
+    },
+    "clientes": {
+      "c1": {
+        "sector": "Energy and Distribution",
+        "serviciosContratados": {
+          "0": "Emergencies",
+          "1": "Preventive Maintenance",
+          "2": "Rental"
+        }
+      },
+      "c2": {
+        "sector": "Energy and Distribution",
+        "serviciosContratados": {
+          "0": "Laboratory Testing",
+          "1": "Preventive Maintenance"
+        }
+      },
+      "c3": {
+        "sector": "Energy and Distribution",
+        "serviciosContratados": {
+          "0": "Comprehensive Maintenance",
+          "1": "Emergencies"
+        }
+      },
+      "c4": {
+        "sector": "Industrial",
+        "serviciosContratados": {
+          "0": "Preventive Maintenance",
+          "1": "Field Corrective"
+        }
+      },
+      "c5": {
+        "sector": "Commercial",
+        "serviciosContratados": {
+          "0": "Engineering & Projects",
+          "1": "Comprehensive Maintenance"
+        }
+      },
+      "c6": {
+        "sector": "Industrial",
+        "serviciosContratados": {
+          "0": "Comprehensive Maintenance",
+          "1": "Laboratory Testing"
+        }
+      },
+      "c7": {
+        "sector": "Hospitality and Tourism",
+        "serviciosContratados": {
+          "0": "Equipment Rental",
+          "1": "Engineering & Projects"
+        }
+      },
+      "c8": {
+        "sector": "Energy and Distribution",
+        "serviciosContratados": {
+          "0": "Corrective Maintenance",
+          "1": "Emergencies"
+        }
+      },
+      "c9": {
+        "sector": "Industrial",
+        "serviciosContratados": {
+          "0": "Preventive Maintenance",
+          "1": "Laboratory Testing"
+        }
+      },
+      "c10": {
+        "sector": "Commercial",
+        "serviciosContratados": {
+          "0": "Comprehensive Maintenance",
+          "1": "Technical Advisory"
+        }
+      },
+      "c11": {
+        "sector": "Healthcare",
+        "serviciosContratados": {
+          "0": "Preventive Maintenance",
+          "1": "Emergencies"
+        }
+      },
+      "c12": {
+        "sector": "Commercial",
+        "serviciosContratados": {
+          "0": "Comprehensive Maintenance",
+          "1": "Equipment Rental"
+        }
+      }
+    },
+    "recursos": {
+      "r1": {
+        "nombre": "Order Service",
+        "descripcion": "Request a maintenance, repair, or inspection service for your transformers."
+      },
+      "r2": {
+        "nombre": "KVA Calculator",
+        "descripcion": "Tool to calculate the required transformer capacity based on your load."
       }
     }
   }

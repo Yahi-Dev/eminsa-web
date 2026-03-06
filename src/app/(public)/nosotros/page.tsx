@@ -55,6 +55,7 @@ const divisionIcons: { [key: string]: React.ElementType } = {
 
 export default function NosotrosPage() {
   const t = useTranslations("pages.nosotros");
+  const tc = useTranslations("eminsaConfig");
   const [selectedMilestone, setSelectedMilestone] = useState<typeof eminsaMilestones[0] | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -88,23 +89,23 @@ export default function NosotrosPage() {
               animate={{ opacity: 1, x: 0 }}
             >
               <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                {eminsaInfo.tagline}
+                {tc("info.tagline")}
               </span>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
                 {aboutEminsa.title}
               </h1>
               <p className="text-xl text-white/90 mb-6">
-                {aboutEminsa.description}
+                {tc("about.description")}
               </p>
 
               {/* Stats */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {eminsaStats.map((stat) => (
+                {eminsaStats.map((stat, index) => (
                   <div key={stat.label} className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4">
                     <div className="text-2xl md:text-3xl font-bold">
                       {stat.value}{stat.suffix}
                     </div>
-                    <div className="text-xs text-white/70">{stat.label}</div>
+                    <div className="text-xs text-white/70">{tc(`stats.${index}`)}</div>
                   </div>
                 ))}
               </div>
@@ -166,7 +167,7 @@ export default function NosotrosPage() {
                 {t("mission")}
               </h3>
               <p className="text-gray-600 text-lg">
-                {aboutEminsa.mission}
+                {tc("about.mission")}
               </p>
             </motion.div>
 
@@ -185,7 +186,7 @@ export default function NosotrosPage() {
                 {t("vision")}
               </h3>
               <p className="text-gray-600 text-lg">
-                {aboutEminsa.vision}
+                {tc("about.vision")}
               </p>
             </motion.div>
           </div>
@@ -207,10 +208,10 @@ export default function NosotrosPage() {
                     <Icon size={32} className="text-[#00269b] group-hover:text-white transition-colors" />
                   </div>
                   <h4 className="text-xl font-bold text-gray-900 mb-2">
-                    {value.title}
+                    {tc(`about.values.${index}.title`)}
                   </h4>
                   <p className="text-gray-600">
-                    {value.description}
+                    {tc(`about.values.${index}.description`)}
                   </p>
                 </motion.div>
               );
@@ -278,17 +279,17 @@ export default function NosotrosPage() {
                 {t("position.title")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
-                {aboutEminsa.position}
+                {tc("about.position")}
               </p>
 
               {/* Advantages */}
               <div className="space-y-4">
-                {eminsaAdvantages.map((adv) => (
+                {eminsaAdvantages.map((adv, index) => (
                   <div key={adv.title} className="flex items-start gap-3">
                     <CheckCircle2 size={20} className="text-[#009e49] shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold text-gray-900">{adv.title}</h4>
-                      <p className="text-sm text-gray-600">{adv.description}</p>
+                      <h4 className="font-semibold text-gray-900">{tc(`advantages.${index}.title`)}</h4>
+                      <p className="text-sm text-gray-600">{tc(`advantages.${index}.description`)}</p>
                     </div>
                   </div>
                 ))}

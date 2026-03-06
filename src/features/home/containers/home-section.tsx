@@ -20,21 +20,21 @@ export default function HomeSection() {
       {/* 2. Divisiones — contexto de qué hace la empresa antes de entrar en detalle */}
       <DivisionsSection />
 
-      {/* 3. Stats — credibilidad y confianza antes de mostrar productos */}
-      <StatsSection />
-
-      {/* 4 & 5. MTN — división principal: transformadores nuevos y restauración */}
+      {/* 3 & 4. MTN — división principal: transformadores nuevos y restauración */}
       <MTNHeroSection />
       <TransformadorRestauracionSection />
 
-      {/* 6. Catálogo de productos MTN */}
+      {/* 5. Catálogo de productos MTN */}
       <MTNProductsShowcase />
 
-      {/* 7. Servicios adicionales */}
+      {/* 6. Servicios adicionales */}
       <ServicesSection />
 
-      {/* 8. Clientes — prueba social con logos */}
+      {/* 7. Clientes — prueba social con logos */}
       <ClientesSection />
+
+      {/* 8. Certificaciones y Normativas */}
+      <StatsSection />
 
       {/* 9. Noticias — contenido de valor, menor prioridad de conversión */}
       <NoticiasSection />

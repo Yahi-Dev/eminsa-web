@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, CheckCircle2 } from "lucide-react";
 import type { RemanufactureProcessStep } from "@/config/etrys-data";
+import { useTranslations } from "next-intl";
 
 interface Props {
   steps: RemanufactureProcessStep[];
@@ -18,6 +19,8 @@ export default function RemanufactureProcessModal({
   onClose,
   onNavigate,
 }: Props) {
+  const t = useTranslations("etrysPage.processModal");
+  const tc = useTranslations("etrysConfig.process");
   const isOpen = activeIndex !== null;
   const step = activeIndex !== null ? steps[activeIndex] : null;
 
@@ -84,9 +87,9 @@ export default function RemanufactureProcessModal({
                   </div>
                   <div>
                     <p className="text-white/70 text-xs font-semibold uppercase tracking-wider mb-0.5">
-                      Paso {step.id} de {steps.length}
+                      {t("stepOf", { step: step.id, total: steps.length })}
                     </p>
-                    <h3 className="text-xl font-bold">{step.title}</h3>
+                    <h3 className="text-xl font-bold">{tc(`${step.id}.title`)}</h3>
                   </div>
                 </div>
               </div>
@@ -101,19 +104,19 @@ export default function RemanufactureProcessModal({
                   transition={{ duration: 0.2 }}
                   className="p-6"
                 >
-                  <p className="text-gray-600 mb-5 leading-relaxed">{step.description}</p>
+                  <p className="text-gray-600 mb-5 leading-relaxed">{tc(`${step.id}.description`)}</p>
 
                   <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">
-                    Actividades incluidas
+                    {t("activitiesIncluded")}
                   </h4>
                   <ul className="space-y-2.5">
-                    {step.details.map((detail) => (
+                    {step.details.map((detail, idx) => (
                       <li key={detail} className="flex items-start gap-3">
                         <CheckCircle2
                           size={18}
                           className="text-[#0099ce] shrink-0 mt-0.5"
                         />
-                        <span className="text-gray-700 text-sm">{detail}</span>
+                        <span className="text-gray-700 text-sm">{tc(`${step.id}.details.${idx}`)}</span>
                       </li>
                     ))}
                   </ul>
@@ -128,7 +131,7 @@ export default function RemanufactureProcessModal({
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-600 hover:border-[#0099ce] hover:text-[#0099ce] disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm font-medium"
                 >
                   <ChevronLeft size={16} />
-                  Anterior
+                  {t("previous")}
                 </button>
 
                 {/* Dots */}
@@ -151,7 +154,7 @@ export default function RemanufactureProcessModal({
                   disabled={activeIndex === steps.length - 1}
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-gray-200 text-gray-600 hover:border-[#0099ce] hover:text-[#0099ce] disabled:opacity-30 disabled:cursor-not-allowed transition-colors text-sm font-medium"
                 >
-                  Siguiente
+                  {t("next")}
                   <ChevronRight size={16} />
                 </button>
               </div>

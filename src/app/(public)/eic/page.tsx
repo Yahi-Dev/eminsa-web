@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import {
   Globe,
@@ -49,6 +50,9 @@ const countryFlags: { [key: string]: string } = {
 };
 
 export default function EICPage() {
+  const t = useTranslations("eicPage");
+  const tc = useTranslations("eicConfig");
+
   return (
     <div className="min-h-screen">
       {/* ================================================================ */}
@@ -76,7 +80,7 @@ export default function EICPage() {
             >
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
                 <Globe size={18} className="text-[#009e49]" />
-                <span className="text-sm font-medium">{eicInfo.tagline}</span>
+                <span className="text-sm font-medium">{tc("info.tagline")}</span>
               </div>
 
               <div className="space-y-4">
@@ -84,12 +88,12 @@ export default function EICPage() {
                   <span className="text-white">Eminsa International Corporation</span>
                 </h1>
                 <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed">
-                  {eicInfo.description}
+                  {tc("info.description")}
                 </p>
               </div>
 
               <p className="text-lg text-white/70 leading-relaxed max-w-xl">
-                Representamos exclusivamente las marcas líderes del sector eléctrico internacional, ofreciendo a nuestros clientes acceso directo a tecnología de punta con el respaldo de nuestro equipo local especializado en República Dominicana.
+                {t("hero.heroDescription")}
               </p>
 
               {/* CTAs */}
@@ -98,14 +102,14 @@ export default function EICPage() {
                   href="/eic/productos"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#009e49] hover:bg-white/90 font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl"
                 >
-                  Ver Productos
+                  {t("hero.viewProducts")}
                   <ArrowRight size={20} />
                 </Link>
                 <Link
                   href="/eic/cotizaciones"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-all"
                 >
-                  Solicitar Cotización
+                  {t("hero.requestQuote")}
                   <ArrowRight size={20} />
                 </Link>
               </div>
@@ -133,18 +137,18 @@ export default function EICPage() {
                   <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2 animate-float relative z-10">
                     <Globe size={48} className="mx-auto text-white" />
                     <p className="text-4xl font-bold">8+</p>
-                    <p className="text-white/70 text-sm">Marcas internacionales</p>
+                    <p className="text-white/70 text-sm">{t("hero.internationalBrands")}</p>
                   </div>
                 </div>
 
                 {/* Floating stat cards */}
                 <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-delayed z-10">
                   <p className="text-3xl font-bold">500+</p>
-                  <p className="text-xs text-white/70">Clientes satisfechos</p>
+                  <p className="text-xs text-white/70">{t("hero.satisfiedClients")}</p>
                 </div>
                 <div className="absolute bottom-12 left-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-slow z-10">
                   <p className="text-3xl font-bold">50+</p>
-                  <p className="text-xs text-white/70">Años de trayectoria</p>
+                  <p className="text-xs text-white/70">{t("hero.yearsTrajectory")}</p>
                 </div>
               </div>
             </motion.div>
@@ -165,14 +169,13 @@ export default function EICPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <span className="inline-block px-3 py-1 bg-[#009e49]/10 text-[#009e49] text-sm font-medium rounded-full mb-4">
-              Aliados Estratégicos
+              {t("brands.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Marcas Representadas
+              {t("brands.title")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Representamos exclusivamente las mejores marcas internacionales del
-              sector eléctrico, garantizando calidad, soporte y disponibilidad.
+              {t("brands.description")}
             </p>
           </motion.div>
 
@@ -205,7 +208,7 @@ export default function EICPage() {
                     {brand.description.substring(0, 150)}...
                   </p>
                   <div className="flex items-center gap-1 text-[#009e49] text-sm font-medium mt-auto">
-                    Ver marca
+                    {t("brands.viewBrand")}
                     <ArrowRight
                       size={14}
                       className="group-hover:translate-x-1 transition-transform"
@@ -231,15 +234,13 @@ export default function EICPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <span className="inline-block px-3 py-1 bg-[#009e49]/10 text-[#009e49] text-sm font-medium rounded-full mb-4">
-              Nuestro Portafolio
+              {t("categories.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Categorías de Productos
+              {t("categories.title")}
             </h2>
             <p className="text-gray-600 text-lg">
-              Ofrecemos una amplia gama de soluciones eléctricas a través de
-              nuestras marcas representadas, cubriendo todas las necesidades del
-              sector.
+              {t("categories.description")}
             </p>
           </motion.div>
 
@@ -278,7 +279,7 @@ export default function EICPage() {
                           <Icon size={32} className="text-white" />
                         </div>
                         <h3 className="text-2xl md:text-3xl font-bold mb-2">
-                          {category.name}
+                          {tc(`categories.${category.slug}.name`)}
                         </h3>
                         <div className="flex flex-wrap justify-center gap-2 mt-4">
                           {category.brands.map((brandName) => (
@@ -296,10 +297,10 @@ export default function EICPage() {
                     {/* Content */}
                     <div className="p-8 md:p-10 flex flex-col justify-center md:[direction:ltr]">
                       <h3 className="text-xl font-bold text-gray-900 mb-3">
-                        {category.name}
+                        {tc(`categories.${category.slug}.name`)}
                       </h3>
                       <p className="text-gray-600 mb-6 leading-relaxed">
-                        {category.description}
+                        {tc(`categories.${category.slug}.description`)}
                       </p>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {category.brands.map((brandName) => (
@@ -319,7 +320,7 @@ export default function EICPage() {
                         href={`/eic/productos/${category.slug}`}
                         className="inline-flex items-center gap-2 text-[#009e49] font-semibold hover:gap-3 transition-all"
                       >
-                        Ver productos de esta categoría
+                        {t("categories.viewCategory")}
                         <ArrowRight size={18} />
                       </Link>
                     </div>
@@ -344,15 +345,13 @@ export default function EICPage() {
             className="text-center max-w-3xl mx-auto mb-12"
           >
             <span className="inline-block px-3 py-1 bg-white/10 text-white text-sm font-medium rounded-full mb-4">
-              ¿Por qué EIC?
+              {t("advantages.badge")}
             </span>
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              Ventajas de Trabajar con EIC
+              {t("advantages.title")}
             </h2>
             <p className="text-white/70 text-lg">
-              Como división internacional de Grupo Eminsa, ofrecemos acceso
-              directo a las mejores marcas del sector eléctrico con respaldo
-              local.
+              {t("advantages.description")}
             </p>
           </motion.div>
 
@@ -376,7 +375,7 @@ export default function EICPage() {
                     />
                   </div>
                   <h3 className="text-xl font-bold mb-2 flex items-center gap-2">
-                    {adv.title}
+                    {tc(`info.advantages.${adv.id}.title`)}
                     {adv.highlight && (
                       <span className="text-xs font-normal px-2 py-0.5 bg-[#009e49] text-white rounded">
                         {adv.highlight}
@@ -384,7 +383,7 @@ export default function EICPage() {
                     )}
                   </h3>
                   <p className="text-white/70 text-sm leading-relaxed">
-                    {adv.description}
+                    {tc(`info.advantages.${adv.id}.description`)}
                   </p>
                 </motion.div>
               );
@@ -411,12 +410,10 @@ export default function EICPage() {
             <div className="relative z-10 max-w-2xl mx-auto">
               <Globe size={48} className="mx-auto mb-6 text-white/80" />
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-                ¿Necesita Equipos Eléctricos Internacionales?
+                {t("cta.title")}
               </h2>
               <p className="text-white/90 text-lg mb-8 leading-relaxed">
-                Solicite una cotización y obtenga acceso a las mejores marcas del
-                sector eléctrico con asesoría especializada y soporte técnico
-                garantizado.
+                {t("cta.description")}
               </p>
 
               {/* CTA Buttons */}
@@ -425,7 +422,7 @@ export default function EICPage() {
                   href="/eic/cotizaciones"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#009e49] hover:bg-white/90 font-bold rounded-xl transition-all shadow-lg hover:shadow-xl text-lg"
                 >
-                  Solicitar Cotización
+                  {t("cta.requestQuote")}
                   <ArrowRight size={22} />
                 </Link>
                 <a

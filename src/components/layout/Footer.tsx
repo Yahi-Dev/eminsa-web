@@ -142,12 +142,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Certifications */}
+          {/* Certifications & Standards */}
           <div>
             <h4 className="text-lg font-bold mb-6">{t('certifications.title')}</h4>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 bg-white/5 rounded-lg p-3">
-                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
+                <div className="w-11 h-11 bg-white rounded-md flex items-center justify-center p-1.5 shrink-0">
                   <img
                     src="/images/SelloAENORISO9001_NEG.png"
                     alt="ISO 9001"
@@ -159,8 +159,8 @@ export default function Footer() {
                   <p className="text-white/60 text-xs">{t('certifications.iso9001')}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-4 bg-white/5 rounded-lg p-3">
-                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-2">
+              <div className="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
+                <div className="w-11 h-11 bg-white rounded-md flex items-center justify-center p-1.5 shrink-0">
                   <img
                     src="/images/IQNET_RCMark_PosCMYK.png"
                     alt="IQNET"
@@ -170,6 +170,24 @@ export default function Footer() {
                 <div>
                   <p className="font-semibold text-sm">IQNET</p>
                   <p className="text-white/60 text-xs">{t('certifications.iqnet')}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
+                <div className="w-11 h-11 bg-[#00175d] rounded-md flex items-center justify-center shrink-0">
+                  <span className="text-white font-bold text-[11px]">ANSI</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-sm">ANSI C57</p>
+                  <p className="text-white/60 text-xs">{t('certifications.ansi')}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
+                <div className="w-11 h-11 bg-[#009e49] rounded-md flex items-center justify-center shrink-0">
+                  <span className="text-white font-bold text-[11px]">DOE</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-sm">DOE-2016</p>
+                  <p className="text-white/60 text-xs">{t('certifications.doe')}</p>
                 </div>
               </div>
             </div>

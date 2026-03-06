@@ -15,6 +15,7 @@ import {
   Phone,
   MessageCircle
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
@@ -44,56 +45,24 @@ interface SubMenuItem {
   description?: string;
 }
 
-const eicNavItems: NavItem[] = [
-  {
-    name: "Inicio",
-    href: "/eic",
-    icon: Home,
-    exact: true,
-  },
-  {
-    name: "Productos",
-    href: "/eic/productos",
-    icon: Package,
-    submenu: [
-      {
-        name: "Transformadores",
-        href: "/eic/productos/transformadores",
-        description: "INATRA, Hammond, Elpitalia"
-      },
-      {
-        name: "Cables",
-        href: "/eic/productos/cables",
-        description: "Top Cable, Southwire, Cabelte"
-      },
-      {
-        name: "Distribución MT",
-        href: "/eic/productos/distribucion-mt",
-        description: "Celdas Schneider Electric"
-      },
-      {
-        name: "Breakers y Protección",
-        href: "/eic/productos/breakers",
-        description: "Schneider Electric"
-      },
-      {
-        name: "Accesorios MT",
-        href: "/eic/productos/accesorios",
-        description: "Chardon Group"
-      },
-    ],
-  },
-  {
-    name: "Recursos",
-    href: "/eic/recursos",
-    icon: FolderOpen,
-  },
-  {
-    name: "Cotizaciones",
-    href: "/eic/cotizaciones",
-    icon: FileText,
-  },
-];
+function useEicNavItems(): NavItem[] {
+  const t = useTranslations("eicPage");
+  return [
+    { name: t("layout.home"), href: "/eic", icon: Home, exact: true },
+    {
+      name: t("layout.products"), href: "/eic/productos", icon: Package,
+      submenu: [
+        { name: "Transformadores", href: "/eic/productos/transformadores", description: "INATRA, Hammond, Elpitalia" },
+        { name: "Cables", href: "/eic/productos/cables", description: "Top Cable, Southwire, Cabelte" },
+        { name: "Distribución MT", href: "/eic/productos/distribucion-mt", description: "Celdas Schneider Electric" },
+        { name: "Breakers y Protección", href: "/eic/productos/breakers", description: "Schneider Electric" },
+        { name: "Accesorios MT", href: "/eic/productos/accesorios", description: "Chardon Group" },
+      ],
+    },
+    { name: t("layout.resources"), href: "/eic/recursos", icon: FolderOpen },
+    { name: t("layout.quotes"), href: "/eic/cotizaciones", icon: FileText },
+  ];
+}
 
 export default function EICLayout({
   children,
@@ -101,6 +70,8 @@ export default function EICLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const t = useTranslations("eicPage");
+  const eicNavItems = useEicNavItems();
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -216,7 +187,7 @@ export default function EICLayout({
                                       : "text-gray-600"
                                   )}
                                 >
-                                  Ver todos
+                                  {t("layout.viewAll")}
                                 </Link>
 
                                 {item.submenu?.map((subItem) => (
@@ -297,7 +268,7 @@ export default function EICLayout({
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={mobileMenuOpen ? t("layout.closeMenu") : t("layout.openMenu")}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -366,7 +337,7 @@ export default function EICLayout({
                                     pathname === item.href ? "bg-[#009e49] text-white" : "text-gray-600 hover:bg-gray-50"
                                   )}
                                 >
-                                  Ver todos
+                                  {t("layout.viewAll")}
                                 </Link>
                                 {item.submenu?.map((subItem) => (
                                   <Link
@@ -430,7 +401,7 @@ export default function EICLayout({
                     onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center justify-center w-full px-4 py-3 bg-[#009e49] hover:bg-[#007d3a] text-white rounded-lg transition-all font-medium"
                   >
-                    Solicitar Cotización
+                    {t("layout.requestQuote")}
                   </Link>
                 </div>
               </div>

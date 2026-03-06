@@ -27,6 +27,7 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 export default function ServicesSection() {
   const t = useTranslations("home");
+  const tc = useTranslations("config");
   return (
     <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
       {/* Background Elements */}
@@ -81,10 +82,10 @@ export default function ServicesSection() {
 
                     {/* Content */}
                     <h3 className="text-lg font-bold text-[#00269b] mb-3 group-hover:text-[#0099ce] transition-colors">
-                      {service.shortName}
+                      {tc(`services.${service.id}.shortName`)}
                     </h3>
                     <p className="text-[#6d6e6d] text-sm leading-relaxed mb-4 line-clamp-3">
-                      {service.description}
+                      {tc(`services.${service.id}.description`)}
                     </p>
 
                     {/* Link */}

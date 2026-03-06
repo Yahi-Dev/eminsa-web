@@ -16,6 +16,7 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 export default function DivisionsSection() {
   const t = useTranslations("home");
+  const tc = useTranslations("config");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -138,7 +139,7 @@ export default function DivisionsSection() {
                     color: activeDivision.color,
                   }}
                 >
-                  {activeDivision.tagline}
+                  {tc(`divisions.${activeDivision.id}.tagline`)}
                 </div>
 
                 {/* Name */}
@@ -148,7 +149,7 @@ export default function DivisionsSection() {
 
                 {/* Description */}
                 <p className="text-[#6d6e6d] text-base leading-relaxed mb-8">
-                  {activeDivision.description}
+                  {tc(`divisions.${activeDivision.id}.description`)}
                 </p>
 
                 {/* CTA */}
@@ -186,7 +187,7 @@ export default function DivisionsSection() {
                         style={{ backgroundColor: activeDivision.color }}
                       />
                       <p className="font-semibold text-[#00269b] text-sm">
-                        {feature}
+                        {tc(`divisions.${activeDivision.id}.features.${idx}`)}
                       </p>
                     </motion.div>
                   ))}

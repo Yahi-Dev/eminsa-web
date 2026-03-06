@@ -16,6 +16,7 @@ import {
   X
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 function useScrolled(threshold = 10) {
   const [scrolled, setScrolled] = useState(false);
@@ -42,49 +43,51 @@ interface SubMenuItem {
   href: string;
 }
 
-// Configuración de navegación MTN
-const mtnNavItems: NavItem[] = [
-  {
-    name: "Inicio MTN",
-    href: "/mtn",
-    icon: Home,
-    exact: true,
-  },
-  {
-    name: "Productos",
-    href: "/mtn/productos",
-    icon: Package,
-    submenu: [
-      { name: "Tipo Poste", href: "/mtn/productos/tipo-poste" },
-      { name: "Pad Mounted", href: "/mtn/productos/pad-mounted" },
-      { name: "Subestación", href: "/mtn/productos/subestacion" },
-    ],
-  },
-  {
-    name: "Normativa",
-    href: "/mtn/normativa",
-    icon: Shield,
-    submenu: [
-      { name: "ANSI", href: "/mtn/normativa/ansi" },
-      { name: "DOE-2016", href: "/mtn/normativa/doe-2016" },
-    ],
-  },
-  {
-    name: "Certificaciones",
-    href: "/mtn/certificaciones",
-    icon: Award,
-  },
-  {
-    name: "Recursos",
-    href: "/mtn/recursos",
-    icon: FolderOpen,
-  },
-  {
-    name: "Cotizaciones",
-    href: "/mtn/cotizaciones",
-    icon: FileText,
-  },
-];
+function useMtnNavItems(): NavItem[] {
+  const t = useTranslations("mtnPage");
+  return [
+    {
+      name: t("layout.home"),
+      href: "/mtn",
+      icon: Home,
+      exact: true,
+    },
+    {
+      name: t("layout.products"),
+      href: "/mtn/productos",
+      icon: Package,
+      submenu: [
+        { name: "Tipo Poste", href: "/mtn/productos/tipo-poste" },
+        { name: "Pad Mounted", href: "/mtn/productos/pad-mounted" },
+        { name: "Subestación", href: "/mtn/productos/subestacion" },
+      ],
+    },
+    {
+      name: t("layout.standards"),
+      href: "/mtn/normativa",
+      icon: Shield,
+      submenu: [
+        { name: "ANSI", href: "/mtn/normativa/ansi" },
+        { name: "DOE-2016", href: "/mtn/normativa/doe-2016" },
+      ],
+    },
+    {
+      name: t("layout.certifications"),
+      href: "/mtn/certificaciones",
+      icon: Award,
+    },
+    {
+      name: t("layout.resources"),
+      href: "/mtn/recursos",
+      icon: FolderOpen,
+    },
+    {
+      name: t("layout.quotes"),
+      href: "/mtn/cotizaciones",
+      icon: FileText,
+    },
+  ];
+}
 
 export default function MTNLayout({
   children,
@@ -92,6 +95,8 @@ export default function MTNLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const t = useTranslations("mtnPage");
+  const mtnNavItems = useMtnNavItems();
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -239,7 +244,7 @@ export default function MTNLayout({
                                   : "text-gray-600"
                               )}
                             >
-                              Ver todos
+                              {t("layout.viewAll")}
                             </Link>
                             
                             {/* Submenú items */}
@@ -305,7 +310,7 @@ export default function MTNLayout({
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-label={mobileMenuOpen ? t("layout.closeMenu") : t("layout.openMenu")}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -381,7 +386,7 @@ export default function MTNLayout({
                                       : "text-gray-600 hover:bg-gray-50"
                                   )}
                                 >
-                                  Ver todos
+                                  {t("layout.viewAll")}
                                 </Link>
                                 
                                 {item.submenu?.map((subItem) => (
