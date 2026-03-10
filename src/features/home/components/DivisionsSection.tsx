@@ -61,7 +61,7 @@ export default function DivisionsSection() {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
+    <section id="divisiones" className="py-20 lg:py-28 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gray-50 rounded-full blur-[120px]" />

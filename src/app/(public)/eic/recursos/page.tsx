@@ -16,6 +16,26 @@ import {
   Globe,
 } from "lucide-react";
 import { eicResources, eicBrands } from "@/config/eic-data";
+import { Calculator } from "lucide-react";
+
+const extraCards = [
+  {
+    id: "fichas-tecnicas",
+    name: "Fichas Técnicas",
+    description: "Especificaciones técnicas y documentación detallada de los productos EIC.",
+    icon: "file-text",
+    url: "/eic/recursos/fichas-tecnicas",
+    downloadable: false,
+  },
+  {
+    id: "calculadora-kva",
+    name: "Calculadora KVA",
+    description: "Herramienta para calcular la capacidad de transformador requerida según su carga.",
+    icon: "calculator",
+    url: "/mtn/recursos/calculadora",
+    downloadable: false,
+  },
+];
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import RecursosDinamicos from "@/components/shared/RecursosDinamicos";
@@ -23,6 +43,7 @@ import RecursosDinamicos from "@/components/shared/RecursosDinamicos";
 const resourceIcons: { [key: string]: React.ElementType } = {
   "file-text": FileText,
   "file-check": FileCheck,
+  calculator: Calculator,
 };
 
 export default function EICRecursosPage() {
@@ -67,6 +88,33 @@ export default function EICRecursosPage() {
       <section className="py-16 bg-white">
         <div className="container-eminsa">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Extra cards: Fichas Técnicas + Calculadora */}
+            {extraCards.map((card, index) => {
+              const Icon = resourceIcons[card.icon] || FileText;
+              return (
+                <motion.div
+                  key={card.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100"
+                >
+                  <div className="w-16 h-16 rounded-xl bg-linear-to-br from-[#009e49]/20 to-[#007d3a]/20 flex items-center justify-center mb-4 group-hover:from-[#009e49] group-hover:to-[#007d3a] transition-all">
+                    <Icon size={32} className="text-[#009e49] group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{card.name}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{card.description}</p>
+                  <Link
+                    href={card.url}
+                    className="flex items-center gap-2 text-[#009e49] font-medium text-sm hover:underline"
+                  >
+                    <ArrowRight size={16} />
+                    {t("access")}
+                  </Link>
+                </motion.div>
+              );
+            })}
             {eicResources.map((resource, index) => {
               const Icon = resourceIcons[resource.icon] || FileText;
               return (

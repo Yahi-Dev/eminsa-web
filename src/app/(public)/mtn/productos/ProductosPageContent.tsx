@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, CheckCircle2, ChevronRight } from "lucide-react";
+import { ArrowRight, Zap, CheckCircle2, ChevronRight, ShieldCheck } from "lucide-react";
 import { transformerProducts, getVariantsByProduct } from "@/config/mtn-data";
 import { useTranslations } from "next-intl";
 
@@ -127,6 +127,17 @@ export default function ProductosPageContent() {
                             </span>
                           ))}
                         </div>
+                        {/* Warranty Badge - 30 months */}
+                        <div className="flex items-center gap-3 bg-[#00269b]/5 rounded-xl p-3">
+                          <ShieldCheck size={24} className="text-[#00269b] shrink-0" />
+                          <div>
+                            <span className="font-bold text-[#00175d] block text-sm">
+                              {t("productsPage.warranty30")}
+                            </span>
+                            <span className="text-xs text-[#00269b]">{t("productsPage.industryLeader")}</span>
+                          </div>
+                        </div>
+
                         <div className="flex flex-wrap gap-4 pt-4">
                           <Link
                             href={`/mtn/productos/${product.slug}`}

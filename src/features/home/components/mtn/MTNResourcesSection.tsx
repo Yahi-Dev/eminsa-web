@@ -15,7 +15,7 @@ import { useTranslations } from "next-intl";
 const resources = [
   { id: "noticias", icon: Newspaper, href: "/noticias?categoria=mtn", color: "#00269b" },
   { id: "fichas", icon: FileText, href: "/mtn/recursos/fichas-tecnicas", color: "#0099ce" },
-  { id: "garantias", icon: ShieldCheck, href: "/mtn/recursos/garantias", color: "#009e49" },
+  { id: "garantias", icon: ShieldCheck, href: "/mtn/recursos/garantia", color: "#009e49" },
   { id: "calculadora", icon: Calculator, href: "/mtn/recursos/calculadora", color: "#00269b" },
 ];
 

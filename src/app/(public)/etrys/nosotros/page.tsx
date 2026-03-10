@@ -45,7 +45,7 @@ export default function EtrysNosotrosPage() {
             </Link>
             <ChevronRight size={14} />
             <Link href="/etrys" className="hover:text-white transition-colors">
-              ETRYS
+              RST
             </Link>
             <ChevronRight size={14} />
             <span className="text-white">{t("breadcrumb")}</span>

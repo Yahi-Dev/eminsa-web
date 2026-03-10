@@ -254,7 +254,8 @@ export default function HeroSection() {
       >
         <a
           href="#divisiones"
-          className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors"
+          onClick={(e) => { e.preventDefault(); document.getElementById("divisiones")?.scrollIntoView({ behavior: "smooth" }); }}
+          className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors cursor-pointer"
         >
           <span className="text-sm">{t('hero.scrollIndicator')}</span>
           <ChevronDown size={24} className="animate-bounce" />

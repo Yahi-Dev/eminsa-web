@@ -12,6 +12,14 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { etrysResources } from "@/config/etrys-data";
+
+const fichasTecnicasCard = {
+  id: "fichas-tecnicas",
+  name: "Fichas Técnicas",
+  description: "Especificaciones técnicas y documentación detallada de los productos RST.",
+  icon: "file-text" as const,
+  url: "/etrys/recursos/fichas-tecnicas",
+};
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import RecursosDinamicos from "@/components/shared/RecursosDinamicos";
@@ -27,7 +35,7 @@ export default function EtrysRecursosPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-16 lg:py-20">
+      <section className="bg-linear-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-16 lg:py-20">
         <div className="container-eminsa">
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
             <Link href="/" className="hover:text-white transition-colors">
@@ -35,7 +43,7 @@ export default function EtrysRecursosPage() {
             </Link>
             <ChevronRight size={14} />
             <Link href="/etrys" className="hover:text-white transition-colors">
-              ETRYS
+              RST
             </Link>
             <ChevronRight size={14} />
             <span className="text-white">{t("breadcrumb")}</span>
@@ -59,10 +67,38 @@ export default function EtrysRecursosPage() {
         </div>
       </section>
 
-      {/* Herramientas (Calculadora) */}
+      {/* Herramientas y recursos */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Fichas Técnicas card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all group border border-gray-100"
+            >
+              <div className="w-16 h-16 rounded-xl bg-linear-to-br from-[#0099ce]/20 to-[#00269b]/20 flex items-center justify-center mb-4 group-hover:from-[#0099ce] group-hover:to-[#00269b] transition-all">
+                <FileText
+                  size={32}
+                  className="text-[#0099ce] group-hover:text-white transition-colors"
+                />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                {fichasTecnicasCard.name}
+              </h3>
+              <p className="text-gray-600 mb-4">{fichasTecnicasCard.description}</p>
+              <Link
+                href={fichasTecnicasCard.url}
+                className="inline-flex items-center gap-2 text-[#0099ce] font-semibold hover:text-[#007ba8] transition-colors"
+              >
+                {t("access")}
+                <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+
+            {/* Existing resource cards */}
             {etrysResources.map((resource, index) => {
               const Icon = resourceIcons[resource.icon] || FileText;
               return (
@@ -71,10 +107,10 @@ export default function EtrysRecursosPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: (index + 1) * 0.1 }}
                   className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all group border border-gray-100"
                 >
-                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#0099ce]/20 to-[#00269b]/20 flex items-center justify-center mb-4 group-hover:from-[#0099ce] group-hover:to-[#00269b] transition-all">
+                  <div className="w-16 h-16 rounded-xl bg-linear-to-br from-[#0099ce]/20 to-[#00269b]/20 flex items-center justify-center mb-4 group-hover:from-[#0099ce] group-hover:to-[#00269b] transition-all">
                     <Icon
                       size={32}
                       className="text-[#0099ce] group-hover:text-white transition-colors"
@@ -112,7 +148,7 @@ export default function EtrysRecursosPage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
+      <section className="py-16 bg-linear-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div

@@ -11,6 +11,15 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { recursosServicios } from "@/config/servicios-data";
+
+const fichasTecnicasRecurso = {
+  id: "fichas-tecnicas",
+  nombre: "Fichas Técnicas",
+  descripcion: "Especificaciones técnicas y documentación detallada de los servicios EMINSA.",
+  icon: "file-text",
+  href: "/servicios/recursos/fichas-tecnicas",
+  tipo: "documento",
+};
 import RecursosDinamicos from "@/components/shared/RecursosDinamicos";
 import { useTranslations } from "next-intl";
 
@@ -76,6 +85,31 @@ export default function RecursosServiciosPage() {
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Fichas Técnicas card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 }}
+            >
+              <Link href={fichasTecnicasRecurso.href} className="group block h-full">
+                <div className="h-full p-8 bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#6d6e6d]/20 transition-all duration-300 hover:-translate-y-1">
+                  <div className="w-16 h-16 bg-linear-to-br from-[#6d6e6d]/10 to-[#6d6e6d]/5 rounded-2xl flex items-center justify-center mb-6 group-hover:from-[#6d6e6d] group-hover:to-[#575857] transition-all duration-300">
+                    <FileText className="w-8 h-8 text-[#6d6e6d] group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <span className="inline-block px-2 py-1 bg-[#6d6e6d]/10 text-[#6d6e6d] text-xs font-medium rounded mb-3 capitalize">
+                    {fichasTecnicasRecurso.tipo}
+                  </span>
+                  <h3 className="text-xl font-bold text-[#6d6e6d] mb-3">{fichasTecnicasRecurso.nombre}</h3>
+                  <p className="text-[#6d6e6d] text-sm leading-relaxed mb-6">{fichasTecnicasRecurso.descripcion}</p>
+                  <div className="flex items-center gap-2 text-[#6d6e6d] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {t("access")}
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
             {recursosServicios.map((recurso, index) => {
               const IconComponent = iconMap[recurso.icon] || FileText;
               const isExternal = recurso.href.startsWith("http");

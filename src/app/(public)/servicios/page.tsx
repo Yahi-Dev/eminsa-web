@@ -18,10 +18,6 @@ import {
   MapPin,
   Search,
   CheckCircle2,
-  Quote,
-  Star,
-  Calendar,
-  Building2,
   Activity,
   Flame,
   Droplets,
@@ -33,8 +29,6 @@ import { services, contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import {
   serviciosInfo,
-  proyectosServicios,
-  testimoniales,
   equipamientoEspecializado,
   serviciosPorTipo,
 } from "@/config/servicios-data";
@@ -69,9 +63,6 @@ const equipmentIcons: { [key: string]: React.ElementType } = {
 
 export default function ServiciosPage() {
   const t = useTranslations("pages.servicios");
-  const proyectosDestacados = proyectosServicios.filter((p) => p.destacado).slice(0, 3);
-  const testimonialesPreview = testimoniales.slice(0, 3);
-
   return (
     <div className="min-h-screen">
       {/* ================================================================ */}
@@ -547,215 +538,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* ================================================================ */}
-      {/* 6. PROYECTOS PREVIEW */}
-      {/* ================================================================ */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="container-eminsa">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
-              {t("projects.badge")}
-            </span>
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-              {t("projects.title")}
-            </h2>
-            <p className="text-[#6d6e6d] text-lg">
-              {t("projects.description")}
-            </p>
-          </motion.div>
-
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {proyectosDestacados.map((proyecto, index) => (
-              <motion.div
-                key={proyecto.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-1"
-              >
-                {/* Top Gradient Stripe */}
-                <div className="h-2 bg-gradient-to-r from-[#6d6e6d] via-[#575857] to-[#414241]" />
-
-                <div className="p-8">
-                  {/* Service Badge + Date */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-xs font-medium rounded-full">
-                      <Settings size={12} />
-                      {proyecto.tipoServicio}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-xs text-[#6d6e6d]">
-                      <Calendar size={12} />
-                      {proyecto.fechaFin}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-lg font-bold text-[#00269b] mb-2 group-hover:text-[#00269b] transition-colors">
-                    {proyecto.titulo}
-                  </h3>
-
-                  {/* Client */}
-                  <div className="flex items-center gap-2 text-sm text-[#6d6e6d] mb-4">
-                    <Building2 size={14} />
-                    <span>{proyecto.cliente}</span>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-[#6d6e6d] text-sm leading-relaxed mb-6 line-clamp-3">
-                    {proyecto.descripcion}
-                  </p>
-
-                  {/* Results Preview */}
-                  <div className="space-y-1.5">
-                    {proyecto.resultados.slice(0, 2).map((resultado, i) => (
-                      <div
-                        key={i}
-                        className="flex items-center gap-2 text-sm text-[#6d6e6d]"
-                      >
-                        <CheckCircle2
-                          size={14}
-                          className="text-[#00269b] flex-shrink-0"
-                        />
-                        {resultado}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CTA Link */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <Link
-              href="/servicios/proyectos"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#00269b] text-white font-semibold rounded-xl hover:bg-[#00269b]/90 transition-all shadow-md hover:shadow-lg"
-            >
-              {t("projects.viewAll")}
-              <ArrowRight size={20} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ================================================================ */}
-      {/* 7. TESTIMONIALES PREVIEW */}
-      {/* ================================================================ */}
-      <section className="py-16 lg:py-24 bg-gray-50">
-        <div className="container-eminsa">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <span className="inline-block px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-sm font-medium rounded-full mb-4">
-              {t("testimonials.badge")}
-            </span>
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] mb-4">
-              {t("testimonials.title")}
-            </h2>
-            <p className="text-[#6d6e6d] text-lg">
-              {t("testimonials.description")}
-            </p>
-          </motion.div>
-
-          {/* Testimonials Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonialesPreview.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 relative"
-              >
-                {/* Large Quote Icon */}
-                <Quote
-                  size={64}
-                  className="absolute top-6 right-6 text-[#00269b]/10"
-                />
-
-                {/* Testimonial Text */}
-                <p className="text-[#6d6e6d] italic leading-relaxed mb-6 relative z-10">
-                  &ldquo;{testimonial.testimonio}&rdquo;
-                </p>
-
-                {/* Rating Stars */}
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      size={16}
-                      className={
-                        i < testimonial.rating
-                          ? "text-[#00269b] fill-[#00269b]"
-                          : "text-gray-200 fill-gray-200"
-                      }
-                    />
-                  ))}
-                </div>
-
-                {/* Author Info */}
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#00269b] to-[#00175d] rounded-full flex items-center justify-center text-white font-bold text-sm">
-                    {testimonial.iniciales}
-                  </div>
-                  <div>
-                    <div className="font-bold text-[#00269b] text-sm">
-                      {testimonial.nombre}
-                    </div>
-                    <div className="text-xs text-[#6d6e6d]">
-                      {testimonial.cargo} - {testimonial.empresa}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Service Badge */}
-                <div className="mt-4 pt-4 border-t border-gray-100">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-xs font-medium rounded-full">
-                    <Settings size={10} />
-                    {testimonial.servicio}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CTA Link */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mt-12"
-          >
-            <Link
-              href="/servicios/testimoniales"
-              className="inline-flex items-center gap-2 text-[#00269b] font-semibold hover:gap-3 transition-all text-lg"
-            >
-              {t("testimonials.viewAll")}
-              <ArrowRight size={20} />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ================================================================ */}
-      {/* 8. WHY CHOOSE US STATS */}
+      {/* 6. WHY CHOOSE US STATS */}
       {/* ================================================================ */}
       <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#00269b] text-white">
         <div className="container-eminsa">

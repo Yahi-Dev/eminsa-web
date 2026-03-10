@@ -121,7 +121,7 @@ export default function EICLayout({
             : "top-20 xl:top-28 bg-white/60 backdrop-blur-sm"
         )}
       >
-        <div className="flex items-center justify-center px-4 lg:px-6 xl:px-10 w-full py-2">
+        <div className="container-eminsa py-2 flex items-center justify-center">
             <div className="flex items-center gap-1">
                 {eicNavItems.map((item) => {
                   const Icon = item.icon;

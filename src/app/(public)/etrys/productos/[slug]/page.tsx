@@ -154,7 +154,7 @@ export default function EtrysProductoDetailPage({
             </Link>
             <ChevronRight size={14} />
             <Link href="/etrys" className="hover:text-white transition-colors">
-              ETRYS
+              RST
             </Link>
             <ChevronRight size={14} />
             <Link href="/etrys/productos" className="hover:text-white transition-colors">
@@ -171,7 +171,7 @@ export default function EtrysProductoDetailPage({
               animate={{ opacity: 1, x: 0 }}
             >
               <span className="inline-block px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                ETRYS by EMINSA
+                RST by EMINSA
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                 {product.name}

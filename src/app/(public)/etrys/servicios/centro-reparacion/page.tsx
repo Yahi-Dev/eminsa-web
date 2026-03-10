@@ -51,7 +51,7 @@ export default function CentroReparacionPage() {
             </Link>
             <ChevronRight size={14} />
             <Link href="/etrys" className="hover:text-white transition-colors">
-              ETRYS
+              RST
             </Link>
             <ChevronRight size={14} />
             <Link href="/etrys/servicios" className="hover:text-white transition-colors">
