@@ -114,7 +114,7 @@ export default function CotizarPage() {
       </section>
 
       {/* Form Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Form */}

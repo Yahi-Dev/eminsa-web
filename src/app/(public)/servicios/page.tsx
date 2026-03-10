@@ -349,7 +349,7 @@ export default function ServiciosPage() {
       {/* ================================================================ */}
       {/* 3. PROCESO DE TRABAJO */}
       {/* ================================================================ */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
           {/* Section Header */}
           <motion.div

@@ -70,7 +70,7 @@ export default function NosotrosPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-[#00269b] text-white py-16 lg:py-24">
         <div className="container-eminsa">
@@ -221,7 +221,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Our Position */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -364,7 +364,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Team */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div

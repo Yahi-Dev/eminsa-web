@@ -234,7 +234,7 @@ export default function EICPage() {
       {/* ================================================================ */}
       {/* CATEGORIAS DE PRODUCTOS */}
       {/* ================================================================ */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
           {/* Header */}
           <motion.div

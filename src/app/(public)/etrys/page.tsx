@@ -162,7 +162,7 @@ export default function EtrysPage() {
       </section>
 
       {/* Productos Remanufacturados */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
           {/* Header */}
           <motion.div
@@ -426,7 +426,7 @@ export default function EtrysPage() {
       </section>
 
       {/* Alquiler Section */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Image */}

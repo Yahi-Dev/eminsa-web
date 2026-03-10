@@ -20,7 +20,7 @@ import { useTranslations } from "next-intl";
 export default function EtrysProductosPage() {
   const t = useTranslations("etrysPage.productosPage");
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-linear-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-16">
         <div className="container-eminsa">
@@ -275,7 +275,7 @@ export default function EtrysProductosPage() {
       </section>
 
       {/* Pruebas Realizadas */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container-eminsa">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="inline-block px-3 py-1 bg-[#0099ce]/10 text-[#0099ce] text-sm font-medium rounded-full mb-4">

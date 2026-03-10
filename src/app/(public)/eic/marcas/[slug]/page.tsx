@@ -144,7 +144,7 @@ export default function MarcaDetailPage({
   const logoSrc = brandLogos[slug];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* ================================================================ */}
       {/* HERO                                                              */}
       {/* ================================================================ */}

@@ -16,7 +16,7 @@ export default function ProductosPageContent() {
   const tc = useTranslations("mtnConfig");
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-16">
         <div className="container-eminsa">

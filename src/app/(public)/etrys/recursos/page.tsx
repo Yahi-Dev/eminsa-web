@@ -33,7 +33,7 @@ const resourceIcons: { [key: string]: React.ElementType } = {
 export default function EtrysRecursosPage() {
   const t = useTranslations("etrysPage.recursosPage");
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-linear-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-16 lg:py-20">
         <div className="container-eminsa">
@@ -137,7 +137,7 @@ export default function EtrysRecursosPage() {
       </section>
 
       {/* Fichas Técnicas Dinámicas */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
           <RecursosDinamicos
             division="RST"

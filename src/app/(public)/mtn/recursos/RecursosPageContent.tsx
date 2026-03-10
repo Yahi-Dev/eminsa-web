@@ -42,7 +42,7 @@ const fadeUp = {
 export default function RecursosPageContent() {
   const t = useTranslations("pages.mtn.recursos.main");
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#00269b] to-[#00175d] text-white py-16">
         <div className="container-eminsa">
@@ -146,7 +146,7 @@ export default function RecursosPageContent() {
       </section>
 
       {/* Calculator Preview */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-16 bg-gradient-to-br from-white to-gray-100">
         <div className="container-eminsa">
           <motion.div
             variants={fadeUp}
