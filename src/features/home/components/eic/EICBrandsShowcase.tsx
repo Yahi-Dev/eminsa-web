@@ -67,7 +67,7 @@ const brands = [
     slug: "southwire",
     country: "Estados Unidos",
     flag: "/images/eic/flags/estados-unidos.png",
-    logo: "/images/eic/brands/southwire.png",
+    logo: "/images/eic/brands/southwire.jpg",
     category: "Cables",
     color: "#00269b",
   },
@@ -208,10 +208,14 @@ export default function EICBrandsShowcase() {
               </div>
 
               {/* Brand logo area */}
-              <div className="relative z-10 w-40 h-40 bg-white rounded-2xl shadow-lg flex items-center justify-center p-6 border border-gray-100">
-                <span className="text-3xl font-bold text-[#00269b]">
-                  {activeBrand.id === "green-transfo" ? "GT" : activeBrand.id.charAt(0).toUpperCase() + activeBrand.id.slice(1, 3).toUpperCase()}
-                </span>
+              <div className="relative z-10 w-40 h-40 bg-white rounded-2xl shadow-lg flex items-center justify-center p-4 border border-gray-100">
+                <Image
+                  src={activeBrand.logo}
+                  alt={activeBrand.id}
+                  width={140}
+                  height={140}
+                  className="object-contain max-h-32"
+                />
               </div>
 
               {/* Country + category pills */}
