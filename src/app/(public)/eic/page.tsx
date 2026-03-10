@@ -19,6 +19,7 @@ import {
   ShieldCheck,
   MapPin,
 } from "lucide-react";
+import Image from "next/image";
 import { eicInfo, eicProductCategories, eicBrands } from "@/config/eic-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
@@ -39,14 +40,15 @@ const advantageIcons: { [key: string]: React.ElementType } = {
 };
 
 const countryFlags: { [key: string]: string } = {
-  Ecuador: "🇪🇨",
-  "Canadá / Norteamérica": "🇨🇦",
-  Italia: "🇮🇹",
-  España: "🇪🇸",
-  "Estados Unidos": "🇺🇸",
-  Portugal: "🇵🇹",
-  "Francia / Global": "🇫🇷",
-  Internacional: "🌍",
+  Ecuador: "/images/eic/flags/ecuador.png",
+  "Canadá / Norteamérica": "/images/eic/flags/canada.png",
+  Italia: "/images/eic/flags/italia.png",
+  España: "/images/eic/flags/espana.png",
+  "Estados Unidos": "/images/eic/flags/estados-unidos.png",
+  Portugal: "/images/eic/flags/portugal.png",
+  "Francia / Global": "/images/eic/flags/francia.png",
+  Internacional: "/images/eic/flags/internacional.png",
+  "Francia / Polonia / Turquía": "/images/eic/flags/francia.png",
 };
 
 export default function EICPage() {
@@ -194,9 +196,17 @@ export default function EICPage() {
                   className="block bg-gray-50 hover:bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-all group h-full border border-gray-100 hover:border-[#009e49]/30"
                 >
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xl">
-                      {countryFlags[brand.country] || <Globe className="w-5 h-5" />}
-                    </span>
+                    {countryFlags[brand.country] ? (
+                      <Image
+                        src={countryFlags[brand.country]}
+                        alt={brand.country}
+                        width={28}
+                        height={20}
+                        className="object-contain"
+                      />
+                    ) : (
+                      <Globe className="w-5 h-5" />
+                    )}
                     <span className="text-xs text-gray-500">
                       {brand.country}
                     </span>

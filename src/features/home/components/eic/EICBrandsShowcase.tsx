@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, Globe2, Building2, Award } from "lucide-react";
 import { useTranslations, useMessages } from "next-intl";
 
@@ -11,7 +12,7 @@ const brands = [
     id: "inatra",
     slug: "inatra",
     country: "Ecuador",
-    flag: "🇪🇨",
+    flag: "/images/eic/flags/ecuador.png",
     logo: "/images/eic/brands/inatra.png",
     category: "Transformadores",
     color: "#00269b",
@@ -20,7 +21,7 @@ const brands = [
     id: "hammond",
     slug: "hammond",
     country: "Canadá",
-    flag: "🇨🇦",
+    flag: "/images/eic/flags/canada.png",
     logo: "/images/eic/brands/hammond.png",
     category: "Transformadores",
     color: "#0099ce",
@@ -29,7 +30,7 @@ const brands = [
     id: "elpitalia",
     slug: "elpitalia",
     country: "Italia",
-    flag: "🇮🇹",
+    flag: "/images/eic/flags/italia.png",
     logo: "/images/eic/brands/elpitalia.png",
     category: "Transformadores",
     color: "#009e49",
@@ -38,7 +39,7 @@ const brands = [
     id: "green-transfo",
     slug: "green-transfo",
     country: "Francia / Polonia",
-    flag: "🇫🇷",
+    flag: "/images/eic/flags/francia.png",
     logo: "/images/eic/brands/green-transfo.png",
     category: "Transformadores",
     color: "#3DCD58",
@@ -47,7 +48,7 @@ const brands = [
     id: "schneider",
     slug: "schneider-electric",
     country: "Francia",
-    flag: "🇫🇷",
+    flag: "/images/eic/flags/francia.png",
     logo: "/images/eic/brands/schneider.png",
     category: "Distribución MT / BT",
     color: "#3DCD58",
@@ -56,7 +57,7 @@ const brands = [
     id: "topcable",
     slug: "top-cable",
     country: "España",
-    flag: "🇪🇸",
+    flag: "/images/eic/flags/espana.png",
     logo: "/images/eic/brands/topcable.png",
     category: "Cables",
     color: "#0099ce",
@@ -65,7 +66,7 @@ const brands = [
     id: "southwire",
     slug: "southwire",
     country: "Estados Unidos",
-    flag: "🇺🇸",
+    flag: "/images/eic/flags/estados-unidos.png",
     logo: "/images/eic/brands/southwire.png",
     category: "Cables",
     color: "#00269b",
@@ -74,7 +75,7 @@ const brands = [
     id: "chardon",
     slug: "chardon",
     country: "Internacional",
-    flag: "🌍",
+    flag: "/images/eic/flags/internacional.png",
     logo: "/images/eic/brands/chardon.png",
     category: "Accesorios MT",
     color: "#6d6e6d",
@@ -83,7 +84,7 @@ const brands = [
     id: "cabelte",
     slug: "cabelte",
     country: "Portugal",
-    flag: "🇵🇹",
+    flag: "/images/eic/flags/portugal.png",
     logo: "/images/eic/brands/cabelte.png",
     category: "Cables",
     color: "#009e49",
@@ -215,8 +216,9 @@ export default function EICBrandsShowcase() {
 
               {/* Country + category pills */}
               <div className="flex gap-2 z-10 flex-wrap justify-center">
-                <span className="px-4 py-1.5 bg-[#009e49]/10 border border-[#009e49]/20 rounded-full text-[#009e49] text-xs font-bold">
-                  {activeBrand.flag} {activeBrand.country}
+                <span className="px-4 py-1.5 bg-[#009e49]/10 border border-[#009e49]/20 rounded-full text-[#009e49] text-xs font-bold inline-flex items-center gap-1.5">
+                  <Image src={activeBrand.flag} alt={activeBrand.country} width={20} height={14} className="object-contain" />
+                  {activeBrand.country}
                 </span>
                 <span className="px-4 py-1.5 bg-[#00269b]/10 border border-[#00269b]/20 rounded-full text-[#00269b] text-xs font-bold">
                   {activeBrand.category}

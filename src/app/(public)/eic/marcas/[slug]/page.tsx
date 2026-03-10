@@ -25,6 +25,7 @@ import {
   Plug,
   ExternalLink,
 } from "lucide-react";
+import Image from "next/image";
 import {
   getEICBrandBySlug,
   getEICProductsByBrand,
@@ -38,14 +39,26 @@ import { getWhatsAppUrl } from "@/utils/whatsapp";
 // Country flags map
 // ─────────────────────────────────────────────────────────────────────────────
 const countryFlags: { [key: string]: string } = {
-  Ecuador: "🇪🇨",
-  "Canadá / Norteamérica": "🇨🇦",
-  Italia: "🇮🇹",
-  España: "🇪🇸",
-  "Estados Unidos": "🇺🇸",
-  Portugal: "🇵🇹",
-  "Francia / Global": "🇫🇷",
-  Internacional: "🌍",
+  Ecuador: "/images/eic/flags/ecuador.png",
+  "Canadá / Norteamérica": "/images/eic/flags/canada.png",
+  Italia: "/images/eic/flags/italia.png",
+  España: "/images/eic/flags/espana.png",
+  "Estados Unidos": "/images/eic/flags/estados-unidos.png",
+  Portugal: "/images/eic/flags/portugal.png",
+  "Francia / Global": "/images/eic/flags/francia.png",
+  Internacional: "/images/eic/flags/internacional.png",
+  "Francia / Polonia / Turquía": "/images/eic/flags/francia.png",
+};
+
+const brandLogos: { [key: string]: string } = {
+  inatra: "/images/eic/logos/img-logo-inatra.png",
+  hammond: "/images/eic/logos/hammondmfg.png",
+  elpitalia: "/images/eic/logos/Elpitalia.png",
+  "top-cable": "/images/eic/logos/top-cable.png",
+  southwire: "/images/eic/logos/Southwire.jpg",
+  cabelte: "/images/eic/logos/Cabelte.png",
+  "schneider-electric": "/images/eic/logos/Schneider Electric.png",
+  chardon: "/images/eic/logos/Chardon.png",
 };
 
 const categoryIcons: { [key: string]: React.ElementType } = {
@@ -127,7 +140,8 @@ export default function MarcaDetailPage({
   const categoryColor = category?.color ?? "#009e49";
   const CategoryIcon = categoryIcons[category?.icon ?? "zap"] ?? Zap;
 
-  const flag = countryFlags[brand.country] ?? "🌍";
+  const flagSrc = countryFlags[brand.country] ?? "/images/eic/flags/internacional.png";
+  const logoSrc = brandLogos[slug];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -172,8 +186,8 @@ export default function MarcaDetailPage({
 
               {/* Brand name + flag */}
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl border border-white/20">
-                  {flag}
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 p-2">
+                  <Image src={flagSrc} alt={brand.country} width={48} height={34} className="object-contain" />
                 </div>
                 <div>
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
@@ -238,8 +252,12 @@ export default function MarcaDetailPage({
               className="hidden lg:flex items-center justify-center"
             >
               <div className="relative">
-                <div className="w-72 h-72 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center border border-white/20 text-8xl">
-                  {flag}
+                <div className="w-72 h-72 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center border border-white/20 p-8">
+                  {logoSrc ? (
+                    <Image src={logoSrc} alt={brand.name} width={240} height={240} className="object-contain" />
+                  ) : (
+                    <Image src={flagSrc} alt={brand.country} width={120} height={86} className="object-contain" />
+                  )}
                 </div>
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center">
                   <Globe size={36} className="text-white/80" />
@@ -476,10 +494,10 @@ export default function MarcaDetailPage({
           >
             <div className="flex items-center gap-5">
               <div
-                className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl shrink-0"
+                className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 p-2"
                 style={{ backgroundColor: `${categoryColor}20` }}
               >
-                {flag}
+                <Image src={flagSrc} alt={brand.country} width={48} height={34} className="object-contain" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900">
