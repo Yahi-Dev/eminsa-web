@@ -30,7 +30,7 @@ export default function TransformadorRestauracionSection() {
   ];
 
   return (
-    <section className="py-20 bg-linear-to-br from-gray-50 to-white">
+    <section className="py-20 bg-linear-to-br bg-white">
       <div className="container-eminsa">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Izquierda - Contenido */}

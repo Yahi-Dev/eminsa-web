@@ -83,7 +83,7 @@ export default function MTNHeroSection() {
   const slide = slides[activeIndex];
 
   return (
-    <section className="py-24 lg:py-32 bg-gray-50 relative overflow-hidden">
+    <section className="py-24 lg:py-32 bg-white relative">
       {/* Ambient background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#00269b]/5 rounded-full blur-[100px]" />

@@ -49,7 +49,7 @@ export default function ClientesSection() {
   };
 
   return (
-    <section className="py-20 bg-gray-50 overflow-hidden">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="container-eminsa">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

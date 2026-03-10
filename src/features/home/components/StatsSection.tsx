@@ -31,7 +31,7 @@ export default function StatsSection() {
   const [activeStandard, setActiveStandard] = useState<string | null>(null);
 
   return (
-    <section className="py-20 lg:py-28 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-gradient-to-b bg-white relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-[#00269b]/5 rounded-full blur-[100px]" />

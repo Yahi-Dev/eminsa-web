@@ -60,7 +60,7 @@ export default function NoticiasSection() {
   }, []);
 
   return (
-    <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
+    <section className="py-20 lg:py-28 bg-white relative ">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00269b]/3 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container-eminsa relative">
