@@ -1,10 +1,8 @@
 import { ContactSection } from "@/features/contact";
 import ClientesSection from "../components/ClientesSection";
 import HeroSection from "../components/HeroSection";
-import {
-  MTNHeroSection,
-  MTNProductsShowcase,
-} from "../components/mtn";
+import CounterSection from "../components/CounterSection";
+import { MTNHeroSection } from "../components/mtn";
 import { EICBrandsShowcase } from "../components/eic";
 import DivisionsSection from "../components/DivisionsSection";
 import ServicesSection from "../components/ServicesSection";
@@ -17,6 +15,9 @@ export default function HomeSection() {
     <>
       {/* 1. Hero — primera impresión, CTA principal */}
       <HeroSection />
+
+      {/* 2. Contadores — cifras clave animadas al hacer scroll */}
+      <CounterSection />
 
       {/* 2. Divisiones — contexto de qué hace la empresa antes de entrar en detalle */}
       <DivisionsSection />

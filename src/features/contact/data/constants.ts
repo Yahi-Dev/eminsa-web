@@ -39,9 +39,9 @@ export const FASES: SelectOption[] = [
  */
 export const TIPOS_TRANSFORMADORES: SelectOption[] = [
   { value: 'pad_mounted', label: 'Pad Mounted' },
-  { value: 'poste', label: 'Poste' },
-  { value: 'seco', label: 'Seco' },
-  { value: 'sumergible', label: 'Sumergible' }
+  { value: 'poste', label: 'Tipo Poste' },
+  { value: 'seco', label: 'Seco en Resina' },
+  { value: 'subestacion', label: 'Tipo Subestación' }
 ];
 
 /**

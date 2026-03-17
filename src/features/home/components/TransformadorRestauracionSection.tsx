@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Wrench, Shield, Zap } from "lucide-react";
+import { Wrench, Shield, Zap, ArrowRight, Package } from "lucide-react";
 import BeforeAfterSlider from "@/components/shared/BeforeAfterSlider";
 import { useTranslations } from "next-intl";
 
@@ -49,6 +50,24 @@ export default function TransformadorRestauracionSection() {
               {t("rst.title")}{" "}
               <span className="text-[#0099ce]">{t("rst.titleAccent")}</span>
             </h2>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+              <Link
+                href="/etrys/cotizaciones"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007fb0] text-white font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0099ce]/25"
+              >
+                <ArrowRight size={18} />
+                Solicitar Cotización
+              </Link>
+              <Link
+                href="/etrys/productos"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#0099ce] text-[#0099ce] hover:bg-[#0099ce] hover:text-white font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <Package size={18} />
+                Ver Productos RST
+              </Link>
+            </div>
 
             {/* Features Grid */}
             <div className="grid grid-cols-1 gap-4 mb-8">

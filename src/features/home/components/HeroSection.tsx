@@ -1,265 +1,318 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
-import { divisions, stats } from "@/config/navigation";
-import { useCountUp } from "../hooks/useCountUp";
-import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, ArrowRight } from "lucide-react";
 
-// Componente para animar números individuales
-function AnimatedStat({ value, label, delay }: { value: string; label: string; delay: number }) {
-  // Extraer el número de la cadena (ej: "50+" -> 50)
-  const numericValue = parseInt(value.replace(/[^0-9]/g, ""));
-  const suffix = value.replace(/[0-9]/g, "");
-  const isSpecialCase = value === "24/7";
-  
-  const count = useCountUp({ 
-    end: isSpecialCase ? 0 : numericValue, 
-    duration: 3000, // Aumentado de 2000 a 3000ms
-    delay: delay + 500 // Agregamos 500ms extra de delay
-  });
+// ─── Constants ────────────────────────────────────────────────────────────────
 
+const LETTERS: { char: string; color: string }[] = [
+  { char: "G", color: "#6d6e6d" },
+  { char: "R", color: "#6d6e6d" },
+  { char: "U", color: "#6d6e6d" },
+  { char: "P", color: "#6d6e6d" },
+  { char: "O", color: "#6d6e6d" },
+  { char: "\u00A0", color: "transparent" },
+  { char: "E", color: "#ffffff" },
+  { char: "M", color: "#ffffff" },
+  { char: "I", color: "#ffffff" },
+  { char: "N", color: "#ffffff" },
+  { char: "S", color: "#ffffff" },
+  { char: "A", color: "#ffffff" },
+];
+
+const TAGLINES: { text: string; color: string; duration: number }[] = [
+  { text: "Transformadores de Distribución Eléctrica",        color: "#ffffff",  duration: 4000 },
+  { text: "Fabricados en el Caribe con estándares IEEE / ANSI", color: "#e53e3e", duration: 2800 },
+  { text: "Manufactura Transformadores Nuevos",               color: "#0099ce",  duration: 2800 },
+  { text: "Reparación y Servicio de Transformadores",         color: "#0099ce",  duration: 2800 },
+  { text: "Eminsa International Corporation",                 color: "#0099ce",  duration: 2800 },
+  { text: "Servicios Técnicos Especializados",                color: "#0099ce",  duration: 2800 },
+];
+
+type IntentKey = "comprar" | "reparar" | "alquilar" | "servicios" | "contactar";
+
+const INTENTIONS: { label: string; value: IntentKey; sub: string }[] = [
+  { label: "Comprar",   value: "comprar",   sub: "Transformadores nuevos" },
+  { label: "Reparar",   value: "reparar",   sub: "Restauración y servicio" },
+  { label: "Alquilar",  value: "alquilar",  sub: "Equipos en alquiler" },
+  { label: "Servicios", value: "servicios", sub: "Servicios técnicos" },
+  { label: "Contactar", value: "contactar", sub: "Hablar con un asesor" },
+];
+
+const PRODUCTS: Record<IntentKey, { label: string; sub: string; href: string }[]> = {
+  comprar: [
+    { label: "Transformador Tipo Poste",   sub: "MTN",  href: "/mtn/cotizaciones" },
+    { label: "Transformador Subestación",  sub: "MTN",  href: "/mtn/cotizaciones" },
+    { label: "Equipos Eléctricos",         sub: "EIC",  href: "/eic/cotizaciones" },
+    { label: "Protección Eléctrica",       sub: "EIC",  href: "/eic/cotizaciones" },
+  ],
+  reparar: [
+    { label: "Reparación de Transformador",    sub: "RST", href: "/etrys/cotizaciones" },
+    { label: "Transformador Remanufacturado",  sub: "RST", href: "/etrys/cotizaciones" },
+  ],
+  alquilar: [
+    { label: "Alquiler de Transformador",  sub: "RST", href: "/etrys/cotizaciones" },
+    { label: "Equipos en Alquiler",        sub: "EIC", href: "/eic/cotizaciones" },
+  ],
+  servicios: [
+    { label: "Mantenimiento Preventivo",        sub: "SRV", href: "/servicios/cotizacion" },
+    { label: "Diagnóstico y Asesoría",          sub: "SRV", href: "/servicios/cotizacion" },
+    { label: "Instalaciones Eléctricas",        sub: "SRV", href: "/servicios/cotizacion" },
+    { label: "Análisis Aceite Dieléctrico",     sub: "SRV", href: "/servicios/cotizacion" },
+  ],
+  contactar: [
+    { label: "Hablar con un Asesor",    sub: "General", href: "/contacto" },
+    { label: "Cotización General",      sub: "General", href: "/contacto" },
+  ],
+};
+
+// ─── Custom dropdown ──────────────────────────────────────────────────────────
+
+interface DropdownProps {
+  label: string;
+  open: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+  className?: string;
+}
+
+function Dropdown({ label, open, onToggle, children, className = "" }: DropdownProps) {
   return (
-    <div className="text-center md:text-left">
-      <div className="text-2xl md:text-3xl font-bold text-white mb-1 flex items-center justify-center md:justify-start gap-1">
-        {isSpecialCase ? value : (
-          <>
-            <span>{count}</span>
-            <span>{suffix}</span>
-          </>
+    <div className={`relative ${className}`}>
+      <button
+        onClick={onToggle}
+        className="flex items-center gap-2 w-full h-full px-6 py-5 text-white font-semibold text-base tracking-wide transition-colors hover:text-[#0099ce]"
+      >
+        <span className="flex-1 text-left">{label}</span>
+        <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
+          <ChevronDown size={15} className="shrink-0 opacity-70" />
+        </motion.div>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -6, scaleY: 0.92 }}
+            animate={{ opacity: 1, y: 0, scaleY: 1 }}
+            exit={{ opacity: 0, y: -6, scaleY: 0.92 }}
+            transition={{ duration: 0.16, ease: "easeOut" }}
+            style={{ transformOrigin: "top" }}
+            className="absolute top-full left-0 mt-1 min-w-full z-50 bg-black/85 backdrop-blur-md border border-white/20 shadow-2xl"
+          >
+            {children}
+          </motion.div>
         )}
-      </div>
-      <div className="text-sm text-white/70">{label}</div>
+      </AnimatePresence>
     </div>
   );
 }
 
-const statKeys = ["yearsExperience", "transformersInstalled", "satisfiedClients", "techSupport"] as const;
+// ─── Hero ─────────────────────────────────────────────────────────────────────
 
 export default function HeroSection() {
-  const t = useTranslations("home");
-  const [activeSlide, setActiveSlide] = useState(0);
+  const router = useRouter();
+
+  const [taglineIndex, setTaglineIndex] = useState(0);
+  const [selectedIntent, setSelectedIntent] = useState<IntentKey>("comprar");
+  const [selectedProduct, setSelectedProduct] = useState(PRODUCTS.comprar[0]);
+  const [intentOpen, setIntentOpen] = useState(false);
+  const [prodOpen, setProdOpen] = useState(false);
+
   const videoRef = useRef<HTMLVideoElement>(null);
+  const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % divisions.length);
-    }, 6000);
-    return () => clearInterval(interval);
+    let id: ReturnType<typeof setTimeout>;
+    const schedule = (index: number) => {
+      id = setTimeout(() => {
+        const next = (index + 1) % TAGLINES.length;
+        setTaglineIndex(next);
+        schedule(next);
+      }, TAGLINES[index].duration);
+    };
+    schedule(0);
+    return () => clearTimeout(id);
   }, []);
 
+  useEffect(() => { videoRef.current?.play().catch(() => {}); }, []);
+
   useEffect(() => {
-    // Ensure video plays on mount
-    if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.log("Video autoplay failed:", error);
-      });
+    function handleClick(e: MouseEvent) {
+      if (selectRef.current && !selectRef.current.contains(e.target as Node)) {
+        setIntentOpen(false);
+        setProdOpen(false);
+      }
     }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, []);
+
+  function handleIntentSelect(intent: (typeof INTENTIONS)[0]) {
+    setSelectedIntent(intent.value);
+    setSelectedProduct(PRODUCTS[intent.value][0]);
+    setIntentOpen(false);
+    setProdOpen(false);
+  }
+
+  const currentIntent = INTENTIONS.find((i) => i.value === selectedIntent)!;
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Video Background */}
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden px-4 md:px-12">
+
+      {/* ── Video Background ── */}
       <div className="absolute inset-0">
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
+          autoPlay loop muted playsInline
           poster="/images/video-poster.jpg"
         >
           <source src="/images/web-banner-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
+        <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/60 to-black/70" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/40" />
 
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/60" />
-
-        {/* Additional gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
-
-        {/* Animated floating orbs — futuristic depth effect */}
+        {/* floating orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 1.15, 0.9, 1] }}
             transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 right-1/3 w-[450px] h-[450px] bg-[#0099ce]/12 rounded-full blur-[90px]"
+            className="absolute top-1/4 right-1/3 w-112.5 h-112.5 bg-[#0099ce]/10 rounded-full blur-[90px]"
           />
           <motion.div
             animate={{ x: [0, -30, 20, 0], y: [0, 25, -20, 0] }}
             transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 4 }}
-            className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-[#00269b]/20 rounded-full blur-[100px]"
-          />
-          <motion.div
-            animate={{ x: [0, 15, -25, 0], y: [0, -20, 30, 0], scale: [1, 0.9, 1.1, 1] }}
-            transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 8 }}
-            className="absolute top-1/2 left-1/4 w-[280px] h-[280px] bg-[#009e49]/8 rounded-full blur-[80px]"
+            className="absolute bottom-1/3 right-1/4 w-87.5 h-87.5 bg-[#00269b]/18 rounded-full blur-[100px]"
           />
         </div>
       </div>
 
-      {/* Content */}
-      <div className="relative container-eminsa py-20 lg:py-32 z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Column - Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Main Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
-            >
-              <span className="block">{t('hero.title1')}</span>
-              <span className="block text-[#0099ce]">{t('hero.title2')}</span>
-            </motion.h1>
+      {/* ── Content — centered in hero ── */}
+      <div className="relative z-10 flex flex-col items-center text-center -mt-16">
 
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-lg md:text-xl text-white/90 mb-10 max-w-xl"
+        {/* Giant "GRUPO EMINSA" letters */}
+        <div className="flex justify-center overflow-hidden">
+          {LETTERS.map((item, i) => (
+            <motion.span
+              key={i}
+              className="font-extrabold text-[9vw] md:text-[8.5vw] leading-[0.85] select-none"
+              style={{ color: item.color }}
+              initial={{ y: 200, opacity: 0, rotateX: 90 }}
+              animate={{ y: 0, opacity: 1, rotateX: 0 }}
+              transition={{
+                duration: 1,
+                delay: 0.08 * i,
+                ease: [0.22, 1, 0.36, 1] as const,
+              }}
             >
-              {t('hero.description')}
-            </motion.p>
+              {item.char}
+            </motion.span>
+          ))}
+        </div>
 
-            {/* CTA Buttons */}
+        {/* Rotating tagline */}
+        <div className="mt-3 md:mt-2 h-[5vw] md:h-[3.2vw] overflow-hidden relative w-full">
+          <AnimatePresence mode="wait">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
+              key={taglineIndex}
+              className="font-bold text-[4.5vw] md:text-[2.8vw] leading-none text-center"
+              style={{ color: TAGLINES[taglineIndex].color }}
+              initial={{ y: 80, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -80, opacity: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
             >
-              <Link
-                href="/cotizar"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0099ce] text-white font-semibold rounded-xl hover:bg-[#0091C7] transition-all duration-300 hover:shadow-lg hover:shadow-[#0099ce]/30 hover:-translate-y-1"
-              >
-                {t('hero.cta')}
-                <ArrowRight size={20} />
-              </Link>
+              {TAGLINES[taglineIndex].text}
             </motion.div>
+          </AnimatePresence>
+        </div>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="grid grid-cols-2 xl:grid-cols-4 gap-4"
+        {/* ── Select bar ── */}
+        <motion.div
+          ref={selectRef}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 0.7 }}
+          className="mt-10 w-full flex justify-center"
+        >
+          <div
+            className="inline-flex items-stretch border border-white/25 bg-black/30 backdrop-blur-sm"
+            style={{ width: "min(720px, 92vw)" }}
+          >
+            {/* Intent selector */}
+            <Dropdown
+              label={currentIntent.label}
+              open={intentOpen}
+              onToggle={() => { setIntentOpen((v) => !v); setProdOpen(false); }}
+              className="border-r border-white/20 min-w-36"
             >
-              {stats.map((stat, index) => (
-                <AnimatedStat
-                  key={index}
-                  value={stat.value}
-                  label={t(`stats.${statKeys[index]}`)}
-                  delay={700 + index * 100}
-                />
+              {INTENTIONS.map((intent) => (
+                <button
+                  key={intent.value}
+                  onClick={() => handleIntentSelect(intent)}
+                  className={`w-full text-left px-5 py-3 text-sm transition-colors ${
+                    selectedIntent === intent.value
+                      ? "bg-[#0099ce] text-white font-semibold"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  <span className="block font-semibold">{intent.label}</span>
+                  <span className="block text-[11px] opacity-60 mt-0.5">{intent.sub}</span>
+                </button>
               ))}
-            </motion.div>
-          </motion.div>
+            </Dropdown>
 
-          {/* Right Column - Division Cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block"
-          >
-            <div className="relative">
-              {/* Cards Stack */}
-              <div className="space-y-4">
-                {divisions.map((division, index) => (
-                  <motion.div
-                    key={division.id}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    <Link
-                      href={division.href}
-                      className={`group block p-6 rounded-2xl backdrop-blur-md transition-all duration-300 ${
-                        activeSlide === index
-                          ? "bg-white/20 scale-105 shadow-2xl"
-                          : "bg-white/10 hover:bg-white/15"
-                      }`}
-                      onMouseEnter={() => setActiveSlide(index)}
-                    >
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="flex items-center gap-3 mb-2">
-                            <div
-                              className="w-3 h-3 rounded-full"
-                              style={{ backgroundColor: division.color }}
-                            />
-                            <span className="text-xl font-bold text-white">
-                              {division.name}
-                            </span>
-                          </div>
-                          <p className="text-white/70 text-sm max-w-xs line-clamp-3">
-                            {division.description}
-                          </p>
-                        </div>
-                        <ArrowRight
-                          className={`text-white transition-all duration-300 ${
-                            activeSlide === index
-                              ? "opacity-100 translate-x-0"
-                              : "opacity-0 -translate-x-4"
-                          }`}
-                          size={24}
-                        />
-                      </div>
+            {/* Product selector */}
+            <Dropdown
+              label={selectedProduct.label}
+              open={prodOpen}
+              onToggle={() => { setProdOpen((v) => !v); setIntentOpen(false); }}
+              className="flex-1 border-r border-white/20"
+            >
+              {PRODUCTS[selectedIntent].map((product) => (
+                <button
+                  key={product.href + product.label}
+                  onClick={() => { setSelectedProduct(product); setProdOpen(false); }}
+                  className={`w-full text-left px-5 py-3 text-sm transition-colors ${
+                    selectedProduct.label === product.label
+                      ? "bg-[#0099ce] text-white font-semibold"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  <span className="block">{product.label}</span>
+                  <span className="block text-[11px] opacity-50 mt-0.5">{product.sub}</span>
+                </button>
+              ))}
+            </Dropdown>
 
-                      {/* Features on active */}
-                      {activeSlide === index && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          className="mt-4 pt-4 border-t border-white/20"
-                        >
-                          <div className="flex flex-wrap gap-2">
-                            {division.features.slice(0, 3).map((feature, i) => (
-                              <span
-                                key={i}
-                                className="px-3 py-1 bg-white/15 rounded-full text-xs text-white/90"
-                              >
-                                {feature}
-                              </span>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            {/* CTA button */}
+            <button
+              onClick={() => router.push(selectedProduct.href)}
+              className="flex items-center gap-3 px-8 py-5 bg-[#0099ce] hover:bg-[#0082b0] text-white font-bold text-base tracking-wide transition-colors shrink-0"
+            >
+              <span>Explorar</span>
+              <ArrowRight size={15} />
+            </button>
+          </div>
+        </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* ── Scroll indicator ── */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1.8 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <a
-          href="#divisiones"
-          onClick={(e) => { e.preventDefault(); document.getElementById("divisiones")?.scrollIntoView({ behavior: "smooth" }); }}
-          className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors cursor-pointer"
+        <button
+          onClick={() => document.getElementById("divisiones")?.scrollIntoView({ behavior: "smooth" })}
+          className="flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
         >
-          <span className="text-sm">{t('hero.scrollIndicator')}</span>
-          <ChevronDown size={24} className="animate-bounce" />
-        </a>
+          <span className="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+          <ChevronDown size={18} className="animate-bounce" />
+        </button>
       </motion.div>
     </section>
   );

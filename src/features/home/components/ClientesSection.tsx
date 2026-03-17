@@ -74,8 +74,8 @@ export default function ClientesSection() {
         onMouseLeave={handleMouseLeave}
       >
         {/* Edge fades */}
-        <div className="absolute left-0 top-0 bottom-0 w-28 bg-linear-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-28 bg-linear-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-28 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-28 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
 
         <div
           ref={trackRef}
@@ -91,7 +91,7 @@ export default function ClientesSection() {
                 style={{ borderTop: `3px solid ${color}` }}
               >
                 {/* Logo */}
-                <div className="h-28 flex items-center justify-center px-5 pt-4 pb-2">
+                <div className="h-28 flex items-center justify-center px-5 pt-4 pb-2 bg-white">
                   <div className="relative w-full h-full">
                     <Image
                       src={cliente.logo}
