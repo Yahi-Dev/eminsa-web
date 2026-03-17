@@ -23,12 +23,12 @@ const LETTERS: { char: string; color: string }[] = [
 ];
 
 const TAGLINES: { text: string; color: string; duration: number }[] = [
-  { text: "Transformadores de Distribución Eléctrica",        color: "#ffffff",  duration: 4000 },
-  { text: "Fabricados en el Caribe con estándares IEEE / ANSI", color: "#e53e3e", duration: 2800 },
-  { text: "Manufactura Transformadores Nuevos",               color: "#0099ce",  duration: 2800 },
-  { text: "Reparación y Servicio de Transformadores",         color: "#0099ce",  duration: 2800 },
-  { text: "Eminsa International Corporation",                 color: "#0099ce",  duration: 2800 },
-  { text: "Servicios Técnicos Especializados",                color: "#0099ce",  duration: 2800 },
+  { text: "Transformadores de Distribución Eléctrica",          color: "#ffffff",  duration: 4000 },
+  { text: "Fabricados en el Caribe con estándares IEEE / ANSI", color: "#e53e3e",  duration: 2800 },
+  { text: "Manufactura Transformadores Nuevos",                  color: "#0099ce",  duration: 2800 },
+  { text: "Reparación y Servicio de Transformadores",           color: "#0099ce",  duration: 2800 },
+  { text: "Eminsa International Corporation",                   color: "#0099ce",  duration: 2800 },
+  { text: "Servicios Técnicos Especializados",                  color: "#0099ce",  duration: 2800 },
 ];
 
 type IntentKey = "comprar" | "reparar" | "alquilar" | "servicios" | "contactar";
@@ -49,22 +49,22 @@ const PRODUCTS: Record<IntentKey, { label: string; sub: string; href: string }[]
     { label: "Protección Eléctrica",       sub: "EIC",  href: "/eic/cotizaciones" },
   ],
   reparar: [
-    { label: "Reparación de Transformador",    sub: "RST", href: "/etrys/cotizaciones" },
-    { label: "Transformador Remanufacturado",  sub: "RST", href: "/etrys/cotizaciones" },
+    { label: "Reparación de Transformador",   sub: "RST", href: "/etrys/cotizaciones" },
+    { label: "Transformador Remanufacturado", sub: "RST", href: "/etrys/cotizaciones" },
   ],
   alquilar: [
-    { label: "Alquiler de Transformador",  sub: "RST", href: "/etrys/cotizaciones" },
-    { label: "Equipos en Alquiler",        sub: "EIC", href: "/eic/cotizaciones" },
+    { label: "Alquiler de Transformador", sub: "RST", href: "/etrys/cotizaciones" },
+    { label: "Equipos en Alquiler",       sub: "EIC", href: "/eic/cotizaciones" },
   ],
   servicios: [
-    { label: "Mantenimiento Preventivo",        sub: "SRV", href: "/servicios/cotizacion" },
-    { label: "Diagnóstico y Asesoría",          sub: "SRV", href: "/servicios/cotizacion" },
-    { label: "Instalaciones Eléctricas",        sub: "SRV", href: "/servicios/cotizacion" },
-    { label: "Análisis Aceite Dieléctrico",     sub: "SRV", href: "/servicios/cotizacion" },
+    { label: "Mantenimiento Preventivo",    sub: "SRV", href: "/servicios/cotizacion" },
+    { label: "Diagnóstico y Asesoría",      sub: "SRV", href: "/servicios/cotizacion" },
+    { label: "Instalaciones Eléctricas",    sub: "SRV", href: "/servicios/cotizacion" },
+    { label: "Análisis Aceite Dieléctrico", sub: "SRV", href: "/servicios/cotizacion" },
   ],
   contactar: [
-    { label: "Hablar con un Asesor",    sub: "General", href: "/contacto" },
-    { label: "Cotización General",      sub: "General", href: "/contacto" },
+    { label: "Hablar con un Asesor", sub: "General", href: "/contacto" },
+    { label: "Cotización General",   sub: "General", href: "/contacto" },
   ],
 };
 
@@ -189,7 +189,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* ── Content — centered in hero ── */}
+      {/* ── Content ── */}
       <div className="relative z-10 flex flex-col items-center text-center -mt-16">
 
         {/* Giant "GRUPO EMINSA" letters */}
@@ -197,7 +197,7 @@ export default function HeroSection() {
           {LETTERS.map((item, i) => (
             <motion.span
               key={i}
-              className="font-extrabold text-[9vw] md:text-[8.5vw] leading-[0.85] select-none"
+              className="font-extrabold text-[9vw] md:text-[8.5vw] leading-none select-none"
               style={{ color: item.color }}
               initial={{ y: 200, opacity: 0, rotateX: 90 }}
               animate={{ y: 0, opacity: 1, rotateX: 0 }}
@@ -235,8 +235,10 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.7 }}
-          className="mt-10 w-full flex justify-center"
+          className="mt-10 w-full flex flex-col items-center gap-2"
         >
+          <p className="text-white/50 text-xs tracking-[0.2em] uppercase">¿Qué necesitas?</p>
+
           <div
             className="inline-flex items-stretch border border-white/25 bg-black/30 backdrop-blur-sm"
             style={{ width: "min(720px, 92vw)" }}
@@ -292,7 +294,7 @@ export default function HeroSection() {
               onClick={() => router.push(selectedProduct.href)}
               className="flex items-center gap-3 px-8 py-5 bg-[#0099ce] hover:bg-[#0082b0] text-white font-bold text-base tracking-wide transition-colors shrink-0"
             >
-              <span>Explorar</span>
+              <span>Cotizar</span>
               <ArrowRight size={15} />
             </button>
           </div>

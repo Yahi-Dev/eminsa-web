@@ -62,12 +62,12 @@ function StatItem({
 
   return (
     <motion.div
-      className="text-center py-14 px-6 border-r border-white/10 last:border-r-0"
+      className="text-center py-14 px-6 border-r border-[#e8edf5] last:border-r-0"
       initial={{ opacity: 0, y: 30 }}
       animate={triggered ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: index * 0.12 }}
     >
-      <div className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-3 tabular-nums">
+      <div className="text-5xl md:text-6xl lg:text-7xl font-bold mb-3 tabular-nums" style={{ color: "#00269b" }}>
         {isSpecial ? (
           <span>{stat.value}</span>
         ) : (
@@ -94,7 +94,7 @@ export default function CounterSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="border-y" style={{ borderColor: "rgba(255,255,255,0.08)", background: "#070d1a" }}>
+    <section ref={ref} className="border-y border-[#e8edf5] bg-white">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
         {stats.map((stat, i) => (
           <StatItem
