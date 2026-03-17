@@ -2,23 +2,22 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
-import { divisions, stats } from "@/config/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Search } from "lucide-react";
+import { stats } from "@/config/navigation";
 import { useCountUp } from "../hooks/useCountUp";
 import { useTranslations } from "next-intl";
 
 // Componente para animar números individuales
 function AnimatedStat({ value, label, delay }: { value: string; label: string; delay: number }) {
-  // Extraer el número de la cadena (ej: "50+" -> 50)
   const numericValue = parseInt(value.replace(/[^0-9]/g, ""));
   const suffix = value.replace(/[0-9]/g, "");
   const isSpecialCase = value === "24/7";
-  
-  const count = useCountUp({ 
-    end: isSpecialCase ? 0 : numericValue, 
-    duration: 3000, // Aumentado de 2000 a 3000ms
-    delay: delay + 500 // Agregamos 500ms extra de delay
+
+  const count = useCountUp({
+    end: isSpecialCase ? 0 : numericValue,
+    duration: 3000,
+    delay: delay + 500,
   });
 
   return (
@@ -33,26 +32,64 @@ function AnimatedStat({ value, label, delay }: { value: string; label: string; d
 
 const statKeys = ["yearsExperience", "transformersInstalled", "satisfiedClients", "techSupport"] as const;
 
+// Product explorer options
+const actionOptions = [
+  { value: "cotizar", label: "Cotizar" },
+  { value: "comprar", label: "Comprar" },
+  { value: "alquilar", label: "Alquilar" },
+  { value: "reparar", label: "Reparar" },
+];
+
+const productOptions = [
+  { value: "tipo-poste", label: "Transformador Tipo Poste", href: "/mtn/productos/transformadores/tipo-poste" },
+  { value: "pad-mounted", label: "Transformador Pad Mounted", href: "/mtn/productos/transformadores/pad-mounted" },
+  { value: "subestacion", label: "Transformador de Subestación", href: "/mtn/productos/transformadores/subestacion" },
+  { value: "secos-resina", label: "Transformador Seco en Resina", href: "/mtn/productos/transformadores/secos-resina" },
+  { value: "remanufacturado", label: "Transformador Remanufacturado", href: "/etrys/productos" },
+  { value: "cables", label: "Cables Eléctricos", href: "/eic/productos/cables" },
+  { value: "distribucion-mt", label: "Distribución Media Tensión", href: "/eic/productos/distribucion-mt" },
+  { value: "breakers", label: "Breakers y Protección", href: "/eic/productos/breakers" },
+];
+
 export default function HeroSection() {
   const t = useTranslations("home");
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [selectedAction, setSelectedAction] = useState("cotizar");
+  const [selectedProduct, setSelectedProduct] = useState("pad-mounted");
+  const [isActionOpen, setIsActionOpen] = useState(false);
+  const [isProductOpen, setIsProductOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const actionRef = useRef<HTMLDivElement>(null);
+  const productRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % divisions.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    // Ensure video plays on mount
     if (videoRef.current) {
-      videoRef.current.play().catch((error) => {
-        console.log("Video autoplay failed:", error);
-      });
+      videoRef.current.play().catch(() => {});
     }
   }, []);
+
+  // Close dropdowns on click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (actionRef.current && !actionRef.current.contains(event.target as Node)) {
+        setIsActionOpen(false);
+      }
+      if (productRef.current && !productRef.current.contains(event.target as Node)) {
+        setIsProductOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const currentAction = actionOptions.find((a) => a.value === selectedAction);
+  const currentProduct = productOptions.find((p) => p.value === selectedProduct);
+
+  const getExploreHref = () => {
+    if (selectedAction === "alquilar") return "/servicios/alquiler-transformadores";
+    if (selectedAction === "reparar") return "/etrys";
+    if (selectedAction === "cotizar") return `/contacto?producto=${encodeURIComponent(currentProduct?.label || "")}`;
+    return currentProduct?.href || "/mtn/productos";
+  };
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -68,16 +105,11 @@ export default function HeroSection() {
           poster="/images/video-poster.jpg"
         >
           <source src="/images/web-banner-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
 
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/60" />
-
-        {/* Additional gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
-
-        {/* Animated floating orbs — futuristic depth effect */}
+        {/* Animated floating orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{ x: [0, 40, -20, 0], y: [0, -30, 20, 0], scale: [1, 1.15, 0.9, 1] }}
@@ -89,153 +121,141 @@ export default function HeroSection() {
             transition={{ duration: 16, repeat: Infinity, ease: "easeInOut", delay: 4 }}
             className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-[#001689]/20 rounded-full blur-[100px]"
           />
-          <motion.div
-            animate={{ x: [0, 15, -25, 0], y: [0, -20, 30, 0], scale: [1, 0.9, 1.1, 1] }}
-            transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 8 }}
-            className="absolute top-1/2 left-1/4 w-[280px] h-[280px] bg-[#00B140]/8 rounded-full blur-[80px]"
-          />
         </div>
       </div>
 
       {/* Content */}
       <div className="relative container-eminsa py-20 lg:py-32 z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Column - Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+        <div className="max-w-5xl">
+          {/* Main Heading - Bold industrial style */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white mb-4 leading-[0.9] tracking-tight uppercase"
           >
-            {/* Main Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
-            >
-              <span className="block">{t('hero.title1')}</span>
-              <span className="block text-[#00A3E0]">{t('hero.title2')}</span>
-            </motion.h1>
+            <span className="block">Transformadores</span>
+            <span className="block text-[#00A3E0]">Eléctricos</span>
+          </motion.h1>
 
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-lg md:text-xl text-white/90 mb-10 max-w-xl"
-            >
-              {t('hero.description')}
-            </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-lg md:text-xl lg:text-2xl font-bold text-white/90 mb-2 uppercase tracking-wide"
+          >
+            Impulsando la Energía del Caribe
+          </motion.p>
 
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
-            >
-              <Link
-                href="/cotizar"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#00A3E0] text-white font-semibold rounded-xl hover:bg-[#0091C7] transition-all duration-300 hover:shadow-lg hover:shadow-[#00A3E0]/30 hover:-translate-y-1"
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-base md:text-lg text-white/70 mb-10 max-w-2xl"
+          >
+            {t("hero.description")}
+          </motion.p>
+
+          {/* Product Explorer Bar */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.7 }}
+            className="flex flex-col sm:flex-row max-w-3xl"
+          >
+            {/* Action Dropdown */}
+            <div ref={actionRef} className="relative">
+              <button
+                onClick={() => { setIsActionOpen(!isActionOpen); setIsProductOpen(false); }}
+                className="flex items-center justify-between gap-4 px-6 py-5 bg-white/10 backdrop-blur-md border border-white/20 sm:border-r-0 text-white font-semibold text-lg min-w-[180px] w-full sm:w-auto rounded-t-xl sm:rounded-t-none sm:rounded-l-xl hover:bg-white/15 transition-colors cursor-pointer"
               >
-                {t('hero.cta')}
-                <ArrowRight size={20} />
-              </Link>
-            </motion.div>
+                <span>{currentAction?.label}</span>
+                <ChevronDown size={20} className={`transition-transform duration-200 ${isActionOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence>
+                {isActionOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 right-0 sm:right-auto z-50 mt-1 bg-white rounded-xl shadow-2xl overflow-hidden min-w-[180px]"
+                  >
+                    {actionOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => { setSelectedAction(option.value); setIsActionOpen(false); }}
+                        className={`w-full text-left px-5 py-3 text-sm font-medium transition-colors cursor-pointer ${
+                          selectedAction === option.value ? "bg-[#001689] text-white" : "text-gray-800 hover:bg-gray-100"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            {/* Product Dropdown */}
+            <div ref={productRef} className="relative flex-1">
+              <button
+                onClick={() => { setIsProductOpen(!isProductOpen); setIsActionOpen(false); }}
+                className="flex items-center justify-between gap-4 px-6 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium text-lg w-full hover:bg-white/15 transition-colors cursor-pointer"
+              >
+                <span className="truncate">{currentProduct?.label}</span>
+                <ChevronDown size={20} className={`transition-transform duration-200 flex-shrink-0 ${isProductOpen ? "rotate-180" : ""}`} />
+              </button>
+              <AnimatePresence>
+                {isProductOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 right-0 z-50 mt-1 bg-white rounded-xl shadow-2xl overflow-hidden"
+                  >
+                    {productOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        onClick={() => { setSelectedProduct(option.value); setIsProductOpen(false); }}
+                        className={`w-full text-left px-5 py-3 text-sm font-medium transition-colors cursor-pointer ${
+                          selectedProduct === option.value ? "bg-[#001689] text-white" : "text-gray-800 hover:bg-gray-100"
+                        }`}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Explore Button */}
+            <Link
+              href={getExploreHref()}
+              className="flex items-center justify-center gap-2 px-8 py-5 bg-[#00A3E0] text-white font-bold text-lg rounded-b-xl sm:rounded-b-none sm:rounded-r-xl hover:bg-[#0091C7] transition-all duration-300 hover:shadow-lg hover:shadow-[#00A3E0]/30 cursor-pointer"
             >
-              {stats.map((stat, index) => (
-                <AnimatedStat
-                  key={index}
-                  value={stat.value}
-                  label={t(`stats.${statKeys[index]}`)}
-                  delay={700 + index * 100}
-                />
-              ))}
-            </motion.div>
+              <Search size={20} />
+              Explorar
+            </Link>
           </motion.div>
 
-          {/* Right Column - Division Cards */}
+          {/* Stats */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="grid grid-cols-2 xl:grid-cols-4 gap-6 mt-14 max-w-3xl"
           >
-            <div className="relative">
-              {/* Cards Stack */}
-              <div className="space-y-4">
-                {divisions.map((division, index) => (
-                  <motion.div
-                    key={division.id}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                  >
-                    <Link
-                      href={division.href}
-                      className={`group block p-6 rounded-2xl backdrop-blur-md transition-all duration-300 ${
-                        activeSlide === index
-                          ? "bg-white/20 scale-105 shadow-2xl"
-                          : "bg-white/10 hover:bg-white/15"
-                      }`}
-                      onMouseEnter={() => setActiveSlide(index)}
-                    >
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="flex items-center gap-3 mb-2">
-                            <div
-                              className="w-3 h-3 rounded-full"
-                              style={{ backgroundColor: division.color }}
-                            />
-                            <span className="text-xl font-bold text-white">
-                              {division.name}
-                            </span>
-                          </div>
-                          <p className="text-white/70 text-sm max-w-xs line-clamp-3">
-                            {division.description}
-                          </p>
-                        </div>
-                        <ArrowRight
-                          className={`text-white transition-all duration-300 ${
-                            activeSlide === index
-                              ? "opacity-100 translate-x-0"
-                              : "opacity-0 -translate-x-4"
-                          }`}
-                          size={24}
-                        />
-                      </div>
-
-                      {/* Features on active */}
-                      {activeSlide === index && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          className="mt-4 pt-4 border-t border-white/20"
-                        >
-                          <div className="flex flex-wrap gap-2">
-                            {division.features.slice(0, 3).map((feature, i) => (
-                              <span
-                                key={i}
-                                className="px-3 py-1 bg-white/15 rounded-full text-xs text-white/90"
-                              >
-                                {feature}
-                              </span>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
+            {stats.map((stat, index) => (
+              <AnimatedStat
+                key={index}
+                value={stat.value}
+                label={t(`stats.${statKeys[index]}`)}
+                delay={900 + index * 100}
+              />
+            ))}
           </motion.div>
         </div>
       </div>
@@ -249,9 +269,13 @@ export default function HeroSection() {
       >
         <a
           href="#divisiones"
-          className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors"
+          className="flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors cursor-pointer"
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById("divisiones")?.scrollIntoView({ behavior: "smooth" });
+          }}
         >
-          <span className="text-sm">{t('hero.scrollIndicator')}</span>
+          <span className="text-sm">{t("hero.scrollIndicator")}</span>
           <ChevronDown size={24} className="animate-bounce" />
         </a>
       </motion.div>
