@@ -7,20 +7,25 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const LETTERS: { char: string; color: string }[] = [
-  { char: "G", color: "#6d6e6d" },
-  { char: "R", color: "#6d6e6d" },
-  { char: "U", color: "#6d6e6d" },
-  { char: "P", color: "#6d6e6d" },
-  { char: "O", color: "#6d6e6d" },
-  { char: "\u00A0", color: "transparent" },
-  { char: "E", color: "#ffffff" },
-  { char: "M", color: "#ffffff" },
-  { char: "I", color: "#ffffff" },
-  { char: "N", color: "#ffffff" },
-  { char: "S", color: "#ffffff" },
-  { char: "A", color: "#ffffff" },
+const LINE1: { char: string; color: string }[] = [
+  { char: "T", color: "#ffffff" },
+  { char: "r", color: "#ffffff" },
+  { char: "a", color: "#ffffff" },
+  { char: "n", color: "#ffffff" },
+  { char: "s", color: "#ffffff" },
+  { char: "f", color: "#ffffff" },
+  { char: "o", color: "#ffffff" },
+  { char: "r", color: "#ffffff" },
+  { char: "m", color: "#ffffff" },
+  { char: "a", color: "#ffffff" },
+  { char: "d", color: "#ffffff" },
+  { char: "o", color: "#ffffff" },
+  { char: "r", color: "#ffffff" },
+  { char: "e", color: "#ffffff" },
+  { char: "s", color: "#ffffff" },
 ];
+
+const LINE2 = "de Distribución Eléctrica";
 
 const TAGLINES: { text: string; color: string; duration: number }[] = [
   { text: "Transformadores de Distribución Eléctrica",          color: "#ffffff",  duration: 4000 },
@@ -31,40 +36,35 @@ const TAGLINES: { text: string; color: string; duration: number }[] = [
   { text: "Servicios Técnicos Especializados",                  color: "#0099ce",  duration: 2800 },
 ];
 
-type IntentKey = "comprar" | "reparar" | "alquilar" | "servicios" | "contactar";
+type IntentKey = "comprar" | "reparar" | "alquilar" | "servicios";
 
 const INTENTIONS: { label: string; value: IntentKey; sub: string }[] = [
   { label: "Comprar",   value: "comprar",   sub: "Transformadores nuevos" },
   { label: "Reparar",   value: "reparar",   sub: "Restauración y servicio" },
   { label: "Alquilar",  value: "alquilar",  sub: "Equipos en alquiler" },
   { label: "Servicios", value: "servicios", sub: "Servicios técnicos" },
-  { label: "Contactar", value: "contactar", sub: "Hablar con un asesor" },
 ];
 
 const PRODUCTS: Record<IntentKey, { label: string; sub: string; href: string }[]> = {
   comprar: [
-    { label: "Transformador Tipo Poste",   sub: "MTN",  href: "/mtn/cotizaciones" },
-    { label: "Transformador Subestación",  sub: "MTN",  href: "/mtn/cotizaciones" },
-    { label: "Equipos Eléctricos",         sub: "EIC",  href: "/eic/cotizaciones" },
-    { label: "Protección Eléctrica",       sub: "EIC",  href: "/eic/cotizaciones" },
+    { label: "Transformador Tipo Poste",   sub: "MTN", href: "/mtn/productos" },
+    { label: "Transformador Subestación",  sub: "MTN", href: "/mtn/productos" },
+    { label: "Equipos Eléctricos",         sub: "EIC", href: "/eic/productos" },
+    { label: "Protección Eléctrica",       sub: "EIC", href: "/eic/productos" },
   ],
   reparar: [
-    { label: "Reparación de Transformador",   sub: "RST", href: "/etrys/cotizaciones" },
-    { label: "Transformador Remanufacturado", sub: "RST", href: "/etrys/cotizaciones" },
+    { label: "Reparación de Transformador",   sub: "RST", href: "/etrys/productos" },
+    { label: "Transformador Remanufacturado", sub: "RST", href: "/etrys/productos" },
   ],
   alquilar: [
-    { label: "Alquiler de Transformador", sub: "RST", href: "/etrys/cotizaciones" },
-    { label: "Equipos en Alquiler",       sub: "EIC", href: "/eic/cotizaciones" },
+    { label: "Alquiler de Transformador", sub: "RST", href: "/etrys/productos" },
+    { label: "Equipos en Alquiler",       sub: "EIC", href: "/eic/productos" },
   ],
   servicios: [
-    { label: "Mantenimiento Preventivo",    sub: "SRV", href: "/servicios/cotizacion" },
-    { label: "Diagnóstico y Asesoría",      sub: "SRV", href: "/servicios/cotizacion" },
-    { label: "Instalaciones Eléctricas",    sub: "SRV", href: "/servicios/cotizacion" },
-    { label: "Análisis Aceite Dieléctrico", sub: "SRV", href: "/servicios/cotizacion" },
-  ],
-  contactar: [
-    { label: "Hablar con un Asesor", sub: "General", href: "/contacto" },
-    { label: "Cotización General",   sub: "General", href: "/contacto" },
+    { label: "Mantenimiento Preventivo",    sub: "SRV", href: "/servicios" },
+    { label: "Diagnóstico y Asesoría",      sub: "SRV", href: "/servicios" },
+    { label: "Instalaciones Eléctricas",    sub: "SRV", href: "/servicios" },
+    { label: "Análisis Aceite Dieléctrico", sub: "SRV", href: "/servicios" },
   ],
 };
 
@@ -83,11 +83,11 @@ function Dropdown({ label, open, onToggle, children, className = "" }: DropdownP
     <div className={`relative ${className}`}>
       <button
         onClick={onToggle}
-        className="flex items-center gap-2 w-full h-full px-6 py-5 text-white font-semibold text-base tracking-wide transition-colors hover:text-[#0099ce]"
+        className="flex items-center gap-2 w-full h-full px-7 py-6 text-white font-semibold text-lg tracking-wide transition-colors hover:text-[#0099ce]"
       >
         <span className="flex-1 text-left">{label}</span>
         <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
-          <ChevronDown size={15} className="shrink-0 opacity-70" />
+          <ChevronDown size={18} className="shrink-0 opacity-70" />
         </motion.div>
       </button>
 
@@ -115,6 +115,7 @@ export default function HeroSection() {
   const router = useRouter();
 
   const [taglineIndex, setTaglineIndex] = useState(0);
+  const [showSubtitle, setShowSubtitle] = useState(true);
   const [selectedIntent, setSelectedIntent] = useState<IntentKey>("comprar");
   const [selectedProduct, setSelectedProduct] = useState(PRODUCTS.comprar[0]);
   const [intentOpen, setIntentOpen] = useState(false);
@@ -125,15 +126,19 @@ export default function HeroSection() {
 
   useEffect(() => {
     let id: ReturnType<typeof setTimeout>;
-    const schedule = (index: number) => {
-      id = setTimeout(() => {
-        const next = (index + 1) % TAGLINES.length;
-        setTaglineIndex(next);
-        schedule(next);
-      }, TAGLINES[index].duration);
-    };
-    schedule(0);
-    return () => clearTimeout(id);
+    // Esperar 10s antes de ocultar el subtítulo y arrancar taglines
+    const init = setTimeout(() => {
+      setShowSubtitle(false);
+      const schedule = (index: number) => {
+        id = setTimeout(() => {
+          const next = (index + 1) % TAGLINES.length;
+          setTaglineIndex(next);
+          schedule(next);
+        }, TAGLINES[index].duration);
+      };
+      schedule(0);
+    }, 10000);
+    return () => { clearTimeout(init); clearTimeout(id); };
   }, []);
 
   useEffect(() => { videoRef.current?.play().catch(() => {}); }, []);
@@ -192,41 +197,52 @@ export default function HeroSection() {
       {/* ── Content ── */}
       <div className="relative z-10 flex flex-col items-center text-center -mt-16">
 
-        {/* Giant "GRUPO EMINSA" letters */}
-        <div className="flex justify-center overflow-hidden">
-          {LETTERS.map((item, i) => (
-            <motion.span
-              key={i}
-              className="font-extrabold text-[9vw] md:text-[8.5vw] leading-none select-none"
-              style={{ color: item.color }}
-              initial={{ y: 200, opacity: 0, rotateX: 90 }}
-              animate={{ y: 0, opacity: 1, rotateX: 0 }}
-              transition={{
-                duration: 1,
-                delay: 0.08 * i,
-                ease: [0.22, 1, 0.36, 1] as const,
-              }}
-            >
-              {item.char}
-            </motion.span>
-          ))}
-        </div>
-
-        {/* Rotating tagline */}
-        <div className="mt-3 md:mt-2 h-[5vw] md:h-[3.2vw] overflow-hidden relative w-full">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={taglineIndex}
-              className="font-bold text-[4.5vw] md:text-[2.8vw] leading-none text-center"
-              style={{ color: TAGLINES[taglineIndex].color }}
-              initial={{ y: 80, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -80, opacity: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
-            >
-              {TAGLINES[taglineIndex].text}
-            </motion.div>
-          </AnimatePresence>
+        {/* Headline — two lines */}
+        <div className="flex flex-col items-center overflow-hidden">
+          {/* Line 1: "Transformadores" — large */}
+          <div className="flex justify-center overflow-hidden">
+            {LINE1.map((item, i) => (
+              <motion.span
+                key={i}
+                className="font-extrabold text-[9vw] md:text-[8.5vw] leading-none select-none"
+                style={{ color: item.color }}
+                initial={{ y: 120, opacity: 0, rotateX: 90 }}
+                animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                transition={{ duration: 1, delay: 0.05 * i, ease: [0.22, 1, 0.36, 1] as const }}
+              >
+                {item.char}
+              </motion.span>
+            ))}
+          </div>
+          {/* Line 2 / taglines — mismo espacio, contenido cambia */}
+          <div className="h-[5.5vw] md:h-[4.2vw] overflow-hidden relative w-full flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              {showSubtitle ? (
+                <motion.span
+                  key="subtitle"
+                  className="font-bold text-[5vw] md:text-[4vw] leading-none select-none text-[#0099ce] text-center"
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -40, opacity: 0 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
+                >
+                  {LINE2}
+                </motion.span>
+              ) : (
+                <motion.span
+                  key={taglineIndex}
+                  className="font-bold text-[4.5vw] md:text-[2.8vw] leading-none text-center"
+                  style={{ color: TAGLINES[taglineIndex].color }}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -50, opacity: 0 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
+                >
+                  {TAGLINES[taglineIndex].text}
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* ── Select bar ── */}
@@ -241,20 +257,20 @@ export default function HeroSection() {
 
           <div
             className="inline-flex items-stretch border border-white/25 bg-black/30 backdrop-blur-sm"
-            style={{ width: "min(720px, 92vw)" }}
+            style={{ width: "min(860px, 94vw)" }}
           >
             {/* Intent selector */}
             <Dropdown
               label={currentIntent.label}
               open={intentOpen}
               onToggle={() => { setIntentOpen((v) => !v); setProdOpen(false); }}
-              className="border-r border-white/20 min-w-36"
+              className="border-r border-white/20 min-w-44"
             >
               {INTENTIONS.map((intent) => (
                 <button
                   key={intent.value}
                   onClick={() => handleIntentSelect(intent)}
-                  className={`w-full text-left px-5 py-3 text-sm transition-colors ${
+                  className={`w-full text-left px-6 py-3.5 text-base transition-colors ${
                     selectedIntent === intent.value
                       ? "bg-[#0099ce] text-white font-semibold"
                       : "text-white hover:bg-white/10"
@@ -277,7 +293,7 @@ export default function HeroSection() {
                 <button
                   key={product.href + product.label}
                   onClick={() => { setSelectedProduct(product); setProdOpen(false); }}
-                  className={`w-full text-left px-5 py-3 text-sm transition-colors ${
+                  className={`w-full text-left px-6 py-3.5 text-base transition-colors ${
                     selectedProduct.label === product.label
                       ? "bg-[#0099ce] text-white font-semibold"
                       : "text-white hover:bg-white/10"
@@ -292,9 +308,9 @@ export default function HeroSection() {
             {/* CTA button */}
             <button
               onClick={() => router.push(selectedProduct.href)}
-              className="flex items-center gap-3 px-8 py-5 bg-[#0099ce] hover:bg-[#0082b0] text-white font-bold text-base tracking-wide transition-colors shrink-0"
+              className="flex items-center gap-3 px-10 py-6 bg-[#0099ce] hover:bg-[#0082b0] text-white font-bold text-lg tracking-wide transition-colors shrink-0"
             >
-              <span>Cotizar</span>
+              <span>Explorar</span>
               <ArrowRight size={15} />
             </button>
           </div>

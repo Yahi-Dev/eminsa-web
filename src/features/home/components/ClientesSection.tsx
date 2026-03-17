@@ -108,12 +108,7 @@ export default function ClientesSection() {
                   <p className="text-xs font-semibold text-[#00269b] leading-tight line-clamp-2">
                     {cliente.nombre}
                   </p>
-                  <span
-                    className="px-2.5 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wide"
-                    style={{ backgroundColor: color }}
-                  >
-                    {tc(`sectors.${cliente.sector}`)}
-                  </span>
+
                 </div>
               </div>
             );
