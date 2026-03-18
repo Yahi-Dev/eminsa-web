@@ -107,7 +107,7 @@ export default function TransformadorRestauracionSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="aspect-4/3 w-full max-w-150 mx-auto">
+            <div className="aspect-square w-full max-w-120 mx-auto">
               <BeforeAfterSlider
                 beforeImage="transformador-before.png"
                 afterImage="transformador-after.png"

@@ -2,10 +2,18 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Factory, Wrench, Globe, Settings } from "lucide-react";
 import { divisions } from "@/config/navigation";
 import { useTranslations } from "next-intl";
+
+const divisionPhotos: Record<string, string> = {
+  mtn:       "/EMINSA/DSC07816.jpg",
+  etrys:     "/EMINSA/DSC07751.jpg",
+  eic:       "/EMINSA/DSC07158.jpg",
+  servicios: "/EMINSA/DSC07203.jpg",
+};
 
 const iconMap: { [key: string]: React.ElementType } = {
   factory: Factory,
@@ -166,59 +174,69 @@ export default function DivisionsSection() {
                 </Link>
               </div>
 
-              {/* Right: Features grid */}
-              <div
-                className="p-10 lg:p-14 flex flex-col justify-between"
-                style={{
-                  background: `linear-gradient(135deg, ${activeDivision.color}08 0%, white 60%)`,
-                }}
-              >
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  {activeDivision.features.map((feature, idx) => (
-                    <motion.div
-                      key={feature}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: idx * 0.07 }}
-                      className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200"
-                    >
-                      <div
-                        className="w-2 h-2 rounded-full mb-3"
-                        style={{ backgroundColor: activeDivision.color }}
-                      />
-                      <p className="font-semibold text-[#00269b] text-sm">
-                        {tc(`divisions.${activeDivision.id}.features.${idx}`)}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
+              {/* Right: Photo + Features grid */}
+              <div className="relative flex flex-col justify-between overflow-hidden min-h-80">
+                {/* Background photo */}
+                <Image
+                  src={divisionPhotos[activeDivision.id] ?? "/EMINSA/DSC07174.jpg"}
+                  alt={activeDivision.name}
+                  fill
+                  className="object-cover brightness-50"
+                />
+                {/* Color tint overlay */}
+                <div
+                  className="absolute inset-0"
+                  style={{ backgroundColor: `${activeDivision.color}40` }}
+                />
 
-                {/* Progress dots + auto-play bar */}
-                <div className="space-y-3">
-                  <div className="flex justify-center gap-2">
-                    {divisions.map((div, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => handleTabClick(idx)}
-                        className="h-2 rounded-full transition-all duration-300"
-                        style={{
-                          width: activeIndex === idx ? "32px" : "8px",
-                          backgroundColor:
-                            activeIndex === idx ? activeDivision.color : "#e5e7eb",
-                        }}
-                      />
+                {/* Content */}
+                <div className="relative z-10 p-10 lg:p-14 flex flex-col justify-between h-full">
+                  <div className="grid grid-cols-2 gap-4 mb-8">
+                    {activeDivision.features.map((feature, idx) => (
+                      <motion.div
+                        key={feature}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: idx * 0.07 }}
+                        className="bg-white/15 backdrop-blur-sm rounded-xl p-5 border border-white/25 hover:bg-white/25 transition-all duration-200"
+                      >
+                        <div
+                          className="w-2 h-2 rounded-full mb-3"
+                          style={{ backgroundColor: activeDivision.color }}
+                        />
+                        <p className="font-semibold text-white text-sm drop-shadow">
+                          {tc(`divisions.${activeDivision.id}.features.${idx}`)}
+                        </p>
+                      </motion.div>
                     ))}
                   </div>
-                  {isAutoPlaying && (
-                    <div className="w-full h-0.5 bg-gray-100 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full rounded-full"
-                        style={{ backgroundColor: activeDivision.color }}
-                        animate={{ width: `${progress}%` }}
-                        transition={{ duration: 0.05, ease: "linear" }}
-                      />
+
+                  {/* Progress dots + auto-play bar */}
+                  <div className="space-y-3">
+                    <div className="flex justify-center gap-2">
+                      {divisions.map((div, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => handleTabClick(idx)}
+                          className="h-2 rounded-full transition-all duration-300"
+                          style={{
+                            width: activeIndex === idx ? "32px" : "8px",
+                            backgroundColor:
+                              activeIndex === idx ? "white" : "rgba(255,255,255,0.3)",
+                          }}
+                        />
+                      ))}
                     </div>
-                  )}
+                    {isAutoPlaying && (
+                      <div className="w-full h-0.5 bg-white/20 rounded-full overflow-hidden">
+                        <motion.div
+                          className="h-full rounded-full bg-white"
+                          animate={{ width: `${progress}%` }}
+                          transition={{ duration: 0.05, ease: "linear" }}
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
