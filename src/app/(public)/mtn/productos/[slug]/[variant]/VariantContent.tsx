@@ -140,7 +140,7 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
                   src={photos.main}
                   alt={variant.name}
                   fill
-                  className="object-contain p-3 brightness-90"
+                  className="object-cover brightness-75"
                   priority
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
