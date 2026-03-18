@@ -94,7 +94,7 @@ export default function CounterSection() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="border-y border-[#e8edf5] bg-white">
+    <section ref={ref} className="relative z-0 border-y border-[#e8edf5] bg-white">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
         {stats.map((stat, i) => (
           <StatItem

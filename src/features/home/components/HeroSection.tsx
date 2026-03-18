@@ -99,7 +99,7 @@ function Dropdown({ label, open, onToggle, children, className = "" }: DropdownP
             exit={{ opacity: 0, y: -6, scaleY: 0.92 }}
             transition={{ duration: 0.16, ease: "easeOut" }}
             style={{ transformOrigin: "top" }}
-            className="absolute top-full left-0 mt-1 min-w-full z-50 bg-black/85 backdrop-blur-md border border-white/20 shadow-2xl"
+            className="absolute top-full left-0 mt-1 min-w-full z-9999 bg-black/90 backdrop-blur-md border border-white/20 shadow-2xl"
           >
             {children}
           </motion.div>
@@ -164,10 +164,10 @@ export default function HeroSection() {
   const currentIntent = INTENTIONS.find((i) => i.value === selectedIntent)!;
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden px-4 md:px-12">
+    <section className="relative z-10 min-h-screen flex flex-col justify-center px-4 md:px-12">
 
       {/* ── Video Background ── */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -255,16 +255,13 @@ export default function HeroSection() {
         >
           <p className="text-white/50 text-xs tracking-[0.2em] uppercase">¿Qué necesitas?</p>
 
-          <div
-            className="inline-flex items-stretch border border-white/25 bg-black/30 backdrop-blur-sm"
-            style={{ width: "min(860px, 94vw)" }}
-          >
+          <div className="w-full max-w-215 flex flex-col sm:flex-row items-stretch border border-white/25 bg-black/30 backdrop-blur-sm">
             {/* Intent selector */}
             <Dropdown
               label={currentIntent.label}
               open={intentOpen}
               onToggle={() => { setIntentOpen((v) => !v); setProdOpen(false); }}
-              className="border-r border-white/20 min-w-44"
+              className="border-b sm:border-b-0 sm:border-r border-white/20 sm:min-w-44"
             >
               {INTENTIONS.map((intent) => (
                 <button
@@ -287,7 +284,7 @@ export default function HeroSection() {
               label={selectedProduct.label}
               open={prodOpen}
               onToggle={() => { setProdOpen((v) => !v); setIntentOpen(false); }}
-              className="flex-1 border-r border-white/20"
+              className="flex-1 border-b sm:border-b-0 sm:border-r border-white/20"
             >
               {PRODUCTS[selectedIntent].map((product) => (
                 <button
@@ -308,7 +305,7 @@ export default function HeroSection() {
             {/* CTA button */}
             <button
               onClick={() => router.push(selectedProduct.href)}
-              className="flex items-center gap-3 px-10 py-6 bg-[#0099ce] hover:bg-[#0082b0] text-white font-bold text-lg tracking-wide transition-colors shrink-0"
+              className="flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-6 bg-[#0099ce] hover:bg-[#0082b0] text-white font-bold text-base sm:text-lg tracking-wide transition-colors shrink-0"
             >
               <span>Explorar</span>
               <ArrowRight size={15} />
