@@ -103,14 +103,12 @@ export default function CentroReparacionPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/etrys/centro/exterior.jpg"
-                  alt="Centro de Reparación ETRYS"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+              <div className="grid grid-cols-2 gap-3 h-72">
+                <div className="relative col-span-2 rounded-2xl overflow-hidden shadow-2xl">
+                  <Image src="/EMINSA/DSC07751.jpg" alt="Centro de Reparación RST" fill className="object-cover brightness-90" priority />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
+                  <span className="absolute bottom-3 left-4 text-white text-xs font-bold tracking-widest uppercase opacity-80">Taller RST</span>
+                </div>
               </div>
             </motion.div>
           </div>

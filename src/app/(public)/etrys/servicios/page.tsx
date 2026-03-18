@@ -95,53 +95,49 @@ export default function EtrysServiciosPage() {
               transition={{ delay: 0.2 }}
               className="grid grid-cols-2 gap-4"
             >
-              <div className="space-y-4">
-                <div className="relative aspect-square rounded-xl overflow-hidden">
+              {/* Before column */}
+              <div className="space-y-3">
+                <p className="text-white/60 text-xs font-bold uppercase tracking-widest text-center">{t("before")}</p>
+                <div className="relative aspect-square rounded-xl overflow-hidden border-2 border-red-400/50">
                   <Image
-                    src="/EMINSA/DSC07751.jpg"
-                    alt="Antes de reparación"
+                    src="/transformador-before.png"
+                    alt="Transformador antes de reparación"
                     fill
-                    className="object-cover brightness-75"
+                    className="object-contain bg-gray-900 p-2"
+                    priority
                   />
-                  <span className="absolute top-3 left-3 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded-full">
                     {t("before")}
                   </span>
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden">
-                  <Image
-                    src="/EMINSA/DSC07122.jpg"
-                    alt="Antes de reparación"
-                    fill
-                    className="object-cover brightness-75"
-                  />
-                  <span className="absolute top-3 left-3 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
+                  <Image src="/EMINSA/DSC07122.jpg" alt="Antes de reparación" fill className="object-cover brightness-70" />
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded-full">
                     {t("before")}
                   </span>
                 </div>
               </div>
-              <div className="space-y-4 pt-8">
-                <div className="relative aspect-square rounded-xl overflow-hidden">
+              {/* After column */}
+              <div className="space-y-3 pt-8">
+                <div className="relative aspect-square rounded-xl overflow-hidden border-2 border-green-400/50">
                   <Image
-                    src="/EMINSA/DSC07827.jpg"
-                    alt="Después de reparación"
+                    src="/transformador-after.png"
+                    alt="Transformador después de reparación"
                     fill
-                    className="object-cover brightness-75"
+                    className="object-contain bg-gray-900 p-2"
+                    priority
                   />
-                  <span className="absolute top-3 left-3 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-green-500 text-white text-[10px] font-bold rounded-full">
                     {t("after")}
                   </span>
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden">
-                  <Image
-                    src="/EMINSA/DSC07764.jpg"
-                    alt="Después de reparación"
-                    fill
-                    className="object-cover brightness-75"
-                  />
-                  <span className="absolute top-3 left-3 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
+                  <Image src="/EMINSA/DSC07827.jpg" alt="Después de reparación" fill className="object-cover brightness-80" />
+                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-green-500 text-white text-[10px] font-bold rounded-full">
                     {t("after")}
                   </span>
                 </div>
+                <p className="text-white/60 text-xs font-bold uppercase tracking-widest text-center">{t("after")}</p>
               </div>
             </motion.div>
           </div>

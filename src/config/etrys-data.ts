@@ -233,7 +233,7 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
       "Gracias a una restauración integral —que incluye inspección, reemplazo de componentes críticos, pruebas eléctricas y reacondicionamiento estructural— estos equipos conservan un desempeño seguro, eficiente y estable, a un costo significativamente menor que los transformadores nuevos.",
       "Son ideales para aplicaciones residenciales, comerciales e industriales que requieren una alternativa confiable, durable y optimizada en costo.",
     ],
-    image: "/images/mtn/tipo-poste.png",
+    image: "/EMINSA/DSC07227.jpg",
     gallery: [
       "/images/etrys/productos/tipo-poste-1.jpg",
       "/images/etrys/productos/tipo-poste-2.jpg",
@@ -280,7 +280,7 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
       "Su diseño cerrado y hermético protege contra condiciones ambientales y contactos accidentales, haciéndolos adecuados para urbanizaciones, hoteles, centros comerciales, industrias y zonas públicas.",
       "Cada equipo es sometido a procesos de restauración que aseguran bajas pérdidas, excelente regulación y larga vida útil, preservando la integridad del diseño original a un costo más accesible.",
     ],
-    image: "/images/mtn/pad-mounted.png",
+    image: "/EMINSA/DSC07213.jpg",
     gallery: [
       "/images/etrys/productos/pad-mounted-1.jpg",
       "/images/etrys/productos/pad-mounted-2.jpg",
@@ -327,7 +327,7 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
       "Cumplen plenamente con las normas ANSI y IEEE, garantizando que cada equipo mantenga sus características eléctricas y mecánicas originales.",
       "Estos transformadores admiten configuraciones personalizadas, como cambiadores de derivación, gabinetes especiales, boquillas de alta capacidad y otros accesorios bajo requerimiento.",
     ],
-    image: "/images/mtn/subestacion.png",
+    image: "/EMINSA/DSC07255.jpg",
     gallery: [
       "/images/etrys/productos/subestacion-1.jpg",
       "/images/etrys/productos/subestacion-2.jpg",
@@ -466,7 +466,14 @@ export const repairCenter: RepairCenter = {
     { id: "almacen", name: "Almacén de Componentes", description: "Inventario completo de componentes y repuestos", icon: "package", specs: "Stock permanente" },
     { id: "tanque", name: "Tanque de Almacenamiento", description: "Tanque de almacenamiento de fluido dieléctrico", icon: "database", specs: "12,000 galones" },
   ],
-  images: ["/EMINSA/DSC07632.jpg", "/EMINSA/DSC07645.jpg", "/EMINSA/DSC07678.jpg", "/EMINSA/DSC07745.jpg"],
+  images: [
+    "/EMINSA/DSC07751.jpg",
+    "/EMINSA/DSC07632.jpg",
+    "/EMINSA/DSC07645.jpg",
+    "/EMINSA/DSC07678.jpg",
+    "/EMINSA/DSC07713.jpg",
+    "/EMINSA/DSC07733.jpg",
+  ],
 };
 
 // ============================================================================

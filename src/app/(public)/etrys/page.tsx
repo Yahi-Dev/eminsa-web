@@ -127,42 +127,75 @@ export default function EtrysPage() {
               </div>
             </motion.div>
 
-            {/* Visual - Ripple Animation + Floating Cards */}
+            {/* Visual — photo mosaic */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative hidden lg:block"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative hidden lg:grid grid-cols-3 grid-rows-2 gap-2 h-108"
             >
-              <div className="relative aspect-square">
-                {/* Water ripple circles */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute w-125 h-125 border-2 border-white/50 rounded-full animate-ripple" />
-                  <div className="absolute w-125 h-125 border-2 border-white/40 rounded-full animate-ripple" style={{ animationDelay: "0.6s" }} />
-                  <div className="absolute w-125 h-125 border-2 border-white/35 rounded-full animate-ripple" style={{ animationDelay: "1.2s" }} />
-                  <div className="absolute w-125 h-125 border-2 border-white/30 rounded-full animate-ripple" style={{ animationDelay: "1.8s" }} />
-                  <div className="absolute w-125 h-125 border-2 border-white/25 rounded-full animate-ripple" style={{ animationDelay: "2.4s" }} />
+              {/* Large top-left (col-span-2) — main repair shot */}
+              <motion.div
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="relative col-span-2 rounded-2xl overflow-hidden shadow-2xl"
+              >
+                <Image src="/EMINSA/DSC07751.jpg" alt="Reparación de transformadores" fill className="object-cover brightness-75" priority />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                  <span className="text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">Taller RST</span>
+                  <span className="text-[10px] text-white/50 font-medium uppercase tracking-wider">Restauración</span>
                 </div>
+              </motion.div>
 
-                {/* Center card */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2 animate-float relative z-10">
-                    <Wrench size={48} className="mx-auto text-white" />
-                    <p className="text-4xl font-bold">18 meses</p>
-                    <p className="text-white/70 text-sm">{t("hero.warranty")}</p>
-                  </div>
-                </div>
+              {/* Top-right */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="relative rounded-2xl overflow-hidden shadow-xl"
+              >
+                <Image src="/EMINSA/DSC07632.jpg" alt="Proceso de reparación" fill className="object-cover brightness-75" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Diagnóstico</span>
+              </motion.div>
 
-                {/* Floating stat cards */}
-                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-delayed z-10">
-                  <p className="text-3xl font-bold">50+</p>
-                  <p className="text-xs text-white/70">{t("hero.yearsExp")}</p>
-                </div>
-                <div className="absolute bottom-12 left-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-slow z-10">
-                  <p className="text-3xl font-bold">10K+</p>
-                  <p className="text-xs text-white/70">{t("hero.transformersRestored")}</p>
-                </div>
-              </div>
+              {/* Bottom-left */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
+                className="relative rounded-2xl overflow-hidden shadow-xl"
+              >
+                <Image src="/EMINSA/DSC07645.jpg" alt="Reparación bobinas" fill className="object-cover brightness-75" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Bobinas</span>
+              </motion.div>
+
+              {/* Bottom-center */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.62 }}
+                className="relative rounded-2xl overflow-hidden shadow-xl"
+              >
+                <Image src="/EMINSA/DSC07678.jpg" alt="Proceso de restauración" fill className="object-cover brightness-75" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Restauración</span>
+              </motion.div>
+
+              {/* Bottom-right */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.69 }}
+                className="relative rounded-2xl overflow-hidden shadow-xl"
+              >
+                <Image src="/EMINSA/DSC07827.jpg" alt="Transformador restaurado" fill className="object-cover brightness-75" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Resultado</span>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -174,7 +207,7 @@ export default function EtrysPage() {
       </section>
 
       {/* Productos Remanufacturados */}
-      <section className="py-16 lg:py-24 bg-white">
+      <section className="pt-6 pb-12 lg:pb-16 bg-white">
         <div className="container-eminsa">
           {/* Header */}
           <motion.div
@@ -238,7 +271,7 @@ export default function EtrysPage() {
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover"
                     />
                     <div className="absolute top-3 right-3">
                       <span className="px-3 py-1 bg-[#0099ce] text-white text-xs font-bold rounded-full">
