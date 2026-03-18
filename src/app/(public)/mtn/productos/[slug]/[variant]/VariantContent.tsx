@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowRight,
@@ -34,6 +35,35 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
   if (!product || !variant) {
     notFound();
   }
+
+  // Fotos por variante: clave = "slug/variantSlug"
+  const variantPhotos: Record<string, { main: string; side: string }> = {
+    "tipo-poste/monofasicos": {
+      main: "/EMINSA/DSC07227.jpg",
+      side: "/EMINSA/DSC07713.jpg",
+    },
+    "tipo-poste/trifasicos": {
+      main: "/EMINSA/DSC07231.jpg",
+      side: "/EMINSA/DSC07670.jpg",
+    },
+    "tipo-poste/autoprotegidos": {
+      main: "/EMINSA/DSC07227.jpg",
+      side: "/EMINSA/DSC07174.jpg",
+    },
+    "pad-mounted/monofasicos": {
+      main: "/EMINSA/DSC07213.jpg",
+      side: "/EMINSA/DSC07780.jpg",
+    },
+    "pad-mounted/trifasicos": {
+      main: "/EMINSA/DSC07213.jpg",
+      side: "/EMINSA/DSC07670.jpg",
+    },
+  };
+
+  const photos = variantPhotos[`${slug}/${variantSlug}`] ?? {
+    main: "/EMINSA/DSC07227.jpg",
+    side: "/EMINSA/DSC07713.jpg",
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -102,15 +132,35 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
               </div>
             </div>
 
-            {/* Visual */}
-            <div className="hidden lg:flex items-center justify-center">
-              <div className="relative">
-                <div className="w-64 h-64 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center border border-white/20">
-                  <Zap size={80} className="text-white/80" />
-                </div>
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                  <Settings size={32} className="text-white/80" />
-                </div>
+            {/* Visual — product photos */}
+            <div className="hidden lg:grid grid-cols-2 gap-3 h-80">
+              {/* Main product photo */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black/30">
+                <Image
+                  src={photos.main}
+                  alt={variant.name}
+                  fill
+                  className="object-contain p-3 brightness-90"
+                  priority
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-[0.2em] uppercase opacity-80">
+                  {product.shortName}
+                </span>
+              </div>
+
+              {/* Side — manufactura */}
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src={photos.side}
+                  alt="Proceso de manufactura"
+                  fill
+                  className="object-cover brightness-75"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-70">
+                  Manufactura MTN
+                </span>
               </div>
             </div>
           </div>

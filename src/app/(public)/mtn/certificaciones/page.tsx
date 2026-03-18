@@ -110,47 +110,7 @@ export default function CertificacionesPage() {
               </motion.div>
             </motion.div>
 
-            {/* Active Cert Preview Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeCert}
-                  initial={{ opacity: 0, y: 20, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -20, scale: 0.96 }}
-                  transition={{ duration: 0.35 }}
-                  className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl"
-                >
-                  <div className="flex items-start gap-6 mb-6">
-                    <div className="w-20 h-20 bg-white rounded-xl shadow-lg flex items-center justify-center shrink-0">
-                      {cert.image ? (
-                        <Image src={cert.image} alt={cert.name} width={56} height={56} className="object-contain" />
-                      ) : (
-                        <Award size={40} className="text-[#00269b]" />
-                      )}
-                    </div>
-                    <div>
-                      <p className="text-white/60 text-xs uppercase tracking-wider mb-1">
-                        {cert.complianceOnly ? "Cumplimiento de Estándar" : t("certificationLabel")}
-                      </p>
-                      <h3 className="text-2xl font-bold text-white">{cert.name}</h3>
-                      <p className="text-white/70 text-sm mt-1">{cert.fullName}</p>
-                    </div>
-                  </div>
-                  <p className="text-white/80 text-sm leading-relaxed mb-4">
-                    {cert.description}
-                  </p>
-                  <div className="flex items-center gap-2 text-white/60 text-xs">
-                    <span className="w-2 h-2 bg-green-400 rounded-full" />
-                    {t("issuedBy")}: <span className="text-white font-medium">{cert.issuingBody}</span>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </motion.div>
+
           </div>
         </div>
       </section>

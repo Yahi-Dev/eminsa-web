@@ -139,44 +139,75 @@ export default function MTNPageContent() {
               </motion.div>
             </motion.div>
 
-            {/* Hero Visual */}
+            {/* Hero Visual — bento mosaic */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative hidden lg:block"
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative hidden lg:grid grid-cols-3 grid-rows-2 gap-2 h-120"
             >
-              <div className="relative aspect-square">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute w-125 h-125 border-2 border-white/50 rounded-full animate-ripple" />
-                  <div className="absolute w-125 h-125 border-2 border-white/40 rounded-full animate-ripple" style={{ animationDelay: "0.6s" }} />
-                  <div className="absolute w-125 h-125 border-2 border-white/35 rounded-full animate-ripple" style={{ animationDelay: "1.2s" }} />
-                  <div className="absolute w-125 h-125 border-2 border-white/30 rounded-full animate-ripple" style={{ animationDelay: "1.8s" }} />
-                  <div className="absolute w-125 h-125 border-2 border-white/25 rounded-full animate-ripple" style={{ animationDelay: "2.4s" }} />
+              {/* Large top-left (spans 2 cols × 1 row) — main product shot */}
+              <motion.div
+                initial={{ opacity: 0, scale: 1.04 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="relative col-span-2 rounded-2xl overflow-hidden shadow-2xl"
+              >
+                <Image src="/EMINSA/DSC07816.jpg" alt="Manufactura MTN" fill className="object-cover brightness-75" priority />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                  <span className="text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">Planta MTN</span>
+                  <span className="text-[10px] text-white/50 font-medium uppercase tracking-wider">Manufactura Nacional</span>
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Link
-                    href="/mtn/certificaciones"
-                    className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300 group relative z-10"
-                  >
-                    <div className="text-center space-y-2">
-                      <Zap size={48} className="mx-auto text-[#0099ce]" />
-                      <p className="text-4xl font-bold">DOE 2016</p>
-                      <p className="text-sm text-white/70">{t("hero.efficiencyCert")}</p>
-                      <p className="text-xs text-white/50 group-hover:text-white/80 transition-colors pt-1">
-                        {t("hero.viewCertifications")}
-                      </p>
-                    </div>
-                  </Link>
-                </div>
+              </motion.div>
 
-                {/* 30-month warranty badge */}
-                <div className="absolute bottom-12 left-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-slow z-10">
-                  <Shield size={28} className="mx-auto text-[#0099ce] mb-1" />
-                  <p className="text-3xl font-bold">30</p>
-                  <p className="text-xs text-white/70">{t("hero.warrantyMonths")}</p>
-                </div>
-              </div>
+              {/* Top-right — transformer tipo poste */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="relative rounded-2xl overflow-hidden shadow-xl"
+              >
+                <Image src="/EMINSA/DSC07227.jpg" alt="Tipo Poste" fill className="object-cover brightness-75" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Tipo Poste</span>
+              </motion.div>
+
+              {/* Bottom-left — bobinado */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.55 }}
+                className="relative rounded-2xl overflow-hidden shadow-xl"
+              >
+                <Image src="/EMINSA/DSC07713.jpg" alt="Bobinado" fill className="object-cover brightness-75" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Bobinado</span>
+              </motion.div>
+
+              {/* Bottom-center — pruebas */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.62 }}
+                className="relative rounded-2xl overflow-hidden shadow-xl"
+              >
+                <Image src="/EMINSA/DSC07174.jpg" alt="Laboratorio de Pruebas" fill className="object-cover brightness-75" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Lab. Pruebas</span>
+              </motion.div>
+
+              {/* Bottom-right — corte / ensamble */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.69 }}
+                className="relative rounded-2xl overflow-hidden shadow-xl"
+              >
+                <Image src="/EMINSA/DSC07733.jpg" alt="Corte Láser" fill className="object-cover brightness-75" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Corte Láser</span>
+              </motion.div>
             </motion.div>
           </div>
         </div>

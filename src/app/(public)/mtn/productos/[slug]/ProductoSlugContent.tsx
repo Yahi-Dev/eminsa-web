@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   ArrowRight,
@@ -45,6 +46,23 @@ export default function ProductoSlugContent({ slug }: Props) {
   };
 
   const colors = productColors[slug] || productColors["tipo-poste"];
+
+  const productPhotos: Record<string, { main: string; secondary: string[] }> = {
+    "tipo-poste": {
+      main: "/EMINSA/DSC07227.jpg",
+      secondary: ["/EMINSA/DSC07713.jpg", "/EMINSA/DSC07174.jpg"],
+    },
+    "pad-mounted": {
+      main: "/EMINSA/DSC07213.jpg",
+      secondary: ["/EMINSA/DSC07670.jpg", "/EMINSA/DSC07780.jpg"],
+    },
+    "subestacion": {
+      main: "/EMINSA/DSC07255.jpg",
+      secondary: ["/EMINSA/DSC07733.jpg", "/EMINSA/DSC07165.jpg"],
+    },
+  };
+
+  const photos = productPhotos[slug] ?? productPhotos["tipo-poste"];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -124,19 +142,49 @@ export default function ProductoSlugContent({ slug }: Props) {
               </div>
             </div>
 
-            {/* Visual */}
-            <div className="hidden lg:flex items-center justify-center">
-              <div className="relative">
-                <div className="w-80 h-80 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center border border-white/20">
-                  <Zap size={120} className="text-white/80" />
-                </div>
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-24 h-24 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                  <Shield size={40} className="text-white/80" />
-                </div>
-                <div className="absolute -bottom-4 -left-4 w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center">
-                  <Settings size={32} className="text-white/80" />
-                </div>
+            {/* Visual — product photo mosaic */}
+            <div className="hidden lg:grid grid-cols-2 grid-rows-2 gap-3 h-96">
+              {/* Main photo — spans full left column */}
+              <div className="relative row-span-2 rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src={photos.main}
+                  alt={product.shortName}
+                  fill
+                  className="object-cover brightness-80"
+                  priority
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
+                <span className="absolute bottom-4 left-4 text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">
+                  {product.shortName}
+                </span>
+              </div>
+
+              {/* Top-right — manufactura */}
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src={photos.secondary[0]}
+                  alt="Proceso de manufactura"
+                  fill
+                  className="object-cover brightness-75"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-70">
+                  Manufactura
+                </span>
+              </div>
+
+              {/* Bottom-right — pruebas */}
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src={photos.secondary[1]}
+                  alt="Pruebas de calidad"
+                  fill
+                  className="object-cover brightness-75"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
+                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-70">
+                  Pruebas
+                </span>
               </div>
             </div>
           </div>
