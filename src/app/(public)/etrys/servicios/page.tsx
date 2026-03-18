@@ -88,56 +88,47 @@ export default function EtrysServiciosPage() {
               </div>
             </motion.div>
 
-            {/* Before/After Grid */}
+            {/* Hero Image Mosaic */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-12 grid-rows-6 gap-3 h-[420px] lg:h-[480px]"
             >
-              {/* Before column */}
-              <div className="space-y-3">
-                <p className="text-white/60 text-xs font-bold uppercase tracking-widest text-center">{t("before")}</p>
-                <div className="relative aspect-square rounded-xl overflow-hidden border-2 border-red-400/50">
-                  <Image
-                    src="/transformador-before.png"
-                    alt="Transformador antes de reparación"
-                    fill
-                    className="object-contain bg-gray-900 p-2"
-                    priority
-                  />
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded-full">
-                    {t("before")}
-                  </span>
-                </div>
-                <div className="relative aspect-square rounded-xl overflow-hidden">
-                  <Image src="/EMINSA/DSC07122.jpg" alt="Antes de reparación" fill className="object-cover brightness-70" />
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded-full">
-                    {t("before")}
-                  </span>
-                </div>
+              {/* Main large image - technicians repairing transformer */}
+              <div className="relative col-span-7 row-span-4 rounded-2xl overflow-hidden shadow-2xl group">
+                <Image
+                  src="/EMINSA/DSC07759.jpg"
+                  alt="Técnicos reparando transformador"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <span className="absolute bottom-3 left-3 px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs font-semibold rounded-full">
+                  {t("heroBadge")}
+                </span>
               </div>
-              {/* After column */}
-              <div className="space-y-3 pt-8">
-                <div className="relative aspect-square rounded-xl overflow-hidden border-2 border-green-400/50">
-                  <Image
-                    src="/transformador-after.png"
-                    alt="Transformador después de reparación"
-                    fill
-                    className="object-contain bg-gray-900 p-2"
-                    priority
-                  />
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-green-500 text-white text-[10px] font-bold rounded-full">
-                    {t("after")}
-                  </span>
-                </div>
-                <div className="relative aspect-square rounded-xl overflow-hidden">
-                  <Image src="/EMINSA/DSC07827.jpg" alt="Después de reparación" fill className="object-cover brightness-80" />
-                  <span className="absolute top-2 left-2 px-2 py-0.5 bg-green-500 text-white text-[10px] font-bold rounded-full">
-                    {t("after")}
-                  </span>
-                </div>
-                <p className="text-white/60 text-xs font-bold uppercase tracking-widest text-center">{t("after")}</p>
+              {/* Top right - test lab */}
+              <div className="relative col-span-5 row-span-3 rounded-2xl overflow-hidden shadow-2xl group">
+                <Image
+                  src="/EMINSA/DSC07174.jpg"
+                  alt="Laboratorio de pruebas eléctricas"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              </div>
+              {/* Bottom right - finished transformer */}
+              <div className="relative col-span-5 row-span-3 rounded-2xl overflow-hidden shadow-2xl group">
+                <Image
+                  src="/EMINSA/DSC07573.jpg"
+                  alt="Transformador EMINSA terminado"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
             </motion.div>
           </div>
@@ -206,23 +197,54 @@ export default function EtrysServiciosPage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="grid grid-cols-2 gap-4"
+              className="grid grid-cols-6 grid-rows-4 gap-3 h-[400px] lg:h-[460px]"
             >
-              {repairCenter.images.slice(0, 4).map((img, index) => (
-                <div
-                  key={index}
-                  className={`relative rounded-xl overflow-hidden shadow-lg ${
-                    index === 0 ? "col-span-2 aspect-[2/1]" : "aspect-square"
-                  }`}
-                >
-                  <Image
-                    src={img}
-                    alt={`Centro de Reparación ETRYS ${index + 1}`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              ))}
+              {/* Main large - team working on transformer */}
+              <div className="relative col-span-4 row-span-3 rounded-2xl overflow-hidden shadow-xl group">
+                <Image
+                  src={repairCenter.images[0]}
+                  alt="Equipo de técnicos reparando transformador"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
+              </div>
+              {/* Top right - technician detail */}
+              <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-xl group">
+                <Image
+                  src={repairCenter.images[1]}
+                  alt="Técnico trabajando en componentes"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              {/* Middle right - test lab */}
+              <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-xl group">
+                <Image
+                  src={repairCenter.images[2]}
+                  alt="Laboratorio de pruebas"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              {/* Bottom left - precision work */}
+              <div className="relative col-span-2 row-span-1 rounded-2xl overflow-hidden shadow-xl group">
+                <Image
+                  src={repairCenter.images[3]}
+                  alt="Trabajo de precisión en bobinas"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              {/* Bottom center - measurement */}
+              <div className="relative col-span-2 row-span-1 rounded-2xl overflow-hidden shadow-xl group">
+                <Image
+                  src={repairCenter.images[4]}
+                  alt="Medición y control de calidad"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
             </motion.div>
 
             {/* Content */}

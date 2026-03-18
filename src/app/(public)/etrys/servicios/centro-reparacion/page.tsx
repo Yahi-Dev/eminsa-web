@@ -97,18 +97,45 @@ export default function CentroReparacionPage() {
               </div>
             </motion.div>
 
-            {/* Main Image */}
+            {/* Hero Image Mosaic */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
+              className="grid grid-cols-2 grid-rows-3 gap-3 h-[360px] lg:h-[420px]"
             >
-              <div className="grid grid-cols-2 gap-3 h-72">
-                <div className="relative col-span-2 rounded-2xl overflow-hidden shadow-2xl">
-                  <Image src="/EMINSA/DSC07751.jpg" alt="Centro de Reparación RST" fill className="object-cover brightness-90" priority />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent" />
-                  <span className="absolute bottom-3 left-4 text-white text-xs font-bold tracking-widest uppercase opacity-80">Taller RST</span>
-                </div>
+              {/* Main - team repairing transformer */}
+              <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-2xl group">
+                <Image
+                  src="/EMINSA/DSC07759.jpg"
+                  alt="Equipo de técnicos reparando transformador"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
+                <span className="absolute bottom-3 left-4 px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs font-bold tracking-widest uppercase rounded-full">
+                  Taller RST
+                </span>
+              </div>
+              {/* Bottom left - lab testing */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                <Image
+                  src="/EMINSA/DSC07149.jpg"
+                  alt="Pruebas eléctricas en laboratorio"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+              </div>
+              {/* Bottom right - welding/sparks */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                <Image
+                  src="/EMINSA/DSC07678.jpg"
+                  alt="Soldadura de tanque de transformador"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </motion.div>
           </div>
@@ -132,27 +159,48 @@ export default function CentroReparacionPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {repairCenter.images.map((img, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className={`relative rounded-xl overflow-hidden shadow-lg group ${
-                  index === 0 ? "md:col-span-2 md:row-span-2 aspect-square md:aspect-auto" : "aspect-square"
-                }`}
-              >
-                <Image
-                  src={img}
-                  alt={`Instalación ${index + 1}`}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </motion.div>
-            ))}
+          {/* Masonry-style gallery */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[200px]">
+            {repairCenter.images.map((img, index) => {
+              const spanClass =
+                index === 0
+                  ? "md:col-span-2 md:row-span-2"
+                  : index === 3 || index === 6
+                  ? "md:row-span-2"
+                  : "";
+              const labels = [
+                "Reparación de transformadores",
+                "Laboratorio de pruebas",
+                "Banco de pruebas automatizado",
+                "Ensamblaje de bobinas",
+                "Soldadura especializada",
+                "Fabricación de tanques",
+                "Equipos de alta tensión",
+                "Instalación de componentes",
+                "Torres de impulso",
+              ];
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.07 }}
+                  className={`relative rounded-2xl overflow-hidden shadow-lg group ${spanClass}`}
+                >
+                  <Image
+                    src={img}
+                    alt={labels[index] || `Instalación ${index + 1}`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="absolute bottom-3 left-3 text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {labels[index]}
+                  </span>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

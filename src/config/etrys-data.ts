@@ -467,12 +467,15 @@ export const repairCenter: RepairCenter = {
     { id: "tanque", name: "Tanque de Almacenamiento", description: "Tanque de almacenamiento de fluido dieléctrico", icon: "database", specs: "12,000 galones" },
   ],
   images: [
-    "/EMINSA/DSC07751.jpg",
-    "/EMINSA/DSC07632.jpg",
-    "/EMINSA/DSC07645.jpg",
+    "/EMINSA/DSC07759.jpg",
+    "/EMINSA/DSC07149.jpg",
+    "/EMINSA/DSC07174.jpg",
+    "/EMINSA/DSC07780.jpg",
+    "/EMINSA/DSC07670.jpg",
     "/EMINSA/DSC07678.jpg",
-    "/EMINSA/DSC07713.jpg",
-    "/EMINSA/DSC07733.jpg",
+    "/EMINSA/DSC07108.jpg",
+    "/EMINSA/DSC07764.jpg",
+    "/EMINSA/DSC07188.jpg",
   ],
 };
 
