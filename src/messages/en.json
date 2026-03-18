@@ -2943,6 +2943,11 @@
       "certificaciones": "Certifications",
       "viewAllStandards": "View all standards"
     },
+    "manufacturing": {
+      "badge": "Manufacturing Plant",
+      "title": "Made in the Dominican Republic",
+      "viewProcess": "View full process →"
+    },
     "resources": {
       "badge": "Tools and Documentation",
       "title1": "Technical",

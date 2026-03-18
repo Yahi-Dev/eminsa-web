@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -17,7 +18,6 @@ import {
   MessageCircle,
 } from "lucide-react";
 import {
-  mtnInfo,
   transformerProducts,
   standards,
   certifications,
@@ -27,6 +27,12 @@ import CertificationsTabSelector from "@/features/home/components/mtn/Certificat
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { useTranslations } from "next-intl";
+
+const productPhotos: Record<string, string> = {
+  "tipo-poste": "/EMINSA/DSC07227.jpg",
+  "pad-mounted": "/EMINSA/DSC07213.jpg",
+  "subestacion": "/EMINSA/DSC07624.jpg",
+};
 
 const resourceIcons: Record<string, React.ElementType> = {
   newspaper: FileText,
@@ -218,10 +224,14 @@ export default function MTNPageContent() {
                   className="group relative bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-[#0099ce]/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 block"
                 >
                   <div className="h-1 bg-linear-to-r from-[#00269b] to-[#0099ce]" />
-                  <div className="aspect-[4/3] bg-gradient-to-br from-[#00269b]/3 to-[#0099ce]/6 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-[#00269b]/8 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-[#0099ce]/15 transition-all duration-300">
-                      <Zap size={36} className="text-[#00269b] group-hover:text-[#0099ce] transition-colors" />
-                    </div>
+                  <div className="relative aspect-4/3 overflow-hidden">
+                    <Image
+                      src={productPhotos[product.slug] ?? "/EMINSA/DSC07227.jpg"}
+                      alt={product.shortName}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/30" />
                   </div>
                   <div className="p-6 space-y-4">
                     <div className="flex items-start justify-between">
@@ -274,6 +284,71 @@ export default function MTNPageContent() {
               <ArrowRight size={18} />
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ============================================================ */}
+      {/* Laboratorio y Manufactura — Photo Strip */}
+      {/* ============================================================ */}
+      <section className="py-16 bg-gray-950 overflow-hidden">
+        <div className="container-eminsa mb-10">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="flex items-end justify-between gap-4"
+          >
+            <div>
+              <span className="inline-flex items-center gap-2 bg-[#0099ce]/20 text-[#0099ce] font-semibold text-sm uppercase tracking-wider mb-3 px-4 py-1.5 rounded-full">
+                <Factory size={14} />
+                {t("manufacturing.badge")}
+              </span>
+              <h2 className="text-3xl font-bold text-white">{t("manufacturing.title")}</h2>
+            </div>
+            <Link
+              href="/mtn/manufactura"
+              className="inline-flex items-center gap-2 text-[#0099ce] hover:text-white font-semibold transition-colors text-sm shrink-0"
+            >
+              {t("manufacturing.viewProcess")}
+              <ArrowRight size={16} />
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Photo grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
+          {[
+            { src: "/EMINSA/DSC07713.jpg", label: "Bobinado" },
+            { src: "/EMINSA/DSC07670.jpg", label: "Metalmecánica" },
+            { src: "/EMINSA/DSC07780.jpg", label: "EnTanque" },
+            { src: "/EMINSA/DSC07174.jpg", label: "Laboratorio de Pruebas" },
+            { src: "/EMINSA/DSC07733.jpg", label: "Corte Láser" },
+            { src: "/EMINSA/DSC07759.jpg", label: "Ensamble" },
+            { src: "/EMINSA/DSC07165.jpg", label: "Pruebas de Alta Tensión" },
+            { src: "/EMINSA/DSC07875.jpg", label: "Equipo EMINSA" },
+          ].map((photo, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.07 }}
+              className="relative aspect-square overflow-hidden group"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.label}
+                fill
+                className="object-cover brightness-75 group-hover:brightness-90 group-hover:scale-105 transition-all duration-500"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+              <span className="absolute bottom-2 left-3 text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity drop-shadow">
+                {photo.label}
+              </span>
+            </motion.div>
+          ))}
         </div>
       </section>
 

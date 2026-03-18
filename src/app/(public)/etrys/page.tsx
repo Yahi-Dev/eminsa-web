@@ -468,8 +468,8 @@ export default function EtrysPage() {
             >
               <div className="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/etrys/alquiler-hero.jpg"
-                  alt="Alquiler de Transformadores ETRYS"
+                  src="/EMINSA/DSC07624.jpg"
+                  alt="Alquiler de Transformadores RST by EMINSA"
                   fill
                   className="object-cover"
                 />

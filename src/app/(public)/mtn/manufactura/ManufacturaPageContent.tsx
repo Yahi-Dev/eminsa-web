@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -26,6 +27,7 @@ const steps = [
   {
     id: 1,
     icon: Cpu,
+    photo: "/EMINSA/DSC07638.jpg",
     title: "Planificación y Diseño",
     subtitle: "Diseño eléctrico y mecánico",
     accent: "#00269b",
@@ -43,6 +45,7 @@ const steps = [
   {
     id: 2,
     icon: Zap,
+    photo: "/EMINSA/DSC07706.jpg",
     title: "Inspección de Materia Prima y Bobinado",
     subtitle: "Estación BT y AT",
     accent: "#0099ce",
@@ -61,6 +64,7 @@ const steps = [
   {
     id: 3,
     icon: Layers,
+    photo: "/EMINSA/DSC07805.jpg",
     title: "Corte y Armado del Núcleo Magnético",
     subtitle: "Estación de corte y ensamble de núcleo",
     accent: "#009e49",
@@ -78,6 +82,7 @@ const steps = [
   {
     id: 4,
     icon: Flame,
+    photo: "/EMINSA/DSC07816.jpg",
     title: "Prensado y Secado de Bobinas",
     subtitle: "Transporte, prensado y horno",
     accent: "#e8a000",
@@ -96,6 +101,7 @@ const steps = [
   {
     id: 5,
     icon: Wrench,
+    photo: "/EMINSA/DSC07798.jpg",
     title: "Ensamble de Parte Activa (Pre-Tanque)",
     subtitle: "Inserción de núcleo, brida y conexiones",
     accent: "#7c3aed",
@@ -113,6 +119,7 @@ const steps = [
   {
     id: 6,
     icon: Hammer,
+    photo: "/EMINSA/DSC07664.jpg",
     title: "Metalmecánica del Tanque",
     subtitle: "Proceso paralelo — corte, soldadura y pintura",
     accent: "#c0392b",
@@ -134,6 +141,7 @@ const steps = [
   {
     id: 7,
     icon: Boxes,
+    photo: "/EMINSA/DSC07780.jpg",
     title: "EnTanque",
     subtitle: "Recepción del tanque y tanqueo",
     accent: "#0099ce",
@@ -151,6 +159,7 @@ const steps = [
   {
     id: 8,
     icon: Droplets,
+    photo: "/EMINSA/DSC07759.jpg",
     title: "Tratamiento de Aceite y Llenado al Vacío",
     subtitle: "Oil Treatment & Tank Filling",
     accent: "#00269b",
@@ -168,6 +177,7 @@ const steps = [
   {
     id: 9,
     icon: FlaskConical,
+    photo: "/EMINSA/DSC07149.jpg",
     title: "Pruebas Eléctricas, Inspección Final y Despacho",
     subtitle: "Testing, Inspection & Packaging",
     accent: "#009e49",
@@ -320,31 +330,33 @@ export default function ManufacturaPage() {
                 >
                   {/* Visual panel */}
                   <div
-                    className={`relative flex flex-col items-center justify-center p-12 min-h-72 ${isEven ? "lg:order-2" : ""}`}
-                    style={{ backgroundColor: `${step.accent}12` }}
+                    className={`relative overflow-hidden flex flex-col items-center justify-center p-12 min-h-72 ${isEven ? "lg:order-2" : ""}`}
                   >
-                    <span
-                      className="absolute top-6 right-8 text-8xl font-black opacity-[0.07] select-none leading-none"
-                      style={{ color: step.accent }}
-                    >
+                    <Image
+                      src={step.photo}
+                      alt={step.title}
+                      fill
+                      className="object-cover"
+                    />
+                    {/* Dark overlay */}
+                    <div className="absolute inset-0 bg-black/35" />
+                    {/* Watermark step number */}
+                    <span className="absolute top-6 right-8 text-8xl font-black opacity-10 select-none leading-none text-white">
                       {step.id}
                     </span>
                     <motion.div
                       whileInView={{ scale: [0.8, 1.05, 1] }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: 0.2 }}
-                      className="w-28 h-28 rounded-3xl flex items-center justify-center mb-6 shadow-lg"
+                      className="relative w-28 h-28 rounded-3xl flex items-center justify-center mb-6 shadow-lg"
                       style={{ backgroundColor: step.accent }}
                     >
                       <Icon size={52} className="text-white" />
                     </motion.div>
-                    <span
-                      className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border"
-                      style={{ color: step.accent, borderColor: `${step.accent}40`, backgroundColor: `${step.accent}12` }}
-                    >
+                    <span className="relative inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-white/40 text-white bg-white/15">
                       {step.badge}
                     </span>
-                    <p className="mt-3 text-sm font-semibold text-gray-500 text-center">{step.subtitle}</p>
+                    <p className="relative mt-3 text-sm font-semibold text-white/90 text-center">{step.subtitle}</p>
                   </div>
 
                   {/* Content panel */}

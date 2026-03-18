@@ -3249,6 +3249,11 @@
       "certificaciones": "Certificaciones",
       "viewAllStandards": "Ver todas las normativas"
     },
+    "manufacturing": {
+      "badge": "Planta de Manufactura",
+      "title": "Fabricado en República Dominicana",
+      "viewProcess": "Ver proceso completo →"
+    },
     "resources": {
       "badge": "Herramientas y Documentación",
       "title1": "Recursos",
