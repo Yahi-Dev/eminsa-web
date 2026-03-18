@@ -7,27 +7,27 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-// ─── Real product photos ──────────────────────────────────────────────────────
+// ─── Photos per product ────────────────────────────────────────────────────────
 const PRODUCT_PHOTOS = [
   "/EMINSA/DSC07227.jpg",  // Tipo Poste
   "/EMINSA/DSC07213.jpg",  // Pad Mounted
   "/EMINSA/DSC07255.jpg",  // Subestación
 ];
 
-// ─── Accent colors per product ────────────────────────────────────────────────
+// ─── Accent colors ─────────────────────────────────────────────────────────────
 const ACCENTS = ["#0099ce", "#009e49", "#00269b"];
-const ACCENT_DARKS = ["#006a90", "#006a30", "#001880"];
 
-// ─── Component ───────────────────────────────────────────────────────────────
+const TAB_LABELS = ["Tipo Poste", "Pad Mounted", "Subestación"];
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export default function MTNHeroSection() {
   const t = useTranslations("home");
   const [active, setActive] = useState(0);
-  const [dir, setDir] = useState(1);
-  const [autoPlay, setAutoPlay] = useState(true);
-  const [bar, setBar] = useState(0);
-  const barRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const DURATION = 6000;
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const DURATION = 5000;
 
   const slides = [
     {
@@ -74,54 +74,65 @@ export default function MTNHeroSection() {
     },
   ];
 
-  const startBar = useCallback(() => {
-    setBar(0);
-    if (barRef.current) clearInterval(barRef.current);
-    barRef.current = setInterval(() => setBar(p => Math.min(p + 100 / (DURATION / 40), 100)), 40);
+  const resetProgress = useCallback(() => {
+    setProgress(0);
+    if (progressRef.current) clearInterval(progressRef.current);
+    progressRef.current = setInterval(() => {
+      setProgress((p) => {
+        if (p >= 100) return 100;
+        return p + 100 / (DURATION / 50);
+      });
+    }, 50);
   }, []);
 
-  const go = useCallback((index: number, d: number) => {
-    setDir(d);
-    setActive(index);
-    startBar();
-  }, [startBar]);
+  const next = useCallback(() => {
+    setActive((prev) => (prev + 1) % slides.length);
+  }, [slides.length]);
 
-  const next = useCallback(() => go((active + 1) % slides.length, 1), [active, go, slides.length]);
-  const prev = useCallback(() => go((active - 1 + slides.length) % slides.length, -1), [active, go, slides.length]);
-
-  useEffect(() => { startBar(); return () => { if (barRef.current) clearInterval(barRef.current); }; }, [startBar]);
   useEffect(() => {
-    if (!autoPlay) return;
-    const t = setInterval(next, DURATION);
-    return () => clearInterval(t);
-  }, [autoPlay, next]);
+    if (!isAutoPlaying) return;
+    resetProgress();
+    const timer = setInterval(next, DURATION);
+    return () => {
+      clearInterval(timer);
+      if (progressRef.current) clearInterval(progressRef.current);
+    };
+  }, [isAutoPlaying, next, resetProgress]);
+
+  useEffect(() => {
+    if (isAutoPlaying) resetProgress();
+  }, [active, isAutoPlaying, resetProgress]);
+
+  const handleTabClick = (index: number) => {
+    setActive(index);
+    setIsAutoPlaying(false);
+    setProgress(0);
+  };
 
   const slide = slides[active];
   const accent = ACCENTS[active];
-  const accentDark = ACCENT_DARKS[active];
   const productPhoto = PRODUCT_PHOTOS[active];
 
   return (
-    <section className="bg-white py-20 lg:py-28 relative overflow-hidden">
-
+    <section id="mtn-productos" className="py-10 lg:py-14 bg-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-125 h-125 bg-gray-50 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-100 h-100 bg-gray-50 rounded-full blur-[100px]" />
+      </div>
 
       <div className="container-eminsa relative">
 
         {/* ── Header ── */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="mb-10"
         >
           <div className="flex items-center gap-3 mb-3">
-            <motion.span
-              className="h-px w-8 inline-block"
-              style={{ backgroundColor: accent }}
-              animate={{ width: [24, 40, 24] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
+            <span className="h-px w-8 inline-block" style={{ backgroundColor: accent }} />
             <span className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: accent }}>
               División MTN · Manufactura Nacional
             </span>
@@ -129,7 +140,9 @@ export default function MTNHeroSection() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#00269b] leading-none">
               {t("mtn.title")}{" "}
-              <span style={{ color: accent }} className="transition-colors duration-700">{t("mtn.titleAccent")}</span>
+              <span style={{ color: accent }} className="transition-colors duration-700">
+                {t("mtn.titleAccent")}
+              </span>
             </h2>
             <p className="text-[#6d6e6d] text-base max-w-sm leading-relaxed">
               {t("mtn.description")}
@@ -137,49 +150,38 @@ export default function MTNHeroSection() {
           </div>
         </motion.div>
 
-        {/* ── Product Tabs ── */}
-        <div className="flex gap-0 mb-0 border-b border-gray-200">
+        {/* ── Pill Tabs ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-wrap justify-center gap-3 mb-10"
+        >
           {slides.map((s, i) => (
             <button
               key={s.id}
-              onClick={() => { go(i, i > active ? 1 : -1); setAutoPlay(false); }}
-              className="relative px-5 py-3 text-sm font-semibold transition-colors duration-200"
-              style={{ color: active === i ? ACCENTS[i] : "#9a9a9a" }}
+              onClick={() => handleTabClick(i)}
+              className={`px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wide transition-all duration-300 ${
+                active === i
+                  ? "text-white shadow-lg scale-105"
+                  : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+              }`}
+              style={active === i ? { backgroundColor: ACCENTS[i] } : {}}
             >
-              {s.id === "tipo-poste" ? "Tipo Poste" : s.id === "pad-mounted" ? "Pad Mounted" : "Subestación"}
-              {active === i && (
-                <motion.div
-                  layoutId="tab-indicator"
-                  className="absolute bottom-0 left-0 right-0 h-0.5"
-                  style={{ backgroundColor: ACCENTS[i] }}
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                />
-              )}
+              {TAB_LABELS[i]}
             </button>
           ))}
-          {/* Auto-play progress on tab bar */}
-          {autoPlay && (
-            <div className="absolute bottom-0 left-0 h-px bg-gray-300 w-full -z-10" />
-          )}
-        </div>
+        </motion.div>
 
-        {/* ── Main showcase ── */}
-        <div
-          className="relative overflow-hidden rounded-b-2xl"
-          style={{ background: "#00091F", minHeight: 480 }}
-        >
-          <AnimatePresence mode="wait" custom={dir}>
+        {/* ── Card ── */}
+        <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ background: "#00091F", minHeight: 480 }}>
+          <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              custom={dir}
-              variants={{
-                enter: (d: number) => ({ opacity: 0, x: d * 60 }),
-                center: { opacity: 1, x: 0 },
-                exit: (d: number) => ({ opacity: 0, x: d * -60 }),
-              }}
-              initial="enter"
-              animate="center"
-              exit="exit"
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
               className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] min-h-120"
             >
@@ -222,7 +224,7 @@ export default function MTNHeroSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.18 }}
-                  className="flex gap-5"
+                  className="flex gap-5 flex-wrap"
                 >
                   {slide.specs.map((s, i) => (
                     <motion.div
@@ -313,10 +315,8 @@ export default function MTNHeroSection() {
                       className="object-cover"
                       priority
                     />
-                    {/* Gradient: left edge blends into dark panel, bottom darkens slightly */}
                     <div className="absolute inset-0 bg-linear-to-r from-[#00091F]/60 via-transparent to-transparent" />
                     <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
-                    {/* Accent color tint */}
                     <div className="absolute inset-0 mix-blend-color" style={{ backgroundColor: `${accent}18` }} />
                   </motion.div>
                 </AnimatePresence>
@@ -333,10 +333,13 @@ export default function MTNHeroSection() {
           </AnimatePresence>
 
           {/* Nav arrows */}
-          {[{ fn: prev, side: "left-4", label: "Anterior", icon: "‹" }, { fn: next, side: "right-4", label: "Siguiente", icon: "›" }].map(({ fn, side, label, icon }) => (
+          {[
+            { fn: () => { setActive((active - 1 + slides.length) % slides.length); setIsAutoPlaying(false); }, side: "left-4", label: "Anterior", icon: "‹" },
+            { fn: () => { setActive((active + 1) % slides.length); setIsAutoPlaying(false); }, side: "right-4", label: "Siguiente", icon: "›" },
+          ].map(({ fn, side, label, icon }) => (
             <button
               key={label}
-              onClick={() => { fn(); setAutoPlay(false); }}
+              onClick={fn}
               aria-label={label}
               className={`absolute ${side} top-1/2 -translate-y-1/2 z-30 w-9 h-9 rounded-full bg-white/8 hover:bg-white/16 border border-white/10 hover:border-white/25 flex items-center justify-center text-white/70 hover:text-white text-xl font-light transition-all duration-200 hover:scale-110`}
             >
@@ -344,11 +347,12 @@ export default function MTNHeroSection() {
             </button>
           ))}
 
-          {/* Auto-play progress bar (bottom edge of showcase) */}
-          {autoPlay && (
-            <div className="absolute bottom-0 left-0 h-0.5 transition-none" style={{ width: `${bar}%`, backgroundColor: accent }} />
+          {/* Auto-play progress bar */}
+          {isAutoPlaying && (
+            <div className="absolute bottom-0 left-0 h-0.5 transition-none z-30" style={{ width: `${progress}%`, backgroundColor: accent }} />
           )}
         </div>
+
       </div>
     </section>
   );
