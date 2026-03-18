@@ -89,6 +89,7 @@ export interface Certification {
   validUntil?: string;
   benefits: string[];
   image?: string;
+  complianceOnly?: boolean; // true = cumplimiento de estándar, no una certificación formal
 }
 
 export interface Resource {
@@ -144,6 +145,7 @@ export const transformerProducts: TransformerProduct[] = [
       "Electrificación rural",
     ],
     features: [
+      "Tipo de enfriamiento: ONAN",
       "Aceite dieléctrico de alta calidad",
       "Tanque hermético de acero",
       "Bajo nivel de ruido",
@@ -173,6 +175,7 @@ export const transformerProducts: TransformerProduct[] = [
       "Distribución subterránea",
     ],
     features: [
+      "Tipo de enfriamiento: ONAN",
       "Diseño compacto y hermético",
       "Montaje a nivel del suelo",
       "Gabinete de acero resistente",
@@ -430,32 +433,49 @@ export const certifications: Certification[] = [
     image: "/images/SelloAENORISO9001_NEG.png",
   },
   {
-    id: "cidet",
-    name: "CIDET",
-    slug: "cidet",
-    fullName: "Centro de Investigación y Desarrollo Tecnológico del Sector Eléctrico",
-    description: "Certificación colombiana que valida el cumplimiento de normas técnicas para equipos eléctricos en el mercado latinoamericano.",
-    issuingBody: "CIDET - Colombia",
+    id: "ansi-ieee-c57",
+    name: "ANSI/IEEE C57",
+    slug: "ansi-ieee-c57",
+    fullName: "Norma ANSI/IEEE C57 — Certificado por CIDET (Acreditado por ANAB)",
+    description: "Nuestros transformadores son certificados por CIDET — acreditado por ANAB (la principal entidad de acreditación de América del Norte) — en cumplimiento con la norma ANSI/IEEE C57, el estándar internacional que rige el diseño, desempeño, pruebas y seguridad de transformadores eléctricos, publicado por el Institute of Electrical and Electronics Engineers (IEEE) y acreditado por el American National Standards Institute (ANSI).",
+    issuingBody: "CIDET (Acreditado por ANAB)",
     benefits: [
-      "Acceso al mercado colombiano",
-      "Validación técnica regional",
-      "Cumplimiento de normas NTC",
-      "Reconocimiento en Latinoamérica",
+      "Cumplimiento del estándar técnico más riguroso para transformadores",
+      "Certificación emitida por CIDET, acreditado por ANAB",
+      "Diseño y pruebas conforme a IEEE C57.12.00 y C57.12.90",
+      "Acceso a mercados que exigen cumplimiento ANSI/IEEE",
+      "Respaldo de las instituciones normativas líderes en Norteamérica",
     ],
   },
   {
     id: "ul",
     name: "UL",
     slug: "ul",
-    fullName: "Underwriters Laboratories",
-    description: "Certificación de seguridad reconocida mundialmente que garantiza que nuestros productos cumplen con los estándares de seguridad más estrictos.",
+    fullName: "Underwriters Laboratories — Familia de Productos Registrados",
+    description: "Nuestra familia de productos está registrada ante UL (Underwriters Laboratories), la organización de certificación de seguridad eléctrica líder en América del Norte. Contar con productos registrados en UL garantiza a nuestros clientes que los equipos han sido evaluados bajo los estándares de seguridad más exigentes del mercado.",
     issuingBody: "Underwriters Laboratories Inc.",
     benefits: [
-      "Reconocimiento mundial",
-      "Garantía de seguridad",
-      "Acceso a mercados internacionales",
-      "Cumplimiento de normas UL",
-      "Confianza del consumidor",
+      "Familia de productos registrados ante UL",
+      "Evaluación bajo los estándares de seguridad eléctrica más exigentes",
+      "Reconocimiento en mercados de América del Norte",
+      "Mayor confianza para clientes, distribuidores e ingenieros",
+      "Respaldo de la organización de certificación líder en Norteamérica",
+    ],
+  },
+  {
+    id: "doe-2016",
+    name: "DOE 2016",
+    slug: "doe-2016",
+    fullName: "Cumplimiento del Estándar de Eficiencia Energética DOE 2016",
+    description: "El DOE 2016 no es una certificación, sino un estándar de eficiencia energética establecido por el Departamento de Energía de los Estados Unidos. Nuestros transformadores de distribución están diseñados para cumplir plenamente con los niveles mínimos de eficiencia que exige este estándar, reduciendo las pérdidas en el núcleo y en los devanados para un menor consumo energético durante toda la vida útil del equipo.",
+    issuingBody: "U.S. Department of Energy (DOE)",
+    complianceOnly: true,
+    benefits: [
+      "Diseños que cumplen los niveles de eficiencia DOE 2016",
+      "Reducción de pérdidas en núcleo y devanados",
+      "Menor consumo energético durante toda la vida útil",
+      "Cumplimiento de regulaciones del mercado estadounidense",
+      "Impacto ambiental reducido",
     ],
   },
 ];

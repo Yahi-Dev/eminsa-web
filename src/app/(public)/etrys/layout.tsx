@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef, startTransition } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,7 +12,7 @@ import {
   Truck,
   FolderOpen,
   FileText,
-  Users,
+
   Menu,
   X,
   Phone,
@@ -57,9 +57,9 @@ function useEtrysNavItems(): NavItem[] {
     {
       name: t("layout.products"), href: "/etrys/productos", icon: Package,
       submenu: [
-        { name: "Tipo Poste", href: "/etrys/productos/tipo-poste", description: "15 – 500 kVA" },
-        { name: "Pad-Mounted", href: "/etrys/productos/pad-mounted", description: "30 – 3,000 kVA" },
-        { name: "Subestación", href: "/etrys/productos/subestacion", description: "Hasta 3,000 kVA" },
+        { name: "Transformadores Tipo Poste", href: "/etrys/productos/tipo-poste", description: "15 – 500 kVA" },
+        { name: "Transformadores Pad-Mounted", href: "/etrys/productos/pad-mounted", description: "30 – 3,000 kVA" },
+        { name: "Transformadores de Subestación", href: "/etrys/productos/subestacion", description: "Hasta 3,000 kVA" },
       ],
     },
     {
@@ -127,10 +127,10 @@ export default function EtrysLayout({
 
   // Cerrar submenú cuando cambia la ruta
   useEffect(() => {
-    if (openSubmenu !== null || mobileMenuOpen) {
+    startTransition(() => {
       setOpenSubmenu(null);
       setMobileMenuOpen(false);
-    }
+    });
   }, [pathname]);
 
   const scrolled = useScrolled(20);
@@ -286,7 +286,7 @@ export default function EtrysLayout({
       >
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0099ce] to-[#007ba8] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-linear-to-br from-[#0099ce] to-[#007ba8] flex items-center justify-center">
               <span className="text-white font-bold text-sm">R</span>
             </div>
             <div>

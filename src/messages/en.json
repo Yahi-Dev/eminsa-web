@@ -992,27 +992,40 @@
               "4": "Guaranteed customer satisfaction"
             }
           },
-          "cidet": {
-            "fullName": "Center for Research and Technological Development of the Electrical Sector",
-            "description": "Colombian certification that validates compliance with technical standards for electrical equipment in the Latin American market.",
-            "issuingBody": "CIDET - Colombia",
+          "ansi-ieee-c57": {
+            "fullName": "ANSI/IEEE C57 Standard — Certified by CIDET (Accredited by ANAB)",
+            "description": "Our transformers are certified by CIDET — accredited by ANAB — in compliance with the ANSI/IEEE C57 standard, which governs the design, performance, and testing of electrical transformers.",
+            "issuingBody": "CIDET (Accredited by ANAB)",
             "benefits": {
-              "0": "Access to the Colombian market",
-              "1": "Regional technical validation",
-              "2": "NTC standards compliance",
-              "3": "Recognition in Latin America"
+              "0": "Compliance with the most rigorous technical standard for transformers",
+              "1": "Certification issued by CIDET, accredited by ANAB",
+              "2": "Design and testing per IEEE C57.12.00 and C57.12.90",
+              "3": "Access to markets requiring ANSI/IEEE compliance",
+              "4": "Backed by North America's leading standards organizations"
             }
           },
           "ul": {
-            "fullName": "Underwriters Laboratories",
-            "description": "Globally recognized safety certification that guarantees our products meet the strictest safety standards.",
+            "fullName": "Underwriters Laboratories — Registered Product Family",
+            "description": "Our product family is registered with UL, ensuring equipment has been evaluated under the most stringent electrical safety standards in North America.",
             "issuingBody": "Underwriters Laboratories Inc.",
             "benefits": {
-              "0": "Worldwide recognition",
-              "1": "Safety guarantee",
-              "2": "Access to international markets",
-              "3": "UL standards compliance",
-              "4": "Consumer confidence"
+              "0": "Registered product family with UL",
+              "1": "Evaluation under the most stringent electrical safety standards",
+              "2": "Recognition in North American markets",
+              "3": "Greater trust for customers, distributors, and engineers",
+              "4": "Backed by North America's leading certification organization"
+            }
+          },
+          "doe-2016": {
+            "fullName": "DOE 2016 Energy Efficiency Standard Compliance",
+            "description": "DOE 2016 is an energy efficiency standard, not a certification. Our distribution transformers are designed to fully meet the minimum efficiency levels required by this standard.",
+            "issuingBody": "U.S. Department of Energy (DOE)",
+            "benefits": {
+              "0": "Designs meeting DOE 2016 efficiency levels",
+              "1": "Reduced core and winding losses",
+              "2": "Lower energy consumption over the full lifetime",
+              "3": "Compliance with U.S. market regulations",
+              "4": "Reduced environmental impact"
             }
           }
         },
@@ -1783,7 +1796,7 @@
       "fullName": "New Transformer Manufacturing",
       "tagline": "100% new transformers, manufactured in the Dominican Republic",
       "description": "100% new transformers, manufactured in the Dominican Republic under the highest international standards and fully complying with the efficiency levels established by ANSI and DOE 2016.",
-      "heroDescription": "Electrical transformation solutions with high-performance technology, guaranteed efficiency, and local manufacturing under ANSI and DOE 2016 standards.",
+      "heroDescription": "Eminsa brand electrical transformers, designed with high-performance technology and guaranteed efficiency, manufactured in the Caribbean under IEEE/ANSI standards.",
       "stats": {
         "0": "Years of Experience",
         "1": "Transformers Manufactured",
@@ -1987,25 +2000,37 @@
           "4": "Guaranteed customer satisfaction"
         }
       },
-      "cidet": {
-        "fullName": "Center for Research and Technological Development of the Electrical Sector",
-        "description": "Colombian certification validating compliance with technical standards for electrical equipment in the Latin American market.",
+      "ansi-ieee-c57": {
+        "fullName": "ANSI/IEEE C57 Standard — Certified by CIDET (Accredited by ANAB)",
+        "description": "Our transformers are certified by CIDET — accredited by ANAB — in compliance with the ANSI/IEEE C57 standard.",
         "benefits": {
-          "0": "Access to the Colombian market",
-          "1": "Regional technical validation",
-          "2": "NTC standards compliance",
-          "3": "Recognition in Latin America"
+          "0": "Compliance with the most rigorous technical standard for transformers",
+          "1": "Certification issued by CIDET, accredited by ANAB",
+          "2": "Design and testing per IEEE C57.12.00 and C57.12.90",
+          "3": "Access to markets requiring ANSI/IEEE compliance",
+          "4": "Backed by North America's leading standards organizations"
         }
       },
       "ul": {
-        "fullName": "Underwriters Laboratories",
-        "description": "Globally recognized safety certification ensuring our products meet the strictest safety standards.",
+        "fullName": "Underwriters Laboratories — Registered Product Family",
+        "description": "Our product family is registered with UL, evaluated under the most stringent electrical safety standards in North America.",
         "benefits": {
-          "0": "Worldwide recognition",
-          "1": "Safety guarantee",
-          "2": "Access to international markets",
-          "3": "UL standards compliance",
-          "4": "Consumer confidence"
+          "0": "Registered product family with UL",
+          "1": "Evaluation under the most stringent electrical safety standards",
+          "2": "Recognition in North American markets",
+          "3": "Greater trust for customers, distributors, and engineers",
+          "4": "Backed by North America's leading certification organization"
+        }
+      },
+      "doe-2016": {
+        "fullName": "DOE 2016 Energy Efficiency Standard Compliance",
+        "description": "DOE 2016 is an energy efficiency standard. Our transformers are designed to fully meet its minimum efficiency levels.",
+        "benefits": {
+          "0": "Designs meeting DOE 2016 efficiency levels",
+          "1": "Reduced core and winding losses",
+          "2": "Lower energy consumption over the full lifetime",
+          "3": "Compliance with U.S. market regulations",
+          "4": "Reduced environmental impact"
         }
       }
     },
@@ -2049,7 +2074,7 @@
   "eicConfig": {
     "info": {
       "tagline": "International Electrical Suppliers",
-      "description": "We connect Eminsa with the world, expanding our energy solutions through a solid global network of strategic partners, ensuring international presence, specialized service, and close support in every project.",
+      "description": "We connect Eminsa with the world, driving our energy solutions through strategic alliances that ensure international presence, specialized service, and close support in every project.",
       "stats": {
         "0": "Represented Brands",
         "1": "Countries of Presence",
@@ -2234,7 +2259,7 @@
     "info": {
       "tagline": "Transformer Repair and Service",
       "slogan": "Transformer Repair and Service",
-      "description": "GRUPO EMINSA has over 50 years of experience in the electrical distribution transformer and related equipment sector. Through our RST division, we specialize in the repair and remanufacturing of distribution and industrial transformers, offering solutions that restore power and reliability to your equipment.",
+      "description": "At RST we combine the expertise of a highly qualified technical team with cutting-edge technology to give your transformers a new life with the ETRYS seal.",
       "stats": {
         "0": "Years of Experience",
         "1": "Months Warranty",
@@ -2534,80 +2559,180 @@
     },
     "process": {
       "1": {
-        "title": "Reception and Diagnosis",
-        "shortTitle": "Diagnosis",
-        "description": "Initial chemical and electrical tests.",
+        "title": "Work Evaluation",
+        "shortTitle": "Evaluation",
+        "description": "Quotation, work design and order decision to determine the scope of remanufacturing.",
         "details": {
-          "0": "Visual inspection",
-          "1": "Insulation testing",
-          "2": "Oil analysis",
-          "3": "Diagnostic report"
+          "0": "Initial visual inspection",
+          "1": "Work quotation",
+          "2": "Work plan design",
+          "3": "Order approval"
         }
       },
       "2": {
-        "title": "Disassembly and Inspection",
-        "shortTitle": "Disassembly",
-        "description": "Core and coil removal, baking, rewinding.",
+        "title": "Work Order",
+        "shortTitle": "Order",
+        "description": "Formal generation and assignment of the work order with all technical requirements.",
         "details": {
-          "0": "Oil draining",
-          "1": "Core extraction",
-          "2": "Baking",
-          "3": "Damage identification"
+          "0": "Technician assignment",
+          "1": "Material list",
+          "2": "Work schedule",
+          "3": "System registration"
         }
       },
       "3": {
-        "title": "Modifications",
-        "shortTitle": "Modifications",
-        "description": "Radiator replacement, custom parts installation.",
+        "title": "Complete Disassembly",
+        "shortTitle": "Disassembly",
+        "description": "Full transformer teardown: oil draining, core and coil extraction.",
         "details": {
-          "0": "Rewinding if necessary",
-          "1": "Radiator replacement",
-          "2": "Bushing adaptation",
-          "3": "Custom modifications"
+          "0": "Dielectric oil draining",
+          "1": "Tank removal",
+          "2": "Core and coil separation",
+          "3": "Component inventory"
         }
       },
       "4": {
-        "title": "Reassembly",
-        "shortTitle": "Assembly",
-        "description": "Core and coil installation, gasket replacement, new oil.",
+        "title": "Insulation Cutting",
+        "shortTitle": "Insulation",
+        "description": "Removal and cutting of insulation material from coils and core for evaluation and replacement.",
         "details": {
-          "0": "Core reinstallation",
-          "1": "Coil placement",
-          "2": "Gasket replacement",
-          "3": "New oil filling"
+          "0": "Old insulation removal",
+          "1": "Core condition assessment",
+          "2": "Material classification",
+          "3": "Rewinding preparation"
         }
       },
       "5": {
-        "title": "Final Testing",
-        "shortTitle": "Testing",
-        "description": "Complete electrical and pressure tests.",
+        "title": "Winding",
+        "shortTitle": "Winding",
+        "description": "Rewinding of primary and secondary windings with new conductor and insulation.",
         "details": {
-          "0": "Ratio tests",
-          "1": "Winding resistance",
-          "2": "Insulation test",
-          "3": "Pressure test"
+          "0": "Rewinding with new conductor",
+          "1": "Insulation application",
+          "2": "Precise sizing",
+          "3": "Winding quality control"
         }
       },
       "6": {
-        "title": "Finishing and Painting",
-        "shortTitle": "Painting",
-        "description": "Preparation, sanding, protective paint.",
+        "title": "Core Assembly and Connections",
+        "shortTitle": "Assembly",
+        "description": "Magnetic core assembly and winding connections per original design.",
         "details": {
-          "0": "Surface cleaning",
-          "1": "Primer",
-          "2": "Finish paint",
-          "3": "Labeling"
+          "0": "Core stacking",
+          "1": "Coil mounting",
+          "2": "Tap connection",
+          "3": "Polarity verification"
         }
       },
       "7": {
-        "title": "Quality Control",
-        "shortTitle": "Dispatch",
-        "description": "Final inspection and delivery preparation.",
+        "title": "Coil Removal and Reconditioning",
+        "shortTitle": "Reconditioning",
+        "description": "Coil extraction from core and conditioning prior to drying process.",
         "details": {
-          "0": "Final inspection",
-          "1": "Test certificate",
-          "2": "Nameplate",
-          "3": "Transport preparation"
+          "0": "Controlled coil extraction",
+          "1": "Surface cleaning",
+          "2": "Insulation inspection",
+          "3": "Oven preparation"
+        }
+      },
+      "8": {
+        "title": "Drying Oven and Insulation Tests",
+        "shortTitle": "Drying",
+        "description": "Industrial oven drying to remove moisture and insulation tests to verify dielectric integrity.",
+        "details": {
+          "0": "Controlled temperature oven drying",
+          "1": "Insulation resistance test (Megger)",
+          "2": "Polarization index (PI)",
+          "3": "ANSI minimum values verification"
+        }
+      },
+      "9": {
+        "title": "Sheet Metal and Tank Repair",
+        "shortTitle": "Sheet Metal",
+        "description": "Structural tank repair, welding and mechanical accessories.",
+        "details": {
+          "0": "Tank structural assessment",
+          "1": "Weld repair",
+          "2": "Deformation correction",
+          "3": "Accessory installation"
+        }
+      },
+      "10": {
+        "title": "Primer Painting",
+        "shortTitle": "Primer",
+        "description": "Surface preparation and application of anti-corrosion primer coat.",
+        "details": {
+          "0": "Cleaning and degreasing",
+          "1": "Sandblasting or sanding",
+          "2": "Anti-corrosion primer application",
+          "3": "Curing time"
+        }
+      },
+      "11": {
+        "title": "Tanking and Electrical Tests",
+        "shortTitle": "Tanking",
+        "description": "Core and coil installation in tank, new oil filling and complete electrical tests.",
+        "details": {
+          "0": "Active assembly in tank",
+          "1": "New dielectric oil filling",
+          "2": "Turns ratio test (TTR)",
+          "3": "Loss and excitation current tests",
+          "4": "Impedance test"
+        }
+      },
+      "12": {
+        "title": "Final Painting",
+        "shortTitle": "Painting",
+        "description": "Application of industrial finish paint with required color and protection.",
+        "details": {
+          "0": "Industrial paint application",
+          "1": "Color per specification",
+          "2": "Uniform finish",
+          "3": "Coating thickness verification"
+        }
+      },
+      "13": {
+        "title": "Quality Inspection",
+        "shortTitle": "Inspection",
+        "description": "Comprehensive final review by quality control to ensure compliance with specifications.",
+        "details": {
+          "0": "All electrical parameters review",
+          "1": "External visual verification",
+          "2": "Technical documentation review",
+          "3": "QC approval"
+        }
+      },
+      "14": {
+        "title": "Labeling",
+        "shortTitle": "Labeling",
+        "description": "Updated nameplate with the remanufactured transformer parameters.",
+        "details": {
+          "0": "Nameplate with new parameters",
+          "1": "RST by EMINSA label",
+          "2": "Internal serial number",
+          "3": "Remanufacturing date"
+        }
+      },
+      "15": {
+        "title": "Order Closing",
+        "shortTitle": "Closing",
+        "description": "Formal work order closing with all technical documentation and test certificate.",
+        "details": {
+          "0": "Test report preparation",
+          "1": "Remanufacturing certificate",
+          "2": "System closing",
+          "3": "Customer notification"
+        }
+      },
+      "16": {
+        "title": "Warehouse and Dispatch",
+        "shortTitle": "Dispatch",
+        "description": "Temporary storage and preparation for delivery or dispatch to customer.",
+        "details": {
+          "0": "Protected storage",
+          "1": "Transport packaging",
+          "2": "Delivery coordination",
+          "3": "Delivery with complete documentation"
         }
       }
     },
@@ -2836,6 +2961,7 @@
       "home": "MTN Home",
       "products": "Products",
       "standards": "Standards",
+      "manufacturing": "Manufacturing",
       "certifications": "Certifications",
       "resources": "Resources",
       "quotes": "Quotes",
@@ -3263,7 +3389,7 @@
     "process": {
       "badge": "Certified Process",
       "title": "Our Remanufacturing Process",
-      "description": "Each transformer goes through a rigorous 7-step process that guarantees compliance with original specifications.",
+      "description": "Each transformer goes through a rigorous 16-step process in 5 phases that guarantees compliance with original specifications.",
       "viewDetail": "View detail →"
     },
     "whyRst": {

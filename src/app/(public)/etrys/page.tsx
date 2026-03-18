@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
@@ -20,6 +20,8 @@ import {
   Users,
   Clock,
   Wrench,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import {
   etrysInfo,
@@ -45,6 +47,16 @@ export default function EtrysPage() {
   const tc = useTranslations("etrysConfig");
   const [quoteForm, setQuoteForm] = useState({ nombre: "", email: "", telefono: "" });
   const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = (direction: "left" | "right") => {
+    if (!carouselRef.current) return;
+    const scrollAmount = carouselRef.current.offsetWidth * 0.75;
+    carouselRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
 
   const handleQuoteSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,14 +97,14 @@ export default function EtrysPage() {
                 <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
                   <span className="text-white">{tc("info.tagline")}</span>
                 </h1>
-                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed">
+                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed text-justify">
                   {t("hero.heroSubtitle")}
                 </p>
               </div>
 
-              <p className="text-lg text-white/70 leading-relaxed max-w-xl">
+              {/* <p className="text-lg text-white/70 leading-relaxed max-w-xl">
                 {tc("info.description")}
-              </p>
+              </p> */}
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">
@@ -297,19 +309,37 @@ export default function EtrysPage() {
             </p>
           </motion.div>
 
-          {/* Process Steps */}
+          {/* Process Steps — Carousel */}
           <div className="relative">
+            {/* Nav buttons */}
+            <button
+              onClick={() => scrollCarousel("left")}
+              className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-[#0099ce] hover:border-[#0099ce] transition-colors"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={() => scrollCarousel("right")}
+              className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:text-[#0099ce] hover:border-[#0099ce] transition-colors"
+            >
+              <ChevronRight size={20} />
+            </button>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 lg:gap-2">
+            {/* Scrollable track */}
+            <div
+              ref={carouselRef}
+              className="overflow-x-auto scrollbar-hide flex gap-4 px-2 pb-4 snap-x snap-mandatory"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
               {remanufactureProcess.map((step, index) => (
                 <motion.button
                   key={step.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: Math.min(index * 0.05, 0.4) }}
                   onClick={() => setActiveStepIndex(index)}
-                  className="relative text-center group cursor-pointer"
+                  className="relative text-center group cursor-pointer snap-start shrink-0 w-36"
                 >
                   <div className="relative z-10 w-12 h-12 mx-auto mb-3 rounded-full bg-linear-to-br from-[#0099ce] to-[#00269b] flex items-center justify-center text-white font-bold shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-200">
                     {step.id}
@@ -317,10 +347,10 @@ export default function EtrysPage() {
                   <h3 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-[#0099ce] transition-colors">
                     {step.shortTitle}
                   </h3>
-                  <p className="text-xs text-gray-500 hidden md:block line-clamp-2">
+                  <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
                     {step.description}
                   </p>
-                  <p className="text-xs text-[#0099ce] font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">
+                  <p className="text-xs text-[#0099ce] font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     {t("process.viewDetail")}
                   </p>
                 </motion.button>

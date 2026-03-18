@@ -95,20 +95,20 @@ export default function MTNPageContent() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed"
+                  className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed text-justify"
                 >
                   {tc("info.heroDescription")}
                 </motion.p>
               </div>
 
-              <motion.p
+              {/* <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-lg text-white/70 leading-relaxed max-w-xl"
               >
                 {tc("info.description")}
-              </motion.p>
+              </motion.p> */}
 
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

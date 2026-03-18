@@ -89,14 +89,10 @@ export default function EICPage() {
                 <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
                   <span className="text-white">Eminsa International Corporation</span>
                 </h1>
-                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed">
+                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed text-justify">
                   {tc("info.description")}
                 </p>
               </div>
-
-              <p className="text-lg text-white/70 leading-relaxed max-w-xl">
-                {t("hero.heroDescription")}
-              </p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">

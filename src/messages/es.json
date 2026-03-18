@@ -992,27 +992,40 @@
               "4": "Satisfacción del cliente garantizada"
             }
           },
-          "cidet": {
-            "fullName": "Centro de Investigación y Desarrollo Tecnológico del Sector Eléctrico",
-            "description": "Certificación colombiana que valida el cumplimiento de normas técnicas para equipos eléctricos en el mercado latinoamericano.",
-            "issuingBody": "CIDET - Colombia",
+          "ansi-ieee-c57": {
+            "fullName": "Norma ANSI/IEEE C57 — Certificado por CIDET (Acreditado por ANAB)",
+            "description": "Nuestros transformadores son certificados por CIDET — acreditado por ANAB — en cumplimiento con la norma ANSI/IEEE C57, el estándar internacional que rige el diseño, desempeño y pruebas de transformadores eléctricos.",
+            "issuingBody": "CIDET (Acreditado por ANAB)",
             "benefits": {
-              "0": "Acceso al mercado colombiano",
-              "1": "Validación técnica regional",
-              "2": "Cumplimiento de normas NTC",
-              "3": "Reconocimiento en Latinoamérica"
+              "0": "Cumplimiento del estándar técnico más riguroso para transformadores",
+              "1": "Certificación emitida por CIDET, acreditado por ANAB",
+              "2": "Diseño y pruebas conforme a IEEE C57.12.00 y C57.12.90",
+              "3": "Acceso a mercados que exigen cumplimiento ANSI/IEEE",
+              "4": "Respaldo de las instituciones normativas líderes en Norteamérica"
             }
           },
           "ul": {
-            "fullName": "Underwriters Laboratories",
-            "description": "Certificación de seguridad reconocida mundialmente que garantiza que nuestros productos cumplen con los estándares de seguridad más estrictos.",
+            "fullName": "Underwriters Laboratories — Familia de Productos Registrados",
+            "description": "Nuestra familia de productos está registrada ante UL, garantizando que los equipos han sido evaluados bajo los estándares de seguridad eléctrica más exigentes de América del Norte.",
             "issuingBody": "Underwriters Laboratories Inc.",
             "benefits": {
-              "0": "Reconocimiento mundial",
-              "1": "Garantía de seguridad",
-              "2": "Acceso a mercados internacionales",
-              "3": "Cumplimiento de normas UL",
-              "4": "Confianza del consumidor"
+              "0": "Familia de productos registrados ante UL",
+              "1": "Evaluación bajo los estándares de seguridad eléctrica más exigentes",
+              "2": "Reconocimiento en mercados de América del Norte",
+              "3": "Mayor confianza para clientes, distribuidores e ingenieros",
+              "4": "Respaldo de la organización de certificación líder en Norteamérica"
+            }
+          },
+          "doe-2016": {
+            "fullName": "Cumplimiento del Estándar de Eficiencia Energética DOE 2016",
+            "description": "El DOE 2016 es un estándar de eficiencia energética del Departamento de Energía de EE.UU. Nuestros transformadores están diseñados para cumplir plenamente con sus niveles mínimos de eficiencia.",
+            "issuingBody": "U.S. Department of Energy (DOE)",
+            "benefits": {
+              "0": "Diseños que cumplen los niveles de eficiencia DOE 2016",
+              "1": "Reducción de pérdidas en núcleo y devanados",
+              "2": "Menor consumo energético durante toda la vida útil",
+              "3": "Cumplimiento de regulaciones del mercado estadounidense",
+              "4": "Impacto ambiental reducido"
             }
           }
         },
@@ -1783,7 +1796,7 @@
       "fullName": "Manufactura de Transformadores Nuevos",
       "tagline": "Transformadores 100% nuevos, fabricados en la República Dominicana",
       "description": "Transformadores 100% nuevos, fabricados en la República Dominicana bajo los más altos estándares internacionales y cumpliendo plenamente con los niveles de eficiencia establecidos por ANSI y DOE 2016.",
-      "heroDescription": "Soluciones en transformación eléctrica con tecnología de alto desempeño, eficiencia garantizada y fabricación local bajo normas ANSI y DOE 2016.",
+      "heroDescription": "Transformadores eléctricos marca Eminsa, diseñados con tecnología de alto desempeño y eficiencia garantizada, fabricados en el Caribe bajo los estándares IEEE/ANSI.",
       "stats": {
         "0": "Años de Experiencia",
         "1": "Transformadores Fabricados",
@@ -1987,25 +2000,37 @@
           "4": "Satisfacción del cliente garantizada"
         }
       },
-      "cidet": {
-        "fullName": "Centro de Investigación y Desarrollo Tecnológico del Sector Eléctrico",
-        "description": "Certificación colombiana que valida el cumplimiento de normas técnicas para equipos eléctricos en el mercado latinoamericano.",
+      "ansi-ieee-c57": {
+        "fullName": "Norma ANSI/IEEE C57 — Certificado por CIDET (Acreditado por ANAB)",
+        "description": "Nuestros transformadores son certificados por CIDET — acreditado por ANAB — en cumplimiento con la norma ANSI/IEEE C57.",
         "benefits": {
-          "0": "Acceso al mercado colombiano",
-          "1": "Validación técnica regional",
-          "2": "Cumplimiento de normas NTC",
-          "3": "Reconocimiento en Latinoamérica"
+          "0": "Cumplimiento del estándar técnico más riguroso para transformadores",
+          "1": "Certificación emitida por CIDET, acreditado por ANAB",
+          "2": "Diseño y pruebas conforme a IEEE C57.12.00 y C57.12.90",
+          "3": "Acceso a mercados que exigen cumplimiento ANSI/IEEE",
+          "4": "Respaldo de las instituciones normativas líderes en Norteamérica"
         }
       },
       "ul": {
-        "fullName": "Underwriters Laboratories",
-        "description": "Certificación de seguridad reconocida mundialmente que garantiza que nuestros productos cumplen con los estándares de seguridad más estrictos.",
+        "fullName": "Underwriters Laboratories — Familia de Productos Registrados",
+        "description": "Nuestra familia de productos está registrada ante UL, evaluada bajo los estándares de seguridad eléctrica más exigentes de América del Norte.",
         "benefits": {
-          "0": "Reconocimiento mundial",
-          "1": "Garantía de seguridad",
-          "2": "Acceso a mercados internacionales",
-          "3": "Cumplimiento de normas UL",
-          "4": "Confianza del consumidor"
+          "0": "Familia de productos registrados ante UL",
+          "1": "Evaluación bajo los estándares de seguridad eléctrica más exigentes",
+          "2": "Reconocimiento en mercados de América del Norte",
+          "3": "Mayor confianza para clientes, distribuidores e ingenieros",
+          "4": "Respaldo de la organización de certificación líder en Norteamérica"
+        }
+      },
+      "doe-2016": {
+        "fullName": "Cumplimiento del Estándar de Eficiencia Energética DOE 2016",
+        "description": "El DOE 2016 es un estándar de eficiencia energética. Nuestros transformadores cumplen plenamente con sus niveles mínimos de eficiencia.",
+        "benefits": {
+          "0": "Diseños que cumplen los niveles de eficiencia DOE 2016",
+          "1": "Reducción de pérdidas en núcleo y devanados",
+          "2": "Menor consumo energético durante toda la vida útil",
+          "3": "Cumplimiento de regulaciones del mercado estadounidense",
+          "4": "Impacto ambiental reducido"
         }
       }
     },
@@ -2049,7 +2074,7 @@
   "eicConfig": {
     "info": {
       "tagline": "Suplidores Eléctricos Internacionales",
-      "description": "Conectamos a Eminsa con el mundo, expandiendo nuestras soluciones energéticas a través de una sólida red global de aliados estratégicos, garantizando presencia internacional, servicio especializado y un acompañamiento cercano en cada proyecto.",
+      "description": "Conectamos a Eminsa con el mundo, impulsando nuestras soluciones energéticas mediante alianzas estratégicas que aseguran presencia internacional, servicio especializado y un acompañamiento cercano en cada proyecto.",
       "stats": {
         "0": "Marcas Representadas",
         "1": "Países de Presencia",
@@ -2444,7 +2469,7 @@
     "info": {
       "tagline": "Reparacion y Servicio De Transformadores",
       "slogan": "Reparación y Servicio de Transformadores",
-      "description": "GRUPO EMINSA cuenta con más de 50 años de trayectoria en el sector de transformadores eléctricos de distribución y equipos relacionados. A través de nuestra división RST, nos especializamos en la reparación y remanufactura de transformadores de distribución e industriales, ofreciendo soluciones que devuelven la potencia y la confiabilidad a sus equipos.",
+      "description": "En RST combinamos la experiencia de un equipo técnico altamente calificado con tecnología de última generación para devolverle a sus transformadores una nueva vida con el sello ETRYS.",
       "stats": {
         "0": "Años de Experiencia",
         "1": "Meses de Garantía",
@@ -2839,81 +2864,181 @@
       }
     },
     "process": {
-      "0": {
-        "title": "Recepción y Diagnóstico",
-        "shortTitle": "Diagnóstico",
-        "description": "Pruebas químicas y eléctricas iniciales para determinar el estado de la unidad.",
-        "details": {
-          "0": "Inspección visual",
-          "1": "Pruebas de aislamiento",
-          "2": "Análisis de aceite",
-          "3": "Informe de diagnóstico"
-        }
-      },
       "1": {
-        "title": "Desmontaje e Inspección",
-        "shortTitle": "Desmontaje",
-        "description": "Retiro de núcleo y bobinas, horneado, rebobinado o reemplazo.",
+        "title": "Evaluación del Trabajo",
+        "shortTitle": "Evaluación",
+        "description": "Cotización, diseño del trabajo y decisión de orden para determinar el alcance de la remanufactura.",
         "details": {
-          "0": "Drenaje de aceite",
-          "1": "Extracción de núcleo",
-          "2": "Horneado",
-          "3": "Identificación de daños"
+          "0": "Inspección visual inicial",
+          "1": "Cotización del trabajo",
+          "2": "Diseño del plan de trabajo",
+          "3": "Aprobación de la orden"
         }
       },
       "2": {
-        "title": "Modificaciones y Mejoras",
-        "shortTitle": "Modificaciones",
-        "description": "Sustitución de radiadores, instalación de piezas personalizadas.",
+        "title": "Orden de Trabajo",
+        "shortTitle": "Orden",
+        "description": "Generación y asignación formal de la orden de trabajo con todos los requerimientos técnicos.",
         "details": {
-          "0": "Rebobinado si necesario",
-          "1": "Reemplazo de radiadores",
-          "2": "Adecuación de bujes",
-          "3": "Modificaciones personalizadas"
+          "0": "Asignación de técnicos",
+          "1": "Lista de materiales",
+          "2": "Cronograma de trabajo",
+          "3": "Registro en sistema"
         }
       },
       "3": {
-        "title": "Reensamblaje",
-        "shortTitle": "Ensamblaje",
-        "description": "Instalación de núcleo y bobinas, reemplazo de juntas y llenado con aceite nuevo.",
+        "title": "Desarme Completo",
+        "shortTitle": "Desarme",
+        "description": "Desmontaje total del transformador: drenaje de aceite, extracción de núcleo y bobinas.",
         "details": {
-          "0": "Reinstalación del núcleo",
-          "1": "Colocación de bobinas",
-          "2": "Cambio de juntas",
-          "3": "Llenado con aceite nuevo"
+          "0": "Drenaje de aceite dieléctrico",
+          "1": "Extracción del tanque",
+          "2": "Separación de núcleo y bobinas",
+          "3": "Registro de componentes"
         }
       },
       "4": {
-        "title": "Pruebas Finales",
-        "shortTitle": "Pruebas",
-        "description": "Ensayos eléctricos completos y prueba de presión/fugas.",
+        "title": "Corte de Aislante",
+        "shortTitle": "Aislante",
+        "description": "Retiro y corte del material aislante de bobinas y núcleo para evaluación y reemplazo.",
         "details": {
-          "0": "Pruebas de transformación",
-          "1": "Resistencia de devanados",
-          "2": "Prueba de aislamiento",
-          "3": "Prueba de presión"
+          "0": "Retiro de aislamiento viejo",
+          "1": "Evaluación del estado del núcleo",
+          "2": "Clasificación de materiales",
+          "3": "Preparación para rebobinado"
         }
       },
       "5": {
-        "title": "Acabado y Pintura",
-        "shortTitle": "Pintura",
-        "description": "Preparación, lijado y aplicación de pintura protectora.",
+        "title": "Bobinado",
+        "shortTitle": "Bobinado",
+        "description": "Rebobinado de devanados primarios y secundarios con conductor y aislamiento nuevos.",
         "details": {
-          "0": "Limpieza de superficie",
-          "1": "Aplicación de primer",
-          "2": "Pintura de acabado",
-          "3": "Etiquetado"
+          "0": "Rebobinado con conductor nuevo",
+          "1": "Aplicación de aislamiento",
+          "2": "Dimensionamiento exacto",
+          "3": "Control de calidad del bobinado"
         }
       },
       "6": {
-        "title": "Control de Calidad",
-        "shortTitle": "Despacho",
-        "description": "Inspección final, etiquetado y preparación para entrega.",
+        "title": "Ensamble de Núcleo y Conexiones",
+        "shortTitle": "Ensamble",
+        "description": "Ensamble del núcleo magnético y conexión de los devanados según diseño original.",
         "details": {
-          "0": "Inspección final",
-          "1": "Certificado de pruebas",
-          "2": "Placa de datos",
-          "3": "Preparación transporte"
+          "0": "Apilamiento del núcleo",
+          "1": "Montaje de bobinas",
+          "2": "Conexión de derivaciones (taps)",
+          "3": "Verificación de polaridades"
+        }
+      },
+      "7": {
+        "title": "Desencubar Bobina y Recondicionar",
+        "shortTitle": "Desencubar",
+        "description": "Extracción de la bobina del núcleo y acondicionamiento previo al proceso de secado.",
+        "details": {
+          "0": "Extracción controlada de bobina",
+          "1": "Limpieza de superficies",
+          "2": "Inspección de aislamiento",
+          "3": "Preparación para horno"
+        }
+      },
+      "8": {
+        "title": "Horno de Secado y Pruebas de Aislamiento",
+        "shortTitle": "Secado",
+        "description": "Secado en horno industrial para eliminar humedad y pruebas de aislamiento para verificar integridad dieléctrica.",
+        "details": {
+          "0": "Secado en horno a temperatura controlada",
+          "1": "Prueba de resistencia de aislamiento (Megger)",
+          "2": "Índice de polarización (IP)",
+          "3": "Verificación de valores mínimos ANSI"
+        }
+      },
+      "9": {
+        "title": "Metal Mecánica y Reparación de Tanque",
+        "shortTitle": "Metal Mecánica",
+        "description": "Reparación estructural del tanque, soldaduras y accesorios mecánicos del transformador.",
+        "details": {
+          "0": "Evaluación estructural del tanque",
+          "1": "Reparación de soldaduras",
+          "2": "Corrección de deformaciones",
+          "3": "Instalación de accesorios"
+        }
+      },
+      "10": {
+        "title": "Pintura de Fondo",
+        "shortTitle": "Fondo",
+        "description": "Preparación de superficie y aplicación de capa anticorrosiva de fondo (primer).",
+        "details": {
+          "0": "Limpieza y desengrase",
+          "1": "Granallado o lijado",
+          "2": "Aplicación de primer anticorrosivo",
+          "3": "Tiempo de curado"
+        }
+      },
+      "11": {
+        "title": "Tanqueo y Pruebas Eléctricas",
+        "shortTitle": "Tanqueo",
+        "description": "Instalación del núcleo y bobinas en el tanque, llenado con aceite nuevo y pruebas eléctricas completas.",
+        "details": {
+          "0": "Montaje del conjunto activo en tanque",
+          "1": "Llenado con aceite dieléctrico nuevo",
+          "2": "Prueba de relación de transformación (TTR)",
+          "3": "Pruebas de pérdidas y corriente de excitación",
+          "4": "Prueba de impedancia"
+        }
+      },
+      "12": {
+        "title": "Pintura Final",
+        "shortTitle": "Pintura",
+        "description": "Aplicación de pintura industrial de acabado final con color y protección requeridos.",
+        "details": {
+          "0": "Aplicación de pintura industrial",
+          "1": "Color según especificación",
+          "2": "Acabado uniforme",
+          "3": "Verificación de espesor de capa"
+        }
+      },
+      "13": {
+        "title": "Inspección de Calidad",
+        "shortTitle": "Inspección",
+        "description": "Revisión final integral por control de calidad para asegurar cumplimiento de especificaciones.",
+        "details": {
+          "0": "Revisión de todos los parámetros eléctricos",
+          "1": "Verificación visual externa",
+          "2": "Revisión de documentación técnica",
+          "3": "Aprobación QC"
+        }
+      },
+      "14": {
+        "title": "Etiquetado",
+        "shortTitle": "Etiquetado",
+        "description": "Colocación de placa de datos actualizada con los parámetros del transformador remanufacturado.",
+        "details": {
+          "0": "Placa de datos con nuevos parámetros",
+          "1": "Etiqueta RST by EMINSA",
+          "2": "Número de serie interno",
+          "3": "Fecha de remanufactura"
+        }
+      },
+      "15": {
+        "title": "Cierre de Orden",
+        "shortTitle": "Cierre",
+        "description": "Cierre formal de la orden de trabajo con toda la documentación técnica y certificado de pruebas.",
+        "details": {
+          "0": "Elaboración de reporte de pruebas",
+          "1": "Certificado de remanufactura",
+          "2": "Cierre en sistema",
+          "3": "Notificación al cliente"
+        }
+      },
+      "16": {
+        "title": "Almacén y Despacho",
+        "shortTitle": "Despacho",
+        "description": "Almacenamiento temporal y preparación para entrega o despacho al cliente.",
+        "details": {
+          "0": "Almacenamiento protegido",
+          "1": "Embalaje para transporte",
+          "2": "Coordinación de entrega",
+          "3": "Entrega con documentación completa"
         }
       }
     },
@@ -3142,6 +3267,7 @@
       "home": "Inicio MTN",
       "products": "Productos",
       "standards": "Normativa",
+      "manufacturing": "Manufactura",
       "certifications": "Certificaciones",
       "resources": "Recursos",
       "quotes": "Cotizaciones",
@@ -3569,7 +3695,7 @@
     "process": {
       "badge": "Proceso Certificado",
       "title": "Nuestro Proceso de Remanufactura",
-      "description": "Cada transformador pasa por un riguroso proceso de 7 pasos que garantiza el cumplimiento de las especificaciones originales.",
+      "description": "Cada transformador pasa por un riguroso proceso de 16 pasos en 5 fases que garantiza el cumplimiento de las especificaciones originales.",
       "viewDetail": "Ver detalle →"
     },
     "whyRst": {
@@ -3613,7 +3739,7 @@
       "description": "Ofrecemos servicios integrales de reparación y mantenimiento para transformadores de todas las marcas y capacidades.",
       "viewDetails": "Ver Detalles",
       "processTitle": "Nuestro Proceso",
-      "processDescription": "Cada transformador pasa por un riguroso proceso de 7 pasos.",
+      "processDescription": "Cada transformador pasa por un riguroso proceso de 16 pasos en 5 fases.",
       "testsTitle": "Pruebas Realizadas",
       "testsDescription": "Pruebas eléctricas y de diagnóstico para garantizar la calidad.",
       "repairCenterTitle": "Centro de Reparación",

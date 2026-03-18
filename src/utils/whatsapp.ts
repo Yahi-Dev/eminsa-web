@@ -1,16 +1,9 @@
-import { contactInfo } from "@/config/navigation";
-
-const DEFAULT_MESSAGE =
-  "Hola, me gustaría obtener información sobre sus productos y servicios.";
-
 /**
- * Genera la URL correcta para abrir un chat de WhatsApp.
- * - Elimina caracteres no numéricos del número (wa.me no acepta '+', espacios ni guiones).
- * - Codifica el mensaje para que sea válido en una URL.
- * @param message Mensaje predefinido opcional. Si se omite, se usa el mensaje por defecto.
+ * Retorna el enlace directo de WhatsApp Business de Grupo Eminsa.
+ * El parámetro `message` se mantiene por compatibilidad pero no aplica
+ * al formato wa.me/message/... (enlace de WhatsApp Business).
  */
-export function getWhatsAppUrl(message: string = DEFAULT_MESSAGE): string {
-  const cleanNumber = contactInfo.whatsapp.replace(/\D/g, "");
-  const encodedMessage = encodeURIComponent(message);
-  return `https://wa.me/${cleanNumber}?text=${encodedMessage}`;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function getWhatsAppUrl(_message?: string): string {
+  return "https://wa.me/message/G3PJBGJETLB7P1";
 }

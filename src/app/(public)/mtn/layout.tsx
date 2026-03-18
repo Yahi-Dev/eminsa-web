@@ -13,7 +13,8 @@ import {
   FileText,
   Home,
   Menu,
-  X
+  X,
+  Factory,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
@@ -57,9 +58,9 @@ function useMtnNavItems(): NavItem[] {
       href: "/mtn/productos",
       icon: Package,
       submenu: [
-        { name: "Tipo Poste", href: "/mtn/productos/tipo-poste" },
-        { name: "Pad Mounted", href: "/mtn/productos/pad-mounted" },
-        { name: "Subestación", href: "/mtn/productos/subestacion" },
+        { name: "Transformadores Tipo Poste", href: "/mtn/productos/tipo-poste" },
+        { name: "Transformadores Pad Mounted", href: "/mtn/productos/pad-mounted" },
+        { name: "Transformadores de Subestación", href: "/mtn/productos/subestacion" },
       ],
     },
     {
@@ -70,6 +71,11 @@ function useMtnNavItems(): NavItem[] {
         { name: "ANSI", href: "/mtn/normativa/ansi" },
         { name: "DOE-2016", href: "/mtn/normativa/doe-2016" },
       ],
+    },
+    {
+      name: t("layout.manufacturing"),
+      href: "/mtn/manufactura",
+      icon: Factory,
     },
     {
       name: t("layout.certifications"),
@@ -228,7 +234,7 @@ export default function MTNLayout({
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.15 }}
-                            className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                            className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
                           >
                             {/* Enlace para ver todos los productos/normativa */}
                             <Link
@@ -254,7 +260,7 @@ export default function MTNLayout({
                                 href={subItem.href}
                                 onClick={() => setOpenSubmenu(null)}
                                 className={cn(
-                                  "block px-4 py-2 text-sm transition-colors hover:bg-gray-50",
+                                  "block px-4 py-2 text-sm transition-colors hover:bg-gray-50 whitespace-nowrap",
                                   pathname === subItem.href || pathname.startsWith(subItem.href + "/")
                                     ? "bg-[#00269b]/10 text-[#00269b] font-medium"
                                     : "text-gray-600"

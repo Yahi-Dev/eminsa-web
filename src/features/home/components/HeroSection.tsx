@@ -9,23 +9,23 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 
 const LINE1: { char: string; color: string }[] = [
   { char: "T", color: "#ffffff" },
-  { char: "r", color: "#ffffff" },
-  { char: "a", color: "#ffffff" },
-  { char: "n", color: "#ffffff" },
-  { char: "s", color: "#ffffff" },
-  { char: "f", color: "#ffffff" },
-  { char: "o", color: "#ffffff" },
-  { char: "r", color: "#ffffff" },
-  { char: "m", color: "#ffffff" },
-  { char: "a", color: "#ffffff" },
-  { char: "d", color: "#ffffff" },
-  { char: "o", color: "#ffffff" },
-  { char: "r", color: "#ffffff" },
-  { char: "e", color: "#ffffff" },
-  { char: "s", color: "#ffffff" },
+  { char: "R", color: "#ffffff" },
+  { char: "A", color: "#ffffff" },
+  { char: "N", color: "#ffffff" },
+  { char: "S", color: "#ffffff" },
+  { char: "F", color: "#ffffff" },
+  { char: "O", color: "#ffffff" },
+  { char: "R", color: "#ffffff" },
+  { char: "M", color: "#ffffff" },
+  { char: "A", color: "#ffffff" },
+  { char: "D", color: "#ffffff" },
+  { char: "O", color: "#ffffff" },
+  { char: "R", color: "#ffffff" },
+  { char: "E", color: "#ffffff" },
+  { char: "S", color: "#ffffff" },
 ];
 
-const LINE2 = "de Distribución Eléctrica";
+const LINE2 = "De Distribución Eléctrica";
 
 const TAGLINES: { text: string; color: string; duration: number }[] = [
   { text: "Transformadores de Distribución Eléctrica",          color: "#ffffff",  duration: 4000 },
@@ -204,7 +204,7 @@ export default function HeroSection() {
             {LINE1.map((item, i) => (
               <motion.span
                 key={i}
-                className="font-extrabold text-[9vw] md:text-[8.5vw] leading-none select-none"
+                className="font-extrabold text-[8vw] md:text-[7.5vw] leading-none select-none"
                 style={{ color: item.color }}
                 initial={{ y: 120, opacity: 0, rotateX: 90 }}
                 animate={{ y: 0, opacity: 1, rotateX: 0 }}

@@ -60,6 +60,8 @@ export interface RemanufactureProcessStep {
   description: string;
   details: string[];
   icon: string;
+  phase: number;       // grupo visual (1-5)
+  phaseLabel: string;  // nombre de la fase
 }
 
 export interface TestPerformed {
@@ -472,13 +474,123 @@ export const repairCenter: RepairCenter = {
 // ============================================================================
 
 export const remanufactureProcess: RemanufactureProcessStep[] = [
-  { id: 1, title: "Recepción y Diagnóstico", shortTitle: "Diagnóstico", description: "Pruebas químicas y eléctricas iniciales para determinar el estado de la unidad.", details: ["Inspección visual", "Pruebas de aislamiento", "Análisis de aceite", "Informe de diagnóstico"], icon: "clipboard-check" },
-  { id: 2, title: "Desmontaje e Inspección", shortTitle: "Desmontaje", description: "Retiro de núcleo y bobinas, horneado, rebobinado o reemplazo.", details: ["Drenaje de aceite", "Extracción de núcleo", "Horneado", "Identificación de daños"], icon: "search" },
-  { id: 3, title: "Modificaciones y Mejoras", shortTitle: "Modificaciones", description: "Sustitución de radiadores, instalación de piezas personalizadas.", details: ["Rebobinado si necesario", "Reemplazo de radiadores", "Adecuación de bujes", "Modificaciones personalizadas"], icon: "settings" },
-  { id: 4, title: "Reensamblaje", shortTitle: "Ensamblaje", description: "Instalación de núcleo y bobinas, reemplazo de juntas y llenado con aceite nuevo.", details: ["Reinstalación del núcleo", "Colocación de bobinas", "Cambio de juntas", "Llenado con aceite nuevo"], icon: "layers" },
-  { id: 5, title: "Pruebas Finales", shortTitle: "Pruebas", description: "Ensayos eléctricos completos y prueba de presión/fugas.", details: ["Pruebas de transformación", "Resistencia de devanados", "Prueba de aislamiento", "Prueba de presión"], icon: "check-circle" },
-  { id: 6, title: "Acabado y Pintura", shortTitle: "Pintura", description: "Preparación, lijado y aplicación de pintura protectora.", details: ["Limpieza de superficie", "Aplicación de primer", "Pintura de acabado", "Etiquetado"], icon: "paintbrush" },
-  { id: 7, title: "Control de Calidad", shortTitle: "Despacho", description: "Inspección final, etiquetado y preparación para entrega.", details: ["Inspección final", "Certificado de pruebas", "Placa de datos", "Preparación transporte"], icon: "package-check" },
+  // Phase 1 — Evaluación
+  {
+    id: 1, phase: 1, phaseLabel: "Evaluación",
+    title: "Evaluación del Trabajo", shortTitle: "Evaluación",
+    description: "Cotización, diseño del trabajo y decisión de orden para determinar el alcance de la remanufactura.",
+    details: ["Inspección visual inicial", "Cotización del trabajo", "Diseño del plan de trabajo", "Aprobación de la orden"],
+    icon: "clipboard-check",
+  },
+  // Phase 2 — Producción
+  {
+    id: 2, phase: 2, phaseLabel: "Producción",
+    title: "Orden de Trabajo", shortTitle: "Orden",
+    description: "Generación y asignación formal de la orden de trabajo con todos los requerimientos técnicos.",
+    details: ["Asignación de técnicos", "Lista de materiales", "Cronograma de trabajo", "Registro en sistema"],
+    icon: "file-text",
+  },
+  {
+    id: 3, phase: 2, phaseLabel: "Producción",
+    title: "Desarme Completo", shortTitle: "Desarme",
+    description: "Desmontaje total del transformador: drenaje de aceite, extracción de núcleo y bobinas.",
+    details: ["Drenaje de aceite dieléctrico", "Extracción del tanque", "Separación de núcleo y bobinas", "Registro de componentes"],
+    icon: "tool",
+  },
+  {
+    id: 4, phase: 2, phaseLabel: "Producción",
+    title: "Corte de Aislante", shortTitle: "Aislante",
+    description: "Retiro y corte del material aislante de bobinas y núcleo para evaluación y reemplazo.",
+    details: ["Retiro de aislamiento viejo", "Evaluación del estado del núcleo", "Clasificación de materiales", "Preparación para rebobinado"],
+    icon: "scissors",
+  },
+  {
+    id: 5, phase: 2, phaseLabel: "Producción",
+    title: "Bobinado", shortTitle: "Bobinado",
+    description: "Rebobinado de devanados primarios y secundarios con conductor y aislamiento nuevos.",
+    details: ["Rebobinado con conductor nuevo", "Aplicación de aislamiento", "Dimensionamiento exacto", "Control de calidad del bobinado"],
+    icon: "refresh-cw",
+  },
+  {
+    id: 6, phase: 2, phaseLabel: "Producción",
+    title: "Ensamble de Núcleo y Conexiones", shortTitle: "Ensamble",
+    description: "Ensamble del núcleo magnético y conexión de los devanados según diseño original.",
+    details: ["Apilamiento del núcleo", "Montaje de bobinas", "Conexión de derivaciones (taps)", "Verificación de polaridades"],
+    icon: "layers",
+  },
+  // Phase 3 — Tratamiento Térmico
+  {
+    id: 7, phase: 3, phaseLabel: "Tratamiento Térmico",
+    title: "Desencubar Bobina y Recondicionar", shortTitle: "Desencubar",
+    description: "Extracción de la bobina del núcleo y acondicionamiento previo al proceso de secado.",
+    details: ["Extracción controlada de bobina", "Limpieza de superficies", "Inspección de aislamiento", "Preparación para horno"],
+    icon: "wind",
+  },
+  {
+    id: 8, phase: 3, phaseLabel: "Tratamiento Térmico",
+    title: "Horno de Secado y Pruebas de Aislamiento", shortTitle: "Secado",
+    description: "Secado en horno industrial para eliminar humedad y pruebas de aislamiento para verificar integridad dieléctrica.",
+    details: ["Secado en horno a temperatura controlada", "Prueba de resistencia de aislamiento (Megger)", "Índice de polarización (IP)", "Verificación de valores mínimos ANSI"],
+    icon: "flame",
+  },
+  // Phase 4 — Metal Mecánica y Tanque
+  {
+    id: 9, phase: 4, phaseLabel: "Metal Mecánica y Tanque",
+    title: "Metal Mecánica y Reparación de Tanque", shortTitle: "Metal Mecánica",
+    description: "Reparación estructural del tanque, soldaduras y accesorios mecánicos del transformador.",
+    details: ["Evaluación estructural del tanque", "Reparación de soldaduras", "Corrección de deformaciones", "Instalación de accesorios"],
+    icon: "settings",
+  },
+  {
+    id: 10, phase: 4, phaseLabel: "Metal Mecánica y Tanque",
+    title: "Pintura de Fondo", shortTitle: "Fondo",
+    description: "Preparación de superficie y aplicación de capa anticorrosiva de fondo (primer).",
+    details: ["Limpieza y desengrase", "Granallado o lijado", "Aplicación de primer anticorrosivo", "Tiempo de curado"],
+    icon: "paintbrush",
+  },
+  {
+    id: 11, phase: 4, phaseLabel: "Metal Mecánica y Tanque",
+    title: "Tanqueo y Pruebas Eléctricas", shortTitle: "Tanqueo",
+    description: "Instalación del núcleo y bobinas en el tanque, llenado con aceite nuevo y pruebas eléctricas completas.",
+    details: ["Montaje del conjunto activo en tanque", "Llenado con aceite dieléctrico nuevo", "Prueba de relación de transformación (TTR)", "Pruebas de pérdidas y corriente de excitación", "Prueba de impedancia"],
+    icon: "check-circle",
+  },
+  // Phase 5 — Acabado y Despacho
+  {
+    id: 12, phase: 5, phaseLabel: "Acabado y Despacho",
+    title: "Pintura Final", shortTitle: "Pintura",
+    description: "Aplicación de pintura industrial de acabado final con color y protección requeridos.",
+    details: ["Aplicación de pintura industrial", "Color según especificación", "Acabado uniforme", "Verificación de espesor de capa"],
+    icon: "brush",
+  },
+  {
+    id: 13, phase: 5, phaseLabel: "Acabado y Despacho",
+    title: "Inspección de Calidad", shortTitle: "Inspección",
+    description: "Revisión final integral por control de calidad para asegurar cumplimiento de especificaciones.",
+    details: ["Revisión de todos los parámetros eléctricos", "Verificación visual externa", "Revisión de documentación técnica", "Aprobación QC"],
+    icon: "search",
+  },
+  {
+    id: 14, phase: 5, phaseLabel: "Acabado y Despacho",
+    title: "Etiquetado", shortTitle: "Etiquetado",
+    description: "Colocación de placa de datos actualizada con los parámetros del transformador remanufacturado.",
+    details: ["Placa de datos con nuevos parámetros", "Etiqueta RST by EMINSA", "Número de serie interno", "Fecha de remanufactura"],
+    icon: "tag",
+  },
+  {
+    id: 15, phase: 5, phaseLabel: "Acabado y Despacho",
+    title: "Cierre de Orden", shortTitle: "Cierre",
+    description: "Cierre formal de la orden de trabajo con toda la documentación técnica y certificado de pruebas.",
+    details: ["Elaboración de reporte de pruebas", "Certificado de remanufactura", "Cierre en sistema", "Notificación al cliente"],
+    icon: "file-check",
+  },
+  {
+    id: 16, phase: 5, phaseLabel: "Acabado y Despacho",
+    title: "Almacén y Despacho", shortTitle: "Despacho",
+    description: "Almacenamiento temporal y preparación para entrega o despacho al cliente.",
+    details: ["Almacenamiento protegido", "Embalaje para transporte", "Coordinación de entrega", "Entrega con documentación completa"],
+    icon: "package-check",
+  },
 ];
 
 // ============================================================================

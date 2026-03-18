@@ -25,8 +25,8 @@ const whyCards = [
 ];
 
 const statsData = [
-  { value: "3", label: "Certificaciones Activas", icon: BadgeCheck },
-  { value: "100%", label: "Eficiencia DOE 2016", icon: Zap },
+  { value: "3", label: "Certificaciones y Normas", icon: BadgeCheck },
+  { value: "DOE 2016", label: "Cumplimiento de Eficiencia", icon: Zap },
   { value: "50+", label: "Años de Experiencia", icon: Star },
 ];
 
@@ -134,7 +134,9 @@ export default function CertificacionesPage() {
                       )}
                     </div>
                     <div>
-                      <p className="text-white/60 text-xs uppercase tracking-wider mb-1">{t("certificationLabel")}</p>
+                      <p className="text-white/60 text-xs uppercase tracking-wider mb-1">
+                        {cert.complianceOnly ? "Cumplimiento de Estándar" : t("certificationLabel")}
+                      </p>
                       <h3 className="text-2xl font-bold text-white">{cert.name}</h3>
                       <p className="text-white/70 text-sm mt-1">{cert.fullName}</p>
                     </div>
@@ -283,7 +285,7 @@ export default function CertificacionesPage() {
                   <div className="space-y-8">
                     <div>
                       <span className="inline-block text-[#0099ce] font-semibold text-xs uppercase tracking-widest mb-2">
-                        {t("certificationLabel")}
+                        {cert.complianceOnly ? "Cumplimiento de Estándar" : t("certificationLabel")}
                       </span>
                       <h2 className="text-3xl font-bold text-gray-900 mb-1">{cert.name}</h2>
                       <p className="text-gray-400 text-sm">{cert.fullName}</p>
