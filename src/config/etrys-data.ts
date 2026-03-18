@@ -466,7 +466,7 @@ export const repairCenter: RepairCenter = {
     { id: "almacen", name: "Almacén de Componentes", description: "Inventario completo de componentes y repuestos", icon: "package", specs: "Stock permanente" },
     { id: "tanque", name: "Tanque de Almacenamiento", description: "Tanque de almacenamiento de fluido dieléctrico", icon: "database", specs: "12,000 galones" },
   ],
-  images: ["/images/etrys/centro/laboratorio.jpg", "/images/etrys/centro/taller.jpg", "/images/etrys/centro/grua.jpg", "/images/etrys/centro/almacen.jpg"],
+  images: ["/EMINSA/DSC07632.jpg", "/EMINSA/DSC07645.jpg", "/EMINSA/DSC07678.jpg", "/EMINSA/DSC07745.jpg"],
 };
 
 // ============================================================================

@@ -98,10 +98,10 @@ export default function EtrysServiciosPage() {
               <div className="space-y-4">
                 <div className="relative aspect-square rounded-xl overflow-hidden">
                   <Image
-                    src="/images/etrys/reparacion-antes-1.jpg"
+                    src="/EMINSA/DSC07751.jpg"
                     alt="Antes de reparación"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
                     {t("before")}
@@ -109,10 +109,10 @@ export default function EtrysServiciosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden">
                   <Image
-                    src="/images/etrys/reparacion-antes-2.jpg"
+                    src="/EMINSA/DSC07122.jpg"
                     alt="Antes de reparación"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
                     {t("before")}
@@ -122,10 +122,10 @@ export default function EtrysServiciosPage() {
               <div className="space-y-4 pt-8">
                 <div className="relative aspect-square rounded-xl overflow-hidden">
                   <Image
-                    src="/images/etrys/reparacion-despues-1.jpg"
+                    src="/EMINSA/DSC07827.jpg"
                     alt="Después de reparación"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
                     {t("after")}
@@ -133,10 +133,10 @@ export default function EtrysServiciosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden">
                   <Image
-                    src="/images/etrys/reparacion-despues-2.jpg"
+                    src="/EMINSA/DSC07764.jpg"
                     alt="Después de reparación"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                   <span className="absolute top-3 left-3 px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
                     {t("after")}

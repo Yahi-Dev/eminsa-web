@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -68,17 +69,16 @@ export default function ServiciosPage() {
       {/* ================================================================ */}
       {/* 1. HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#6d6e6d] via-[#575857] to-[#414241] text-white py-12 lg:py-16 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            }}
-          />
-        </div>
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/10 rounded-full blur-[120px]" />
+      <section className="relative bg-[#414241] text-white py-12 lg:py-16 overflow-hidden">
+        {/* Hero photo */}
+        <Image
+          src="/EMINSA/DSC07203.jpg"
+          alt="Servicios técnicos Eminsa"
+          fill
+          className="object-cover brightness-50"
+          priority
+        />
+        <div className="absolute inset-0 bg-linear-to-br from-[#6d6e6d]/60 via-[#575857]/50 to-[#414241]/80" />
 
         <div className="container-eminsa relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -484,6 +484,30 @@ export default function ServiciosPage() {
               <ArrowRight size={20} />
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* PHOTO STRIP */}
+      {/* ================================================================ */}
+      <section className="bg-gray-950 py-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-1">
+          {[
+            "/EMINSA/DSC07108.jpg",
+            "/EMINSA/DSC07129.jpg",
+            "/EMINSA/DSC07138.jpg",
+            "/EMINSA/DSC07161.jpg",
+            "/EMINSA/DSC07203.jpg",
+          ].map((src, i) => (
+            <div key={i} className={`relative overflow-hidden group aspect-video ${i === 4 ? "hidden lg:block" : ""}`}>
+              <Image
+                src={src}
+                alt={`Servicio técnico Eminsa ${i + 1}`}
+                fill
+                className="object-cover brightness-75 group-hover:brightness-90 group-hover:scale-105 transition-all duration-500"
+              />
+            </div>
+          ))}
         </div>
       </section>
 

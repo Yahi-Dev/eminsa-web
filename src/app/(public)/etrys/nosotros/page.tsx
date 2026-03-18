@@ -84,10 +84,10 @@ export default function EtrysNosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/etrys/equipo-etrys.jpg"
+                  src="/EMINSA/DSC07859.jpg"
                   alt="Equipo ETRYS"
                   fill
-                  className="object-cover"
+                  className="object-cover brightness-75"
                   priority
                 />
               </div>
@@ -153,34 +153,34 @@ export default function EtrysNosotrosPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/etrys/instalaciones-1.jpg"
+                    src="/EMINSA/DSC07129.jpg"
                     alt="Instalaciones ETRYS"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="/images/etrys/instalaciones-2.jpg"
+                    src="/EMINSA/DSC07138.jpg"
                     alt="Taller ETRYS"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/etrys/instalaciones-3.jpg"
+                    src="/EMINSA/DSC07108.jpg"
                     alt="Laboratorio ETRYS"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="/images/etrys/instalaciones-4.jpg"
+                    src="/EMINSA/DSC07161.jpg"
                     alt="Equipos ETRYS"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                 </div>
               </div>
@@ -312,10 +312,10 @@ export default function EtrysNosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/etrys/equipo-trabajo.jpg"
+                  src="/EMINSA/DSC07624.jpg"
                   alt="Equipo de trabajo ETRYS"
                   fill
-                  className="object-cover"
+                  className="object-cover brightness-75"
                 />
               </div>
             </motion.div>

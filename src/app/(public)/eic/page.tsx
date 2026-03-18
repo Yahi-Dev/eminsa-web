@@ -21,6 +21,14 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { eicInfo, eicProductCategories, eicBrands } from "@/config/eic-data";
+
+const categoryPhotos: Record<string, string> = {
+  "transformadores": "/EMINSA/DSC07158.jpg",
+  "cables": "/EMINSA/DSC07140.jpg",
+  "distribucion-mt": "/EMINSA/DSC07215.jpg",
+  "breakers": "/EMINSA/DSC07188.jpg",
+  "accesorios": "/EMINSA/DSC07218.jpg",
+};
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 
@@ -269,16 +277,20 @@ export default function EICPage() {
                     className={`grid md:grid-cols-2 gap-0 ${isEven ? "" : "md:[direction:rtl]"
                       }`}
                   >
-                    {/* Color Block with Icon */}
-                    <div
-                      className="p-8 md:p-10 flex flex-col justify-center items-center text-white relative overflow-hidden"
-                      style={{
-                        background: `linear-gradient(135deg, ${category.color}, ${category.color}dd)`,
-                      }}
-                    >
-                      {/* Decorative circles */}
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-                      <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+                    {/* Photo Block with Icon */}
+                    <div className="relative p-8 md:p-10 flex flex-col justify-center items-center text-white overflow-hidden min-h-72">
+                      {categoryPhotos[category.slug] ? (
+                        <Image
+                          src={categoryPhotos[category.slug]}
+                          alt={tc(`categories.${category.slug}.name`)}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : null}
+                      <div
+                        className="absolute inset-0"
+                        style={{ background: `linear-gradient(135deg, ${category.color}cc, ${category.color}99)` }}
+                      />
 
                       <div className="relative z-10 text-center md:[direction:ltr]">
                         <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4">

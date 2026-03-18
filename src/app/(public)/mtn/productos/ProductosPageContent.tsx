@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Zap, CheckCircle2, ChevronRight, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronRight, ShieldCheck } from "lucide-react";
 import { transformerProducts, getVariantsByProduct } from "@/config/mtn-data";
 import { useTranslations } from "next-intl";
+
+const productPhotos: Record<string, string> = {
+  "tipo-poste": "/EMINSA/DSC07227.jpg",
+  "pad-mounted": "/EMINSA/DSC07231.jpg",
+  "subestacion": "/EMINSA/DSC07255.jpg",
+};
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -64,18 +71,16 @@ export default function ProductosPageContent() {
                   className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
                 >
                   <div className="grid lg:grid-cols-2 gap-0">
-                    <div className={`bg-gradient-to-br from-[#00269b]/5 to-[#0099ce]/10 p-8 lg:p-12 flex items-center justify-center ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                      <div className="relative">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-64 h-64 border-2 border-[#00269b]/10 rounded-full" />
-                          <div className="absolute w-48 h-48 border-2 border-[#0099ce]/20 rounded-full" />
-                        </div>
-                        <div className="relative w-40 h-40 bg-white rounded-2xl shadow-xl flex items-center justify-center">
-                          <Zap size={64} className="text-[#00269b]" />
-                        </div>
-                        <div className="absolute -top-4 -right-4 bg-[#00269b] text-white px-3 py-1 rounded-full text-sm font-medium">
-                          DOE 2016
-                        </div>
+                    <div className={`relative min-h-72 lg:min-h-full overflow-hidden ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+                      <Image
+                        src={productPhotos[product.slug] ?? "/EMINSA/DSC07227.jpg"}
+                        alt={tc(`products.${product.slug}.name`)}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/30" />
+                      <div className="absolute top-4 right-4 bg-[#00269b] text-white px-3 py-1 rounded-full text-sm font-medium z-10">
+                        DOE 2016
                       </div>
                     </div>
 
