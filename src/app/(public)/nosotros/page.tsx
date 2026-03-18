@@ -72,8 +72,16 @@ export default function NosotrosPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-[#00269b] text-white py-16 lg:py-24">
-        <div className="container-eminsa">
+      <section className="relative bg-gray-900 text-white py-16 lg:py-24 overflow-hidden">
+        <Image
+          src="/EMINSA/DSC07149.jpg"
+          alt="Grupo EMINSA"
+          fill
+          className="object-cover brightness-50"
+          priority
+        />
+        <div className="absolute inset-0 bg-linear-to-br from-gray-900/70 via-gray-800/60 to-[#00269b]/70" />
+        <div className="container-eminsa relative">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-white/70 text-sm mb-6">
             <Link href="/" className="hover:text-white transition-colors">
@@ -118,10 +126,10 @@ export default function NosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/eminsa/instalaciones-principales.jpg"
-                  alt="Grupo EMINSA - Instalaciones"
+                  src="/EMINSA/DSC07875.jpg"
+                  alt="Equipo Grupo EMINSA"
                   fill
-                  className="object-cover"
+                  className="object-cover brightness-75"
                   priority
                 />
               </div>
@@ -233,34 +241,34 @@ export default function NosotrosPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/eminsa/instalaciones-1.jpg"
+                    src="/EMINSA/DSC07713.jpg"
                     alt="Instalaciones EMINSA"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="/images/eminsa/instalaciones-2.jpg"
+                    src="/EMINSA/DSC07733.jpg"
                     alt="Taller EMINSA"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/images/eminsa/instalaciones-3.jpg"
-                    alt="Laboratorio EMINSA"
+                    src="/EMINSA/DSC07165.jpg"
+                    alt="Proceso de producción EMINSA"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="/images/eminsa/instalaciones-4.jpg"
+                    src="/EMINSA/DSC07638.jpg"
                     alt="Equipos EMINSA"
                     fill
-                    className="object-cover"
+                    className="object-cover brightness-75"
                   />
                 </div>
               </div>
@@ -363,6 +371,84 @@ export default function NosotrosPage() {
         </div>
       </section>
 
+      {/* Photo Carousel - Auto-scroll */}
+      <section className="bg-gray-950 py-3 overflow-hidden">
+        <style>{`
+          @keyframes eminsa-marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .eminsa-marquee-track {
+            animation: eminsa-marquee 70s linear infinite;
+          }
+          .eminsa-marquee-track:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
+        <div
+          className="eminsa-marquee-track flex gap-2 w-max"
+        >
+          {[
+            "/EMINSA/DSC07108.jpg",
+            "/EMINSA/DSC07122.jpg",
+            "/EMINSA/DSC07129.jpg",
+            "/EMINSA/DSC07138.jpg",
+            "/EMINSA/DSC07149.jpg",
+            "/EMINSA/DSC07161.jpg",
+            "/EMINSA/DSC07165.jpg",
+            "/EMINSA/DSC07174.jpg",
+            "/EMINSA/DSC07638.jpg",
+            "/EMINSA/DSC07645.jpg",
+            "/EMINSA/DSC07670.jpg",
+            "/EMINSA/DSC07678.jpg",
+            "/EMINSA/DSC07706.jpg",
+            "/EMINSA/DSC07713.jpg",
+            "/EMINSA/DSC07733.jpg",
+            "/EMINSA/DSC07745.jpg",
+            "/EMINSA/DSC07780.jpg",
+            "/EMINSA/DSC07798.jpg",
+            "/EMINSA/DSC07805.jpg",
+            "/EMINSA/DSC07816.jpg",
+            "/EMINSA/DSC07827.jpg",
+            "/EMINSA/DSC07859.jpg",
+            "/EMINSA/DSC07875.jpg",
+            // duplicate for seamless loop
+            "/EMINSA/DSC07108.jpg",
+            "/EMINSA/DSC07122.jpg",
+            "/EMINSA/DSC07129.jpg",
+            "/EMINSA/DSC07138.jpg",
+            "/EMINSA/DSC07149.jpg",
+            "/EMINSA/DSC07161.jpg",
+            "/EMINSA/DSC07165.jpg",
+            "/EMINSA/DSC07174.jpg",
+            "/EMINSA/DSC07638.jpg",
+            "/EMINSA/DSC07645.jpg",
+            "/EMINSA/DSC07670.jpg",
+            "/EMINSA/DSC07678.jpg",
+            "/EMINSA/DSC07706.jpg",
+            "/EMINSA/DSC07713.jpg",
+            "/EMINSA/DSC07733.jpg",
+            "/EMINSA/DSC07745.jpg",
+            "/EMINSA/DSC07780.jpg",
+            "/EMINSA/DSC07798.jpg",
+            "/EMINSA/DSC07805.jpg",
+            "/EMINSA/DSC07816.jpg",
+            "/EMINSA/DSC07827.jpg",
+            "/EMINSA/DSC07859.jpg",
+            "/EMINSA/DSC07875.jpg",
+          ].map((src, i) => (
+            <div key={i} className="relative shrink-0 w-72 h-44 overflow-hidden rounded-sm group">
+              <Image
+                src={src}
+                alt={`Grupo EMINSA ${(i % 23) + 1}`}
+                fill
+                className="object-cover brightness-75 group-hover:brightness-95 transition-all duration-500"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Team */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-eminsa">
@@ -408,10 +494,10 @@ export default function NosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/eminsa/equipo-trabajo.jpg"
+                  src="/EMINSA/DSC07670.jpg"
                   alt="Equipo de trabajo Grupo EMINSA"
                   fill
-                  className="object-cover"
+                  className="object-cover brightness-75"
                 />
               </div>
             </motion.div>

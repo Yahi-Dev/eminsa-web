@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { 
   ArrowRight, 
@@ -27,7 +28,7 @@ const transformadoresDisponibles = [
     nombre: "Transformadores Tipo Poste",
     descripcion: "Monofásicos, 60 Hz, ideales para servicios residenciales y cargas livianas comerciales/industriales",
     icon: Zap,
-    imagen: "https://eminsa.com/wp-content/uploads/2022/05/4.jpg?x54751", // Ruta a la imagen
+    imagen: "/EMINSA/DSC07227.jpg",
     potencias: ["15 KVA", "25 KVA", "37.5 KVA", "50 KVA", "75 KVA", "100 KVA", "167 KVA", "250 KVA", "333 KVA", "500 KVA"],
     caracteristicas: [
       "Norma ANSI C 57-12-00",
@@ -43,7 +44,7 @@ const transformadoresDisponibles = [
     nombre: "Transformadores Pad Mounted",
     descripcion: "Trifásicos y Monofásicos para sistemas de distribución subterráneos",
     icon: Building2,
-    imagen: "https://eminsa.com/wp-content/uploads/2022/05/4.jpg?x54751", // Ruta a la imagen
+    imagen: "/EMINSA/DSC07213.jpg",
     potencias: [
       "Monofásicos: 15-100 KVA",
       "Trifásicos: 30-3000 KVA"
@@ -62,7 +63,7 @@ const transformadoresDisponibles = [
     nombre: "Transformadores Tipo Seco",
     descripcion: "Sin aceite dieléctrico, ideales para instalaciones en interiores con riesgo de incendio minimizado",
     icon: Shield,
-    imagen: "https://eminsa.com/wp-content/uploads/2022/05/4.jpg?x54751", // Ruta a la imagen
+    imagen: "/EMINSA/DSC07255.jpg",
     potencias: [
       "BAJA-BAJA: 15-500 KVA",
       "ALTA-BAJA: 75-1000 KVA"
@@ -292,57 +293,34 @@ export default function AlquilerTransformadoresPage() {
                 >
                   <div className={`grid lg:grid-cols-2 gap-0 ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
                     {/* Imagen */}
-                    <div 
-                      className={`relative h-[400px] lg:h-auto overflow-hidden ${!isEven ? 'lg:col-start-2' : ''}`}
-                      style={{ 
-                        background: `linear-gradient(135deg, ${transformador.color}15 0%, ${transformador.color}05 100%)` 
-                      }}
-                    >
+                    <div className={`relative h-100 lg:h-auto overflow-hidden ${!isEven ? 'lg:col-start-2' : ''}`}>
+                      <Image
+                        src={transformador.imagen}
+                        alt={transformador.nombre}
+                        fill
+                        className="object-cover brightness-75"
+                      />
+                      {/* Overlay de color */}
+                      <div
+                        className="absolute inset-0 opacity-30"
+                        style={{ background: `linear-gradient(135deg, ${transformador.color} 0%, transparent 60%)` }}
+                      />
+
                       {/* Badge de disponibilidad */}
                       <div className="absolute top-6 left-6 z-10">
                         <span className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-full text-xs font-semibold flex items-center gap-2 shadow-lg">
-                          <div className="w-2 h-2 bg-[#009e49] rounded-full animate-pulse"></div>
+                          <div className="w-2 h-2 bg-[#009e49] rounded-full animate-pulse" />
                           {t("availableForRent")}
                         </span>
                       </div>
 
                       {/* Icono decorativo */}
-                      <div 
-                        className="absolute top-6 right-6 w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg"
+                      <div
+                        className="absolute top-6 right-6 w-16 h-16 rounded-2xl flex items-center justify-center text-white shadow-lg z-10"
                         style={{ backgroundColor: transformador.color }}
                       >
                         <IconComponent className="w-8 h-8" />
                       </div>
-
-                      {/* Aquí iría la imagen real */}
-                      <div className="w-full h-full flex items-center justify-center p-12">
-                        {transformador.imagen ? (
-                          <img 
-                            src={transformador.imagen} 
-                            alt={transformador.nombre}
-                            className="w-full h-full object-contain"
-                          />
-                        ) : (
-                          // Placeholder si no hay imagen
-                          <div 
-                            className="w-full h-full rounded-2xl flex items-center justify-center text-white/20 font-bold text-2xl"
-                            style={{ backgroundColor: `${transformador.color}20` }}
-                          >
-                            <div className="text-center">
-                              <IconComponent className="w-32 h-32 mx-auto mb-4 opacity-30" style={{ color: transformador.color }} />
-                              <span className="text-sm" style={{ color: transformador.color }}>Imagen del transformador</span>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Gradiente decorativo */}
-                      <div 
-                        className="absolute inset-0 opacity-10"
-                        style={{
-                          background: `linear-gradient(45deg, ${transformador.color} 0%, transparent 50%)`
-                        }}
-                      />
                     </div>
 
                     {/* Contenido */}
