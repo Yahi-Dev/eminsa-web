@@ -36,6 +36,14 @@ export default function ServicesSection() {
       </div>
 
       <div className="container-eminsa relative">
+        {/* Section eyebrow */}
+        <div className="flex items-center gap-3 mb-8">
+          <span className="h-px w-8 inline-block bg-[#6b7280]" />
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#6b7280]">
+            Servicios · Atención Técnica Especializada
+          </span>
+        </div>
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -44,9 +52,9 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-block px-4 py-2 bg-[#0099ce]/10 text-[#0099ce] rounded-full text-sm font-semibold mb-4 uppercase">
+          {/* <span className="inline-block px-4 py-2 bg-[#0099ce]/10 text-[#0099ce] rounded-full text-sm font-semibold mb-4 uppercase">
             {t('services.sectionLabel')}
-          </span>
+          </span> */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00269b] mb-4">
             {t('services.title')}
           </h2>

@@ -29,34 +29,24 @@ interface ContentContextType {
 const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
 export function ContentProvider({ children }: { children: ReactNode }) {
-  const [noticias, setNoticias] = useState<Noticia[]>([]);
-  const [proyectos, setProyectos] = useState<Proyecto[]>([]);
-  const [recursos, setRecursos] = useState<RecursoDescargable[]>([]);
-
-  // Cargar datos iniciales
-  useEffect(() => {
-    const savedNoticias = localStorage.getItem("eminsa_noticias");
-    const savedProyectos = localStorage.getItem("eminsa_proyectos");
-    const savedRecursos = localStorage.getItem("eminsa_recursos");
-
-    if (savedNoticias) {
-      try { setNoticias(JSON.parse(savedNoticias)); } catch { setNoticias(noticiasEjemplo); }
-    } else {
-      setNoticias(noticiasEjemplo);
-    }
-
-    if (savedProyectos) {
-      try { setProyectos(JSON.parse(savedProyectos)); } catch { setProyectos(proyectosEjemplo); }
-    } else {
-      setProyectos(proyectosEjemplo);
-    }
-
-    if (savedRecursos) {
-      try { setRecursos(JSON.parse(savedRecursos)); } catch { setRecursos(recursosEjemplo); }
-    } else {
-      setRecursos(recursosEjemplo);
-    }
-  }, []);
+  const [noticias, setNoticias] = useState<Noticia[]>(() => {
+    if (typeof window === "undefined") return noticiasEjemplo;
+    const saved = localStorage.getItem("eminsa_noticias");
+    if (saved) { try { return JSON.parse(saved); } catch { /* fall through */ } }
+    return noticiasEjemplo;
+  });
+  const [proyectos, setProyectos] = useState<Proyecto[]>(() => {
+    if (typeof window === "undefined") return proyectosEjemplo;
+    const saved = localStorage.getItem("eminsa_proyectos");
+    if (saved) { try { return JSON.parse(saved); } catch { /* fall through */ } }
+    return proyectosEjemplo;
+  });
+  const [recursos, setRecursos] = useState<RecursoDescargable[]>(() => {
+    if (typeof window === "undefined") return recursosEjemplo;
+    const saved = localStorage.getItem("eminsa_recursos");
+    if (saved) { try { return JSON.parse(saved); } catch { /* fall through */ } }
+    return recursosEjemplo;
+  });
 
   // Persistir en localStorage
   useEffect(() => {

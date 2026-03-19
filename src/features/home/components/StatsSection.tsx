@@ -43,6 +43,14 @@ export default function StatsSection() {
       </div>
 
       <div className="container-eminsa relative">
+        {/* Section eyebrow */}
+        <div className="flex items-center gap-3 mb-8">
+          <span className="h-px w-8 inline-block bg-[#00269b]" />
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#00269b]">
+            Calidad · Certificaciones y Normativas
+          </span>
+        </div>
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,10 +59,10 @@ export default function StatsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-6">
+          {/* <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-6">
             <Award className="w-4 h-4" />
             {t("certifications.title")}
-          </span>
+          </span> */}
           <h3 className="text-3xl lg:text-2xl xl:text-4xl font-bold text-[#00269b] mb-4">
             {t("certifications.subtitle")}
           </h3>

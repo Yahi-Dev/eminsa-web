@@ -137,17 +137,12 @@ export default function MTNHeroSection() {
               División MTN · Manufactura Nacional
             </span>
           </div>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#00269b] leading-none">
-              {t("mtn.title")}{" "}
-              <span style={{ color: accent }} className="transition-colors duration-700">
-                {t("mtn.titleAccent")}
-              </span>
-            </h2>
-            <p className="text-[#6d6e6d] text-base max-w-sm leading-relaxed">
-              {t("mtn.description")}
-            </p>
-          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#00269b] leading-none">
+            {t("mtn.title")}{" "}
+            <span style={{ color: accent }} className="transition-colors duration-700">
+              {t("mtn.titleAccent")}
+            </span>
+          </h2>
         </motion.div>
 
         {/* ── Pill Tabs ── */}
@@ -175,7 +170,7 @@ export default function MTNHeroSection() {
         </motion.div>
 
         {/* ── Card ── */}
-        <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ background: "#00091F", minHeight: 480 }}>
+        <div className="relative rounded-3xl overflow-hidden shadow-xl" style={{ background: "linear-gradient(to bottom, #00175d, #00269b, #001a6e)", minHeight: 480 }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
@@ -193,8 +188,7 @@ export default function MTNHeroSection() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4 }}
-                  className="text-[11px] font-bold uppercase tracking-[0.2em]"
-                  style={{ color: accent }}
+                  className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/70"
                 >
                   {slide.eyebrow}
                 </motion.p>
@@ -236,7 +230,7 @@ export default function MTNHeroSection() {
                     >
                       <span className="text-2xl font-black text-white leading-none tabular-nums">
                         {s.value}
-                        <span className="text-sm font-semibold ml-0.5" style={{ color: accent }}>{s.unit}</span>
+                        <span className="text-sm font-semibold ml-0.5 text-white/60">{s.unit}</span>
                       </span>
                       <span className="text-white/35 text-[10px] uppercase tracking-widest">{s.label}</span>
                     </motion.div>
@@ -264,8 +258,7 @@ export default function MTNHeroSection() {
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.34 + i * 0.05 }}
-                      className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border"
-                      style={{ borderColor: `${accent}40`, color: accent, backgroundColor: `${accent}12` }}
+                      className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border border-white/20 text-white/80 bg-white/10"
                     >
                       {tag}
                     </motion.span>
@@ -315,7 +308,7 @@ export default function MTNHeroSection() {
                       className="object-cover"
                       priority
                     />
-                    <div className="absolute inset-0 bg-linear-to-r from-[#00091F]/60 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-r from-[#00175d]/60 via-transparent to-transparent" />
                     <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
                     <div className="absolute inset-0 mix-blend-color" style={{ backgroundColor: `${accent}18` }} />
                   </motion.div>

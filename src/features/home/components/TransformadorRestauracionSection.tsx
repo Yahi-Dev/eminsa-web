@@ -33,6 +33,14 @@ export default function TransformadorRestauracionSection() {
   return (
     <section className="pt-12 pb-6 lg:pt-16 lg:pb-8 bg-linear-to-br bg-white">
       <div className="container-eminsa">
+        {/* Section eyebrow */}
+        <div className="flex items-center gap-3 mb-8">
+          <span className="h-px w-8 inline-block bg-[#0099ce]" />
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#0099ce]">
+            División RST · Restauración y Servicio
+          </span>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Izquierda - Contenido */}
           <motion.div
@@ -41,10 +49,10 @@ export default function TransformadorRestauracionSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#0099ce]/10 rounded-full text-[#0099ce] text-sm font-medium mb-6">
+            {/* <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#0099ce]/10 rounded-full text-[#0099ce] text-sm font-medium mb-6">
               <Wrench size={16} />
               <span>{t("rst.badge")}</span>
-            </div>
+            </div> */}
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00269b] mb-6">
               {t("rst.title")}{" "}

@@ -50,7 +50,16 @@ export default function ClientesSection() {
 
   return (
     <section className="py-20 bg-white overflow-hidden">
+
       <div className="container-eminsa">
+
+        <div className="flex items-center gap-3 mb-8">
+          <span className="h-px w-8 inline-block bg-[#00269b]" />
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#00269b]">
+            Nuestros Clientes que confían en nosotros
+          </span>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,9 +67,9 @@ export default function ClientesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-4 uppercase">
+          {/* <span className="inline-block px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-4 uppercase">
             {t("clients.sectionLabel")}
-          </span>
+          </span> */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00269b]">
             {t("clients.title")}
           </h2>

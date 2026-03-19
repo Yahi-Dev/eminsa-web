@@ -65,6 +65,14 @@ export default function NoticiasSection() {
 
       <div className="container-eminsa relative">
 
+        {/* Section eyebrow */}
+        <div className="flex items-center gap-3 mb-8">
+          <span className="h-px w-8 inline-block bg-[#00269b]" />
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#00269b]">
+            Noticias · Últimas Novedades
+          </span>
+        </div>
+
         {/* ── Header ──────────────────────────────────────────── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -74,9 +82,9 @@ export default function NoticiasSection() {
           className="flex items-end justify-between mb-12"
         >
           <div>
-            <span className="inline-block px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-4 uppercase">
+            {/* <span className="inline-block px-4 py-2 bg-[#00269b]/10 text-[#00269b] rounded-full text-sm font-semibold mb-4 uppercase">
               {t("news.sectionLabel")}
-            </span>
+            </span> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#00269b]">
               {t("news.title")}
             </h2>

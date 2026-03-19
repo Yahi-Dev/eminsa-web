@@ -133,6 +133,14 @@ export default function EICBrandsShowcase() {
       </div>
 
       <div className="container-eminsa relative">
+        {/* Section eyebrow */}
+        <div className="flex items-center gap-3 mb-8">
+          <span className="h-px w-8 inline-block bg-[#009e49]" />
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#009e49]">
+            División EIC · Equipos y Comercialización
+          </span>
+        </div>
+
         {/* Header row */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -142,10 +150,10 @@ export default function EICBrandsShowcase() {
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-10"
         >
           <div>
-            <span className="inline-flex items-center gap-2 text-[#009e49] text-xs font-bold uppercase tracking-[0.2em] mb-2">
+            {/* <span className="inline-flex items-center gap-2 text-[#009e49] text-xs font-bold uppercase tracking-[0.2em] mb-2">
               <Globe2 className="w-3.5 h-3.5" />
               {t("sectionLabel")}
-            </span>
+            </span> */}
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b]">
               {t("title")}
             </h2>
