@@ -47,17 +47,17 @@ const INTENTIONS: { label: string; value: IntentKey; sub: string }[] = [
 
 const PRODUCTS: Record<IntentKey, { label: string; sub: string; href: string }[]> = {
   comprar: [
-    { label: "Transformador Tipo Poste",   sub: "MTN", href: "/mtn/productos" },
-    { label: "Transformador Subestación",  sub: "MTN", href: "/mtn/productos" },
-    { label: "Equipos Eléctricos",         sub: "EIC", href: "/eic/productos" },
-    { label: "Protección Eléctrica",       sub: "EIC", href: "/eic/productos" },
+    { label: "Transformador Tipo Poste",       sub: "MTN", href: "/mtn/productos" },
+    { label: "Transformador Tipo Pad Mounted", sub: "MTN", href: "/mtn/productos" },
+    { label: "Transformador Tipo Subestación", sub: "MTN", href: "/mtn/productos" },
+    { label: "Equipos Eléctricos",             sub: "EIC", href: "/eic/productos" },
   ],
   reparar: [
-    { label: "Reparación de Transformador",   sub: "RST", href: "/etrys/productos" },
+    { label: "Reparación de Transformador",   sub: "RST", href: "/etrys/servicios" },
     { label: "Transformador Remanufacturado", sub: "RST", href: "/etrys/productos" },
   ],
   alquilar: [
-    { label: "Alquiler de Transformador", sub: "RST", href: "/etrys/productos" },
+    { label: "Alquiler de Transformador", sub: "RST", href: "/etrys/alquiler" },
     { label: "Equipos en Alquiler",       sub: "EIC", href: "/eic/productos" },
   ],
   servicios: [
@@ -99,7 +99,7 @@ function Dropdown({ label, open, onToggle, children, className = "" }: DropdownP
             exit={{ opacity: 0, y: -6, scaleY: 0.92 }}
             transition={{ duration: 0.16, ease: "easeOut" }}
             style={{ transformOrigin: "top" }}
-            className="absolute top-full left-0 mt-1 min-w-full z-9999 bg-black/90 backdrop-blur-md border border-white/20 shadow-2xl"
+            className="absolute top-full left-0 mt-1 min-w-full z-9999 bg-black/90 backdrop-blur-md border border-white/20 shadow-2xl rounded-xl overflow-hidden"
           >
             {children}
           </motion.div>
@@ -255,7 +255,7 @@ export default function HeroSection() {
         >
           <p className="text-white/50 text-xs tracking-[0.2em] uppercase">¿Qué necesitas?</p>
 
-          <div className="w-full max-w-215 flex flex-col sm:flex-row items-stretch border border-white/25 bg-black/30 backdrop-blur-sm">
+          <div className="w-full max-w-215 flex flex-col sm:flex-row items-stretch border border-white/25 bg-black/30 backdrop-blur-sm rounded-2xl">
             {/* Intent selector */}
             <Dropdown
               label={currentIntent.label}
@@ -305,7 +305,7 @@ export default function HeroSection() {
             {/* CTA button */}
             <button
               onClick={() => router.push(selectedProduct.href)}
-              className="flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-6 bg-[#0099ce] hover:bg-[#0082b0] text-white font-bold text-base sm:text-lg tracking-wide transition-colors shrink-0"
+              className="flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-6 bg-[#0099ce] hover:bg-[#0082b0] text-white font-bold text-base sm:text-lg tracking-wide transition-colors shrink-0 rounded-b-2xl sm:rounded-bl-none sm:rounded-r-2xl"
             >
               <span>Explorar</span>
               <ArrowRight size={15} />
