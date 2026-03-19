@@ -301,26 +301,6 @@ export default function EtrysProductoDetailPage({
                 </div>
               </motion.div>
 
-              {/* Capacities */}
-              {product.capacities.length > 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                    {t("availableCapacities")}
-                  </h2>
-                  <div className="flex flex-wrap gap-2">
-                    {product.capacities.map((cap) => (
-                      <span key={cap} className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg font-medium">
-                        {cap}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
               {/* Process */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

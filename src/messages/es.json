@@ -24,7 +24,7 @@
       "title": "Certificaciones y Normativas",
       "subtitle": "Cumplimos con los más altos estándares internacionales de calidad",
       "certificationsLabel": "Certificaciones",
-      "standardsLabel": "Normativas",
+      "standardsLabel": "Normativas y Eficiencias",
       "active": "Activo",
       "iso9001Name": "ISO 9001:2015",
       "iso9001": "Sistema de Gestión de Calidad certificado que garantiza procesos consistentes y mejora continua.",
@@ -3109,7 +3109,7 @@
       },
       "1": {
         "title": "Calidad Certificada",
-        "description": "Certificación ISO 9001:2015 y cumplimiento con normas ANSI, IEEE y DOE."
+        "description": "Certificación ISO 9001:2015 y cumplimiento con normas ANSI e IEEE."
       },
       "2": {
         "title": "Soluciones Integrales",

@@ -168,11 +168,11 @@ export const eminsaDivisions: EminsaDivision[] = [
   },
   {
     id: "servicios",
-    name: "EMINSA Servicios",
+    name: "SERVICIOS",
     fullName: "Servicios Técnicos Especializados",
     description: "Mantenimiento, reparación y soporte técnico de transformadores eléctricos en campo.",
     href: "/servicios",
-    color: "#e9862c",
+    color: "#6b7280",
   },
 ];
 

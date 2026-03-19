@@ -17,12 +17,16 @@ const certItems = [
     logo: "/images/IQNET_RCMark_PosCMYK.png",
     color: "#0099ce",
   },
+  {
+    id: "ul",
+    logo: "/certificados/ul-certified-logo.jpg",
+    color: "#0099ce",
+  },
 ];
 
 const standardItems = [
   { id: "ansi", abbr: "ANSI", color: "#00269b" },
   { id: "doe", abbr: "DOE", color: "#009e49" },
-  { id: "ul", abbr: "UL", color: "#0099ce" },
   { id: "ieee", abbr: "IEEE", color: "#00269b" },
 ];
 

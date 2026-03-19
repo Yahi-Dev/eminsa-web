@@ -24,7 +24,7 @@
       "title": "Certifications and Standards",
       "subtitle": "We comply with the highest international quality standards",
       "certificationsLabel": "Certifications",
-      "standardsLabel": "Standards",
+      "standardsLabel": "Standards and Efficiencies",
       "active": "Active",
       "iso9001Name": "ISO 9001:2015",
       "iso9001": "Certified Quality Management System ensuring consistent processes and continuous improvement.",
@@ -2803,7 +2803,7 @@
       },
       "1": {
         "title": "Certified Quality",
-        "description": "ISO 9001:2015 certification and compliance with ANSI, IEEE, and DOE standards."
+        "description": "ISO 9001:2015 certification and compliance with ANSI and IEEE standards."
       },
       "2": {
         "title": "Comprehensive Solutions",

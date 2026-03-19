@@ -657,7 +657,7 @@
     },
     "advantages": {
       "0": { "title": "Experiencia Comprobada", "description": "Más de 50 años especializados en transformadores eléctricos de distribución en el Caribe." },
-      "1": { "title": "Calidad Certificada", "description": "Certificación ISO 9001:2015 y cumplimiento con normas ANSI, IEEE y DOE." },
+      "1": { "title": "Calidad Certificada", "description": "Certificación ISO 9001:2015 y cumplimiento con normas ANSI e IEEE." },
       "2": { "title": "Soluciones Integrales", "description": "Desde manufactura hasta servicios de mantenimiento, reparación y comercialización." },
       "3": { "title": "Alcance Regional", "description": "Presencia consolidada en República Dominicana y el Caribe." }
     },

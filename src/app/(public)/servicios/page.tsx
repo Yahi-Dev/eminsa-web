@@ -1,11 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
   ChevronRight,
+  ChevronLeft,
   Settings,
   ShieldCheck,
   Wrench,
@@ -64,6 +66,32 @@ const equipmentIcons: { [key: string]: React.ElementType } = {
 
 export default function ServiciosPage() {
   const t = useTranslations("pages.servicios");
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = (direction: "left" | "right") => {
+    if (!carouselRef.current) return;
+    const el = carouselRef.current;
+    const cardWidth = el.firstElementChild?.getBoundingClientRect().width ?? 300;
+    const gap = 24; // gap-6 = 24px
+    const scrollAmount = (cardWidth + gap) * 4;
+
+    if (direction === "right") {
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 10;
+      if (atEnd) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      }
+    } else {
+      const atStart = el.scrollLeft <= 10;
+      if (atStart) {
+        el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen">
       {/* ================================================================ */}
@@ -198,7 +226,28 @@ export default function ServiciosPage() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {/* Carousel controls */}
+            <div className="flex items-center gap-2 justify-end mb-4">
+              <button
+                onClick={() => scrollCarousel("left")}
+                className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-[#00269b] hover:text-white hover:border-[#00269b] text-gray-500 flex items-center justify-center transition-all duration-200"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={() => scrollCarousel("right")}
+                className="w-10 h-10 rounded-full border border-gray-200 bg-white hover:bg-[#00269b] hover:text-white hover:border-[#00269b] text-gray-500 flex items-center justify-center transition-all duration-200"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+
+            {/* Carousel */}
+            <div
+              ref={carouselRef}
+              className="flex gap-6 overflow-x-auto scroll-smooth scrollbar-hide snap-x snap-mandatory"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
               {services
                 .filter((s) => serviciosPorTipo.campo.includes(s.id))
                 .map((service, index) => {
@@ -211,6 +260,7 @@ export default function ServiciosPage() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
+                      className="min-w-[calc(25%-18px)] max-w-[calc(25%-18px)] snap-start shrink-0 max-lg:min-w-[calc(50%-12px)] max-lg:max-w-[calc(50%-12px)] max-md:min-w-[85%] max-md:max-w-[85%]"
                     >
                       <Link
                         href={service.url || `/servicios/${service.id}`}
