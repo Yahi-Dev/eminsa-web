@@ -39,7 +39,7 @@ export default function EtrysProductosPage() {
 
           <div className="max-w-3xl">
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              {t("heroTitle")}
+              Transformadores ETRYS 
             </h1>
             <p className="text-xl text-white/80">
               {t("heroDescription")}
@@ -97,7 +97,7 @@ export default function EtrysProductosPage() {
                     <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1.5 bg-[#0099ce] text-white text-sm font-bold rounded-full shadow-lg">
-                        RST by EMINSA
+                        ETRYS by EMINSA
                       </span>
                     </div>
                     <div className="absolute bottom-4 left-4 right-4">

@@ -46,7 +46,7 @@ export default function ProductosPageContent() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">{t("productsPage.pageTitle")}</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4">{t("productsPage.pageTitle")} EMINSA</h1>
             <p className="text-xl text-white/80">
               {t("productsPage.pageDescription")}
             </p>

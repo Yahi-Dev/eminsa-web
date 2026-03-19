@@ -125,12 +125,9 @@ export default function EICBrandsShowcase() {
   }, [isAutoPlaying, nextSlide]);
 
   return (
-    <section className="py-24 lg:py-32 bg-[#009e49]/10 relative overflow-hidden">
+    <section className="py-24 lg:py-32 relative overflow-hidden">
       {/* Ambient blurs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-125 h-125 bg-[#009e49]/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#00269b]/5 rounded-full blur-[100px]" />
-      </div>
+
 
       <div className="container-eminsa relative">
         {/* Section eyebrow */}
@@ -150,10 +147,6 @@ export default function EICBrandsShowcase() {
           className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-10"
         >
           <div>
-            {/* <span className="inline-flex items-center gap-2 text-[#009e49] text-xs font-bold uppercase tracking-[0.2em] mb-2">
-              <Globe2 className="w-3.5 h-3.5" />
-              {t("sectionLabel")}
-            </span> */}
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b]">
               {t("title")}
             </h2>

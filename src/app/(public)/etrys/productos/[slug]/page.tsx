@@ -20,10 +20,11 @@ import {
   getOtherProducts,
   remanufactureProcess,
   type RemanufacturedProduct,
+  type RemanufactureProcessStep,
 } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import RemanufactureProcessModal from "@/features/home/components/etrys/RemanufactureProcessModal";
 
@@ -69,7 +70,7 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
             </div>
             <div className="flex-1 min-w-0">
               <span className="text-xs font-semibold text-[#0099ce] uppercase tracking-wider">
-                RST by EMINSA
+                ETRYS by EMINSA
               </span>
               <h3 className="font-bold text-gray-900 group-hover:text-[#0099ce] transition-colors text-lg mt-1">
                 {current.shortName}
@@ -171,7 +172,7 @@ export default function EtrysProductoDetailPage({
               animate={{ opacity: 1, x: 0 }}
             >
               <span className="inline-block px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                RST by EMINSA
+                ETRYS by EMINSA
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                 {product.name}
@@ -307,25 +308,12 @@ export default function EtrysProductoDetailPage({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  {t("remanufactureProcess")}
-                </h2>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {remanufactureProcess.slice(0, 6).map((step, i) => (
-                    <button
-                      key={step.id}
-                      onClick={() => setActiveStepIndex(i)}
-                      className="bg-white rounded-xl p-4 shadow-sm text-left group hover:shadow-md hover:ring-1 hover:ring-[#0099ce]/30 transition-all duration-200"
-                    >
-                      <div className="w-10 h-10 rounded-lg bg-linear-to-br from-[#0099ce] to-[#00269b] flex items-center justify-center text-white font-bold mb-3 group-hover:scale-110 transition-transform duration-200">
-                        {step.id}
-                      </div>
-                      <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#0099ce] transition-colors">{step.shortTitle}</h3>
-                      <p className="text-sm text-gray-600">{step.description}</p>
-                      <p className="text-xs text-[#0099ce] font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">{t("viewDetail")}</p>
-                    </button>
-                  ))}
-                </div>
+                <ProcessCarousel
+                  steps={remanufactureProcess}
+                  onStepClick={(i) => setActiveStepIndex(i)}
+                  viewDetailLabel={t("viewDetail")}
+                  title={t("remanufactureProcess")}
+                />
               </motion.div>
             </div>
 
@@ -438,6 +426,87 @@ export default function EtrysProductoDetailPage({
         onClose={() => setActiveStepIndex(null)}
         onNavigate={setActiveStepIndex}
       />
+    </div>
+  );
+}
+
+function ProcessCarousel({
+  steps,
+  onStepClick,
+  viewDetailLabel,
+  title,
+}: {
+  steps: RemanufactureProcessStep[];
+  onStepClick: (index: number) => void;
+  viewDetailLabel: string;
+  title: string;
+}) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const el = scrollRef.current;
+    const cardWidth = el.firstElementChild?.getBoundingClientRect().width ?? 280;
+    const amount = (cardWidth + 16) * 4;
+
+    if (direction === "right") {
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: amount, behavior: "smooth" });
+      }
+    } else {
+      if (el.scrollLeft <= 10) {
+        el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: -amount, behavior: "smooth" });
+      }
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
+        <div className="flex gap-2">
+          <button
+            onClick={() => scroll("left")}
+            className="w-9 h-9 rounded-full border border-gray-200 bg-white hover:bg-[#0099ce] hover:text-white hover:border-[#0099ce] text-gray-500 flex items-center justify-center transition-all"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="w-9 h-9 rounded-full border border-gray-200 bg-white hover:bg-[#0099ce] hover:text-white hover:border-[#0099ce] text-gray-500 flex items-center justify-center transition-all"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+      </div>
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
+        {steps.map((step, i) => (
+          <button
+            key={step.id}
+            onClick={() => onStepClick(i)}
+            className="min-w-[calc(25%-12px)] max-w-[calc(25%-12px)] max-lg:min-w-[calc(50%-8px)] max-lg:max-w-[calc(50%-8px)] max-md:min-w-[85%] max-md:max-w-[85%] snap-start shrink-0 bg-white rounded-xl p-4 shadow-sm text-left group hover:shadow-md hover:ring-1 hover:ring-[#0099ce]/30 transition-all duration-200"
+          >
+            <div className="w-10 h-10 rounded-lg bg-linear-to-br from-[#0099ce] to-[#00269b] flex items-center justify-center text-white font-bold mb-3 group-hover:scale-110 transition-transform duration-200">
+              {step.id}
+            </div>
+            <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#0099ce] transition-colors">
+              {step.shortTitle}
+            </h3>
+            <p className="text-sm text-gray-600">{step.description}</p>
+            <p className="text-xs text-[#0099ce] font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              {viewDetailLabel}
+            </p>
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

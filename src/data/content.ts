@@ -73,7 +73,7 @@ export const recursosEjemplo: RecursoDescargable[] = [
   {
     id: "1",
     nombre: "Ficha Técnica Transformadores Tipo Poste",
-    descripcion: "Especificaciones técnicas completas para transformadores tipo poste RST by EMINSA.",
+    descripcion: "Especificaciones técnicas completas para transformadores tipo poste ETRYS by EMINSA.",
     archivo: "/recursos/ficha-tecnica-tipo-poste.pdf",
     tipo: "pdf",
     division: "etrys",
@@ -106,7 +106,7 @@ export const recursosEjemplo: RecursoDescargable[] = [
   {
     id: "4",
     nombre: "Política de Garantía RST",
-    descripcion: "Términos y condiciones de la garantía de 18 meses RST by EMINSA.",
+    descripcion: "Términos y condiciones de la garantía de 18 meses ETRYS by EMINSA.",
     archivo: "/recursos/politica-garantia-rst.pdf",
     tipo: "pdf",
     division: "etrys",

@@ -24,6 +24,9 @@ import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
 import { useTranslations } from "next-intl";
+import { TransformerFields } from "@/features/contact";
+import type { TransformerSpec, ContactFormState, FormErrors } from "@/features/contact/types";
+import { FASES, TIPOS_TRANSFORMADORES, NORMAS, ZONAS_INSTALACION } from "@/features/contact/data/constants";
 
 // Capacidades disponibles
 const capacities = [
@@ -61,6 +64,31 @@ function CotizacionesContent() {
   const [codigo, setCodigo] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  // TransformerFields state
+  const t = useTranslations("contact");
+  const [transformadores, setTransformadores] = useState<TransformerSpec[]>([{
+    potenciaKVA: '', fase: '', voltajePrimario: '', voltajeSecundario: '',
+    tipoTransformador: '', norma: '', zonaInstalacion: '', cantidad: '1',
+  }]);
+  const [transformerErrors, setTransformerErrors] = useState<(Partial<TransformerSpec> | undefined)[]>([]);
+
+  const translatedOptions = {
+    fases: FASES.map(f => ({ value: f.value, label: t(`form.transformer.phase.${f.value}`) })),
+    tiposTransformadores: TIPOS_TRANSFORMADORES.map(tipo => ({ value: tipo.value, label: t(`form.transformer.type.${tipo.value}`) })),
+    normas: NORMAS.map(n => ({ value: n.value, label: t(`form.transformer.standard.${n.value}`) })),
+    zonasInstalacion: ZONAS_INSTALACION.map(z => ({ value: z.value, label: t(`form.transformer.zone.${z.value}`) })),
+  };
+
+  // Build a compatible formData/formErrors for TransformerFields
+  const tfFormData = {
+    nombre: formData.nombre, empresa: formData.empresa, email: formData.email,
+    telefono: formData.telefono, tipoConsulta: 'productos' as const,
+    categoria: 'Transformadores', mensaje: '', identificacion: '', direccion: '',
+    otrosDescripcion: '', transformadores,
+  } satisfies ContactFormState;
+
+  const tfFormErrors: FormErrors = { transformadores: transformerErrors };
+
   useEffect(() => {
     if (preselectedProduct) {
       setFormData(prev => ({ ...prev, tipoTransformador: preselectedProduct }));
@@ -78,8 +106,9 @@ function CotizacionesContent() {
     if (!formData.telefono.trim()) newErrors.telefono = "El teléfono es requerido";
     if (!formData.tipoSolicitud) newErrors.tipoSolicitud = "Seleccione el tipo de solicitud";
     if (formData.tipoSolicitud === 'transformador') {
-      if (!formData.tipoTransformador) newErrors.tipoTransformador = "Seleccione el tipo de transformador";
-      if (!formData.capacidad) newErrors.capacidad = "Seleccione la capacidad";
+      if (transformadores.some(tr => !tr.potenciaKVA || !tr.fase || !tr.tipoTransformador)) {
+        newErrors.transformadores = "Complete los campos requeridos del transformador";
+      }
     }
     if (formData.tipoSolicitud === 'otro' && !formData.descripcion.trim()) {
       newErrors.descripcion = "Describa su solicitud";
@@ -108,13 +137,7 @@ function CotizacionesContent() {
           telefono: formData.telefono,
           urgente: formData.urgente,
           detalles: formData.tipoSolicitud === 'transformador' ? {
-            tipoTransformador: formData.tipoTransformador,
-            configuracion: formData.configuracion,
-            capacidad: formData.capacidad ? `${formData.capacidad} kVA` : '',
-            cantidad: formData.cantidad,
-            voltajePrimario: formData.voltajePrimario,
-            voltajeSecundario: formData.voltajeSecundario,
-            distribuidora: formData.distribuidora,
+            transformadores,
             ubicacion: formData.ubicacion,
             descripcion: formData.descripcion,
           } : {
@@ -340,116 +363,13 @@ function CotizacionesContent() {
 
                 {/* Transformer fields */}
                 {formData.tipoSolicitud === 'transformador' && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    transition={{ duration: 0.3 }}
-                    className="grid md:grid-cols-2 gap-6"
-                  >
-                    <div>
-                      <label className="input-label">
-                        Tipo de transformador <span className="text-red-500">*</span>
-                      </label>
-                      <select
-                        name="tipoTransformador"
-                        value={formData.tipoTransformador}
-                        onChange={handleInputChange}
-                        className={`input-field ${errors.tipoTransformador ? 'border-red-500 focus:ring-red-200' : ''}`}
-                      >
-                        <option value="">Seleccione el tipo</option>
-                        {transformerProducts.map((product) => (
-                          <option key={product.id} value={product.slug}>
-                            {tc(`products.${product.slug}.name`)}
-                          </option>
-                        ))}
-                      </select>
-                      {errors.tipoTransformador && <p className="text-red-500 text-xs mt-1">{errors.tipoTransformador}</p>}
-                    </div>
-                    <div>
-                      <label className="input-label">Configuración</label>
-                      <select
-                        name="configuracion"
-                        value={formData.configuracion}
-                        onChange={handleInputChange}
-                        className="input-field"
-                      >
-                        <option value="">Seleccione la configuración</option>
-                        <option value="monofasico">Monofásico</option>
-                        <option value="trifasico">Trifásico</option>
-                        <option value="autoprotegido">Autoprotegido</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label className="input-label">
-                        Capacidad (kVA) <span className="text-red-500">*</span>
-                      </label>
-                      <select
-                        name="capacidad"
-                        value={formData.capacidad}
-                        onChange={handleInputChange}
-                        className={`input-field ${errors.capacidad ? 'border-red-500 focus:ring-red-200' : ''}`}
-                      >
-                        <option value="">Seleccione la capacidad</option>
-                        {capacities.map((cap) => (
-                          <option key={cap} value={cap}>
-                            {cap === "Otro" ? "Otro (especificar)" : `${cap} kVA`}
-                          </option>
-                        ))}
-                      </select>
-                      {errors.capacidad && <p className="text-red-500 text-xs mt-1">{errors.capacidad}</p>}
-                    </div>
-                    <div>
-                      <label className="input-label">Cantidad</label>
-                      <input
-                        type="number"
-                        name="cantidad"
-                        value={formData.cantidad}
-                        onChange={handleInputChange}
-                        min="1"
-                        className="input-field"
-                      />
-                    </div>
-                    <div>
-                      <label className="input-label">Voltaje primario</label>
-                      <input
-                        type="text"
-                        name="voltajePrimario"
-                        value={formData.voltajePrimario}
-                        onChange={handleInputChange}
-                        className="input-field"
-                        placeholder="Ej. 13,200 V"
-                      />
-                    </div>
-                    <div>
-                      <label className="input-label">Voltaje secundario</label>
-                      <input
-                        type="text"
-                        name="voltajeSecundario"
-                        value={formData.voltajeSecundario}
-                        onChange={handleInputChange}
-                        className="input-field"
-                        placeholder="Ej. 120/240 V"
-                      />
-                    </div>
-                    <div className="md:col-span-2">
-                      <label className="input-label">Distribuidora de energía</label>
-                      <select
-                        name="distribuidora"
-                        value={formData.distribuidora}
-                        onChange={handleInputChange}
-                        className="input-field"
-                      >
-                        <option value="">Seleccione la distribuidora</option>
-                        <option value="EDENORTE">EDENORTE</option>
-                        <option value="EDESUR">EDESUR</option>
-                        <option value="EDEESTE">EDEESTE</option>
-                        <option value="CEPM">CEPM</option>
-                        <option value="CAPCANA">CAPCANA</option>
-                        <option value="USO INTERNO">Uso interno</option>
-                        <option value="OTROS">Otros (especificar)</option>
-                      </select>
-                    </div>
-                  </motion.div>
+                  <TransformerFields
+                    formData={tfFormData}
+                    formErrors={tfFormErrors}
+                    isSubmitting={isSubmitting}
+                    onTransformersChange={setTransformadores}
+                    translatedOptions={translatedOptions}
+                  />
                 )}
 
                 {/* Otro fields */}

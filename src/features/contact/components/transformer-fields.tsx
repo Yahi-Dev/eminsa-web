@@ -33,7 +33,7 @@ export function TransformerFields({
       zonaInstalacion: '',
       cantidad: '1'
     };
-    
+
     const updatedTransformers = [...formData.transformadores, newTransformer];
     onTransformersChange(updatedTransformers);
   };
@@ -46,8 +46,8 @@ export function TransformerFields({
 
   // Función para actualizar un campo específico de un transformador
   const handleTransformerFieldChange = (
-    index: number, 
-    field: keyof TransformerSpec, 
+    index: number,
+    field: keyof TransformerSpec,
     value: string
   ) => {
     const updatedTransformers = formData.transformadores.map((transformer, i) => {
@@ -76,7 +76,7 @@ export function TransformerFields({
               {t('form.transformer.title')}
             </h3>
           </div>
-          
+
           {/* Contador de transformadores */}
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-gray-600">
@@ -175,7 +175,7 @@ function TransformerSpecification({
             )}
           </div>
         </div>
-        
+
         {onRemove && (
           <button
             type="button"
@@ -295,32 +295,22 @@ function TransformerSpecification({
             disabled={isSubmitting}
             required
           />
-
           <SelectField
-            name={`transformador-${index}-norma`}
-            label={t('form.transformer.standard.label')}
-            placeholder={t('form.transformer.standard.select')}
-            value={transformer.norma}
-            error={formErrors.norma}
-            options={translatedOptions.normas}
-            onChange={(e) => onFieldChange(index, 'norma', e.target.value)}
+            name={`transformador-${index}-zonaInstalacion`}
+            label={t('form.transformer.zone.label')}
+            placeholder={t('form.transformer.zone.select')}
+            value={transformer.zonaInstalacion}
+            error={formErrors.zonaInstalacion}
+            options={translatedOptions.zonasInstalacion}
+            onChange={(e) => onFieldChange(index, 'zonaInstalacion', e.target.value)}
             disabled={isSubmitting}
             required
           />
+
         </div>
 
         {/* Cuarta fila: Zona de instalación */}
-        <SelectField
-          name={`transformador-${index}-zonaInstalacion`}
-          label={t('form.transformer.zone.label')}
-          placeholder={t('form.transformer.zone.select')}
-          value={transformer.zonaInstalacion}
-          error={formErrors.zonaInstalacion}
-          options={translatedOptions.zonasInstalacion}
-          onChange={(e) => onFieldChange(index, 'zonaInstalacion', e.target.value)}
-          disabled={isSubmitting}
-          required
-        />
+
       </div>
     </motion.div>
   );
@@ -400,9 +390,8 @@ function InputField({
           inputMode={inputMode}
           min={min}
           max={max}
-          className={`input-field ${icon ? 'pl-10' : ''} ${
-            error ? 'border-red-500 focus:ring-red-200' : ''
-          } ${type === 'number' ? 'pr-10' : ''}`}
+          className={`input-field ${icon ? 'pl-10' : ''} ${error ? 'border-red-500 focus:ring-red-200' : ''
+            } ${type === 'number' ? 'pr-10' : ''}`}
           placeholder={placeholder}
         />
         {type === 'number' && (
@@ -475,9 +464,8 @@ function SelectField({
           onChange={onChange}
           required={required}
           disabled={disabled}
-          className={`input-field ${icon ? 'pl-10' : ''} ${
-            error ? 'border-red-500 focus:ring-red-200' : ''
-          }`}
+          className={`input-field ${icon ? 'pl-10' : ''} ${error ? 'border-red-500 focus:ring-red-200' : ''
+            }`}
         >
           <option value="">{placeholder}</option>
           {options.map((option) => (
@@ -499,7 +487,7 @@ function calculateTotalPower(transformer: TransformerSpec): string {
   const cantidad = parseInt(transformer.cantidad) || 1;
   const potencia = parseFloat(transformer.potenciaKVA) || 0;
   const total = cantidad * potencia;
-  
+
   if (total === 0) return '-';
   return `${total} KVA (${cantidad} × ${potencia} KVA)`;
 }

@@ -147,7 +147,7 @@ export interface NavItem {
 
 export const etrysInfo: EtrysInfo = {
   name: "RST",
-  fullName: "RST by EMINSA",
+  fullName: "ETRYS by EMINSA",
   tagline: "Reparacion Y Servicio De Transformadores",
   slogan: "Reparación y Servicio de Transformadores",
   description:
@@ -227,9 +227,9 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
     name: "Transformadores Tipo Poste Remanufacturados",
     shortName: "Tipo Poste",
     description:
-      "Los transformadores tipo poste RST by EMINSA ofrecen una solución confiable y económica para sistemas de distribución aérea.",
+      "Los transformadores tipo poste ETRYS by EMINSA ofrecen una solución confiable y económica para sistemas de distribución aérea.",
     fullDescription: [
-      "Los transformadores tipo poste RST by EMINSA ofrecen una solución confiable y económica para sistemas de distribución aérea. Cada unidad ha sido restaurada siguiendo procesos rigurosos que aseguran el cumplimiento de las especificaciones originales de diseño, manteniendo la conformidad con las normas ANSI y IEEE.",
+      "Los transformadores tipo poste ETRYS by EMINSA ofrecen una solución confiable y económica para sistemas de distribución aérea. Cada unidad ha sido restaurada siguiendo procesos rigurosos que aseguran el cumplimiento de las especificaciones originales de diseño, manteniendo la conformidad con las normas ANSI y IEEE.",
       "Gracias a una restauración integral —que incluye inspección, reemplazo de componentes críticos, pruebas eléctricas y reacondicionamiento estructural— estos equipos conservan un desempeño seguro, eficiente y estable, a un costo significativamente menor que los transformadores nuevos.",
       "Son ideales para aplicaciones residenciales, comerciales e industriales que requieren una alternativa confiable, durable y optimizada en costo.",
     ],
@@ -274,9 +274,9 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
     name: "Transformadores Tipo Pad-Mounted Remanufacturados",
     shortName: "Pad-Mounted",
     description:
-      "Los transformadores tipo pad-mounted RST by EMINSA son una opción segura y altamente eficiente para sistemas de distribución subterránea.",
+      "Los transformadores tipo pad-mounted ETRYS by EMINSA son una opción segura y altamente eficiente para sistemas de distribución subterránea.",
     fullDescription: [
-      "Los transformadores tipo pad-mounted RST by EMINSA son una opción segura y altamente eficiente para sistemas de distribución subterránea. Estas unidades restauradas bajo estándares estrictos garantizan una operación confiable y cumplen con normas ANSI/IEEE, manteniendo los niveles de seguridad y desempeño originales.",
+      "Los transformadores tipo pad-mounted ETRYS by EMINSA son una opción segura y altamente eficiente para sistemas de distribución subterránea. Estas unidades restauradas bajo estándares estrictos garantizan una operación confiable y cumplen con normas ANSI/IEEE, manteniendo los niveles de seguridad y desempeño originales.",
       "Su diseño cerrado y hermético protege contra condiciones ambientales y contactos accidentales, haciéndolos adecuados para urbanizaciones, hoteles, centros comerciales, industrias y zonas públicas.",
       "Cada equipo es sometido a procesos de restauración que aseguran bajas pérdidas, excelente regulación y larga vida útil, preservando la integridad del diseño original a un costo más accesible.",
     ],
@@ -321,9 +321,9 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
     name: "Transformadores Tipo Subestación Remanufacturados",
     shortName: "Subestación",
     description:
-      "Los transformadores tipo subestación RST by EMINSA son unidades restauradas que proporcionan alto rendimiento para aplicaciones de mayor exigencia.",
+      "Los transformadores tipo subestación ETRYS by EMINSA son unidades restauradas que proporcionan alto rendimiento para aplicaciones de mayor exigencia.",
     fullDescription: [
-      "Los transformadores tipo subestación RST by EMINSA son unidades restauradas que proporcionan alto rendimiento, seguridad y confiabilidad para aplicaciones de mayor exigencia en sistemas industriales, comerciales, de distribución y generación.",
+      "Los transformadores tipo subestación ETRYS by EMINSA son unidades restauradas que proporcionan alto rendimiento, seguridad y confiabilidad para aplicaciones de mayor exigencia en sistemas industriales, comerciales, de distribución y generación.",
       "Cumplen plenamente con las normas ANSI y IEEE, garantizando que cada equipo mantenga sus características eléctricas y mecánicas originales.",
       "Estos transformadores admiten configuraciones personalizadas, como cambiadores de derivación, gabinetes especiales, boquillas de alta capacidad y otros accesorios bajo requerimiento.",
     ],
@@ -584,7 +584,7 @@ export const remanufactureProcess: RemanufactureProcessStep[] = [
     id: 14, phase: 5, phaseLabel: "Acabado y Despacho",
     title: "Etiquetado", shortTitle: "Etiquetado",
     description: "Colocación de placa de datos actualizada con los parámetros del transformador remanufacturado.",
-    details: ["Placa de datos con nuevos parámetros", "Etiqueta RST by EMINSA", "Número de serie interno", "Fecha de remanufactura"],
+    details: ["Placa de datos con nuevos parámetros", "Etiqueta ETRYS by EMINSA", "Número de serie interno", "Fecha de remanufactura"],
     icon: "tag",
   },
   {

@@ -2399,17 +2399,17 @@
       "tipo-poste": {
         "name": "Remanufactured Pole-Type Transformers",
         "shortName": "Pole-Type",
-        "description": "RST by EMINSA pole-type transformers offer a reliable and cost-effective solution for overhead distribution."
+        "description": "ETRYS by EMINSA pole-type transformers offer a reliable and cost-effective solution for overhead distribution."
       },
       "pad-mounted": {
         "name": "Remanufactured Pad-Mounted Transformers",
         "shortName": "Pad-Mounted",
-        "description": "RST by EMINSA pad-mounted transformers are safe and efficient for underground distribution."
+        "description": "ETRYS by EMINSA pad-mounted transformers are safe and efficient for underground distribution."
       },
       "subestacion": {
         "name": "Remanufactured Substation Transformers",
         "shortName": "Substation",
-        "description": "RST by EMINSA substation transformers provide high performance for demanding applications."
+        "description": "ETRYS by EMINSA substation transformers provide high performance for demanding applications."
       }
     },
     "repairServices": {
@@ -2708,7 +2708,7 @@
         "description": "Updated nameplate with the remanufactured transformer parameters.",
         "details": {
           "0": "Nameplate with new parameters",
-          "1": "RST by EMINSA label",
+          "1": "ETRYS by EMINSA label",
           "2": "Internal serial number",
           "3": "Remanufacturing date"
         }
