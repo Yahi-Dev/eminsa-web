@@ -135,12 +135,15 @@ export default function EICPage() {
       <section className="relative bg-linear-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden min-h-120 sm:min-h-135 lg:min-h-160">
         {/* Giant faint "EIC" watermark */}
         <div className="absolute inset-0 flex items-center justify-end pointer-events-none select-none overflow-hidden">
-          <span
-            className="text-white leading-none font-black tracking-tighter pr-4 opacity-[0.04]"
+          <motion.span
+            initial={{ opacity: 0, x: 120, filter: "blur(24px)" }}
+            animate={{ opacity: 0.04, x: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="text-white leading-none font-black tracking-tighter pr-4"
             style={{ fontSize: "clamp(8rem, 18vw, 22rem)" }}
           >
             EIC
-          </span>
+          </motion.span>
         </div>
 
         {/* Background Pattern */}
@@ -154,7 +157,7 @@ export default function EICPage() {
         </div>
 
         <div className="container-eminsa relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-0 items-center">
             {/* Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -162,19 +165,33 @@ export default function EICPage() {
               transition={{ duration: 0.6 }}
               className="space-y-8"
             >
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <Globe size={18} className="text-[#009e49]" />
-                <span className="text-sm font-medium">{tc("info.tagline")}</span>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-center gap-3"
+              >
+                <div className="h-px w-10 bg-white/50" />
+                <span className="text-white/70 text-[11px] font-bold uppercase tracking-[0.32em]">División EIC · EMINSA</span>
+              </motion.div>
 
-              <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
-                  <span className="text-white">Eminsa International Corporation</span>
-                </h1>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-white/90 leading-relaxed text-justify">
-                  {tc("info.description")}
-                </p>
-              </div>
+              <motion.h1
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.2rem] xl:text-[3.75rem] font-black leading-[1.04] tracking-tight"
+              >
+                Eminsa International Corporation
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.22 }}
+                className="text-white/65 text-base lg:text-[1.05rem] leading-relaxed max-w-sm"
+              >
+                {tc("info.description")}
+              </motion.p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">

@@ -118,19 +118,33 @@ export default function ServiciosPage() {
               transition={{ duration: 0.6 }}
               className="space-y-8"
             >
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
-                <Settings size={18} className="text-white/80" />
-                <span className="text-sm font-medium">{t("hero.badge")}</span>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-center gap-3"
+              >
+                <div className="h-px w-10 bg-white/50" />
+                <span className="text-white/70 text-[11px] font-bold uppercase tracking-[0.32em]">División Servicios · EMINSA</span>
+              </motion.div>
 
-              <div className="space-y-4">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
-                  <span className="text-white">{t("hero.title")}</span>
-                </h1>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-white/90 leading-relaxed text-justify">
-                  {t("hero.subtitle")}
-                </p>
-              </div>
+              <motion.h1
+                initial={{ opacity: 0, y: 32 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.75, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-[3.2rem] xl:text-[3.75rem] font-black leading-[1.04] tracking-tight"
+              >
+                {t("hero.title")}
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.22 }}
+                className="text-white/65 text-base lg:text-[1.05rem] leading-relaxed max-w-sm"
+              >
+                {t("hero.subtitle")}
+              </motion.p>
 
               {/* CTAs */}
               <div className="flex flex-wrap gap-4">

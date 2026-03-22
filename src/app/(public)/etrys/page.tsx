@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
@@ -40,6 +40,27 @@ const advantageIcons: { [key: string]: React.ElementType } = {
   leaf: Leaf,
 };
 
+const HERO_IMAGES_A = [
+  "/transformador-before.png",
+  "/EMINSA/DSC07645.jpg",
+  "/EMINSA/DSC07759.jpg",
+  "/EMINSA/DSC07670.jpg",
+];
+
+const HERO_IMAGES_B = [
+  "/transformador-after.png",
+  "/EMINSA/DSC07678.jpg",
+  "/EMINSA/DSC07827.jpg",
+  "/EMINSA/DSC07780.jpg",
+];
+
+const HERO_IMAGES_C = [
+  "/EMINSA/DSC07174.jpg",
+  "/EMINSA/DSC07764.jpg",
+  "/EMINSA/DSC07149.jpg",
+  "/EMINSA/DSC07188.jpg",
+];
+
 export default function EtrysPage() {
   const router = useRouter();
   const t = useTranslations("etrysPage");
@@ -47,6 +68,22 @@ export default function EtrysPage() {
   const [quoteForm, setQuoteForm] = useState({ nombre: "", email: "", telefono: "" });
   const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [heroIdxA, setHeroIdxA] = useState(0);
+  const [heroIdxB, setHeroIdxB] = useState(0);
+  const [heroIdxC, setHeroIdxC] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => setHeroIdxA(p => (p + 1) % HERO_IMAGES_A.length), 3400);
+    return () => clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(() => setHeroIdxB(p => (p + 1) % HERO_IMAGES_B.length), 4100);
+    return () => clearInterval(interval);
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(() => setHeroIdxC(p => (p + 1) % HERO_IMAGES_C.length), 3700);
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (!carouselRef.current) return;
@@ -91,12 +128,15 @@ export default function EtrysPage() {
 
         {/* Giant faint "RST" watermark */}
         <div className="absolute inset-0 flex items-center justify-end pointer-events-none select-none overflow-hidden">
-          <span
-            className="text-white leading-none font-black tracking-tighter pr-4 opacity-[0.035]"
+          <motion.span
+            initial={{ opacity: 0, x: 120, filter: "blur(24px)" }}
+            animate={{ opacity: 0.035, x: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="text-white leading-none font-black tracking-tighter pr-4"
             style={{ fontSize: "clamp(8rem, 18vw, 22rem)" }}
           >
             RST
-          </span>
+          </motion.span>
         </div>
 
         <div className="container-eminsa relative w-full py-14 lg:py-0">
@@ -189,217 +229,103 @@ export default function EtrysPage() {
               </motion.div>
             </div>
 
-            {/* ══════════ MOBILE visual ══════════ */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="block lg:hidden relative h-72 sm:h-80"
-            >
-              {/* ANTES — back */}
-              <motion.div
-                initial={{ opacity: 0, rotate: -9, x: -16 }}
-                animate={{ opacity: 1, rotate: -6, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute top-6 left-4 z-10"
-                style={{ width: "52%", maxWidth: 196 }}
-              >
-                <div className="bg-white rounded-sm shadow-xl" style={{ padding: "10px 10px 44px" }}>
-                  <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: "1" }}>
-                    <Image src="/transformador-before.png" alt="Antes" fill sizes="196px" className="object-contain" style={{ filter: "sepia(0.35) saturate(0.65) brightness(0.85)" }} priority />
-                  </div>
-                  <div className="pt-2 text-center">
-                    <p className="text-gray-600 text-[10px] font-black uppercase tracking-[0.2em]">ANTES</p>
-                  </div>
-                </div>
-              </motion.div>
+            {/* ══════════ RIGHT — Floating Depth Gallery ══════════ */}
+            <div className="relative self-center w-full flex items-center justify-center" style={{ height: "clamp(330px, 46vw, 450px)" }}>
 
-              {/* DESPUÉS — front */}
+              {/* ── Back-left panel (tilted, behind) ── */}
               <motion.div
-                initial={{ opacity: 0, rotate: 7, x: 16 }}
-                animate={{ opacity: 1, rotate: 5, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute bottom-2 right-4 z-20"
-                style={{ width: "55%", maxWidth: 210 }}
-              >
-                <div className="bg-white rounded-sm shadow-2xl" style={{ padding: "10px 10px 44px" }}>
-                  <div className="relative overflow-hidden rounded-sm" style={{ aspectRatio: "1" }}>
-                    <Image src="/transformador-after.png" alt="Después" fill sizes="210px" className="object-contain" />
-                  </div>
-                  <div className="pt-2 text-center">
-                    <p className="text-[#0099ce] text-[10px] font-black uppercase tracking-[0.2em]">DESPUÉS</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Arrow badge mobile */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.9, ease: [0.34, 1.56, 0.64, 1] }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
-              >
-                <div className="w-10 h-10 rounded-full bg-[#007ba8] border-[3px] border-white flex items-center justify-center shadow-xl">
-                  <ArrowRight size={16} className="text-white" />
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* ══════════ RIGHT — Polaroid Stack (desktop) ══════════ */}
-            <motion.div
-              initial={{ opacity: 0, x: 48 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.85, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-              className="hidden lg:block relative self-center shrink-0"
-              style={{ height: 470 }}
-            >
-
-              {/* ── ANTES card (behind, rotated left) ── */}
-              <motion.div
-                initial={{ opacity: 0, rotate: -12, x: -36, y: 20 }}
-                animate={{ opacity: 1, rotate: -8, x: 0, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                initial={{ opacity: 0, x: -50, rotate: -8 }}
+                animate={{ opacity: 1, x: 0, rotate: -4 }}
+                transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute z-10"
-                style={{ top: 24, left: 4, width: 296, transformOrigin: "bottom center" }}
+                style={{ top: "4%", left: "0%", width: "48%", maxWidth: 210 }}
+              >
+                <motion.div
+                  animate={{ y: [0, -7, 0], rotate: [-4, -3, -4] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: "3/4" }}>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={heroIdxC}
+                        initial={{ opacity: 0, scale: 1.12 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.9 }}
+                        className="absolute inset-0"
+                      >
+                        <Image src={HERO_IMAGES_C[heroIdxC]} alt="Taller RST" fill sizes="210px" className="object-cover" />
+                      </motion.div>
+                    </AnimatePresence>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* ── Main center panel (largest, front) ── */}
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute z-30"
+                style={{ top: "2%", left: "16%", width: "60%", maxWidth: 280 }}
               >
                 <motion.div
                   animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
                 >
                   <div
-                    className="bg-white rounded-[3px]"
-                    style={{
-                      padding: "12px 12px 56px",
-                      boxShadow: "0 18px 50px rgba(0,0,0,0.38), 0 4px 12px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.06)",
-                    }}
+                    className="relative rounded-2xl overflow-hidden"
+                    style={{ aspectRatio: "3/4", boxShadow: "0 30px 70px rgba(0,0,0,0.5), 0 10px 25px rgba(0,0,0,0.3)" }}
                   >
-                    <div className="relative overflow-hidden rounded-[2px] bg-gray-100" style={{ height: 256 }}>
-                      <Image
-                        src="/transformador-before.png"
-                        alt="Transformador antes de restauración"
-                        fill
-                        sizes="272px"
-                        className="object-contain"
-                        style={{ filter: "sepia(0.4) saturate(0.6) brightness(0.82) contrast(1.05)" }}
-                        priority
-                      />
-                      <div className="absolute inset-0 bg-amber-900/12" />
-                    </div>
-                    <div className="pt-3.5 text-center space-y-0.5">
-                      <p className="text-gray-700 text-sm font-black uppercase tracking-[0.22em]">ANTES</p>
-                      <p className="text-gray-400 text-[10px] tracking-wide">Transformador deteriorado</p>
-                    </div>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={heroIdxA}
+                        initial={{ opacity: 0, x: 40 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -40 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute inset-0"
+                      >
+                        <Image src={HERO_IMAGES_A[heroIdxA]} alt="Transformador RST" fill sizes="280px" className="object-cover" priority />
+                      </motion.div>
+                    </AnimatePresence>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#00175d]/50 via-transparent to-transparent" />
                   </div>
                 </motion.div>
               </motion.div>
 
-              {/* ── DESPUÉS card (front, rotated right) ── */}
+              {/* ── Back-right panel (tilted opposite, behind) ── */}
               <motion.div
-                initial={{ opacity: 0, rotate: 8, x: 36, y: -20 }}
-                animate={{ opacity: 1, rotate: 5, x: 0, y: 0 }}
+                initial={{ opacity: 0, x: 50, rotate: 8 }}
+                animate={{ opacity: 1, x: 0, rotate: 3 }}
                 transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute z-20"
-                style={{ top: 52, left: 128, width: 308, transformOrigin: "bottom center" }}
+                style={{ bottom: "2%", right: "0%", width: "46%", maxWidth: 200 }}
               >
                 <motion.div
-                  animate={{ y: [0, -7, 0] }}
-                  transition={{ duration: 4.9, repeat: Infinity, ease: "easeInOut", delay: 1.4 }}
+                  animate={{ y: [0, -9, 0], rotate: [3, 4, 3] }}
+                  transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
                 >
-                  <div
-                    className="bg-white rounded-[3px]"
-                    style={{
-                      padding: "12px 12px 56px",
-                      boxShadow: "0 28px 72px rgba(0,0,0,0.48), 0 8px 20px rgba(0,0,0,0.24), 0 0 0 1px rgba(0,0,0,0.07)",
-                    }}
-                  >
-                    <div className="relative overflow-hidden rounded-[2px] bg-gray-50" style={{ height: 266 }}>
-                      <Image
-                        src="/transformador-after.png"
-                        alt="Transformador restaurado — ETRYS RST"
-                        fill
-                        sizes="284px"
-                        className="object-contain"
-                      />
-                      <div className="absolute inset-0 bg-[#0099ce]/4" />
-                    </div>
-                    <div className="pt-3.5 text-center space-y-0.5">
-                      <p className="text-[#007ba8] text-sm font-black uppercase tracking-[0.22em]">DESPUÉS</p>
-                      <p className="text-gray-400 text-[10px] tracking-wide">Remanufacturado · ETRYS RST</p>
-                    </div>
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: "3/4" }}>
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={heroIdxB}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -30 }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="absolute inset-0"
+                      >
+                        <Image src={HERO_IMAGES_B[heroIdxB]} alt="Resultado RST" fill sizes="200px" className="object-cover" />
+                      </motion.div>
+                    </AnimatePresence>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   </div>
                 </motion.div>
               </motion.div>
 
-              {/* ── Transformation arrow badge ── */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.3 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.55, delay: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
-                className="absolute z-30"
-                style={{ top: 198, left: 100 }}
-              >
-                <motion.div
-                  animate={{ rotate: [0, 6, -4, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-                >
-                  <div
-                    className="w-[52px] h-[52px] rounded-full flex items-center justify-center border-[3px] border-white bg-[#007ba8]"
-                    style={{ boxShadow: "0 8px 24px rgba(0,0,0,0.35)" }}
-                  >
-                    <ArrowRight size={22} className="text-white" />
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* ── Floating "+500" stat badge ── */}
-              <motion.div
-                initial={{ opacity: 0, y: -22, scale: 0.8 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.55, delay: 0.95, ease: [0.34, 1.56, 0.64, 1] }}
-                className="absolute z-30"
-                style={{ top: 0, right: 8 }}
-              >
-                <motion.div
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <div
-                    className="bg-white rounded-2xl px-4 py-3 text-center"
-                    style={{ minWidth: 112, boxShadow: "0 16px 40px rgba(0,0,0,0.28)" }}
-                  >
-                    <div className="text-[1.75rem] font-black text-[#0099ce] leading-none tabular-nums">+500</div>
-                    <div className="text-gray-400 text-[9px] uppercase tracking-wider mt-1 leading-snug">Transformadores<br />Restaurados</div>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* ── Workshop strip ── */}
-              <motion.div
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 1.05 }}
-                className="absolute z-30 bottom-0 left-0 flex gap-2"
-              >
-                {[
-                  { src: "/EMINSA/DSC07645.jpg", label: "Bobinas" },
-                  { src: "/EMINSA/DSC07678.jpg", label: "Proceso" },
-                  { src: "/EMINSA/DSC07827.jpg", label: "Resultado" },
-                ].map((p, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.1 + i * 0.08 }}
-                    className="relative w-[62px] h-[62px] rounded-xl overflow-hidden border-2 border-white/35 shadow-lg"
-                  >
-                    <Image src={p.src} alt={p.label} fill sizes="62px" className="object-cover brightness-80" />
-                    <div className="absolute inset-0 bg-[#00269b]/25" />
-                    <span className="absolute bottom-0.5 inset-x-0 text-center text-white text-[7px] font-bold uppercase tracking-wide drop-shadow">{p.label}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-
-            </motion.div>
+            </div>
 
           </div>
         </div>
@@ -777,3 +703,4 @@ export default function EtrysPage() {
     </div>
   );
 }
+

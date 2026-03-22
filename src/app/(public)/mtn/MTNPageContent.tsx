@@ -114,12 +114,15 @@ export default function MTNPageContent() {
       <section className="relative bg-gradient-to-b from-[#00175d] via-[#00269b] to-[#001a6e] overflow-hidden py-16 lg:py-0 min-h-120 sm:min-h-135 lg:h-160 lg:flex lg:items-center">
         {/* Giant faint "MTN" watermark */}
         <div className="absolute inset-0 flex items-center justify-end pointer-events-none select-none overflow-hidden">
-          <span
-            className="text-white leading-none font-black tracking-tighter pr-4 opacity-[0.04]"
+          <motion.span
+            initial={{ opacity: 0, x: 120, filter: "blur(24px)" }}
+            animate={{ opacity: 0.04, x: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="text-white leading-none font-black tracking-tighter pr-4"
             style={{ fontSize: "clamp(8rem, 18vw, 22rem)" }}
           >
             MTN
-          </span>
+          </motion.span>
         </div>
 
         {/* Subtle grid pattern */}

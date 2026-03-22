@@ -1,6 +1,7 @@
 "use client";
 
 import PhoneInput from "react-phone-number-input";
+import flags from "react-phone-number-input/flags";
 import "react-phone-number-input/style.css";
 
 interface PhoneInputFieldProps {
@@ -34,6 +35,7 @@ export function PhoneInputField({
         style={{ "--phone-focus-color": focusColor } as React.CSSProperties}
       >
         <PhoneInput
+          flags={flags}
           defaultCountry="DO"
           value={value || ""}
           onChange={(val) => onChange(val ?? "")}
