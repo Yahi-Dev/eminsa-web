@@ -110,6 +110,7 @@ export default function CentroReparacionPage() {
                   src="/EMINSA/DSC07759.jpg"
                   alt="Equipo de técnicos reparando transformador"
                   fill
+                  sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
@@ -124,6 +125,7 @@ export default function CentroReparacionPage() {
                   src="/EMINSA/DSC07149.jpg"
                   alt="Pruebas eléctricas en laboratorio"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
@@ -134,6 +136,7 @@ export default function CentroReparacionPage() {
                   src="/EMINSA/DSC07678.jpg"
                   alt="Soldadura de tanque de transformador"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -192,6 +195,7 @@ export default function CentroReparacionPage() {
                     src={img}
                     alt={labels[index] || `Instalación ${index + 1}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -103,6 +103,7 @@ export default function ServiciosPage() {
           src="/EMINSA/DSC07203.jpg"
           alt="Servicios técnicos Eminsa"
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover brightness-50"
           priority
         />
@@ -554,6 +555,7 @@ export default function ServiciosPage() {
                 src={src}
                 alt={`Servicio técnico Eminsa ${i + 1}`}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover brightness-75 group-hover:brightness-90 group-hover:scale-105 transition-all duration-500"
               />
             </div>

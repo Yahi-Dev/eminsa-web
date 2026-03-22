@@ -6,6 +6,9 @@ import { motion } from "framer-motion";
 import { ArrowLeft, MapPin, Calendar, User, Zap, ChevronRight } from "lucide-react";
 import type { ProyectoAPI } from "@/features/admin/types";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { sanitizeContent } from "@/lib/sanitize";
+import { getCldUrl } from "@/lib/cloudinary";
 
 const divisionColors: { [key: string]: string } = {
   MTN: "#00269b",
@@ -171,11 +174,14 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
               className="lg:col-span-2"
             >
               {proyecto.imagen && (
-                <div className="rounded-2xl overflow-hidden mb-10 shadow-lg">
-                  <img
-                    src={proyecto.imagen}
+                <div className="rounded-2xl overflow-hidden mb-10 shadow-lg relative h-72 md:h-96">
+                  <Image
+                    src={getCldUrl(proyecto.imagen, { width: 1200, quality: "auto", format: "auto" })}
                     alt={proyecto.titulo}
-                    className="w-full h-72 md:h-96 object-cover"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                    className="object-cover"
                   />
                 </div>
               )}
@@ -186,7 +192,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
                     prose-headings:text-[#00269b] prose-headings:font-bold
                     prose-a:text-[#0099ce] prose-a:no-underline hover:prose-a:underline
                     prose-strong:text-[#00269b]"
-                  dangerouslySetInnerHTML={{ __html: proyecto.descripcion }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeContent(proyecto.descripcion) }}
                 />
               ) : (
                 <p className="text-[#6d6e6d] italic">{t("noDescription")}</p>
@@ -205,10 +211,12 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
                         transition={{ delay: i * 0.06 }}
                         className="rounded-xl overflow-hidden aspect-square shadow-sm"
                       >
-                        <img
-                          src={img}
+                        <Image
+                          src={getCldUrl(img, { width: 600, quality: "auto", format: "auto" })}
                           alt={`${proyecto.titulo} - imagen ${i + 1}`}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          fill
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 22vw"
+                          className="object-cover hover:scale-105 transition-transform duration-300"
                         />
                       </motion.div>
                     ))}
@@ -302,11 +310,13 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
                         className="group block p-4 bg-white rounded-xl border border-gray-100 hover:border-[#00269b]/20 hover:shadow-md transition-all"
                       >
                         {rel.imagen && (
-                          <div className="rounded-lg overflow-hidden mb-3 h-24">
-                            <img
-                              src={rel.imagen}
+                          <div className="rounded-lg overflow-hidden mb-3 h-24 relative">
+                            <Image
+                              src={getCldUrl(rel.imagen, { width: 400, quality: "auto", format: "auto" })}
                               alt={rel.titulo}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              fill
+                              sizes="(max-width: 1024px) 50vw, 25vw"
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                           </div>
                         )}

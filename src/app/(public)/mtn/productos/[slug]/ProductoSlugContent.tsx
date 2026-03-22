@@ -150,6 +150,7 @@ export default function ProductoSlugContent({ slug }: Props) {
                   src={photos.main}
                   alt={product.shortName}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-80"
                   priority
                 />
@@ -165,6 +166,7 @@ export default function ProductoSlugContent({ slug }: Props) {
                   src={photos.secondary[0]}
                   alt="Proceso de manufactura"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
@@ -179,6 +181,7 @@ export default function ProductoSlugContent({ slug }: Props) {
                   src={photos.secondary[1]}
                   alt="Pruebas de calidad"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { requireAuth } from '@/lib/auth-middleware';
+import { requireAdminRole } from '@/lib/auth-middleware';
 
 const VALID_DIVISIONES = ['MTN', 'RST', 'EIC', 'SRV'] as const;
 const VALID_TIPOS = ['pdf', 'doc', 'xls', 'img', 'link'] as const;
@@ -13,10 +13,10 @@ export async function GET(request: NextRequest) {
     const tipo = searchParams.get('tipo');
 
     const where: Record<string, unknown> = {};
-    if (division) where.division = division;
+    if (division && VALID_DIVISIONES.includes(division as typeof VALID_DIVISIONES[number])) where.division = division;
     if (activoParam === 'true') where.activo = true;
     if (activoParam === 'false') where.activo = false;
-    if (tipo) where.tipo = tipo;
+    if (tipo && VALID_TIPOS.includes(tipo as typeof VALID_TIPOS[number])) where.tipo = tipo;
 
     const recursos = await prisma.recurso.findMany({
       where,
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const auth = await requireAuth(request);
+  const auth = await requireAdminRole(request);
   if ('error' in auth) return auth.error;
 
   try {

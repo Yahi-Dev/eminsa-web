@@ -125,7 +125,7 @@ export default function EICBrandsShowcase() {
   }, [isAutoPlaying, nextSlide]);
 
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden">
+    <section className="py-14 lg:py-20 relative overflow-hidden">
       {/* Ambient blurs */}
 
 
@@ -215,7 +215,7 @@ export default function EICBrandsShowcase() {
                   alt={activeBrand.id}
                   width={140}
                   height={140}
-                  className="object-contain max-h-32"
+                  className="object-contain"
                 />
               </div>
 

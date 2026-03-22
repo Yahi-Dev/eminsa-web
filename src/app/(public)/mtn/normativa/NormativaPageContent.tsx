@@ -55,7 +55,7 @@ export default function NormativaPageContent() {
               </div>
               <span className="text-[#0099ce] font-semibold">{t("hero.badge")}</span>
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-4">{t("hero.title")}</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4">{t("hero.title")} y Eficiencias</h1>
             <p className="text-xl text-white/80">
               {t("hero.description")}
             </p>

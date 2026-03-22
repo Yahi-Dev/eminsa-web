@@ -7,7 +7,7 @@ import { EICBrandsShowcase } from "../components/eic";
 import DivisionsSection from "../components/DivisionsSection";
 import ServicesSection from "../components/ServicesSection";
 import StatsSection from "../components/StatsSection";
-import TransformadorRestauracionSection from "../components/TransformadorRestauracionSection";
+import HomeTransformadorSection from "../components/HomeTransformadorSection";
 import NoticiasSection from "../components/NoticiasSection";
 
 export default function HomeSection() {
@@ -24,7 +24,7 @@ export default function HomeSection() {
 
       {/* 3 & 4. MTN — división principal: transformadores nuevos y restauración */}
       <MTNHeroSection />
-      <TransformadorRestauracionSection />
+      <HomeTransformadorSection />
 
       {/* 5. Catálogo de productos MTN */}
       {/* <MTNProductsShowcase /> */}

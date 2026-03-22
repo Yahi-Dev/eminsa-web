@@ -172,7 +172,6 @@ export default function HeroSection() {
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay loop muted playsInline
-          poster="/images/video-poster.jpg"
         >
           <source src="/images/web-banner-video.mp4" type="video/mp4" />
         </video>

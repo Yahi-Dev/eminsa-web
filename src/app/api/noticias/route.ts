@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { requireAuth } from '@/lib/auth-middleware';
+import { requireAdminRole } from '@/lib/auth-middleware';
 import { slugify } from '@/lib/utils/slugify';
+
+const VALID_DIVISIONES = ['MTN', 'RST', 'EIC', 'SRV'];
+const VALID_CATEGORIAS = ['noticia', 'comunicado', 'evento', 'blog'];
+const MAX_LIMIT = 100;
 
 export async function GET(request: NextRequest) {
   try {
@@ -21,13 +25,18 @@ export async function GET(request: NextRequest) {
 
     const where: Record<string, unknown> = {};
     if (publicadoParam === 'true') where.publicado = true;
-    if (division) where.division = division;
-    if (categoria) where.categoria = categoria;
+    // Whitelist-validate query params to prevent injection
+    if (division && VALID_DIVISIONES.includes(division)) where.division = division;
+    if (categoria && VALID_CATEGORIAS.includes(categoria)) where.categoria = categoria;
     if (destacado === 'true') where.destacado = true;
+
+    const limitParam = parseInt(searchParams.get('limit') ?? '50', 10);
+    const limit = Number.isFinite(limitParam) && limitParam > 0 ? Math.min(limitParam, MAX_LIMIT) : 50;
 
     const noticias = await prisma.noticia.findMany({
       where,
       orderBy: { createdAt: 'desc' },
+      take: limit,
       select: {
         id: true,
         slug: true,
@@ -53,7 +62,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const auth = await requireAuth(request);
+  const auth = await requireAdminRole(request);
   if ('error' in auth) return auth.error;
 
   try {

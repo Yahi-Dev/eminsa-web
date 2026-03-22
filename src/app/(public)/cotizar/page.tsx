@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -303,8 +304,8 @@ export default function CotizarPage() {
                 <div className="bg-gray-50 rounded-2xl p-6">
                   <h4 className="font-semibold text-[#00269b] mb-4">{t("sidebar.certifications")}</h4>
                   <div className="flex gap-4">
-                    <img src="/images/SelloAENORISO9001_NEG.png" alt="ISO 9001" className="h-12 object-contain" />
-                    <img src="/images/IQNET_RCMark_PosCMYK.png" alt="IQNET" className="h-12 object-contain" />
+                    <Image src="/images/SelloAENORISO9001_NEG.png" alt="ISO 9001" width={48} height={48} className="object-contain" />
+                    <Image src="/images/IQNET_RCMark_PosCMYK.png" alt="IQNET" width={48} height={48} className="object-contain" />
                   </div>
                 </div>
               </div>

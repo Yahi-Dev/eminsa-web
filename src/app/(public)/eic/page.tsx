@@ -284,6 +284,7 @@ export default function EICPage() {
                           src={categoryPhotos[category.slug]}
                           alt={tc(`categories.${category.slug}.name`)}
                           fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
                           className="object-cover"
                         />
                       ) : null}

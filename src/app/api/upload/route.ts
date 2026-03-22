@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { requireAuth } from "@/lib/auth-middleware";
+import { requireAdminRole } from "@/lib/auth-middleware";
 import { uploadToCloudinary } from "@/lib/cloudinary";
 
 const MAX_BYTES = 10 * 1024 * 1024; // 10MB
@@ -10,15 +10,29 @@ const VALID_FOLDERS = [
   "eminsa/recursos",
 ];
 
+const VALID_RESOURCE_TYPES = ["image", "raw", "auto"] as const;
+type ResourceType = (typeof VALID_RESOURCE_TYPES)[number];
+
+const VALID_MIME_TYPES = new Set([
+  // Images
+  "image/jpeg", "image/png", "image/gif", "image/webp", "image/svg+xml",
+  // Documents
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/vnd.ms-excel",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+]);
+
 export async function POST(request: NextRequest) {
-  const auth = await requireAuth(request);
+  const auth = await requireAdminRole(request);
   if ("error" in auth) return auth.error;
 
   try {
     const formData = await request.formData();
     const file = formData.get("file") as File | null;
     const folder = formData.get("folder") as string | null;
-    const resourceType = (formData.get("resourceType") as string) || "auto";
+    const rawResourceType = formData.get("resourceType") as string | null;
 
     if (!file || !folder) {
       return NextResponse.json(
@@ -30,6 +44,27 @@ export async function POST(request: NextRequest) {
     if (!VALID_FOLDERS.includes(folder)) {
       return NextResponse.json(
         { success: false, message: "Carpeta no válida" },
+        { status: 400 }
+      );
+    }
+
+    // Whitelist-validate resourceType
+    const resourceType: ResourceType =
+      rawResourceType && VALID_RESOURCE_TYPES.includes(rawResourceType as ResourceType)
+        ? (rawResourceType as ResourceType)
+        : "auto";
+
+    // Validate MIME type
+    if (file.type && !VALID_MIME_TYPES.has(file.type)) {
+      return NextResponse.json(
+        { success: false, message: "Tipo de archivo no permitido" },
+        { status: 400 }
+      );
+    }
+
+    if (file.size === 0) {
+      return NextResponse.json(
+        { success: false, message: "El archivo está vacío" },
         { status: 400 }
       );
     }
@@ -46,11 +81,7 @@ export async function POST(request: NextRequest) {
     const buffer = Buffer.from(arrayBuffer);
     const base64 = `data:${file.type};base64,${buffer.toString("base64")}`;
 
-    const result = await uploadToCloudinary(
-      base64,
-      folder,
-      resourceType as "image" | "raw" | "auto"
-    );
+    const result = await uploadToCloudinary(base64, folder, resourceType);
 
     return NextResponse.json({
       success: true,

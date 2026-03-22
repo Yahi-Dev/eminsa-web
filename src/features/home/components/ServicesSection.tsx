@@ -29,7 +29,7 @@ export default function ServicesSection() {
   const t = useTranslations("home");
   const tc = useTranslations("config");
   return (
-    <section className="py-20 lg:py-32 bg-white relative overflow-hidden">
+    <section className="pt-8 pb-12 lg:pt-10 lg:pb-16 bg-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#0099ce]/5 rounded-full blur-[100px] -translate-y-1/2" />

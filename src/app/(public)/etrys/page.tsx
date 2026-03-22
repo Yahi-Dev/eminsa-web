@@ -141,7 +141,7 @@ export default function EtrysPage() {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="relative col-span-2 rounded-2xl overflow-hidden shadow-2xl"
               >
-                <Image src="/EMINSA/DSC07751.jpg" alt="Reparación de transformadores" fill className="object-cover brightness-75" priority />
+                <Image src="/EMINSA/DSC07751.jpg" alt="Reparación de transformadores" fill sizes="(max-width: 768px) 100vw, 66vw" className="object-cover brightness-75" priority />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                   <span className="text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">Taller RST</span>
@@ -156,7 +156,7 @@ export default function EtrysPage() {
                 transition={{ duration: 0.6, delay: 0.45 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
-                <Image src="/EMINSA/DSC07632.jpg" alt="Proceso de reparación" fill className="object-cover brightness-75" />
+                <Image src="/EMINSA/DSC07632.jpg" alt="Proceso de reparación" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Diagnóstico</span>
               </motion.div>
@@ -168,7 +168,7 @@ export default function EtrysPage() {
                 transition={{ duration: 0.6, delay: 0.55 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
-                <Image src="/EMINSA/DSC07645.jpg" alt="Reparación bobinas" fill className="object-cover brightness-75" />
+                <Image src="/EMINSA/DSC07645.jpg" alt="Reparación bobinas" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Bobinas</span>
               </motion.div>
@@ -180,7 +180,7 @@ export default function EtrysPage() {
                 transition={{ duration: 0.6, delay: 0.62 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
-                <Image src="/EMINSA/DSC07678.jpg" alt="Proceso de restauración" fill className="object-cover brightness-75" />
+                <Image src="/EMINSA/DSC07678.jpg" alt="Proceso de restauración" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Restauración</span>
               </motion.div>
@@ -192,7 +192,7 @@ export default function EtrysPage() {
                 transition={{ duration: 0.6, delay: 0.69 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
-                <Image src="/EMINSA/DSC07827.jpg" alt="Transformador restaurado" fill className="object-cover brightness-75" />
+                <Image src="/EMINSA/DSC07827.jpg" alt="Transformador restaurado" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Resultado</span>
               </motion.div>
@@ -271,6 +271,7 @@ export default function EtrysPage() {
                       src={product.image}
                       alt={product.name}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
                     />
                     <div className="absolute top-3 right-3">
@@ -504,6 +505,7 @@ export default function EtrysPage() {
                   src="/EMINSA/DSC07624.jpg"
                   alt="Alquiler de Transformadores ETRYS by EMINSA"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
               </div>

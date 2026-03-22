@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface BeforeAfterSliderProps {
@@ -81,10 +82,12 @@ export default function BeforeAfterSlider({
     >
       {/* Imagen After (fondo) */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src={afterImage}
           alt="After"
-          className="w-full h-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
           draggable={false}
         />
         {/* Label After */}
@@ -102,10 +105,12 @@ export default function BeforeAfterSlider({
           clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
         }}
       >
-        <img
+        <Image
           src={beforeImage}
           alt="Before"
-          className="w-full h-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
           draggable={false}
         />
         {/* Label Before */}

@@ -12,8 +12,9 @@ interface Props {
 }
 
 export default function CertificationsTabSelector({ certifications }: Props) {
-  const [activeId, setActiveId] = useState(certifications[0]?.id ?? "");
-  const activeCert = certifications.find((c) => c.id === activeId) ?? certifications[0];
+  const filtered = certifications.filter((c) => c.id !== "doe-2016");
+  const [activeId, setActiveId] = useState(filtered[0]?.id ?? "");
+  const activeCert = filtered.find((c) => c.id === activeId) ?? filtered[0];
 
   if (!activeCert) return null;
 
@@ -21,7 +22,7 @@ export default function CertificationsTabSelector({ certifications }: Props) {
     <div>
       {/* Tab buttons */}
       <div className="flex flex-wrap gap-2 mb-6">
-        {certifications.map((cert) => (
+        {filtered.map((cert) => (
           <button
             key={cert.id}
             onClick={() => setActiveId(cert.id)}

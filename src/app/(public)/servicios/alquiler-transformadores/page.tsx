@@ -298,6 +298,7 @@ export default function AlquilerTransformadoresPage() {
                         src={transformador.imagen}
                         alt={transformador.nombre}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover brightness-75"
                       />
                       {/* Overlay de color */}

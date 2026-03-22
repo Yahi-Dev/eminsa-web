@@ -140,6 +140,7 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
                   src={photos.main}
                   alt={variant.name}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                   priority
                 />
@@ -155,6 +156,7 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
                   src={photos.side}
                   alt="Proceso de manufactura"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />

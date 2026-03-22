@@ -101,6 +101,7 @@ export default function EtrysServiciosPage() {
                   src="/EMINSA/DSC07759.jpg"
                   alt="Técnicos reparando transformador"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
@@ -115,6 +116,7 @@ export default function EtrysServiciosPage() {
                   src="/EMINSA/DSC07174.jpg"
                   alt="Laboratorio de pruebas eléctricas"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
@@ -126,6 +128,7 @@ export default function EtrysServiciosPage() {
                   src="/EMINSA/DSC07573.jpg"
                   alt="Transformador EMINSA terminado"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
@@ -205,6 +208,7 @@ export default function EtrysServiciosPage() {
                   src={repairCenter.images[0]}
                   alt="Equipo de técnicos reparando transformador"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
@@ -215,6 +219,7 @@ export default function EtrysServiciosPage() {
                   src={repairCenter.images[1]}
                   alt="Técnico trabajando en componentes"
                   fill
+                  sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -224,6 +229,7 @@ export default function EtrysServiciosPage() {
                   src={repairCenter.images[2]}
                   alt="Laboratorio de pruebas"
                   fill
+                  sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -233,6 +239,7 @@ export default function EtrysServiciosPage() {
                   src={repairCenter.images[3]}
                   alt="Trabajo de precisión en bobinas"
                   fill
+                  sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -242,6 +249,7 @@ export default function EtrysServiciosPage() {
                   src={repairCenter.images[4]}
                   alt="Medición y control de calidad"
                   fill
+                  sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>

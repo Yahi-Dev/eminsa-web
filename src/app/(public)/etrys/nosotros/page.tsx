@@ -87,6 +87,7 @@ export default function EtrysNosotrosPage() {
                   src="/EMINSA/DSC07859.jpg"
                   alt="Equipo ETRYS"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                   priority
                 />
@@ -156,6 +157,7 @@ export default function EtrysNosotrosPage() {
                     src="/EMINSA/DSC07129.jpg"
                     alt="Instalaciones ETRYS"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
                   />
                 </div>
@@ -164,6 +166,7 @@ export default function EtrysNosotrosPage() {
                     src="/EMINSA/DSC07138.jpg"
                     alt="Taller ETRYS"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
                   />
                 </div>
@@ -172,6 +175,7 @@ export default function EtrysNosotrosPage() {
                     src="/EMINSA/DSC07108.jpg"
                     alt="Laboratorio ETRYS"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
                   />
                 </div>
@@ -180,6 +184,7 @@ export default function EtrysNosotrosPage() {
                     src="/EMINSA/DSC07161.jpg"
                     alt="Equipos ETRYS"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
                   />
                 </div>
@@ -315,6 +320,7 @@ export default function EtrysNosotrosPage() {
                   src="/EMINSA/DSC07624.jpg"
                   alt="Equipo de trabajo ETRYS"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
               </div>

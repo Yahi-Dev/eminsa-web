@@ -305,8 +305,9 @@ export default function MTNHeroSection() {
                       src={productPhoto}
                       alt={slide.name}
                       fill
-                      className="object-cover"
                       priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-linear-to-r from-[#00175d]/60 via-transparent to-transparent" />
                     <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />

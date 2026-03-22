@@ -18,9 +18,23 @@ const LIMITS = {
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const CLEANUP_INTERVAL_MS = 15 * 60 * 1000; // Cleanup expired entries every 15 min
+
+// Periodically remove expired entries to prevent memory leak
+let lastCleanup = Date.now();
+
+function cleanupExpiredEntries(now: number) {
+  if (now - lastCleanup < CLEANUP_INTERVAL_MS) return;
+  lastCleanup = now;
+  for (const [ip, entry] of rateLimitMap.entries()) {
+    if (now > entry.resetAt) rateLimitMap.delete(ip);
+  }
+}
 
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
+  cleanupExpiredEntries(now);
+
   const entry = rateLimitMap.get(ip);
 
   if (!entry || now > entry.resetAt) {
@@ -36,12 +50,18 @@ function checkRateLimit(ip: string): boolean {
   return true; // allowed
 }
 
+// Only trust x-forwarded-for in production behind a known proxy (Vercel/Nginx sets this)
+// Validate the IP looks like an actual IP address before using it for rate limiting
+const IP_REGEX = /^[\d.:a-fA-F]+$/;
+
 function getClientIp(headers: Headers): string {
-  return (
-    headers.get('x-forwarded-for')?.split(',')[0].trim() ||
-    headers.get('x-real-ip') ||
-    'unknown'
-  );
+  const forwarded = headers.get('x-forwarded-for')?.split(',')[0].trim() ?? '';
+  if (forwarded && IP_REGEX.test(forwarded)) return forwarded;
+
+  const realIp = headers.get('x-real-ip')?.trim() ?? '';
+  if (realIp && IP_REGEX.test(realIp)) return realIp;
+
+  return 'unknown';
 }
 
 function sanitize(value: unknown, maxLen: number): string {

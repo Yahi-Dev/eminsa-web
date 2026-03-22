@@ -331,11 +331,13 @@ export default function MarcaDetailPage({
                       }}
                     >
                       {product.image ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
+                        <Image
                           src={product.image}
                           alt={product.name}
-                          className="max-h-48 object-contain rounded-xl"
+                          width={300}
+                          height={192}
+                          className="object-contain rounded-xl"
+                          style={{ width: "auto", height: "auto", maxHeight: "12rem" }}
                         />
                       ) : (
                         <div className="text-center">

@@ -77,6 +77,7 @@ export default function NosotrosPage() {
           src="/EMINSA/DSC07149.jpg"
           alt="Grupo EMINSA"
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover brightness-50"
           priority
         />
@@ -129,6 +130,7 @@ export default function NosotrosPage() {
                   src="/EMINSA/DSC07875.jpg"
                   alt="Equipo Grupo EMINSA"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                   priority
                 />
@@ -244,6 +246,7 @@ export default function NosotrosPage() {
                     src="/EMINSA/DSC07713.jpg"
                     alt="Instalaciones EMINSA"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
                   />
                 </div>
@@ -252,6 +255,7 @@ export default function NosotrosPage() {
                     src="/EMINSA/DSC07733.jpg"
                     alt="Taller EMINSA"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
                   />
                 </div>
@@ -260,6 +264,7 @@ export default function NosotrosPage() {
                     src="/EMINSA/DSC07165.jpg"
                     alt="Proceso de producción EMINSA"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
                   />
                 </div>
@@ -268,6 +273,7 @@ export default function NosotrosPage() {
                     src="/EMINSA/DSC07638.jpg"
                     alt="Equipos EMINSA"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
                   />
                 </div>
@@ -442,6 +448,7 @@ export default function NosotrosPage() {
                 src={src}
                 alt={`Grupo EMINSA ${(i % 23) + 1}`}
                 fill
+                sizes="288px"
                 className="object-cover brightness-75 group-hover:brightness-95 transition-all duration-500"
               />
             </div>
@@ -497,6 +504,7 @@ export default function NosotrosPage() {
                   src="/EMINSA/DSC07670.jpg"
                   alt="Equipo de trabajo Grupo EMINSA"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
               </div>

@@ -65,6 +65,7 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
                 src={current.image}
                 alt={current.name}
                 fill
+                sizes="288px"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
@@ -233,6 +234,7 @@ export default function EtrysProductoDetailPage({
                   src={product.image}
                   alt={product.name}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                   priority
                 />

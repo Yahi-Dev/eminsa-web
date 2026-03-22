@@ -23,6 +23,7 @@
     "@maskito/phone": "^5.0.1",
     "@maskito/react": "^5.0.1",
     "@prisma/client": "^5.22.0",
+    "@types/sanitize-html": "^2.16.1",
     "bcryptjs": "^3.0.3",
     "better-auth": "^1.5.2",
     "cloudinary": "^2.9.0",
@@ -37,6 +38,7 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-phone-number-input": "^3.4.16",
+    "sanitize-html": "^2.17.2",
     "tailwind-merge": "^3.4.0",
     "zod": "^4.3.5"
   },

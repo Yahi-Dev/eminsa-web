@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldCheck, FileCheck, Award, BadgeCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -97,10 +98,12 @@ export default function StatsSection() {
                 >
                   <div className="flex items-center gap-5 bg-white rounded-2xl border border-gray-100 px-6 py-5 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
                     <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center p-2 border border-gray-100 shrink-0 group-hover:border-[#00269b]/20 transition-colors">
-                      <img
+                      <Image
                         src={cert.logo}
                         alt={t(`certifications.${cert.id}Name`)}
-                        className="w-full h-full object-contain"
+                        width={80}
+                        height={80}
+                        className="object-contain"
                       />
                     </div>
                     <div className="flex-1">

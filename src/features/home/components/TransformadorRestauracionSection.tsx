@@ -31,7 +31,7 @@ export default function TransformadorRestauracionSection() {
   ];
 
   return (
-    <section className="pt-12 pb-6 lg:pt-16 lg:pb-8 bg-linear-to-br bg-white">
+    <section className="pt-10 pb-2 lg:pt-14 lg:pb-4 bg-linear-to-br bg-white">
       <div className="container-eminsa">
         {/* Section eyebrow */}
         <div className="flex items-center gap-3 mb-8">
@@ -117,8 +117,8 @@ export default function TransformadorRestauracionSection() {
           >
             <div className="aspect-square w-full max-w-120 mx-auto">
               <BeforeAfterSlider
-                beforeImage="transformador-before.png"
-                afterImage="transformador-after.png"
+                beforeImage="/transformador-before.png"
+                afterImage="/transformador-after.png"
                 beforeLabel="Before"
                 afterLabel="After"
               />

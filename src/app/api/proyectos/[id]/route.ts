@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { requireAuth } from '@/lib/auth-middleware';
+import { requireAdminRole } from "@/lib/auth-middleware";
 import { slugify } from '@/lib/utils/slugify';
 
 export async function GET(
@@ -29,7 +29,7 @@ export async function PUT(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const auth = await requireAuth(request);
+  const auth = await requireAdminRole(request);
   if ('error' in auth) return auth.error;
 
   try {
@@ -71,7 +71,7 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const auth = await requireAuth(request);
+  const auth = await requireAdminRole(request);
   if ('error' in auth) return auth.error;
 
   try {

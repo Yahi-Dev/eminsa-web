@@ -153,7 +153,7 @@ export default function MTNPageContent() {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="relative col-span-2 rounded-2xl overflow-hidden shadow-2xl"
               >
-                <Image src="/EMINSA/DSC07816.jpg" alt="Manufactura MTN" fill className="object-cover brightness-75" priority />
+                <Image src="/EMINSA/DSC07816.jpg" alt="Manufactura MTN" fill sizes="(max-width: 768px) 100vw, 66vw" className="object-cover brightness-75" priority />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                   <span className="text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">Planta MTN</span>
@@ -168,7 +168,7 @@ export default function MTNPageContent() {
                 transition={{ duration: 0.6, delay: 0.45 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
-                <Image src="/EMINSA/DSC07227.jpg" alt="Tipo Poste" fill className="object-cover brightness-75" />
+                <Image src="/EMINSA/DSC07227.jpg" alt="Tipo Poste" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Tipo Poste</span>
               </motion.div>
@@ -180,7 +180,7 @@ export default function MTNPageContent() {
                 transition={{ duration: 0.6, delay: 0.55 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
-                <Image src="/EMINSA/DSC07713.jpg" alt="Bobinado" fill className="object-cover brightness-75" />
+                <Image src="/EMINSA/DSC07713.jpg" alt="Bobinado" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Bobinado</span>
               </motion.div>
@@ -192,7 +192,7 @@ export default function MTNPageContent() {
                 transition={{ duration: 0.6, delay: 0.62 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
-                <Image src="/EMINSA/DSC07174.jpg" alt="Laboratorio de Pruebas" fill className="object-cover brightness-75" />
+                <Image src="/EMINSA/DSC07174.jpg" alt="Laboratorio de Pruebas" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Lab. Pruebas</span>
               </motion.div>
@@ -204,7 +204,7 @@ export default function MTNPageContent() {
                 transition={{ duration: 0.6, delay: 0.69 }}
                 className="relative rounded-2xl overflow-hidden shadow-xl"
               >
-                <Image src="/EMINSA/DSC07733.jpg" alt="Corte Láser" fill className="object-cover brightness-75" />
+                <Image src="/EMINSA/DSC07733.jpg" alt="Corte Láser" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Corte Láser</span>
               </motion.div>
@@ -260,6 +260,7 @@ export default function MTNPageContent() {
                       src={productPhotos[product.slug] ?? "/EMINSA/DSC07227.jpg"}
                       alt={product.shortName}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-black/30" />
@@ -372,6 +373,7 @@ export default function MTNPageContent() {
                 src={photo.src}
                 alt={photo.label}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover brightness-75 group-hover:brightness-90 group-hover:scale-105 transition-all duration-500"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
@@ -426,7 +428,7 @@ export default function MTNPageContent() {
                 <div className="w-11 h-11 bg-[#00269b] rounded-lg flex items-center justify-center">
                   <Shield size={22} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-[#00269b]">{t("standards.normativas")}</h3>
+                <h3 className="text-xl font-bold text-[#00269b]">{t("standards.normativas")} y Eficiencias</h3>
               </div>
               <div className="space-y-3">
                 {standards.map((standard) => (

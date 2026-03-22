@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   Phone,
@@ -148,10 +149,12 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
                 <div className="w-11 h-11 bg-white rounded-md flex items-center justify-center p-1.5 shrink-0">
-                  <img
+                  <Image
                     src="/images/SelloAENORISO9001_NEG.png"
                     alt="ISO 9001"
-                    className="w-full h-full object-contain"
+                    width={44}
+                    height={44}
+                    className="object-contain"
                   />
                 </div>
                 <div>
@@ -161,10 +164,12 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
                 <div className="w-11 h-11 bg-white rounded-md flex items-center justify-center p-1.5 shrink-0">
-                  <img
+                  <Image
                     src="/images/IQNET_RCMark_PosCMYK.png"
                     alt="IQNET"
-                    className="w-full h-full object-contain"
+                    width={44}
+                    height={44}
+                    className="object-contain"
                   />
                 </div>
                 <div>

@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ChevronRight, MapPin, Building, ArrowRight, Star } from "lucide-react";
 import type { ProyectoAPI } from "@/features/admin/types";
 import { useTranslations } from "next-intl";
+import { getCldUrl } from "@/lib/cloudinary";
 
 const divisionOptions = [
   { id: "MTN", name: "MTN", color: "#00269b" },
@@ -129,7 +131,13 @@ export default function ProyectosPage() {
                         <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                           <div className="h-56 bg-gradient-to-br from-[#00269b] to-[#00175d] relative">
                             {proyecto.imagen && (
-                              <img src={proyecto.imagen} alt="" className="w-full h-full object-cover" />
+                              <Image
+                                src={getCldUrl(proyecto.imagen, { width: 800, quality: "auto", format: "auto" })}
+                                alt={proyecto.titulo}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-cover"
+                              />
                             )}
                             <div className="absolute top-4 left-4">
                               <span
@@ -202,7 +210,13 @@ export default function ProyectosPage() {
                           <div className="h-full bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                             <div className="h-44 bg-gray-200 relative">
                               {proyecto.imagen ? (
-                                <img src={proyecto.imagen} alt="" className="w-full h-full object-cover" />
+                                <Image
+                                  src={getCldUrl(proyecto.imagen, { width: 600, quality: "auto", format: "auto" })}
+                                  alt={proyecto.titulo}
+                                  fill
+                                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                  className="object-cover"
+                                />
                               ) : (
                                 <div
                                   className="w-full h-full flex items-center justify-center"

@@ -76,6 +76,7 @@ export default function ProductosPageContent() {
                         src={productPhotos[product.slug] ?? "/EMINSA/DSC07227.jpg"}
                         alt={tc(`products.${product.slug}.name`)}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover"
                       />
                       <div className="absolute inset-0 bg-black/30" />

@@ -181,6 +181,8 @@ export default function DivisionsSection() {
                   src={divisionPhotos[activeDivision.id] ?? "/EMINSA/DSC07174.jpg"}
                   alt={activeDivision.name}
                   fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover brightness-50"
                 />
                 {/* Color tint overlay */}

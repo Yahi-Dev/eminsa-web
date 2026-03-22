@@ -7,6 +7,9 @@ import { ArrowLeft, Calendar, User, Tag, ChevronRight } from "lucide-react";
 import { categoriasNoticias } from "@/data/content";
 import type { NoticiaAPI } from "@/features/admin/types";
 import { useTranslations, useLocale } from "next-intl";
+import Image from "next/image";
+import { sanitizeContent } from "@/lib/sanitize";
+import { getCldUrl } from "@/lib/cloudinary";
 
 const categoriaColors: { [key: string]: string } = {
   empresa: "#00269b",
@@ -169,11 +172,14 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
               className="lg:col-span-2"
             >
               {noticia.imagen && (
-                <div className="rounded-2xl overflow-hidden mb-10 shadow-lg">
-                  <img
-                    src={noticia.imagen}
+                <div className="rounded-2xl overflow-hidden mb-10 shadow-lg relative h-72 md:h-96">
+                  <Image
+                    src={getCldUrl(noticia.imagen, { width: 1200, quality: "auto", format: "auto" })}
                     alt={noticia.titulo}
-                    className="w-full h-72 md:h-96 object-cover"
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                    className="object-cover"
                   />
                 </div>
               )}
@@ -188,7 +194,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
                     prose-headings:text-[#00269b] prose-headings:font-bold
                     prose-a:text-[#0099ce] prose-a:no-underline hover:prose-a:underline
                     prose-strong:text-[#00269b]"
-                  dangerouslySetInnerHTML={{ __html: noticia.contenido }}
+                  dangerouslySetInnerHTML={{ __html: sanitizeContent(noticia.contenido) }}
                 />
               ) : (
                 <p className="text-[#6d6e6d] italic">{t("contentUnavailable")}</p>

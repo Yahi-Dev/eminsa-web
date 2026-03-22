@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ChevronRight, Calendar, User, ArrowRight, Star } from "lucide-react";
 import { categoriasNoticias } from "@/data/content";
 import type { NoticiaAPI } from "@/features/admin/types";
 import { useTranslations, useLocale } from "next-intl";
+import { getCldUrl } from "@/lib/cloudinary";
 
 function formatFecha(dateStr: string, locale: string) {
   return new Date(dateStr).toLocaleDateString(locale === "en" ? "en-US" : "es-ES", {
@@ -124,7 +126,13 @@ export default function NoticiasPage() {
                         <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                           <div className="h-48 bg-gradient-to-br from-[#00269b] to-[#00175d] relative">
                             {noticia.imagen && (
-                              <img src={noticia.imagen} alt="" className="w-full h-full object-cover" />
+                              <Image
+                                src={getCldUrl(noticia.imagen, { width: 800, quality: "auto", format: "auto" })}
+                                alt={noticia.titulo}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-cover"
+                              />
                             )}
                             <div className="absolute top-4 left-4">
                               <span
@@ -190,7 +198,13 @@ export default function NoticiasPage() {
                           <div className="h-full bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                             <div className="h-40 bg-gray-200 relative">
                               {noticia.imagen ? (
-                                <img src={noticia.imagen} alt="" className="w-full h-full object-cover" />
+                                <Image
+                                  src={getCldUrl(noticia.imagen, { width: 600, quality: "auto", format: "auto" })}
+                                  alt={noticia.titulo}
+                                  fill
+                                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                  className="object-cover"
+                                />
                               ) : (
                                 <div className="w-full h-full bg-gradient-to-br from-[#00269b]/10 to-[#0099ce]/10 flex items-center justify-center">
                                   <span className="text-[#00269b]/50 text-sm">Grupo EMINSA</span>
