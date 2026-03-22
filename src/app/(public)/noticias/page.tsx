@@ -8,7 +8,7 @@ import { ChevronRight, Calendar, User, ArrowRight, Star } from "lucide-react";
 import { categoriasNoticias } from "@/data/content";
 import type { NoticiaAPI } from "@/features/admin/types";
 import { useTranslations, useLocale } from "next-intl";
-import { getCldUrl } from "@/lib/cloudinary";
+import { getCldUrl } from "@/lib/cloudinary-url";
 
 function formatFecha(dateStr: string, locale: string) {
   return new Date(dateStr).toLocaleDateString(locale === "en" ? "en-US" : "es-ES", {

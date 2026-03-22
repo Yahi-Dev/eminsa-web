@@ -8,7 +8,7 @@ import type { ProyectoAPI } from "@/features/admin/types";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { sanitizeContent } from "@/lib/sanitize";
-import { getCldUrl } from "@/lib/cloudinary";
+import { getCldUrl } from "@/lib/cloudinary-url";
 
 const divisionColors: { [key: string]: string } = {
   MTN: "#00269b",

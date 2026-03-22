@@ -7,7 +7,7 @@ import Image from "next/image";
 import { ChevronRight, MapPin, Building, ArrowRight, Star } from "lucide-react";
 import type { ProyectoAPI } from "@/features/admin/types";
 import { useTranslations } from "next-intl";
-import { getCldUrl } from "@/lib/cloudinary";
+import { getCldUrl } from "@/lib/cloudinary-url";
 
 const divisionOptions = [
   { id: "MTN", name: "MTN", color: "#00269b" },

@@ -9,7 +9,7 @@ import type { NoticiaAPI } from "@/features/admin/types";
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { sanitizeContent } from "@/lib/sanitize";
-import { getCldUrl } from "@/lib/cloudinary";
+import { getCldUrl } from "@/lib/cloudinary-url";
 
 const categoriaColors: { [key: string]: string } = {
   empresa: "#00269b",

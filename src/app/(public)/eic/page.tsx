@@ -133,6 +133,16 @@ export default function EICPage() {
       {/* HERO SECTION */}
       {/* ================================================================ */}
       <section className="relative bg-linear-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden min-h-120 sm:min-h-135 lg:min-h-160">
+        {/* Giant faint "EIC" watermark */}
+        <div className="absolute inset-0 flex items-center justify-end pointer-events-none select-none overflow-hidden">
+          <span
+            className="text-white leading-none font-black tracking-tighter pr-4 opacity-[0.04]"
+            style={{ fontSize: "clamp(8rem, 18vw, 22rem)" }}
+          >
+            EIC
+          </span>
+        </div>
+
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div

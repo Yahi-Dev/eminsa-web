@@ -178,8 +178,6 @@ export default function MTNHeroSection() {
             >
               {/* LEFT — Content */}
               <div className="flex flex-col justify-center px-10 md:px-14 py-14 gap-6">
-
-                {/* Eyebrow */}
                 <motion.p
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -189,7 +187,6 @@ export default function MTNHeroSection() {
                   {slide.eyebrow}
                 </motion.p>
 
-                {/* Product name */}
                 <motion.h3
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -199,7 +196,6 @@ export default function MTNHeroSection() {
                   {slide.name}
                 </motion.h3>
 
-                {/* Description */}
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -209,7 +205,6 @@ export default function MTNHeroSection() {
                   {slide.subtitle}
                 </motion.p>
 
-                {/* Specs */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -233,7 +228,6 @@ export default function MTNHeroSection() {
                   ))}
                 </motion.div>
 
-                {/* Divider */}
                 <motion.div
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
@@ -241,7 +235,6 @@ export default function MTNHeroSection() {
                   className="origin-left h-px bg-white/10 w-full"
                 />
 
-                {/* Tags */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -261,7 +254,6 @@ export default function MTNHeroSection() {
                   ))}
                 </motion.div>
 
-                {/* CTAs */}
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -311,12 +303,10 @@ export default function MTNHeroSection() {
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Slide counter */}
                 <div className="absolute top-5 right-6 z-20 font-mono text-white/50 text-xs">
                   {String(active + 1).padStart(2, "0")}&nbsp;/&nbsp;{String(slides.length).padStart(2, "0")}
                 </div>
 
-                {/* Accent bottom bar */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 z-20" style={{ backgroundColor: accent }} />
               </div>
             </motion.div>
@@ -337,7 +327,6 @@ export default function MTNHeroSection() {
             </button>
           ))}
 
-          {/* Auto-play progress bar */}
           {isAutoPlaying && (
             <div className="absolute bottom-0 left-0 h-0.5 transition-none z-30" style={{ width: `${progress}%`, backgroundColor: accent }} />
           )}

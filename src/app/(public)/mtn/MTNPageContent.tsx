@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Factory,
@@ -42,6 +43,36 @@ const resourceIcons: Record<string, React.ElementType> = {
   calculator: Calculator,
 };
 
+// ─── Hero floating cards ──────────────────────────────────────────────────────
+const HERO_PHOTOS = [
+  "/EMINSA/DSC07227.jpg",  // Transformador Tipo Poste
+  "/EMINSA/DSC07213.jpg",  // Transformador Pad Mounted
+  "/EMINSA/DSC07255.jpg",  // Transformador Subestación
+  "/EMINSA/DSC07624.jpg",  // Transformador de potencia
+  "/EMINSA/DSC07713.jpg",  // Bobinado de transformador
+  "/EMINSA/DSC07174.jpg",  // Laboratorio de pruebas eléctricas
+  "/EMINSA/DSC07780.jpg",  // Ensamble en tanque
+  "/EMINSA/DSC07165.jpg",  // Pruebas de alta tensión
+  "/EMINSA/DSC07158.jpg",  // Transformadores en planta
+  "/EMINSA/DSC07751.jpg",  // Taller de transformadores
+];
+const HERO_N = HERO_PHOTOS.length;
+const HERO_SLOT_COUNT = 6;
+
+const HERO_LEFT_CARDS = [
+  { top: 0,   left: 25,  w: 200, h: 225, rotate: -6, photoOffset: 0 },
+  { top: 185, left: -8,  w: 178, h: 205, rotate:  4, photoOffset: 3 },
+  { top: 350, left: 22,  w: 215, h: 172, photoOffset: 6, rotate: -3 },
+];
+const HERO_RIGHT_CARDS = [
+  { top: 15,  right: 20, w: 195, h: 220, rotate:  5, photoOffset: 1 },
+  { top: 193, right: -6, w: 182, h: 208, rotate: -5, photoOffset: 4 },
+  { top: 360, right: 18, w: 210, h: 170, rotate:  3, photoOffset: 7 },
+];
+const HERO_FLOAT_DURATIONS  = [3.8, 4.5, 3.2, 4.1, 3.6, 4.8];
+const HERO_FLOAT_AMPLITUDES = [6,   5,   7,   5,   6,   4  ];
+const HERO_FLOAT_DELAYS     = [0,   0.9, 1.7, 0.4, 1.3, 2.1];
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
@@ -55,172 +86,140 @@ const fadeIn = {
 export default function MTNPageContent() {
   const t = useTranslations("mtnPage");
   const tc = useTranslations("mtnConfig");
+
+  // Hero photo cycling — one slot updates every 2.5s rotating through all 6 slots
+  const [heroSlots, setHeroSlots] = useState<number[]>(() =>
+    [...HERO_LEFT_CARDS, ...HERO_RIGHT_CARDS].map((c) => c.photoOffset % HERO_N)
+  );
+  useEffect(() => {
+    let cursor = 0;
+    const id = setInterval(() => {
+      const slot = cursor % HERO_SLOT_COUNT;
+      setHeroSlots((prev) => {
+        const next = [...prev];
+        next[slot] = (next[slot] + HERO_SLOT_COUNT) % HERO_N;
+        return next;
+      });
+      cursor++;
+    }, 2500);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <div className="min-h-screen">
-      {/* ============================================================ */}
-      {/* Hero Section */}
-      {/* ============================================================ */}
-      <section className="relative bg-gradient-to-b from-[#00175d] via-[#00269b] to-[#001a6e] text-white py-12 lg:py-16 overflow-hidden min-h-120 sm:min-h-135 lg:min-h-160">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
-            backgroundSize: "60px 60px",
-          }}
-        />
 
-        <div className="container-eminsa relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-8"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20"
-              >
-                <Factory size={18} className="text-[#0099ce]" />
-                <span className="text-sm font-medium">{t("hero.badge")}</span>
+      {/* ============================================================ */}
+      {/* Hero Section — Floating Cards */}
+      {/* ============================================================ */}
+      <section className="relative bg-gradient-to-b from-[#00175d] via-[#00269b] to-[#001a6e] overflow-hidden py-16 lg:py-0 min-h-120 sm:min-h-135 lg:h-160 lg:flex lg:items-center">
+        {/* Giant faint "MTN" watermark */}
+        <div className="absolute inset-0 flex items-center justify-end pointer-events-none select-none overflow-hidden">
+          <span
+            className="text-white leading-none font-black tracking-tighter pr-4 opacity-[0.04]"
+            style={{ fontSize: "clamp(8rem, 18vw, 22rem)" }}
+          >
+            MTN
+          </span>
+        </div>
+
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none" style={{ backgroundImage: "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+
+        <div className="container-eminsa relative w-full">
+          <div className="flex items-center justify-between gap-2 lg:gap-6">
+
+            {/* ── LEFT CARDS ── */}
+            <div className="hidden lg:block relative shrink-0" style={{ width: 270, height: 510 }}>
+              {HERO_LEFT_CARDS.map((card, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute"
+                  style={{ top: card.top, left: card.left }}
+                  initial={{ opacity: 0, x: -55, rotate: card.rotate }}
+                  animate={{ opacity: 1, x: 0, rotate: card.rotate }}
+                  transition={{ duration: 0.75, delay: 0.08 + i * 0.13, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <motion.div
+                    animate={{ y: [0, -HERO_FLOAT_AMPLITUDES[i], 0] }}
+                    transition={{ duration: HERO_FLOAT_DURATIONS[i], repeat: Infinity, ease: "easeInOut", delay: HERO_FLOAT_DELAYS[i] }}
+                  >
+                    <div className="rounded-3xl bg-white p-1 shadow-2xl" style={{ width: card.w + 8, height: card.h + 8 }}>
+                      <div className="relative rounded-[1.2rem] overflow-hidden" style={{ width: card.w, height: card.h }}>
+                        <AnimatePresence mode="wait">
+                          <motion.div key={heroSlots[i]} className="absolute inset-0" initial={{ opacity: 0, scale: 1.1 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.94 }} transition={{ duration: 0.6, ease: "easeOut" }}>
+                            <Image src={HERO_PHOTOS[heroSlots[i]]} alt="MTN" fill sizes="220px" className="object-cover" />
+                          </motion.div>
+                        </AnimatePresence>
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* ── CENTER ── */}
+            <div className="flex-1 flex flex-col items-center text-center gap-7 px-4 lg:px-6">
+              {/* Icon badge */}
+              <motion.div initial={{ opacity: 0, y: -20, scale: 0.75 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.55, ease: [0.34, 1.56, 0.64, 1] }} className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 flex items-center justify-center">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                  <rect x="4" y="5"  width="22" height="3" rx="1.5" fill="white" />
+                  <rect x="4" y="10" width="22" height="3" rx="1.5" fill="white" opacity="0.65" />
+                  <rect x="4" y="15" width="22" height="3" rx="1.5" fill="white" opacity="0.35" />
+                  <path d="M11 18 L11 26" stroke="#0099ce" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M19 18 L19 26" stroke="#0099ce" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M8 26 L22 26"  stroke="#0099ce" strokeWidth="2" strokeLinecap="round" />
+                </svg>
               </motion.div>
 
-              <div className="space-y-4">
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
-                >
-                  <span className="text-white">{t("hero.title")}</span>
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-white/90 leading-relaxed text-justify"
-                >
-                  {tc("info.heroDescription")}
-                </motion.p>
-              </div>
+              <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.1 }} className="text-4xl md:text-5xl lg:text-[3.2rem] font-black text-white leading-[1.06] tracking-tight">
+                {t("hero.title")}
+              </motion.h1>
 
-              {/* <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-lg text-white/70 leading-relaxed max-w-xl"
-              >
-                {tc("info.description")}
-              </motion.p> */}
+              <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="text-white/70 text-base lg:text-[1.05rem] leading-relaxed max-w-xs">
+                {tc("info.heroDescription")}
+              </motion.p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="flex flex-wrap gap-4"
-              >
-                <Link
-                  href="/mtn/cotizaciones"
-                  className="inline-flex items-center gap-2 bg-white text-[#00269b] hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
-                >
+              <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex flex-wrap gap-3 justify-center">
+                <Link href="/mtn/cotizaciones" className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-[#00269b] text-sm font-bold rounded-full transition-all duration-300 shadow-lg hover:bg-gray-100 hover:-translate-y-0.5">
                   {t("hero.requestQuote")}
-                  <ArrowRight size={20} />
+                  <ArrowRight size={15} />
                 </Link>
-                <Link
-                  href="/mtn/productos"
-                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 border border-white/20"
-                >
+                <Link href="/mtn/productos" className="inline-flex items-center gap-2 px-8 py-3.5 bg-white/10 text-white text-sm font-semibold rounded-full transition-all duration-300 border border-white/20 hover:bg-white/20 hover:-translate-y-0.5">
                   {t("hero.viewProducts")}
-                  <ChevronRight size={20} />
+                  <ChevronRight size={15} />
                 </Link>
               </motion.div>
-            </motion.div>
+            </div>
 
-            {/* Hero Visual — mobile single image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="relative block lg:hidden rounded-2xl overflow-hidden shadow-xl h-56 sm:h-72"
-            >
-              <Image src="/EMINSA/DSC07816.jpg" alt="Manufactura MTN" fill sizes="100vw" className="object-cover brightness-75" priority />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
-              <span className="absolute bottom-4 left-4 text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">Planta MTN · Manufactura Nacional</span>
-            </motion.div>
+            {/* ── RIGHT CARDS ── */}
+            <div className="hidden lg:block relative shrink-0" style={{ width: 270, height: 510 }}>
+              {HERO_RIGHT_CARDS.map((card, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute"
+                  style={{ top: card.top, right: card.right }}
+                  initial={{ opacity: 0, x: 55, rotate: card.rotate }}
+                  animate={{ opacity: 1, x: 0, rotate: card.rotate }}
+                  transition={{ duration: 0.75, delay: 0.08 + i * 0.13, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <motion.div
+                    animate={{ y: [0, -HERO_FLOAT_AMPLITUDES[3 + i], 0] }}
+                    transition={{ duration: HERO_FLOAT_DURATIONS[3 + i], repeat: Infinity, ease: "easeInOut", delay: HERO_FLOAT_DELAYS[3 + i] }}
+                  >
+                    <div className="rounded-3xl bg-white p-1 shadow-2xl" style={{ width: card.w + 8, height: card.h + 8 }}>
+                      <div className="relative rounded-[1.2rem] overflow-hidden" style={{ width: card.w, height: card.h }}>
+                        <AnimatePresence mode="wait">
+                          <motion.div key={heroSlots[3 + i]} className="absolute inset-0" initial={{ opacity: 0, scale: 1.1 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.94 }} transition={{ duration: 0.6, ease: "easeOut" }}>
+                            <Image src={HERO_PHOTOS[heroSlots[3 + i]]} alt="MTN" fill sizes="220px" className="object-cover" />
+                          </motion.div>
+                        </AnimatePresence>
+                      </div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
 
-            {/* Hero Visual — bento mosaic */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative hidden lg:grid grid-cols-3 grid-rows-2 gap-2 h-120"
-            >
-              {/* Large top-left (spans 2 cols × 1 row) — main product shot */}
-              <motion.div
-                initial={{ opacity: 0, scale: 1.04 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative col-span-2 rounded-2xl overflow-hidden shadow-2xl"
-              >
-                <Image src="/EMINSA/DSC07816.jpg" alt="Manufactura MTN" fill sizes="(max-width: 768px) 100vw, 66vw" className="object-cover brightness-75" priority />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-                  <span className="text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">Planta MTN</span>
-                  <span className="text-[10px] text-white/50 font-medium uppercase tracking-wider">Manufactura Nacional</span>
-                </div>
-              </motion.div>
-
-              {/* Top-right — transformer tipo poste */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.45 }}
-                className="relative rounded-2xl overflow-hidden shadow-xl"
-              >
-                <Image src="/EMINSA/DSC07227.jpg" alt="Tipo Poste" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Tipo Poste</span>
-              </motion.div>
-
-              {/* Bottom-left — bobinado */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.55 }}
-                className="relative rounded-2xl overflow-hidden shadow-xl"
-              >
-                <Image src="/EMINSA/DSC07713.jpg" alt="Bobinado" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Bobinado</span>
-              </motion.div>
-
-              {/* Bottom-center — pruebas */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.62 }}
-                className="relative rounded-2xl overflow-hidden shadow-xl"
-              >
-                <Image src="/EMINSA/DSC07174.jpg" alt="Laboratorio de Pruebas" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Lab. Pruebas</span>
-              </motion.div>
-
-              {/* Bottom-right — corte / ensamble */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.69 }}
-                className="relative rounded-2xl overflow-hidden shadow-xl"
-              >
-                <Image src="/EMINSA/DSC07733.jpg" alt="Corte Láser" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-75" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-                <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Corte Láser</span>
-              </motion.div>
-            </motion.div>
           </div>
         </div>
       </section>
