@@ -361,7 +361,7 @@ export default function CertificacionesPage() {
       </section>
 
       {/* ─── CTA ───────────────────────────────────────────────────── */}
-      <section className="py-16 bg-linear-to-br from-[#0099ce] to-[#00269b] text-white relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-br from-[#00269b] to-[#00175d] text-white ">
         <motion.div
           animate={{ x: [0, 20, -10, 0], y: [0, -15, 10, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}

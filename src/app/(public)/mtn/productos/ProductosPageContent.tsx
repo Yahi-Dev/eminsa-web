@@ -253,7 +253,7 @@ export default function ProductosPageContent() {
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="py-16 bg-[#00269b] text-white"
+        className="py-16 bg-gradient-to-br from-[#00269b] to-[#00175d] text-white"
       >
         <div className="container-eminsa text-center">
           <h2 className="text-3xl font-bold mb-4">{t("productsPage.notFound")}</h2>
