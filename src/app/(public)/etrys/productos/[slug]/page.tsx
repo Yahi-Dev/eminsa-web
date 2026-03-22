@@ -404,7 +404,7 @@ export default function EtrysProductoDetailPage({
       </section>
 
       {/* CTA */}
-      <section className="py-12 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
+      <section className="py-12 bg-linear-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
         <div className="container-eminsa text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             {t("ctaTitle")}

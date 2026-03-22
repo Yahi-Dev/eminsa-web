@@ -421,39 +421,6 @@ export default function EtrysServiciosPage() {
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white">
-        <div className="container-eminsa text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              {t("ctaTitle")}
-            </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              {t("ctaDescription")}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/etrys/cotizaciones?servicio=reparacion"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors shadow-lg"
-              >
-                {t("requestQuote")}
-                <ArrowRight size={20} />
-              </Link>
-              <Link
-                href="/etrys/servicios/centro-reparacion"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white font-semibold rounded-xl transition-colors"
-              >
-                {t("viewRepairCenter")}
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }
