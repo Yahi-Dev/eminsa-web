@@ -97,7 +97,7 @@ export default function ServiciosPage() {
       {/* ================================================================ */}
       {/* 1. HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-[#414241] text-white py-12 lg:py-16 overflow-hidden">
+      <section className="relative bg-[#414241] text-white py-12 lg:py-16 overflow-hidden min-h-120 sm:min-h-135 lg:min-h-160">
         {/* Hero photo */}
         <Image
           src="/EMINSA/DSC07203.jpg"
@@ -124,10 +124,10 @@ export default function ServiciosPage() {
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
                   <span className="text-white">{t("hero.title")}</span>
                 </h1>
-                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed text-justify">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-white/90 leading-relaxed text-justify">
                   {t("hero.subtitle")}
                 </p>
               </div>
@@ -166,9 +166,9 @@ export default function ServiciosPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center hover:bg-white/15 transition-colors"
+                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20 text-center hover:bg-white/15 transition-colors"
                   >
-                    <div className="text-3xl md:text-4xl xl:text-5xl font-bold mb-1">
+                    <div className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold mb-1">
                       {stat.value}
                       {stat.suffix && (
                         <span className="text-white/70">{stat.suffix}</span>

@@ -71,7 +71,7 @@ export default function EtrysPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#0099ce] via-[#007ba8] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden min-h-120 sm:min-h-135 lg:min-h-160">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -94,10 +94,10 @@ export default function EtrysPage() {
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
                   <span className="text-white">{tc("info.tagline")}</span>
                 </h1>
-                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed text-justify">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-white/90 leading-relaxed text-justify">
                   {t("hero.heroSubtitle")}
                 </p>
               </div>
@@ -127,12 +127,24 @@ export default function EtrysPage() {
               </div>
             </motion.div>
 
+            {/* Visual — mobile single image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="relative block lg:hidden rounded-2xl overflow-hidden shadow-xl h-56 sm:h-72"
+            >
+              <Image src="/EMINSA/DSC07751.jpg" alt="Taller RST" fill sizes="100vw" className="object-cover brightness-75" priority />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+              <span className="absolute bottom-4 left-4 text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">Taller RST · Restauración de Transformadores</span>
+            </motion.div>
+
             {/* Visual — photo mosaic */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative hidden lg:grid grid-cols-3 grid-rows-2 gap-2 h-108"
+              className="relative hidden lg:grid grid-cols-3 grid-rows-2 gap-2 h-120"
             >
               {/* Large top-left (col-span-2) — main repair shot */}
               <motion.div

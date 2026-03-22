@@ -60,7 +60,7 @@ export default function MTNPageContent() {
       {/* ============================================================ */}
       {/* Hero Section */}
       {/* ============================================================ */}
-      <section className="relative bg-gradient-to-b from-[#00175d] via-[#00269b] to-[#001a6e] text-white py-12 lg:py-16 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-[#00175d] via-[#00269b] to-[#001a6e] text-white py-12 lg:py-16 overflow-hidden min-h-120 sm:min-h-135 lg:min-h-160">
         <div
           className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -93,7 +93,7 @@ export default function MTNPageContent() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
                 >
                   <span className="text-white">{t("hero.title")}</span>
                 </motion.h1>
@@ -101,7 +101,7 @@ export default function MTNPageContent() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed text-justify"
+                  className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-white/90 leading-relaxed text-justify"
                 >
                   {tc("info.heroDescription")}
                 </motion.p>
@@ -137,6 +137,18 @@ export default function MTNPageContent() {
                   <ChevronRight size={20} />
                 </Link>
               </motion.div>
+            </motion.div>
+
+            {/* Hero Visual — mobile single image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="relative block lg:hidden rounded-2xl overflow-hidden shadow-xl h-56 sm:h-72"
+            >
+              <Image src="/EMINSA/DSC07816.jpg" alt="Manufactura MTN" fill sizes="100vw" className="object-cover brightness-75" priority />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
+              <span className="absolute bottom-4 left-4 text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">Planta MTN · Manufactura Nacional</span>
             </motion.div>
 
             {/* Hero Visual — bento mosaic */}

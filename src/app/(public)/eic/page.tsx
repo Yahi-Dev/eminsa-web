@@ -132,7 +132,7 @@ export default function EICPage() {
       {/* ================================================================ */}
       {/* HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-linear-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden">
+      <section className="relative bg-linear-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden min-h-120 sm:min-h-135 lg:min-h-160">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -158,10 +158,10 @@ export default function EICPage() {
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
                   <span className="text-white">Eminsa International Corporation</span>
                 </h1>
-                <p className="text-2xl lg:text-3xl xl:text-4xl font-light text-white/90 leading-relaxed text-justify">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-white/90 leading-relaxed text-justify">
                   {tc("info.description")}
                 </p>
               </div>
@@ -185,6 +185,20 @@ export default function EICPage() {
               </div>
             </motion.div>
 
+            {/* Visual — mobile brand grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="grid grid-cols-4 gap-3 lg:hidden"
+            >
+              {CARD_IMGS.map((src, i) => (
+                <div key={i} className="bg-white/15 backdrop-blur-sm rounded-xl border border-white/25 p-2 flex items-center justify-center aspect-square">
+                  <Image src={src} alt="brand" width={56} height={56} className="object-contain max-w-full max-h-full" />
+                </div>
+              ))}
+            </motion.div>
+
             {/* Visual - Ripple + Floating Image Cards */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -192,7 +206,7 @@ export default function EICPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative hidden lg:block"
             >
-              <div className="relative" style={{ height: 420 }}>
+              <div className="relative h-120">
 
                 {/* ── Ripple bubbles — grow from center card ── */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
