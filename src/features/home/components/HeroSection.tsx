@@ -47,9 +47,9 @@ const INTENTIONS: { label: string; value: IntentKey; sub: string }[] = [
 
 const PRODUCTS: Record<IntentKey, { label: string; sub: string; href: string }[]> = {
   comprar: [
-    { label: "Transformador Tipo Poste",       sub: "MTN", href: "/mtn/productos" },
-    { label: "Transformador Tipo Pad Mounted", sub: "MTN", href: "/mtn/productos" },
-    { label: "Transformador Tipo Subestación", sub: "MTN", href: "/mtn/productos" },
+    { label: "Transformador Tipo Poste",       sub: "MTN", href: "/mtn/productos/tipo-poste" },
+    { label: "Transformador Tipo Pad Mounted", sub: "MTN", href: "/mtn/productos/pad-mounted" },
+    { label: "Transformador Tipo Subestación", sub: "MTN", href: "/mtn/productos/subestacion" },
     { label: "Equipos Eléctricos",             sub: "EIC", href: "/eic/productos" },
   ],
   reparar: [
