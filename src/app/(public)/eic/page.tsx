@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import {
   Globe,
   ArrowRight,
@@ -59,16 +60,79 @@ const countryFlags: { [key: string]: string } = {
   "Francia / Polonia / Turquía": "/images/eic/flags/francia.png",
 };
 
+// ─── Shared image pool — same images travel center → top → bottom ─────────────
+const CARD_IMGS = [
+  "/images/eic/brands/inatra.png",
+  "/images/eic/brands/hammond.png",
+  "/images/eic/brands/elpitalia.png",
+  "/images/eic/brands/green-transfo.png",
+  "/images/eic/brands/schneider.png",
+  "/images/eic/brands/topcable.png",
+  "/images/eic/brands/chardon.png",
+  "/images/eic/brands/cabelte.png",
+];
+const N = CARD_IMGS.length;
+
+// ─── Ripple bubble ─────────────────────────────────────────────────────────────
+function Ripple({ delay }: { delay: number }) {
+  return (
+    <motion.div
+      className="absolute rounded-full border-[3px] border-white/70 pointer-events-none"
+      style={{ width: 190, height: 190 }}
+      animate={{ scale: [1, 1.04, 3.6], opacity: [0, 0.75, 0] }}
+      transition={{
+        duration: 7,
+        delay,
+        repeat: Infinity,
+        ease: "easeOut",
+        times: [0, 0.04, 1],
+      }}
+    />
+  );
+}
+
 export default function EICPage() {
   const t = useTranslations("eicPage");
   const tc = useTranslations("eicConfig");
+
+  // Guaranteed unique images: each card has a fixed offset so they never collide.
+  // center = CARD_IMGS[tick % N]
+  // top    = CARD_IMGS[(tick + OFFSET_TOP) % N]   → offset N/3 ≈ 2
+  // bot    = CARD_IMGS[(tick + OFFSET_BOT) % N]   → offset 2*N/3 ≈ 5
+  // Staggered timing creates the visual "jump" cascade.
+  const OFFSET_TOP = Math.floor(N / 3);      // 2
+  const OFFSET_BOT = Math.floor((2 * N) / 3); // 5
+
+  const [cTick, setCTick] = useState(0); // center display tick
+  const [tTick, setTTick] = useState(0); // top display tick
+  const [bTick, setBTick] = useState(0); // bot display tick
+
+  useEffect(() => {
+    let current = 0;
+    const interval = setInterval(() => {
+      current += 1;
+      const next = current;
+      // Center jumps immediately
+      setCTick(next);
+      // Top jumps 1.8s later
+      const t1 = setTimeout(() => setTTick(next), 1800);
+      // Bot jumps 3.6s later
+      const t2 = setTimeout(() => setBTick(next), 3600);
+      return () => { clearTimeout(t1); clearTimeout(t2); };
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const centerImg = CARD_IMGS[cTick % N];
+  const topImg    = CARD_IMGS[(tTick + OFFSET_TOP) % N];
+  const botImg    = CARD_IMGS[(bTick + OFFSET_BOT) % N];
 
   return (
     <div className="min-h-screen">
       {/* ================================================================ */}
       {/* HERO SECTION */}
       {/* ================================================================ */}
-      <section className="relative bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden">
+      <section className="relative bg-linear-to-br from-[#009e49] via-[#007d3a] to-[#00269b] text-white py-12 lg:py-16 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div
@@ -121,41 +185,98 @@ export default function EICPage() {
               </div>
             </motion.div>
 
-            {/* Visual - Ripple Animation + Floating Cards */}
+            {/* Visual - Ripple + Floating Image Cards */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative hidden lg:block"
             >
-              <div className="relative aspect-square">
-                {/* Water ripple circles */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute w-125 h-125 border-2 border-white/50 rounded-full animate-ripple" />
-                  <div className="absolute w-125 h-125 border-2 border-white/40 rounded-full animate-ripple" style={{ animationDelay: "0.6s" }} />
-                  <div className="absolute w-125 h-125 border-2 border-white/35 rounded-full animate-ripple" style={{ animationDelay: "1.2s" }} />
-                  <div className="absolute w-125 h-125 border-2 border-white/30 rounded-full animate-ripple" style={{ animationDelay: "1.8s" }} />
-                  <div className="absolute w-125 h-125 border-2 border-white/25 rounded-full animate-ripple" style={{ animationDelay: "2.4s" }} />
+              <div className="relative" style={{ height: 420 }}>
+
+                {/* ── Ripple bubbles — grow from center card ── */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  {[0, 0.7, 1.4, 2.1, 2.8].map((d) => (
+                    <Ripple key={d} delay={d} />
+                  ))}
                 </div>
 
-                {/* Center card */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 text-center space-y-2 animate-float relative z-10">
-                    <Globe size={48} className="mx-auto text-white" />
-                    <p className="text-4xl font-bold">8+</p>
-                    <p className="text-white/70 text-sm">{t("hero.internationalBrands")}</p>
-                  </div>
+                {/* ── Center card — brand logo cycling ── */}
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="bg-white/15 backdrop-blur-md rounded-2xl border border-white/25 text-center overflow-hidden shadow-2xl"
+                    style={{ width: 190, height: 190 }}
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={centerImg}
+                        initial={{ opacity: 0, scale: 1.08, y: 18 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.92, y: -18 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-5"
+                      >
+                        <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden p-2">
+                          <Image src={centerImg} alt="brand" width={90} height={90} className="object-contain max-w-full max-h-full"  />
+                        </div>
+                        <p className="text-[10px] text-white/70 font-semibold uppercase tracking-widest">Marca</p>
+                      </motion.div>
+                    </AnimatePresence>
+                  </motion.div>
                 </div>
 
-                {/* Floating stat cards */}
-                <div className="absolute top-8 right-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-delayed z-10">
-                  <p className="text-3xl font-bold">500+</p>
-                  <p className="text-xs text-white/70">{t("hero.satisfiedClients")}</p>
+                {/* ── Top-right card ── */}
+                <div className="absolute top-4 right-4 z-20">
+                  <motion.div
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                    className="bg-white/15 backdrop-blur-md rounded-xl border border-white/25 overflow-hidden shadow-xl"
+                    style={{ width: 155, height: 155 }}
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={topImg}
+                        initial={{ opacity: 0, x: 24 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -24 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4"
+                      >
+                        <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden p-2">
+                          <Image src={topImg} alt="brand" width={90} height={90} className="object-contain max-w-full max-h-full"  />
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </motion.div>
                 </div>
-                <div className="absolute bottom-12 left-8 bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20 text-center animate-float-slow z-10">
-                  <p className="text-3xl font-bold">50+</p>
-                  <p className="text-xs text-white/70">{t("hero.yearsTrajectory")}</p>
+
+                {/* ── Bottom-left card — brand logo cycling ── */}
+                <div className="absolute bottom-6 left-6 z-20">
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.6 }}
+                    className="bg-white/15 backdrop-blur-md rounded-xl border border-white/25 overflow-hidden shadow-xl"
+                    style={{ width: 170, height: 170 }}
+                  >
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={botImg}
+                        initial={{ opacity: 0, y: 24 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -24 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4"
+                      >
+                        <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden p-2">
+                          <Image src={botImg} alt="brand" width={90} height={90} className="object-contain max-w-full max-h-full" />
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+                  </motion.div>
                 </div>
+
               </div>
             </motion.div>
           </div>
@@ -354,7 +475,7 @@ export default function EICPage() {
       {/* ================================================================ */}
       {/* VENTAJAS EIC */}
       {/* ================================================================ */}
-      <section className="py-16 lg:py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-[#00269b] text-white">
+      <section className="py-16 lg:py-24 bg-linear-to-br from-gray-900 via-gray-800 to-[#00269b] text-white">
         <div className="container-eminsa">
           {/* Header */}
           <motion.div
@@ -420,7 +541,7 @@ export default function EICPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative bg-gradient-to-br from-[#009e49] via-[#007d3a] to-[#00269b] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
+            className="relative bg-linear-to-br from-[#009e49] via-[#007d3a] to-[#00269b] rounded-3xl p-8 md:p-12 lg:p-16 text-white text-center overflow-hidden"
           >
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
