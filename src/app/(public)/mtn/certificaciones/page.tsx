@@ -26,7 +26,7 @@ const whyCards = [
 
 const statsData = [
   { value: "3", label: "Certificaciones y Normas", icon: BadgeCheck },
-  { value: "DOE 2016", label: "Cumplimiento de Eficiencia", icon: Zap },
+  { value: "ANSI/IEEE", label: "Normas Aplicadas", icon: Zap },
   { value: "50+", label: "Años de Experiencia", icon: Star },
 ];
 
@@ -34,7 +34,8 @@ export default function CertificacionesPage() {
   const t = useTranslations("pages.mtn.certificaciones");
   const [activeCert, setActiveCert] = useState(0);
 
-  const cert = certifications[activeCert];
+  const filteredCertifications = certifications.filter((c) => c.id !== "doe-2016");
+  const cert = filteredCertifications[activeCert];
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-x-hidden">
@@ -94,7 +95,7 @@ export default function CertificacionesPage() {
                 transition={{ delay: 0.5 }}
                 className="flex flex-wrap gap-3"
               >
-                {certifications.map((c, i) => (
+                {filteredCertifications.map((c, i) => (
                   <button
                     key={c.id}
                     onClick={() => setActiveCert(i)}
@@ -163,7 +164,7 @@ export default function CertificacionesPage() {
 
           {/* Tab Buttons */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {certifications.map((c, i) => (
+            {filteredCertifications.map((c, i) => (
               <motion.button
                 key={c.id}
                 onClick={() => setActiveCert(i)}
@@ -286,14 +287,14 @@ export default function CertificacionesPage() {
           {/* Navigation arrows between certs */}
           <div className="flex justify-center items-center gap-4 mt-8">
             <button
-              onClick={() => setActiveCert((prev) => (prev - 1 + certifications.length) % certifications.length)}
+              onClick={() => setActiveCert((prev) => (prev - 1 + filteredCertifications.length) % filteredCertifications.length)}
               className="w-10 h-10 rounded-full bg-white border border-gray-200 hover:border-[#00269b] hover:text-[#00269b] flex items-center justify-center transition-colors shadow-sm"
               aria-label="Previous"
             >
               <ChevronRight size={18} className="rotate-180" />
             </button>
             <div className="flex gap-2">
-              {certifications.map((_, i) => (
+              {filteredCertifications.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveCert(i)}
@@ -305,7 +306,7 @@ export default function CertificacionesPage() {
               ))}
             </div>
             <button
-              onClick={() => setActiveCert((prev) => (prev + 1) % certifications.length)}
+              onClick={() => setActiveCert((prev) => (prev + 1) % filteredCertifications.length)}
               className="w-10 h-10 rounded-full bg-white border border-gray-200 hover:border-[#00269b] hover:text-[#00269b] flex items-center justify-center transition-colors shadow-sm"
               aria-label="Next"
             >

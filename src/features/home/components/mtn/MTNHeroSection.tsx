@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import MarqueeEyebrow from "@/components/shared/MarqueeEyebrow";
 
 // ─── Photos per product ────────────────────────────────────────────────────────
 const PRODUCT_PHOTOS = [
@@ -131,12 +132,7 @@ export default function MTNHeroSection() {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <div className="flex items-center gap-3 mb-3">
-            <span className="h-px w-8 inline-block" style={{ backgroundColor: accent }} />
-            <span className="text-xs font-bold uppercase tracking-[0.3em]" style={{ color: accent }}>
-              División MTN · Manufactura Nacional
-            </span>
-          </div>
+          <MarqueeEyebrow text="División MTN · Manufactura Nacional" color={accent} />
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#00269b] leading-none">
             {t("mtn.title")}{" "}
             <span style={{ color: accent }} className="transition-colors duration-700">

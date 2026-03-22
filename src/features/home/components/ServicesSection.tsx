@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { services } from "@/config/navigation";
 import { useTranslations } from "next-intl";
+import MarqueeEyebrow from "@/components/shared/MarqueeEyebrow";
 
 const iconMap: { [key: string]: React.ElementType } = {
   "shield-check": ShieldCheck,
@@ -37,12 +38,7 @@ export default function ServicesSection() {
 
       <div className="container-eminsa relative">
         {/* Section eyebrow */}
-        <div className="flex items-center gap-3 mb-8">
-          <span className="h-px w-8 inline-block bg-[#6b7280]" />
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#6b7280]">
-            Servicios · Atención Técnica Especializada
-          </span>
-        </div>
+        <MarqueeEyebrow text="Servicios · Atención Técnica Especializada" color="#6b7280" />
 
         {/* Section Header */}
         <motion.div

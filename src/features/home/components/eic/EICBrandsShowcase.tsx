@@ -4,8 +4,9 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ArrowRight, Globe2, Building2, Award } from "lucide-react";
+import { ArrowRight, Award } from "lucide-react";
 import { useTranslations, useMessages } from "next-intl";
+import MarqueeEyebrow from "@/components/shared/MarqueeEyebrow";
 
 const brands = [
   {
@@ -131,12 +132,7 @@ export default function EICBrandsShowcase() {
 
       <div className="container-eminsa relative">
         {/* Section eyebrow */}
-        <div className="flex items-center gap-3 mb-8">
-          <span className="h-px w-8 inline-block bg-[#009e49]" />
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#009e49]">
-            División EIC · Equipos y Comercialización
-          </span>
-        </div>
+        <MarqueeEyebrow text="División EIC · Equipos y Comercialización" color="#009e49" />
 
         {/* Header row */}
         <motion.div
@@ -203,7 +199,7 @@ export default function EICBrandsShowcase() {
             className="grid lg:grid-cols-[1fr_1.25fr] rounded-2xl overflow-hidden border border-[#009e49]/20 bg-white/80 backdrop-blur-sm"
           >
             {/* Left: brand visual */}
-            <div className="relative flex flex-col items-center justify-center gap-5 p-10 bg-gradient-to-br from-[#009e49]/5 to-transparent min-h-80">
+            <div className="relative flex flex-col items-center justify-center gap-5 p-10 bg-linear-to-br from-[#009e49]/5 to-transparent min-h-80">
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div className="w-60 h-60 rounded-full bg-[#009e49]/8 blur-3xl" />
               </div>

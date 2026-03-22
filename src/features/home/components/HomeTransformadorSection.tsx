@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Wrench, Shield, Zap, ArrowRight, Package } from "lucide-react";
 import BeforeAfterSlider from "@/components/shared/BeforeAfterSlider";
 import { useTranslations } from "next-intl";
+import MarqueeEyebrow from "@/components/shared/MarqueeEyebrow";
 
 const FEATURE_ICONS = [Shield, Wrench, Zap];
 const FEATURE_COLORS = ["#009e49", "#0099ce", "#0099ce"];
@@ -37,12 +38,7 @@ export default function HomeTransformadorSection() {
     <section className="py-10 lg:py-14 bg-white">
       <div className="container-eminsa">
         {/* Eyebrow */}
-        <div className="flex items-center gap-3 mb-6">
-          <span className="h-px w-8 inline-block bg-[#0099ce]" />
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#0099ce]">
-            División RST · Restauración y Servicio
-          </span>
-        </div>
+        <MarqueeEyebrow text="División RST · Restauración y Servicio" color="#0099ce" />
 
         {/* Title — outside the card */}
         <motion.h2
@@ -67,7 +63,7 @@ export default function HomeTransformadorSection() {
           {/* ── Left panel: features + CTAs ── */}
           <div className="relative flex flex-col p-8 lg:p-10">
             {/* Left accent bar */}
-            <span className="absolute left-0 top-10 bottom-10 w-[3px] rounded-full bg-gradient-to-b from-[#0099ce] via-[#009e49] to-[#0099ce]/20" />
+            <span className="absolute left-0 top-10 bottom-10 w-0.75 rounded-full bg-linear-to-b from-[#0099ce] via-[#009e49] to-[#0099ce]/20" />
 
             {/* Features */}
             <div className="flex flex-col gap-0 flex-1">

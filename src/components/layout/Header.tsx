@@ -153,7 +153,15 @@ export default function Header() {
             whileHover={{ scale: 1.04 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
           >
-            <Link href="/">
+            <Link
+              href="/"
+              onClick={(e) => {
+                if (window.location.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+            >
               <Image
                 src="/logoeminsa-Photoroom.png"
                 alt="Grupo EMINSA"
