@@ -168,7 +168,7 @@ export default function RecursosServiciosPage() {
       </section>
 
       {/* Fichas Técnicas Dinámicas */}
-      <section className="py-16 lg:py-24 bg-gray-50">
+      {/* <section className="py-16 lg:py-24 bg-gray-50">
         <div className="container-eminsa">
           <RecursosDinamicos
             division="SRV"
@@ -176,7 +176,7 @@ export default function RecursosServiciosPage() {
             title={t("technicalSheets")}
           />
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       <section className="py-16 bg-white">

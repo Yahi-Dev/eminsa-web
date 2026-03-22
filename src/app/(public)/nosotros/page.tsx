@@ -581,7 +581,7 @@ export default function NosotrosPage() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-[#00269b] to-[#0099ce] rounded-3xl p-8 lg:p-12 text-white text-center"
+            className="bg-gradient-to-br from-[#00269b] to-[#00175d] rounded-3xl p-8 lg:p-12 text-white text-center"
           >
             <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
               {t("cta.title")}

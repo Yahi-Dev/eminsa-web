@@ -48,7 +48,7 @@ export default function ProyectosPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative py-20 bg-gradient-to-br from-[#0099ce] to-[#007ba8]">
+      <section className="relative py-20 bg-gradient-to-br from-[#00269b] to-[#00175d]">
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
