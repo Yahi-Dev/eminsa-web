@@ -28,7 +28,7 @@ interface RecursoAPI {
 }
 
 export default function ServiciosFichasTecnicasPage() {
-  const t = useTranslations("pages");
+  const t = useTranslations("pages.servicios.fichasTecnicas");
   const [recursos, setRecursos] = useState<RecursoAPI[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -59,14 +59,14 @@ export default function ServiciosFichasTecnicasPage() {
             </Link>
             <ChevronRight size={14} />
             <Link href="/servicios" className="hover:text-white transition-colors">
-              Servicios
+              {t("breadcrumbServicios")}
             </Link>
             <ChevronRight size={14} />
             <Link href="/servicios/recursos" className="hover:text-white transition-colors">
-              Recursos
+              {t("breadcrumbRecursos")}
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Fichas Técnicas</span>
+            <span className="text-white">{t("title")}</span>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -74,8 +74,8 @@ export default function ServiciosFichasTecnicasPage() {
               <FileText size={28} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold">Fichas Técnicas</h1>
-              <p className="text-white/70">{t("servicios.fichasTecnicas.subtitle")}</p>
+              <h1 className="text-3xl font-bold">{t("title")}</h1>
+              <p className="text-white/70">{t("subtitle")}</p>
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function ServiciosFichasTecnicasPage() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Buscar fichas técnicas..."
+              placeholder={t("searchPlaceholder")}
               className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#6d6e6d] focus:border-transparent"
             />
           </div>
@@ -107,7 +107,7 @@ export default function ServiciosFichasTecnicasPage() {
           ) : filtered.length === 0 ? (
             <div className="text-center py-16">
               <FileText size={48} className="mx-auto text-gray-300 mb-4" />
-              <p className="text-gray-500 text-lg">{t("servicios.fichasTecnicas.empty")}</p>
+              <p className="text-gray-500 text-lg">{t("empty")}</p>
             </div>
           ) : (
             <div className="grid gap-4">
@@ -148,10 +148,10 @@ export default function ServiciosFichasTecnicasPage() {
                         className="flex items-center gap-2 bg-[#6d6e6d] hover:bg-[#575857] text-white px-5 py-2.5 rounded-lg transition-colors"
                       >
                         {recurso.tipo === "link" ? <ExternalLink size={18} /> : <Download size={18} />}
-                        <span className="hidden sm:inline">Descargar</span>
+                        <span className="hidden sm:inline">{t("download")}</span>
                       </a>
                     ) : (
-                      <span className="text-sm text-gray-400 italic">{t("servicios.fichasTecnicas.notAvailable")}</span>
+                      <span className="text-sm text-gray-400 italic">{t("notAvailable")}</span>
                     )}
                   </div>
                 </motion.div>
@@ -164,15 +164,15 @@ export default function ServiciosFichasTecnicasPage() {
       {/* CTA */}
       <section className="py-12 bg-white">
         <div className="container-eminsa text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Necesita más información?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t("ctaTitle")}</h2>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            Contáctenos para obtener más detalles o solicitar una cotización personalizada.
+            {t("ctaDescription")}
           </p>
           <Link
             href="/servicios/cotizacion"
             className="inline-flex items-center gap-2 bg-[#6d6e6d] hover:bg-[#575857] text-white px-8 py-3 rounded-xl font-semibold transition-colors"
           >
-            Solicitar Cotización
+            {t("ctaButton")}
             <ArrowRight size={18} />
           </Link>
         </div>

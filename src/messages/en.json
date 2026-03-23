@@ -613,11 +613,13 @@
     },
     "servicios": {
       "hero": {
-        "badge": "Specialized Services",
+        "badge": "Services Division · EMINSA",
         "title": "Specialized Technical Services",
         "subtitle": "SERVICES is the business unit of Grupo EMINSA focused on providing specialized on-site technical support, offering maintenance, repair, and comprehensive support to ensure the efficiency, safety, and operational continuity of our clients' electrical transformers.",
         "description": "With over 50 years of experience, our team of specialized technicians operates in the field and in the workshop to provide preventive, corrective, and emergency maintenance, ensuring the operational continuity of your electrical systems.",
-        "requestQuote": "Request a Quote"
+        "requestQuote": "Request a Quote",
+        "altPhoto": "Eminsa technical services",
+        "altPhotoStrip": "Eminsa technical service {number}"
       },
       "grid": {
         "badge": "Our Services",
@@ -766,24 +768,74 @@
         "transformers": {
           "tipoPoste": "Pole-Type Transformers",
           "tipoPosteDesc": "Single-phase, 60 Hz, ideal for residential services and light commercial/industrial loads",
+          "tipoPosteChars": {
+            "0": "ANSI C 57-12-00 Standard",
+            "1": "Protection schemes: SP, CP, CSP",
+            "2": "Quick installation",
+            "3": "Low maintenance"
+          },
+          "tipoPosteApps": {
+            "0": "Residential",
+            "1": "Light commercial",
+            "2": "Light industrial"
+          },
           "padMounted": "Pad Mounted Transformers",
           "padMountedDesc": "Three-phase and single-phase for underground distribution systems",
+          "padMountedChars": {
+            "0": "Voltages: 5 kV to 34.5 kV",
+            "1": "RADIAL or NETWORK type",
+            "2": "ANSI C57-12-26/25/28 Standards",
+            "3": "Under-load operation"
+          },
+          "padMountedApps": {
+            "0": "Underground distribution",
+            "1": "Shopping centers",
+            "2": "Residential developments"
+          },
           "tipoSeco": "Dry-Type Transformers",
-          "tipoSecoDesc": "No dielectric oil, ideal for indoor installations with minimized fire risk"
+          "tipoSecoDesc": "No dielectric oil, ideal for indoor installations with minimized fire risk",
+          "tipoSecoChars": {
+            "0": "No dielectric oil",
+            "1": "Class 180°C materials",
+            "2": "ANSI C57-12 Standard",
+            "3": "Ideal for indoors"
+          },
+          "tipoSecoApps": {
+            "0": "Shopping centers",
+            "1": "Buildings",
+            "2": "Industries",
+            "3": "Hospitals"
+          }
         },
         "cases": {
           "construction": "Construction Projects",
           "constructionDesc": "Temporary power supply during construction of buildings, shopping centers, and real estate developments",
-          "constructionExamples": "Residential towers, Shopping centers, Hotel complexes",
+          "constructionExamples": {
+            "0": "Residential towers",
+            "1": "Shopping centers",
+            "2": "Hotel complexes"
+          },
           "industrial": "Industrial Expansion",
           "industrialDesc": "Temporary solutions while permanent electrical infrastructure is completed",
-          "industrialExamples": "Industrial plants, Free trade zones, Capacity expansions",
+          "industrialExamples": {
+            "0": "Industrial plants",
+            "1": "Free trade zones",
+            "2": "Capacity expansions"
+          },
           "maintenance": "Maintenance and Emergencies",
           "maintenanceDesc": "Temporary replacement during repairs or failures of existing equipment",
-          "maintenanceExamples": "Unexpected failures, Scheduled maintenance, Contingencies",
+          "maintenanceExamples": {
+            "0": "Unexpected failures",
+            "1": "Scheduled maintenance",
+            "2": "Contingencies"
+          },
           "events": "Events and Temporary Projects",
           "eventsDesc": "Power supply for special events, festivals, or temporary installations",
-          "eventsExamples": "Corporate events, Trade fairs, Special projects"
+          "eventsExamples": {
+            "0": "Corporate events",
+            "1": "Trade fairs",
+            "2": "Special projects"
+          }
         }
       },
       "proyectosPage": {
@@ -967,12 +1019,88 @@
         "quickResponse": "Quick response",
         "quickResponseTime": "Less than 2 business hours",
         "moreThan30Years": "More than 30 years",
-        "emergencyService": "Emergency service"
+        "emergencyService": "Emergency service",
+        "heroTitle": "Technical Services Quote",
+        "heroDescription": "Maintenance, repair, and specialized services for transformers and electrical equipment. Receive a quick proposal from our technicians.",
+        "breadcrumbHome": "Home",
+        "breadcrumbServicios": "Services",
+        "breadcrumbCotizacion": "Quote",
+        "successTitle": "Request submitted successfully!",
+        "successDescription": "Our team will review your request and contact you shortly to coordinate service details.",
+        "viewServices": "View our services",
+        "newQuote": "New quote",
+        "needImmediate": "Need immediate attention?",
+        "contactInfoTitle": "Contact Information",
+        "fullName": "Full name",
+        "namePlaceholder": "E.g. John Smith",
+        "company": "Company / Organization",
+        "companyPlaceholder": "Your company name (optional)",
+        "email": "Email address",
+        "phone": "Phone",
+        "serviceDetailsTitle": "Service Details",
+        "serviceType": "Service type",
+        "transformerSpecs": "Transformer Specifications",
+        "power": "Power",
+        "powerPlaceholder": "E.g. 500 kVA",
+        "configuration": "Configuration",
+        "selectOption": "Select",
+        "singlePhase": "Single Phase",
+        "threePhase": "Three Phase",
+        "selfProtected": "Self-Protected",
+        "descriptionTitle": "Description and Details",
+        "locationPlaceholder": "City, province, or project address",
+        "requirementsLabel": "Requirements description",
+        "requirementsPlaceholder": "Describe the problem, work to be performed, or specific service requirements...",
+        "fileTypes": "PDF, DOC, JPG, PNG, XLSX (max. 5 files)",
+        "sending": "Sending request...",
+        "submitButton": "Submit service request",
+        "sidebarQuickResponseDesc": "Our technical team reviews each request personally to offer you the best solution.",
+        "sidebarExperienceSubtitle": "of experience in the sector",
+        "sidebarExperienceDesc": "Certified experts in maintenance, repair, and rehabilitation of electrical transformers.",
+        "sidebarEmergencyAvailable": "Available 24/7",
+        "sidebarEmergencyDesc": "For emergencies that can't wait, contact us directly.",
+        "sidebarNeedHelp": "Need help describing your requirement?",
+        "sidebarNeedHelpDesc": "Our technicians can guide you by phone about what information is needed.",
+        "callNow": "Call now",
+        "validationName": "Name is required",
+        "validationEmail": "Email is required",
+        "validationEmailInvalid": "Invalid email",
+        "validationPhone": "Phone is required",
+        "validationService": "Select the service type",
+        "validationDescription": "Description is required",
+        "errorSubmit": "Error submitting request",
+        "errorConnection": "Connection error. Please try again.",
+        "equipmentOptions": {
+          "distribucion": "Distribution transformer",
+          "potencia": "Power transformer",
+          "padMounted": "Pad-Mounted transformer",
+          "tipoPoste": "Pole-type transformer",
+          "subestacion": "Substation transformer",
+          "otro": "Other equipment type"
+        },
+        "othersSpecify": "Others (specify)"
       },
       "fichasTecnicas": {
         "subtitle": "EMINSA services technical documentation",
         "empty": "No technical datasheets available at this time.",
-        "notAvailable": "Not available"
+        "notAvailable": "Not available",
+        "breadcrumbServicios": "Services",
+        "breadcrumbRecursos": "Resources",
+        "title": "Technical Data Sheets",
+        "searchPlaceholder": "Search technical data sheets...",
+        "download": "Download",
+        "ctaTitle": "Need More Information?",
+        "ctaDescription": "Contact us for more details or to request a personalized quote.",
+        "ctaButton": "Request a Quote"
+      },
+      "notFound": {
+        "title": "Page Not Found",
+        "description": "This page does not exist within Services. Explore our transformer maintenance and repair services.",
+        "home": "Services Home",
+        "mantenimiento": "Maintenance",
+        "laboratorio": "Laboratory",
+        "cotizaciones": "Quotes",
+        "backToServicios": "Back to Services"
       }
     },
     "cotizar": {
@@ -5486,6 +5614,11 @@
       "r2": {
         "nombre": "KVA Calculator",
         "descripcion": "Tool to calculate the required transformer capacity based on your load."
+      },
+      "fichasTecnicas": {
+        "nombre": "Technical Data Sheets",
+        "descripcion": "Technical specifications and detailed documentation of EMINSA services.",
+        "tipo": "document"
       },
       "title": "Resources",
       "description": "Technical documentation and resources"

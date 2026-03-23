@@ -17,6 +17,7 @@ import { useTranslations } from "next-intl";
 
 export default function AsesoriaPage() {
   const t = useTranslations("pages.servicios.servicioDetail");
+  const tc = useTranslations("serviciosConfig");
   const servicio = serviciosDetalle.find((s) => s.id === "asesoria")!;
 
   return (
@@ -50,7 +51,7 @@ export default function AsesoriaPage() {
               {t("breadcrumbServicios")}
             </Link>
             <ChevronRight size={16} />
-            <span className="text-white">{servicio.nombreCorto}</span>
+            <span className="text-white">{tc("detalle." + servicio.id + ".nombreCorto")}</span>
           </motion.div>
 
           <motion.div
@@ -61,12 +62,12 @@ export default function AsesoriaPage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-6">
               <Lightbulb size={16} />
-              <span>{servicio.nombreCorto}</span>
+              <span>{tc("detalle." + servicio.id + ".nombreCorto")}</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6">
-              {servicio.nombre}
+              {tc("detalle." + servicio.id + ".nombre")}
             </h1>
-            <p className="text-xl text-white/80">{servicio.descripcion}</p>
+            <p className="text-xl text-white/80">{tc("detalle." + servicio.id + ".descripcion")}</p>
           </motion.div>
         </div>
       </section>
@@ -87,7 +88,7 @@ export default function AsesoriaPage() {
                 {t("whatIsIt")}
               </h2>
               <p className="text-[#6d6e6d] leading-relaxed text-lg">
-                {servicio.descripcionLarga}
+                {tc("detalle." + servicio.id + ".descripcionLarga")}
               </p>
             </motion.div>
             <motion.div
@@ -100,12 +101,12 @@ export default function AsesoriaPage() {
                   {t("mainBenefits")}
                 </h3>
                 <div className="space-y-4">
-                  {servicio.beneficios.map((b, i) => (
+                  {servicio.beneficios.map((_, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="w-6 h-6 rounded-full bg-[#00269b]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                         <CheckCircle2 size={14} className="text-[#00269b]" />
                       </div>
-                      <span className="text-[#6d6e6d]">{b}</span>
+                      <span className="text-[#6d6e6d]">{tc("detalle." + servicio.id + ".beneficios." + i)}</span>
                     </div>
                   ))}
                 </div>
@@ -130,7 +131,7 @@ export default function AsesoriaPage() {
               </h2>
             </motion.div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {servicio.etapas.map((etapa, i) => (
+              {servicio.etapas.map((_, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
@@ -143,9 +144,9 @@ export default function AsesoriaPage() {
                     {i + 1}
                   </div>
                   <h3 className="text-lg font-bold text-[#00269b] mb-2">
-                    {etapa.titulo}
+                    {tc("detalle." + servicio.id + ".etapas." + i + ".titulo")}
                   </h3>
-                  <p className="text-[#6d6e6d] text-sm">{etapa.descripcion}</p>
+                  <p className="text-[#6d6e6d] text-sm">{tc("detalle." + servicio.id + ".etapas." + i + ".descripcion")}</p>
                 </motion.div>
               ))}
             </div>
@@ -167,7 +168,7 @@ export default function AsesoriaPage() {
                 {t("serviceScope")}
               </motion.h2>
               <div className="space-y-4">
-                {servicio.alcance.map((item, i) => (
+                {servicio.alcance.map((_, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -20 }}
@@ -179,7 +180,7 @@ export default function AsesoriaPage() {
                     <div className="w-8 h-8 rounded-lg bg-[#00269b]/10 flex items-center justify-center flex-shrink-0">
                       <CheckCircle2 size={16} className="text-[#00269b]" />
                     </div>
-                    <span className="text-[#6d6e6d]">{item}</span>
+                    <span className="text-[#6d6e6d]">{tc("detalle." + servicio.id + ".alcance." + i)}</span>
                   </motion.div>
                 ))}
               </div>

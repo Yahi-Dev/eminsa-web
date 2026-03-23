@@ -66,6 +66,7 @@ const equipmentIcons: { [key: string]: React.ElementType } = {
 
 export default function ServiciosPage() {
   const t = useTranslations("pages.servicios");
+  const tc = useTranslations("serviciosConfig");
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollCarousel = (direction: "left" | "right") => {
@@ -101,7 +102,7 @@ export default function ServiciosPage() {
         {/* Hero photo */}
         <Image
           src="/EMINSA/DSC07203.jpg"
-          alt="Servicios técnicos Eminsa"
+          alt={t("hero.altPhoto")}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover brightness-50"
@@ -125,7 +126,7 @@ export default function ServiciosPage() {
                 className="flex items-center gap-3"
               >
                 <div className="h-px w-10 bg-white/50" />
-                <span className="text-white/70 text-[11px] font-bold uppercase tracking-[0.32em]">División Servicios · EMINSA</span>
+                <span className="text-white/70 text-[11px] font-bold uppercase tracking-[0.32em]">{t("hero.badge")}</span>
               </motion.div>
 
               <motion.h1
@@ -188,7 +189,7 @@ export default function ServiciosPage() {
                         <span className="text-white/70">{stat.suffix}</span>
                       )}
                     </div>
-                    <div className="text-sm text-white/80">{stat.label}</div>
+                    <div className="text-sm text-white/80">{tc("info.stats." + index + ".label")}</div>
                   </motion.div>
                 ))}
               </div>
@@ -289,21 +290,21 @@ export default function ServiciosPage() {
 
                           {/* Content */}
                           <h3 className="text-xl font-bold text-[#00269b] mb-3 group-hover:text-[#00269b] transition-colors">
-                            {service.name}
+                            {tc("detalle." + service.id + ".nombre")}
                           </h3>
                           <p className="text-[#6d6e6d] text-sm leading-relaxed mb-6">
-                            {service.description}
+                            {tc("detalle." + service.id + ".descripcion")}
                           </p>
 
                           {/* Benefits */}
                           <div className="space-y-2">
-                            {service.benefits.slice(0, 3).map((benefit, i) => (
+                            {service.benefits.slice(0, 3).map((_, i) => (
                               <div
                                 key={i}
                                 className="flex items-center gap-2 text-sm text-[#6d6e6d]"
                               >
                                 <div className="w-1.5 h-1.5 bg-[#00269b] rounded-full flex-shrink-0" />
-                                {benefit}
+                                {tc("detalle." + service.id + ".beneficios." + i)}
                               </div>
                             ))}
                           </div>
@@ -370,21 +371,21 @@ export default function ServiciosPage() {
 
                           {/* Content */}
                           <h3 className="text-xl font-bold text-[#00269b] mb-3 group-hover:text-[#00269b] transition-colors">
-                            {service.name}
+                            {tc("detalle." + service.id + ".nombre")}
                           </h3>
                           <p className="text-[#6d6e6d] text-sm leading-relaxed mb-6">
-                            {service.description}
+                            {tc("detalle." + service.id + ".descripcion")}
                           </p>
 
                           {/* Benefits */}
                           <div className="space-y-2">
-                            {service.benefits.slice(0, 3).map((benefit, i) => (
+                            {service.benefits.slice(0, 3).map((_, i) => (
                               <div
                                 key={i}
                                 className="flex items-center gap-2 text-sm text-[#6d6e6d]"
                               >
                                 <div className="w-1.5 h-1.5 bg-[#00269b] rounded-full flex-shrink-0" />
-                                {benefit}
+                                {tc("detalle." + service.id + ".beneficios." + i)}
                               </div>
                             ))}
                           </div>
@@ -460,10 +461,10 @@ export default function ServiciosPage() {
 
                     {/* Content */}
                     <h3 className="text-xl font-bold text-[#00269b] mb-3">
-                      {paso.titulo}
+                      {tc("info.procesoTrabajo." + index + ".titulo")}
                     </h3>
                     <p className="text-[#6d6e6d] leading-relaxed max-w-sm mx-auto">
-                      {paso.descripcion}
+                      {tc("info.procesoTrabajo." + index + ".descripcion")}
                     </p>
                   </motion.div>
                 );
@@ -516,14 +517,14 @@ export default function ServiciosPage() {
                     />
                   </div>
                   <h3 className="font-bold text-[#00269b] mb-2 group-hover:text-[#00269b] transition-colors">
-                    {equip.name}
+                    {tc("equipamiento." + equip.id + ".name")}
                   </h3>
                   <p className="text-sm text-[#6d6e6d] mb-3 leading-relaxed">
-                    {equip.description}
+                    {tc("equipamiento." + equip.id + ".description")}
                   </p>
                   {equip.specs && (
                     <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-medium rounded-lg">
-                      {equip.specs}
+                      {tc("equipamiento." + equip.id + ".specs")}
                     </span>
                   )}
                 </motion.div>
@@ -567,7 +568,7 @@ export default function ServiciosPage() {
             <div key={i} className={`relative overflow-hidden group aspect-video ${i === 4 ? "hidden lg:block" : ""}`}>
               <Image
                 src={src}
-                alt={`Servicio técnico Eminsa ${i + 1}`}
+                alt={t("hero.altPhotoStrip", { number: i + 1 })}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover brightness-75 group-hover:brightness-90 group-hover:scale-105 transition-all duration-500"

@@ -613,11 +613,13 @@
     },
     "servicios": {
       "hero": {
-        "badge": "Servicios Especializados",
+        "badge": "División Servicios · EMINSA",
         "title": "Servicios Técnicos Especializados",
         "subtitle": "SERVICIOS es la unidad de negocios de Grupo EMINSA enfocada en brindar atención técnica especializada en sitio, ofreciendo mantenimiento, reparación y soporte integral para garantizar la eficiencia, seguridad y continuidad operativa de los transformadores eléctricos de nuestros clientes.",
         "description": "Con más de 50 años de trayectoria, nuestro equipo de técnicos especializados opera en campo y en taller para brindar mantenimiento preventivo, correctivo y de emergencia, asegurando la continuidad operativa de sus sistemas eléctricos.",
-        "requestQuote": "Solicitar Cotización"
+        "requestQuote": "Solicitar Cotización",
+        "altPhoto": "Servicios técnicos Eminsa",
+        "altPhotoStrip": "Servicio técnico Eminsa {number}"
       },
       "grid": {
         "badge": "Nuestros Servicios",
@@ -766,24 +768,74 @@
         "transformers": {
           "tipoPoste": "Transformadores Tipo Poste",
           "tipoPosteDesc": "Monofásicos, 60 Hz, ideales para servicios residenciales y cargas livianas comerciales/industriales",
+          "tipoPosteChars": {
+            "0": "Norma ANSI C 57-12-00",
+            "1": "Esquemas de protección: SP, CP, CSP",
+            "2": "Instalación rápida",
+            "3": "Bajo mantenimiento"
+          },
+          "tipoPosteApps": {
+            "0": "Residencial",
+            "1": "Comercial ligero",
+            "2": "Industrial ligero"
+          },
           "padMounted": "Transformadores Pad Mounted",
           "padMountedDesc": "Trifásicos y Monofásicos para sistemas de distribución subterráneos",
+          "padMountedChars": {
+            "0": "Tensiones: 5 kV hasta 34.5 kV",
+            "1": "Tipo RADIAL o MALLA",
+            "2": "Normas ANSI C57-12-26/25/28",
+            "3": "Operación bajo carga"
+          },
+          "padMountedApps": {
+            "0": "Distribución subterránea",
+            "1": "Centros comerciales",
+            "2": "Urbanizaciones"
+          },
           "tipoSeco": "Transformadores Tipo Seco",
-          "tipoSecoDesc": "Sin aceite dieléctrico, ideales para instalaciones en interiores con riesgo de incendio minimizado"
+          "tipoSecoDesc": "Sin aceite dieléctrico, ideales para instalaciones en interiores con riesgo de incendio minimizado",
+          "tipoSecoChars": {
+            "0": "Sin aceite dieléctrico",
+            "1": "Materiales clase 180°C",
+            "2": "Norma ANSI C57-12",
+            "3": "Ideal para interiores"
+          },
+          "tipoSecoApps": {
+            "0": "Centros comerciales",
+            "1": "Edificios",
+            "2": "Industrias",
+            "3": "Hospitales"
+          }
         },
         "cases": {
           "construction": "Proyectos de Construcción",
           "constructionDesc": "Suministro temporal de energía durante la construcción de edificios, centros comerciales y desarrollos inmobiliarios",
-          "constructionExamples": "Torres residenciales, Centros comerciales, Complejos hoteleros",
+          "constructionExamples": {
+            "0": "Torres residenciales",
+            "1": "Centros comerciales",
+            "2": "Complejos hoteleros"
+          },
           "industrial": "Expansión Industrial",
           "industrialDesc": "Soluciones temporales mientras se completa la infraestructura eléctrica permanente",
-          "industrialExamples": "Plantas industriales, Zonas francas, Ampliaciones de capacidad",
+          "industrialExamples": {
+            "0": "Plantas industriales",
+            "1": "Zonas francas",
+            "2": "Ampliaciones de capacidad"
+          },
           "maintenance": "Mantenimiento y Emergencias",
           "maintenanceDesc": "Reemplazo temporal durante reparaciones o fallas de equipos existentes",
-          "maintenanceExamples": "Fallas inesperadas, Mantenimiento programado, Contingencias",
+          "maintenanceExamples": {
+            "0": "Fallas inesperadas",
+            "1": "Mantenimiento programado",
+            "2": "Contingencias"
+          },
           "events": "Eventos y Proyectos Temporales",
           "eventsDesc": "Suministro de energía para eventos especiales, festivales o instalaciones temporales",
-          "eventsExamples": "Eventos corporativos, Ferias comerciales, Proyectos especiales"
+          "eventsExamples": {
+            "0": "Eventos corporativos",
+            "1": "Ferias comerciales",
+            "2": "Proyectos especiales"
+          }
         }
       },
       "proyectosPage": {
@@ -967,12 +1019,88 @@
         "quickResponse": "Respuesta rápida",
         "quickResponseTime": "Menos de 2 horas hábiles",
         "moreThan30Years": "Más de 30 años",
-        "emergencyService": "Servicio de emergencia"
+        "emergencyService": "Servicio de emergencia",
+        "heroTitle": "Cotización de Servicios Técnicos",
+        "heroDescription": "Mantenimiento, reparación y servicios especializados para transformadores y equipos eléctricos. Reciba una propuesta rápida de nuestros técnicos.",
+        "breadcrumbHome": "Inicio",
+        "breadcrumbServicios": "Servicios",
+        "breadcrumbCotizacion": "Cotización",
+        "successTitle": "¡Solicitud enviada exitosamente!",
+        "successDescription": "Nuestro equipo revisará su solicitud y le contactará a la brevedad para coordinar los detalles del servicio.",
+        "viewServices": "Ver nuestros servicios",
+        "newQuote": "Nueva cotización",
+        "needImmediate": "¿Necesita atención inmediata?",
+        "contactInfoTitle": "Información de Contacto",
+        "fullName": "Nombre completo",
+        "namePlaceholder": "Ej. Juan Pérez",
+        "company": "Empresa / Organización",
+        "companyPlaceholder": "Nombre de su empresa (opcional)",
+        "email": "Correo electrónico",
+        "phone": "Teléfono",
+        "serviceDetailsTitle": "Detalles del Servicio",
+        "serviceType": "Tipo de servicio",
+        "transformerSpecs": "Especificaciones del Transformador",
+        "power": "Potencia",
+        "powerPlaceholder": "Ej. 500 kVA",
+        "configuration": "Configuración",
+        "selectOption": "Seleccione",
+        "singlePhase": "Monofásico",
+        "threePhase": "Trifásico",
+        "selfProtected": "Autoprotegido",
+        "descriptionTitle": "Descripción y Detalles",
+        "locationPlaceholder": "Ciudad, provincia o dirección del proyecto",
+        "requirementsLabel": "Descripción de requerimientos",
+        "requirementsPlaceholder": "Describa el problema, el trabajo a realizar o los requerimientos específicos del servicio...",
+        "fileTypes": "PDF, DOC, JPG, PNG, XLSX (máx. 5 archivos)",
+        "sending": "Enviando solicitud...",
+        "submitButton": "Enviar solicitud de servicio",
+        "sidebarQuickResponseDesc": "Nuestro equipo técnico revisa cada solicitud de forma personalizada para ofrecerle la mejor solución.",
+        "sidebarExperienceSubtitle": "de experiencia en el sector",
+        "sidebarExperienceDesc": "Expertos certificados en mantenimiento, reparación y rehabilitación de transformadores eléctricos.",
+        "sidebarEmergencyAvailable": "Disponible 24/7",
+        "sidebarEmergencyDesc": "Para emergencias que no pueden esperar, contáctenos directamente.",
+        "sidebarNeedHelp": "¿Necesita ayuda para describir su requerimiento?",
+        "sidebarNeedHelpDesc": "Nuestros técnicos pueden orientarle por teléfono sobre qué información es necesaria.",
+        "callNow": "Llamar ahora",
+        "validationName": "El nombre es requerido",
+        "validationEmail": "El correo electrónico es requerido",
+        "validationEmailInvalid": "Correo electrónico inválido",
+        "validationPhone": "El teléfono es requerido",
+        "validationService": "Seleccione el tipo de servicio",
+        "validationDescription": "La descripción es requerida",
+        "errorSubmit": "Error al enviar la solicitud",
+        "errorConnection": "Error de conexión. Intente nuevamente.",
+        "equipmentOptions": {
+          "distribucion": "Transformador de distribución",
+          "potencia": "Transformador de potencia",
+          "padMounted": "Transformador Pad-Mounted",
+          "tipoPoste": "Transformador tipo poste",
+          "subestacion": "Transformador de subestación",
+          "otro": "Otro tipo de equipo"
+        },
+        "othersSpecify": "Otros (especificar)"
       },
       "fichasTecnicas": {
         "subtitle": "Documentación técnica de servicios EMINSA",
         "empty": "No hay fichas técnicas disponibles en este momento.",
-        "notAvailable": "No disponible"
+        "notAvailable": "No disponible",
+        "breadcrumbServicios": "Servicios",
+        "breadcrumbRecursos": "Recursos",
+        "title": "Fichas Técnicas",
+        "searchPlaceholder": "Buscar fichas técnicas...",
+        "download": "Descargar",
+        "ctaTitle": "¿Necesita más información?",
+        "ctaDescription": "Contáctenos para obtener más detalles o solicitar una cotización personalizada.",
+        "ctaButton": "Solicitar Cotización"
+      },
+      "notFound": {
+        "title": "Página no encontrada",
+        "description": "Esta página no existe dentro de Servicios. Explora nuestros servicios de mantenimiento y reparación de transformadores.",
+        "home": "Inicio Servicios",
+        "mantenimiento": "Mantenimiento",
+        "laboratorio": "Laboratorio",
+        "cotizaciones": "Cotizaciones",
+        "backToServicios": "Volver a Servicios"
       }
     },
     "cotizar": {
@@ -5436,6 +5564,11 @@
       "r2": {
         "nombre": "Calculadora KVA",
         "descripcion": "Herramienta para calcular la capacidad de transformador requerida según su carga."
+      },
+      "fichasTecnicas": {
+        "nombre": "Fichas Técnicas",
+        "descripcion": "Especificaciones técnicas y documentación detallada de los servicios EMINSA.",
+        "tipo": "documento"
       }
     }
   },

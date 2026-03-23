@@ -31,6 +31,7 @@ const iconMap: { [key: string]: React.ElementType } = {
 
 export default function RecursosServiciosPage() {
   const t = useTranslations("pages.servicios.recursosPage");
+  const tc = useTranslations("serviciosConfig");
 
   return (
     <div className="min-h-screen">
@@ -98,10 +99,10 @@ export default function RecursosServiciosPage() {
                     <FileText className="w-8 h-8 text-[#00269b] group-hover:text-white transition-colors duration-300" />
                   </div>
                   <span className="inline-block px-2 py-1 bg-[#00269b]/10 text-[#00269b] text-xs font-medium rounded mb-3 capitalize">
-                    {fichasTecnicasRecurso.tipo}
+                    {tc("recursos.fichasTecnicas.tipo")}
                   </span>
-                  <h3 className="text-xl font-bold text-[#00269b] mb-3">{fichasTecnicasRecurso.nombre}</h3>
-                  <p className="text-[#6d6e6d] text-sm leading-relaxed mb-6">{fichasTecnicasRecurso.descripcion}</p>
+                  <h3 className="text-xl font-bold text-[#00269b] mb-3">{tc("recursos.fichasTecnicas.nombre")}</h3>
+                  <p className="text-[#6d6e6d] text-sm leading-relaxed mb-6">{tc("recursos.fichasTecnicas.descripcion")}</p>
                   <div className="flex items-center gap-2 text-[#00269b] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     {t("access")}
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -138,10 +139,10 @@ export default function RecursosServiciosPage() {
                       </span>
 
                       <h3 className="text-xl font-bold text-[#00269b] mb-3 group-hover:text-[#00269b] transition-colors">
-                        {recurso.nombre}
+                        {tc("recursos." + recurso.id + ".nombre")}
                       </h3>
                       <p className="text-[#6d6e6d] text-sm leading-relaxed mb-6">
-                        {recurso.descripcion}
+                        {tc("recursos." + recurso.id + ".descripcion")}
                       </p>
 
                       <div className="flex items-center gap-2 text-[#00269b] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">

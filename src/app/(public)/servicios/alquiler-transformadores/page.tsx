@@ -25,118 +25,50 @@ import { useTranslations } from "next-intl";
 const transformadoresDisponibles = [
   {
     id: "tipo-poste",
-    nombre: "Transformadores Tipo Poste",
-    descripcion: "Monofásicos, 60 Hz, ideales para servicios residenciales y cargas livianas comerciales/industriales",
+    key: "tipoPoste",
     icon: Zap,
     imagen: "/EMINSA/DSC07227.jpg",
     potencias: ["15 KVA", "25 KVA", "37.5 KVA", "50 KVA", "75 KVA", "100 KVA", "167 KVA", "250 KVA", "333 KVA", "500 KVA"],
-    caracteristicas: [
-      "Norma ANSI C 57-12-00",
-      "Esquemas de protección: SP, CP, CSP",
-      "Instalación rápida",
-      "Bajo mantenimiento"
-    ],
-    aplicaciones: ["Residencial", "Comercial ligero", "Industrial ligero"],
+    charCount: 4,
+    appCount: 3,
     color: "#00269b"
   },
   {
     id: "pad-mounted",
-    nombre: "Transformadores Pad Mounted",
-    descripcion: "Trifásicos y Monofásicos para sistemas de distribución subterráneos",
+    key: "padMounted",
     icon: Building2,
     imagen: "/EMINSA/DSC07213.jpg",
-    potencias: [
-      "Monofásicos: 15-100 KVA",
-      "Trifásicos: 30-3000 KVA"
-    ],
-    caracteristicas: [
-      "Tensiones: 5 kV hasta 34.5 kV",
-      "Tipo RADIAL o MALLA",
-      "Normas ANSI C57-12-26/25/28",
-      "Operación bajo carga"
-    ],
-    aplicaciones: ["Distribución subterránea", "Centros comerciales", "Urbanizaciones"],
+    potencias: ["Monofásicos: 15-100 KVA", "Trifásicos: 30-3000 KVA"],
+    charCount: 4,
+    appCount: 3,
     color: "#0099ce"
   },
   {
     id: "tipo-seco",
-    nombre: "Transformadores Tipo Seco",
-    descripcion: "Sin aceite dieléctrico, ideales para instalaciones en interiores con riesgo de incendio minimizado",
+    key: "tipoSeco",
     icon: Shield,
     imagen: "/EMINSA/DSC07255.jpg",
-    potencias: [
-      "BAJA-BAJA: 15-500 KVA",
-      "ALTA-BAJA: 75-1000 KVA"
-    ],
-    caracteristicas: [
-      "Sin aceite dieléctrico",
-      "Materiales clase 180°C",
-      "Norma ANSI C57-12",
-      "Ideal para interiores"
-    ],
-    aplicaciones: ["Centros comerciales", "Edificios", "Industrias", "Hospitales"],
+    potencias: ["BAJA-BAJA: 15-500 KVA", "ALTA-BAJA: 75-1000 KVA"],
+    charCount: 4,
+    appCount: 4,
     color: "#00269b"
   },
 ];
 
 const beneficiosAlquiler = [
-  {
-    icon: Clock,
-    titulo: "Disponibilidad Inmediata",
-    descripcion: "Amplio stock de transformadores listos para entrega y instalación rápida"
-  },
-  {
-    icon: Shield,
-    titulo: "Equipos Certificados",
-    descripcion: "Todos nuestros transformadores cumplen con normas ANSI e ISO 9001:2015"
-  },
-  {
-    icon: Wrench,
-    titulo: "Mantenimiento Incluido",
-    descripcion: "Servicio técnico y mantenimiento preventivo sin costos adicionales"
-  },
-  {
-    icon: CheckCircle,
-    titulo: "Flexibilidad de Contratos",
-    descripcion: "Períodos de alquiler adaptados a sus necesidades: corto, mediano o largo plazo"
-  },
-  {
-    icon: Truck,
-    titulo: "Transporte e Instalación",
-    descripcion: "Nos encargamos del transporte, instalación y puesta en marcha"
-  },
-  {
-    icon: Phone,
-    titulo: "Soporte 24/7",
-    descripcion: "Atención a emergencias las 24 horas, los 7 días de la semana"
-  }
+  { icon: Clock, key: "immediateAvailability" },
+  { icon: Shield, key: "certifiedEquipment" },
+  { icon: Wrench, key: "maintenanceIncluded" },
+  { icon: CheckCircle, key: "flexibleContracts" },
+  { icon: Truck, key: "transportInstallation" },
+  { icon: Phone, key: "support247" },
 ];
 
 const casosDeUso = [
-  {
-    icon: Building2,
-    titulo: "Proyectos de Construcción",
-    descripcion: "Suministro temporal de energía durante la construcción de edificios, centros comerciales y desarrollos inmobiliarios",
-    ejemplos: ["Torres residenciales", "Centros comerciales", "Complejos hoteleros"]
-  },
-  {
-    icon: Factory,
-    titulo: "Expansión Industrial",
-    descripcion: "Soluciones temporales mientras se completa la infraestructura eléctrica permanente",
-    ejemplos: ["Plantas industriales", "Zonas francas", "Ampliaciones de capacidad"]
-  },
-  {
-    icon: Wrench,
-    titulo: "Mantenimiento y Emergencias",
-    descripcion: "Reemplazo temporal durante reparaciones o fallas de equipos existentes",
-    ejemplos: ["Fallas inesperadas", "Mantenimiento programado", "Contingencias"]
-  },
-  {
-    icon: Hotel,
-    titulo: "Eventos y Proyectos Temporales",
-    descripcion: "Suministro de energía para eventos especiales, festivales o instalaciones temporales",
-    ejemplos: ["Eventos corporativos", "Ferias comerciales", "Proyectos especiales"]
-  }
+  { icon: Building2, key: "construction", exampleCount: 3 },
+  { icon: Factory, key: "industrial", exampleCount: 3 },
+  { icon: Wrench, key: "maintenance", exampleCount: 3 },
+  { icon: Hotel, key: "events", exampleCount: 3 },
 ];
 
 export default function AlquilerTransformadoresPage() {
@@ -248,10 +180,10 @@ export default function AlquilerTransformadoresPage() {
                     <IconComponent className="w-7 h-7 text-[#00269b]" />
                   </div>
                   <h3 className="text-xl font-bold text-[#00269b] mb-2">
-                    {beneficio.titulo}
+                    {t("benefits." + beneficio.key)}
                   </h3>
                   <p className="text-[#6d6e6d]">
-                    {beneficio.descripcion}
+                    {t("benefits." + beneficio.key + "Desc")}
                   </p>
                 </motion.div>
               );
@@ -296,7 +228,7 @@ export default function AlquilerTransformadoresPage() {
                     <div className={`relative h-100 lg:h-auto overflow-hidden ${!isEven ? 'lg:col-start-2' : ''}`}>
                       <Image
                         src={transformador.imagen}
-                        alt={transformador.nombre}
+                        alt={t("transformers." + transformador.key)}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover brightness-75"
@@ -334,11 +266,11 @@ export default function AlquilerTransformadoresPage() {
                             style={{ backgroundColor: transformador.color }}
                           />
                           <h3 className="text-2xl lg:text-3xl font-bold text-[#00269b]">
-                            {transformador.nombre}
+                            {t("transformers." + transformador.key)}
                           </h3>
                         </div>
                         <p className="text-[#6d6e6d] text-sm lg:text-base leading-relaxed">
-                          {transformador.descripcion}
+                          {t("transformers." + transformador.key + "Desc")}
                         </p>
                       </div>
 
@@ -372,13 +304,13 @@ export default function AlquilerTransformadoresPage() {
                           {t("technicalSpecs")}
                         </h4>
                         <div className="grid grid-cols-1 gap-2">
-                          {transformador.caracteristicas.map((caracteristica, i) => (
+                          {Array.from({ length: transformador.charCount }, (_, i) => (
                             <div key={i} className="flex items-start gap-2 text-sm text-[#6d6e6d]">
-                              <div 
+                              <div
                                 className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
                                 style={{ backgroundColor: transformador.color }}
                               />
-                              {caracteristica}
+                              {t("transformers." + transformador.key + "Chars." + i)}
                             </div>
                           ))}
                         </div>
@@ -391,16 +323,16 @@ export default function AlquilerTransformadoresPage() {
                           {t("applications")}
                         </h4>
                         <div className="flex flex-wrap gap-2">
-                          {transformador.aplicaciones.map((aplicacion, i) => (
-                            <span 
-                              key={i} 
+                          {Array.from({ length: transformador.appCount }, (_, i) => (
+                            <span
+                              key={i}
                               className="px-3 py-1 text-xs font-medium rounded-full"
-                              style={{ 
-                                backgroundColor: `${transformador.color}15`, 
-                                color: transformador.color 
+                              style={{
+                                backgroundColor: `${transformador.color}15`,
+                                color: transformador.color
                               }}
                             >
-                              {aplicacion}
+                              {t("transformers." + transformador.key + "Apps." + i)}
                             </span>
                           ))}
                         </div>
@@ -460,16 +392,16 @@ export default function AlquilerTransformadoresPage() {
                       <IconComponent className="w-6 h-6 text-[#00269b]" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-[#00269b] mb-2">{caso.titulo}</h3>
-                      <p className="text-[#6d6e6d] text-sm mb-4">{caso.descripcion}</p>
+                      <h3 className="text-xl font-bold text-[#00269b] mb-2">{t("cases." + caso.key)}</h3>
+                      <p className="text-[#6d6e6d] text-sm mb-4">{t("cases." + caso.key + "Desc")}</p>
                     </div>
                   </div>
                   <div className="pl-16">
                     <h4 className="text-xs font-semibold text-[#00269b] mb-2">{t("examples")}</h4>
                     <div className="flex flex-wrap gap-2">
-                      {caso.ejemplos.map((ejemplo, i) => (
+                      {Array.from({ length: caso.exampleCount }, (_, i) => (
                         <span key={i} className="px-3 py-1 bg-gray-100 text-[#6d6e6d] rounded-full text-xs">
-                          {ejemplo}
+                          {t("cases." + caso.key + "Examples." + i)}
                         </span>
                       ))}
                     </div>
