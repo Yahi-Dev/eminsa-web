@@ -11,7 +11,6 @@ import {
   ChevronDown,
   Phone,
   Mail,
-  Globe,
   MessageCircle
 } from "lucide-react";
 import { mainNavigation, contactInfo } from "@/config/navigation";
@@ -126,10 +125,16 @@ export default function Header() {
             <span className="text-white/70 hidden xl:inline">{t('tagline')}</span>
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1 hover:text-[#0099ce] transition-colors"
+              className="flex items-center gap-1.5 hover:text-[#0099ce] transition-colors"
               aria-label={language === "en" ? t("ariaLanguageEn") : t("ariaLanguageEs")}
             >
-              <Globe size={14} />
+              <Image
+                src={language === "en" ? "/images/eic/flags/estados-unidos.png" : "/images/eic/flags/republica-dominicana.png"}
+                alt=""
+                width={20}
+                height={14}
+                className="rounded-sm object-cover shrink-0"
+              />
               <span>{language === "en" ? "EN" : "ES"}</span>
               <ChevronDown size={12} />
             </button>
@@ -421,7 +426,13 @@ export default function Header() {
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#00269b] border border-[#00269b] rounded-lg hover:bg-[#00269b] hover:text-white transition-all"
                     aria-label={t("switchLanguage")}
                   >
-                    <Globe size={18} />
+                    <Image
+                      src={language === "en" ? "/images/eic/flags/republica-dominicana.png" : "/images/eic/flags/estados-unidos.png"}
+                      alt=""
+                      width={22}
+                      height={15}
+                      className="rounded-sm object-cover shrink-0"
+                    />
                     <span className="font-medium">
                       {t("switchLanguage")}
                     </span>

@@ -12,6 +12,7 @@ import {
   Home,
   ArrowRight,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 interface RecursoAPI {
   id: string;
   nombre: string;
@@ -26,6 +27,7 @@ interface RecursoAPI {
 }
 
 export default function RSTFichasTecnicasPage() {
+  const t = useTranslations("etrysPage.recursosPage");
   const [recursos, setRecursos] = useState<RecursoAPI[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -58,10 +60,10 @@ export default function RSTFichasTecnicasPage() {
             <Link href="/etrys" className="hover:text-white transition-colors">RST</Link>
             <ChevronRight size={14} />
             <Link href="/etrys/recursos" className="hover:text-white transition-colors">
-              Recursos
+              {t("fichasTecnicas.breadcrumbRecursos")}
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Fichas Técnicas</span>
+            <span className="text-white">{t("fichasTecnicas.title")}</span>
           </nav>
 
           <div className="flex items-center gap-4">
@@ -69,8 +71,8 @@ export default function RSTFichasTecnicasPage() {
               <FileText size={28} />
             </div>
             <div>
-              <h1 className="text-3xl font-bold">Fichas Técnicas</h1>
-              <p className="text-white/70">Documentación técnica de productos RST</p>
+              <h1 className="text-3xl font-bold">{t("fichasTecnicas.title")}</h1>
+              <p className="text-white/70">{t("fichasTecnicas.description")}</p>
             </div>
           </div>
         </div>

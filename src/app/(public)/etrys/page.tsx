@@ -153,7 +153,7 @@ export default function EtrysPage() {
                 className="flex items-center gap-3"
               >
                 <div className="h-px w-10 bg-white/50" />
-                <span className="text-white/70 text-[11px] font-bold uppercase tracking-[0.32em]">División RST · ETRYS</span>
+                <span className="text-white/70 text-[11px] font-bold uppercase tracking-[0.32em]">{t("eyebrow")}</span>
               </motion.div>
 
               {/* Title */}
@@ -374,7 +374,7 @@ export default function EtrysPage() {
                   <p className="text-sm text-gray-600">{tc(`remanufacturedAdvantages.${adv.id}.description`)}</p>
                   {adv.highlight && (
                     <span className="inline-block mt-2 px-2 py-0.5 bg-[#0099ce]/10 text-[#0099ce] text-xs font-semibold rounded">
-                      {adv.highlight}
+                      {tc(`remanufacturedAdvantages.${adv.id}.highlight`)}
                     </span>
                   )}
                 </motion.div>
@@ -399,7 +399,7 @@ export default function EtrysPage() {
                   <div className="relative aspect-[4/3] bg-gray-100">
                     <Image
                       src={product.image}
-                      alt={product.name}
+                      alt={tc(`products.${product.slug}.name`)}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
@@ -412,10 +412,10 @@ export default function EtrysPage() {
                   </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#0099ce] transition-colors">
-                      {product.shortName}
+                      {tc(`products.${product.slug}.shortName`)}
                     </h3>
                     <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                      {product.description}
+                      {tc(`products.${product.slug}.description`)}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
@@ -509,10 +509,10 @@ export default function EtrysPage() {
                     {step.id}
                   </div>
                   <h3 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-[#0099ce] transition-colors">
-                    {step.shortTitle}
+                    {tc(`process.${step.id}.shortTitle`)}
                   </h3>
                   <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
-                    {step.description}
+                    {tc(`process.${step.id}.description`)}
                   </p>
                   <p className="text-xs text-[#0099ce] font-medium mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     {t("process.viewDetail")}
@@ -561,7 +561,7 @@ export default function EtrysPage() {
                         {tc(`info.advantages.${index}.title`)}
                         {adv.highlight && (
                           <span className="text-sm font-normal px-2 py-0.5 bg-gray-500 text-white rounded">
-                            {adv.highlight}
+                            {tc(`info.advantages.${index}.highlight`)}
                           </span>
                         )}
                       </h3>

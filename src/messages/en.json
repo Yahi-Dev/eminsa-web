@@ -1061,7 +1061,11 @@
         "calculateKva": "Calculate kVA",
         "interestedIn": "Interested in {product}?",
         "contactUsForQuote": "Contact us to get a personalized quote or resolve any technical questions.",
-        "whatsappMessage": "Hello, I am interested in information about {product}"
+        "whatsappMessage": "Hello, I am interested in information about {product}",
+        "photoLabels": {
+          "manufacturing": "Manufacturing",
+          "testing": "Testing"
+        }
       },
       "variantDetail": {
         "home": "Home",
@@ -1080,7 +1084,10 @@
         "installation": "Installation",
         "calculator": "Calculator",
         "interestedInProduct": "Interested in this product?",
-        "contactUsForQuote": "Contact us to get a personalized quote."
+        "contactUsForQuote": "Contact us to get a personalized quote.",
+        "photoLabels": {
+          "manufacturingMTN": "MTN Manufacturing"
+        }
       },
       "certificaciones": {
         "breadcrumb": {
@@ -1094,6 +1101,13 @@
         },
         "issuedBy": "Issued by",
         "certificationLabel": "Certification",
+        "standardCompliance": "Standard Compliance",
+        "ourCertifications": "Our Certifications",
+        "stats": {
+          "certificationsAndStandards": "Certifications & Standards",
+          "appliedStandards": "Applied Standards",
+          "yearsExperience": "Years of Experience"
+        },
         "benefitsTitle": "Guaranteed Benefits:",
         "validUntil": "Valid until:",
         "certs": {
@@ -1178,6 +1192,7 @@
         "hero": {
           "badge": "Quality Standards",
           "title": "Standards",
+          "titleFull": "Standards and Efficiencies",
           "description": "Our transformers comply with the most demanding international standards, guaranteeing quality, safety, and energy efficiency."
         },
         "labels": {
@@ -1272,6 +1287,24 @@
             "demandFactor": "Demand factor included",
             "cta": "Use Calculator",
             "calculateIdeal": "Calculate the ideal capacity"
+          },
+          "resources": {
+            "datasheets": {
+              "name": "Technical Datasheets",
+              "description": "Detailed specifications for all our products available for consultation and download."
+            },
+            "warranty": {
+              "name": "Warranty",
+              "description": "Information about coverage, terms, and warranty conditions for our products."
+            },
+            "manual": {
+              "name": "Maintenance Manual",
+              "description": "Complete guides for the care, preventive and corrective maintenance of transformers."
+            },
+            "calculator": {
+              "name": "kVA Calculator",
+              "description": "Interactive tool to calculate the transformer capacity your project needs."
+            }
           },
           "cta": {
             "title": "Can't find what you're looking for?",
@@ -2010,7 +2043,8 @@
           "2": "Low noise level",
           "3": "High energy efficiency",
           "4": "Easy installation and maintenance",
-          "5": "Surge protection"
+          "5": "Surge protection",
+          "6": "Cooling type: ONAN"
         }
       },
       "pad-mounted": {
@@ -2033,7 +2067,8 @@
           "3": "Vandal-proof protection",
           "4": "Low visual profile",
           "5": "Easy maintenance access",
-          "6": "Compatible with underground networks"
+          "6": "Compatible with underground networks",
+          "7": "Cooling type: ONAN"
         }
       },
       "subestacion": {
@@ -2666,7 +2701,8 @@
       "advantages": {
         "0": {
           "title": "Experience",
-          "description": "Over 50 years specialized in electrical distribution transformers."
+          "description": "Over 50 years specialized in electrical distribution transformers.",
+          "highlight": "50+ years"
         },
         "1": {
           "title": "Personalized Service",
@@ -2674,26 +2710,31 @@
         },
         "2": {
           "title": "Leading Warranty",
-          "description": "18-month warranty on all our repair and remanufacturing work."
+          "description": "18-month warranty on all our repair and remanufacturing work.",
+          "highlight": "18 months"
         }
       }
     },
     "remanufacturedAdvantages": {
       "speed": {
         "title": "Speed",
-        "description": "Immediate availability for your project"
+        "description": "Immediate availability for your project",
+        "highlight": "Fast Delivery"
       },
       "savings": {
         "title": "Savings",
-        "description": "Lower cost than new equipment with the same quality"
+        "description": "Lower cost than new equipment with the same quality",
+        "highlight": "Up to 40%"
       },
       "reliability": {
         "title": "Reliability",
-        "description": "Full compliance with IEEE C57 and ANSI standards"
+        "description": "Full compliance with IEEE C57 and ANSI standards",
+        "highlight": "Certified"
       },
       "environment": {
         "title": "Environmental Impact",
-        "description": "Waste reduction and material reuse"
+        "description": "Waste reduction and material reuse",
+        "highlight": "Eco-Friendly"
       }
     },
     "rental": {
@@ -3408,6 +3449,11 @@
     }
   },
   "mtnPage": {
+    "photoLabels": {
+      "manufacturing": "Manufacturing",
+      "testing": "Testing",
+      "manufacturingMTN": "MTN Manufacturing"
+    },
     "hero": {
       "badge": "100% National Manufacturing",
       "title": "New Transformer Manufacturing",
@@ -3434,12 +3480,23 @@
       "description": "We comply with the highest international manufacturing and efficiency standards",
       "normativas": "Standards",
       "certificaciones": "Certifications",
-      "viewAllStandards": "View all standards"
+      "viewAllStandards": "View all standards",
+      "normativasAndEfficiencies": "Standards and Efficiencies"
     },
     "manufacturing": {
       "badge": "Manufacturing Plant",
       "title": "Made in the Dominican Republic",
-      "viewProcess": "View full process →"
+      "viewProcess": "View full process →",
+      "photoLabels": {
+        "winding": "Winding",
+        "metalwork": "Metalwork",
+        "inTank": "In Tank",
+        "testLab": "Testing Laboratory",
+        "laserCutting": "Laser Cutting",
+        "assembly": "Assembly",
+        "highVoltageTesting": "High Voltage Testing",
+        "eminsaTeam": "EMINSA Team"
+      }
     },
     "resources": {
       "badge": "Tools and Documentation",
@@ -3465,7 +3522,22 @@
       "quotes": "Quotes",
       "viewAll": "View all",
       "closeMenu": "Close menu",
-      "openMenu": "Open menu"
+      "openMenu": "Open menu",
+      "showSubmenu": "Show submenu for {name}",
+      "submenu": {
+        "tipoPoste": "Pole-Type Transformers",
+        "padMounted": "Pad-Mounted Transformers",
+        "subestacion": "Substation Transformers"
+      }
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "This page does not exist within MTN. Explore our new transformers manufactured in the USA.",
+      "home": "MTN Home",
+      "products": "Products",
+      "standards": "Standards",
+      "resources": "Resources",
+      "backToMtn": "Back to MTN"
     },
     "productsPage": {
       "pageTitle": "Transformers",
@@ -3505,7 +3577,8 @@
       "calculateKva": "Calculate kVA",
       "interestedIn": "Interested in {product}?",
       "contactUs": "Contact us for a custom quote or to resolve any technical questions.",
-      "notFoundTitle": "Product not found"
+      "notFoundTitle": "Product not found",
+      "whatsappMessage": "Hello, I am interested in information about {product}"
     },
     "normativaPage": {
       "home": "Home",
@@ -3723,6 +3796,163 @@
       "errorDescribeRequest": "Describe your request",
       "errorSubmit": "Error sending the request",
       "errorConnection": "Connection error. Please try again."
+    },
+    "manufacturaPage": {
+      "breadcrumb": "Manufacturing",
+      "heroBadge": "EMOTIV-EMINSA Manufacturing Process",
+      "heroTitle": "How an <accent>EMINSA transformer</accent> is built",
+      "heroDescription": "From planning and design to final electrical testing, our manufacturing process is documented, controlled, and validated at every stage to ensure quality and compliance with IEEE/ANSI standards.",
+      "capabilities": {
+        "0": { "value": "500 kVA", "label": "Maximum Pole-Type Capacity" },
+        "1": { "value": "3,000 kVA", "label": "Maximum Pad Mounted Capacity" },
+        "2": { "value": "34.5 kV", "label": "Maximum Manufacturing Voltage" },
+        "3": { "value": "48–72 h", "label": "Average Manufacturing Time" }
+      },
+      "processBadge": "Manufacturing Process",
+      "processTitle": "9 stages, 1 reliable transformer",
+      "processDescription": "Each unit goes through a structured, controlled, and documented process with Control Plan verification at every station, from raw materials to labeling and dispatch.",
+      "steps": {
+        "0": {
+          "title": "Planning and Design",
+          "subtitle": "Electrical and mechanical design",
+          "badge": "Stage 1 of 9",
+          "description": "The process begins with the opening of the production order. The electrical design team defines all electrical characteristics of the transformer, and the mechanical design department develops its structural design based on those specifications. The software loads the complete model with the Bill of Materials for all supplies.",
+          "details": {
+            "0": "Opening of production order (Planning)",
+            "1": "Software: model loading and Bill of Materials with all supplies",
+            "2": "Electrical Design: complete electrical characteristics of the transformer",
+            "3": "Mechanical Design: structural design based on electrical specifications",
+            "4": "Design review vs. quality controls before proceeding"
+          }
+        },
+        "1": {
+          "title": "Raw Material Inspection and Winding",
+          "subtitle": "LV and HV Station",
+          "badge": "Stage 2 of 9",
+          "description": "Before starting the winding, a thorough review of raw materials is performed. Then insulating paper cutting and form manufacturing proceed, followed by low and high voltage winding with strict controls on number of turns, conductor mechanical tension, and interlayer insulation.",
+          "details": {
+            "0": "Raw material inspection: magnetic lamination thickness and grade",
+            "1": "Verification of copper/aluminum certificates and insulation integrity",
+            "2": "Insulating paper cutting and form manufacturing (dimensional precision ± tolerance per drawing)",
+            "3": "Low Voltage (LV) Winding: number of turns, conductor mechanical tension, interlayer insulation",
+            "4": "High Voltage (HV) Winding: same critical quality controls",
+            "5": "Verification of Control Plan compliance before proceeding"
+          }
+        },
+        "2": {
+          "title": "Magnetic Core Cutting and Assembly",
+          "subtitle": "Core cutting and assembly station",
+          "badge": "Stage 3 of 9",
+          "description": "The magnetic core is cut with controlled dimensional precision, verifying that burrs are below the permitted limit and that the lamination sequence is correct. Then the core is stacked and assembled with Step-Lap alignment, uniform compression, and specified clamping torque.",
+          "details": {
+            "0": "Magnetic Core Cutting: dimensional precision (± specified tolerance)",
+            "1": "Burrs < permitted limit and correct lamination sequence",
+            "2": "Core Stacking and Assembly: Step-Lap alignment",
+            "3": "Uniform compression and clamping torque per specification",
+            "4": "Verification of Control Plan compliance before proceeding"
+          }
+        },
+        "3": {
+          "title": "Coil Pressing and Drying",
+          "subtitle": "Transport, pressing, and oven",
+          "badge": "Stage 4 of 9",
+          "description": "Finished coils go through the Coil Pressing process, where the final measured height is controlled while respecting the nominal LV and HV dimensions. They then enter the drying oven at temperatures between 90 °C and 110 °C as designed for 12 hours, recording results in the oven temperature control checklist.",
+          "details": {
+            "0": "Coil Pressing Process: avoid applying excessive force, verify final measured height",
+            "1": "Respect nominal LV and HV height of assembled coil; final measurement documented",
+            "2": "Transport of pressed coil to oven",
+            "3": "Oven parameters validated before loading the coil",
+            "4": "Coil Drying: 90 °C – 110 °C as designed, 12 hours",
+            "5": "Recording of results upon exiting oven in the 'Oven Temperature Control, Operational Checklist'"
+          }
+        },
+        "4": {
+          "title": "Active Part Assembly (Pre-Tank)",
+          "subtitle": "Core insertion, flange, and connections",
+          "badge": "Stage 5 of 9",
+          "description": "The core is inserted and assembled into the coils with focus on axial centering, radial spacing, and mechanical fit. The flange is installed verifying the surface, gasket, and torque. Finally, external connections prior to tanking are made, correctly identifying terminals and respecting dielectric distances.",
+          "details": {
+            "0": "Core insertion and/or assembly into coils: axial centering, radial spacing, mechanical fit",
+            "1": "Flange Installation: surface inspection, gasket verification, torque control",
+            "2": "External Connections Prior to Tanking: correct terminal identification",
+            "3": "Torque on bolted connections and dielectric distances verified",
+            "4": "Verification of Control Plan compliance before proceeding"
+          }
+        },
+        "5": {
+          "title": "Tank Metalwork",
+          "subtitle": "Parallel process — cutting, welding, and painting",
+          "badge": "Stage 6 of 9",
+          "description": "In parallel with active part manufacturing, the metalwork department fabricates the tank through laser cutting of plates, forming/bending of walls and cover, complete structural welding, and surface preparation. After leak testing and dimensional inspection, the tank receives its paint system (primer, intermediate coat, and finish) and final mechanical inspection before being released by Quality.",
+          "details": {
+            "0": "Laser Machine Cutting: pre-start inspections (Kick-off Checklist), cutting and dimensional verification",
+            "1": "Forming / Bending: shaping of sidewalls, cover, and dimensional inspection",
+            "2": "Complete Welding: structural welds, nozzle flanges, and reinforcements",
+            "3": "Grinding and surface preparation: weld smoothing, burr removal, cleaning",
+            "4": "Leak Test: air pressure test, soapy solution inspection, retention time",
+            "5": "Dimensional Inspection: tank height, flange flatness, radiator alignment, bolt hole positions",
+            "6": "Surface Preparation: sandblasting / shot blasting, roughness and cleanliness verification",
+            "7": "Paint Process: primer application, intermediate coat, final coat, and curing time control",
+            "8": "Final Mechanical Inspection: visual, dimensional, paint thickness report, leak test approval, and Quality release"
+          }
+        },
+        "6": {
+          "title": "Tanking",
+          "subtitle": "Tank reception and tanking",
+          "badge": "Stage 7 of 9",
+          "description": "Once the tank is released by Quality (painted and cured), it is transported to the tanking area. The tanking process follows the EMOTIV 50 documentation step by step, integrating the complete active part inside the tank.",
+          "details": {
+            "0": "Tank Reception from Metalwork (painted, cured, and released by Quality)",
+            "1": "Transport of approved tank to the tanking area",
+            "2": "Tanking stand for transformers EMOTIV 50: step-by-step documentation",
+            "3": "Integration of the active part inside the tank",
+            "4": "Verification of Control Plan compliance"
+          }
+        },
+        "7": {
+          "title": "Oil Treatment and Vacuum Filling",
+          "subtitle": "Oil Treatment & Tank Filling",
+          "badge": "Stage 8 of 9",
+          "description": "The dielectric oil is filtered and vacuum is applied to the tanked transformer. The vacuum filling process ensures complete insulation impregnation and the absence of air bubbles. The Oil Filtered & VA Vacuum and Oil Filling Visual Aids are followed.",
+          "details": {
+            "0": "Oil Filtered: dielectric oil filtering and treatment",
+            "1": "VA Vacuum: vacuum application to the transformer before filling",
+            "2": "Oil Filling: vacuum filling for total insulation impregnation",
+            "3": "Following Visual Aids 'Oil Filtered & VA Vacuum and Oil Filling'",
+            "4": "Verification of Control Plan compliance before proceeding to testing"
+          }
+        },
+        "8": {
+          "title": "Electrical Testing, Final Inspection, and Dispatch",
+          "subtitle": "Testing, Inspection & Packaging",
+          "badge": "Stage 9 of 9",
+          "description": "Each transformer undergoes a complete electrical testing protocol per IEEE C57 at the testing station. Once results are approved (Pass), cabinet assembly, final inspection and packaging, and finally labeling and packaging for dispatch proceed.",
+          "details": {
+            "0": "Testing & Results: complete electrical tests per IEEE C57",
+            "1": "Verification of Control Plan compliance in testing",
+            "2": "Cabinet Assembly (approved by Control Plan)",
+            "3": "Final Inspection & Packaging: visual, dimensional, and finish inspection",
+            "4": "Labeling and Packaging: nameplate, packaging for transport and dispatch"
+          }
+        }
+      },
+      "qualityBadge": "Traceability and Control",
+      "qualityTitle": "Documented quality at every stage",
+      "qualityPoints": {
+        "0": "Control Plan verified at every stage of the process before proceeding",
+        "1": "Documented checklist upon exiting the drying oven ('Oven Temperature Control')",
+        "2": "Kickoff Checklist of inspections prior to laser cutting startup",
+        "3": "Leak Test before tank painting",
+        "4": "Complete dimensional inspection: height, flange flatness, radiator alignment",
+        "5": "Each transformer receives a unique serial number with complete process traceability",
+        "6": "IEEE C57 electrical test protocol delivered with each unit",
+        "7": "Formal Quality release before proceeding to final assembly and dispatch",
+        "8": "Visual Aids for the vacuum and dielectric oil filling process"
+      },
+      "ctaTitle": "Ready to quote your transformer?",
+      "ctaDescription": "Tell us your specifications and our technical team will prepare a customized proposal with your project's delivery timelines.",
+      "ctaRequestQuote": "Request a Quote",
+      "ctaViewCertifications": "View Certifications"
     }
   },
   "eicPage": {
@@ -4041,6 +4271,16 @@
       "moreInfo": "More Information",
       "callNow": "Call Now"
     },
+    "eyebrow": "RST Division · ETRYS",
+    "notFound": {
+      "title": "Page not found",
+      "description": "This page doesn't exist within ETRYS. Explore our remanufactured transformers and services.",
+      "etrysHome": "ETRYS Home",
+      "products": "Products",
+      "services": "Services",
+      "rental": "Rental",
+      "backToEtrys": "Back to ETRYS"
+    },
     "layout": {
       "home": "Home",
       "products": "Products",
@@ -4055,7 +4295,13 @@
       "viewAll": "View all",
       "closeMenu": "Close menu",
       "openMenu": "Open menu",
-      "requestQuote": "Request a Quote"
+      "requestQuote": "Request a Quote",
+      "submenu": {
+        "tipoPoste": "Pole-Type Transformers",
+        "padMounted": "Pad-Mounted Transformers",
+        "subestacion": "Substation Transformers"
+      },
+      "showSubmenu": "Show submenu for {name}"
     },
     "serviciosPage": {
       "badge": "Repair Services",
@@ -4104,6 +4350,7 @@
     },
     "productosPage": {
       "breadcrumb": "Products",
+      "pageTitle": "ETRYS Transformers",
       "heroTitle": "Remanufactured Transformers",
       "heroDescription": "Units restored under world-class standards. Immediate availability, competitive costs, and 18-month warranty.",
       "remanufacturedLabel": "Remanufactured Transformer",
@@ -4129,6 +4376,7 @@
     },
     "productDetailPage": {
       "breadcrumbProducts": "Products",
+      "etrysByEminsa": "ETRYS by EMINSA",
       "standards": "Standards",
       "requestQuote": "Request a Quote",
       "description": "Description",
@@ -4293,6 +4541,11 @@
     "recursosPage": {
       "breadcrumb": "Resources",
       "heroBadge": "Resource Center",
+      "fichasTecnicas": {
+        "breadcrumbRecursos": "Resources",
+        "title": "Technical Data Sheets",
+        "description": "RST product technical documentation"
+      },
       "heroTitle": "Resources & Documentation",
       "heroDescription": "Access data sheets, calculation tools, and useful documentation for the maintenance of your transformers.",
       "access": "Access",
@@ -5068,5 +5321,15 @@
       "title": "Resources",
       "description": "Technical documentation and resources"
     }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, the page you're looking for doesn't exist or has been moved. We invite you to explore our main sections.",
+    "eic": "International Brands",
+    "rst": "Remanufactured",
+    "mtn": "New USA",
+    "servicios": "Services",
+    "goHome": "Go to home",
+    "contactWhatsapp": "Contact via WhatsApp"
   }
 }

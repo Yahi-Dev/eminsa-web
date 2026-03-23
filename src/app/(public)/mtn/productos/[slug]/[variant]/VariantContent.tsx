@@ -29,6 +29,7 @@ interface Props {
 
 export default function VariantContent({ slug, variant: variantSlug }: Props) {
   const t = useTranslations("pages.mtn.variantDetail");
+  const tc = useTranslations("mtnConfig");
   const product = getProductBySlug(slug);
   const variant = getVariantBySlug(slug, variantSlug);
 
@@ -79,10 +80,10 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
             <Link href="/mtn/productos" className="hover:text-white transition-colors">{t("products")}</Link>
             <ChevronRight size={14} />
             <Link href={`/mtn/productos/${product.slug}`} className="hover:text-white transition-colors">
-              {product.shortName}
+              {tc(`products.${product.slug}.shortName`)}
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">{variant.name.replace(`Transformadores ${product.shortName} `, '')}</span>
+            <span className="text-white">{tc(`variants.${variant.id}.name`).replace(`${tc(`products.${product.slug}.name`)} `, '')}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -90,15 +91,15 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
                 <Zap size={16} />
-                <span className="text-sm font-medium">{product.shortName}</span>
+                <span className="text-sm font-medium">{tc(`products.${product.slug}.shortName`)}</span>
               </div>
 
               <h1 className="text-3xl lg:text-4xl font-bold">
-                {variant.name}
+                {tc(`variants.${variant.id}.name`)}
               </h1>
 
               <p className="text-xl text-white/80 leading-relaxed">
-                {variant.description}
+                {tc(`variants.${variant.id}.description`)}
               </p>
 
               {/* Quick specs */}
@@ -121,7 +122,7 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={getWhatsAppUrl(t("whatsappMessage", { product: variant.name }))}
+                  href={getWhatsAppUrl(t("whatsappMessage", { product: tc(`variants.${variant.id}.name`) }))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-semibold transition-colors border border-white/30"
@@ -138,7 +139,7 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black/30">
                 <Image
                   src={photos.main}
-                  alt={variant.name}
+                  alt={tc(`variants.${variant.id}.name`)}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
@@ -146,7 +147,7 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-[0.2em] uppercase opacity-80">
-                  {product.shortName}
+                  {tc(`products.${product.slug}.shortName`)}
                 </span>
               </div>
 
@@ -154,14 +155,14 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src={photos.side}
-                  alt="Proceso de manufactura"
+                  alt={t("photoLabels.manufacturingMTN")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-70">
-                  Manufactura MTN
+                  {t("photoLabels.manufacturingMTN")}
                 </span>
               </div>
             </div>
@@ -198,10 +199,10 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
                 {t("features")}
               </h2>
               <div className="space-y-3">
-                {variant.features.map((feature, idx) => (
+                {variant.features.map((_, idx) => (
                   <div key={idx} className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl">
                     <CheckCircle2 size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-700">{tc(`variants.${variant.id}.features.${idx}`)}</span>
                   </div>
                 ))}
               </div>
@@ -217,10 +218,10 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
             {t("applications")}
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {variant.applications.map((app, idx) => (
+            {variant.applications.map((_, idx) => (
               <div key={idx} className="flex items-center gap-3 bg-white p-4 rounded-xl shadow-sm">
                 <div className="w-2 h-2 bg-[#00269b] rounded-full" />
-                <span className="text-gray-700">{app}</span>
+                <span className="text-gray-700">{tc(`variants.${variant.id}.applications.${idx}`)}</span>
               </div>
             ))}
           </div>

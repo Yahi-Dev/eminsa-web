@@ -69,7 +69,7 @@ export default function ArticulosPage() {
               <button
                 key={cat}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  cat === "Todas" 
+                  cat === categories[0]
                     ? "bg-[#00269b] text-white" 
                     : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                 }`}

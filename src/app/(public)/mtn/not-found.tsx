@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
-import { Home, ArrowRight, Package, Shield, Award, FolderOpen } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Home, ArrowRight, Package, Shield, FolderOpen } from "lucide-react";
 
 export default function MTNNotFound() {
+  const t = useTranslations("mtnPage");
+
   return (
     <div className="min-h-[70vh] flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
@@ -18,10 +23,10 @@ export default function MTNNotFound() {
         </span>
 
         <h1 className="text-xl md:text-2xl font-bold text-gray-900 mt-4 mb-2">
-          Pagina no encontrada
+          {t("notFound.title")}
         </h1>
         <p className="text-gray-500 mb-8">
-          Esta pagina no existe dentro de MTN. Explora nuestros transformadores nuevos fabricados en USA.
+          {t("notFound.description")}
         </p>
 
         <div className="grid grid-cols-2 gap-3 mb-8">
@@ -30,28 +35,28 @@ export default function MTNNotFound() {
             className="flex items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-[#00269b]/30 hover:shadow-md transition-all text-sm font-medium text-gray-700"
           >
             <Home size={16} className="text-[#00269b]" />
-            Inicio MTN
+            {t("notFound.home")}
           </Link>
           <Link
             href="/mtn/productos"
             className="flex items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-[#00269b]/30 hover:shadow-md transition-all text-sm font-medium text-gray-700"
           >
             <Package size={16} className="text-[#00269b]" />
-            Productos
+            {t("notFound.products")}
           </Link>
           <Link
             href="/mtn/normativa"
             className="flex items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-[#00269b]/30 hover:shadow-md transition-all text-sm font-medium text-gray-700"
           >
             <Shield size={16} className="text-[#00269b]" />
-            Normativa
+            {t("notFound.standards")}
           </Link>
           <Link
             href="/mtn/recursos"
             className="flex items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-[#00269b]/30 hover:shadow-md transition-all text-sm font-medium text-gray-700"
           >
             <FolderOpen size={16} className="text-[#00269b]" />
-            Recursos
+            {t("notFound.resources")}
           </Link>
         </div>
 
@@ -59,7 +64,7 @@ export default function MTNNotFound() {
           href="/mtn"
           className="inline-flex items-center gap-2 px-6 py-3 bg-[#00269b] hover:bg-[#001a6e] text-white font-semibold rounded-xl transition-colors"
         >
-          Volver a MTN
+          {t("notFound.backToMtn")}
           <ArrowRight size={16} />
         </Link>
       </div>

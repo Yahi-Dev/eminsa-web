@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Home, ArrowRight, Package, Wrench, Truck, FolderOpen } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function EtrysNotFound() {
+  const t = useTranslations("etrysPage");
+
   return (
     <div className="min-h-[70vh] flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
@@ -18,10 +23,10 @@ export default function EtrysNotFound() {
         </span>
 
         <h1 className="text-xl md:text-2xl font-bold text-gray-900 mt-4 mb-2">
-          Pagina no encontrada
+          {t("notFound.title")}
         </h1>
         <p className="text-gray-500 mb-8">
-          Esta pagina no existe dentro de ETRYS. Explora nuestros transformadores remanufacturados y servicios.
+          {t("notFound.description")}
         </p>
 
         <div className="grid grid-cols-2 gap-3 mb-8">
@@ -30,28 +35,28 @@ export default function EtrysNotFound() {
             className="flex items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-[#0099ce]/30 hover:shadow-md transition-all text-sm font-medium text-gray-700"
           >
             <Home size={16} className="text-[#0099ce]" />
-            Inicio ETRYS
+            {t("notFound.etrysHome")}
           </Link>
           <Link
             href="/etrys/productos"
             className="flex items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-[#0099ce]/30 hover:shadow-md transition-all text-sm font-medium text-gray-700"
           >
             <Package size={16} className="text-[#0099ce]" />
-            Productos
+            {t("notFound.products")}
           </Link>
           <Link
             href="/etrys/servicios"
             className="flex items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-[#0099ce]/30 hover:shadow-md transition-all text-sm font-medium text-gray-700"
           >
             <Wrench size={16} className="text-[#0099ce]" />
-            Servicios
+            {t("notFound.services")}
           </Link>
           <Link
             href="/etrys/alquiler"
             className="flex items-center gap-2 p-4 rounded-xl border border-gray-200 hover:border-[#0099ce]/30 hover:shadow-md transition-all text-sm font-medium text-gray-700"
           >
             <Truck size={16} className="text-[#0099ce]" />
-            Alquiler
+            {t("notFound.rental")}
           </Link>
         </div>
 
@@ -59,7 +64,7 @@ export default function EtrysNotFound() {
           href="/etrys"
           className="inline-flex items-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-colors"
         >
-          Volver a ETRYS
+          {t("notFound.backToEtrys")}
           <ArrowRight size={16} />
         </Link>
       </div>

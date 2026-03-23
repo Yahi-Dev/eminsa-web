@@ -57,9 +57,9 @@ function useEtrysNavItems(): NavItem[] {
     {
       name: t("layout.products"), href: "/etrys/productos", icon: Package,
       submenu: [
-        { name: "Transformadores Tipo Poste", href: "/etrys/productos/tipo-poste", description: "15 – 500 kVA" },
-        { name: "Transformadores Pad-Mounted", href: "/etrys/productos/pad-mounted", description: "30 – 3,000 kVA" },
-        { name: "Transformadores de Subestación", href: "/etrys/productos/subestacion", description: "Hasta 3,000 kVA" },
+        { name: t("layout.submenu.tipoPoste"), href: "/etrys/productos/tipo-poste", description: "15 – 500 kVA" },
+        { name: t("layout.submenu.padMounted"), href: "/etrys/productos/pad-mounted", description: "30 – 3,000 kVA" },
+        { name: t("layout.submenu.subestacion"), href: "/etrys/productos/subestacion", description: "Hasta 3,000 kVA" },
       ],
     },
     {
@@ -340,7 +340,7 @@ export default function EtrysLayout({
                             <button
                               onClick={() => toggleSubmenu(item.name)}
                               className="p-2 rounded-lg hover:bg-gray-50 text-gray-600"
-                              aria-label={`Mostrar submenú de ${item.name}`}
+                              aria-label={t("layout.showSubmenu", { name: item.name })}
                             >
                               <ChevronDown 
                                 size={16} 

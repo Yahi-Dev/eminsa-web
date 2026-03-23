@@ -27,7 +27,6 @@ export default function MTNHeroSection() {
   const [active, setActive] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
-  const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const DURATION = 5000;
 
   const TAB_LABELS = [
@@ -81,34 +80,31 @@ export default function MTNHeroSection() {
     },
   ];
 
-  const resetProgress = useCallback(() => {
-    setProgress(0);
-    if (progressRef.current) clearInterval(progressRef.current);
-    progressRef.current = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 100) return 100;
-        return p + 100 / (DURATION / 50);
-      });
-    }, 50);
-  }, []);
+  const startTimeRef = useRef<number>(Date.now());
 
   const next = useCallback(() => {
     setActive((prev) => (prev + 1) % slides.length);
   }, [slides.length]);
 
+  // Auto-play timer
   useEffect(() => {
     if (!isAutoPlaying) return;
-    resetProgress();
+    startTimeRef.current = Date.now();
     const timer = setInterval(next, DURATION);
-    return () => {
-      clearInterval(timer);
-      if (progressRef.current) clearInterval(progressRef.current);
-    };
-  }, [isAutoPlaying, next, resetProgress]);
+    return () => clearInterval(timer);
+  }, [isAutoPlaying, next, active]);
 
+  // Progress bar animation via ref (no setState in effect)
   useEffect(() => {
-    if (isAutoPlaying) resetProgress();
-  }, [active, isAutoPlaying, resetProgress]);
+    if (!isAutoPlaying) return;
+    startTimeRef.current = Date.now();
+    const progressTimer = setInterval(() => {
+      const elapsed = Date.now() - startTimeRef.current;
+      const pct = Math.min((elapsed / DURATION) * 100, 100);
+      setProgress(pct);
+    }, 50);
+    return () => clearInterval(progressTimer);
+  }, [isAutoPlaying, active]);
 
   const handleTabClick = (index: number) => {
     setActive(index);
@@ -139,7 +135,7 @@ export default function MTNHeroSection() {
           className="mb-10"
         >
           <MarqueeEyebrow text={`${t("mtn.sectionLabel")}`} color={accent} />
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#00269b] leading-none">
+          <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-[#00269b] leading-none">
             {t("mtn.title")}{" "}
             <span style={{ color: accent }} className="transition-colors duration-700">
               {t("mtn.titleAccent")}

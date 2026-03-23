@@ -28,8 +28,27 @@ import React, { useState, useRef } from "react";
 import { useTranslations } from "next-intl";
 import RemanufactureProcessModal from "@/features/home/components/etrys/RemanufactureProcessModal";
 
+const SPEC_LABEL_KEY_MAP: Record<string, string> = {
+  "Potencia": "power",
+  "Voltaje Primario": "primaryVoltage",
+  "Fases": "phases",
+  "Frecuencia": "frequency",
+  "Refrigeración": "cooling",
+  "Normas": "standards",
+};
+
+const SPEC_VALUE_KEY_MAP: Record<string, string> = {
+  "Potencia": "potencia",
+  "Voltaje Primario": "voltaje",
+  "Fases": "fases",
+  "Frecuencia": "frecuencia",
+  "Refrigeración": "refrigeracion",
+  "Normas": "normas",
+};
+
 function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[] }) {
   const t = useTranslations("etrysPage.productDetailPage");
+  const tc = useTranslations("etrysConfig");
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const current = products[index];
@@ -63,7 +82,7 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
             <div className="relative w-32 h-32 rounded-xl overflow-hidden bg-gray-200 shrink-0">
               <Image
                 src={current.image}
-                alt={current.name}
+                alt={tc(`products.${current.slug}.name`)}
                 fill
                 sizes="288px"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -71,12 +90,12 @@ function OtherProductsCarousel({ products }: { products: RemanufacturedProduct[]
             </div>
             <div className="flex-1 min-w-0">
               <span className="text-xs font-semibold text-[#0099ce] uppercase tracking-wider">
-                ETRYS by EMINSA
+                {t("etrysByEminsa")}
               </span>
               <h3 className="font-bold text-gray-900 group-hover:text-[#0099ce] transition-colors text-lg mt-1">
-                {current.shortName}
+                {tc(`products.${current.slug}.shortName`)}
               </h3>
-              <p className="text-sm text-gray-600 mt-1 line-clamp-2">{current.description}</p>
+              <p className="text-sm text-gray-600 mt-1 line-clamp-2">{tc(`products.${current.slug}.description`)}</p>
               <div className="flex items-center gap-4 mt-3">
                 <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full font-medium">
                   {current.powerRange}
@@ -132,6 +151,7 @@ export default function EtrysProductoDetailPage({
   params: Promise<{ slug: string }>; // Parámetro como Promise
 }) {
   const t = useTranslations("etrysPage.productDetailPage");
+  const tc = useTranslations("etrysConfig");
   // Desenvolver params con React.use()
   const { slug } = React.use(params);
 
@@ -163,7 +183,7 @@ export default function EtrysProductoDetailPage({
               {t("breadcrumbProducts")}
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">{product.shortName}</span>
+            <span className="text-white">{tc(`products.${slug}.shortName`)}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -173,23 +193,27 @@ export default function EtrysProductoDetailPage({
               animate={{ opacity: 1, x: 0 }}
             >
               <span className="inline-block px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
-                ETRYS by EMINSA
+                {t("etrysByEminsa")}
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                {product.name}
+                {tc(`products.${slug}.name`)}
               </h1>
               <p className="text-lg text-white/90 mb-6">
-                {product.description}
+                {tc(`products.${slug}.description`)}
               </p>
 
               {/* Quick Specs */}
               <div className="grid grid-cols-2 gap-4 mb-6">
-                {product.specs.slice(0, 4).map((spec) => (
-                  <div key={spec.label} className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                    <span className="text-sm text-white/70 block">{spec.label}</span>
-                    <span className="font-bold">{spec.value}</span>
-                  </div>
-                ))}
+                {product.specs.slice(0, 4).map((spec) => {
+                  const labelKey = SPEC_LABEL_KEY_MAP[spec.label];
+                  const valueKey = SPEC_VALUE_KEY_MAP[spec.label];
+                  return (
+                    <div key={spec.label} className="bg-white/10 backdrop-blur-sm rounded-xl p-4">
+                      <span className="text-sm text-white/70 block">{labelKey ? tc(`specLabels.${labelKey}`) : spec.label}</span>
+                      <span className="font-bold">{valueKey ? tc(`products.${slug}.specs.${valueKey}`) : spec.value}</span>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Standards */}
@@ -232,7 +256,7 @@ export default function EtrysProductoDetailPage({
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-white/10">
                 <Image
                   src={product.image}
-                  alt={product.name}
+                  alt={tc(`products.${slug}.name`)}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
@@ -260,8 +284,8 @@ export default function EtrysProductoDetailPage({
                   {t("description")}
                 </h2>
                 <div className="prose prose-lg max-w-none text-gray-600">
-                  {product.fullDescription.map((para, i) => (
-                    <p key={i} className="mb-4">{para}</p>
+                  {product.fullDescription.map((_para, i) => (
+                    <p key={i} className="mb-4">{tc(`products.${slug}.fullDescription.${i}`)}</p>
                   ))}
                 </div>
               </motion.div>
@@ -276,10 +300,10 @@ export default function EtrysProductoDetailPage({
                   {t("features")}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-3">
-                  {product.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-3 bg-white rounded-xl p-4 shadow-sm">
+                  {product.features.map((_feature, i) => (
+                    <div key={i} className="flex items-start gap-3 bg-white rounded-xl p-4 shadow-sm">
                       <CheckCircle2 size={20} className="text-[#0099ce] shrink-0 mt-0.5" />
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-gray-700">{tc(`products.${slug}.features.${i}`)}</span>
                     </div>
                   ))}
                 </div>
@@ -295,10 +319,10 @@ export default function EtrysProductoDetailPage({
                   {t("applications")}
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {product.applications.map((app) => (
-                    <div key={app} className="flex items-center gap-2 text-gray-700">
+                  {product.applications.map((_app, i) => (
+                    <div key={i} className="flex items-center gap-2 text-gray-700">
                       <div className="w-2 h-2 rounded-full bg-[#0099ce]" />
-                      {app}
+                      {tc(`products.${slug}.applications.${i}`)}
                     </div>
                   ))}
                 </div>
@@ -443,6 +467,7 @@ function ProcessCarousel({
   viewDetailLabel: string;
   title: string;
 }) {
+  const tc = useTranslations("etrysConfig");
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -500,9 +525,9 @@ function ProcessCarousel({
               {step.id}
             </div>
             <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-[#0099ce] transition-colors">
-              {step.shortTitle}
+              {tc(`process.${step.id}.shortTitle`)}
             </h3>
-            <p className="text-sm text-gray-600">{step.description}</p>
+            <p className="text-sm text-gray-600">{tc(`process.${step.id}.description`)}</p>
             <p className="text-xs text-[#0099ce] font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
               {viewDetailLabel}
             </p>

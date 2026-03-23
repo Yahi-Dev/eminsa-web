@@ -58,9 +58,9 @@ function useMtnNavItems(): NavItem[] {
       href: "/mtn/productos",
       icon: Package,
       submenu: [
-        { name: "Transformadores Tipo Poste", href: "/mtn/productos/tipo-poste" },
-        { name: "Transformadores Pad Mounted", href: "/mtn/productos/pad-mounted" },
-        { name: "Transformadores de Subestación", href: "/mtn/productos/subestacion" },
+        { name: t("layout.submenu.tipoPoste"), href: "/mtn/productos/tipo-poste" },
+        { name: t("layout.submenu.padMounted"), href: "/mtn/productos/pad-mounted" },
+        { name: t("layout.submenu.subestacion"), href: "/mtn/productos/subestacion" },
       ],
     },
     {
@@ -359,7 +359,7 @@ export default function MTNLayout({
                             <button
                               onClick={() => toggleSubmenu(item.name)}
                               className="p-2 rounded-lg hover:bg-gray-50 text-gray-600"
-                              aria-label={`Mostrar submenú de ${item.name}`}
+                              aria-label={t("layout.showSubmenu", { name: item.name })}
                             >
                               <ChevronDown 
                                 size={16} 

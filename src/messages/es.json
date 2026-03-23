@@ -1061,7 +1061,11 @@
         "calculateKva": "Calcular kVA",
         "interestedIn": "¿Interesado en {product}?",
         "contactUsForQuote": "Contáctenos para obtener una cotización personalizada o resolver cualquier duda técnica.",
-        "whatsappMessage": "Hola, me interesa información sobre {product}"
+        "whatsappMessage": "Hola, me interesa información sobre {product}",
+        "photoLabels": {
+          "manufacturing": "Manufactura",
+          "testing": "Pruebas"
+        }
       },
       "variantDetail": {
         "home": "Inicio",
@@ -1080,7 +1084,10 @@
         "installation": "Instalación",
         "calculator": "Calculadora",
         "interestedInProduct": "¿Interesado en este producto?",
-        "contactUsForQuote": "Contáctenos para obtener una cotización personalizada."
+        "contactUsForQuote": "Contáctenos para obtener una cotización personalizada.",
+        "photoLabels": {
+          "manufacturingMTN": "Manufactura MTN"
+        }
       },
       "certificaciones": {
         "breadcrumb": {
@@ -1094,6 +1101,13 @@
         },
         "issuedBy": "Emitido por",
         "certificationLabel": "Certificación",
+        "standardCompliance": "Cumplimiento de Estándar",
+        "ourCertifications": "Nuestras Certificaciones",
+        "stats": {
+          "certificationsAndStandards": "Certificaciones y Normas",
+          "appliedStandards": "Normas Aplicadas",
+          "yearsExperience": "Años de Experiencia"
+        },
         "benefitsTitle": "Beneficios que Garantiza:",
         "validUntil": "Válido hasta:",
         "certs": {
@@ -1178,6 +1192,7 @@
         "hero": {
           "badge": "Estándares de Calidad",
           "title": "Normativas",
+          "titleFull": "Normativas y Eficiencias",
           "description": "Nuestros transformadores cumplen con los estándares internacionales más exigentes, garantizando calidad, seguridad y eficiencia energética."
         },
         "labels": {
@@ -1272,6 +1287,24 @@
             "demandFactor": "Factor de demanda incluido",
             "cta": "Usar Calculadora",
             "calculateIdeal": "Calcule la capacidad ideal"
+          },
+          "resources": {
+            "datasheets": {
+              "name": "Fichas Técnicas",
+              "description": "Especificaciones detalladas de todos nuestros productos para consulta y descarga."
+            },
+            "warranty": {
+              "name": "Garantía",
+              "description": "Información sobre cobertura, términos y condiciones de garantía de nuestros productos."
+            },
+            "manual": {
+              "name": "Manual de Mantenimiento",
+              "description": "Guías completas para el cuidado, mantenimiento preventivo y correctivo de transformadores."
+            },
+            "calculator": {
+              "name": "Calculadora kVA",
+              "description": "Herramienta interactiva para calcular la capacidad de transformador que necesita su proyecto."
+            }
           },
           "cta": {
             "title": "¿No encuentra lo que busca?",
@@ -2010,7 +2043,8 @@
           "2": "Bajo nivel de ruido",
           "3": "Alta eficiencia energética",
           "4": "Fácil instalación y mantenimiento",
-          "5": "Protección contra sobretensiones"
+          "5": "Protección contra sobretensiones",
+          "6": "Tipo de enfriamiento: ONAN"
         }
       },
       "pad-mounted": {
@@ -2033,7 +2067,8 @@
           "3": "Protección contra vandalismo",
           "4": "Bajo perfil visual",
           "5": "Fácil acceso para mantenimiento",
-          "6": "Compatible con redes subterráneas"
+          "6": "Compatible con redes subterráneas",
+          "7": "Tipo de enfriamiento: ONAN"
         }
       },
       "subestacion": {
@@ -2666,7 +2701,8 @@
       "advantages": {
         "0": {
           "title": "Experiencia",
-          "description": "Más de 50 años especializados en transformadores eléctricos de distribución."
+          "description": "Más de 50 años especializados en transformadores eléctricos de distribución.",
+          "highlight": "50+ años"
         },
         "1": {
           "title": "Atención Personalizada",
@@ -2674,26 +2710,31 @@
         },
         "2": {
           "title": "Garantía Líder",
-          "description": "18 meses de garantía en todos nuestros trabajos de reparación y remanufactura."
+          "description": "18 meses de garantía en todos nuestros trabajos de reparación y remanufactura.",
+          "highlight": "18 meses"
         }
       }
     },
     "remanufacturedAdvantages": {
       "speed": {
         "title": "Velocidad",
-        "description": "Disponibilidad inmediata para su proyecto"
+        "description": "Disponibilidad inmediata para su proyecto",
+        "highlight": "Entrega Rápida"
       },
       "savings": {
         "title": "Ahorro",
-        "description": "Menor costo que un equipo nuevo con la misma calidad"
+        "description": "Menor costo que un equipo nuevo con la misma calidad",
+        "highlight": "Hasta 40%"
       },
       "reliability": {
         "title": "Confiabilidad",
-        "description": "Cumplimiento total con normas IEEE C57 y ANSI"
+        "description": "Cumplimiento total con normas IEEE C57 y ANSI",
+        "highlight": "Certificado"
       },
       "environment": {
         "title": "Impacto Ambiental",
-        "description": "Reducción de residuos y reutilización de materiales"
+        "description": "Reducción de residuos y reutilización de materiales",
+        "highlight": "Eco-Friendly"
       }
     },
     "rental": {
@@ -3408,6 +3449,11 @@
     }
   },
   "mtnPage": {
+    "photoLabels": {
+      "manufacturing": "Manufactura",
+      "testing": "Pruebas",
+      "manufacturingMTN": "Manufactura MTN"
+    },
     "hero": {
       "badge": "Fabricación 100% Nacional",
       "title": "Manufactura Transformadores Nuevos",
@@ -3434,12 +3480,23 @@
       "description": "Cumplimos con los más altos estándares internacionales de fabricación y eficiencia",
       "normativas": "Normativas",
       "certificaciones": "Certificaciones",
-      "viewAllStandards": "Ver todas las normativas"
+      "viewAllStandards": "Ver todas las normativas",
+      "normativasAndEfficiencies": "Normativas y Eficiencias"
     },
     "manufacturing": {
       "badge": "Planta de Manufactura",
       "title": "Fabricado en República Dominicana",
-      "viewProcess": "Ver proceso completo →"
+      "viewProcess": "Ver proceso completo →",
+      "photoLabels": {
+        "winding": "Bobinado",
+        "metalwork": "Metalmecánica",
+        "inTank": "En Tanque",
+        "testLab": "Laboratorio de Pruebas",
+        "laserCutting": "Corte Láser",
+        "assembly": "Ensamble",
+        "highVoltageTesting": "Pruebas de Alta Tensión",
+        "eminsaTeam": "Equipo EMINSA"
+      }
     },
     "resources": {
       "badge": "Herramientas y Documentación",
@@ -3455,6 +3512,15 @@
       "requestQuote": "Solicitar Cotización",
       "callNow": "Llamar Ahora"
     },
+    "notFound": {
+      "title": "Pagina no encontrada",
+      "description": "Esta pagina no existe dentro de MTN. Explora nuestros transformadores nuevos fabricados en USA.",
+      "home": "Inicio MTN",
+      "products": "Productos",
+      "standards": "Normativa",
+      "resources": "Recursos",
+      "backToMtn": "Volver a MTN"
+    },
     "layout": {
       "home": "Inicio MTN",
       "products": "Productos",
@@ -3465,7 +3531,13 @@
       "quotes": "Cotizaciones",
       "viewAll": "Ver todos",
       "closeMenu": "Cerrar menú",
-      "openMenu": "Abrir menú"
+      "openMenu": "Abrir menú",
+      "showSubmenu": "Mostrar submenú de {name}",
+      "submenu": {
+        "tipoPoste": "Transformadores Tipo Poste",
+        "padMounted": "Transformadores Pad Mounted",
+        "subestacion": "Transformadores de Subestación"
+      }
     },
     "productsPage": {
       "pageTitle": "Transformadores",
@@ -3505,7 +3577,8 @@
       "calculateKva": "Calcular kVA",
       "interestedIn": "¿Interesado en {product}?",
       "contactUs": "Contáctenos para obtener una cotización personalizada o resolver cualquier duda técnica.",
-      "notFoundTitle": "Producto no encontrado"
+      "notFoundTitle": "Producto no encontrado",
+      "whatsappMessage": "Hola, me interesa información sobre {product}"
     },
     "normativaPage": {
       "home": "Inicio",
@@ -3723,6 +3796,163 @@
       "errorDescribeRequest": "Describa su solicitud",
       "errorSubmit": "Error al enviar la solicitud",
       "errorConnection": "Error de conexión. Intente nuevamente."
+    },
+    "manufacturaPage": {
+      "breadcrumb": "Manufactura",
+      "heroBadge": "EMOTIV-EMINSA Manufacturing Process",
+      "heroTitle": "Así se fabrica un <accent>transformador EMINSA</accent>",
+      "heroDescription": "Desde la planificación y el diseño hasta las pruebas eléctricas finales, nuestro proceso de manufactura está documentado, controlado y validado en cada etapa para garantizar calidad y cumplimiento con los estándares IEEE/ANSI.",
+      "capabilities": {
+        "0": { "value": "500 kVA", "label": "Capacidad máxima Tipo Poste" },
+        "1": { "value": "3,000 kVA", "label": "Capacidad máxima Pad Mounted" },
+        "2": { "value": "34.5 kV", "label": "Voltaje máximo de fabricación" },
+        "3": { "value": "48–72 h", "label": "Tiempo promedio de fabricación" }
+      },
+      "processBadge": "Proceso de Manufactura",
+      "processTitle": "9 etapas, 1 transformador confiable",
+      "processDescription": "Cada unidad pasa por un proceso estructurado, controlado y documentado con verificación de Plan de Control en cada estación, desde la materia prima hasta el etiquetado y despacho.",
+      "steps": {
+        "0": {
+          "title": "Planificación y Diseño",
+          "subtitle": "Diseño eléctrico y mecánico",
+          "badge": "Etapa 1 de 9",
+          "description": "El proceso comienza con la apertura de la orden de producción. El equipo de diseño eléctrico define todas las características eléctricas del transformador, y el departamento de diseño mecánico desarrolla su diseño estructural a partir de esas especificaciones. El software carga el modelo completo con el Bill of Materials de todos los insumos.",
+          "details": {
+            "0": "Apertura de orden de producción (Planificación)",
+            "1": "Software: carga del modelo y Bill of Materials con todos los insumos",
+            "2": "Diseño Eléctrico: características eléctricas completas del transformador",
+            "3": "Diseño Mecánico: diseño estructural basado en especificaciones eléctricas",
+            "4": "Revisión del diseño vs. controles de calidad antes de continuar"
+          }
+        },
+        "1": {
+          "title": "Inspección de Materia Prima y Bobinado",
+          "subtitle": "Estación BT y AT",
+          "badge": "Etapa 2 de 9",
+          "description": "Antes de iniciar el bobinado se realiza una revisión exhaustiva de la materia prima. Luego se procede al corte de papeles aislantes y manufactura de formaletas, seguido del bobinado de devanados de baja y alta tensión con controles estrictos de número de vueltas, tensión mecánica del conductor y aislamiento intercapas.",
+          "details": {
+            "0": "Inspección de materia prima: espesor y grado de lámina magnética",
+            "1": "Verificación de certificados de cobre / aluminio e integridad del aislamiento",
+            "2": "Corte de papeles aislantes y manufactura de formaleta (precisión dimensional ± tolerancia según plano)",
+            "3": "Bobinado Baja Tensión (BT): número de vueltas, tensión mecánica del conductor, aislamiento intercapas",
+            "4": "Bobinado Alta Tensión (AT): mismos controles críticos de calidad",
+            "5": "Verificación de cumplimiento del Plan de Control antes de continuar"
+          }
+        },
+        "2": {
+          "title": "Corte y Armado del Núcleo Magnético",
+          "subtitle": "Estación de corte y ensamble de núcleo",
+          "badge": "Etapa 3 de 9",
+          "description": "El núcleo magnético se corta con precisión dimensional controlada, verificando que las rebabas estén por debajo del límite permitido y que la secuencia de laminación sea correcta. Luego se realiza el apilado y armado del núcleo con alineación Step-Lap, compresión uniforme y torque de sujeción especificado.",
+          "details": {
+            "0": "Corte de Núcleo Magnético: precisión dimensional (± tolerancia especificada)",
+            "1": "Rebabas < límite permitido y secuencia correcta de laminación",
+            "2": "Apilado y Armado del Núcleo: alineación Step-Lap",
+            "3": "Compresión uniforme y torque de sujeción según especificación",
+            "4": "Verificación de cumplimiento del Plan de Control antes de continuar"
+          }
+        },
+        "3": {
+          "title": "Prensado y Secado de Bobinas",
+          "subtitle": "Transporte, prensado y horno",
+          "badge": "Etapa 4 de 9",
+          "description": "Las bobinas terminadas pasan por el proceso de prensado (Coil Pressing), donde se controla la altura final medida respetando las dimensiones nominales de BT y AT. Luego ingresan al horno de secado a temperatura entre 90 °C y 110 °C según diseño durante 12 horas, registrando los resultados en el checklist de control de temperatura del horno.",
+          "details": {
+            "0": "Coil Pressing Process: evitar aplicar fuerza excesiva, verificar altura final medida",
+            "1": "Respetar altura nominal de BT y AT de la bobina ensamblada; medición final documentada",
+            "2": "Transporte de bobina prensada al horno",
+            "3": "Parámetros del Horno validados antes de cargar la bobina",
+            "4": "Secado de Bobina (Coil Drying): 90 °C – 110 °C según diseño, 12 horas",
+            "5": "Registro de resultados al salir del horno en el checklist 'Oven Temperature Control, Operational Checklist'"
+          }
+        },
+        "4": {
+          "title": "Ensamble de Parte Activa (Pre-Tanque)",
+          "subtitle": "Inserción de núcleo, brida y conexiones",
+          "badge": "Etapa 5 de 9",
+          "description": "El núcleo se inserta y ensambla en las bobinas con enfoque en centrado axial, espaciamientos radiales y ajuste mecánico. Se instala la brida verificando la superficie, la junta (gasket) y el torque. Finalmente se realizan las conexiones externas previas al entanque, identificando correctamente los terminales y respetando las distancias dieléctricas.",
+          "details": {
+            "0": "Inserción y/o ensamble del núcleo en las bobinas: centrado axial, espaciamientos radiales, ajuste mecánico",
+            "1": "Instalación de Brida: inspección de superficie, verificación de junta (Gasket), control de torque",
+            "2": "Conexiones Externas Previas al EnTanque: identificación correcta de terminales",
+            "3": "Torque en conexiones atornilladas y distancias dieléctricas verificadas",
+            "4": "Verificación de cumplimiento del Plan de Control antes de continuar"
+          }
+        },
+        "5": {
+          "title": "Metalmecánica del Tanque",
+          "subtitle": "Proceso paralelo — corte, soldadura y pintura",
+          "badge": "Etapa 6 de 9",
+          "description": "En paralelo con la manufactura de la parte activa, el departamento de metalmecánica fabrica el tanque mediante corte láser de planchas, formado/doblado de paredes y tapa, soldadura estructural completa y preparación de superficie. Después de la prueba de hermeticidad e inspección dimensional, el tanque recibe su sistema de pintura (primer, capa intermedia y acabado) y la inspección mecánica final antes de ser liberado por Calidad.",
+          "details": {
+            "0": "Corte con Máquina Láser: inspecciones previas al arranque (Kick-off Checklist), corte y verificación dimensional",
+            "1": "Forming / Bending: conformado de paredes laterales, tapa e inspección dimensional",
+            "2": "Soldadura Completa: soldaduras estructurales, bridas de boquillas y refuerzos",
+            "3": "Grinding y preparación de superficie: alisado de soldaduras, eliminación de rebabas, limpieza",
+            "4": "Prueba de Hermeticidad (Leak Test): prueba de presión de aire, inspección con solución jabonosa, tiempo de retención",
+            "5": "Inspección Dimensional: altura del tanque, planitud de brida, alineación de radiadores, posición de orificios de pernos",
+            "6": "Preparación de Superficie: sandblasting / granallado, verificación de rugosidad y limpieza",
+            "7": "Proceso de Pintura: aplicación de primer, capa intermedia, capa final y control de tiempo de curado",
+            "8": "Inspección Mecánica Final: visual, dimensional, reporte de espesor de pintura, aprobación del leak test y liberación por Calidad"
+          }
+        },
+        "6": {
+          "title": "EnTanque",
+          "subtitle": "Recepción del tanque y tanqueo",
+          "badge": "Etapa 7 de 9",
+          "description": "Una vez liberado el tanque por Calidad (pintado y curado), se transporta al área de tanqueo. El proceso de tanqueo sigue paso a paso la documentación del EMOTIV 50, integrando la parte activa completa dentro del tanque.",
+          "details": {
+            "0": "Recepción del Tanque desde Metalmecánica (pintado, curado y liberado por Calidad)",
+            "1": "Transporte del tanque aprobado hacia el área de tanqueo",
+            "2": "Tanking stand for transformers EMOTIV 50: paso a paso de la documentación",
+            "3": "Integración de la parte activa dentro del tanque",
+            "4": "Verificación de cumplimiento del Plan de Control"
+          }
+        },
+        "7": {
+          "title": "Tratamiento de Aceite y Llenado al Vacío",
+          "subtitle": "Oil Treatment & Tank Filling",
+          "badge": "Etapa 8 de 9",
+          "description": "El aceite dieléctrico se filtra y se aplica vacío al transformador ya tanqueado. El proceso de llenado al vacío garantiza la impregnación completa del aislamiento y la ausencia de burbujas de aire. Se siguen las Visual Aids del proceso Oil Filtered & VA Vacuum and Oil Filling.",
+          "details": {
+            "0": "Oil Filtered: filtrado y tratamiento del aceite dieléctrico",
+            "1": "VA Vacuum: aplicación de vacío al transformador antes del llenado",
+            "2": "Oil Filling: llenado al vacío para impregnación total del aislamiento",
+            "3": "Seguimiento de Visual Aids 'Oil Filtered & VA Vacuum and Oil Filling'",
+            "4": "Verificación de cumplimiento del Plan de Control antes de pasar a pruebas"
+          }
+        },
+        "8": {
+          "title": "Pruebas Eléctricas, Inspección Final y Despacho",
+          "subtitle": "Testing, Inspection & Packaging",
+          "badge": "Etapa 9 de 9",
+          "description": "Cada transformador pasa por un protocolo completo de pruebas eléctricas según IEEE C57 en la estación de testing. Una vez que los resultados son aprobados (Pass), se procede al ensamble del gabinete, la inspección final y empaque, y finalmente el etiquetado y embalaje para despacho.",
+          "details": {
+            "0": "Testing & Results: pruebas eléctricas completas según IEEE C57",
+            "1": "Verificación de cumplimiento del Plan de Control en pruebas",
+            "2": "Ensamble del Gabinete (aprobado por Plan de Control)",
+            "3": "Final Inspection & Packaging: inspección visual, dimensional y de acabados",
+            "4": "Etiquetado y Empaque: placa de datos, embalaje para transporte y despacho"
+          }
+        }
+      },
+      "qualityBadge": "Trazabilidad y Control",
+      "qualityTitle": "Calidad documentada en cada etapa",
+      "qualityPoints": {
+        "0": "Plan de Control verificado en cada etapa del proceso antes de continuar",
+        "1": "Checklist documentado al salir del horno de secado ('Oven Temperature Control')",
+        "2": "Kickoff Checklist de inspecciones previo al arranque de corte láser",
+        "3": "Prueba de hermeticidad (Leak Test) antes de pintura del tanque",
+        "4": "Inspección dimensional completa: altura, planitud de brida, alineación de radiadores",
+        "5": "Cada transformador recibe número de serie único con trazabilidad completa del proceso",
+        "6": "Protocolo de pruebas eléctricas IEEE C57 entregado con cada unidad",
+        "7": "Liberación formal por Calidad antes de proceder al ensamble final y despacho",
+        "8": "Visual Aids para el proceso de vacío y llenado de aceite dieléctrico"
+      },
+      "ctaTitle": "¿Listo para cotizar su transformador?",
+      "ctaDescription": "Cuéntenos sus especificaciones y nuestro equipo técnico preparará una propuesta personalizada con los tiempos de entrega de su proyecto.",
+      "ctaRequestQuote": "Solicitar Cotización",
+      "ctaViewCertifications": "Ver Certificaciones"
     }
   },
   "eicPage": {
@@ -4041,6 +4271,16 @@
       "moreInfo": "Más Información",
       "callNow": "Llamar Ahora"
     },
+    "eyebrow": "División RST · ETRYS",
+    "notFound": {
+      "title": "Pagina no encontrada",
+      "description": "Esta pagina no existe dentro de ETRYS. Explora nuestros transformadores remanufacturados y servicios.",
+      "etrysHome": "Inicio ETRYS",
+      "products": "Productos",
+      "services": "Servicios",
+      "rental": "Alquiler",
+      "backToEtrys": "Volver a ETRYS"
+    },
     "layout": {
       "home": "Inicio",
       "products": "Productos",
@@ -4055,7 +4295,13 @@
       "viewAll": "Ver todos",
       "closeMenu": "Cerrar menú",
       "openMenu": "Abrir menú",
-      "requestQuote": "Solicitar Cotización"
+      "requestQuote": "Solicitar Cotización",
+      "submenu": {
+        "tipoPoste": "Transformadores Tipo Poste",
+        "padMounted": "Transformadores Pad-Mounted",
+        "subestacion": "Transformadores de Subestación"
+      },
+      "showSubmenu": "Mostrar submenú de {name}"
     },
     "serviciosPage": {
       "badge": "Servicios de Reparación",
@@ -4104,6 +4350,7 @@
     },
     "productosPage": {
       "breadcrumb": "Productos",
+      "pageTitle": "Transformadores ETRYS",
       "heroTitle": "Transformadores Remanufacturados",
       "heroDescription": "Unidades restauradas bajo estándares de clase mundial. Disponibilidad inmediata, costos competitivos y garantía de 18 meses.",
       "remanufacturedLabel": "Transformador Remanufacturado",
@@ -4129,6 +4376,7 @@
     },
     "productDetailPage": {
       "breadcrumbProducts": "Productos",
+      "etrysByEminsa": "ETRYS by EMINSA",
       "standards": "Normas",
       "requestQuote": "Solicitar Cotización",
       "description": "Descripción",
@@ -4293,6 +4541,11 @@
     "recursosPage": {
       "breadcrumb": "Recursos",
       "heroBadge": "Centro de Recursos",
+      "fichasTecnicas": {
+        "breadcrumbRecursos": "Recursos",
+        "title": "Fichas Técnicas",
+        "description": "Documentación técnica de productos RST"
+      },
       "heroTitle": "Recursos y Documentación",
       "heroDescription": "Acceda a fichas técnicas, herramientas de cálculo y documentación útil para el mantenimiento de sus transformadores.",
       "access": "Acceder",
@@ -5017,5 +5270,15 @@
         "descripcion": "Herramienta para calcular la capacidad de transformador requerida según su carga."
       }
     }
+  },
+  "notFound": {
+    "title": "Pagina no encontrada",
+    "description": "Lo sentimos, la pagina que buscas no existe o ha sido movida. Te invitamos a explorar nuestras secciones principales.",
+    "eic": "Marcas Internacionales",
+    "rst": "Remanufacturados",
+    "mtn": "Nuevos USA",
+    "servicios": "Servicios",
+    "goHome": "Ir al inicio",
+    "contactWhatsapp": "Contactar por WhatsApp"
   }
 }

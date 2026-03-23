@@ -24,10 +24,11 @@ const whyCards = [
   { icon: Globe, color: "#009e49", bgKey: "global" },
 ];
 
+const statsKeys = ["certificationsAndStandards", "appliedStandards", "yearsExperience"] as const;
 const statsData = [
-  { value: "3", label: "Certificaciones y Normas", icon: BadgeCheck },
-  { value: "ANSI/IEEE", label: "Normas Aplicadas", icon: Zap },
-  { value: "50+", label: "Años de Experiencia", icon: Star },
+  { value: "3", key: statsKeys[0], icon: BadgeCheck },
+  { value: "ANSI/IEEE", key: statsKeys[1], icon: Zap },
+  { value: "50+", key: statsKeys[2], icon: Star },
 ];
 
 export default function CertificacionesPage() {
@@ -136,7 +137,7 @@ export default function CertificacionesPage() {
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-[#00269b]">{stat.value}</p>
-                    <p className="text-sm text-gray-500">{stat.label}</p>
+                    <p className="text-sm text-gray-500">{t(`stats.${stat.key}`)}</p>
                   </div>
                 </motion.div>
               );
@@ -158,7 +159,7 @@ export default function CertificacionesPage() {
               {t("certificationLabel")}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Nuestras Certificaciones
+              {t("ourCertifications")}
             </h2>
           </motion.div>
 
@@ -246,7 +247,7 @@ export default function CertificacionesPage() {
                   <div className="space-y-8">
                     <div>
                       <span className="inline-block text-[#0099ce] font-semibold text-xs uppercase tracking-widest mb-2">
-                        {cert.complianceOnly ? "Cumplimiento de Estándar" : t("certificationLabel")}
+                        {cert.complianceOnly ? t("standardCompliance") : t("certificationLabel")}
                       </span>
                       <h2 className="text-3xl font-bold text-gray-900 mb-1">{cert.name}</h2>
                       <p className="text-gray-400 text-sm">{cert.fullName}</p>

@@ -135,7 +135,8 @@ export default function ProductoDetailContent({ product, variants, colors }: Pro
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={getWhatsAppUrl(`Hola, me interesa información sobre ${product.name}`)}
+                  href={getWhatsAppUrl(`${t("productDetailPage.whatsappMessage", { product: tc(`products.${product.slug}.name`) })}`)}
+
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-semibold transition-colors border border-white/30"
@@ -168,14 +169,14 @@ export default function ProductoDetailContent({ product, variants, colors }: Pro
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src={photos.secondary[0]}
-                  alt="Proceso de manufactura"
+                  alt={t("photoLabels.manufacturing")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-70">
-                  Manufactura
+                  {t("photoLabels.manufacturing")}
                 </span>
               </div>
 
@@ -183,14 +184,14 @@ export default function ProductoDetailContent({ product, variants, colors }: Pro
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src={photos.secondary[1]}
-                  alt="Pruebas de calidad"
+                  alt={t("photoLabels.testing")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-70">
-                  Pruebas
+                  {t("photoLabels.testing")}
                 </span>
               </div>
             </div>
@@ -221,10 +222,10 @@ export default function ProductoDetailContent({ product, variants, colors }: Pro
                   </div>
 
                   <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#00269b] transition-colors">
-                    {variant.name.replace(`Transformadores ${product.shortName} `, '')}
+                    {tc(`variants.${variant.id}.name`).replace(`${tc(`products.${product.slug}.name`)} `, '')}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    {variant.description}
+                    {tc(`variants.${variant.id}.description`)}
                   </p>
 
                   <div className="space-y-2 text-sm">
@@ -266,10 +267,10 @@ export default function ProductoDetailContent({ product, variants, colors }: Pro
                 {t("productDetailPage.features")}
               </h2>
               <div className="space-y-3">
-                {product.features.map((feature, idx) => (
+                {product.features.map((_, idx) => (
                   <div key={idx} className="flex items-start gap-3 bg-white p-4 rounded-xl">
                     <CheckCircle2 size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-700">{tc(`products.${product.slug}.features.${idx}`)}</span>
                   </div>
                 ))}
               </div>
@@ -286,10 +287,10 @@ export default function ProductoDetailContent({ product, variants, colors }: Pro
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {product.applications.map((app, idx) => (
+            {product.applications.map((_, idx) => (
               <div key={idx} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl">
                 <Building2 size={20} className="text-[#00269b]" />
-                <span className="text-gray-700">{app}</span>
+                <span className="text-gray-700">{tc(`products.${product.slug}.applications.${idx}`)}</span>
               </div>
             ))}
           </div>

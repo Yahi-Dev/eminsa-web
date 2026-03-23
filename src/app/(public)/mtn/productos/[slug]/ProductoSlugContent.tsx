@@ -30,6 +30,7 @@ interface Props {
 
 export default function ProductoSlugContent({ slug }: Props) {
   const t = useTranslations("pages.mtn.productDetail");
+  const tc = useTranslations("mtnConfig");
   const product = getProductBySlug(slug);
 
   if (!product) {
@@ -77,7 +78,7 @@ export default function ProductoSlugContent({ slug }: Props) {
             <ChevronRight size={14} />
             <Link href="/mtn/productos" className="hover:text-white transition-colors">{t("products")}</Link>
             <ChevronRight size={14} />
-            <span className="text-white">{product.shortName}</span>
+            <span className="text-white">{tc(`products.${product.slug}.shortName`)}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -89,11 +90,11 @@ export default function ProductoSlugContent({ slug }: Props) {
               </div>
 
               <h1 className="text-4xl lg:text-5xl font-bold">
-                {product.name}
+                {tc(`products.${product.slug}.name`)}
               </h1>
 
               <p className="text-xl text-white/80 leading-relaxed">
-                {product.description}
+                {tc(`products.${product.slug}.description`)}
               </p>
 
               {/* Quick specs */}
@@ -131,7 +132,7 @@ export default function ProductoSlugContent({ slug }: Props) {
                   <ArrowRight size={20} />
                 </Link>
                 <a
-                  href={getWhatsAppUrl(t("whatsappMessage", { product: product.name }))}
+                  href={getWhatsAppUrl(t("whatsappMessage", { product: tc(`products.${product.slug}.name`) }))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-semibold transition-colors border border-white/30"
@@ -148,7 +149,7 @@ export default function ProductoSlugContent({ slug }: Props) {
               <div className="relative row-span-2 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src={photos.main}
-                  alt={product.shortName}
+                  alt={tc(`products.${product.slug}.shortName`)}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-80"
@@ -156,7 +157,7 @@ export default function ProductoSlugContent({ slug }: Props) {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
                 <span className="absolute bottom-4 left-4 text-white text-xs font-bold tracking-[0.2em] uppercase opacity-80">
-                  {product.shortName}
+                  {tc(`products.${product.slug}.shortName`)}
                 </span>
               </div>
 
@@ -164,14 +165,14 @@ export default function ProductoSlugContent({ slug }: Props) {
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src={photos.secondary[0]}
-                  alt="Proceso de manufactura"
+                  alt={t("photoLabels.manufacturing")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-70">
-                  Manufactura
+                  {t("photoLabels.manufacturing")}
                 </span>
               </div>
 
@@ -179,14 +180,14 @@ export default function ProductoSlugContent({ slug }: Props) {
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src={photos.secondary[1]}
-                  alt="Pruebas de calidad"
+                  alt={t("photoLabels.testing")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                 <span className="absolute bottom-3 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-70">
-                  Pruebas
+                  {t("photoLabels.testing")}
                 </span>
               </div>
             </div>
@@ -217,10 +218,10 @@ export default function ProductoSlugContent({ slug }: Props) {
                   </div>
 
                   <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#00269b] transition-colors">
-                    {variant.name.replace(`Transformadores ${product.shortName} `, '')}
+                    {tc(`variants.${variant.id}.name`).replace(`${tc(`products.${product.slug}.name`)} `, '')}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    {variant.description}
+                    {tc(`variants.${variant.id}.description`)}
                   </p>
 
                   <div className="space-y-2 text-sm">
@@ -250,7 +251,7 @@ export default function ProductoSlugContent({ slug }: Props) {
                 {t("description")}
               </h2>
               <div className="prose prose-lg max-w-none text-gray-600">
-                {product.fullDescription.split('\n\n').map((paragraph, idx) => (
+                {tc(`products.${product.slug}.fullDescription`).split('\n\n').map((paragraph: string, idx: number) => (
                   <p key={idx} className="mb-4">{paragraph}</p>
                 ))}
               </div>
@@ -262,10 +263,10 @@ export default function ProductoSlugContent({ slug }: Props) {
                 {t("features")}
               </h2>
               <div className="space-y-3">
-                {product.features.map((feature, idx) => (
+                {product.features.map((_, idx) => (
                   <div key={idx} className="flex items-start gap-3 bg-white p-4 rounded-xl">
                     <CheckCircle2 size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{feature}</span>
+                    <span className="text-gray-700">{tc(`products.${product.slug}.features.${idx}`)}</span>
                   </div>
                 ))}
               </div>
@@ -282,10 +283,10 @@ export default function ProductoSlugContent({ slug }: Props) {
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {product.applications.map((app, idx) => (
+            {product.applications.map((_, idx) => (
               <div key={idx} className="flex items-center gap-3 bg-gray-50 p-4 rounded-xl">
                 <Building2 size={20} className="text-[#00269b]" />
-                <span className="text-gray-700">{app}</span>
+                <span className="text-gray-700">{tc(`products.${product.slug}.applications.${idx}`)}</span>
               </div>
             ))}
           </div>
@@ -352,7 +353,7 @@ export default function ProductoSlugContent({ slug }: Props) {
         <div className="container-eminsa">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-bold">
-              {t("interestedIn", { product: product.shortName })}
+              {t("interestedIn", { product: tc(`products.${product.slug}.shortName`) })}
             </h2>
             <p className="text-xl text-white/80">
               {t("contactUsForQuote")}

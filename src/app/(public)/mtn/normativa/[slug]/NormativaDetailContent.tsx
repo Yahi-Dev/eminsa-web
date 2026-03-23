@@ -7,8 +7,6 @@ import {
   Leaf,
   ArrowRight,
   CheckCircle2,
-  FileText,
-  Download,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { Standard } from "@/config/mtn-data";
@@ -103,31 +101,6 @@ export default function NormativaDetailContent({ standard }: Props) {
                       <span className="text-gray-700 font-medium">{t(`standards.${standard.id}.benefits.${idx}`)}</span>
                     </div>
                   ))}
-                </div>
-              </div>
-
-              {/* Resources */}
-              <div className="pt-8 border-t border-gray-100">
-                <h2 className="text-xl font-bold text-gray-900 mb-4">{t("detail.relatedResources")}</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
-                    <div className="w-12 h-12 bg-[#00269b]/10 rounded-lg flex items-center justify-center">
-                      <FileText size={24} className="text-[#00269b]" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">{t("detail.document", { name: standard.name })}</p>
-                      <p className="text-sm text-gray-500">{t("detail.pdfView")}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors cursor-pointer">
-                    <div className="w-12 h-12 bg-[#00269b]/10 rounded-lg flex items-center justify-center">
-                      <Download size={24} className="text-[#00269b]" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">{t("documentation.technicalSheets")}</p>
-                      <p className="text-sm text-gray-500">{t("detail.specifications")}</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

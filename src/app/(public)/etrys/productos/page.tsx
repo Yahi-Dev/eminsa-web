@@ -19,6 +19,7 @@ import { useTranslations } from "next-intl";
 
 export default function EtrysProductosPage() {
   const t = useTranslations("etrysPage.productosPage");
+  const tc = useTranslations("etrysConfig");
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -39,7 +40,7 @@ export default function EtrysProductosPage() {
 
           <div className="max-w-3xl">
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-              Transformadores ETRYS 
+              {t("pageTitle")}
             </h1>
             <p className="text-xl text-white/80">
               {t("heroDescription")}
@@ -61,9 +62,9 @@ export default function EtrysProductosPage() {
                   <Zap size={24} className="text-[#0099ce]" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900">{adv.title}</h3>
+                  <h3 className="font-bold text-gray-900">{tc(`remanufacturedAdvantages.${adv.id}.title`)}</h3>
                   {adv.highlight && (
-                    <p className="text-sm font-semibold text-[#0099ce]">{adv.highlight}</p>
+                    <p className="text-sm font-semibold text-[#0099ce]">{tc(`remanufacturedAdvantages.${adv.id}.highlight`)}</p>
                   )}
                 </div>
               </div>
@@ -90,7 +91,7 @@ export default function EtrysProductosPage() {
                   >
                     <Image
                       src={product.image}
-                      alt={product.name}
+                      alt={tc(`products.${product.slug}.name`)}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover"
@@ -129,24 +130,24 @@ export default function EtrysProductosPage() {
                           {t("remanufacturedLabel")}
                         </span>
                         <h2 className="text-3xl font-bold text-gray-900">
-                          {product.name}
+                          {tc(`products.${product.slug}.name`)}
                         </h2>
                       </div>
 
                       {/* Description */}
                       <p className="text-gray-600 leading-relaxed">
-                        {product.description}
+                        {tc(`products.${product.slug}.description`)}
                       </p>
 
                       {/* Specs Grid */}
                       <div className="grid grid-cols-2 gap-4 py-4 border-y border-gray-100">
                         <div>
                           <p className="text-sm text-gray-500">{t("power")}</p>
-                          <p className="font-semibold text-gray-900">{product.powerRange}</p>
+                          <p className="font-semibold text-gray-900">{tc(`products.${product.slug}.specs.potencia`)}</p>
                         </div>
                         <div>
                           <p className="text-sm text-gray-500">{t("voltage")}</p>
-                          <p className="font-semibold text-gray-900">{product.voltageRange}</p>
+                          <p className="font-semibold text-gray-900">{tc(`products.${product.slug}.specs.voltaje`)}</p>
                         </div>
                       </div>
 
@@ -156,10 +157,10 @@ export default function EtrysProductosPage() {
                           {t("mainFeatures")}
                         </p>
                         <div className="grid grid-cols-1 gap-1.5">
-                          {product.features.slice(0, 4).map((feature) => (
-                            <div key={feature} className="flex items-center gap-2">
+                          {product.features.slice(0, 4).map((_feature, i) => (
+                            <div key={i} className="flex items-center gap-2">
                               <CheckCircle2 size={16} className="text-[#0099ce] shrink-0" />
-                              <span className="text-sm text-gray-700">{feature}</span>
+                              <span className="text-sm text-gray-700">{tc(`products.${product.slug}.features.${i}`)}</span>
                             </div>
                           ))}
                         </div>
@@ -220,7 +221,7 @@ export default function EtrysProductosPage() {
                       key={p.id}
                       className="text-center py-4 px-4 font-semibold text-gray-900"
                     >
-                      {p.shortName}
+                      {tc(`products.${p.slug}.shortName`)}
                     </th>
                   ))}
                 </tr>
@@ -230,7 +231,7 @@ export default function EtrysProductosPage() {
                   <td className="py-4 px-4 text-gray-600">{t("power")}</td>
                   {remanufacturedProducts.map((p) => (
                     <td key={p.id} className="text-center py-4 px-4 font-medium">
-                      {p.powerRange}
+                      {tc(`products.${p.slug}.specs.potencia`)}
                     </td>
                   ))}
                 </tr>
@@ -238,7 +239,7 @@ export default function EtrysProductosPage() {
                   <td className="py-4 px-4 text-gray-600">{t("voltage")}</td>
                   {remanufacturedProducts.map((p) => (
                     <td key={p.id} className="text-center py-4 px-4 font-medium">
-                      {p.voltageRange}
+                      {tc(`products.${p.slug}.specs.voltaje`)}
                     </td>
                   ))}
                 </tr>
@@ -297,14 +298,14 @@ export default function EtrysProductosPage() {
                 className="bg-white rounded-xl p-5 shadow-sm border border-gray-100 hover:border-[#0099ce]/30 transition-colors"
               >
                 <div className="flex items-start justify-between mb-2">
-                  <h3 className="font-semibold text-gray-900">{test.shortName}</h3>
+                  <h3 className="font-semibold text-gray-900">{tc(`tests.${test.id}.shortName`)}</h3>
                   {test.isOptional && (
                     <span className="px-2 py-0.5 bg-[#0099ce]/10 text-[#0099ce] text-xs font-medium rounded">
                       {t("optional")}
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-gray-600">{test.description}</p>
+                <p className="text-sm text-gray-600">{tc(`tests.${test.id}.description`)}</p>
               </div>
             ))}
           </div>

@@ -366,14 +366,14 @@ export default function MTNPageContent() {
         {/* Photo grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
           {[
-            { src: "/EMINSA/DSC07713.jpg", label: "Bobinado" },
-            { src: "/EMINSA/DSC07670.jpg", label: "Metalmecánica" },
-            { src: "/EMINSA/DSC07780.jpg", label: "EnTanque" },
-            { src: "/EMINSA/DSC07174.jpg", label: "Laboratorio de Pruebas" },
-            { src: "/EMINSA/DSC07733.jpg", label: "Corte Láser" },
-            { src: "/EMINSA/DSC07759.jpg", label: "Ensamble" },
-            { src: "/EMINSA/DSC07165.jpg", label: "Pruebas de Alta Tensión" },
-            { src: "/EMINSA/DSC07875.jpg", label: "Equipo EMINSA" },
+            { src: "/EMINSA/DSC07713.jpg", label: t("manufacturing.photoLabels.winding") },
+            { src: "/EMINSA/DSC07670.jpg", label: t("manufacturing.photoLabels.metalwork") },
+            { src: "/EMINSA/DSC07780.jpg", label: t("manufacturing.photoLabels.inTank") },
+            { src: "/EMINSA/DSC07174.jpg", label: t("manufacturing.photoLabels.testLab") },
+            { src: "/EMINSA/DSC07733.jpg", label: t("manufacturing.photoLabels.laserCutting") },
+            { src: "/EMINSA/DSC07759.jpg", label: t("manufacturing.photoLabels.assembly") },
+            { src: "/EMINSA/DSC07165.jpg", label: t("manufacturing.photoLabels.highVoltageTesting") },
+            { src: "/EMINSA/DSC07875.jpg", label: t("manufacturing.photoLabels.eminsaTeam") },
           ].map((photo, i) => (
             <motion.div
               key={i}
@@ -442,7 +442,7 @@ export default function MTNPageContent() {
                 <div className="w-11 h-11 bg-[#00269b] rounded-lg flex items-center justify-center">
                   <Shield size={22} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-[#00269b]">{t("standards.normativas")} y Eficiencias</h3>
+                <h3 className="text-xl font-bold text-[#00269b]">{t("standards.normativasAndEfficiencies")}</h3>
               </div>
               <div className="space-y-3">
                 {standards.map((standard) => (

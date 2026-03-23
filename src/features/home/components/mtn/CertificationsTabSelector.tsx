@@ -6,12 +6,14 @@ import { Award, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Certification } from "@/config/mtn-data";
+import { useTranslations } from "next-intl";
 
 interface Props {
   certifications: Certification[];
 }
 
 export default function CertificationsTabSelector({ certifications }: Props) {
+  const t = useTranslations("home");
   const filtered = certifications.filter((c) => c.id !== "doe-2016");
   const [activeId, setActiveId] = useState(filtered[0]?.id ?? "");
   const activeCert = filtered.find((c) => c.id === activeId) ?? filtered[0];
@@ -86,7 +88,7 @@ export default function CertificationsTabSelector({ certifications }: Props) {
         href="/mtn/certificaciones"
         className="inline-flex items-center gap-2 text-[#0099ce] hover:text-[#0092C7] font-semibold mt-6 transition-colors"
       >
-        Ver todas las certificaciones
+        {t("certifications.viewAll")}
         <ArrowRight size={18} />
       </Link>
     </div>

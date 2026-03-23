@@ -109,9 +109,9 @@ export default function RecursosPageContent() {
                     </div>
                     <div className="p-6 space-y-3">
                       <h2 className="text-xl font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
-                        {resource.name}
+                        {t(`resources.${resource.type}.name`)}
                       </h2>
-                      <p className="text-gray-600">{resource.description}</p>
+                      <p className="text-gray-600">{t(`resources.${resource.type}.description`)}</p>
                       <div className="flex items-center gap-2 text-sm text-[#00269b] font-medium pt-2">
                         {resource.type === "calculator" ? (
                           <>
