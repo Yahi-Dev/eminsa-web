@@ -44,21 +44,21 @@ const HERO_IMAGES_A = [
   "/transformador-before.png",
   "/EMINSA/DSC07645.jpg",
   "/EMINSA/DSC07759.jpg",
-  "/EMINSA/DSC07670.jpg",
+  "/EMINSA/DSC07706.jpg",
 ];
 
 const HERO_IMAGES_B = [
   "/transformador-after.png",
   "/EMINSA/DSC07678.jpg",
-  "/EMINSA/DSC07827.jpg",
-  "/EMINSA/DSC07780.jpg",
+  "/EMINSA/DSC07664.jpg",
+  "/EMINSA/DSC07733.jpg",
 ];
 
 const HERO_IMAGES_C = [
   "/EMINSA/DSC07174.jpg",
   "/EMINSA/DSC07764.jpg",
   "/EMINSA/DSC07149.jpg",
-  "/EMINSA/DSC07188.jpg",
+  "/EMINSA/DSC07161.jpg",
 ];
 
 export default function EtrysPage() {

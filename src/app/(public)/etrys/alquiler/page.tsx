@@ -177,13 +177,13 @@ export default function EtrysAlquilerPage() {
                 </div>
                 {/* Top-right */}
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <Image src="/EMINSA/DSC07805.jpg" alt="Transformador en campo" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
+                  <Image src="/EMINSA/DSC07537.jpg" alt="Inventario de transformadores para alquiler" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <span className="absolute bottom-2 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">{t("distributionLabel")}</span>
                 </div>
                 {/* Bottom-right */}
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <Image src="/EMINSA/DSC07875.jpg" alt="Transformador industrial" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
+                  <Image src="/EMINSA/DSC07544.jpg" alt="Transformadores disponibles para alquiler" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <span className="absolute bottom-2 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">{t("industrialLabel")}</span>
                 </div>
@@ -276,7 +276,7 @@ export default function EtrysAlquilerPage() {
             >
               <div className="space-y-4">
                 <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-lg">
-                  <Image src="/EMINSA/DSC07859.jpg" alt="Alquiler para construcción" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover brightness-85" />
+                  <Image src="/Cuándo-Necesita-Alquilar/free-photo-of-construccion-industria-grulla-grua.jpeg" alt="Alquiler para construcción" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover brightness-85" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2">
@@ -288,7 +288,7 @@ export default function EtrysAlquilerPage() {
               </div>
               <div className="space-y-4 pt-8">
                 <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-lg">
-                  <Image src="/EMINSA/DSC07598.jpg" alt="Alquiler para eventos" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover brightness-85" />
+                  <Image src="/Cuándo-Necesita-Alquilar/corporate-event-1920-x-960-wallpaper-kxfymzln0ikz8pp7.jpg" alt="Alquiler para eventos" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover brightness-85" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2">
@@ -298,7 +298,7 @@ export default function EtrysAlquilerPage() {
                   </div>
                 </div>
                 <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-lg">
-                  <Image src="/EMINSA/DSC07798.jpg" alt="Alquiler para industria" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover brightness-85" />
+                  <Image src="/Cuándo-Necesita-Alquilar/industria.jpg" alt="Alquiler para industria" fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover brightness-85" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-lg p-2 flex items-center gap-2">

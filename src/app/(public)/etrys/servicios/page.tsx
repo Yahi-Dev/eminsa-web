@@ -126,7 +126,7 @@ export default function EtrysServiciosPage() {
               {/* Bottom right - finished transformer */}
               <div className="relative col-span-5 row-span-3 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="/EMINSA/DSC07573.jpg"
+                  src="/EMINSA/DSC07664.jpg"
                   alt={t("altFinished")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
