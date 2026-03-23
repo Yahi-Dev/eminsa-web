@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -27,6 +28,7 @@ interface RecursoAPI {
 }
 
 export default function ServiciosFichasTecnicasPage() {
+  const t = useTranslations("pages");
   const [recursos, setRecursos] = useState<RecursoAPI[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -73,7 +75,7 @@ export default function ServiciosFichasTecnicasPage() {
             </div>
             <div>
               <h1 className="text-3xl font-bold">Fichas Técnicas</h1>
-              <p className="text-white/70">Documentación técnica de servicios EMINSA</p>
+              <p className="text-white/70">{t("servicios.fichasTecnicas.subtitle")}</p>
             </div>
           </div>
         </div>
@@ -105,7 +107,7 @@ export default function ServiciosFichasTecnicasPage() {
           ) : filtered.length === 0 ? (
             <div className="text-center py-16">
               <FileText size={48} className="mx-auto text-gray-300 mb-4" />
-              <p className="text-gray-500 text-lg">No hay fichas técnicas disponibles en este momento.</p>
+              <p className="text-gray-500 text-lg">{t("servicios.fichasTecnicas.empty")}</p>
             </div>
           ) : (
             <div className="grid gap-4">
@@ -149,7 +151,7 @@ export default function ServiciosFichasTecnicasPage() {
                         <span className="hidden sm:inline">Descargar</span>
                       </a>
                     ) : (
-                      <span className="text-sm text-gray-400 italic">No disponible</span>
+                      <span className="text-sm text-gray-400 italic">{t("servicios.fichasTecnicas.notAvailable")}</span>
                     )}
                   </div>
                 </motion.div>

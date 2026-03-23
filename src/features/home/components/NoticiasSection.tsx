@@ -26,13 +26,7 @@ const categoriaColors: Record<string, string> = {
   industria: "#6d6e6d",
 };
 
-const categoriaLabels: Record<string, string> = {
-  empresa: "Empresa",
-  productos: "Productos",
-  servicios: "Servicios",
-  eventos: "Eventos",
-  industria: "Industria",
-};
+// Category labels now come from translations
 
 function formatFecha(fecha?: string | null) {
   if (!fecha) return "";
@@ -69,7 +63,7 @@ export default function NoticiasSection() {
         <div className="flex items-center gap-3 mb-8">
           <span className="h-px w-8 inline-block bg-[#00269b]" />
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#00269b]">
-            Noticias · Últimas Novedades
+            {t("news.sectionLabel")}
           </span>
         </div>
 
@@ -170,7 +164,7 @@ export default function NoticiasSection() {
                         className="absolute top-3 left-3 px-3 py-1 rounded-full text-white text-[10px] font-bold uppercase tracking-wide"
                         style={{ backgroundColor: color }}
                       >
-                        {categoriaLabels[noticia.categoria] ?? noticia.categoria}
+                        {t(`news.categories.${noticia.categoria}`)}
                       </span>
                     </div>
 

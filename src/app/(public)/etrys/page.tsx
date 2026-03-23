@@ -184,9 +184,9 @@ export default function EtrysPage() {
                 className="space-y-2.5"
               >
                 {[
-                  { Icon: PiggyBank, text: "Hasta 70% menos que un transformador nuevo" },
-                  { Icon: ShieldCheck, text: "Garantía certificada IEEE C57 / ANSI" },
-                  { Icon: Zap,        text: "Restauración · Remanufactura · Alquiler" },
+                  { Icon: PiggyBank, text: t("hero.benefit1") },
+                  { Icon: ShieldCheck, text: t("hero.benefit2") },
+                  { Icon: Zap,        text: t("hero.benefit3") },
                 ].map(({ Icon, text }, i) => (
                   <motion.div
                     key={i}

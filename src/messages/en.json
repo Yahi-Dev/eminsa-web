@@ -4,7 +4,10 @@
     "tagline": "Transformers • Services • Electrical Suppliers",
     "closeMenu": "Close menu",
     "openMenu": "Open menu",
-    "switchLanguage": "Cambiar a Español"
+    "switchLanguage": "Cambiar a Español",
+    "ariaWhatsApp": "Contact via WhatsApp",
+    "ariaLanguageEs": "Switch to English",
+    "ariaLanguageEn": "Switch to Spanish"
   },
   "home": {
     "hero": {
@@ -12,9 +15,87 @@
       "title2": "since 1973.",
       "description": "Discover comprehensive solutions in the manufacturing and maintenance of electrical systems that optimize efficiency and ensure the safety of your infrastructure.",
       "cta": "Request a Quote",
-      "scrollIndicator": "Discover more"
+      "scrollIndicator": "Discover more",
+      "line1": "TRANSFORMERS",
+      "line2": "For Electrical Distribution",
+      "taglines": {
+        "0": "Electrical Distribution Transformers",
+        "1": "Manufactured in the Caribbean with IEEE / ANSI standards",
+        "2": "New Transformer Manufacturing",
+        "3": "Transformer Repair and Service",
+        "4": "Eminsa International Corporation",
+        "5": "Specialized Technical Services"
+      },
+      "whatDoYouNeed": "What do you need?",
+      "explore": "Explore",
+      "scroll": "Scroll",
+      "intentions": {
+        "buy": {
+          "label": "Buy",
+          "sub": "New transformers"
+        },
+        "repair": {
+          "label": "Repair",
+          "sub": "Restoration and service"
+        },
+        "rent": {
+          "label": "Rent",
+          "sub": "Equipment for rent"
+        },
+        "services": {
+          "label": "Services",
+          "sub": "Technical services"
+        }
+      },
+      "products": {
+        "buy": {
+          "0": {
+            "label": "Pole-Type Transformer"
+          },
+          "1": {
+            "label": "Pad Mounted Transformer"
+          },
+          "2": {
+            "label": "Substation Transformer"
+          },
+          "3": {
+            "label": "Electrical Equipment"
+          }
+        },
+        "repair": {
+          "0": {
+            "label": "Transformer Repair"
+          },
+          "1": {
+            "label": "Remanufactured Transformer"
+          }
+        },
+        "rent": {
+          "0": {
+            "label": "Transformer Rental"
+          },
+          "1": {
+            "label": "Equipment for Rent"
+          }
+        },
+        "services": {
+          "0": {
+            "label": "Preventive Maintenance"
+          },
+          "1": {
+            "label": "Diagnosis and Consulting"
+          },
+          "2": {
+            "label": "Electrical Installations"
+          },
+          "3": {
+            "label": "Dielectric Oil Analysis"
+          }
+        }
+      }
     },
     "stats": {
+      "sectionLabel": "Quality · Certifications and Standards",
       "yearsExperience": "Years of Experience",
       "transformersInstalled": "Transformers Installed",
       "satisfiedClients": "Satisfied Clients",
@@ -64,11 +145,18 @@
       "description": "For over 50 years, leading companies in the energy sector have relied on Grupo EMINSA for their electrical transformation needs."
     },
     "news": {
-      "sectionLabel": "News",
+      "sectionLabel": "News · Latest Updates",
       "title": "Latest news",
       "viewAll": "View all news",
       "readMore": "Read more",
-      "empty": "No news published yet."
+      "empty": "No news published yet.",
+      "categories": {
+        "empresa": "Company",
+        "productos": "Products",
+        "servicios": "Services",
+        "eventos": "Events",
+        "industria": "Industry"
+      }
     },
     "mtn": {
       "sectionLabel": "Manufacturing of New Transformers",
@@ -94,17 +182,20 @@
         "tipoPoste": {
           "category": "Pole Type",
           "name": "Aerial Distribution",
-          "subtitle": "Maximum reliability and efficiency for overhead electrical distribution systems."
+          "subtitle": "Maximum reliability and efficiency for overhead electrical distribution systems.",
+          "eyebrow": "Overhead distribution · IEEE C57 Standard"
         },
         "padMounted": {
           "category": "Pad Mounted",
           "name": "Underground Distribution",
-          "subtitle": "Compact, safe, and hermetically sealed solution for residential developments and underground systems."
+          "subtitle": "Compact, safe, and hermetically sealed solution for residential developments and underground systems.",
+          "eyebrow": "Underground distribution · Hermetic cabinet"
         },
         "subestacion": {
           "category": "Substation",
           "name": "Industrial Power",
-          "subtitle": "High capacity for industrial plants, solar parks, and large-scale projects."
+          "subtitle": "High capacity for industrial plants, solar parks, and large-scale projects.",
+          "eyebrow": "High industrial power · ANSI / IEEE"
         }
       },
       "showcase": {
@@ -128,10 +219,15 @@
           "feature3": "Full hermetic protection",
           "feature4": "Ideal for residential developments"
         }
+      },
+      "tags": {
+        "hermetic": "Hermetic",
+        "highEfficiency": "High efficiency"
       }
     },
     "rst": {
       "badge": "Maintenance and Restoration",
+      "sectionLabel": "RST Division · Restoration and Service",
       "title": "We transform damaged equipment into",
       "titleAccent": "reliable solutions",
       "diagnosisTitle": "Complete Diagnosis",
@@ -139,18 +235,21 @@
       "restorationTitle": "Professional Restoration",
       "restorationDesc": "Repair, painting, component replacement, and quality certification",
       "guaranteeTitle": "Performance Guarantee",
-      "guaranteeDesc": "Complete electrical testing and guarantee on all our services"
+      "guaranteeDesc": "Complete electrical testing and guarantee on all our services",
+      "requestQuote": "Request a Quote",
+      "viewProducts": "View RST Products"
     },
     "eic": {
       "showcase": {
-        "sectionLabel": "International Brands",
+        "sectionLabel": "EIC Division · Equipment and Distribution",
         "title": "We Represent the Best Brands",
         "viewBrand": "View Brand",
         "viewAllBrands": "View All Brands",
         "requestQuote": "Request a Quote",
         "exclusiveRep": "Exclusive Representative in DR",
         "countries": "countries of presence",
-        "brandCount": "9+ Represented Brands"
+        "brandCount": "9+ Represented Brands",
+        "productsLabel": "Products"
       }
     }
   },
@@ -848,6 +947,24 @@
           "subestacion": "Substation",
           "otro": "Other"
         }
+      },
+      "cotizacion": {
+        "requestQuote": "Request quotation",
+        "meanwhile": "Meanwhile...",
+        "checkEmail": "Check your email for confirmation",
+        "prepareTechInfo": "Prepare technical equipment information if you have it",
+        "urgencyContact": "For emergencies, contact us directly by phone",
+        "urgentService": "Urgent service",
+        "urgentServiceDesc": "I require priority or emergency attention",
+        "quickResponse": "Quick response",
+        "quickResponseTime": "Less than 2 business hours",
+        "moreThan30Years": "More than 30 years",
+        "emergencyService": "Emergency service"
+      },
+      "fichasTecnicas": {
+        "subtitle": "EMINSA services technical documentation",
+        "empty": "No technical datasheets available at this time.",
+        "notAvailable": "Not available"
       }
     },
     "cotizar": {
@@ -1377,10 +1494,22 @@
           },
           "periodsTitle": "Warranty Periods",
           "periods": {
-            "0": { "product": "Pole-Type Transformers", "period": "3 years" },
-            "1": { "product": "Pad Mounted Transformers", "period": "3 years" },
-            "2": { "product": "Substation Transformers", "period": "2 years" },
-            "3": { "product": "Accessories", "period": "1 year" }
+            "0": {
+              "product": "Pole-Type Transformers",
+              "period": "3 years"
+            },
+            "1": {
+              "product": "Pad Mounted Transformers",
+              "period": "3 years"
+            },
+            "2": {
+              "product": "Substation Transformers",
+              "period": "2 years"
+            },
+            "3": {
+              "product": "Accessories",
+              "period": "1 year"
+            }
           },
           "coverageTitle": "Coverage",
           "coverage": {
@@ -1407,17 +1536,29 @@
           },
           "claimProcessTitle": "Claim Process",
           "claimProcess": {
-            "0": { "title": "Report the problem", "description": "Contact our technical service department with the equipment serial number." },
-            "1": { "title": "Technical evaluation", "description": "A technician will evaluate the equipment to determine the cause of the failure." },
-            "2": { "title": "Diagnosis", "description": "You will receive a report with the diagnosis and warranty coverage decision." },
-            "3": { "title": "Repair or replacement", "description": "If the warranty applies, we will proceed with the repair or replacement of the equipment." }
+            "0": {
+              "title": "Report the problem",
+              "description": "Contact our technical service department with the equipment serial number."
+            },
+            "1": {
+              "title": "Technical evaluation",
+              "description": "A technician will evaluate the equipment to determine the cause of the failure."
+            },
+            "2": {
+              "title": "Diagnosis",
+              "description": "You will receive a report with the diagnosis and warranty coverage decision."
+            },
+            "3": {
+              "title": "Repair or replacement",
+              "description": "If the warranty applies, we will proceed with the repair or replacement of the equipment."
+            }
           },
           "requirements": {
-            "title": "Requirements to Validate the Warranty",
             "0": "Present original purchase invoice or equivalent document.",
             "1": "Provide the equipment serial number visible on the data plate.",
             "2": "Document preventive maintenance records according to the manual.",
-            "3": "Report the failure within the current warranty period."
+            "3": "Report the failure within the current warranty period.",
+            "title": "Requirements to Validate the Warranty"
           },
           "contact": {
             "title": "Technical Service Contact",
@@ -1454,12 +1595,30 @@
           "manualContent": "Manual Contents",
           "chapterLabel": "Chapter {number}",
           "chapters": {
-            "0": { "title": "Introduction & Safety", "description": "Fundamental safety standards and general precautions for working with transformers." },
-            "1": { "title": "Visual Inspection", "description": "Periodic visual inspection procedures, what to look for, and how to document findings." },
-            "2": { "title": "Preventive Maintenance", "description": "Recommended preventive maintenance routines by frequency (monthly, quarterly, annual)." },
-            "3": { "title": "Dielectric Oil", "description": "Analysis, treatment, and replacement of dielectric oil. Reference values." },
-            "4": { "title": "Electrical Tests", "description": "Insulation resistance, transformation ratio, and winding resistance tests." },
-            "5": { "title": "Temperature Control", "description": "Temperature monitoring, interpretation of readings, and corrective actions." }
+            "0": {
+              "title": "Introduction & Safety",
+              "description": "Fundamental safety standards and general precautions for working with transformers."
+            },
+            "1": {
+              "title": "Visual Inspection",
+              "description": "Periodic visual inspection procedures, what to look for, and how to document findings."
+            },
+            "2": {
+              "title": "Preventive Maintenance",
+              "description": "Recommended preventive maintenance routines by frequency (monthly, quarterly, annual)."
+            },
+            "3": {
+              "title": "Dielectric Oil",
+              "description": "Analysis, treatment, and replacement of dielectric oil. Reference values."
+            },
+            "4": {
+              "title": "Electrical Tests",
+              "description": "Insulation resistance, transformation ratio, and winding resistance tests."
+            },
+            "5": {
+              "title": "Temperature Control",
+              "description": "Temperature monitoring, interpretation of readings, and corrective actions."
+            }
           },
           "scheduleTitle": "Recommended Maintenance Schedule",
           "schedule": {
@@ -1496,10 +1655,30 @@
           },
           "downloadsTitle": "Downloadable Documents",
           "downloads": {
-            "0": { "title": "Complete Maintenance Manual", "description": "Complete guide with all maintenance procedures.", "size": "5.2 MB", "type": "PDF" },
-            "1": { "title": "Visual Inspection Checklist", "description": "Printable form for periodic inspections.", "size": "320 KB", "type": "PDF" },
-            "2": { "title": "Oil Analysis Guide", "description": "Interpretation of oil analysis results.", "size": "1.1 MB", "type": "PDF" },
-            "3": { "title": "Maintenance Log", "description": "Template to document maintenance activities.", "size": "180 KB", "type": "Excel" }
+            "0": {
+              "title": "Complete Maintenance Manual",
+              "description": "Complete guide with all maintenance procedures.",
+              "size": "5.2 MB",
+              "type": "PDF"
+            },
+            "1": {
+              "title": "Visual Inspection Checklist",
+              "description": "Printable form for periodic inspections.",
+              "size": "320 KB",
+              "type": "PDF"
+            },
+            "2": {
+              "title": "Oil Analysis Guide",
+              "description": "Interpretation of oil analysis results.",
+              "size": "1.1 MB",
+              "type": "PDF"
+            },
+            "3": {
+              "title": "Maintenance Log",
+              "description": "Template to document maintenance activities.",
+              "size": "180 KB",
+              "type": "Excel"
+            }
           }
         },
         "articulos": {
@@ -1771,6 +1950,14 @@
         "RST": "Transformer Repair and Service",
         "EIC": "Eminsa International Corporation",
         "Servicios": "Internal and External Services"
+      },
+      "navNames": {
+        "MTN": "MTN",
+        "RST": "RST",
+        "EIC": "EIC",
+        "Servicios": "Services",
+        "EMINSA": "EMINSA",
+        "SERVICIOS": "SERVICES"
       },
       "openMenu": "Open menu",
       "closeMenu": "Close menu",
@@ -2135,19 +2322,25 @@
         "products": {
           "0": "Pad Mounted Transformer",
           "1": "Pole-Type Transformer"
-        }
+        },
+        "name": "INATRA",
+        "country": "Ecuador"
       },
       "hammond": {
         "description": "Hammond Power Solutions (HPS) is the largest dry-type transformer manufacturer in North America, recognized for its advanced engineering.",
         "products": {
           "0": "Dry-Type Transformers"
-        }
+        },
+        "name": "Hammond",
+        "country": "Canada / North America"
       },
       "elpitalia": {
         "description": "Elpitalia is an Italian manufacturer specialized in cast resin dry-type transformers, with a track record since 1962. Range from 50 kVA to 3150 kVA.",
         "products": {
           "0": "Cast Resin Dry-Type Transformers"
-        }
+        },
+        "name": "Elpitalia",
+        "country": "Italy"
       },
       "topcable": {
         "description": "Top Cable is one of the leading European manufacturers of high-quality electrical cables, with production plants in Spain.",
@@ -2155,7 +2348,9 @@
           "0": "Power Cables",
           "1": "Solar Cables",
           "2": "Medium Voltage Cables"
-        }
+        },
+        "name": "Top Cable",
+        "country": "Spain"
       },
       "southwire": {
         "description": "Southwire is one of the leading American manufacturers of electrical cables and conductors for power transmission and distribution.",
@@ -2163,14 +2358,18 @@
           "0": "Low Voltage Cables",
           "1": "Medium Voltage Cables",
           "2": "High Voltage Cables"
-        }
+        },
+        "name": "Southwire",
+        "country": "United States"
       },
       "cabelte": {
         "description": "Cabelte is a leading Portuguese manufacturer of low and medium voltage electrical cables with over five decades of experience.",
         "products": {
           "0": "Low Voltage Cables",
           "1": "Medium Voltage Cables"
-        }
+        },
+        "name": "Cabelte",
+        "country": "Portugal"
       },
       "schneider": {
         "description": "Schneider Electric is a global leader in electrical distribution solutions, offering MV switchgear and LV breakers.",
@@ -2178,7 +2377,9 @@
           "0": "Medium Voltage Switchgear",
           "1": "Low Voltage Breakers",
           "2": "Distribution Panels"
-        }
+        },
+        "name": "Schneider Electric",
+        "country": "France / Global"
       },
       "chardon": {
         "description": "Chardon Group is a leading manufacturer of medium voltage cable accessories under IEEE/ANSI and IEC standards.",
@@ -2188,7 +2389,9 @@
           "2": "Adapters",
           "3": "Splices",
           "4": "Terminals"
-        }
+        },
+        "name": "Chardon",
+        "country": "International"
       },
       "green-transfo": {
         "description": "Green Transfo is a global transformer manufacturer with over 60 years of industrial experience, consolidated in 2023 under Groupe Cahors after integrating plants with legacy from brands like AEG, Alstom, Areva, and Schneider Electric. The company specializes in substation transformers up to 135 MVA and 170 kV, manufactured with advanced technology in modern facilities in Poland and Turkey.",
@@ -2201,52 +2404,246 @@
       "inatra-pad-mounted": {
         "name": "INATRA Pad Mounted Transformer",
         "shortName": "Pad Mounted",
-        "description": "Pad mounted transformers by INATRA with the highest market standards."
+        "description": "Pad mounted transformers by INATRA with the highest market standards.",
+        "fullDescription": {
+          "0": "INATRA Pad Mounted transformers are distribution equipment designed for ground-level installation, ideal for underground distribution systems.",
+          "1": "Manufactured with cutting-edge technology and a strict focus on quality, they comply with national and international standards to meet the demands of the electrical sector.",
+          "2": "As exclusive representatives of INATRA in the Dominican Republic, we offer direct access to their portfolio with specialized support and technical assistance."
+        },
+        "features": {
+          "0": "Cutting-edge technology",
+          "1": "International standards",
+          "2": "Qualified technical team",
+          "3": "Specialized support",
+          "4": "Exclusive DR representation"
+        },
+        "applications": {
+          "0": "Underground distribution",
+          "1": "Residential developments",
+          "2": "Shopping centers",
+          "3": "Industries",
+          "4": "Public and private projects"
+        }
       },
       "inatra-poste": {
         "name": "INATRA Pole-Type Transformer",
         "shortName": "Pole-Type",
-        "description": "Pole-type transformers by INATRA for overhead distribution."
+        "description": "Pole-type transformers by INATRA for overhead distribution.",
+        "fullDescription": {
+          "0": "INATRA Pole-Type transformers are designed for pole installation, ideal for overhead distribution systems.",
+          "1": "Each unit is manufactured with the highest quality standards, using advanced technology and a highly qualified technical team.",
+          "2": "They comply with national and international standards, offering reliable and innovative solutions for the electrical sector."
+        },
+        "features": {
+          "0": "High-quality manufacturing",
+          "1": "Regulatory compliance",
+          "2": "Advanced technology",
+          "3": "Innovative solutions",
+          "4": "DR technical support"
+        },
+        "applications": {
+          "0": "Overhead distribution",
+          "1": "Residential areas",
+          "2": "Commercial areas",
+          "3": "Electrification projects",
+          "4": "Distribution networks"
+        }
       },
       "hammond-secos": {
         "name": "Hammond Dry-Type Transformers",
         "shortName": "Hammond Dry-Type",
-        "description": "High-quality dry-type transformers by Hammond Power Solutions."
+        "description": "High-quality dry-type transformers by Hammond Power Solutions.",
+        "fullDescription": {
+          "0": "Hammond Power Solutions (HPS) is the largest dry-type transformer manufacturer in North America, recognized for its advanced engineering and the manufacturing of a wide range of standard and custom transformers.",
+          "1": "The company specializes in high-quality dry-type transformers for industrial, commercial, and renewable energy applications, standing out for their durability, efficiency, and ability to operate in demanding environments.",
+          "2": "Hammond dry-type transformers do not require dielectric oil, making them ideal for indoor installations and environments where fire safety is a priority."
+        },
+        "features": {
+          "0": "Largest manufacturer in North America",
+          "1": "Advanced engineering",
+          "2": "Standard and custom",
+          "3": "Exceptional durability",
+          "4": "Energy efficiency",
+          "5": "Demanding environments"
+        },
+        "applications": {
+          "0": "Industry",
+          "1": "Commerce",
+          "2": "Renewable energy",
+          "3": "Indoor installations",
+          "4": "Data centers",
+          "5": "Hospitals"
+        }
       },
       "elpitalia-resina": {
         "name": "Elpitalia Cast Resin Transformers",
         "shortName": "Cast Resin",
-        "description": "Cast resin dry-type transformers by Elpitalia, Italian specialist since 1962."
+        "description": "Cast resin dry-type transformers by Elpitalia, Italian specialist since 1962.",
+        "fullDescription": {
+          "0": "Elpitalia is an Italian manufacturer specialized in the engineering, design, and production of resin-cast dry-type and medium-low voltage transformers, with a consolidated track record since 1962.",
+          "1": "Their range of resin-cast transformers covers power ratings from 50 kVA to 3150 kVA, designed under strict European standards and manufactured exclusively with European-origin materials.",
+          "2": "They guarantee high reliability, safety, and performance even in demanding applications, being ideal for environments where maximum fire protection is required."
+        },
+        "features": {
+          "0": "Since 1962",
+          "1": "50 kVA to 3150 kVA",
+          "2": "European standards",
+          "3": "European materials",
+          "4": "High reliability",
+          "5": "Fire resistant"
+        },
+        "applications": {
+          "0": "Demanding environments",
+          "1": "Hospitals",
+          "2": "Office buildings",
+          "3": "Heavy industry",
+          "4": "Critical infrastructure",
+          "5": "Tunnels and subway"
+        }
       },
       "topcable-cables": {
         "name": "Top Cable Electrical Cables",
         "shortName": "Top Cable",
-        "description": "High-quality electrical cables manufactured in Spain."
+        "description": "High-quality electrical cables manufactured in Spain.",
+        "fullDescription": {
+          "0": "Top Cable is one of the leading European manufacturers of high-quality electrical cables, with production plants located in Spain and a wide international presence.",
+          "1": "The company produces an extensive range of cables — including power, solar, armored, halogen-free (LSZH), fire-resistant, marine, and medium voltage cables — designed to meet the most demanding European and international regulations.",
+          "2": "Recognized as a global partner in cabling solutions, Top Cable supplies cables for sectors such as construction, infrastructure, industry, renewable energies, transportation, and marine projects, offering reliable, sustainable products backed by rigorous quality control."
+        },
+        "features": {
+          "0": "European manufacturing",
+          "1": "Halogen-free (LSZH)",
+          "2": "Fire resistant",
+          "3": "Solar cables",
+          "4": "Marine cables",
+          "5": "Rigorous quality control"
+        },
+        "applications": {
+          "0": "Construction",
+          "1": "Infrastructure",
+          "2": "Industry",
+          "3": "Renewable energies",
+          "4": "Transportation",
+          "5": "Marine projects"
+        }
       },
       "southwire-cables": {
         "name": "Southwire Cables and Conductors",
         "shortName": "Southwire",
-        "description": "Electrical cables for power transmission and distribution, made in the USA."
+        "description": "Electrical cables for power transmission and distribution, made in the USA.",
+        "fullDescription": {
+          "0": "Southwire is one of the leading American manufacturers of electrical cables and conductors used in power transmission and distribution, supplying electricity to millions of people worldwide.",
+          "1": "The company produces a wide range of cabling solutions, including low, medium, and high voltage cables, special cables for industrial, oil, mining, airport, and photovoltaic applications, as well as electrical tools and associated equipment."
+        },
+        "features": {
+          "0": "American manufacturing",
+          "1": "Low, medium and high voltage",
+          "2": "Special cables",
+          "3": "Photovoltaic applications",
+          "4": "Electrical tools"
+        },
+        "applications": {
+          "0": "Power transmission",
+          "1": "Electrical distribution",
+          "2": "Industrial",
+          "3": "Oil and mining",
+          "4": "Airport",
+          "5": "Photovoltaic"
+        }
       },
       "cabelte-cables": {
         "name": "Cabelte Electrical Cables",
         "shortName": "Cabelte",
-        "description": "Low and medium voltage cables manufactured in Portugal."
+        "description": "Low and medium voltage cables manufactured in Portugal.",
+        "fullDescription": {
+          "0": "Cabelte is a leading Portuguese manufacturer specialized in the production of low and medium voltage electrical cables, designed for industrial, commercial, residential applications and distribution networks.",
+          "1": "With more than five decades of experience and presence in more than 40 countries, Cabelte stands out for its focus on quality, sustainability, and innovation, developing efficient, safe cables adapted to modern energy needs.",
+          "2": "It also offers specialized support, installation, and consulting services for medium and low voltage projects."
+        },
+        "features": {
+          "0": "50+ years of experience",
+          "1": "Presence in 40+ countries",
+          "2": "Sustainability",
+          "3": "Innovation",
+          "4": "Support and consulting"
+        },
+        "applications": {
+          "0": "Industrial",
+          "1": "Commercial",
+          "2": "Residential",
+          "3": "Distribution networks",
+          "4": "Substations"
+        }
       },
       "schneider-celdas": {
         "name": "Schneider Electric MV Switchgear",
         "shortName": "Schneider MV",
-        "description": "Medium voltage switchgear for 3 kV to 36 kV operation."
+        "description": "Medium voltage switchgear for 3 kV to 36 kV operation.",
+        "fullDescription": {
+          "0": "Schneider Electric is a global leader in electrical distribution solutions and, within its portfolio, features a complete range of medium voltage switchgear designed to operate between 3 kV and 36 kV, available in AIS (air-insulated) and GIS (gas-insulated) technologies.",
+          "1": "These switchgear units perform essential functions of protection, switching, control, and operational continuity in primary and secondary distribution networks, ensuring a stable and safe supply in industrial, commercial, and critical infrastructure environments."
+        },
+        "features": {
+          "0": "3 kV to 36 kV",
+          "1": "AIS and GIS technology",
+          "2": "Protection and switching",
+          "3": "Control and continuity",
+          "4": "Global leader"
+        },
+        "applications": {
+          "0": "Primary distribution",
+          "1": "Secondary distribution",
+          "2": "Industrial",
+          "3": "Commercial",
+          "4": "Critical infrastructure"
+        }
       },
       "schneider-breakers": {
         "name": "Schneider Electric LV Breakers",
         "shortName": "Schneider LV",
-        "description": "Low voltage breakers and panels for protection."
+        "description": "Low voltage breakers and panels for protection.",
+        "fullDescription": {
+          "0": "Schneider Electric is a global leader in electrical distribution solutions and offers one of the most complete and reliable lines of low voltage breakers and panels on the market.",
+          "1": "Their products are designed to ensure protection, operational continuity, and safety in commercial, industrial, and residential installations."
+        },
+        "features": {
+          "0": "Complete line",
+          "1": "High reliability",
+          "2": "Comprehensive protection",
+          "3": "Operational continuity",
+          "4": "Certified safety"
+        },
+        "applications": {
+          "0": "Commercial",
+          "1": "Industrial",
+          "2": "Residential",
+          "3": "Infrastructure",
+          "4": "Data centers"
+        }
       },
       "chardon-accesorios": {
         "name": "Chardon MV Cable Accessories",
         "shortName": "Chardon MV",
-        "description": "MV cable accessories: elbows, bushings, adapters, splices, terminals."
+        "description": "MV cable accessories: elbows, bushings, adapters, splices, terminals.",
+        "fullDescription": {
+          "0": "Chardon Group is one of the leading global manufacturers of medium voltage cable accessories, specialized in products under IEEE/ANSI and IEC standards.",
+          "1": "The company designs and manufactures high-quality components such as elbows, bushings, adapters, junction boxes, splices, and terminals, used in underground and overhead electrical networks and substations.",
+          "2": "It stands out for developing its own EPDM formulations, ensuring international certifications, and offering reliable solutions for the energy industry."
+        },
+        "features": {
+          "0": "IEEE/ANSI and IEC standards",
+          "1": "Proprietary EPDM formulations",
+          "2": "International certifications",
+          "3": "High quality",
+          "4": "Reliable solutions"
+        },
+        "applications": {
+          "0": "Underground networks",
+          "1": "Overhead networks",
+          "2": "Substations",
+          "3": "Power distribution",
+          "4": "Electrical infrastructure"
+        }
       },
       "green-transfo-subestacion": {
         "name": "Green Transfo Substation Transformers",
@@ -2399,17 +2796,104 @@
       "tipo-poste": {
         "name": "Remanufactured Pole-Type Transformers",
         "shortName": "Pole-Type",
-        "description": "ETRYS by EMINSA pole-type transformers offer a reliable and cost-effective solution for overhead distribution."
+        "description": "ETRYS by EMINSA pole-type transformers offer a reliable and cost-effective solution for overhead distribution.",
+        "fullDescription": {
+          "0": "ETRYS by EMINSA pole-type transformers offer a reliable and economical solution for overhead distribution systems. Each unit has been restored following rigorous processes that ensure compliance with original design specifications, maintaining conformity with ANSI and IEEE standards.",
+          "1": "Thanks to a comprehensive restoration — which includes inspection, replacement of critical components, electrical testing, and structural refurbishment — these units maintain safe, efficient, and stable performance, at a significantly lower cost than new transformers.",
+          "2": "They are ideal for residential, commercial, and industrial applications that require a reliable, durable, and cost-optimized alternative."
+        },
+        "features": {
+          "0": "Certified comprehensive restoration",
+          "1": "Complete electrical testing",
+          "2": "Structural refurbishment",
+          "3": "New critical components",
+          "4": "New dielectric oil",
+          "5": "Industrial protective coating"
+        },
+        "applications": {
+          "0": "Overhead distribution",
+          "1": "Residential areas",
+          "2": "Commercial areas",
+          "3": "Industrial installations",
+          "4": "Rural electrification projects",
+          "5": "Electrical network expansion"
+        },
+        "specs": {
+          "potencia": "15 – 500 kVA",
+          "voltaje": "Up to 34.5 kV",
+          "fases": "Single-phase / Three-phase",
+          "frecuencia": "60 Hz",
+          "refrigeracion": "ONAN",
+          "normas": "ANSI / IEEE C57"
+        }
       },
       "pad-mounted": {
         "name": "Remanufactured Pad-Mounted Transformers",
         "shortName": "Pad-Mounted",
-        "description": "ETRYS by EMINSA pad-mounted transformers are safe and efficient for underground distribution."
+        "description": "ETRYS by EMINSA pad-mounted transformers are safe and efficient for underground distribution.",
+        "fullDescription": {
+          "0": "ETRYS by EMINSA pad-mounted transformers are a safe and highly efficient option for underground distribution systems. These units restored under strict standards guarantee reliable operation and comply with ANSI/IEEE standards, maintaining original safety and performance levels.",
+          "1": "Their sealed and hermetic design protects against environmental conditions and accidental contacts, making them suitable for residential developments, hotels, shopping centers, industries, and public areas.",
+          "2": "Each unit undergoes restoration processes that ensure low losses, excellent regulation, and long service life, preserving the integrity of the original design at a more accessible cost."
+        },
+        "features": {
+          "0": "Sealed and hermetic design",
+          "1": "Protection against accidental contacts",
+          "2": "Weather resistant",
+          "3": "Low energy losses",
+          "4": "Excellent voltage regulation",
+          "5": "Versatile configurations"
+        },
+        "applications": {
+          "0": "Underground distribution",
+          "1": "Residential developments",
+          "2": "Hotels and resorts",
+          "3": "Shopping centers",
+          "4": "Industries",
+          "5": "University campuses"
+        },
+        "specs": {
+          "potencia": "30 – 3,000 kVA",
+          "voltaje": "Up to 34.5 kV",
+          "fases": "Single-phase / Three-phase",
+          "frecuencia": "60 Hz",
+          "refrigeracion": "ONAN / ONAF",
+          "normas": "ANSI / IEEE C57"
+        }
       },
       "subestacion": {
         "name": "Remanufactured Substation Transformers",
         "shortName": "Substation",
-        "description": "ETRYS by EMINSA substation transformers provide high performance for demanding applications."
+        "description": "ETRYS by EMINSA substation transformers provide high performance for demanding applications.",
+        "fullDescription": {
+          "0": "ETRYS by EMINSA substation-type transformers are restored units that provide high performance, safety, and reliability for more demanding applications in industrial, commercial, distribution, and generation systems.",
+          "1": "They fully comply with ANSI and IEEE standards, ensuring that each unit maintains its original electrical and mechanical characteristics.",
+          "2": "These transformers support custom configurations, such as tap changers, special cabinets, high-capacity bushings, and other accessories as required."
+        },
+        "features": {
+          "0": "Reinforced structural refurbishment",
+          "1": "Rigorous insulation testing",
+          "2": "Custom configurations",
+          "3": "Tap changers",
+          "4": "Special cabinets",
+          "5": "High-capacity bushings"
+        },
+        "applications": {
+          "0": "Heavy industrial systems",
+          "1": "Large commercial installations",
+          "2": "Distribution networks",
+          "3": "Power generation plants",
+          "4": "Mining and extractive industry",
+          "5": "Critical infrastructure"
+        },
+        "specs": {
+          "potencia": "Up to 3,000 kVA",
+          "voltaje": "Up to 34.5 kV",
+          "fases": "Three-phase",
+          "frecuencia": "60 Hz",
+          "refrigeracion": "ONAN / ONAF / OFAF",
+          "normas": "ANSI / IEEE C57"
+        }
       }
     },
     "repairServices": {
@@ -2523,39 +3007,48 @@
         }
       },
       "equipment": {
-        "0": {
-          "name": "Testing Lab",
-          "description": "ANSI C.57 equipped laboratory"
+        "lab": {
+          "description": "Laboratory equipped according to ANSI C.57 standards",
+          "specs": "ANSI C.57 Certification",
+          "name": "Electrical Testing Laboratory"
         },
-        "1": {
+        "horno": {
           "name": "Drying Oven",
-          "description": "Industrial oven for cores and coils"
+          "description": "Industrial oven for drying cores and coils",
+          "specs": "High capacity"
         },
-        "2": {
-          "name": "Oil Dehydrators",
-          "description": "Vacuum oil dehydration"
+        "deshidratadores": {
+          "description": "Vacuum oil dehydration system",
+          "specs": "1,600 GPH",
+          "name": "Oil Dehydrators"
         },
-        "3": {
-          "name": "Overhead Crane",
-          "description": "Heavy transformer handling"
+        "grua": {
+          "name": "Bridge Crane",
+          "description": "Bridge crane for heavy transformer handling",
+          "specs": "20 tons"
         },
-        "4": {
-          "name": "Workshop",
-          "description": "Complete workshop with paint booth"
+        "taller": {
+          "name": "Manufacturing Workshop",
+          "description": "Complete workshop with professional paint booth",
+          "specs": "Paint booth"
         },
-        "5": {
-          "name": "Forklift",
-          "description": "High-capacity equipment handling"
+        "montacargas": {
+          "description": "High-capacity forklift for equipment handling",
+          "specs": "15,000 lb",
+          "name": "Industrial Forklift"
         },
-        "6": {
-          "name": "Parts Warehouse",
-          "description": "Components and spare parts inventory"
+        "almacen": {
+          "name": "Component Warehouse",
+          "description": "Complete inventory of components and spare parts",
+          "specs": "Permanent stock"
         },
-        "7": {
+        "tanque": {
           "name": "Storage Tank",
-          "description": "Dielectric fluid storage"
+          "description": "Dielectric fluid storage tank",
+          "specs": "12,000 gallons"
         }
-      }
+      },
+      "location": "Santo Domingo, Dominican Republic"
     },
     "process": {
       "1": {
@@ -3179,6 +3672,57 @@
       "newsByCategory": "News by Category",
       "newsCategoryFilter": "Filter news by: MTN, RST, EIC, Services, General",
       "exploreNews": "Explore News"
+    },
+    "cotizaciones": {
+      "requestQuote": "Request quotation",
+      "newTransformer": "New transformer",
+      "otherProduct": "Other product",
+      "specialRequirements": "Special requirements",
+      "urgentRequest": "Urgent request",
+      "urgentDesc": "I need a response within 24 hours",
+      "chatWithUs": "Chat with us",
+      "responseTime": "Response within 24 business hours",
+      "noCommitment": "No purchase commitment",
+      "technicalAdvice": "Specialized technical advice included",
+      "breadcrumbHome": "Home",
+      "breadcrumbMTN": "MTN",
+      "breadcrumbQuotes": "Quotes",
+      "heroBadge": "Request quotation",
+      "heroTitle": "MTN Transformer Quotation",
+      "heroDescription": "Complete the form and our team will send you a personalized proposal with prices and technical specifications.",
+      "successTitle": "Quotation sent successfully!",
+      "successMessage": "Our team will review your request and contact you within the next business hours.",
+      "viewProducts": "View products",
+      "newQuote": "New quotation",
+      "sectionContactInfo": "Contact Information",
+      "sectionRequestType": "Request Type",
+      "sectionAdditionalDetails": "Additional Details",
+      "fullName": "Full name",
+      "companyOrg": "Company / Organization",
+      "email": "Email address",
+      "phone": "Phone",
+      "whatToQuote": "What would you like to quote?",
+      "requestDescription": "Request description",
+      "placeholderName": "E.g. John Doe",
+      "placeholderCompany": "Your company name (optional)",
+      "placeholderEmail": "email@company.com",
+      "placeholderLocation": "City, province or project address",
+      "placeholderDescription": "Describe the product or service you need a quote for...",
+      "placeholderSpecialReq": "Indicate any special requirements or additional information...",
+      "fileFormats": "PDF, DOC, JPG, PNG, XLSX (max. 5 files)",
+      "preferDirectContact": "Prefer to contact us directly?",
+      "callUs": "Call us",
+      "whatsapp": "WhatsApp",
+      "certifications": "Certifications",
+      "errorNameRequired": "Name is required",
+      "errorEmailRequired": "Email is required",
+      "errorEmailInvalid": "Invalid email address",
+      "errorPhoneRequired": "Phone is required",
+      "errorSelectType": "Select the request type",
+      "errorTransformerFields": "Complete the required transformer fields",
+      "errorDescribeRequest": "Describe your request",
+      "errorSubmit": "Error sending the request",
+      "errorConnection": "Connection error. Please try again."
     }
   },
   "eicPage": {
@@ -3190,13 +3734,15 @@
       "heroDescription": "We exclusively represent leading brands in the international electrical sector, offering our clients direct access to cutting-edge technology with the support of our specialized local team in the Dominican Republic.",
       "internationalBrands": "International brands",
       "satisfiedClients": "Satisfied clients",
-      "yearsTrajectory": "Years of experience"
+      "yearsTrajectory": "Years of experience",
+      "eyebrow": "EIC Division · EMINSA"
     },
     "brands": {
       "badge": "Strategic Partners",
       "title": "Represented Brands",
       "description": "We exclusively represent the best international brands in the electrical sector, guaranteeing quality, support, and availability.",
-      "viewBrand": "View brand"
+      "viewBrand": "View brand",
+      "label": "Brand"
     },
     "categories": {
       "badge": "Our Portfolio",
@@ -3303,14 +3849,14 @@
       "breadcrumb": "Quotes",
       "heroTitle": "Request an International Quote",
       "heroDescription": "Complete the form and receive a personalized quote for international electrical products. We respond in less than 30 minutes during business hours.",
-      "successTitle": "Request Sent!",
+      "successTitle": "Quotation sent successfully!",
       "referenceNumber": "Reference Number",
-      "saveCode": "Save this code to track your request",
+      "saveCode": "Save this code for tracking",
       "successDescription": "We have received your quote request. Our international trade team will contact you shortly with a personalized quote.",
       "estimatedResponseTime": "Estimated response time:",
-      "responseTimeValue": "Less than 30 minutes during business hours",
+      "responseTimeValue": "Less than 24 business hours",
       "backToEic": "Back to EIC",
-      "viewProducts": "View Products",
+      "viewProducts": "View products",
       "goHome": "Go to Home",
       "contactInfo": "Contact Information",
       "fullName": "Full Name",
@@ -3367,14 +3913,90 @@
       "sourceOther": "Other",
       "submitting": "Submitting request...",
       "submitButton": "Submit Quote Request",
-      "directContact": "Direct Contact",
+      "directContact": "Direct contact",
       "fastResponse": "Fast Response",
       "fastResponseDescription": "We respond in less than 30 minutes during business hours (Monday to Friday 8am - 5pm).",
       "internationalSuppliers": "International Suppliers",
       "internationalSuppliersDescription": "We represent more than 8 leading brands in the electrical sector with presence in more than 40 countries.",
       "location": "Location",
       "errorSubmit": "Error submitting request",
-      "errorConnection": "Connection error. Please try again."
+      "errorConnection": "Connection error. Please try again.",
+      "pageTitle": "Quotations",
+      "title": "EIC Equipment Quotation",
+      "description": "Transformers, cables, and electrical equipment from international brands. Receive a personalized proposal with competitive prices.",
+      "refNumber": "Reference number",
+      "teamReview": "Our team will review your request and contact you shortly.",
+      "responseTime": "Estimated response time",
+      "form": {
+        "contactInfo": "Contact Information",
+        "fullName": "Full name",
+        "fullNamePlaceholder": "E.g. John Smith",
+        "company": "Company / Organization",
+        "companyPlaceholder": "Your company name",
+        "email": "Email",
+        "emailPlaceholder": "email@company.com",
+        "phone": "Phone",
+        "position": "Position / Title",
+        "positionPlaceholder": "E.g. Purchasing Manager",
+        "productDetails": "Product Details",
+        "productCategory": "Product category",
+        "selectCategory": "Select a category",
+        "specificProduct": "Specific product",
+        "selectProduct": "Select a product",
+        "otherNotSure": "Other / Not sure",
+        "preferredBrand": "Preferred brand",
+        "noPreference": "No preference",
+        "quantity": "Quantity",
+        "urgency": "Urgency",
+        "normal": "Normal",
+        "priority": "Priority",
+        "urgent": "Urgent",
+        "transformerSpecs": "Transformer specifications",
+        "power": "Power",
+        "powerPlaceholder": "E.g. 500 kVA",
+        "configuration": "Configuration",
+        "select": "Select",
+        "singlePhase": "Single-phase",
+        "threePhase": "Three-phase",
+        "selfProtected": "Self-protected",
+        "primaryVoltage": "Primary voltage",
+        "primaryVoltagePlaceholder": "E.g. 13,200 V",
+        "secondaryVoltage": "Secondary voltage",
+        "secondaryVoltagePlaceholder": "E.g. 120/240 V",
+        "powerDistributor": "Power distributor",
+        "selectDistributor": "Select the distributor",
+        "internalUse": "Internal use",
+        "others": "OTHERS",
+        "additionalInfo": "Additional Information",
+        "projectLocation": "Project location",
+        "projectLocationPlaceholder": "City, province or address",
+        "projectDescription": "Project description",
+        "projectDescriptionPlaceholder": "Describe your project or specific requirements...",
+        "attachFiles": "Attach files (optional)",
+        "clickToUpload": "Click to upload files",
+        "fileTypes": "PDF, DOC, JPG, PNG, DWG, XLSX (max. 5 files)",
+        "howFoundUs": "How did you find us?",
+        "selectOption": "Select an option",
+        "google": "Google",
+        "referral": "Referral",
+        "socialMedia": "Social media",
+        "event": "Event",
+        "advertising": "Advertising",
+        "brandRep": "Brand representative",
+        "other": "Other",
+        "sending": "Sending request...",
+        "submit": "Send quotation"
+      },
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
+      "whyEic": "Why EIC?",
+      "response24h": "Response in less than 24 hours",
+      "certifiedProviders": "Certified international suppliers",
+      "technicalAdvice": "Specialized technical advice",
+      "intlProviders": "International suppliers",
+      "intlProvidersDesc": "Access electrical equipment from the world's top brands through our direct channels.",
+      "moreCount": "+3 more",
+      "locationTitle": "Location"
     }
   },
   "etrysPage": {
@@ -3383,7 +4005,10 @@
       "requestQuote": "Request a Quote",
       "warranty": "Certified warranty",
       "yearsExp": "Years of experience",
-      "transformersRestored": "Transformers restored"
+      "transformersRestored": "Transformers restored",
+      "benefit1": "Up to 70% less than a new transformer",
+      "benefit2": "IEEE C57 / ANSI certified warranty",
+      "benefit3": "Restoration · Remanufacturing · Rental"
     },
     "remanufactured": {
       "badge": "Remanufactured Transformers",
@@ -3753,6 +4378,75 @@
       "secondaryVoltagePlaceholder": "E.g.: 120/240 V",
       "locationPlaceholder": "City, Province",
       "emailLabel": "Email"
+    },
+    "cotizaciones": {
+      "pageTitle": "Quotations",
+      "formTitle": "Request quotation",
+      "title": "RST / Etrys Services Quotation",
+      "description": "Remanufacturing, repair, and rental of electrical transformers. Complete the form to receive a personalized proposal.",
+      "successTitle": "Request sent successfully!",
+      "refNumber": "Reference number",
+      "saveCode": "Save this code for tracking",
+      "teamReview": "Our team will review your request and contact you shortly.",
+      "responseTime": "Estimated response time",
+      "responseTimeValue": "Less than 30 minutes during business hours",
+      "backToRst": "Back to RST",
+      "goHome": "Go to home",
+      "form": {
+        "contactInfo": "Contact Information",
+        "fullName": "Full name",
+        "fullNamePlaceholder": "E.g. John Smith",
+        "company": "Company / Organization",
+        "companyPlaceholder": "Your company name (optional)",
+        "email": "Email",
+        "emailPlaceholder": "email@company.com",
+        "phone": "Phone",
+        "position": "Position / Title",
+        "positionPlaceholder": "E.g. Maintenance Manager",
+        "serviceDetails": "Service Details",
+        "serviceType": "Service type",
+        "selectOption": "Select an option",
+        "remanufacture": "Remanufacturing",
+        "repair": "Repair",
+        "rental": "Rental",
+        "diagnostic": "Diagnostic",
+        "maintenance": "Maintenance",
+        "other": "Other",
+        "transformerType": "Transformer type",
+        "poleType": "Pole type",
+        "padMounted": "Pad-Mounted",
+        "substation": "Substation",
+        "dryType": "Dry type",
+        "otherNotSure": "Other / Not sure",
+        "urgency": "Urgency",
+        "normal": "Normal",
+        "priority": "Priority",
+        "urgent": "Urgent",
+        "additionalInfo": "Additional Information",
+        "equipmentLocation": "Equipment location",
+        "locationPlaceholder": "City, province or address",
+        "problemDescription": "Problem or requirement description",
+        "problemPlaceholder": "Describe the problem or the details of the required service...",
+        "attachFiles": "Attach files (optional)",
+        "clickToUpload": "Click to upload files",
+        "fileTypes": "PDF, DOC, JPG, PNG (max. 5 files)",
+        "howFoundUs": "How did you find us?",
+        "google": "Google",
+        "referral": "Referral",
+        "socialMedia": "Social media",
+        "event": "Event",
+        "advertising": "Advertising",
+        "sending": "Sending request...",
+        "submit": "Send quotation"
+      },
+      "directContact": "Direct contact",
+      "phoneLabel": "Phone",
+      "emailLabel": "Email",
+      "whyRst": "Why RST / Etrys?",
+      "response30min": "Response in less than 30 minutes",
+      "emergency247": "24/7 emergency service",
+      "warrantyAll": "Warranty on all services",
+      "locationTitle": "Location"
     }
   },
   "common": {
@@ -3798,6 +4492,30 @@
       "typeSpreadsheet": "Spreadsheet",
       "typeImage": "Image",
       "typeLink": "Link"
+    },
+    "whatsapp": {
+      "needHelp": "Need help?",
+      "chatMessage": "Chat with us on WhatsApp for an immediate response."
+    },
+    "form": {
+      "refNumber": "Reference number",
+      "saveCode": "Save this code for tracking",
+      "selectOption": "Select an option",
+      "attachFile": "Attach document (optional)",
+      "clickToUpload": "Click to upload files",
+      "projectLocation": "Project location",
+      "primaryVoltage": "Primary voltage",
+      "secondaryVoltage": "Secondary voltage",
+      "powerDistributor": "Power distributor",
+      "selectDistributor": "Select the distributor",
+      "internalUse": "Internal use",
+      "equipmentLocation": "Equipment location",
+      "equipmentSpecs": "Equipment specifications",
+      "selectService": "Select a service",
+      "equipmentType": "Equipment type",
+      "selectEquipment": "Select equipment",
+      "sending": "Sending request...",
+      "submit": "Send quotation"
     }
   },
   "serviciosConfig": {
@@ -3819,18 +4537,20 @@
           "label": "Satisfaction"
         }
       },
-      "proceso": {
-        "1": {
+      "name": "EMINSA Services",
+      "fullName": "EMINSA Specialized Services",
+      "procesoTrabajo": {
+        "0": {
           "titulo": "Technical Inspection",
-          "descripcion": "Assessment of current conditions, detection of potential risks, and preparation of a comprehensive equipment diagnosis."
+          "descripcion": "Survey of current equipment conditions, comprehensive diagnosis, and preparation of technical report with recommendations."
+        },
+        "1": {
+          "titulo": "Specialized Execution",
+          "descripcion": "Execution of work with certified personnel, specialized equipment, and industrial safety protocols."
         },
         "2": {
-          "titulo": "Specialized Execution",
-          "descripcion": "Findings-based maintenance: work execution according to the results of the initial diagnosis."
-        },
-        "3": {
           "titulo": "Final Verification",
-          "descripcion": "Validation of the work performed, confirmation of transformer operability, and delivery of a technical report."
+          "descripcion": "Commissioning tests, parameter validation, and delivery of final report with results."
         }
       }
     },
@@ -4044,35 +4764,43 @@
     "equipamiento": {
       "lab": {
         "name": "Electrical Testing Laboratory",
-        "description": "Laboratory equipped in accordance with ANSI C.57 standards to ensure the quality of every service"
+        "description": "Laboratory equipped in accordance with ANSI C.57 standards to ensure the quality of every service",
+        "specs": "Megger MIT1025, TTR, Kelvin bridge, DGA"
       },
       "horno": {
         "name": "Drying Oven",
-        "description": "Industrial oven for drying transformer cores and coils"
+        "description": "Industrial oven for drying transformer cores and coils",
+        "specs": "5 tons, Max temp: 200°C"
       },
       "deshidratadores": {
         "name": "Oil Dehydrators",
-        "description": "Vacuum oil dehydration system for purification"
+        "description": "Vacuum oil dehydration system for purification",
+        "specs": "1,500 gal/hour, Vacuum: 29.5 inHg"
       },
       "grua": {
         "name": "Overhead Crane",
-        "description": "Overhead crane for safe handling of heavy transformers in the workshop"
+        "description": "Overhead crane for safe handling of heavy transformers in the workshop",
+        "specs": "20 tons, Span: 15m"
       },
       "taller": {
         "name": "Manufacturing Workshop",
-        "description": "Complete workshop with professional paint booth for high-quality finishes"
+        "description": "Complete workshop with professional paint booth for high-quality finishes",
+        "specs": "Automatic and manual, up to 34.5 kV"
       },
       "montacargas": {
         "name": "Industrial Forklift",
-        "description": "High-capacity forklift for handling heavy equipment"
+        "description": "High-capacity forklift for handling heavy equipment",
+        "specs": "10 tons"
       },
       "almacen": {
         "name": "Component Warehouse",
-        "description": "Complete inventory of components and spare parts for immediate availability"
+        "description": "Complete inventory of components and spare parts for immediate availability",
+        "specs": "Bushings, gaskets, valves, oil, insulation"
       },
       "tanque": {
         "name": "Storage Tank",
-        "description": "Large-capacity dielectric fluid storage tank"
+        "description": "Large-capacity dielectric fluid storage tank",
+        "specs": "15 PSI, Vacuum: 29.5 inHg"
       }
     },
     "proyectos": {
@@ -4089,7 +4817,8 @@
           "1": "30% reduction in maintenance costs",
           "2": "Zero critical service interruptions",
           "3": "Estimated useful life extension of 8-10 years"
-        }
+        },
+        "capacidad": "2x1500 kVA"
       },
       "p2": {
         "titulo": "Emergency - Post-Hurricane Restoration",
@@ -4104,7 +4833,8 @@
           "1": "120 transformers assessed",
           "2": "85 units repaired in the field",
           "3": "35 rental units installed"
-        }
+        },
+        "capacidad": "3x2000 kVA"
       },
       "p3": {
         "titulo": "Engineering - Shopping Mall Substation",
@@ -4119,7 +4849,8 @@
           "1": "7,500 kVA installed capacity",
           "2": "24/7 remote monitoring system",
           "3": "Zero safety incidents"
-        }
+        },
+        "capacidad": "1x5000 kVA"
       },
       "p4": {
         "titulo": "Comprehensive Maintenance - Cement Plant",
@@ -4134,7 +4865,8 @@
           "1": "Compliance with shutdown schedule",
           "2": "15% improvement in operational efficiency",
           "3": "Reduction in operating temperature"
-        }
+        },
+        "capacidad": "4x750 kVA"
       },
       "p5": {
         "titulo": "Laboratory Testing - Distribution Network",
@@ -4149,7 +4881,8 @@
           "1": "35 units prioritized for intervention",
           "2": "Condition database updated",
           "3": "3-year maintenance plan developed"
-        }
+        },
+        "capacidad": "2x3000 kVA"
       },
       "p6": {
         "titulo": "Temporary Rental - Tourism Project",
@@ -4164,33 +4897,52 @@
           "1": "Zero power interruptions",
           "2": "Monthly maintenance included",
           "3": "Clean deinstallation upon completion"
-        }
+        },
+        "capacidad": "6x500 kVA"
       }
     },
     "testimoniales": {
       "t1": {
         "cargo": "Maintenance Manager",
-        "testimonio": "Since we implemented the preventive maintenance program with EMINSA, our unplanned failures were reduced by 85%. Their technical team is highly professional and always meets established timelines."
+        "testimonio": "Since we implemented the preventive maintenance program with EMINSA, our unplanned failures were reduced by 85%. Their technical team is highly professional and always meets established timelines.",
+        "nombre": "Carlos Méndez",
+        "empresa": "CEPM",
+        "servicio": "Preventive Maintenance"
       },
       "t2": {
         "cargo": "Director of Operations",
-        "testimonio": "EMINSA's response during the post-hurricane emergency was exceptional. In less than 6 hours they already had a team in the field, and within 72 hours we had restored 95% of service. They are true strategic allies."
+        "testimonio": "EMINSA's response during the post-hurricane emergency was exceptional. In less than 6 hours they already had a team in the field, and within 72 hours we had restored 95% of service. They are true strategic allies.",
+        "nombre": "Ana García",
+        "empresa": "Grupo Puntacana",
+        "servicio": "Field Repair"
       },
       "t3": {
         "cargo": "Director of Projects",
-        "testimonio": "The substation project was executed flawlessly. EMINSA not only met all technical specifications but delivered 2 weeks ahead of schedule. The quality of their engineering is first-rate."
+        "testimonio": "The substation project was executed flawlessly. EMINSA not only met all technical specifications but delivered 2 weeks ahead of schedule. The quality of their engineering is first-rate.",
+        "nombre": "Roberto Díaz",
+        "empresa": "EDENORTE",
+        "servicio": "Emergency Service"
       },
       "t4": {
         "cargo": "Plant Manager",
-        "testimonio": "The comprehensive maintenance during our scheduled shutdown was executed with military precision. All 8 transformers were left in optimal condition and the plant started up without any setbacks. Excellent service."
+        "testimonio": "The comprehensive maintenance during our scheduled shutdown was executed with military precision. All 8 transformers were left in optimal condition and the plant started up without any setbacks. Excellent service.",
+        "nombre": "María Santos",
+        "empresa": "Barrick Gold",
+        "servicio": "Comprehensive Maintenance"
       },
       "t5": {
         "cargo": "Distribution Supervisor",
-        "testimonio": "EMINSA's laboratory analyses, in partnership with SD Myers, allowed us to identify 35 transformers that required urgent intervention. Thanks to that, we avoided failures that would have cost us millions."
+        "testimonio": "EMINSA's laboratory analyses, in partnership with SD Myers, allowed us to identify 35 transformers that required urgent intervention. Thanks to that, we avoided failures that would have cost us millions.",
+        "nombre": "José Ramírez",
+        "empresa": "AES Dominicana",
+        "servicio": "Laboratory Testing"
       },
       "t6": {
         "cargo": "Project Manager",
-        "testimonio": "The transformer rental service was key to our expansion project. EMINSA provided us with reliable equipment, professional installation, and impeccable maintenance throughout the 8-month contract."
+        "testimonio": "The transformer rental service was key to our expansion project. EMINSA provided us with reliable equipment, professional installation, and impeccable maintenance throughout the 8-month contract.",
+        "nombre": "Laura Fernández",
+        "empresa": "Cemex Dominicana",
+        "servicio": "Engineering and Projects"
       }
     },
     "clientes": {
@@ -4200,84 +4952,108 @@
           "0": "Emergencies",
           "1": "Preventive Maintenance",
           "2": "Rental"
-        }
+        },
+        "nombre": "Dominican Electric Group",
+        "servicios": "Preventive maintenance, field repair"
       },
       "c2": {
         "sector": "Energy and Distribution",
         "serviciosContratados": {
           "0": "Laboratory Testing",
           "1": "Preventive Maintenance"
-        }
+        },
+        "nombre": "EDESUR",
+        "servicios": "Repair, comprehensive maintenance"
       },
       "c3": {
         "sector": "Energy and Distribution",
         "serviciosContratados": {
           "0": "Comprehensive Maintenance",
           "1": "Emergencies"
-        }
+        },
+        "nombre": "EDEESTE",
+        "servicios": "Comprehensive maintenance, laboratory testing"
       },
       "c4": {
         "sector": "Industrial",
         "serviciosContratados": {
           "0": "Preventive Maintenance",
           "1": "Field Corrective"
-        }
+        },
+        "nombre": "CDEEE",
+        "servicios": "Emergencies, field repair"
       },
       "c5": {
         "sector": "Commercial",
         "serviciosContratados": {
           "0": "Engineering & Projects",
           "1": "Comprehensive Maintenance"
-        }
+        },
+        "nombre": "Barrick Gold",
+        "servicios": "Preventive maintenance, engineering"
       },
       "c6": {
         "sector": "Industrial",
         "serviciosContratados": {
           "0": "Comprehensive Maintenance",
           "1": "Laboratory Testing"
-        }
+        },
+        "nombre": "Falcondo",
+        "servicios": "Laboratory testing, maintenance"
       },
       "c7": {
         "sector": "Hospitality and Tourism",
         "serviciosContratados": {
           "0": "Equipment Rental",
           "1": "Engineering & Projects"
-        }
+        },
+        "nombre": "Tropicalia",
+        "servicios": "Preventive maintenance, emergencies"
       },
       "c8": {
         "sector": "Energy and Distribution",
         "serviciosContratados": {
           "0": "Corrective Maintenance",
           "1": "Emergencies"
-        }
+        },
+        "nombre": "HAINA",
+        "servicios": "Field repair, testing"
       },
       "c9": {
         "sector": "Industrial",
         "serviciosContratados": {
           "0": "Preventive Maintenance",
           "1": "Laboratory Testing"
-        }
+        },
+        "nombre": "Punta Cana-Macao Energy Consortium",
+        "servicios": "Comprehensive maintenance, engineering"
       },
       "c10": {
         "sector": "Commercial",
         "serviciosContratados": {
           "0": "Comprehensive Maintenance",
           "1": "Technical Advisory"
-        }
+        },
+        "nombre": "BHD León",
+        "servicios": "Emergencies, preventive maintenance"
       },
       "c11": {
         "sector": "Healthcare",
         "serviciosContratados": {
           "0": "Preventive Maintenance",
           "1": "Emergencies"
-        }
+        },
+        "nombre": "Dominican National Brewery",
+        "servicios": "Engineering, comprehensive maintenance"
       },
       "c12": {
         "sector": "Commercial",
         "serviciosContratados": {
           "0": "Comprehensive Maintenance",
           "1": "Equipment Rental"
-        }
+        },
+        "nombre": "Punta Cana International Airport",
+        "servicios": "Maintenance, laboratory testing"
       }
     },
     "recursos": {
@@ -4288,7 +5064,9 @@
       "r2": {
         "nombre": "KVA Calculator",
         "descripcion": "Tool to calculate the required transformer capacity based on your load."
-      }
+      },
+      "title": "Resources",
+      "description": "Technical documentation and resources"
     }
   }
 }

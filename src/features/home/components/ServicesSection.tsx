@@ -38,7 +38,7 @@ export default function ServicesSection() {
 
       <div className="container-eminsa relative">
         {/* Section eyebrow */}
-        <MarqueeEyebrow text="Servicios · Atención Técnica Especializada" color="#6b7280" />
+        <MarqueeEyebrow text={t("services.sectionLabel")} color="#6b7280" />
 
         {/* Section Header */}
         <motion.div

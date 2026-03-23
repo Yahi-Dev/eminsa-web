@@ -38,7 +38,7 @@ export default function HomeTransformadorSection() {
     <section className="py-10 lg:py-14 bg-white">
       <div className="container-eminsa">
         {/* Eyebrow */}
-        <MarqueeEyebrow text="División RST · Restauración y Servicio" color="#0099ce" />
+        <MarqueeEyebrow text={t("rst.sectionLabel")} color="#0099ce" />
 
         {/* Title — outside the card */}
         <motion.h2
@@ -122,7 +122,7 @@ export default function HomeTransformadorSection() {
                 href="/etrys/cotizaciones"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007fb0] text-white font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0099ce]/25 group text-sm"
               >
-                Solicitar Cotización
+                {t("rst.requestQuote")}
                 <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
               <Link
@@ -130,7 +130,7 @@ export default function HomeTransformadorSection() {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-[#0099ce]/30 text-[#0099ce] hover:border-[#0099ce] hover:bg-[#0099ce]/5 font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 text-sm"
               >
                 <Package size={16} />
-                Ver Productos RST
+                {t("rst.viewProducts")}
               </Link>
             </motion.div>
           </div>

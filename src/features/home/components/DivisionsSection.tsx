@@ -25,6 +25,7 @@ const iconMap: { [key: string]: React.ElementType } = {
 export default function DivisionsSection() {
   const t = useTranslations("home");
   const tc = useTranslations("config");
+  const navName = (name: string) => tc(`header.navNames.${name}`);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -100,7 +101,7 @@ export default function DivisionsSection() {
                   : {}
               }
             >
-              {division.name}
+              {navName(division.name)}
             </button>
           ))}
         </motion.div>
@@ -152,7 +153,7 @@ export default function DivisionsSection() {
 
                 {/* Name */}
                 <h3 className="text-5xl md:text-6xl font-black text-[#00269b] mb-4">
-                  {activeDivision.name}
+                  {navName(activeDivision.name)}
                 </h3>
 
                 {/* Description */}

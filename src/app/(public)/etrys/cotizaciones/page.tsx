@@ -31,7 +31,8 @@ import { useTranslations } from "next-intl";
 
 function CotizacionesForm() {
   const searchParams = useSearchParams();
-  const t = useTranslations("contact");
+  const tContact = useTranslations("contact");
+  const t = useTranslations("etrysPage");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [codigo, setCodigo] = useState("");
@@ -67,10 +68,10 @@ function CotizacionesForm() {
   }]);
 
   const translatedOptions = {
-    fases: FASES.map(f => ({ value: f.value, label: t(`form.transformer.phase.${f.value}`) })),
-    tiposTransformadores: TIPOS_TRANSFORMADORES.map(tipo => ({ value: tipo.value, label: t(`form.transformer.type.${tipo.value}`) })),
-    normas: NORMAS.map(n => ({ value: n.value, label: t(`form.transformer.standard.${n.value}`) })),
-    zonasInstalacion: ZONAS_INSTALACION.map(z => ({ value: z.value, label: t(`form.transformer.zone.${z.value}`) })),
+    fases: FASES.map(f => ({ value: f.value, label: tContact(`form.transformer.phase.${f.value}`) })),
+    tiposTransformadores: TIPOS_TRANSFORMADORES.map(tipo => ({ value: tipo.value, label: tContact(`form.transformer.type.${tipo.value}`) })),
+    normas: NORMAS.map(n => ({ value: n.value, label: tContact(`form.transformer.standard.${n.value}`) })),
+    zonasInstalacion: ZONAS_INSTALACION.map(z => ({ value: z.value, label: tContact(`form.transformer.zone.${z.value}`) })),
   };
 
   const tfFormData: ContactFormState = {
@@ -175,22 +176,22 @@ function CotizacionesForm() {
             <CheckCircle2 size={40} className="text-green-600" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            ¡Solicitud enviada exitosamente!
+            {t("cotizaciones.successTitle")}
           </h2>
           {codigo && (
             <div className="bg-[#0099ce]/5 border border-[#0099ce]/20 rounded-xl p-4 mb-4">
-              <p className="text-xs text-[#0099ce] uppercase tracking-wider font-semibold mb-1">Número de referencia</p>
+              <p className="text-xs text-[#0099ce] uppercase tracking-wider font-semibold mb-1">{t("cotizaciones.refNumber")}</p>
               <p className="text-2xl font-bold text-[#0099ce] tracking-widest">{codigo}</p>
-              <p className="text-xs text-gray-500 mt-1">Guarde este código para seguimiento</p>
+              <p className="text-xs text-gray-500 mt-1">{t("cotizaciones.saveCode")}</p>
             </div>
           )}
           <p className="text-gray-600 mb-6">
-            Nuestro equipo revisará su solicitud y le contactará a la brevedad.
+            {t("cotizaciones.teamReview")}
           </p>
           <div className="bg-[#0099ce]/10 rounded-xl p-4 mb-6">
             <p className="text-sm text-gray-700">
-              <strong>Tiempo estimado de respuesta</strong><br />
-              Menos de 30 minutos en horario hábil
+              <strong>{t("cotizaciones.responseTime")}</strong><br />
+              {t("cotizaciones.responseTimeValue")}
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -198,13 +199,13 @@ function CotizacionesForm() {
               href="/etrys"
               className="inline-flex items-center justify-center gap-2 bg-[#0099ce] hover:bg-[#007ba8] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
             >
-              Volver a RST
+              {t("cotizaciones.backToRst")}
             </Link>
             <Link
               href="/"
               className="inline-flex items-center justify-center gap-2 border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-xl font-medium transition-colors"
             >
-              Ir al inicio
+              {t("cotizaciones.goHome")}
             </Link>
           </div>
         </div>
@@ -240,12 +241,12 @@ function CotizacionesForm() {
             <div>
               <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <div className="w-8 h-8 bg-[#0099ce] text-white rounded-lg flex items-center justify-center text-sm font-bold shrink-0">1</div>
-                Información de Contacto
+                {t("cotizaciones.form.contactInfo")}
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="input-label">
-                    Nombre completo <span className="text-red-500">*</span>
+                    {t("cotizaciones.form.fullName")} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -254,23 +255,23 @@ function CotizacionesForm() {
                     value={formData.nombre}
                     onChange={handleChange}
                     className="input-field"
-                    placeholder="Ej. Juan Pérez"
+                    placeholder={t("cotizaciones.form.fullNamePlaceholder")}
                   />
                 </div>
                 <div>
-                  <label className="input-label">Empresa / Organización</label>
+                  <label className="input-label">{t("cotizaciones.form.company")}</label>
                   <input
                     type="text"
                     name="empresa"
                     value={formData.empresa}
                     onChange={handleChange}
                     className="input-field"
-                    placeholder="Nombre de su empresa (opcional)"
+                    placeholder={t("cotizaciones.form.companyPlaceholder")}
                   />
                 </div>
                 <div>
                   <label className="input-label">
-                    Correo electrónico <span className="text-red-500">*</span>
+                    {t("cotizaciones.form.email")} <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -279,27 +280,27 @@ function CotizacionesForm() {
                     value={formData.email}
                     onChange={handleChange}
                     className="input-field"
-                    placeholder="correo@empresa.com"
+                    placeholder={t("cotizaciones.form.emailPlaceholder")}
                   />
                 </div>
                 <div>
                   <PhoneInputField
                     value={formData.telefono}
                     onChange={handlePhoneChange}
-                    label="Teléfono"
+                    label={t("cotizaciones.form.phone")}
                     required
                     focusColor="#0099ce"
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="input-label">Cargo / Posición</label>
+                  <label className="input-label">{t("cotizaciones.form.position")}</label>
                   <input
                     type="text"
                     name="cargo"
                     value={formData.cargo}
                     onChange={handleChange}
                     className="input-field"
-                    placeholder="Ej. Gerente de Mantenimiento"
+                    placeholder={t("cotizaciones.form.positionPlaceholder")}
                   />
                 </div>
               </div>
@@ -309,12 +310,12 @@ function CotizacionesForm() {
             <div>
               <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <div className="w-8 h-8 bg-[#0099ce] text-white rounded-lg flex items-center justify-center text-sm font-bold shrink-0">2</div>
-                Detalles del Servicio
+                {t("cotizaciones.form.serviceDetails")}
               </h2>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="input-label">
-                    Tipo de servicio <span className="text-red-500">*</span>
+                    {t("cotizaciones.form.serviceType")} <span className="text-red-500">*</span>
                   </label>
                   <select
                     name="tipoServicio"
@@ -323,29 +324,29 @@ function CotizacionesForm() {
                     onChange={handleChange}
                     className="input-field"
                   >
-                    <option value="">Seleccione una opción</option>
-                    <option value="remanufactura">Remanufactura</option>
-                    <option value="reparacion">Reparación</option>
-                    <option value="alquiler">Alquiler</option>
-                    <option value="diagnostico">Diagnóstico</option>
-                    <option value="mantenimiento">Mantenimiento</option>
-                    <option value="otro">Otro</option>
+                    <option value="">{t("cotizaciones.form.selectOption")}</option>
+                    <option value="remanufactura">{t("cotizaciones.form.remanufacture")}</option>
+                    <option value="reparacion">{t("cotizaciones.form.repair")}</option>
+                    <option value="alquiler">{t("cotizaciones.form.rental")}</option>
+                    <option value="diagnostico">{t("cotizaciones.form.diagnostic")}</option>
+                    <option value="mantenimiento">{t("cotizaciones.form.maintenance")}</option>
+                    <option value="otro">{t("cotizaciones.form.other")}</option>
                   </select>
                 </div>
                 <div>
-                  <label className="input-label">Tipo de transformador</label>
+                  <label className="input-label">{t("cotizaciones.form.transformerType")}</label>
                   <select
                     name="tipoProducto"
                     value={formData.tipoProducto}
                     onChange={handleChange}
                     className="input-field"
                   >
-                    <option value="">Seleccione una opción</option>
-                    <option value="tipo-poste">Tipo poste</option>
-                    <option value="pad-mounted">Pad-Mounted</option>
-                    <option value="subestacion">Subestación</option>
-                    <option value="seco">Tipo seco</option>
-                    <option value="otro">Otro / No estoy seguro</option>
+                    <option value="">{t("cotizaciones.form.selectOption")}</option>
+                    <option value="tipo-poste">{t("cotizaciones.form.poleType")}</option>
+                    <option value="pad-mounted">{t("cotizaciones.form.padMounted")}</option>
+                    <option value="subestacion">{t("cotizaciones.form.substation")}</option>
+                    <option value="seco">{t("cotizaciones.form.dryType")}</option>
+                    <option value="otro">{t("cotizaciones.form.otherNotSure")}</option>
                   </select>
                 </div>
 
@@ -362,16 +363,16 @@ function CotizacionesForm() {
                 )}
 
                 <div className={formData.tipoProducto && formData.tipoProducto !== 'otro' ? "" : "md:col-span-2"}>
-                  <label className="input-label">Urgencia</label>
+                  <label className="input-label">{t("cotizaciones.form.urgency")}</label>
                   <select
                     name="urgencia"
                     value={formData.urgencia}
                     onChange={handleChange}
                     className="input-field"
                   >
-                    <option value="normal">Normal</option>
-                    <option value="prioritario">Prioritario</option>
-                    <option value="urgente">Urgente</option>
+                    <option value="normal">{t("cotizaciones.form.normal")}</option>
+                    <option value="prioritario">{t("cotizaciones.form.priority")}</option>
+                    <option value="urgente">{t("cotizaciones.form.urgent")}</option>
                   </select>
                 </div>
               </div>
@@ -381,35 +382,35 @@ function CotizacionesForm() {
             <div>
               <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                 <div className="w-8 h-8 bg-[#0099ce] text-white rounded-lg flex items-center justify-center text-sm font-bold shrink-0">3</div>
-                Información Adicional
+                {t("cotizaciones.form.additionalInfo")}
               </h2>
               <div className="space-y-6">
                 <div>
-                  <label className="input-label">Ubicación del equipo</label>
+                  <label className="input-label">{t("cotizaciones.form.equipmentLocation")}</label>
                   <input
                     type="text"
                     name="ubicacion"
                     value={formData.ubicacion}
                     onChange={handleChange}
                     className="input-field"
-                    placeholder="Ciudad, provincia o dirección"
+                    placeholder={t("cotizaciones.form.locationPlaceholder")}
                   />
                 </div>
                 <div>
-                  <label className="input-label">Descripción del problema o requerimiento</label>
+                  <label className="input-label">{t("cotizaciones.form.problemDescription")}</label>
                   <textarea
                     name="descripcion"
                     value={formData.descripcion}
                     onChange={handleChange}
                     rows={4}
                     className="input-field resize-none"
-                    placeholder="Describa el problema o los detalles del servicio requerido..."
+                    placeholder={t("cotizaciones.form.problemPlaceholder")}
                   />
                 </div>
 
                 {/* File Upload */}
                 <div>
-                  <label className="input-label">Adjuntar archivos (opcional)</label>
+                  <label className="input-label">{t("cotizaciones.form.attachFiles")}</label>
                   <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#0099ce] transition-colors">
                     <input
                       type="file"
@@ -421,8 +422,8 @@ function CotizacionesForm() {
                     />
                     <label htmlFor="file-upload-rst" className="flex flex-col items-center cursor-pointer">
                       <Upload size={32} className="text-gray-400 mb-2" />
-                      <span className="text-sm text-gray-600">Haga clic para subir archivos</span>
-                      <span className="text-xs text-gray-400 mt-1">PDF, DOC, JPG, PNG (máx. 5 archivos)</span>
+                      <span className="text-sm text-gray-600">{t("cotizaciones.form.clickToUpload")}</span>
+                      <span className="text-xs text-gray-400 mt-1">{t("cotizaciones.form.fileTypes")}</span>
                     </label>
                   </div>
                   {files.length > 0 && (
@@ -447,20 +448,20 @@ function CotizacionesForm() {
                 </div>
 
                 <div>
-                  <label className="input-label">¿Cómo nos encontró?</label>
+                  <label className="input-label">{t("cotizaciones.form.howFoundUs")}</label>
                   <select
                     name="comoNosConocio"
                     value={formData.comoNosConocio}
                     onChange={handleChange}
                     className="input-field"
                   >
-                    <option value="">Seleccione una opción</option>
-                    <option value="google">Google</option>
-                    <option value="referido">Referido</option>
-                    <option value="redes">Redes sociales</option>
-                    <option value="evento">Evento</option>
-                    <option value="publicidad">Publicidad</option>
-                    <option value="otro">Otro</option>
+                    <option value="">{t("cotizaciones.form.selectOption")}</option>
+                    <option value="google">{t("cotizaciones.form.google")}</option>
+                    <option value="referido">{t("cotizaciones.form.referral")}</option>
+                    <option value="redes">{t("cotizaciones.form.socialMedia")}</option>
+                    <option value="evento">{t("cotizaciones.form.event")}</option>
+                    <option value="publicidad">{t("cotizaciones.form.advertising")}</option>
+                    <option value="otro">{t("cotizaciones.form.other")}</option>
                   </select>
                 </div>
               </div>
@@ -475,11 +476,11 @@ function CotizacionesForm() {
               {isSubmitting ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  Enviando solicitud...
+                  {t("cotizaciones.form.sending")}
                 </>
               ) : (
                 <>
-                  Enviar cotización
+                  {t("cotizaciones.form.submit")}
                   <Send size={18} />
                 </>
               )}
@@ -497,7 +498,7 @@ function CotizacionesForm() {
       >
         {/* Contact Card */}
         <div className="bg-white rounded-2xl shadow-lg p-6">
-          <h3 className="text-lg font-bold text-gray-900 mb-4">Contacto directo</h3>
+          <h3 className="text-lg font-bold text-gray-900 mb-4">{t("cotizaciones.directContact")}</h3>
           <div className="space-y-4">
             <a
               href={`tel:${contactInfo.phone}`}
@@ -507,7 +508,7 @@ function CotizacionesForm() {
                 <Phone size={20} className="text-[#0099ce]" />
               </div>
               <div>
-                <span className="text-xs text-gray-500 block">Teléfono</span>
+                <span className="text-xs text-gray-500 block">{t("cotizaciones.phoneLabel")}</span>
                 <span className="font-semibold text-gray-900">{contactInfo.phone}</span>
               </div>
             </a>
@@ -519,7 +520,7 @@ function CotizacionesForm() {
                 <Mail size={20} className="text-[#0099ce]" />
               </div>
               <div>
-                <span className="text-xs text-gray-500 block">Email</span>
+                <span className="text-xs text-gray-500 block">{t("cotizaciones.emailLabel")}</span>
                 <span className="font-semibold text-gray-900 text-sm">{contactInfo.email}</span>
               </div>
             </a>
@@ -537,19 +538,19 @@ function CotizacionesForm() {
 
         {/* Benefits */}
         <div className="bg-white rounded-2xl shadow-lg p-6">
-          <h3 className="font-bold text-gray-900 mb-4">¿Por qué RST / Etrys?</h3>
+          <h3 className="font-bold text-gray-900 mb-4">{t("cotizaciones.whyRst")}</h3>
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-sm">
               <Clock size={18} className="text-[#0099ce] shrink-0" />
-              <span className="text-gray-600">Respuesta en menos de 30 minutos</span>
+              <span className="text-gray-600">{t("cotizaciones.response30min")}</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
               <Zap size={18} className="text-[#0099ce] shrink-0" />
-              <span className="text-gray-600">Servicio de emergencia 24/7</span>
+              <span className="text-gray-600">{t("cotizaciones.emergency247")}</span>
             </div>
             <div className="flex items-center gap-3 text-sm">
               <Shield size={18} className="text-[#0099ce] shrink-0" />
-              <span className="text-gray-600">Garantía en todos los servicios</span>
+              <span className="text-gray-600">{t("cotizaciones.warrantyAll")}</span>
             </div>
           </div>
         </div>
@@ -558,7 +559,7 @@ function CotizacionesForm() {
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <div className="flex items-center gap-3 mb-3">
             <MapPin size={24} className="text-[#0099ce]" />
-            <h3 className="font-bold text-gray-900">Ubicación</h3>
+            <h3 className="font-bold text-gray-900">{t("cotizaciones.locationTitle")}</h3>
           </div>
           <p className="text-gray-600 text-sm">{contactInfo.address}</p>
         </div>
@@ -568,6 +569,7 @@ function CotizacionesForm() {
 }
 
 export default function EtrysCotizacionesPage() {
+  const t = useTranslations("etrysPage");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -583,7 +585,7 @@ export default function EtrysCotizacionesPage() {
               RST
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">Cotizaciones</span>
+            <span className="text-white">{t("cotizaciones.pageTitle")}</span>
           </nav>
 
           <div className="max-w-2xl">
@@ -591,13 +593,13 @@ export default function EtrysCotizacionesPage() {
               <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
                 <Zap size={24} />
               </div>
-              <span className="text-white/80 font-semibold">Solicitar cotización</span>
+              <span className="text-white/80 font-semibold">{t("cotizaciones.formTitle")}</span>
             </div>
             <h1 className="text-3xl md:text-4xl xl:text-5xl font-bold mb-4">
-              Cotización de Servicios RST / Etrys
+              {t("cotizaciones.title")}
             </h1>
             <p className="text-lg text-white/90">
-              Remanufactura, reparación y alquiler de transformadores eléctricos. Complete el formulario para recibir una propuesta personalizada.
+              {t("cotizaciones.description")}
             </p>
           </div>
         </div>

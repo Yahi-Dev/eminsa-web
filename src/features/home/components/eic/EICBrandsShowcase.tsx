@@ -132,7 +132,7 @@ export default function EICBrandsShowcase() {
 
       <div className="container-eminsa relative">
         {/* Section eyebrow */}
-        <MarqueeEyebrow text="División EIC · Equipos y Comercialización" color="#009e49" />
+        <MarqueeEyebrow text={t("sectionLabel")} color="#009e49" />
 
         {/* Header row */}
         <motion.div
@@ -250,7 +250,7 @@ export default function EICBrandsShowcase() {
               {/* Products */}
               <div>
                 <span className="text-gray-400 text-[11px] uppercase tracking-widest block mb-3">
-                  Productos
+                  {t("productsLabel")}
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {getBrandProducts(activeBrand.id).map((product, i) => (

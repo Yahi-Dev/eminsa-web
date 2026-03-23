@@ -18,7 +18,7 @@ const PRODUCT_PHOTOS = [
 // ─── Accent colors ─────────────────────────────────────────────────────────────
 const ACCENTS = ["#0099ce", "#009e49", "#00269b"];
 
-const TAB_LABELS = ["Tipo Poste", "Pad Mounted", "Subestación"];
+// TAB_LABELS moved inside component for i18n
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -30,16 +30,22 @@ export default function MTNHeroSection() {
   const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const DURATION = 5000;
 
+  const TAB_LABELS = [
+    t("mtn.slides.tipoPoste.category"),
+    t("mtn.slides.padMounted.category"),
+    t("mtn.slides.subestacion.category"),
+  ];
+
   const slides = [
     {
       id: "tipo-poste",
-      eyebrow: "Distribución aérea · Norma IEEE C57",
+      eyebrow: t("mtn.slides.tipoPoste.eyebrow"),
       name: t("mtn.slides.tipoPoste.name"),
       subtitle: t("mtn.slides.tipoPoste.subtitle"),
       specs: [
-        { label: "Potencia", value: "15–500", unit: "KVA" },
-        { label: "Voltaje", value: "34.5", unit: "KV" },
-        { label: "Fases", value: "1–3", unit: "Ф" },
+        { label: t("mtn.specLabels.power"), value: "15–500", unit: "KVA" },
+        { label: t("mtn.specLabels.voltage"), value: "34.5", unit: "KV" },
+        { label: t("mtn.specLabels.phases"), value: "1–3", unit: "Ф" },
       ],
       tags: ["IEEE C57", "DOE 2016", "ANSI"],
       quoteHref: "/mtn/cotizaciones",
@@ -47,29 +53,29 @@ export default function MTNHeroSection() {
     },
     {
       id: "pad-mounted",
-      eyebrow: "Distribución subterránea · Gabinete hermético",
+      eyebrow: t("mtn.slides.padMounted.eyebrow"),
       name: t("mtn.slides.padMounted.name"),
       subtitle: t("mtn.slides.padMounted.subtitle"),
       specs: [
-        { label: "Potencia", value: "30–3k", unit: "KVA" },
-        { label: "Voltaje", value: "34.5", unit: "KV" },
-        { label: "Fases", value: "1–3", unit: "Ф" },
+        { label: t("mtn.specLabels.power"), value: "30–3k", unit: "KVA" },
+        { label: t("mtn.specLabels.voltage"), value: "34.5", unit: "KV" },
+        { label: t("mtn.specLabels.phases"), value: "1–3", unit: "Ф" },
       ],
-      tags: ["IEEE C57", "NEMA", "Hermético"],
+      tags: ["IEEE C57", "NEMA", t("mtn.tags.hermetic")],
       quoteHref: "/mtn/cotizaciones",
       productHref: "/mtn/productos/pad-mounted",
     },
     {
       id: "subestacion",
-      eyebrow: "Alta potencia industrial · ANSI / IEEE",
+      eyebrow: t("mtn.slides.subestacion.eyebrow"),
       name: t("mtn.slides.subestacion.name"),
       subtitle: t("mtn.slides.subestacion.subtitle"),
       specs: [
-        { label: "Potencia", value: "≤10k", unit: "KVA" },
-        { label: "Voltaje", value: "138", unit: "KV" },
-        { label: "Norma", value: "ANSI", unit: "/IEEE" },
+        { label: t("mtn.specLabels.power"), value: "≤10k", unit: "KVA" },
+        { label: t("mtn.specLabels.voltage"), value: "138", unit: "KV" },
+        { label: t("mtn.specLabels.standard"), value: "ANSI", unit: "/IEEE" },
       ],
-      tags: ["DOE 2016", "ANSI/IEEE", "Alta eficiencia"],
+      tags: ["DOE 2016", "ANSI/IEEE", t("mtn.tags.highEfficiency")],
       quoteHref: "/mtn/cotizaciones",
       productHref: "/mtn/productos",
     },
@@ -132,7 +138,7 @@ export default function MTNHeroSection() {
           transition={{ duration: 0.5 }}
           className="mb-10"
         >
-          <MarqueeEyebrow text="División MTN · Manufactura Nacional" color={accent} />
+          <MarqueeEyebrow text={`${t("mtn.sectionLabel")}`} color={accent} />
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#00269b] leading-none">
             {t("mtn.title")}{" "}
             <span style={{ color: accent }} className="transition-colors duration-700">
@@ -265,14 +271,14 @@ export default function MTNHeroSection() {
                     className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-white transition-all duration-300 hover:scale-[1.03] hover:brightness-110"
                     style={{ backgroundColor: accent }}
                   >
-                    Cotizar Ahora
+                    {t("mtn.cta.quote")}
                     <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                   </Link>
                   <Link
                     href={slide.productHref}
                     className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white/70 hover:text-white border border-white/15 hover:border-white/30 transition-all duration-300"
                   >
-                    Ver Especificaciones
+                    {t("mtn.cta.viewDetails")}
                     <ArrowUpRight size={14} className="opacity-60 group-hover:opacity-100 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
                   </Link>
                 </motion.div>
@@ -314,8 +320,8 @@ export default function MTNHeroSection() {
 
           {/* Nav arrows */}
           {[
-            { fn: () => { setActive((active - 1 + slides.length) % slides.length); setIsAutoPlaying(false); }, side: "left-4", label: "Anterior", icon: "‹" },
-            { fn: () => { setActive((active + 1) % slides.length); setIsAutoPlaying(false); }, side: "right-4", label: "Siguiente", icon: "›" },
+            { fn: () => { setActive((active - 1 + slides.length) % slides.length); setIsAutoPlaying(false); }, side: "left-4", label: t("mtn.aria.prev"), icon: "‹" },
+            { fn: () => { setActive((active + 1) % slides.length); setIsAutoPlaying(false); }, side: "right-4", label: t("mtn.aria.next"), icon: "›" },
           ].map(({ fn, side, label, icon }) => (
             <button
               key={label}

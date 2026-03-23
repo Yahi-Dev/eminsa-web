@@ -18,11 +18,14 @@ import {
   X,
   AlertCircle,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { services, contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
 
 export default function CotizacionServiciosPage() {
+  const t = useTranslations("pages.servicios.cotizacion");
+  const tc = useTranslations("common");
   const [formData, setFormData] = useState({
     nombre: "",
     empresa: "",
@@ -187,9 +190,9 @@ export default function CotizacionServiciosPage() {
             </h2>
             {codigo && (
               <div className="bg-[#00269b]/5 border border-[#00269b]/20 rounded-xl p-4 mb-6">
-                <p className="text-xs text-[#00269b] uppercase tracking-wider font-semibold mb-1">Número de referencia</p>
+                <p className="text-xs text-[#00269b] uppercase tracking-wider font-semibold mb-1">{tc("form.refNumber")}</p>
                 <p className="text-2xl font-bold text-[#00269b] tracking-widest">{codigo}</p>
-                <p className="text-xs text-gray-500 mt-1">Guarde este código para seguimiento</p>
+                <p className="text-xs text-gray-500 mt-1">{tc("form.saveCode")}</p>
               </div>
             )}
             <p className="text-gray-600 mb-8 text-lg">
@@ -197,19 +200,19 @@ export default function CotizacionServiciosPage() {
             </p>
 
             <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm mb-8">
-              <h3 className="font-bold text-[#00269b] mb-4">Mientras tanto...</h3>
+              <h3 className="font-bold text-[#00269b] mb-4">{t("meanwhile")}</h3>
               <div className="space-y-3 text-left">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={20} className="text-[#00269b]" />
-                  <span className="text-gray-600">Revise su correo electrónico para confirmación</span>
+                  <span className="text-gray-600">{t("checkEmail")}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={20} className="text-[#00269b]" />
-                  <span className="text-gray-600">Prepare información técnica del equipo si la tiene</span>
+                  <span className="text-gray-600">{t("prepareTechInfo")}</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 size={20} className="text-[#00269b]" />
-                  <span className="text-gray-600">Para urgencias, contáctenos directamente por teléfono</span>
+                  <span className="text-gray-600">{t("urgencyContact")}</span>
                 </div>
               </div>
             </div>
@@ -311,7 +314,7 @@ export default function CotizacionServiciosPage() {
               <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
                 <Settings size={24} />
               </div>
-              <span className="text-white/80 font-semibold">Solicitar cotización</span>
+              <span className="text-white/80 font-semibold">{t("requestQuote")}</span>
             </div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
               Cotización de Servicios Técnicos
@@ -425,7 +428,7 @@ export default function CotizacionServiciosPage() {
                           onChange={handleInputChange}
                           className={`input-field ${errors.tipoServicio ? 'border-red-500 focus:ring-red-200' : ''}`}
                         >
-                          <option value="">Seleccione un servicio</option>
+                          <option value="">{tc("form.selectService")}</option>
                           {services.map((service) => (
                             <option key={service.id} value={service.id}>
                               {service.name}
@@ -435,14 +438,14 @@ export default function CotizacionServiciosPage() {
                         {errors.tipoServicio && <p className="text-red-500 text-xs mt-1">{errors.tipoServicio}</p>}
                       </div>
                       <div>
-                        <label className="input-label">Tipo de equipo</label>
+                        <label className="input-label">{tc("form.equipmentType")}</label>
                         <select
                           name="tipoEquipo"
                           value={formData.tipoEquipo}
                           onChange={handleInputChange}
                           className="input-field"
                         >
-                          <option value="">Seleccione el equipo</option>
+                          <option value="">{tc("form.selectEquipment")}</option>
                           {equipoOptions
                             .filter((opt) => !('excludeAlquiler' in opt && opt.excludeAlquiler && formData.tipoServicio === 'alquiler'))
                             .map((opt) => (
@@ -463,7 +466,7 @@ export default function CotizacionServiciosPage() {
                       >
                         <div className="flex items-center gap-2 mb-5">
                           <Zap className="w-5 h-5 text-[#00269b]" />
-                          <h3 className="font-semibold text-gray-800">Especificaciones del equipo</h3>
+                          <h3 className="font-semibold text-gray-800">{tc("form.equipmentSpecs")}</h3>
                         </div>
                         <div className="grid md:grid-cols-2 gap-6">
                           <div>
@@ -492,7 +495,7 @@ export default function CotizacionServiciosPage() {
                             </select>
                           </div>
                           <div>
-                            <label className="input-label">Voltaje primario</label>
+                            <label className="input-label">{tc("form.primaryVoltage")}</label>
                             <input
                               type="text"
                               name="voltajePrimario"
@@ -503,7 +506,7 @@ export default function CotizacionServiciosPage() {
                             />
                           </div>
                           <div>
-                            <label className="input-label">Voltaje secundario</label>
+                            <label className="input-label">{tc("form.secondaryVoltage")}</label>
                             <input
                               type="text"
                               name="voltajeSecundario"
@@ -514,20 +517,20 @@ export default function CotizacionServiciosPage() {
                             />
                           </div>
                           <div className="md:col-span-2">
-                            <label className="input-label">Distribuidora de energía</label>
+                            <label className="input-label">{tc("form.powerDistributor")}</label>
                             <select
                               name="distribuidora"
                               value={formData.distribuidora}
                               onChange={handleInputChange}
                               className="input-field"
                             >
-                              <option value="">Seleccione la distribuidora</option>
+                              <option value="">{tc("form.selectDistributor")}</option>
                               <option value="EDENORTE">EDENORTE</option>
                               <option value="EDESUR">EDESUR</option>
                               <option value="EDEESTE">EDEESTE</option>
                               <option value="CEPM">CEPM</option>
                               <option value="CAPCANA">CAPCANA</option>
-                              <option value="USO INTERNO">Uso interno</option>
+                              <option value="USO INTERNO">{tc("form.internalUse")}</option>
                               <option value="OTROS">Otros (especificar)</option>
                             </select>
                           </div>
@@ -544,7 +547,7 @@ export default function CotizacionServiciosPage() {
                     </h2>
                     <div className="space-y-6">
                       <div>
-                        <label className="input-label">Ubicación del equipo</label>
+                        <label className="input-label">{tc("form.equipmentLocation")}</label>
                         <input
                           type="text"
                           name="ubicacion"
@@ -571,7 +574,7 @@ export default function CotizacionServiciosPage() {
                       </div>
 
                       <div>
-                        <label className="input-label">Adjuntar documento (opcional)</label>
+                        <label className="input-label">{tc("form.attachFile")}</label>
                         <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#00269b] transition-colors">
                           <input
                             type="file"
@@ -583,7 +586,7 @@ export default function CotizacionServiciosPage() {
                           />
                           <label htmlFor="file-upload-srv" className="flex flex-col items-center cursor-pointer">
                             <Upload size={32} className="text-gray-400 mb-2" />
-                            <span className="text-sm text-gray-600">Haga clic para subir archivos</span>
+                            <span className="text-sm text-gray-600">{tc("form.clickToUpload")}</span>
                             <span className="text-xs text-gray-400 mt-1">PDF, DOC, JPG, PNG, XLSX (máx. 5 archivos)</span>
                           </label>
                         </div>
@@ -610,7 +613,7 @@ export default function CotizacionServiciosPage() {
                           className="w-5 h-5 rounded border-gray-300 text-[#00269b] focus:ring-[#00269b]"
                         />
                         <span className="text-sm text-gray-700">
-                          <span className="font-semibold text-[#00269b]">Servicio urgente</span> — Requiero atención prioritaria o de emergencia
+                          <span className="font-semibold text-[#00269b]">{t("urgentService")}</span> — {t("urgentServiceDesc")}
                         </span>
                       </label>
                     </div>
@@ -652,8 +655,8 @@ export default function CotizacionServiciosPage() {
                     <Clock size={24} className="text-[#00269b]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#00269b]">Respuesta rápida</h3>
-                    <p className="text-sm text-gray-600">Menos de 2 horas hábiles</p>
+                    <h3 className="font-bold text-[#00269b]">{t("quickResponse")}</h3>
+                    <p className="text-sm text-gray-600">{t("quickResponseTime")}</p>
                   </div>
                 </div>
                 <p className="text-sm text-gray-600">
@@ -668,7 +671,7 @@ export default function CotizacionServiciosPage() {
                     <Shield size={24} className="text-[#00269b]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#00269b]">Más de 30 años</h3>
+                    <h3 className="font-bold text-[#00269b]">{t("moreThan30Years")}</h3>
                     <p className="text-sm text-gray-600">de experiencia en el sector</p>
                   </div>
                 </div>
@@ -684,7 +687,7 @@ export default function CotizacionServiciosPage() {
                     <Zap size={24} className="text-green-600" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#00269b]">Servicio de emergencia</h3>
+                    <h3 className="font-bold text-[#00269b]">{t("emergencyService")}</h3>
                     <p className="text-sm text-gray-600">Disponible 24/7</p>
                   </div>
                 </div>

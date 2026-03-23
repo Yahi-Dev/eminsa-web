@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 
 export default function WhatsAppButton() {
+  const t = useTranslations("common");
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -55,10 +57,10 @@ export default function WhatsAppButton() {
                   <X size={16} />
                 </button>
                 <p className="text-[#00269b] font-semibold mb-1">
-                  ¿Necesita ayuda?
+                  {t("whatsapp.needHelp")}
                 </p>
                 <p className="text-[#6d6e6d] text-sm">
-                  Chatea con nosotros por WhatsApp para una respuesta inmediata.
+                  {t("whatsapp.chatMessage")}
                 </p>
                 {/* Arrow */}
                 <div className="absolute top-1/2 -right-2 -translate-y-1/2 w-0 h-0 border-t-8 border-b-8 border-l-8 border-transparent border-l-white" />

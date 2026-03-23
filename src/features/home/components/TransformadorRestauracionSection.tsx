@@ -37,7 +37,7 @@ export default function TransformadorRestauracionSection() {
         <div className="flex items-center gap-3 mb-8">
           <span className="h-px w-8 inline-block bg-[#0099ce]" />
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#0099ce]">
-            División RST · Restauración y Servicio
+            {t("rst.sectionLabel")}
           </span>
         </div>
 
@@ -66,14 +66,14 @@ export default function TransformadorRestauracionSection() {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0099ce] hover:bg-[#007fb0] text-white font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[#0099ce]/25"
               >
                 <ArrowRight size={18} />
-                Solicitar Cotización
+                {t("rst.requestQuote")}
               </Link>
               <Link
                 href="/etrys/productos"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#0099ce] text-[#0099ce] hover:bg-[#0099ce] hover:text-white font-semibold rounded-xl transition-all duration-300 hover:-translate-y-0.5"
               >
                 <Package size={18} />
-                Ver Productos RST
+                {t("rst.viewProducts")}
               </Link>
             </div>
 

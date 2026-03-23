@@ -4,7 +4,10 @@
     "tagline": "Transformadores • Servicios • Suplidores Eléctricos",
     "closeMenu": "Cerrar menú",
     "openMenu": "Abrir menú",
-    "switchLanguage": "Switch to English"
+    "switchLanguage": "Switch to English",
+    "ariaWhatsApp": "Contactar por WhatsApp",
+    "ariaLanguageEs": "Cambiar a Inglés",
+    "ariaLanguageEn": "Switch to Spanish"
   },
   "home": {
     "hero": {
@@ -12,9 +15,87 @@
       "title2": "desde 1973.",
       "description": "Descubra soluciones integrales en la fabricación y mantenimiento de sistemas eléctricos que optimizan la eficiencia y garantizan la seguridad de su infraestructura.",
       "cta": "Solicitar una Cotización",
-      "scrollIndicator": "Descubrir más"
+      "scrollIndicator": "Descubrir más",
+      "line1": "TRANSFORMADORES",
+      "line2": "De Distribución Eléctrica",
+      "taglines": {
+        "0": "Transformadores de Distribución Eléctrica",
+        "1": "Fabricados en el Caribe con estándares IEEE / ANSI",
+        "2": "Manufactura Transformadores Nuevos",
+        "3": "Reparación y Servicio de Transformadores",
+        "4": "Eminsa International Corporation",
+        "5": "Servicios Técnicos Especializados"
+      },
+      "whatDoYouNeed": "¿Qué necesitas?",
+      "explore": "Explorar",
+      "scroll": "Scroll",
+      "intentions": {
+        "buy": {
+          "label": "Comprar",
+          "sub": "Transformadores nuevos"
+        },
+        "repair": {
+          "label": "Reparar",
+          "sub": "Restauración y servicio"
+        },
+        "rent": {
+          "label": "Alquilar",
+          "sub": "Equipos en alquiler"
+        },
+        "services": {
+          "label": "Servicios",
+          "sub": "Servicios técnicos"
+        }
+      },
+      "products": {
+        "buy": {
+          "0": {
+            "label": "Transformador Tipo Poste"
+          },
+          "1": {
+            "label": "Transformador Tipo Pad Mounted"
+          },
+          "2": {
+            "label": "Transformador Tipo Subestación"
+          },
+          "3": {
+            "label": "Equipos Eléctricos"
+          }
+        },
+        "repair": {
+          "0": {
+            "label": "Reparación de Transformador"
+          },
+          "1": {
+            "label": "Transformador Remanufacturado"
+          }
+        },
+        "rent": {
+          "0": {
+            "label": "Alquiler de Transformador"
+          },
+          "1": {
+            "label": "Equipos en Alquiler"
+          }
+        },
+        "services": {
+          "0": {
+            "label": "Mantenimiento Preventivo"
+          },
+          "1": {
+            "label": "Diagnóstico y Asesoría"
+          },
+          "2": {
+            "label": "Instalaciones Eléctricas"
+          },
+          "3": {
+            "label": "Análisis Aceite Dieléctrico"
+          }
+        }
+      }
     },
     "stats": {
+      "sectionLabel": "Calidad · Certificaciones y Normativas",
       "yearsExperience": "Años de Experiencia",
       "transformersInstalled": "Transformadores Instalados",
       "satisfiedClients": "Clientes Satisfechos",
@@ -64,11 +145,18 @@
       "description": "Durante más de 50 años, las empresas líderes del sector energético han confiado en Grupo EMINSA para sus necesidades de transformación eléctrica."
     },
     "news": {
-      "sectionLabel": "Noticias",
+      "sectionLabel": "Noticias · Últimas Novedades",
       "title": "Últimas noticias",
       "viewAll": "Ver todas las noticias",
       "readMore": "Leer más",
-      "empty": "No hay noticias publicadas aún."
+      "empty": "No hay noticias publicadas aún.",
+      "categories": {
+        "empresa": "Empresa",
+        "productos": "Productos",
+        "servicios": "Servicios",
+        "eventos": "Eventos",
+        "industria": "Industria"
+      }
     },
     "mtn": {
       "sectionLabel": "Manufactura de Transformadores Nuevos",
@@ -94,17 +182,20 @@
         "tipoPoste": {
           "category": "Tipo Poste",
           "name": "Distribución Aérea",
-          "subtitle": "Confiabilidad y eficiencia máxima para sistemas de distribución eléctrica aérea."
+          "subtitle": "Confiabilidad y eficiencia máxima para sistemas de distribución eléctrica aérea.",
+          "eyebrow": "Distribución aérea · Norma IEEE C57"
         },
         "padMounted": {
           "category": "Pad Mounted",
           "name": "Distribución Subterránea",
-          "subtitle": "Solución compacta, segura y hermética para urbanizaciones y sistemas soterrados."
+          "subtitle": "Solución compacta, segura y hermética para urbanizaciones y sistemas soterrados.",
+          "eyebrow": "Distribución subterránea · Gabinete hermético"
         },
         "subestacion": {
           "category": "Subestación",
           "name": "Potencia Industrial",
-          "subtitle": "Alta capacidad para plantas industriales, parques solares y proyectos de gran escala."
+          "subtitle": "Alta capacidad para plantas industriales, parques solares y proyectos de gran escala.",
+          "eyebrow": "Alta potencia industrial · ANSI / IEEE"
         }
       },
       "showcase": {
@@ -128,10 +219,15 @@
           "feature3": "Protección hermética total",
           "feature4": "Ideal para urbanizaciones"
         }
+      },
+      "tags": {
+        "hermetic": "Hermético",
+        "highEfficiency": "Alta eficiencia"
       }
     },
     "rst": {
       "badge": "Mantenimiento y Restauración",
+      "sectionLabel": "División RST · Restauración y Servicio",
       "title": "Transformamos equipos dañados en",
       "titleAccent": "soluciones confiables",
       "diagnosisTitle": "Diagnóstico Completo",
@@ -139,18 +235,21 @@
       "restorationTitle": "Restauración Profesional",
       "restorationDesc": "Reparación, pintura, reemplazo de componentes y certificación de calidad",
       "guaranteeTitle": "Garantía de Rendimiento",
-      "guaranteeDesc": "Pruebas eléctricas completas y garantía en todos nuestros servicios"
+      "guaranteeDesc": "Pruebas eléctricas completas y garantía en todos nuestros servicios",
+      "requestQuote": "Solicitar Cotización",
+      "viewProducts": "Ver Productos RST"
     },
     "eic": {
       "showcase": {
-        "sectionLabel": "Marcas Internacionales",
+        "sectionLabel": "División EIC · Equipos y Comercialización",
         "title": "Representamos las Mejores Marcas",
         "viewBrand": "Ver Marca",
         "viewAllBrands": "Ver Todas las Marcas",
         "requestQuote": "Solicitar Cotización",
         "exclusiveRep": "Representante Exclusivo en RD",
         "countries": "países de presencia",
-        "brandCount": "9+ Marcas Representadas"
+        "brandCount": "9+ Marcas Representadas",
+        "productsLabel": "Productos"
       }
     }
   },
@@ -848,6 +947,24 @@
           "subestacion": "Subestación",
           "otro": "Otro"
         }
+      },
+      "cotizacion": {
+        "requestQuote": "Solicitar cotización",
+        "meanwhile": "Mientras tanto...",
+        "checkEmail": "Revise su correo electrónico para confirmación",
+        "prepareTechInfo": "Prepare información técnica del equipo si la tiene",
+        "urgencyContact": "Para urgencias, contáctenos directamente por teléfono",
+        "urgentService": "Servicio urgente",
+        "urgentServiceDesc": "Requiero atención prioritaria o de emergencia",
+        "quickResponse": "Respuesta rápida",
+        "quickResponseTime": "Menos de 2 horas hábiles",
+        "moreThan30Years": "Más de 30 años",
+        "emergencyService": "Servicio de emergencia"
+      },
+      "fichasTecnicas": {
+        "subtitle": "Documentación técnica de servicios EMINSA",
+        "empty": "No hay fichas técnicas disponibles en este momento.",
+        "notAvailable": "No disponible"
       }
     },
     "cotizar": {
@@ -1377,10 +1494,22 @@
           },
           "periodsTitle": "Períodos de Garantía",
           "periods": {
-            "0": { "product": "Transformadores Tipo Poste", "period": "3 años" },
-            "1": { "product": "Transformadores Pad Mounted", "period": "3 años" },
-            "2": { "product": "Transformadores de Subestación", "period": "2 años" },
-            "3": { "product": "Accesorios", "period": "1 año" }
+            "0": {
+              "product": "Transformadores Tipo Poste",
+              "period": "3 años"
+            },
+            "1": {
+              "product": "Transformadores Pad Mounted",
+              "period": "3 años"
+            },
+            "2": {
+              "product": "Transformadores de Subestación",
+              "period": "2 años"
+            },
+            "3": {
+              "product": "Accesorios",
+              "period": "1 año"
+            }
           },
           "coverageTitle": "Cobertura",
           "coverage": {
@@ -1407,17 +1536,29 @@
           },
           "claimProcessTitle": "Proceso de Reclamación",
           "claimProcess": {
-            "0": { "title": "Reporte el problema", "description": "Contacte a nuestro departamento de servicio técnico con el número de serie del equipo." },
-            "1": { "title": "Evaluación técnica", "description": "Un técnico evaluará el equipo para determinar la causa de la falla." },
-            "2": { "title": "Diagnóstico", "description": "Recibirá un informe con el diagnóstico y la decisión sobre cobertura de garantía." },
-            "3": { "title": "Reparación o reemplazo", "description": "Si aplica la garantía, procederemos con la reparación o reemplazo del equipo." }
+            "0": {
+              "title": "Reporte el problema",
+              "description": "Contacte a nuestro departamento de servicio técnico con el número de serie del equipo."
+            },
+            "1": {
+              "title": "Evaluación técnica",
+              "description": "Un técnico evaluará el equipo para determinar la causa de la falla."
+            },
+            "2": {
+              "title": "Diagnóstico",
+              "description": "Recibirá un informe con el diagnóstico y la decisión sobre cobertura de garantía."
+            },
+            "3": {
+              "title": "Reparación o reemplazo",
+              "description": "Si aplica la garantía, procederemos con la reparación o reemplazo del equipo."
+            }
           },
           "requirements": {
-            "title": "Requisitos para Validar la Garantía",
             "0": "Presentar factura original de compra o documento equivalente.",
             "1": "Proporcionar número de serie del equipo visible en la placa de datos.",
             "2": "Documentar registros de mantenimiento preventivo según el manual.",
-            "3": "Reportar la falla dentro del período de garantía vigente."
+            "3": "Reportar la falla dentro del período de garantía vigente.",
+            "title": "Requisitos para Validar la Garantía"
           },
           "contact": {
             "title": "Contacto de Servicio Técnico",
@@ -1454,12 +1595,30 @@
           "manualContent": "Contenido del Manual",
           "chapterLabel": "Capítulo {number}",
           "chapters": {
-            "0": { "title": "Introducción y Seguridad", "description": "Normas de seguridad fundamentales y precauciones generales para trabajar con transformadores." },
-            "1": { "title": "Inspección Visual", "description": "Procedimientos de inspección visual periódica, qué buscar y cómo documentar hallazgos." },
-            "2": { "title": "Mantenimiento Preventivo", "description": "Rutinas de mantenimiento preventivo recomendadas según frecuencia (mensual, trimestral, anual)." },
-            "3": { "title": "Aceite Dieléctrico", "description": "Análisis, tratamiento y reemplazo del aceite dieléctrico. Valores de referencia." },
-            "4": { "title": "Pruebas Eléctricas", "description": "Pruebas de resistencia de aislamiento, relación de transformación y resistencia de devanados." },
-            "5": { "title": "Control de Temperatura", "description": "Monitoreo de temperatura, interpretación de lecturas y acciones correctivas." }
+            "0": {
+              "title": "Introducción y Seguridad",
+              "description": "Normas de seguridad fundamentales y precauciones generales para trabajar con transformadores."
+            },
+            "1": {
+              "title": "Inspección Visual",
+              "description": "Procedimientos de inspección visual periódica, qué buscar y cómo documentar hallazgos."
+            },
+            "2": {
+              "title": "Mantenimiento Preventivo",
+              "description": "Rutinas de mantenimiento preventivo recomendadas según frecuencia (mensual, trimestral, anual)."
+            },
+            "3": {
+              "title": "Aceite Dieléctrico",
+              "description": "Análisis, tratamiento y reemplazo del aceite dieléctrico. Valores de referencia."
+            },
+            "4": {
+              "title": "Pruebas Eléctricas",
+              "description": "Pruebas de resistencia de aislamiento, relación de transformación y resistencia de devanados."
+            },
+            "5": {
+              "title": "Control de Temperatura",
+              "description": "Monitoreo de temperatura, interpretación de lecturas y acciones correctivas."
+            }
           },
           "scheduleTitle": "Programa de Mantenimiento Recomendado",
           "schedule": {
@@ -1496,10 +1655,30 @@
           },
           "downloadsTitle": "Documentos Descargables",
           "downloads": {
-            "0": { "title": "Manual Completo de Mantenimiento", "description": "Guía completa con todos los procedimientos de mantenimiento.", "size": "5.2 MB", "type": "PDF" },
-            "1": { "title": "Checklist de Inspección Visual", "description": "Formulario imprimible para inspecciones periódicas.", "size": "320 KB", "type": "PDF" },
-            "2": { "title": "Guía de Análisis de Aceite", "description": "Interpretación de resultados de análisis de aceite.", "size": "1.1 MB", "type": "PDF" },
-            "3": { "title": "Registro de Mantenimiento", "description": "Plantilla para documentar actividades de mantenimiento.", "size": "180 KB", "type": "Excel" }
+            "0": {
+              "title": "Manual Completo de Mantenimiento",
+              "description": "Guía completa con todos los procedimientos de mantenimiento.",
+              "size": "5.2 MB",
+              "type": "PDF"
+            },
+            "1": {
+              "title": "Checklist de Inspección Visual",
+              "description": "Formulario imprimible para inspecciones periódicas.",
+              "size": "320 KB",
+              "type": "PDF"
+            },
+            "2": {
+              "title": "Guía de Análisis de Aceite",
+              "description": "Interpretación de resultados de análisis de aceite.",
+              "size": "1.1 MB",
+              "type": "PDF"
+            },
+            "3": {
+              "title": "Registro de Mantenimiento",
+              "description": "Plantilla para documentar actividades de mantenimiento.",
+              "size": "180 KB",
+              "type": "Excel"
+            }
           }
         },
         "articulos": {
@@ -1771,6 +1950,14 @@
         "RST": "Reparación y Servicio de Transformadores",
         "EIC": "Eminsa International Corporation",
         "Servicios": "Servicios a Nivel Interno y Externo"
+      },
+      "navNames": {
+        "MTN": "MTN",
+        "RST": "RST",
+        "EIC": "EIC",
+        "Servicios": "Servicios",
+        "EMINSA": "EMINSA",
+        "SERVICIOS": "SERVICIOS"
       },
       "openMenu": "Abrir menú",
       "closeMenu": "Cerrar menú",
@@ -3485,6 +3672,57 @@
       "newsByCategory": "Noticias por Categoría",
       "newsCategoryFilter": "Filtra noticias por: MTN, RST, EIC, Servicios, Generales",
       "exploreNews": "Explorar Noticias"
+    },
+    "cotizaciones": {
+      "requestQuote": "Solicitar cotización",
+      "newTransformer": "Transformador nuevo",
+      "otherProduct": "Otro producto",
+      "specialRequirements": "Requerimientos especiales",
+      "urgentRequest": "Solicitud urgente",
+      "urgentDesc": "Necesito respuesta en menos de 24 horas",
+      "chatWithUs": "Chatear con nosotros",
+      "responseTime": "Respuesta en menos de 24 horas hábiles",
+      "noCommitment": "Sin compromiso de compra",
+      "technicalAdvice": "Asesoría técnica especializada incluida",
+      "breadcrumbHome": "Inicio",
+      "breadcrumbMTN": "MTN",
+      "breadcrumbQuotes": "Cotizaciones",
+      "heroBadge": "Solicitar cotización",
+      "heroTitle": "Cotización de Transformadores MTN",
+      "heroDescription": "Complete el formulario y nuestro equipo le enviará una propuesta personalizada con precios y especificaciones técnicas.",
+      "successTitle": "¡Cotización enviada exitosamente!",
+      "successMessage": "Nuestro equipo revisará su solicitud y le contactará en las próximas horas hábiles.",
+      "viewProducts": "Ver productos",
+      "newQuote": "Nueva cotización",
+      "sectionContactInfo": "Información de Contacto",
+      "sectionRequestType": "Tipo de Solicitud",
+      "sectionAdditionalDetails": "Detalles Adicionales",
+      "fullName": "Nombre completo",
+      "companyOrg": "Empresa / Organización",
+      "email": "Correo electrónico",
+      "phone": "Teléfono",
+      "whatToQuote": "¿Qué desea cotizar?",
+      "requestDescription": "Descripción de la solicitud",
+      "placeholderName": "Ej. Juan Pérez",
+      "placeholderCompany": "Nombre de su empresa (opcional)",
+      "placeholderEmail": "correo@empresa.com",
+      "placeholderLocation": "Ciudad, provincia o dirección del proyecto",
+      "placeholderDescription": "Describa el producto o servicio que necesita cotizar...",
+      "placeholderSpecialReq": "Indique cualquier requerimiento especial o información adicional...",
+      "fileFormats": "PDF, DOC, JPG, PNG, XLSX (máx. 5 archivos)",
+      "preferDirectContact": "¿Prefiere contactarnos directamente?",
+      "callUs": "Llámenos",
+      "whatsapp": "WhatsApp",
+      "certifications": "Certificaciones",
+      "errorNameRequired": "El nombre es requerido",
+      "errorEmailRequired": "El correo electrónico es requerido",
+      "errorEmailInvalid": "Correo electrónico inválido",
+      "errorPhoneRequired": "El teléfono es requerido",
+      "errorSelectType": "Seleccione el tipo de solicitud",
+      "errorTransformerFields": "Complete los campos requeridos del transformador",
+      "errorDescribeRequest": "Describa su solicitud",
+      "errorSubmit": "Error al enviar la solicitud",
+      "errorConnection": "Error de conexión. Intente nuevamente."
     }
   },
   "eicPage": {
@@ -3496,13 +3734,15 @@
       "heroDescription": "Representamos exclusivamente las marcas líderes del sector eléctrico internacional, ofreciendo a nuestros clientes acceso directo a tecnología de punta con el respaldo de nuestro equipo local especializado en República Dominicana.",
       "internationalBrands": "Marcas internacionales",
       "satisfiedClients": "Clientes satisfechos",
-      "yearsTrajectory": "Años de trayectoria"
+      "yearsTrajectory": "Años de trayectoria",
+      "eyebrow": "División EIC · EMINSA"
     },
     "brands": {
       "badge": "Aliados Estratégicos",
       "title": "Marcas Representadas",
       "description": "Representamos exclusivamente las mejores marcas internacionales del sector eléctrico, garantizando calidad, soporte y disponibilidad.",
-      "viewBrand": "Ver marca"
+      "viewBrand": "Ver marca",
+      "label": "Marca"
     },
     "categories": {
       "badge": "Nuestro Portafolio",
@@ -3609,14 +3849,14 @@
       "breadcrumb": "Cotizaciones",
       "heroTitle": "Solicitar Cotización Internacional",
       "heroDescription": "Complete el formulario y reciba un presupuesto personalizado para productos eléctricos internacionales. Respondemos en menos de 30 minutos durante horario laboral.",
-      "successTitle": "¡Solicitud Enviada!",
+      "successTitle": "¡Cotización enviada exitosamente!",
       "referenceNumber": "Número de Referencia",
-      "saveCode": "Guarde este código para dar seguimiento a su solicitud",
+      "saveCode": "Guarde este código para seguimiento",
       "successDescription": "Hemos recibido su solicitud de cotización. Nuestro equipo de comercio internacional le contactará en breve con un presupuesto personalizado.",
       "estimatedResponseTime": "Tiempo de respuesta estimado:",
-      "responseTimeValue": "Menos de 30 minutos en horario laboral",
+      "responseTimeValue": "Menos de 24 horas hábiles",
       "backToEic": "Volver a EIC",
-      "viewProducts": "Ver Productos",
+      "viewProducts": "Ver productos",
       "goHome": "Ir al Inicio",
       "contactInfo": "Información de Contacto",
       "fullName": "Nombre Completo",
@@ -3673,14 +3913,90 @@
       "sourceOther": "Otro",
       "submitting": "Enviando solicitud...",
       "submitButton": "Enviar Solicitud de Cotización",
-      "directContact": "Contacto Directo",
+      "directContact": "Contacto directo",
       "fastResponse": "Respuesta Rápida",
       "fastResponseDescription": "Respondemos en menos de 30 minutos durante horario laboral (Lunes a Viernes 8am - 5pm).",
       "internationalSuppliers": "Suplidores Internacionales",
       "internationalSuppliersDescription": "Representamos más de 8 marcas líderes del sector eléctrico con presencia en más de 40 países.",
       "location": "Ubicación",
       "errorSubmit": "Error al enviar la solicitud",
-      "errorConnection": "Error de conexión. Por favor intente de nuevo."
+      "errorConnection": "Error de conexión. Por favor intente de nuevo.",
+      "pageTitle": "Cotizaciones",
+      "title": "Cotización de Equipos EIC",
+      "description": "Transformadores, cables y equipos eléctricos de marcas internacionales. Reciba una propuesta personalizada con precios competitivos.",
+      "refNumber": "Número de referencia",
+      "teamReview": "Nuestro equipo revisará su solicitud y le contactará a la brevedad.",
+      "responseTime": "Tiempo estimado de respuesta",
+      "form": {
+        "contactInfo": "Información de Contacto",
+        "fullName": "Nombre completo",
+        "fullNamePlaceholder": "Ej. Juan Pérez",
+        "company": "Empresa / Organización",
+        "companyPlaceholder": "Nombre de su empresa",
+        "email": "Correo electrónico",
+        "emailPlaceholder": "correo@empresa.com",
+        "phone": "Teléfono",
+        "position": "Cargo / Posición",
+        "positionPlaceholder": "Ej. Gerente de Compras",
+        "productDetails": "Detalles del Producto",
+        "productCategory": "Categoría de producto",
+        "selectCategory": "Seleccione una categoría",
+        "specificProduct": "Producto específico",
+        "selectProduct": "Seleccione un producto",
+        "otherNotSure": "Otro / No estoy seguro",
+        "preferredBrand": "Marca preferida",
+        "noPreference": "Sin preferencia",
+        "quantity": "Cantidad",
+        "urgency": "Urgencia",
+        "normal": "Normal",
+        "priority": "Prioritario",
+        "urgent": "Urgente",
+        "transformerSpecs": "Especificaciones del transformador",
+        "power": "Potencia",
+        "powerPlaceholder": "Ej. 500 kVA",
+        "configuration": "Configuración",
+        "select": "Seleccione",
+        "singlePhase": "Monofásico",
+        "threePhase": "Trifásico",
+        "selfProtected": "Autoprotegido",
+        "primaryVoltage": "Voltaje primario",
+        "primaryVoltagePlaceholder": "Ej. 13,200 V",
+        "secondaryVoltage": "Voltaje secundario",
+        "secondaryVoltagePlaceholder": "Ej. 120/240 V",
+        "powerDistributor": "Distribuidora de energía",
+        "selectDistributor": "Seleccione la distribuidora",
+        "internalUse": "Uso interno",
+        "others": "OTROS",
+        "additionalInfo": "Información Adicional",
+        "projectLocation": "Ubicación del proyecto",
+        "projectLocationPlaceholder": "Ciudad, provincia o dirección",
+        "projectDescription": "Descripción del proyecto",
+        "projectDescriptionPlaceholder": "Describa su proyecto o los requerimientos específicos...",
+        "attachFiles": "Adjuntar archivos (opcional)",
+        "clickToUpload": "Haga clic para subir archivos",
+        "fileTypes": "PDF, DOC, JPG, PNG, DWG, XLSX (máx. 5 archivos)",
+        "howFoundUs": "¿Cómo nos encontró?",
+        "selectOption": "Seleccione una opción",
+        "google": "Google",
+        "referral": "Referido",
+        "socialMedia": "Redes sociales",
+        "event": "Evento",
+        "advertising": "Publicidad",
+        "brandRep": "Representante de marca",
+        "other": "Otro",
+        "sending": "Enviando solicitud...",
+        "submit": "Enviar cotización"
+      },
+      "phoneLabel": "Teléfono",
+      "emailLabel": "Email",
+      "whyEic": "¿Por qué EIC?",
+      "response24h": "Respuesta en menos de 24 horas",
+      "certifiedProviders": "Proveedores internacionales certificados",
+      "technicalAdvice": "Asesoría técnica especializada",
+      "intlProviders": "Proveedores internacionales",
+      "intlProvidersDesc": "Acceda a equipos eléctricos de las mejores marcas del mundo a través de nuestros canales directos.",
+      "moreCount": "+3 más",
+      "locationTitle": "Ubicación"
     }
   },
   "etrysPage": {
@@ -3689,7 +4005,10 @@
       "requestQuote": "Solicitar Cotización",
       "warranty": "Garantía certificada",
       "yearsExp": "Años de experiencia",
-      "transformersRestored": "Transformadores restaurados"
+      "transformersRestored": "Transformadores restaurados",
+      "benefit1": "Hasta 70% menos que un transformador nuevo",
+      "benefit2": "Garantía certificada IEEE C57 / ANSI",
+      "benefit3": "Restauración · Remanufactura · Alquiler"
     },
     "remanufactured": {
       "badge": "Transformadores Remanufacturados",
@@ -4059,6 +4378,75 @@
       "secondaryVoltagePlaceholder": "Ej: 120/240 V",
       "locationPlaceholder": "Ciudad, Provincia",
       "emailLabel": "Email"
+    },
+    "cotizaciones": {
+      "pageTitle": "Cotizaciones",
+      "formTitle": "Solicitar cotización",
+      "title": "Cotización de Servicios RST / Etrys",
+      "description": "Remanufactura, reparación y alquiler de transformadores eléctricos. Complete el formulario para recibir una propuesta personalizada.",
+      "successTitle": "¡Solicitud enviada exitosamente!",
+      "refNumber": "Número de referencia",
+      "saveCode": "Guarde este código para seguimiento",
+      "teamReview": "Nuestro equipo revisará su solicitud y le contactará a la brevedad.",
+      "responseTime": "Tiempo estimado de respuesta",
+      "responseTimeValue": "Menos de 30 minutos en horario hábil",
+      "backToRst": "Volver a RST",
+      "goHome": "Ir al inicio",
+      "form": {
+        "contactInfo": "Información de Contacto",
+        "fullName": "Nombre completo",
+        "fullNamePlaceholder": "Ej. Juan Pérez",
+        "company": "Empresa / Organización",
+        "companyPlaceholder": "Nombre de su empresa (opcional)",
+        "email": "Correo electrónico",
+        "emailPlaceholder": "correo@empresa.com",
+        "phone": "Teléfono",
+        "position": "Cargo / Posición",
+        "positionPlaceholder": "Ej. Gerente de Mantenimiento",
+        "serviceDetails": "Detalles del Servicio",
+        "serviceType": "Tipo de servicio",
+        "selectOption": "Seleccione una opción",
+        "remanufacture": "Remanufactura",
+        "repair": "Reparación",
+        "rental": "Alquiler",
+        "diagnostic": "Diagnóstico",
+        "maintenance": "Mantenimiento",
+        "other": "Otro",
+        "transformerType": "Tipo de transformador",
+        "poleType": "Tipo poste",
+        "padMounted": "Pad-Mounted",
+        "substation": "Subestación",
+        "dryType": "Tipo seco",
+        "otherNotSure": "Otro / No estoy seguro",
+        "urgency": "Urgencia",
+        "normal": "Normal",
+        "priority": "Prioritario",
+        "urgent": "Urgente",
+        "additionalInfo": "Información Adicional",
+        "equipmentLocation": "Ubicación del equipo",
+        "locationPlaceholder": "Ciudad, provincia o dirección",
+        "problemDescription": "Descripción del problema o requerimiento",
+        "problemPlaceholder": "Describa el problema o los detalles del servicio requerido...",
+        "attachFiles": "Adjuntar archivos (opcional)",
+        "clickToUpload": "Haga clic para subir archivos",
+        "fileTypes": "PDF, DOC, JPG, PNG (máx. 5 archivos)",
+        "howFoundUs": "¿Cómo nos encontró?",
+        "google": "Google",
+        "referral": "Referido",
+        "socialMedia": "Redes sociales",
+        "event": "Evento",
+        "advertising": "Publicidad",
+        "sending": "Enviando solicitud...",
+        "submit": "Enviar cotización"
+      },
+      "directContact": "Contacto directo",
+      "phoneLabel": "Teléfono",
+      "emailLabel": "Email",
+      "whyRst": "¿Por qué RST / Etrys?",
+      "response30min": "Respuesta en menos de 30 minutos",
+      "emergency247": "Servicio de emergencia 24/7",
+      "warrantyAll": "Garantía en todos los servicios",
+      "locationTitle": "Ubicación"
     }
   },
   "common": {
@@ -4104,6 +4492,30 @@
       "typeSpreadsheet": "Hoja de cálculo",
       "typeImage": "Imagen",
       "typeLink": "Enlace"
+    },
+    "whatsapp": {
+      "needHelp": "¿Necesita ayuda?",
+      "chatMessage": "Chatea con nosotros por WhatsApp para una respuesta inmediata."
+    },
+    "form": {
+      "refNumber": "Número de referencia",
+      "saveCode": "Guarde este código para seguimiento",
+      "selectOption": "Seleccione una opción",
+      "attachFile": "Adjuntar documento (opcional)",
+      "clickToUpload": "Haga clic para subir archivos",
+      "projectLocation": "Ubicación del proyecto",
+      "primaryVoltage": "Voltaje primario",
+      "secondaryVoltage": "Voltaje secundario",
+      "powerDistributor": "Distribuidora de energía",
+      "selectDistributor": "Seleccione la distribuidora",
+      "internalUse": "Uso interno",
+      "equipmentLocation": "Ubicación del equipo",
+      "equipmentSpecs": "Especificaciones del equipo",
+      "selectService": "Seleccione un servicio",
+      "equipmentType": "Tipo de equipo",
+      "selectEquipment": "Seleccione el equipo",
+      "sending": "Enviando solicitud...",
+      "submit": "Enviar cotización"
     }
   },
   "serviciosConfig": {

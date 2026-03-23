@@ -172,7 +172,7 @@ export default function EICPage() {
                 className="flex items-center gap-3"
               >
                 <div className="h-px w-10 bg-white/50" />
-                <span className="text-white/70 text-[11px] font-bold uppercase tracking-[0.32em]">División EIC · EMINSA</span>
+                <span className="text-white/70 text-[11px] font-bold uppercase tracking-[0.32em]">{t("hero.eyebrow")}</span>
               </motion.div>
 
               <motion.h1
@@ -262,7 +262,7 @@ export default function EICPage() {
                         <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden p-2">
                           <Image src={centerImg} alt="brand" width={90} height={90} className="object-contain max-w-full max-h-full"  />
                         </div>
-                        <p className="text-[10px] text-white/70 font-semibold uppercase tracking-widest">Marca</p>
+                        <p className="text-[10px] text-white/70 font-semibold uppercase tracking-widest">{t("brands.label")}</p>
                       </motion.div>
                     </AnimatePresence>
                   </motion.div>

@@ -56,7 +56,7 @@ export default function ClientesSection() {
         <div className="flex items-center gap-3 mb-8">
           <span className="h-px w-8 inline-block bg-[#00269b]" />
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#00269b]">
-            Nuestros Clientes que confían en nosotros
+            {t("clients.sectionLabel")}
           </span>
         </div>
 

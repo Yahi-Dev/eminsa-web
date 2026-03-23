@@ -1,72 +1,46 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
 
-// ─── Constants ────────────────────────────────────────────────────────────────
+// ─── Constants (non-translatable) ────────────────────────────────────────────
 
-const LINE1: { char: string; color: string }[] = [
-  { char: "T", color: "#ffffff" },
-  { char: "R", color: "#ffffff" },
-  { char: "A", color: "#ffffff" },
-  { char: "N", color: "#ffffff" },
-  { char: "S", color: "#ffffff" },
-  { char: "F", color: "#ffffff" },
-  { char: "O", color: "#ffffff" },
-  { char: "R", color: "#ffffff" },
-  { char: "M", color: "#ffffff" },
-  { char: "A", color: "#ffffff" },
-  { char: "D", color: "#ffffff" },
-  { char: "O", color: "#ffffff" },
-  { char: "R", color: "#ffffff" },
-  { char: "E", color: "#ffffff" },
-  { char: "S", color: "#ffffff" },
-];
+const TAGLINE_COLORS = ["#ffffff", "#e53e3e", "#0099ce", "#0099ce", "#0099ce", "#0099ce"];
+const TAGLINE_DURATIONS = [4000, 2800, 2800, 2800, 2800, 2800];
 
-const LINE2 = "De Distribución Eléctrica";
-
-const TAGLINES: { text: string; color: string; duration: number }[] = [
-  { text: "Transformadores de Distribución Eléctrica",          color: "#ffffff",  duration: 4000 },
-  { text: "Fabricados en el Caribe con estándares IEEE / ANSI", color: "#e53e3e",  duration: 2800 },
-  { text: "Manufactura Transformadores Nuevos",                  color: "#0099ce",  duration: 2800 },
-  { text: "Reparación y Servicio de Transformadores",           color: "#0099ce",  duration: 2800 },
-  { text: "Eminsa International Corporation",                   color: "#0099ce",  duration: 2800 },
-  { text: "Servicios Técnicos Especializados",                  color: "#0099ce",  duration: 2800 },
-];
-
-type IntentKey = "comprar" | "reparar" | "alquilar" | "servicios";
-
-const INTENTIONS: { label: string; value: IntentKey; sub: string }[] = [
-  { label: "Comprar",   value: "comprar",   sub: "Transformadores nuevos" },
-  { label: "Reparar",   value: "reparar",   sub: "Restauración y servicio" },
-  { label: "Alquilar",  value: "alquilar",  sub: "Equipos en alquiler" },
-  { label: "Servicios", value: "servicios", sub: "Servicios técnicos" },
-];
-
-const PRODUCTS: Record<IntentKey, { label: string; sub: string; href: string }[]> = {
+const PRODUCT_HREFS: Record<IntentKey, { sub: string; href: string }[]> = {
   comprar: [
-    { label: "Transformador Tipo Poste",       sub: "MTN", href: "/mtn/productos/tipo-poste" },
-    { label: "Transformador Tipo Pad Mounted", sub: "MTN", href: "/mtn/productos/pad-mounted" },
-    { label: "Transformador Tipo Subestación", sub: "MTN", href: "/mtn/productos/subestacion" },
-    { label: "Equipos Eléctricos",             sub: "EIC", href: "/eic/productos" },
+    { sub: "MTN", href: "/mtn/productos/tipo-poste" },
+    { sub: "MTN", href: "/mtn/productos/pad-mounted" },
+    { sub: "MTN", href: "/mtn/productos/subestacion" },
+    { sub: "EIC", href: "/eic/productos" },
   ],
   reparar: [
-    { label: "Reparación de Transformador",   sub: "RST", href: "/etrys/servicios" },
-    { label: "Transformador Remanufacturado", sub: "RST", href: "/etrys/productos" },
+    { sub: "RST", href: "/etrys/servicios" },
+    { sub: "RST", href: "/etrys/productos" },
   ],
   alquilar: [
-    { label: "Alquiler de Transformador", sub: "RST", href: "/etrys/alquiler" },
-    { label: "Equipos en Alquiler",       sub: "EIC", href: "/eic/productos" },
+    { sub: "RST", href: "/etrys/alquiler" },
+    { sub: "EIC", href: "/eic/productos" },
   ],
   servicios: [
-    { label: "Mantenimiento Preventivo",    sub: "SRV", href: "/servicios" },
-    { label: "Diagnóstico y Asesoría",      sub: "SRV", href: "/servicios" },
-    { label: "Instalaciones Eléctricas",    sub: "SRV", href: "/servicios" },
-    { label: "Análisis Aceite Dieléctrico", sub: "SRV", href: "/servicios" },
+    { sub: "SRV", href: "/servicios" },
+    { sub: "SRV", href: "/servicios" },
+    { sub: "SRV", href: "/servicios" },
+    { sub: "SRV", href: "/servicios" },
   ],
 };
+
+type IntentKey = "comprar" | "reparar" | "alquilar" | "servicios";
+const INTENT_KEYS: { value: IntentKey; key: string }[] = [
+  { value: "comprar", key: "buy" },
+  { value: "reparar", key: "repair" },
+  { value: "alquilar", key: "rent" },
+  { value: "servicios", key: "services" },
+];
 
 // ─── Custom dropdown ──────────────────────────────────────────────────────────
 
@@ -113,6 +87,48 @@ function Dropdown({ label, open, onToggle, children, className = "" }: DropdownP
 
 export default function HeroSection() {
   const router = useRouter();
+  const t = useTranslations("home");
+
+  // Build translated data from i18n keys
+  const LINE1 = useMemo(() => {
+    const text = t("hero.line1");
+    return text.split("").map((char) => ({ char, color: "#ffffff" }));
+  }, [t]);
+
+  const LINE2 = t("hero.line2");
+
+  const TAGLINES = useMemo(() =>
+    TAGLINE_COLORS.map((color, i) => ({
+      text: t(`hero.taglines.${i}`),
+      color,
+      duration: TAGLINE_DURATIONS[i],
+    })),
+  [t]);
+
+  const INTENTIONS = useMemo(() =>
+    INTENT_KEYS.map(({ value, key }) => ({
+      label: t(`hero.intentions.${key}.label`),
+      value,
+      sub: t(`hero.intentions.${key}.sub`),
+    })),
+  [t]);
+
+  const PRODUCTS = useMemo(() => {
+    const result: Record<IntentKey, { label: string; sub: string; href: string }[]> = {
+      comprar: [],
+      reparar: [],
+      alquilar: [],
+      servicios: [],
+    };
+    for (const { value, key } of INTENT_KEYS) {
+      result[value] = PRODUCT_HREFS[value].map((item, i) => ({
+        label: t(`hero.products.${key}.${i}.label`),
+        sub: item.sub,
+        href: item.href,
+      }));
+    }
+    return result;
+  }, [t]);
 
   const [taglineIndex, setTaglineIndex] = useState(0);
   const [showSubtitle, setShowSubtitle] = useState(true);
@@ -126,7 +142,6 @@ export default function HeroSection() {
 
   useEffect(() => {
     let id: ReturnType<typeof setTimeout>;
-    // Esperar 10s antes de ocultar el subtítulo y arrancar taglines
     const init = setTimeout(() => {
       setShowSubtitle(false);
       const schedule = (index: number) => {
@@ -139,7 +154,7 @@ export default function HeroSection() {
       schedule(0);
     }, 10000);
     return () => { clearTimeout(init); clearTimeout(id); };
-  }, []);
+  }, [TAGLINES]);
 
   useEffect(() => { videoRef.current?.play().catch(() => {}); }, []);
 
@@ -198,7 +213,7 @@ export default function HeroSection() {
 
         {/* Headline — two lines */}
         <div className="flex flex-col items-center overflow-hidden">
-          {/* Line 1: "Transformadores" — large */}
+          {/* Line 1 */}
           <div className="flex justify-center overflow-hidden">
             {LINE1.map((item, i) => (
               <motion.span
@@ -213,7 +228,7 @@ export default function HeroSection() {
               </motion.span>
             ))}
           </div>
-          {/* Line 2 / taglines — mismo espacio, contenido cambia */}
+          {/* Line 2 / taglines */}
           <div className="h-[5.5vw] md:h-[4.2vw] overflow-hidden relative w-full flex items-center justify-center">
             <AnimatePresence mode="wait">
               {showSubtitle ? (
@@ -252,7 +267,7 @@ export default function HeroSection() {
           transition={{ delay: 1.1, duration: 0.7 }}
           className="mt-10 w-full flex flex-col items-center gap-2"
         >
-          <p className="text-white/50 text-xs tracking-[0.2em] uppercase">¿Qué necesitas?</p>
+          <p className="text-white/50 text-xs tracking-[0.2em] uppercase">{t("hero.whatDoYouNeed")}</p>
 
           <div className="w-full max-w-215 flex flex-col sm:flex-row items-stretch border border-white/25 bg-black/30 backdrop-blur-sm rounded-2xl">
             {/* Intent selector */}
@@ -306,7 +321,7 @@ export default function HeroSection() {
               onClick={() => router.push(selectedProduct.href)}
               className="flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-6 bg-[#0099ce] hover:bg-[#0082b0] text-white font-bold text-base sm:text-lg tracking-wide transition-colors shrink-0 rounded-b-2xl sm:rounded-bl-none sm:rounded-r-2xl"
             >
-              <span>Explorar</span>
+              <span>{t("hero.explore")}</span>
               <ArrowRight size={15} />
             </button>
           </div>
@@ -324,7 +339,7 @@ export default function HeroSection() {
           onClick={() => document.getElementById("divisiones")?.scrollIntoView({ behavior: "smooth" })}
           className="flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors cursor-pointer bg-transparent border-none"
         >
-          <span className="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+          <span className="text-[10px] tracking-[0.3em] uppercase">{t("hero.scroll")}</span>
           <ChevronDown size={18} className="animate-bounce" />
         </button>
       </motion.div>

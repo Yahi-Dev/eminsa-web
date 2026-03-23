@@ -39,6 +39,7 @@ const divisionsTooltipColors: { [key: string]: string } = {
 export default function Header() {
   const t = useTranslations("nav");
   const tc = useTranslations("config");
+  const navName = (name: string) => tc(`header.navNames.${name}`);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileActiveSubmenu, setMobileActiveSubmenu] = useState<string | null>(null);
@@ -126,7 +127,7 @@ export default function Header() {
             <button
               onClick={toggleLanguage}
               className="flex items-center gap-1 hover:text-[#0099ce] transition-colors"
-              aria-label={language === "en" ? "Switch to Spanish" : "Cambiar a Inglés"}
+              aria-label={language === "en" ? t("ariaLanguageEn") : t("ariaLanguageEs")}
             >
               <Globe size={14} />
               <span>{language === "en" ? "EN" : "ES"}</span>
@@ -204,7 +205,7 @@ export default function Header() {
                         pathname.startsWith(item.href) && item.href !== "/" && "text-[#00269b]"
                       )}
                     >
-                      {item.name}
+                      {navName(item.name)}
                       <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#00269b] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                       <ChevronDown
                         size={14}
@@ -260,7 +261,7 @@ export default function Header() {
                       pathname.startsWith(item.href) && item.href !== "/" && "text-[#00269b]"
                     )}
                   >
-                    {item.name}
+                    {navName(item.name)}
                     <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#00269b] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                   </Link>
                 </Tooltip>
@@ -274,7 +275,7 @@ export default function Header() {
                     pathname.startsWith(item.href) && item.href !== "/" && "text-[#00269b]"
                   )}
                 >
-                  {item.name}
+                  {navName(item.name)}
                   <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-[#00269b] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                 </Link>
               );
@@ -288,7 +289,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-3 xl:px-5 py-2 xl:py-2.5 text-[#25D366] border-2 border-[#25D366] rounded-xl font-semibold hover:bg-[#25D366] hover:text-white transition-all duration-200"
-              aria-label="Contactar por WhatsApp"
+              aria-label={t("ariaWhatsApp")}
             >
               <MessageCircle size={18} />
               <span className="hidden xl:inline">WhatsApp</span>
@@ -334,7 +335,7 @@ export default function Header() {
                             )}
                             className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-[#6d6e6d] hover:text-[#00269b] hover:bg-gray-50 transition-colors"
                           >
-                            <span className="font-medium">{item.name}</span>
+                            <span className="font-medium">{navName(item.name)}</span>
                             <ChevronDown
                               size={16}
                               className={cn(
@@ -386,7 +387,7 @@ export default function Header() {
                           onClick={closeMobileMenu}
                           className="flex items-center px-4 py-3 rounded-lg text-[#6d6e6d] hover:text-[#00269b] hover:bg-gray-50 transition-colors"
                         >
-                          <span className="font-medium">{item.name}</span>
+                          <span className="font-medium">{navName(item.name)}</span>
                         </Link>
                       </div>
                     );
@@ -399,7 +400,7 @@ export default function Header() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-[#25D366] border border-[#25D366] rounded-lg hover:bg-[#25D366] hover:text-white transition-all"
-                    aria-label="Contactar por WhatsApp"
+                    aria-label={t("ariaWhatsApp")}
                   >
                     <MessageCircle size={18} />
                     <span className="font-medium">WhatsApp</span>
