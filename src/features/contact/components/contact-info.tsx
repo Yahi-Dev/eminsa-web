@@ -177,7 +177,7 @@ function WhatsAppButton({ whatsappNumber }: WhatsAppButtonProps) {
 function GoogleMap() {
   const t = useTranslations('contact');
 
-  const mapUrl = "https://www.openstreetmap.org/export/embed.html?bbox=-70.0663034%2C18.5618907%2C-70.0563034%2C18.5718907&layer=mapnik&marker=18.5668907%2C-70.0613034";
+  const mapUrl = "https://www.google.com/maps?q=18.5668907,-70.0613034&hl=es&z=15&output=embed";
   const mapsLink = "https://www.google.com/maps/place/GRUPO+EMINSA/@18.5668907,-70.0613034,17z";
 
   return (
@@ -191,7 +191,6 @@ function GoogleMap() {
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
           title="Ubicación de GRUPO EMINSA"
           className="w-full"
         />

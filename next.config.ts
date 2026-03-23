@@ -46,6 +46,8 @@ const securityHeaders = [
       "media-src 'self' https://res.cloudinary.com",
       // Forms submit to self only
       "form-action 'self'",
+      // Allow Google Maps iframes
+      "frame-src 'self' https://www.google.com https://maps.google.com",
       // No plugins
       "object-src 'none'",
       // Frame ancestors (defense-in-depth with X-Frame-Options)
