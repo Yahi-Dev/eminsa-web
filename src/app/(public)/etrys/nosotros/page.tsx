@@ -33,6 +33,7 @@ const valueIcons: { [key: string]: React.ElementType } = {
 
 export default function EtrysNosotrosPage() {
   const t = useTranslations("etrysPage.nosotrosFullPage");
+  const tc = useTranslations("etrysConfig");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -60,18 +61,18 @@ export default function EtrysNosotrosPage() {
                 {t("heroBadge")}
               </span>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
-                {aboutEtrys.title}
+                {tc("about.title")}
               </h1>
               <p className="text-xl text-white/90 mb-6">
-                {aboutEtrys.description}
+                {tc("about.description")}
               </p>
               
               {/* Stats */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {etrysInfo.stats.map((stat) => (
+                {etrysInfo.stats.map((stat, index) => (
                   <div key={stat.label} className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4">
-                    <div className="text-2xl md:text-3xl font-bold">{stat.value}</div>
-                    <div className="text-xs text-white/70">{stat.label}</div>
+                    <div className="text-2xl md:text-3xl font-bold">{tc(`info.stats.${index}.value`)}{stat.suffix ?? ""}</div>
+                    <div className="text-xs text-white/70">{tc(`info.stats.${index}.label`)}</div>
                   </div>
                 ))}
               </div>
@@ -85,7 +86,7 @@ export default function EtrysNosotrosPage() {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/EMINSA/DSC07859.jpg"
-                  alt="Equipo ETRYS"
+                  alt={t("altTeam")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
@@ -115,7 +116,7 @@ export default function EtrysNosotrosPage() {
                 {t("missionTitle")}
               </h2>
               <p className="text-gray-600 text-lg">
-                {aboutEtrys.mission}
+                {tc("about.mission")}
               </p>
             </motion.div>
 
@@ -134,7 +135,7 @@ export default function EtrysNosotrosPage() {
                 {t("visionTitle")}
               </h2>
               <p className="text-gray-600 text-lg">
-                {aboutEtrys.vision}
+                {tc("about.vision")}
               </p>
             </motion.div>
           </div>
@@ -155,7 +156,7 @@ export default function EtrysNosotrosPage() {
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
                     src="/EMINSA/DSC07129.jpg"
-                    alt="Instalaciones ETRYS"
+                    alt={t("altFacilities")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
@@ -164,7 +165,7 @@ export default function EtrysNosotrosPage() {
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
                     src="/EMINSA/DSC07138.jpg"
-                    alt="Taller ETRYS"
+                    alt={t("altWorkshop")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
@@ -173,7 +174,7 @@ export default function EtrysNosotrosPage() {
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
                     src="/EMINSA/DSC07108.jpg"
-                    alt="Laboratorio ETRYS"
+                    alt={t("altLab")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
@@ -182,7 +183,7 @@ export default function EtrysNosotrosPage() {
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
                     src="/EMINSA/DSC07161.jpg"
-                    alt="Equipos ETRYS"
+                    alt={t("altEquipment")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
@@ -204,17 +205,17 @@ export default function EtrysNosotrosPage() {
                 {t("positionTitle")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
-                {aboutEtrys.position}
+                {tc("about.position")}
               </p>
 
               {/* Advantages */}
               <div className="space-y-4">
-                {etrysInfo.advantages.map((adv) => (
+                {etrysInfo.advantages.map((adv, index) => (
                   <div key={adv.title} className="flex items-start gap-3">
                     <CheckCircle2 size={20} className="text-[#0099ce] shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold text-gray-900">{adv.title}</h4>
-                      <p className="text-sm text-gray-600">{adv.description}</p>
+                      <h4 className="font-semibold text-gray-900">{tc(`info.advantages.${index}.title`)}</h4>
+                      <p className="text-sm text-gray-600">{tc(`info.advantages.${index}.description`)}</p>
                     </div>
                   </div>
                 ))}
@@ -260,10 +261,10 @@ export default function EtrysNosotrosPage() {
                     <Icon size={32} className="text-[#0099ce] group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {value.title}
+                    {tc(`about.values.${index}.title`)}
                   </h3>
                   <p className="text-gray-600">
-                    {value.description}
+                    {tc(`about.values.${index}.description`)}
                   </p>
                 </motion.div>
               );
@@ -288,7 +289,7 @@ export default function EtrysNosotrosPage() {
                 {t("teamTitle")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
-                {aboutEtrys.team}
+                {tc("about.team")}
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -318,7 +319,7 @@ export default function EtrysNosotrosPage() {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/EMINSA/DSC07624.jpg"
-                  alt="Equipo de trabajo ETRYS"
+                  alt={t("altTeamWork")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"

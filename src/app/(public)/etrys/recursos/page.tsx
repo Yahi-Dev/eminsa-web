@@ -15,8 +15,6 @@ import { etrysResources } from "@/config/etrys-data";
 
 const fichasTecnicasCard = {
   id: "fichas-tecnicas",
-  name: "Fichas Técnicas",
-  description: "Especificaciones técnicas y documentación detallada de los productos RST.",
   icon: "file-text" as const,
   url: "/etrys/recursos/fichas-tecnicas",
 };
@@ -32,6 +30,7 @@ const resourceIcons: { [key: string]: React.ElementType } = {
 
 export default function EtrysRecursosPage() {
   const t = useTranslations("etrysPage.recursosPage");
+  const tc = useTranslations("etrysConfig");
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -86,9 +85,9 @@ export default function EtrysRecursosPage() {
                 />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {fichasTecnicasCard.name}
+                {t("fichasTecnicasName")}
               </h3>
-              <p className="text-gray-600 mb-4">{fichasTecnicasCard.description}</p>
+              <p className="text-gray-600 mb-4">{t("fichasTecnicasDescription")}</p>
               <Link
                 href={fichasTecnicasCard.url}
                 className="inline-flex items-center gap-2 text-[#0099ce] font-semibold hover:text-[#007ba8] transition-colors"
@@ -117,9 +116,9 @@ export default function EtrysRecursosPage() {
                     />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
-                    {resource.name}
+                    {tc(`resources.${resource.id}.name`)}
                   </h3>
-                  <p className="text-gray-600 mb-4">{resource.description}</p>
+                  <p className="text-gray-600 mb-4">{tc(`resources.${resource.id}.description`)}</p>
                   {resource.url ? (
                     <Link
                       href={resource.url}

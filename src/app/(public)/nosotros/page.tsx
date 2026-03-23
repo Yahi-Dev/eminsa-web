@@ -57,10 +57,12 @@ export default function NosotrosPage() {
   const t = useTranslations("pages.nosotros");
   const tc = useTranslations("eminsaConfig");
   const [selectedMilestone, setSelectedMilestone] = useState<typeof eminsaMilestones[0] | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const openMilestoneDialog = (milestone: typeof eminsaMilestones[0]) => {
+  const openMilestoneDialog = (milestone: typeof eminsaMilestones[0], index: number) => {
     setSelectedMilestone(milestone);
+    setSelectedIndex(index);
     setIsDialogOpen(true);
   };
 
@@ -75,7 +77,7 @@ export default function NosotrosPage() {
       <section className="relative bg-gray-900 text-white py-16 lg:py-24 overflow-hidden">
         <Image
           src="/EMINSA/DSC07149.jpg"
-          alt="Grupo EMINSA"
+          alt={t("altHero")}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover brightness-50"
@@ -101,7 +103,7 @@ export default function NosotrosPage() {
                 {tc("info.tagline")}
               </span>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
-                {aboutEminsa.title}
+                {tc("about.title")}
               </h1>
               <p className="text-xl text-white/90 mb-6">
                 {tc("about.description")}
@@ -128,7 +130,7 @@ export default function NosotrosPage() {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/EMINSA/DSC07875.jpg"
-                  alt="Equipo Grupo EMINSA"
+                  alt={t("altTeamHero")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
@@ -244,7 +246,7 @@ export default function NosotrosPage() {
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
                     src="/EMINSA/DSC07713.jpg"
-                    alt="Instalaciones EMINSA"
+                    alt={t("altFacilities")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
@@ -253,7 +255,7 @@ export default function NosotrosPage() {
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
                     src="/EMINSA/DSC07733.jpg"
-                    alt="Taller EMINSA"
+                    alt={t("altWorkshop")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
@@ -262,7 +264,7 @@ export default function NosotrosPage() {
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
                     src="/EMINSA/DSC07165.jpg"
-                    alt="Proceso de producción EMINSA"
+                    alt={t("altProduction")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
@@ -271,7 +273,7 @@ export default function NosotrosPage() {
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
                     src="/EMINSA/DSC07638.jpg"
-                    alt="Equipos EMINSA"
+                    alt={t("altEquipment")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover brightness-75"
@@ -360,10 +362,10 @@ export default function NosotrosPage() {
                       {division.name}
                     </h3>
                     <p className="text-sm font-medium text-gray-500 mb-3 text-center">
-                      {division.fullName}
+                      {tc(`divisions.${division.id}.fullName`)}
                     </p>
                     <p className="text-gray-600 text-sm text-center">
-                      {division.description}
+                      {tc(`divisions.${division.id}.description`)}
                     </p>
                     <div className="mt-4 flex items-center justify-center gap-2 text-sm font-medium group-hover:gap-3 transition-all" style={{ color: division.color }}>
                       {t("divisions.learnMore")}
@@ -446,7 +448,7 @@ export default function NosotrosPage() {
             <div key={i} className="relative shrink-0 w-72 h-44 overflow-hidden rounded-sm group">
               <Image
                 src={src}
-                alt={`Grupo EMINSA ${(i % 23) + 1}`}
+                alt={t("altCarousel", { number: (i % 23) + 1 })}
                 fill
                 sizes="288px"
                 className="object-cover brightness-75 group-hover:brightness-95 transition-all duration-500"
@@ -472,7 +474,7 @@ export default function NosotrosPage() {
                 {t("team.title")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
-                {aboutEminsa.team}
+                {tc("about.team")}
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -502,7 +504,7 @@ export default function NosotrosPage() {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/EMINSA/DSC07670.jpg"
-                  alt="Equipo de trabajo Grupo EMINSA"
+                  alt={t("altWorkTeam")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover brightness-75"
@@ -548,17 +550,17 @@ export default function NosotrosPage() {
                 >
                   <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                     <button
-                      onClick={() => openMilestoneDialog(milestone)}
+                      onClick={() => openMilestoneDialog(milestone, index)}
                       className="bg-white/10 backdrop-blur-sm rounded-xl p-4 inline-block hover:bg-white/20 transition-all cursor-pointer group"
                     >
                       <span className="text-2xl font-bold text-amber-400 group-hover:text-amber-300 transition-colors">
-                        {milestone.decade}
+                        {tc(`milestones.${index}.decade`)}
                       </span>
                       <p className="text-white/90 font-medium group-hover:text-white transition-colors">
-                        {milestone.event}
+                        {tc(`milestones.${index}.event`)}
                       </p>
                       <p className="text-white/70 text-sm mt-1 group-hover:text-white/80 transition-colors">
-                        {milestone.description}
+                        {tc(`milestones.${index}.description`)}
                       </p>
                       <p className="text-amber-400/80 text-xs mt-2 group-hover:text-amber-300 transition-colors">
                         {t("milestones.clickHint")}
@@ -658,17 +660,17 @@ export default function NosotrosPage() {
                       </div>
                       <div>
                         <span className="text-3xl font-bold text-amber-400">
-                          {selectedMilestone.decade}
+                          {tc(`milestones.${selectedIndex}.decade`)}
                         </span>
-                        <p className="text-sm text-white/70">{selectedMilestone.year}</p>
+                        <p className="text-sm text-white/70">{tc(`milestones.${selectedIndex}.year`)}</p>
                       </div>
                     </div>
 
                     <h3 className="text-2xl lg:text-3xl font-bold mb-2">
-                      {selectedMilestone.event}
+                      {tc(`milestones.${selectedIndex}.event`)}
                     </h3>
                     <p className="text-white/90 text-lg">
-                      {selectedMilestone.description}
+                      {tc(`milestones.${selectedIndex}.description`)}
                     </p>
                   </div>
 
@@ -694,7 +696,7 @@ export default function NosotrosPage() {
                             className="flex items-start gap-3 text-gray-600"
                           >
                             <CheckCircle2 size={18} className="text-[#009e49] shrink-0 mt-0.5" />
-                            <span>{detail}</span>
+                            <span>{tc(`milestones.${selectedIndex}.details.${index}`)}</span>
                           </motion.li>
                         ))}
                       </ul>
@@ -720,7 +722,7 @@ export default function NosotrosPage() {
                             className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-200"
                           >
                             <Award size={20} className="text-amber-500 mb-2" />
-                            <p className="text-gray-800 font-medium">{achievement}</p>
+                            <p className="text-gray-800 font-medium">{tc(`milestones.${selectedIndex}.achievements.${index}`)}</p>
                           </motion.div>
                         ))}
                       </div>

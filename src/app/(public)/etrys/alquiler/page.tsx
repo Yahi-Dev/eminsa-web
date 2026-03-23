@@ -39,6 +39,7 @@ const benefitIcons: { [key: string]: React.ElementType } = {
 
 export default function EtrysAlquilerPage() {
   const t = useTranslations("etrysPage.alquilerPage");
+  const tc = useTranslations("etrysConfig");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
@@ -133,7 +134,7 @@ export default function EtrysAlquilerPage() {
                 {t("heroBadge")}
               </span>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
-                {rentalInfo.title}
+                {tc("rental.title")}
               </h1>
               <p className="text-xl text-white/90 mb-6">
                 {t("heroDescription")}
@@ -178,13 +179,13 @@ export default function EtrysAlquilerPage() {
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
                   <Image src="/EMINSA/DSC07805.jpg" alt="Transformador en campo" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
-                  <span className="absolute bottom-2 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Distribución</span>
+                  <span className="absolute bottom-2 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">{t("distributionLabel")}</span>
                 </div>
                 {/* Bottom-right */}
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
                   <Image src="/EMINSA/DSC07875.jpg" alt="Transformador industrial" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
-                  <span className="absolute bottom-2 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">Industrial</span>
+                  <span className="absolute bottom-2 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">{t("industrialLabel")}</span>
                 </div>
               </div>
             </motion.div>
@@ -225,10 +226,10 @@ export default function EtrysAlquilerPage() {
                     <Icon size={28} className="text-[#0099ce]" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    {benefit.title}
+                    {tc(`rental.benefits.${benefit.id}.title`)}
                   </h3>
                   <p className="text-gray-600">
-                    {benefit.description}
+                    {tc(`rental.benefits.${benefit.id}.description`)}
                   </p>
                 </motion.div>
               );
@@ -257,10 +258,10 @@ export default function EtrysAlquilerPage() {
                 {t("useCasesDescription")}
               </p>
               <ul className="space-y-3">
-                {rentalInfo.useCases.map((useCase) => (
-                  <li key={useCase} className="flex items-start gap-3">
+                {rentalInfo.useCases.map((_, index) => (
+                  <li key={index} className="flex items-start gap-3">
                     <CheckCircle2 size={20} className="text-[#0099ce] shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{useCase}</span>
+                    <span className="text-gray-700">{tc(`rental.useCases.${index}`)}</span>
                   </li>
                 ))}
               </ul>
@@ -542,10 +543,10 @@ export default function EtrysAlquilerPage() {
                   {t("availableEquipment")}
                 </h3>
                 <ul className="space-y-3">
-                  {rentalInfo.availableEquipment.map((equip) => (
-                    <li key={equip} className="flex items-start gap-3">
+                  {rentalInfo.availableEquipment.map((_, index) => (
+                    <li key={index} className="flex items-start gap-3">
                       <CheckCircle2 size={18} className="text-[#0099ce] shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-sm">{equip}</span>
+                      <span className="text-gray-700 text-sm">{tc(`rental.availableEquipment.${index}`)}</span>
                     </li>
                   ))}
                 </ul>

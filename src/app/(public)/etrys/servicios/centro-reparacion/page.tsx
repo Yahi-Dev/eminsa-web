@@ -39,6 +39,7 @@ const equipmentIcons: { [key: string]: React.ElementType } = {
 
 export default function CentroReparacionPage() {
   const t = useTranslations("etrysPage.centroReparacionPage");
+  const tc = useTranslations("etrysConfig");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -70,14 +71,14 @@ export default function CentroReparacionPage() {
                 {t("heroBadge")}
               </span>
               <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-4">
-                {repairCenter.name}
+                {tc("repairCenter.name")}
               </h1>
               <p className="text-xl text-white/90 mb-6">
-                {repairCenter.description}
+                {tc("repairCenter.description")}
               </p>
               <div className="flex items-center gap-3 mb-6">
                 <MapPin size={20} />
-                <span>{repairCenter.location}</span>
+                <span>{tc("repairCenter.location")}</span>
               </div>
               <div className="flex flex-wrap gap-4">
                 <Link
@@ -108,7 +109,7 @@ export default function CentroReparacionPage() {
               <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
                   src="/EMINSA/DSC07759.jpg"
-                  alt="Equipo de técnicos reparando transformador"
+                  alt={t("altHeroTeam")}
                   fill
                   sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -116,14 +117,14 @@ export default function CentroReparacionPage() {
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
                 <span className="absolute bottom-3 left-4 px-3 py-1 bg-white/20 backdrop-blur-md text-white text-xs font-bold tracking-widest uppercase rounded-full">
-                  Taller RST
+                  {t("workshopLabel")}
                 </span>
               </div>
               {/* Bottom left - lab testing */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
                   src="/EMINSA/DSC07149.jpg"
-                  alt="Pruebas eléctricas en laboratorio"
+                  alt={t("altHeroLab")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -134,7 +135,7 @@ export default function CentroReparacionPage() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
                   src="/EMINSA/DSC07678.jpg"
-                  alt="Soldadura de tanque de transformador"
+                  alt={t("altHeroWelding")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -171,17 +172,6 @@ export default function CentroReparacionPage() {
                   : index === 3 || index === 6
                   ? "md:row-span-2"
                   : "";
-              const labels = [
-                "Reparación de transformadores",
-                "Laboratorio de pruebas",
-                "Banco de pruebas automatizado",
-                "Ensamblaje de bobinas",
-                "Soldadura especializada",
-                "Fabricación de tanques",
-                "Equipos de alta tensión",
-                "Instalación de componentes",
-                "Torres de impulso",
-              ];
               return (
                 <motion.div
                   key={index}
@@ -193,14 +183,14 @@ export default function CentroReparacionPage() {
                 >
                   <Image
                     src={img}
-                    alt={labels[index] || `Instalación ${index + 1}`}
+                    alt={t(`galleryLabels.${index}`)}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <span className="absolute bottom-3 left-3 text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {labels[index]}
+                    {t(`galleryLabels.${index}`)}
                   </span>
                 </motion.div>
               );
@@ -236,11 +226,11 @@ export default function CentroReparacionPage() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-gradient-to-br from-[#0099ce] to-[#007ba8] text-white rounded-2xl p-6 shadow-xl"
               >
-                <h3 className="text-xl font-bold mb-2">{cap.type}</h3>
-                <p className="text-white/80 mb-4">{cap.description}</p>
+                <h3 className="text-xl font-bold mb-2">{tc(`repairCenter.capabilities.${index}.type`)}</h3>
+                <p className="text-white/80 mb-4">{tc(`repairCenter.capabilities.${index}.description`)}</p>
                 {cap.capacity && (
                   <div className="inline-block px-4 py-2 bg-white/20 rounded-lg">
-                    <span className="font-semibold">{cap.capacity}</span>
+                    <span className="font-semibold">{tc(`repairCenter.capabilities.${index}.capacity`)}</span>
                   </div>
                 )}
               </motion.div>
@@ -324,7 +314,7 @@ export default function CentroReparacionPage() {
               <div className="mt-4 flex items-start gap-3">
                 <MapPin size={20} className="text-[#0099ce] shrink-0 mt-1" />
                 <div>
-                  <p className="font-semibold text-gray-900">{repairCenter.location}</p>
+                  <p className="font-semibold text-gray-900">{tc("repairCenter.location")}</p>
                   <p className="text-gray-600">{t("country")}</p>
                 </div>
               </div>

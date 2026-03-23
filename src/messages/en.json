@@ -597,6 +597,14 @@
           "ariaClose": "Close"
         }
       },
+      "altHero": "EMINSA Group",
+      "altTeamHero": "EMINSA Group Team",
+      "altFacilities": "EMINSA Facilities",
+      "altWorkshop": "EMINSA Workshop",
+      "altProduction": "EMINSA Production Process",
+      "altEquipment": "EMINSA Equipment",
+      "altWorkTeam": "EMINSA Group Work Team",
+      "altCarousel": "EMINSA Group {number}",
       "cta": {
         "title": "Ready to work with us?",
         "description": "Discover why we are the preferred choice for transformers and electrical equipment in the Caribbean.",
@@ -2701,10 +2709,10 @@
       "slogan": "Transformer Repair and Service",
       "description": "At RST we combine the expertise of a highly qualified technical team with cutting-edge technology to give your transformers a new life with the ETRYS seal.",
       "stats": {
-        "0": "Years of Experience",
-        "1": "Months Warranty",
-        "2": "Min Response Time",
-        "3": "Ton Max Capacity"
+        "0": { "value": "50", "label": "Years of Experience", "suffix": "+" },
+        "1": { "value": "18", "label": "Months Warranty" },
+        "2": { "value": "30", "label": "Min Response Time" },
+        "3": { "value": "10", "label": "Ton Max Capacity" }
       },
       "advantages": {
         "0": {
@@ -2782,6 +2790,17 @@
         "4": "Temporary expansion",
         "5": "Testing and commissioning",
         "6": "Civil works and mining"
+      },
+      "availableEquipment": {
+        "0": "Pole-Type Transformers (15-500 kVA)",
+        "1": "Pad-Mounted Transformers (30-3,000 kVA)",
+        "2": "Substation Transformers (up to 3,000 kVA)"
+      }
+    },
+    "resources": {
+      "calculadora": {
+        "name": "kVA Calculator",
+        "description": "Tool to calculate required capacity."
       }
     },
     "about": {
@@ -3037,6 +3056,7 @@
     },
     "repairCenter": {
       "name": "RST Repair Center",
+      "location": "Santo Domingo, Dominican Republic",
       "description": "At our workshop in Santo Domingo, we service pedestal-type transformers, MV dry-type transformers, and substations up to 10 tons.",
       "capabilities": {
         "0": {
@@ -3357,6 +3377,7 @@
       }
     },
     "about": {
+      "title": "EMINSA Group",
       "description": "GRUPO EMINSA is a leading business organization in the Dominican Republic and the Caribbean, with over 50 years of experience in the electrical distribution transformer and related equipment sector. We specialize in offering comprehensive solutions that include manufacturing, repair, remanufacturing, commercialization, and specialized technical services.",
       "mission": "Provide reliable, innovative, and quality solutions in transformers and electrical equipment, acting with transparency, integrity, and dedication in every project. Our commitment is to exceed our clients' expectations, guaranteeing exceptional technical service backed by decades of experience.",
       "vision": "Be the leading reference in the Caribbean for the manufacturing, repair, and commercialization of electrical transformers, recognized for our technical excellence, constant innovation, and commitment to the sustainable development of the energy sector.",
@@ -3407,6 +3428,14 @@
           "0": "First transformer factory in DR",
           "1": "Pioneering Dominican-Chilean merger in the sector",
           "2": "Introduction of Pad Mounted transformer to the market"
+        },
+        "decade": "1973",
+        "year": "September 14, 1973",
+        "details": {
+          "0": "On September 14, 1973, Empresa de Ingeniería Eléctrica SAS (EMINSA) was established, a fusion of Dominican capital with the Chilean multinational company Hernan Briones & Company.",
+          "1": "It was the first company established in the Dominican Republic for the manufacture and repair of electrical distribution transformers.",
+          "2": "In 1979, the company acquired machinery and equipment from Canadian General Electric, advised by the Canadian firm Ferranti Packard Transformers.",
+          "3": "The Pad Mounted transformer was introduced to the market, once again pioneering in this range."
         }
       },
       "1": {
@@ -3416,6 +3445,13 @@
           "0": "First exports to the Caribbean and Haiti",
           "1": "Partnership with Energy International Corporation USA",
           "2": "Presence in multiple Caribbean markets"
+        },
+        "decade": "1980s",
+        "year": "Late 1980s – 1996",
+        "details": {
+          "0": "In the late 1980s, EMINSA made its first exports to the Republic of Haiti, as well as to the Turks & Caicos Islands through an electrical contractor.",
+          "1": "In 1996, a technical assistance and raw material supply agreement was signed with the international division of Energy Internacional Corporation in the United States, a firm with over 100 years of experience.",
+          "2": "The agreement primarily covered the electrical substation area and power generation projects."
         }
       },
       "2": {
@@ -3426,6 +3462,14 @@
           "1": "Operational redesign with PUM Netherlands advisory",
           "2": "Official ABB Inc. distribution",
           "3": "Authorized General Electric service in DR"
+        },
+        "decade": "2000s",
+        "year": "2002 – 2006",
+        "details": {
+          "0": "In 2002, driven by constant innovation and customer needs, EMINSA began distributing Medium Voltage Switchgear and Transformation Centers.",
+          "1": "In 2003, EMINSA received advisory from PUM (Netherlands Senior Experts Program), who redesigned business operations, focusing them on service commercialization based on flexibility and innovation of experienced subcontractors.",
+          "2": "In 2006, EMINSA began distributing ABB, Inc. transformers and equipment, maintaining a stock of transformers available for its clients.",
+          "3": "EMINSA was designated as an authorized company for evaluation, diagnostic, and repair services for equipment manufactured by General Electric, CO. in the Dominican Republic."
         }
       },
       "3": {
@@ -3435,6 +3479,13 @@
           "0": "Representation of Ecuadorian transformer manufacturer",
           "1": "Official Snyder Electric USA distribution",
           "2": "ELPROM TRAFO Bulgaria representation (IEC standard)"
+        },
+        "decade": "2018–2019",
+        "year": "2018 – 2019",
+        "details": {
+          "0": "In 2018, a representation agreement was signed with an Ecuadorian Transformer manufacturer, featuring cutting-edge proprietary technology and highly qualified professionals, technicians, and operators.",
+          "1": "In 2019, EMINSA signed a distribution contract with Snyder Electric USA, a global specialist in energy management and automation with operations in over 100 countries.",
+          "2": "That same year, a representation and distribution contract was signed with the Bulgarian company ELPROM TRAFO, which holds IEC (International Electrotechnical Commission) certification."
         }
       },
       "4": {
@@ -3443,6 +3494,12 @@
         "achievements": {
           "0": "New facilities at Parque Industrial Duarte",
           "1": "Preparation of the first MTN factory in the Caribbean"
+        },
+        "decade": "2024",
+        "year": "2024",
+        "details": {
+          "0": "EMINSA relocated its operations to the Duarte Industrial Park.",
+          "1": "Preparations began to open the first factory for 100% new transformers in the Caribbean."
         }
       },
       "5": {
@@ -3452,6 +3509,14 @@
           "0": "First MTN prototypes under ANSI / DOE 2016 standards",
           "1": "ISO 9001 certification obtained",
           "2": "CEPM certification for distribution networks"
+        },
+        "decade": "2025",
+        "year": "2025",
+        "details": {
+          "0": "The first prototypes of the new EMINSA transformer line were produced, manufactured under ANSI standards with DOE 2016 efficiency.",
+          "1": "EMINSA obtained ISO 9001 certification.",
+          "2": "CEPM received one of the prototypes of EMINSA's new transformers for technical evaluation.",
+          "3": "After completing the testing and validation process, CEPM approved EMINSA-manufactured transformers for use in their distribution networks."
         }
       }
     }
@@ -4431,7 +4496,15 @@
       "responseTime": "Response within 30 minutes during business hours",
       "ctaTitle": "Need to repair your transformer?",
       "ctaDescription": "Trust the experts with over 50 years of experience.",
-      "requestQuote": "Request a Quote"
+      "requestQuote": "Request a Quote",
+      "altTechnicians": "Technicians repairing transformer",
+      "altTestLab": "Electrical test laboratory",
+      "altFinished": "Finished EMINSA transformer",
+      "altTeamRepairing": "Team of technicians repairing transformer",
+      "altComponents": "Technician working on components",
+      "altLabTesting": "Test laboratory",
+      "altCoils": "Precision coil work",
+      "altQuality": "Quality measurement and control"
     },
     "centroReparacionPage": {
       "breadcrumbServices": "Services",
@@ -4455,7 +4528,22 @@
       "ctaTitle": "Ready to repair your transformer?",
       "ctaDescription": "Visit our center or request a quote online.",
       "requestQuote": "Request a Quote",
-      "viewAllServices": "View All Services"
+      "viewAllServices": "View All Services",
+      "workshopLabel": "RST Workshop",
+      "galleryLabels": {
+        "0": "Transformer repair",
+        "1": "Test laboratory",
+        "2": "Automated test bench",
+        "3": "Coil assembly",
+        "4": "Specialized welding",
+        "5": "Tank fabrication",
+        "6": "High voltage equipment",
+        "7": "Component installation",
+        "8": "Impulse towers"
+      },
+      "altHeroTeam": "Team of technicians repairing transformer",
+      "altHeroLab": "Electrical testing in laboratory",
+      "altHeroWelding": "Transformer tank welding"
     },
     "nosotrosFullPage": {
       "breadcrumb": "About Us",
@@ -4484,7 +4572,13 @@
       "ctaTitle": "Ready to work with us?",
       "ctaDescription": "Discover why we are the preferred choice for transformer repair and remanufacturing.",
       "requestQuote": "Request a Quote",
-      "callNow": "Call Now"
+      "callNow": "Call Now",
+      "altTeam": "ETRYS Team",
+      "altFacilities": "ETRYS Facilities",
+      "altWorkshop": "ETRYS Workshop",
+      "altLab": "ETRYS Laboratory",
+      "altEquipment": "ETRYS Equipment",
+      "altTeamWork": "ETRYS work team"
     },
     "alquilerPage": {
       "breadcrumb": "Rental",
@@ -4544,7 +4638,9 @@
       "goHome": "Go to Home",
       "phoneLabel": "Phone",
       "emailLabel": "Email",
-      "emailPlaceholder": "your@email.com"
+      "emailPlaceholder": "your@email.com",
+      "distributionLabel": "Distribution",
+      "industrialLabel": "Industrial"
     },
     "recursosPage": {
       "breadcrumb": "Resources",
@@ -4560,7 +4656,9 @@
       "dataSheetsTitle": "Data Sheets",
       "ctaTitle": "Can't find what you're looking for?",
       "ctaDescription": "Our technical team is available to answer any questions about our products and services.",
-      "requestQuote": "Request a Quote"
+      "requestQuote": "Request a Quote",
+      "fichasTecnicasName": "Technical Data Sheets",
+      "fichasTecnicasDescription": "Technical specifications and detailed documentation of RST products."
     },
     "cotizacionesPage": {
       "breadcrumb": "Quotes",

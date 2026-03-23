@@ -39,6 +39,7 @@ const serviceIcons: { [key: string]: React.ElementType } = {
 
 export default function EtrysServiciosPage() {
   const t = useTranslations("etrysPage.serviciosFullPage");
+  const tc = useTranslations("etrysConfig");
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
@@ -99,7 +100,7 @@ export default function EtrysServiciosPage() {
               <div className="relative col-span-7 row-span-4 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
                   src="/EMINSA/DSC07759.jpg"
-                  alt="Técnicos reparando transformador"
+                  alt={t("altTechnicians")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -114,7 +115,7 @@ export default function EtrysServiciosPage() {
               <div className="relative col-span-5 row-span-3 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
                   src="/EMINSA/DSC07174.jpg"
-                  alt="Laboratorio de pruebas eléctricas"
+                  alt={t("altTestLab")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -126,7 +127,7 @@ export default function EtrysServiciosPage() {
               <div className="relative col-span-5 row-span-3 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
                   src="/EMINSA/DSC07573.jpg"
-                  alt="Transformador EMINSA terminado"
+                  alt={t("altFinished")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -171,16 +172,16 @@ export default function EtrysServiciosPage() {
                     <Icon size={28} className="text-[#0099ce] group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    {service.shortName}
+                    {tc(`repairServices.${service.id}.shortName`)}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    {service.description}
+                    {tc(`repairServices.${service.id}.description`)}
                   </p>
                   <ul className="space-y-2">
-                    {service.details.slice(0, 3).map((detail, i) => (
+                    {service.details.slice(0, 3).map((_, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
                         <CheckCircle2 size={14} className="text-[#0099ce] shrink-0 mt-0.5" />
-                        {detail}
+                        {tc(`repairServices.${service.id}.details.${i}`)}
                       </li>
                     ))}
                   </ul>
@@ -206,7 +207,7 @@ export default function EtrysServiciosPage() {
               <div className="relative col-span-4 row-span-3 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
                   src={repairCenter.images[0]}
-                  alt="Equipo de técnicos reparando transformador"
+                  alt={t("altTeamRepairing")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -217,7 +218,7 @@ export default function EtrysServiciosPage() {
               <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
                   src={repairCenter.images[1]}
-                  alt="Técnico trabajando en componentes"
+                  alt={t("altComponents")}
                   fill
                   sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -227,7 +228,7 @@ export default function EtrysServiciosPage() {
               <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
                   src={repairCenter.images[2]}
-                  alt="Laboratorio de pruebas"
+                  alt={t("altLabTesting")}
                   fill
                   sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -237,7 +238,7 @@ export default function EtrysServiciosPage() {
               <div className="relative col-span-2 row-span-1 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
                   src={repairCenter.images[3]}
-                  alt="Trabajo de precisión en bobinas"
+                  alt={t("altCoils")}
                   fill
                   sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -247,7 +248,7 @@ export default function EtrysServiciosPage() {
               <div className="relative col-span-2 row-span-1 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
                   src={repairCenter.images[4]}
-                  alt="Medición y control de calidad"
+                  alt={t("altQuality")}
                   fill
                   sizes="100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -265,21 +266,21 @@ export default function EtrysServiciosPage() {
                 {t("facilitiesBadge")}
               </span>
               <h2 className="text-3xl md:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-                {repairCenter.name}
+                {tc("repairCenter.name")}
               </h2>
               <p className="text-gray-600 text-lg mb-6">
-                {repairCenter.description}
+                {tc("repairCenter.description")}
               </p>
 
               {/* Capabilities */}
               <div className="space-y-3 mb-6">
-                {repairCenter.capabilities.map((cap) => (
+                {repairCenter.capabilities.map((cap, index) => (
                   <div key={cap.type} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
                     <CheckCircle2 size={20} className="text-[#0099ce] shrink-0 mt-0.5" />
                     <div>
-                      <span className="font-semibold text-gray-900">{cap.type}</span>
+                      <span className="font-semibold text-gray-900">{tc(`repairCenter.capabilities.${index}.type`)}</span>
                       {cap.capacity && (
-                        <span className="text-sm text-gray-500 block">{cap.capacity}</span>
+                        <span className="text-sm text-gray-500 block">{tc(`repairCenter.capabilities.${index}.capacity`)}</span>
                       )}
                     </div>
                   </div>

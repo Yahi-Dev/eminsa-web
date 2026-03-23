@@ -597,6 +597,14 @@
           "ariaClose": "Cerrar"
         }
       },
+      "altHero": "Grupo EMINSA",
+      "altTeamHero": "Equipo Grupo EMINSA",
+      "altFacilities": "Instalaciones EMINSA",
+      "altWorkshop": "Taller EMINSA",
+      "altProduction": "Proceso de producción EMINSA",
+      "altEquipment": "Equipos EMINSA",
+      "altWorkTeam": "Equipo de trabajo Grupo EMINSA",
+      "altCarousel": "Grupo EMINSA {number}",
       "cta": {
         "title": "¿Listo para trabajar con nosotros?",
         "description": "Descubra por qué somos la elección preferida para transformadores y equipos eléctricos en el Caribe.",
@@ -2701,10 +2709,10 @@
       "slogan": "Reparación y Servicio de Transformadores",
       "description": "En RST combinamos la experiencia de un equipo técnico altamente calificado con tecnología de última generación para devolverle a sus transformadores una nueva vida con el sello ETRYS.",
       "stats": {
-        "0": "Años de Experiencia",
-        "1": "Meses de Garantía",
-        "2": "Min Tiempo Respuesta",
-        "3": "Ton Capacidad Máxima"
+        "0": { "value": "50", "label": "Años de Experiencia", "suffix": "+" },
+        "1": { "value": "18", "label": "Meses de Garantía" },
+        "2": { "value": "30", "label": "Min Tiempo Respuesta" },
+        "3": { "value": "10", "label": "Ton Capacidad Máxima" }
       },
       "advantages": {
         "0": {
@@ -2782,6 +2790,17 @@
         "4": "Expansión temporal",
         "5": "Pruebas y puesta en marcha",
         "6": "Obras civiles y minería"
+      },
+      "availableEquipment": {
+        "0": "Transformadores Tipo Poste (15-500 kVA)",
+        "1": "Transformadores Pad-Mounted (30-3,000 kVA)",
+        "2": "Transformadores de Subestación (hasta 3,000 kVA)"
+      }
+    },
+    "resources": {
+      "calculadora": {
+        "name": "Calculadora kVA",
+        "description": "Herramienta para calcular capacidad requerida."
       }
     },
     "about": {
@@ -3357,6 +3376,7 @@
       }
     },
     "about": {
+      "title": "Grupo EMINSA",
       "description": "GRUPO EMINSA es una organización empresarial líder en la República Dominicana y el Caribe, con más de 50 años de trayectoria en el sector de transformadores eléctricos de distribución y equipos relacionados. Nos especializamos en ofrecer soluciones integrales que incluyen manufactura, reparación, remanufactura, comercialización y servicios técnicos especializados.",
       "mission": "Brindar soluciones confiables, innovadoras y de calidad en transformadores y equipos eléctricos, actuando con transparencia, integridad y dedicación en cada proyecto. Nuestro compromiso es superar las expectativas de nuestros clientes, garantizando un servicio técnico excepcional respaldado por décadas de experiencia.",
       "vision": "Ser el referente líder en el Caribe para la manufactura, reparación y comercialización de transformadores eléctricos, reconocidos por nuestra excelencia técnica, innovación constante y compromiso con el desarrollo sostenible del sector energético.",
@@ -3407,6 +3427,14 @@
           "0": "Primera fábrica de transformadores en RD",
           "1": "Fusión dominico-chilena pionera en el sector",
           "2": "Introducción del transformador Pad Mounted al mercado"
+        },
+        "decade": "1973",
+        "year": "14 de septiembre, 1973",
+        "details": {
+          "0": "El 14 de septiembre de 1973 fue constituida la Empresa de Ingeniería Eléctrica SAS (EMINSA), producto de la fusión de capital dominicano con la empresa multinacional chilena Hernan Briones y Compañía.",
+          "1": "Es la primera empresa establecida en República Dominicana para la fabricación y reparación de transformadores de distribución eléctrica.",
+          "2": "En el año 1979, la empresa adquirió las maquinarias y equipos de la Canadian General Electric, asesorados por la firma canadiense Ferranti Packard Transformers.",
+          "3": "Se introdujo al mercado el transformador Pad Mounted, siendo nuevamente pioneros en este rango."
         }
       },
       "1": {
@@ -3416,6 +3444,13 @@
           "0": "Primeras exportaciones al Caribe y Haití",
           "1": "Alianza con Energy Internacional Corporation USA",
           "2": "Presencia en múltiples mercados del Caribe"
+        },
+        "decade": "1980s",
+        "year": "Finales de los años 80 – 1996",
+        "details": {
+          "0": "A finales de los años 80, EMINSA realizó sus primeras exportaciones a la República de Haití, así como a las islas de Turks & Caicos a través de un contratista eléctrico.",
+          "1": "En 1996 firmó un convenio de asistencia técnica y suministro de materia prima con la división internacional de Energy Internacional Corporation en Estados Unidos, firma con más de 100 años de experiencia.",
+          "2": "El convenio abarcó especialmente el área de subestación eléctrica y proyectos de generación."
         }
       },
       "2": {
@@ -3426,6 +3461,14 @@
           "1": "Rediseño operacional con asesoría PUM Holanda",
           "2": "Distribución oficial ABB Inc.",
           "3": "Servicio autorizado General Electric en RD"
+        },
+        "decade": "2000s",
+        "year": "2002 – 2006",
+        "details": {
+          "0": "En el año 2002, gracias al espíritu de innovación constante y las necesidades de los clientes, EMINSA inició la distribución de Celdas de Media Tensión y Centros de Transformación.",
+          "1": "En el 2003, EMINSA recibió asesoría del PUM (Programa de Asesores Holandeses), quienes rediseñaron las operaciones de negocios, enfocándolas hacia la comercialización de servicios basados en la flexibilidad e innovación de subcontratistas experimentados.",
+          "2": "En 2006, EMINSA emprendió la distribución de los transformadores y equipos de ABB, Inc., manteniendo un stock de transformadores disponible para sus clientes.",
+          "3": "EMINSA fue designada empresa autorizada para los servicios de evaluación, diagnósticos y reparación para los equipos manufacturados por General Electric, CO. en República Dominicana."
         }
       },
       "3": {
@@ -3435,6 +3478,13 @@
           "0": "Representación de fabricante ecuatoriano de transformadores",
           "1": "Distribución oficial Snyder Electric USA",
           "2": "Representación ELPROM TRAFO Bulgaria (norma IEC)"
+        },
+        "decade": "2018–2019",
+        "year": "2018 – 2019",
+        "details": {
+          "0": "En 2018 se firmó un acuerdo de representación con una industria de Transformadores Ecuatorianos, con tecnología propia de punta y profesionales, técnicos y operarios altamente calificados.",
+          "1": "En 2019, EMINSA firmó un contrato de distribución con Snyder Electric USA, especialista global en manejo de energía y automatización con operaciones en más de 100 países.",
+          "2": "En ese mismo año se firmó un contrato de representación y distribución con la empresa búlgara ELPROM TRAFO, que cuenta con la norma IEC (International Electrotechnical Commission)."
         }
       },
       "4": {
@@ -3443,6 +3493,12 @@
         "achievements": {
           "0": "Nuevas instalaciones en Parque Industrial Duarte",
           "1": "Preparación de la primera fábrica MTN del Caribe"
+        },
+        "decade": "2024",
+        "year": "2024",
+        "details": {
+          "0": "EMINSA trasladó sus operaciones al Parque Industrial Duarte.",
+          "1": "Se inició la preparación para abrir la primera fábrica de transformadores 100% nuevos en el Caribe."
         }
       },
       "5": {
@@ -3452,6 +3508,14 @@
           "0": "Primeros prototipos MTN bajo norma ANSI / DOE 2016",
           "1": "Certificación ISO 9001 obtenida",
           "2": "Homologación CEPM para redes de distribución"
+        },
+        "decade": "2025",
+        "year": "2025",
+        "details": {
+          "0": "Salieron los primeros prototipos de la nueva línea de transformadores EMINSA, fabricados bajo la norma ANSI y con eficiencia DOE 2016.",
+          "1": "EMINSA obtuvo la certificación ISO 9001.",
+          "2": "CEPM recibió uno de los prototipos de los transformadores nuevos EMINSA para su evaluación técnica.",
+          "3": "Tras completar el proceso de pruebas y validación, CEPM homologó los transformadores fabricados por EMINSA para ser utilizados en sus redes de distribución."
         }
       }
     }
@@ -4431,7 +4495,15 @@
       "responseTime": "Respuesta en menos de 30 minutos en horario laboral",
       "ctaTitle": "¿Necesita reparar su transformador?",
       "ctaDescription": "Confíe en los expertos con más de 50 años de experiencia.",
-      "requestQuote": "Solicitar Cotización"
+      "requestQuote": "Solicitar Cotización",
+      "altTechnicians": "Técnicos reparando transformador",
+      "altTestLab": "Laboratorio de pruebas eléctricas",
+      "altFinished": "Transformador EMINSA terminado",
+      "altTeamRepairing": "Equipo de técnicos reparando transformador",
+      "altComponents": "Técnico trabajando en componentes",
+      "altLabTesting": "Laboratorio de pruebas",
+      "altCoils": "Trabajo de precisión en bobinas",
+      "altQuality": "Medición y control de calidad"
     },
     "centroReparacionPage": {
       "breadcrumbServices": "Servicios",
@@ -4455,7 +4527,22 @@
       "ctaTitle": "¿Listo para reparar su transformador?",
       "ctaDescription": "Visite nuestro centro o solicite una cotización en línea.",
       "requestQuote": "Solicitar Cotización",
-      "viewAllServices": "Ver Todos los Servicios"
+      "viewAllServices": "Ver Todos los Servicios",
+      "workshopLabel": "Taller RST",
+      "galleryLabels": {
+        "0": "Reparación de transformadores",
+        "1": "Laboratorio de pruebas",
+        "2": "Banco de pruebas automatizado",
+        "3": "Ensamblaje de bobinas",
+        "4": "Soldadura especializada",
+        "5": "Fabricación de tanques",
+        "6": "Equipos de alta tensión",
+        "7": "Instalación de componentes",
+        "8": "Torres de impulso"
+      },
+      "altHeroTeam": "Equipo de técnicos reparando transformador",
+      "altHeroLab": "Pruebas eléctricas en laboratorio",
+      "altHeroWelding": "Soldadura de tanque de transformador"
     },
     "nosotrosFullPage": {
       "breadcrumb": "Nosotros",
@@ -4484,7 +4571,13 @@
       "ctaTitle": "¿Listo para trabajar con nosotros?",
       "ctaDescription": "Descubra por qué somos la elección preferida para reparación y remanufactura de transformadores.",
       "requestQuote": "Solicitar Cotización",
-      "callNow": "Llamar Ahora"
+      "callNow": "Llamar Ahora",
+      "altTeam": "Equipo ETRYS",
+      "altFacilities": "Instalaciones ETRYS",
+      "altWorkshop": "Taller ETRYS",
+      "altLab": "Laboratorio ETRYS",
+      "altEquipment": "Equipos ETRYS",
+      "altTeamWork": "Equipo de trabajo ETRYS"
     },
     "alquilerPage": {
       "breadcrumb": "Alquiler",
@@ -4544,7 +4637,9 @@
       "goHome": "Ir al Inicio",
       "phoneLabel": "Teléfono",
       "emailLabel": "Email",
-      "emailPlaceholder": "su@email.com"
+      "emailPlaceholder": "su@email.com",
+      "distributionLabel": "Distribución",
+      "industrialLabel": "Industrial"
     },
     "recursosPage": {
       "breadcrumb": "Recursos",
@@ -4560,7 +4655,9 @@
       "dataSheetsTitle": "Fichas Técnicas",
       "ctaTitle": "¿No encuentra lo que busca?",
       "ctaDescription": "Nuestro equipo técnico está disponible para responder cualquier consulta sobre nuestros productos y servicios.",
-      "requestQuote": "Solicitar Cotización"
+      "requestQuote": "Solicitar Cotización",
+      "fichasTecnicasName": "Fichas Técnicas",
+      "fichasTecnicasDescription": "Especificaciones técnicas y documentación detallada de los productos RST."
     },
     "cotizacionesPage": {
       "breadcrumb": "Cotizaciones",
