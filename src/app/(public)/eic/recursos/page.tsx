@@ -48,6 +48,7 @@ const resourceIcons: { [key: string]: React.ElementType } = {
 
 export default function EICRecursosPage() {
   const t = useTranslations("eicPage.recursos");
+  const tc = useTranslations("eicConfig");
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -103,8 +104,8 @@ export default function EICRecursosPage() {
                   <div className="w-16 h-16 rounded-xl bg-linear-to-br from-[#009e49]/20 to-[#007d3a]/20 flex items-center justify-center mb-4 group-hover:from-[#009e49] group-hover:to-[#007d3a] transition-all">
                     <Icon size={32} className="text-[#009e49] group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{card.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{card.description}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{t(`extraCards.${card.id}.name`)}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{t(`extraCards.${card.id}.description`)}</p>
                   <Link
                     href={card.url}
                     className="flex items-center gap-2 text-[#009e49] font-medium text-sm hover:underline"
@@ -130,10 +131,10 @@ export default function EICRecursosPage() {
                     <Icon size={32} className="text-[#009e49]" />
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2">
-                    {resource.name}
+                    {tc(`resources.${resource.id}.name`)}
                   </h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    {resource.description}
+                    {tc(`resources.${resource.id}.description`)}
                   </p>
                   <div className="flex items-center gap-2">
                     {resource.url ? (
@@ -204,11 +205,11 @@ export default function EICRecursosPage() {
                     <h3 className="font-bold text-gray-900 text-sm">
                       {brand.name}
                     </h3>
-                    <p className="text-xs text-gray-500">{brand.country}</p>
+                    <p className="text-xs text-gray-500">{tc(`brands.${brand.slug}.country`)}</p>
                   </div>
                 </div>
                 <p className="text-xs text-gray-600 mb-3 line-clamp-2">
-                  {brand.description.substring(0, 100)}...
+                  {tc(`brands.${brand.slug}.description`).substring(0, 100)}...
                 </p>
                 <button className="flex items-center gap-1 text-[#009e49] text-xs font-medium hover:underline">
                   <Download size={14} />

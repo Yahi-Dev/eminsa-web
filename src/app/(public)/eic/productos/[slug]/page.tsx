@@ -48,6 +48,7 @@ const categoryIcons: { [key: string]: React.ElementType } = {
 
 function CategoryPage({ categorySlug }: { categorySlug: string }) {
   const t = useTranslations("eicPage.productSlug");
+  const tc = useTranslations("eicConfig");
   const category = getEICCategoryBySlug(categorySlug)!;
   const categoryProducts = getEICProductsByCategory(categorySlug);
   const categoryBrands = getEICBrandsByCategory(category.id);
@@ -80,7 +81,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
               {t("breadcrumbProducts")}
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">{category.name}</span>
+            <span className="text-white">{tc(`categories.${categorySlug}.name`)}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -97,10 +98,10 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                 </span>
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                {category.name}
+                {tc(`categories.${categorySlug}.name`)}
               </h1>
               <p className="text-lg text-white/90 mb-6">
-                {category.description}
+                {tc(`categories.${categorySlug}.description`)}
               </p>
 
               {/* Brands badges */}
@@ -178,7 +179,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                 {t("representedBrands")}
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                {t("alliesIn", { category: category.shortName })}
+                {t("alliesIn", { category: tc(`categories.${categorySlug}.name`) })}
               </h2>
             </motion.div>
 
@@ -198,21 +199,22 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                     </h3>
                     <div className="flex items-center gap-1.5 text-sm text-gray-500">
                       <MapPin size={14} />
-                      {brand.country}
+                      {tc(`brands.${brand.slug}.country`)}
                     </div>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    {brand.description.length > 250
-                      ? brand.description.substring(0, 250) + "..."
-                      : brand.description}
+                    {(() => {
+                      const desc = tc(`brands.${brand.slug}.description`);
+                      return desc.length > 250 ? desc.substring(0, 250) + "..." : desc;
+                    })()}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
-                    {brand.products.map((product) => (
+                    {brand.products.map((product, pi) => (
                       <span
                         key={product}
                         className="px-2.5 py-1 bg-white text-gray-600 text-xs rounded-full border border-gray-200"
                       >
-                        {product}
+                        {tc(`brands.${brand.slug}.products.${pi}`)}
                       </span>
                     ))}
                   </div>
@@ -242,7 +244,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
               {t("productCatalog")}
             </span>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-              {t("productsOf", { category: category.name })}
+              {t("productsOf", { category: tc(`categories.${categorySlug}.name`) })}
             </h2>
           </motion.div>
 
@@ -281,10 +283,10 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
 
                   {/* Product Info */}
                   <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#009e49] transition-colors mb-2">
-                    {product.name}
+                    {tc(`products.${product.slug}.name`)}
                   </h3>
                   <p className="text-sm text-gray-600 mb-4 line-clamp-3">
-                    {product.description}
+                    {tc(`products.${product.slug}.description`)}
                   </p>
 
                   {/* Specs */}
@@ -302,7 +304,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                   {/* Features Preview */}
                   <div className="pt-4 border-t border-gray-100">
                     <div className="space-y-1.5">
-                      {product.features.slice(0, 3).map((feature) => (
+                      {product.features.slice(0, 3).map((feature, fi) => (
                         <div
                           key={feature}
                           className="flex items-center gap-2 text-xs text-gray-500"
@@ -312,7 +314,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                             className="shrink-0"
                             style={{ color: category.color }}
                           />
-                          {feature}
+                          {tc(`products.${product.slug}.features.${fi}`)}
                         </div>
                       ))}
                     </div>
@@ -338,7 +340,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
             viewport={{ once: true }}
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              {t("ctaCategoryTitle", { category: category.name.toLowerCase() })}
+              {t("ctaCategoryTitle", { category: tc(`categories.${categorySlug}.name`).toLowerCase() })}
             </h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
               {t("ctaCategoryDescription")}
@@ -372,6 +374,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
 
 function ProductPage({ slug }: { slug: string }) {
   const t = useTranslations("eicPage.productSlug");
+  const tc = useTranslations("eicConfig");
   const product = getEICProductBySlug(slug)!;
   const otherProducts = getOtherEICProducts(slug).slice(0, 3);
   const brand = eicBrands.find((b) => b.slug === product.brandSlug);
@@ -402,10 +405,10 @@ function ProductPage({ slug }: { slug: string }) {
               href={`/eic/productos/${product.categorySlug}`}
               className="hover:text-white transition-colors"
             >
-              {product.category}
+              {tc(`categories.${product.categorySlug}.name`)}
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">{product.shortName}</span>
+            <span className="text-white">{tc(`products.${slug}.shortName`)}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -419,10 +422,10 @@ function ProductPage({ slug }: { slug: string }) {
                 {product.brand}
               </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                {product.name}
+                {tc(`products.${slug}.name`)}
               </h1>
               <p className="text-lg text-white/90 mb-6">
-                {product.description}
+                {tc(`products.${slug}.description`)}
               </p>
 
               {/* Quick Specs */}
@@ -500,9 +503,9 @@ function ProductPage({ slug }: { slug: string }) {
                   {t("description")}
                 </h2>
                 <div className="prose prose-lg max-w-none text-gray-600">
-                  {product.fullDescription.map((para, i) => (
+                  {product.fullDescription.map((_, i) => (
                     <p key={i} className="mb-4">
-                      {para}
+                      {tc(`products.${slug}.fullDescription.${i}`)}
                     </p>
                   ))}
                 </div>
@@ -518,7 +521,7 @@ function ProductPage({ slug }: { slug: string }) {
                   {t("features")}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-3">
-                  {product.features.map((feature) => (
+                  {product.features.map((feature, fi) => (
                     <div
                       key={feature}
                       className="flex items-start gap-3 bg-white rounded-xl p-4 shadow-sm"
@@ -527,7 +530,7 @@ function ProductPage({ slug }: { slug: string }) {
                         size={20}
                         className="text-[#009e49] shrink-0 mt-0.5"
                       />
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-gray-700">{tc(`products.${slug}.features.${fi}`)}</span>
                     </div>
                   ))}
                 </div>
@@ -543,13 +546,13 @@ function ProductPage({ slug }: { slug: string }) {
                   {t("applications")}
                 </h2>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {product.applications.map((app) => (
+                  {product.applications.map((app, ai) => (
                     <div
                       key={app}
                       className="flex items-center gap-2 text-gray-700"
                     >
                       <div className="w-2 h-2 rounded-full bg-[#009e49]" />
-                      {app}
+                      {tc(`products.${slug}.applications.${ai}`)}
                     </div>
                   ))}
                 </div>
@@ -611,10 +614,10 @@ function ProductPage({ slug }: { slug: string }) {
                       <p className="font-bold text-gray-900">{brand.name}</p>
                       <div className="flex items-center gap-1.5 text-sm text-gray-600">
                         <MapPin size={14} className="shrink-0" />
-                        {brand.country}
+                        {tc(`brands.${brand.slug}.country`)}
                       </div>
                       <p className="text-sm text-gray-600 line-clamp-3">
-                        {brand.description.substring(0, 150)}...
+                        {tc(`brands.${brand.slug}.description`).substring(0, 150)}...
                       </p>
                     </div>
                   </div>
@@ -663,12 +666,12 @@ function ProductPage({ slug }: { slug: string }) {
                   />
                 </div>
                 <h3 className="font-bold text-gray-900 group-hover:text-[#009e49] transition-colors mb-2">
-                  {prod.shortName}
+                  {tc(`products.${prod.slug}.shortName`)}
                 </h3>
                 <p className="text-sm text-gray-600 line-clamp-2 mb-3">
-                  {prod.description}
+                  {tc(`products.${prod.slug}.description`)}
                 </p>
-                <span className="text-xs text-gray-500">{prod.category}</span>
+                <span className="text-xs text-gray-500">{tc(`categories.${prod.categorySlug}.name`)}</span>
               </Link>
             ))}
           </div>

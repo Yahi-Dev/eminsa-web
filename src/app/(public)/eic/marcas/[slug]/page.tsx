@@ -131,6 +131,7 @@ export default function MarcaDetailPage({
   const { slug } = React.use(params);
 
   const t = useTranslations("eicPage.brandSlug");
+  const tc = useTranslations("eicConfig");
 
   const brand = getEICBrandBySlug(slug);
   if (!brand) notFound();
@@ -140,7 +141,7 @@ export default function MarcaDetailPage({
   const categoryColor = category?.color ?? "#009e49";
   const CategoryIcon = categoryIcons[category?.icon ?? "zap"] ?? Zap;
 
-  const flagSrc = countryFlags[brand.country] ?? "/images/eic/flags/internacional.png";
+  const flagSrc = countryFlags[brand.country as string] ?? "/images/eic/flags/internacional.png";
   const logoSrc = brandLogos[slug];
 
   return (
@@ -151,7 +152,7 @@ export default function MarcaDetailPage({
       <section
         className="text-white py-16 lg:py-20"
         style={{
-          background: `linear-gradient(135deg, ${categoryColor} 0%, ${categoryColor}CC 50%, #00269b 100%)`,
+          background: "linear-gradient(135deg, #00269b 0%, #00269bCC 50%, #00269b 100%)",
         }}
       >
         <div className="container-eminsa">
@@ -180,14 +181,14 @@ export default function MarcaDetailPage({
               {category && (
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium mb-4">
                   <CategoryIcon size={14} />
-                  {category.name}
+                  {tc(`categories.${category.slug}.name`)}
                 </span>
               )}
 
               {/* Brand name + flag */}
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20 p-2">
-                  <Image src={flagSrc} alt={brand.country} width={48} height={34} className="object-contain" />
+                  <Image src={flagSrc} alt={tc(`brands.${slug}.country`)} width={48} height={34} className="object-contain" />
                 </div>
                 <div>
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
@@ -195,13 +196,13 @@ export default function MarcaDetailPage({
                   </h1>
                   <div className="flex items-center gap-1.5 text-white/70 mt-1 text-sm">
                     <MapPin size={14} />
-                    {brand.country}
+                    {tc(`brands.${slug}.country`)}
                   </div>
                 </div>
               </div>
 
               <p className="text-lg text-white/90 leading-relaxed mb-8 max-w-xl">
-                {brand.description}
+                {tc(`brands.${slug}.description`)}
               </p>
 
               {/* CTAs */}
@@ -256,7 +257,7 @@ export default function MarcaDetailPage({
                   {logoSrc ? (
                     <Image src={logoSrc} alt={brand.name} width={240} height={240} className="object-contain" />
                   ) : (
-                    <Image src={flagSrc} alt={brand.country} width={120} height={86} className="object-contain" />
+                    <Image src={flagSrc} alt={tc(`brands.${slug}.country`)} width={120} height={86} className="object-contain" />
                   )}
                 </div>
                 <div className="absolute -top-4 -right-4 w-20 h-20 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center">
@@ -333,7 +334,7 @@ export default function MarcaDetailPage({
                       {product.image ? (
                         <Image
                           src={product.image}
-                          alt={product.name}
+                          alt={tc(`products.${product.slug}.name`)}
                           width={300}
                           height={192}
                           className="object-contain rounded-xl"
@@ -372,7 +373,7 @@ export default function MarcaDetailPage({
                             {product.brand}
                           </span>
                           <h3 className="text-xl font-bold text-gray-900">
-                            {product.name}
+                            {tc(`products.${product.slug}.name`)}
                           </h3>
                         </div>
                         {/* Download ficha técnica */}
@@ -386,7 +387,7 @@ export default function MarcaDetailPage({
                       </div>
 
                       <p className="text-gray-600 mb-5 leading-relaxed">
-                        {product.description}
+                        {tc(`products.${product.slug}.description`)}
                       </p>
 
                       {/* Specs grid */}
@@ -421,7 +422,7 @@ export default function MarcaDetailPage({
                               {t("features")}
                             </h4>
                             <ul className="space-y-1.5">
-                              {product.features.map((f) => (
+                              {product.features.map((f, fi) => (
                                 <li
                                   key={f}
                                   className="flex items-start gap-2 text-sm text-gray-600"
@@ -431,7 +432,7 @@ export default function MarcaDetailPage({
                                     className="mt-0.5 shrink-0"
                                     style={{ color: categoryColor }}
                                   />
-                                  {f}
+                                  {tc(`products.${product.slug}.features.${fi}`)}
                                 </li>
                               ))}
                             </ul>
@@ -444,12 +445,12 @@ export default function MarcaDetailPage({
                               {t("applications")}
                             </h4>
                             <div className="flex flex-wrap gap-1.5">
-                              {product.applications.map((app) => (
+                              {product.applications.map((app, ai) => (
                                 <span
                                   key={app}
                                   className="px-2.5 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
                                 >
-                                  {app}
+                                  {tc(`products.${product.slug}.applications.${ai}`)}
                                 </span>
                               ))}
                             </div>
@@ -499,7 +500,7 @@ export default function MarcaDetailPage({
                 className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 p-2"
                 style={{ backgroundColor: `${categoryColor}20` }}
               >
-                <Image src={flagSrc} alt={brand.country} width={48} height={34} className="object-contain" />
+                <Image src={flagSrc} alt={tc(`brands.${slug}.country`)} width={48} height={34} className="object-contain" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900">
@@ -535,7 +536,7 @@ export default function MarcaDetailPage({
       <section
         className="py-14 text-white"
         style={{
-          background: `linear-gradient(135deg, ${categoryColor} 0%, ${categoryColor}CC 50%, #00269b 100%)`,
+          background: "linear-gradient(135deg, #00269b 0%, #00269bCC 50%, #00269b 100%)",
         }}
       >
         <div className="container-eminsa text-center">

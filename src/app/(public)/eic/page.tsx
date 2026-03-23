@@ -221,7 +221,7 @@ export default function EICPage() {
             >
               {CARD_IMGS.map((src, i) => (
                 <div key={i} className="bg-white/15 backdrop-blur-sm rounded-xl border border-white/25 p-2 flex items-center justify-center aspect-square">
-                  <Image src={src} alt="brand" width={56} height={56} className="object-contain max-w-full max-h-full" />
+                  <Image src={src} alt={t("brands.altBrand")} width={56} height={56} className="object-contain max-w-full max-h-full" />
                 </div>
               ))}
             </motion.div>
@@ -260,7 +260,7 @@ export default function EICPage() {
                         className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-5"
                       >
                         <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden p-2">
-                          <Image src={centerImg} alt="brand" width={90} height={90} className="object-contain max-w-full max-h-full"  />
+                          <Image src={centerImg} alt={t("brands.altBrand")} width={90} height={90} className="object-contain max-w-full max-h-full"  />
                         </div>
                         <p className="text-[10px] text-white/70 font-semibold uppercase tracking-widest">{t("brands.label")}</p>
                       </motion.div>
@@ -286,7 +286,7 @@ export default function EICPage() {
                         className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4"
                       >
                         <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden p-2">
-                          <Image src={topImg} alt="brand" width={90} height={90} className="object-contain max-w-full max-h-full"  />
+                          <Image src={topImg} alt={t("brands.altBrand")} width={90} height={90} className="object-contain max-w-full max-h-full"  />
                         </div>
                       </motion.div>
                     </AnimatePresence>
@@ -311,7 +311,7 @@ export default function EICPage() {
                         className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4"
                       >
                         <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center shadow-md overflow-hidden p-2">
-                          <Image src={botImg} alt="brand" width={90} height={90} className="object-contain max-w-full max-h-full" />
+                          <Image src={botImg} alt={t("brands.altBrand")} width={90} height={90} className="object-contain max-w-full max-h-full" />
                         </div>
                       </motion.div>
                     </AnimatePresence>
@@ -365,7 +365,7 @@ export default function EICPage() {
                     {countryFlags[brand.country] ? (
                       <Image
                         src={countryFlags[brand.country]}
-                        alt={brand.country}
+                        alt={tc(`brands.${brand.slug}.country`)}
                         width={28}
                         height={20}
                         className="object-contain"
@@ -374,14 +374,14 @@ export default function EICPage() {
                       <Globe className="w-5 h-5" />
                     )}
                     <span className="text-xs text-gray-500">
-                      {brand.country}
+                      {tc(`brands.${brand.slug}.country`)}
                     </span>
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#009e49] transition-colors">
                     {brand.name}
                   </h3>
                   <p className="text-sm text-gray-600 line-clamp-3 mb-3">
-                    {brand.description.substring(0, 150)}...
+                    {tc(`brands.${brand.slug}.description`).substring(0, 150)}...
                   </p>
                   <div className="flex items-center gap-1 text-[#009e49] text-sm font-medium mt-auto">
                     {t("brands.viewBrand")}
@@ -559,7 +559,7 @@ export default function EICPage() {
                     {tc(`info.advantages.${adv.id}.title`)}
                     {adv.highlight && (
                       <span className="text-xs font-normal px-2 py-0.5 bg-[#009e49] text-white rounded">
-                        {adv.highlight}
+                        {tc(`info.advantages.${adv.id}.highlight`)}
                       </span>
                     )}
                   </h3>

@@ -47,16 +47,17 @@ interface SubMenuItem {
 
 function useEicNavItems(): NavItem[] {
   const t = useTranslations("eicPage");
+  const tc = useTranslations("eicConfig");
   return [
     { name: t("layout.home"), href: "/eic", icon: Home, exact: true },
     {
       name: t("layout.products"), href: "/eic/productos", icon: Package,
       submenu: [
-        { name: "Transformadores", href: "/eic/productos/transformadores", description: "INATRA, Hammond, Elpitalia" },
-        { name: "Cables", href: "/eic/productos/cables", description: "Top Cable, Southwire, Cabelte" },
-        { name: "Distribución MT", href: "/eic/productos/distribucion-mt", description: "Celdas Schneider Electric" },
-        { name: "Breakers y Protección", href: "/eic/productos/breakers", description: "Schneider Electric" },
-        { name: "Accesorios MT", href: "/eic/productos/accesorios", description: "Chardon Group" },
+        { name: tc("categories.transformadores.name"), href: "/eic/productos/transformadores", description: "INATRA, Hammond, Elpitalia" },
+        { name: tc("categories.cables.name"), href: "/eic/productos/cables", description: "Top Cable, Southwire, Cabelte" },
+        { name: tc("categories.distribucion-mt.name"), href: "/eic/productos/distribucion-mt", description: "Schneider Electric" },
+        { name: tc("categories.breakers.name"), href: "/eic/productos/breakers", description: "Schneider Electric" },
+        { name: tc("categories.accesorios.name"), href: "/eic/productos/accesorios", description: "Chardon Group" },
       ],
     },
     { name: t("layout.resources"), href: "/eic/recursos", icon: FolderOpen },
@@ -306,7 +307,7 @@ export default function EICLayout({
                             <button
                               onClick={() => toggleSubmenu(item.name)}
                               className="p-2 rounded-lg hover:bg-gray-50 text-gray-600"
-                              aria-label={`Mostrar submenú de ${item.name}`}
+                              aria-label={t("layout.showSubmenu", { name: item.name })}
                             >
                               <ChevronDown
                                 size={16}

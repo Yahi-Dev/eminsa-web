@@ -2323,33 +2323,40 @@
         },
         "calidad": {
           "title": "Calidad Certificada",
-          "description": "Productos que cumplen con normas internacionales IEEE, ANSI e IEC."
+          "description": "Productos que cumplen con normas internacionales IEEE, ANSI e IEC.",
+          "highlight": "Certificado"
         },
         "exclusividad": {
           "title": "Representación Exclusiva",
-          "description": "Representantes exclusivos en República Dominicana de marcas líderes."
+          "description": "Representantes exclusivos en República Dominicana de marcas líderes.",
+          "highlight": "Exclusivo"
         }
       }
     },
     "categories": {
       "transformadores": {
         "name": "Transformadores",
+        "shortName": "Transformadores",
         "description": "Transformadores de distribución de marcas líderes internacionales, incluyendo tipo poste, pad mounted, secos y secos en resina."
       },
       "cables": {
         "name": "Cables Eléctricos",
+        "shortName": "Cables",
         "description": "Cables eléctricos de alta calidad para transmisión y distribución de energía, desde baja hasta media tensión."
       },
       "distribucion-mt": {
         "name": "Distribución en MT (Celdas)",
+        "shortName": "Distribución MT",
         "description": "Celdas de media tensión diseñadas para operar entre 3 kV y 36 kV, en tecnologías AIS y GIS."
       },
       "breakers": {
         "name": "Breaker y Protección Baja Tensión",
+        "shortName": "Breakers y Protección",
         "description": "Breakers y paneles de baja tensión para protección, continuidad operativa y seguridad en instalaciones."
       },
       "accesorios": {
         "name": "Accesorios para Cables MT",
+        "shortName": "Accesorios MT",
         "description": "Accesorios para cables de media tensión: codos, boquillas, adaptadores, cajas derivadoras, empalmes y terminales."
       }
     },
@@ -2385,7 +2392,7 @@
           "0": "Transformadores Secos en Resina"
         }
       },
-      "topcable": {
+      "top-cable": {
         "name": "Top Cable",
         "country": "España",
         "description": "Top Cable es uno de los principales fabricantes europeos de cables eléctricos de alta calidad, con plantas de producción ubicadas en España y una amplia presencia internacional. La empresa produce una extensa gama de cables —incluyendo cables de potencia, solares, armados, libres de halógenos (LSZH), resistentes al fuego, marinos y de media tensión— diseñados para cumplir con las normativas europeas e internacionales más exigentes. Reconocida como un socio global en soluciones de cableado, Top Cable suministra cables para sectores como construcción, infraestructura, industria, energías renovables, transporte y proyectos marinos.",
@@ -2414,7 +2421,7 @@
           "1": "Cables Media Tensión"
         }
       },
-      "schneider": {
+      "schneider-electric": {
         "name": "Schneider Electric",
         "country": "Francia / Global",
         "description": "Schneider Electric es líder global en soluciones para la distribución eléctrica. Dentro de su portafolio destaca una completa gama de celdas de media tensión (MV switchgear) diseñadas para operar entre 3 kV y 36 kV, disponibles en tecnologías AIS (aisladas en aire) y GIS (aisladas en gas). También ofrece una de las líneas más completas y confiables de breakers y paneles de baja tensión del mercado, diseñados para garantizar protección, continuidad operativa y seguridad en instalaciones comerciales, industriales y residenciales.",
@@ -2437,6 +2444,8 @@
         }
       },
       "green-transfo": {
+        "name": "Green Transfo",
+        "country": "Francia / Polonia / Turquía",
         "description": "Green Transfo es un fabricante global de transformadores con más de 60 años de experiencia industrial, consolidado en 2023 bajo el Groupe Cahors tras integrar plantas con legado bajo marcas como AEG, Alstom, Areva y Schneider Electric. La empresa se especializa en transformadores de subestación de hasta 135 MVA y 170 kV, fabricados con tecnología avanzada en instalaciones modernas en Polonia y Turquía.",
         "products": {
           "0": "Transformadores tipo Subestación"
@@ -2518,7 +2527,7 @@
           "5": "Hospitales"
         }
       },
-      "elpitalia-resina": {
+      "elpitalia-secos-resina": {
         "name": "Transformadores Secos en Resina Elpitalia",
         "shortName": "Secos en Resina",
         "description": "Transformadores secos en resina fabricados por Elpitalia, especialista italiano con trayectoria desde 1962.",
@@ -2544,7 +2553,7 @@
           "5": "Túneles y metro"
         }
       },
-      "topcable-cables": {
+      "top-cable": {
         "name": "Cables Eléctricos Top Cable",
         "shortName": "Top Cable",
         "description": "Cables eléctricos de alta calidad fabricados en España, incluyendo cables de potencia, solares, armados y de media tensión.",
@@ -2570,7 +2579,7 @@
           "5": "Proyectos marinos"
         }
       },
-      "southwire-cables": {
+      "southwire": {
         "name": "Cables y Conductores Southwire",
         "shortName": "Southwire",
         "description": "Cables y conductores eléctricos para transmisión y distribución de energía, fabricados en Estados Unidos.",
@@ -2594,7 +2603,7 @@
           "5": "Fotovoltaica"
         }
       },
-      "cabelte-cables": {
+      "cabelte": {
         "name": "Cables Eléctricos Cabelte",
         "shortName": "Cabelte",
         "description": "Cables eléctricos de baja y media tensión fabricados en Portugal, con más de cinco décadas de experiencia.",
@@ -2618,7 +2627,7 @@
           "4": "Subestaciones"
         }
       },
-      "schneider-celdas": {
+      "schneider-celdas-mt": {
         "name": "Celdas de Media Tensión Schneider Electric",
         "shortName": "Celdas MT Schneider",
         "description": "Celdas de media tensión para operar entre 3 kV y 36 kV, en tecnologías AIS y GIS.",
@@ -2641,7 +2650,7 @@
           "4": "Infraestructura crítica"
         }
       },
-      "schneider-breakers": {
+      "schneider-breakers-bt": {
         "name": "Breakers y Protección BT Schneider Electric",
         "shortName": "Breakers BT Schneider",
         "description": "Breakers y paneles de baja tensión para protección y continuidad operativa en todo tipo de instalaciones.",
@@ -2664,7 +2673,7 @@
           "4": "Data centers"
         }
       },
-      "chardon-accesorios": {
+      "chardon-accesorios-mt": {
         "name": "Accesorios para Cables MT Chardon",
         "shortName": "Accesorios MT Chardon",
         "description": "Accesorios para cables de media tensión: codos, boquillas, adaptadores, empalmes y terminales.",
@@ -2691,7 +2700,27 @@
       "green-transfo-subestacion": {
         "name": "Transformadores de Subestación Green Transfo",
         "shortName": "Subestación Green Transfo",
-        "description": "Transformadores de subestación de alta potencia fabricados por Green Transfo, con capacidades de hasta 135 MVA y 170 kV."
+        "description": "Transformadores de subestación de alta potencia fabricados por Green Transfo, con capacidades de hasta 135 MVA y 170 kV.",
+        "fullDescription": {
+          "0": "Green Transfo es un fabricante global de transformadores con más de 60 años de experiencia industrial, consolidado en 2023 bajo el Groupe Cahors tras integrar plantas con legado bajo marcas como AEG, Alstom, Areva y Schneider Electric.",
+          "1": "La empresa se especializa en el diseño y producción de transformadores de alta calidad, incluyendo transformadores de subestación que forman parte de su línea de transformadores de potencia y media potencia. Estas unidades pueden alcanzar capacidades de hasta 135 MVA y 170 kV.",
+          "2": "Los transformadores de subestación de Green Transfo se desarrollan en instalaciones modernas ubicadas en Polonia y Turquía, donde se aplican métodos de manufactura sostenibles y materiales eco-amigables para garantizar eficiencia, confiabilidad y larga vida útil."
+        },
+        "features": {
+          "0": "Hasta 135 MVA",
+          "1": "Hasta 170 kV",
+          "2": "Manufactura sostenible",
+          "3": "Materiales eco-amigables",
+          "4": "Legado AEG/Alstom/Areva",
+          "5": "60+ años de experiencia"
+        },
+        "applications": {
+          "0": "Subestaciones eléctricas",
+          "1": "Generación de energía",
+          "2": "Transmisión de potencia",
+          "3": "Infraestructura industrial",
+          "4": "Proyectos de gran escala"
+        }
       }
     }
   },
@@ -4044,7 +4073,8 @@
       "title": "Marcas Representadas",
       "description": "Representamos exclusivamente las mejores marcas internacionales del sector eléctrico, garantizando calidad, soporte y disponibilidad.",
       "viewBrand": "Ver marca",
-      "label": "Marca"
+      "label": "Marca",
+      "altBrand": "Logo de marca representada"
     },
     "categories": {
       "badge": "Nuestro Portafolio",
@@ -4071,7 +4101,8 @@
       "viewAll": "Ver todos",
       "closeMenu": "Cerrar menú",
       "openMenu": "Abrir menú",
-      "requestQuote": "Solicitar Cotización"
+      "requestQuote": "Solicitar Cotización",
+      "showSubmenu": "Mostrar submenú de {name}"
     },
     "productos": {
       "breadcrumb": "Productos",
@@ -4145,7 +4176,17 @@
       "ctaTitle": "¿Necesita más información?",
       "ctaDescription": "Nuestro equipo técnico está disponible para ayudarle con documentación adicional, especificaciones técnicas y asesoría personalizada.",
       "requestQuote": "Solicitar Cotización",
-      "call": "Llamar"
+      "call": "Llamar",
+      "extraCards": {
+        "fichas-tecnicas": {
+          "name": "Fichas Técnicas",
+          "description": "Especificaciones técnicas y documentación detallada de los productos EIC."
+        },
+        "calculadora-kva": {
+          "name": "Calculadora KVA",
+          "description": "Herramienta para calcular la capacidad de transformador requerida según su carga."
+        }
+      }
     },
     "cotizaciones": {
       "breadcrumb": "Cotizaciones",
@@ -4299,6 +4340,28 @@
       "intlProvidersDesc": "Acceda a equipos eléctricos de las mejores marcas del mundo a través de nuestros canales directos.",
       "moreCount": "+3 más",
       "locationTitle": "Ubicación"
+    },
+    "notFound": {
+      "title": "Página no encontrada",
+      "description": "Esta página no existe dentro de EIC. Explora nuestras marcas internacionales y productos.",
+      "home": "Inicio EIC",
+      "products": "Productos",
+      "resources": "Recursos",
+      "quotes": "Cotizaciones",
+      "backToEic": "Volver a EIC"
+    },
+    "fichasTecnicas": {
+      "breadcrumbRecursos": "Recursos",
+      "breadcrumb": "Fichas Técnicas",
+      "title": "Fichas Técnicas",
+      "subtitle": "Documentación técnica de productos EIC",
+      "searchPlaceholder": "Buscar fichas técnicas...",
+      "noResults": "No hay fichas técnicas disponibles en este momento.",
+      "download": "Descargar",
+      "notAvailable": "No disponible",
+      "ctaTitle": "¿Necesita más información?",
+      "ctaDescription": "Contáctenos para obtener especificaciones detalladas o solicitar una cotización personalizada.",
+      "ctaButton": "Solicitar Cotización"
     }
   },
   "etrysPage": {

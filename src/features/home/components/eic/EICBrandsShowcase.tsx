@@ -97,13 +97,13 @@ export default function EICBrandsShowcase() {
   const tc = useTranslations("eicConfig.brands");
   const messages = useMessages();
 
-  function getBrandProducts(brandId: string): string[] {
+  function getBrandProducts(brandSlug: string): string[] {
     const brandsMessages = (messages as Record<string, unknown>)?.eicConfig as Record<string, unknown>;
     const brandsMap = brandsMessages?.brands as Record<string, unknown>;
-    const brand = brandsMap?.[brandId] as Record<string, unknown>;
+    const brand = brandsMap?.[brandSlug] as Record<string, unknown>;
     const products = brand?.products as Record<string, string> | undefined;
     if (!products) return [];
-    return Object.keys(products).sort().map((k) => tc(`${brandId}.products.${k}`));
+    return Object.keys(products).sort().map((k) => tc(`${brandSlug}.products.${k}`));
   }
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -240,7 +240,7 @@ export default function EICBrandsShowcase() {
                   </span>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  {tc(`${activeBrand.id}.description`)}
+                  {tc(`${activeBrand.slug}.description`)}
                 </p>
               </div>
 
@@ -253,7 +253,7 @@ export default function EICBrandsShowcase() {
                   {t("productsLabel")}
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {getBrandProducts(activeBrand.id).map((product, i) => (
+                  {getBrandProducts(activeBrand.slug).map((product, i) => (
                     <span
                       key={i}
                       className="px-3 py-1.5 bg-[#009e49]/8 border border-[#009e49]/15 text-[#009e49] rounded-lg text-xs font-bold"

@@ -31,6 +31,7 @@ const categoryIcons: { [key: string]: React.ElementType } = {
 
 export default function EICProductosPage() {
   const t = useTranslations("eicPage.productos");
+  const tc = useTranslations("eicConfig");
 
   return (
     <div className="min-h-screen bg-white">
@@ -119,10 +120,10 @@ export default function EICProductosPage() {
                     </div>
                     <div>
                       <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
-                        {category.name}
+                        {tc(`categories.${category.slug}.name`)}
                       </h3>
                       <p className="text-gray-600 mt-1">
-                        {category.description}
+                        {tc(`categories.${category.slug}.description`)}
                       </p>
                     </div>
                   </div>
@@ -138,7 +139,7 @@ export default function EICProductosPage() {
                         {brand.name}
                         <span className="text-gray-400">|</span>
                         <span className="text-gray-500 text-xs">
-                          {brand.country}
+                          {tc(`brands.${brand.slug}.country`)}
                         </span>
                       </span>
                     ))}
@@ -177,10 +178,10 @@ export default function EICProductosPage() {
 
                           {/* Product Info */}
                           <h4 className="text-lg font-bold text-gray-900 group-hover:text-[#009e49] transition-colors mb-2">
-                            {product.shortName}
+                            {tc(`products.${product.slug}.shortName`)}
                           </h4>
                           <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-                            {product.description}
+                            {tc(`products.${product.slug}.description`)}
                           </p>
 
                           {/* Specs Preview */}
@@ -254,7 +255,7 @@ export default function EICProductosPage() {
 
                   <div className="flex items-center gap-1.5 text-sm text-gray-500 mb-3">
                     <MapPin size={14} />
-                    <span>{brand.country}</span>
+                    <span>{tc(`brands.${brand.slug}.country`)}</span>
                   </div>
 
                   {brandCategory && (
@@ -265,7 +266,7 @@ export default function EICProductosPage() {
                         color: brandCategory.color,
                       }}
                     >
-                      {brandCategory.shortName}
+                      {tc(`categories.${brandCategory.slug}.shortName`)}
                     </span>
                   )}
 

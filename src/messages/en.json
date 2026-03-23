@@ -2323,33 +2323,40 @@
         },
         "calidad": {
           "title": "Certified Quality",
-          "description": "Products that comply with international IEEE, ANSI, and IEC standards."
+          "description": "Products that comply with international IEEE, ANSI, and IEC standards.",
+          "highlight": "Certified"
         },
         "exclusividad": {
           "title": "Exclusive Representation",
-          "description": "Exclusive representatives in the Dominican Republic of leading brands."
+          "description": "Exclusive representatives in the Dominican Republic of leading brands.",
+          "highlight": "Exclusive"
         }
       }
     },
     "categories": {
       "transformadores": {
         "name": "Transformers",
+        "shortName": "Transformers",
         "description": "Distribution transformers from leading international brands, including pole type, pad mounted, dry, and resin-cast."
       },
       "cables": {
         "name": "Electrical Cables",
+        "shortName": "Cables",
         "description": "High-quality electrical cables for power transmission and distribution, from low to medium voltage."
       },
       "distribucion-mt": {
         "name": "MV Distribution (Switchgear)",
+        "shortName": "MV Distribution",
         "description": "Medium voltage switchgear designed to operate between 3 kV and 36 kV, in AIS and GIS technologies."
       },
       "breakers": {
         "name": "Low Voltage Breakers & Protection",
+        "shortName": "Breakers & Protection",
         "description": "Low voltage breakers and panels for protection, operational continuity, and facility safety."
       },
       "accesorios": {
         "name": "MV Cable Accessories",
+        "shortName": "MV Accessories",
         "description": "Medium voltage cable accessories: elbows, bushings, adapters, junction boxes, splices, and terminals."
       }
     },
@@ -2385,7 +2392,7 @@
         "name": "Elpitalia",
         "country": "Italy"
       },
-      "topcable": {
+      "top-cable": {
         "description": "Top Cable is one of the leading European manufacturers of high-quality electrical cables, with production plants in Spain.",
         "products": {
           "0": "Power Cables",
@@ -2414,7 +2421,7 @@
         "name": "Cabelte",
         "country": "Portugal"
       },
-      "schneider": {
+      "schneider-electric": {
         "description": "Schneider Electric is a global leader in electrical distribution solutions, offering MV switchgear and LV breakers.",
         "products": {
           "0": "Medium Voltage Switchgear",
@@ -2437,6 +2444,8 @@
         "country": "International"
       },
       "green-transfo": {
+        "name": "Green Transfo",
+        "country": "France / Poland / Turkey",
         "description": "Green Transfo is a global transformer manufacturer with over 60 years of industrial experience, consolidated in 2023 under Groupe Cahors after integrating plants with legacy from brands like AEG, Alstom, Areva, and Schneider Electric. The company specializes in substation transformers up to 135 MVA and 170 kV, manufactured with advanced technology in modern facilities in Poland and Turkey.",
         "products": {
           "0": "Substation Transformers"
@@ -2518,7 +2527,7 @@
           "5": "Hospitals"
         }
       },
-      "elpitalia-resina": {
+      "elpitalia-secos-resina": {
         "name": "Elpitalia Cast Resin Transformers",
         "shortName": "Cast Resin",
         "description": "Cast resin dry-type transformers by Elpitalia, Italian specialist since 1962.",
@@ -2544,7 +2553,7 @@
           "5": "Tunnels and subway"
         }
       },
-      "topcable-cables": {
+      "top-cable": {
         "name": "Top Cable Electrical Cables",
         "shortName": "Top Cable",
         "description": "High-quality electrical cables manufactured in Spain.",
@@ -2570,7 +2579,7 @@
           "5": "Marine projects"
         }
       },
-      "southwire-cables": {
+      "southwire": {
         "name": "Southwire Cables and Conductors",
         "shortName": "Southwire",
         "description": "Electrical cables for power transmission and distribution, made in the USA.",
@@ -2594,7 +2603,7 @@
           "5": "Photovoltaic"
         }
       },
-      "cabelte-cables": {
+      "cabelte": {
         "name": "Cabelte Electrical Cables",
         "shortName": "Cabelte",
         "description": "Low and medium voltage cables manufactured in Portugal.",
@@ -2618,7 +2627,7 @@
           "4": "Substations"
         }
       },
-      "schneider-celdas": {
+      "schneider-celdas-mt": {
         "name": "Schneider Electric MV Switchgear",
         "shortName": "Schneider MV",
         "description": "Medium voltage switchgear for 3 kV to 36 kV operation.",
@@ -2641,7 +2650,7 @@
           "4": "Critical infrastructure"
         }
       },
-      "schneider-breakers": {
+      "schneider-breakers-bt": {
         "name": "Schneider Electric LV Breakers",
         "shortName": "Schneider LV",
         "description": "Low voltage breakers and panels for protection.",
@@ -2664,7 +2673,7 @@
           "4": "Data centers"
         }
       },
-      "chardon-accesorios": {
+      "chardon-accesorios-mt": {
         "name": "Chardon MV Cable Accessories",
         "shortName": "Chardon MV",
         "description": "MV cable accessories: elbows, bushings, adapters, splices, terminals.",
@@ -2691,7 +2700,27 @@
       "green-transfo-subestacion": {
         "name": "Green Transfo Substation Transformers",
         "shortName": "Green Transfo Substation",
-        "description": "High-power substation transformers manufactured by Green Transfo, with capacities up to 135 MVA and 170 kV."
+        "description": "High-power substation transformers manufactured by Green Transfo, with capacities up to 135 MVA and 170 kV.",
+        "fullDescription": {
+          "0": "Green Transfo is a global transformer manufacturer with over 60 years of industrial experience, consolidated in 2023 under Groupe Cahors after integrating plants with legacy from brands like AEG, Alstom, Areva, and Schneider Electric.",
+          "1": "The company specializes in the design and production of high-quality transformers, including substation transformers that are part of their power and medium-power transformer line. These units can reach capacities of up to 135 MVA and 170 kV.",
+          "2": "Green Transfo substation transformers are developed in modern facilities located in Poland and Turkey, where sustainable manufacturing methods and eco-friendly materials are applied to ensure efficiency, reliability, and long service life."
+        },
+        "features": {
+          "0": "Up to 135 MVA",
+          "1": "Up to 170 kV",
+          "2": "Sustainable manufacturing",
+          "3": "Eco-friendly materials",
+          "4": "AEG/Alstom/Areva legacy",
+          "5": "60+ years of experience"
+        },
+        "applications": {
+          "0": "Electrical substations",
+          "1": "Power generation",
+          "2": "Power transmission",
+          "3": "Industrial infrastructure",
+          "4": "Large-scale projects"
+        }
       }
     }
   },
@@ -4045,7 +4074,8 @@
       "title": "Represented Brands",
       "description": "We exclusively represent the best international brands in the electrical sector, guaranteeing quality, support, and availability.",
       "viewBrand": "View brand",
-      "label": "Brand"
+      "label": "Brand",
+      "altBrand": "Represented brand logo"
     },
     "categories": {
       "badge": "Our Portfolio",
@@ -4072,7 +4102,8 @@
       "viewAll": "View all",
       "closeMenu": "Close menu",
       "openMenu": "Open menu",
-      "requestQuote": "Request a Quote"
+      "requestQuote": "Request a Quote",
+      "showSubmenu": "Show submenu for {name}"
     },
     "productos": {
       "breadcrumb": "Products",
@@ -4146,7 +4177,17 @@
       "ctaTitle": "Need more information?",
       "ctaDescription": "Our technical team is available to help you with additional documentation, technical specifications, and personalized consulting.",
       "requestQuote": "Request a Quote",
-      "call": "Call"
+      "call": "Call",
+      "extraCards": {
+        "fichas-tecnicas": {
+          "name": "Technical Datasheets",
+          "description": "Technical specifications and detailed documentation of EIC products."
+        },
+        "calculadora-kva": {
+          "name": "KVA Calculator",
+          "description": "Tool to calculate the required transformer capacity based on your load."
+        }
+      }
     },
     "cotizaciones": {
       "breadcrumb": "Quotes",
@@ -4300,6 +4341,28 @@
       "intlProvidersDesc": "Access electrical equipment from the world's top brands through our direct channels.",
       "moreCount": "+3 more",
       "locationTitle": "Location"
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "This page does not exist within EIC. Explore our international brands and products.",
+      "home": "EIC Home",
+      "products": "Products",
+      "resources": "Resources",
+      "quotes": "Quotes",
+      "backToEic": "Back to EIC"
+    },
+    "fichasTecnicas": {
+      "breadcrumbRecursos": "Resources",
+      "breadcrumb": "Technical Datasheets",
+      "title": "Technical Datasheets",
+      "subtitle": "Technical documentation for EIC products",
+      "searchPlaceholder": "Search technical datasheets...",
+      "noResults": "No technical datasheets available at this time.",
+      "download": "Download",
+      "notAvailable": "Not available",
+      "ctaTitle": "Need more information?",
+      "ctaDescription": "Contact us for detailed specifications or to request a personalized quote.",
+      "ctaButton": "Request a Quote"
     }
   },
   "etrysPage": {
