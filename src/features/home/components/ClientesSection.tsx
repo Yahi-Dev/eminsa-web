@@ -88,7 +88,7 @@ export default function ClientesSection() {
 
         <div
           ref={trackRef}
-          className="flex gap-4 will-change-transform"
+          className="flex gap-4 will-change-transform "
           style={{ width: "max-content" }}
         >
           {clientesLoop.map((cliente, index) => {
@@ -96,11 +96,11 @@ export default function ClientesSection() {
             return (
               <div
                 key={`${cliente.id}-${index}`}
-                className="shrink-0 w-52 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                className="shrink-0 w-52 bg-gray-100/75 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                 style={{ borderTop: `3px solid ${color}` }}
               >
                 {/* Logo */}
-                <div className="h-28 flex items-center justify-center px-5 pt-4 pb-2 bg-white">
+                <div className="h-28 flex items-center justify-center px-5 pt-4 pb-2 bg-gray-100/75">
                   <div className="relative w-full h-full">
                     <Image
                       src={cliente.logo}

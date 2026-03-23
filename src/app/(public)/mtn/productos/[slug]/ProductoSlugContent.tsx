@@ -50,16 +50,16 @@ export default function ProductoSlugContent({ slug }: Props) {
 
   const productPhotos: Record<string, { main: string; secondary: string[] }> = {
     "tipo-poste": {
-      main: "/EMINSA/DSC07227.jpg",
-      secondary: ["/EMINSA/DSC07713.jpg", "/EMINSA/DSC07174.jpg"],
+      main: "/FOTOS/DSC07227.jpg",
+      secondary: ["/FOTOS/DSC07131.jpg", "/FOTOS/DSC07148.jpg"],
     },
     "pad-mounted": {
-      main: "/EMINSA/DSC07213.jpg",
-      secondary: ["/EMINSA/DSC07670.jpg", "/EMINSA/DSC07780.jpg"],
+      main: "/FOTOS/DSC07223.jpg",
+      secondary: ["/FOTOS/DSC07221.jpg", "/FOTOS/DSC07570.jpg"],
     },
     "subestacion": {
-      main: "/EMINSA/DSC07255.jpg",
-      secondary: ["/EMINSA/DSC07733.jpg", "/EMINSA/DSC07165.jpg"],
+      main: "/FOTOS/DSC07255.jpg",
+      secondary: ["/FOTOS/DSC07246.jpg", "/FOTOS/DSC07247.jpg"],
     },
   };
 

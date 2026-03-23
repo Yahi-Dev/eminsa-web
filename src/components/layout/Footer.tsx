@@ -209,12 +209,6 @@ export default function Footer() {
               <span className="text-white/60">. {t('bottomBar.rights')}</span>
             </p>
             <div className="flex items-center gap-6">
-              <p className="text-sm text-center md:text-left">
-                <span className="text-white/60">{t('bottomBar.websiteBy')} </span>
-                <Link href="https://www.linkedin.com/in/yahivas-dev/" className="text-white/60 text-sm hover:text-white transition-colors">
-                  Yahinniel Vásquez
-                </Link>
-              </p>
               <Link
                 href="/login"
                 className="text-white/30 text-sm hover:text-white/60 transition-colors"
@@ -222,6 +216,12 @@ export default function Footer() {
               >
                 {t('bottomBar.admin')}
               </Link>
+              <p className="text-sm text-center md:text-left">
+                <span className="text-white/60">{t('bottomBar.websiteBy')} </span>
+                <Link href="https://www.linkedin.com/in/yahivas-dev/" className="text-white/60 text-sm hover:text-white transition-colors">
+                  Yahinniel Vásquez
+                </Link>
+              </p>
             </div>
           </div>
         </div>

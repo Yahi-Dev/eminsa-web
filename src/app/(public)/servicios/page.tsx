@@ -101,7 +101,7 @@ export default function ServiciosPage() {
       <section className="relative bg-[#414241] text-white py-12 lg:py-16 overflow-hidden min-h-120 sm:min-h-135 lg:min-h-160">
         {/* Hero photo */}
         <Image
-          src="/EMINSA/DSC07203.jpg"
+          src="/FOTOS/DSC07203.jpg"
           alt={t("hero.altPhoto")}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -559,11 +559,11 @@ export default function ServiciosPage() {
       <section className="bg-gray-950 py-4">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-1">
           {[
-            "/EMINSA/DSC07108.jpg",
-            "/EMINSA/DSC07129.jpg",
-            "/EMINSA/DSC07138.jpg",
-            "/EMINSA/DSC07161.jpg",
-            "/EMINSA/DSC07203.jpg",
+            "/FOTOS/DSC07131.jpg",
+            "/FOTOS/DSC07262.jpg",
+            "/FOTOS/DSC07822.jpg",
+            "/FOTOS/DSC07775.jpg",
+            "/FOTOS/DSC07628.jpg",
           ].map((src, i) => (
             <div key={i} className={`relative overflow-hidden group aspect-video ${i === 4 ? "hidden lg:block" : ""}`}>
               <Image

@@ -4036,7 +4036,7 @@
         "0": { "value": "500 kVA", "label": "Maximum Pole-Type Capacity" },
         "1": { "value": "3,000 kVA", "label": "Maximum Pad Mounted Capacity" },
         "2": { "value": "34.5 kV", "label": "Maximum Manufacturing Voltage" },
-        "3": { "value": "48–72 h", "label": "Average Manufacturing Time" }
+        "3": { "value": "ANSI", "label": "Manufactured under ANSI standard" }
       },
       "processBadge": "Manufacturing Process",
       "processTitle": "9 stages, 1 reliable transformer",
@@ -4130,13 +4130,12 @@
           "title": "Tanking",
           "subtitle": "Tank reception and tanking",
           "badge": "Stage 7 of 9",
-          "description": "Once the tank is released by Quality (painted and cured), it is transported to the tanking area. The tanking process follows the EMOTIV 50 documentation step by step, integrating the complete active part inside the tank.",
+          "description": "Once the tank is released by Quality (painted and cured), it is transported to the tanking area.",
           "details": {
             "0": "Tank Reception from Metalwork (painted, cured, and released by Quality)",
             "1": "Transport of approved tank to the tanking area",
-            "2": "Tanking stand for transformers EMOTIV 50: step-by-step documentation",
-            "3": "Integration of the active part inside the tank",
-            "4": "Verification of Control Plan compliance"
+            "2": "Integration of the active part inside the tank",
+            "3": "Verification of Control Plan compliance"
           }
         },
         "7": {

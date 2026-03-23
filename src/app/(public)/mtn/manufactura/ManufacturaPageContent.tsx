@@ -26,21 +26,21 @@ import {
 
 const stepIcons = [Cpu, Zap, Layers, Flame, Wrench, Hammer, Boxes, Droplets, FlaskConical];
 const stepPhotos = [
-  "/EMINSA/DSC07638.jpg",
-  "/EMINSA/DSC07706.jpg",
-  "/EMINSA/DSC07805.jpg",
-  "/EMINSA/DSC07816.jpg",
-  "/EMINSA/DSC07798.jpg",
-  "/EMINSA/DSC07664.jpg",
-  "/EMINSA/DSC07780.jpg",
-  "/EMINSA/DSC07759.jpg",
-  "/EMINSA/DSC07149.jpg",
+  "/FOTOS/DSC07802.jpg",  // Diseño de Núcleo - corte de láminas
+  "/FOTOS/DSC07799.jpg",  // Bobinado - ensamble núcleo y bobinas
+  "/FOTOS/DSC07787.jpg",  // Ensamble Parte Activa - trabajadores ensamblando
+  "/FOTOS/DSC07845.jpg",  // Secado al Vacío - horno con bobinas
+  "/FOTOS/DSC07661.jpg",  // Fabricación de Tanques - soldadores
+  "/FOTOS/DSC07679.jpg",  // Metalmecánica - soldadores estructura
+  "/FOTOS/DSC07775.jpg",  // EnTanque - parte activa en tanque
+  "/FOTOS/DSC07759.jpg",  // Tratamiento de Aceite
+  "/FOTOS/DSC07154.jpg",  // Pruebas - laboratorio
 ];
 const stepAccents = [
   "#00269b", "#0099ce", "#009e49", "#e8a000", "#7c3aed",
   "#c0392b", "#0099ce", "#00269b", "#009e49",
 ];
-const stepDetailCounts = [5, 6, 5, 6, 5, 9, 5, 5, 5];
+const stepDetailCounts = [5, 6, 5, 6, 5, 9, 4, 5, 5];
 
 const capabilityIcons = [Zap, Factory, Shield, Clock];
 

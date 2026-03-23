@@ -108,7 +108,7 @@ export default function CentroReparacionPage() {
               {/* Main - team repairing transformer */}
               <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="/EMINSA/DSC07759.jpg"
+                  src="/FOTOS/DSC07775.jpg"
                   alt={t("altHeroTeam")}
                   fill
                   sizes="100vw"
@@ -123,7 +123,7 @@ export default function CentroReparacionPage() {
               {/* Bottom left - lab testing */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="/EMINSA/DSC07149.jpg"
+                  src="/FOTOS/DSC07134.jpg"
                   alt={t("altHeroLab")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -134,7 +134,7 @@ export default function CentroReparacionPage() {
               {/* Bottom right - welding/sparks */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="/EMINSA/DSC07678.jpg"
+                  src="/FOTOS/DSC07696.jpg"
                   alt={t("altHeroWelding")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

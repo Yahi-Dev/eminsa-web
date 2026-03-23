@@ -4035,7 +4035,7 @@
         "0": { "value": "500 kVA", "label": "Capacidad máxima Tipo Poste" },
         "1": { "value": "3,000 kVA", "label": "Capacidad máxima Pad Mounted" },
         "2": { "value": "34.5 kV", "label": "Voltaje máximo de fabricación" },
-        "3": { "value": "48–72 h", "label": "Tiempo promedio de fabricación" }
+        "3": { "value": "ANSI", "label": "Fabricado bajo estándar ANSI" }
       },
       "processBadge": "Proceso de Manufactura",
       "processTitle": "9 etapas, 1 transformador confiable",
@@ -4129,13 +4129,12 @@
           "title": "EnTanque",
           "subtitle": "Recepción del tanque y tanqueo",
           "badge": "Etapa 7 de 9",
-          "description": "Una vez liberado el tanque por Calidad (pintado y curado), se transporta al área de tanqueo. El proceso de tanqueo sigue paso a paso la documentación del EMOTIV 50, integrando la parte activa completa dentro del tanque.",
+          "description": "Una vez liberado el tanque por Calidad (pintado y curado), se transporta al área de tanqueo.",
           "details": {
             "0": "Recepción del Tanque desde Metalmecánica (pintado, curado y liberado por Calidad)",
             "1": "Transporte del tanque aprobado hacia el área de tanqueo",
-            "2": "Tanking stand for transformers EMOTIV 50: paso a paso de la documentación",
-            "3": "Integración de la parte activa dentro del tanque",
-            "4": "Verificación de cumplimiento del Plan de Control"
+            "2": "Integración de la parte activa dentro del tanque",
+            "3": "Verificación de cumplimiento del Plan de Control"
           }
         },
         "7": {

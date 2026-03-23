@@ -40,30 +40,30 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
   // Fotos por variante: clave = "slug/variantSlug"
   const variantPhotos: Record<string, { main: string; side: string }> = {
     "tipo-poste/monofasicos": {
-      main: "/EMINSA/DSC07227.jpg",
-      side: "/EMINSA/DSC07713.jpg",
+      main: "/FOTOS/DSC07227.jpg",
+      side: "/FOTOS/DSC07131.jpg",
     },
     "tipo-poste/trifasicos": {
-      main: "/EMINSA/DSC07231.jpg",
-      side: "/EMINSA/DSC07670.jpg",
+      main: "/FOTOS/DSC07227.jpg",
+      side: "/FOTOS/DSC07148.jpg",
     },
     "tipo-poste/autoprotegidos": {
-      main: "/EMINSA/DSC07227.jpg",
-      side: "/EMINSA/DSC07174.jpg",
+      main: "/FOTOS/DSC07227.jpg",
+      side: "/FOTOS/DSC07134.jpg",
     },
     "pad-mounted/monofasicos": {
-      main: "/EMINSA/DSC07213.jpg",
-      side: "/EMINSA/DSC07780.jpg",
+      main: "/FOTOS/DSC07223.jpg",
+      side: "/FOTOS/DSC07570.jpg",
     },
     "pad-mounted/trifasicos": {
-      main: "/EMINSA/DSC07213.jpg",
-      side: "/EMINSA/DSC07670.jpg",
+      main: "/FOTOS/DSC07223.jpg",
+      side: "/FOTOS/DSC07221.jpg",
     },
   };
 
   const photos = variantPhotos[`${slug}/${variantSlug}`] ?? {
-    main: "/EMINSA/DSC07227.jpg",
-    side: "/EMINSA/DSC07713.jpg",
+    main: "/FOTOS/DSC07227.jpg",
+    side: "/FOTOS/DSC07131.jpg",
   };
 
   return (

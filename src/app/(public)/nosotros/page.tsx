@@ -76,7 +76,7 @@ export default function NosotrosPage() {
       {/* Hero */}
       <section className="relative bg-gray-900 text-white py-16 lg:py-24 overflow-hidden">
         <Image
-          src="/EMINSA/DSC07149.jpg"
+          src="/FOTOS/DSC07149.jpg"
           alt={t("altHero")}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -129,7 +129,7 @@ export default function NosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/EMINSA/DSC07875.jpg"
+                  src="/FOTOS/DSC07869.jpg"
                   alt={t("altTeamHero")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -245,7 +245,7 @@ export default function NosotrosPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/EMINSA/DSC07713.jpg"
+                    src="/FOTOS/DSC07869.jpg"
                     alt={t("altFacilities")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -254,7 +254,7 @@ export default function NosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="/EMINSA/DSC07733.jpg"
+                    src="/FOTOS/DSC07628.jpg"
                     alt={t("altWorkshop")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -263,7 +263,7 @@ export default function NosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/EMINSA/DSC07165.jpg"
+                    src="/FOTOS/DSC07618.jpg"
                     alt={t("altProduction")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -272,7 +272,7 @@ export default function NosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="/EMINSA/DSC07638.jpg"
+                    src="/FOTOS/DSC07860.jpg"
                     alt={t("altEquipment")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -397,53 +397,53 @@ export default function NosotrosPage() {
           className="eminsa-marquee-track flex gap-2 w-max"
         >
           {[
-            "/EMINSA/DSC07108.jpg",
-            "/EMINSA/DSC07122.jpg",
-            "/EMINSA/DSC07129.jpg",
-            "/EMINSA/DSC07138.jpg",
-            "/EMINSA/DSC07149.jpg",
-            "/EMINSA/DSC07161.jpg",
-            "/EMINSA/DSC07165.jpg",
-            "/EMINSA/DSC07174.jpg",
-            "/EMINSA/DSC07638.jpg",
-            "/EMINSA/DSC07645.jpg",
-            "/EMINSA/DSC07670.jpg",
-            "/EMINSA/DSC07678.jpg",
-            "/EMINSA/DSC07706.jpg",
-            "/EMINSA/DSC07713.jpg",
-            "/EMINSA/DSC07733.jpg",
-            "/EMINSA/DSC07745.jpg",
-            "/EMINSA/DSC07780.jpg",
-            "/EMINSA/DSC07798.jpg",
-            "/EMINSA/DSC07805.jpg",
-            "/EMINSA/DSC07816.jpg",
-            "/EMINSA/DSC07827.jpg",
-            "/EMINSA/DSC07859.jpg",
-            "/EMINSA/DSC07875.jpg",
+            "/FOTOS/DSC07227.jpg",
+            "/FOTOS/DSC07223.jpg",
+            "/FOTOS/DSC07131.jpg",
+            "/FOTOS/DSC07134.jpg",
+            "/FOTOS/DSC07154.jpg",
+            "/FOTOS/DSC07618.jpg",
+            "/FOTOS/DSC07628.jpg",
+            "/FOTOS/DSC07775.jpg",
+            "/FOTOS/DSC07822.jpg",
+            "/FOTOS/DSC07845.jpg",
+            "/FOTOS/DSC07661.jpg",
+            "/FOTOS/DSC07696.jpg",
+            "/FOTOS/DSC07731.jpg",
+            "/FOTOS/DSC07787.jpg",
+            "/FOTOS/DSC07799.jpg",
+            "/FOTOS/DSC07802.jpg",
+            "/FOTOS/DSC07849.jpg",
+            "/FOTOS/DSC07860.jpg",
+            "/FOTOS/DSC07869.jpg",
+            "/FOTOS/DSC07570.jpg",
+            "/FOTOS/DSC07557.jpg",
+            "/FOTOS/DSC07262.jpg",
+            "/FOTOS/DSC07246.jpg",
             // duplicate for seamless loop
-            "/EMINSA/DSC07108.jpg",
-            "/EMINSA/DSC07122.jpg",
-            "/EMINSA/DSC07129.jpg",
-            "/EMINSA/DSC07138.jpg",
-            "/EMINSA/DSC07149.jpg",
-            "/EMINSA/DSC07161.jpg",
-            "/EMINSA/DSC07165.jpg",
-            "/EMINSA/DSC07174.jpg",
-            "/EMINSA/DSC07638.jpg",
-            "/EMINSA/DSC07645.jpg",
-            "/EMINSA/DSC07670.jpg",
-            "/EMINSA/DSC07678.jpg",
-            "/EMINSA/DSC07706.jpg",
-            "/EMINSA/DSC07713.jpg",
-            "/EMINSA/DSC07733.jpg",
-            "/EMINSA/DSC07745.jpg",
-            "/EMINSA/DSC07780.jpg",
-            "/EMINSA/DSC07798.jpg",
-            "/EMINSA/DSC07805.jpg",
-            "/EMINSA/DSC07816.jpg",
-            "/EMINSA/DSC07827.jpg",
-            "/EMINSA/DSC07859.jpg",
-            "/EMINSA/DSC07875.jpg",
+            "/FOTOS/DSC07227.jpg",
+            "/FOTOS/DSC07223.jpg",
+            "/FOTOS/DSC07131.jpg",
+            "/FOTOS/DSC07134.jpg",
+            "/FOTOS/DSC07154.jpg",
+            "/FOTOS/DSC07618.jpg",
+            "/FOTOS/DSC07628.jpg",
+            "/FOTOS/DSC07775.jpg",
+            "/FOTOS/DSC07822.jpg",
+            "/FOTOS/DSC07845.jpg",
+            "/FOTOS/DSC07661.jpg",
+            "/FOTOS/DSC07696.jpg",
+            "/FOTOS/DSC07731.jpg",
+            "/FOTOS/DSC07787.jpg",
+            "/FOTOS/DSC07799.jpg",
+            "/FOTOS/DSC07802.jpg",
+            "/FOTOS/DSC07849.jpg",
+            "/FOTOS/DSC07860.jpg",
+            "/FOTOS/DSC07869.jpg",
+            "/FOTOS/DSC07570.jpg",
+            "/FOTOS/DSC07557.jpg",
+            "/FOTOS/DSC07262.jpg",
+            "/FOTOS/DSC07246.jpg",
           ].map((src, i) => (
             <div key={i} className="relative shrink-0 w-72 h-44 overflow-hidden rounded-sm group">
               <Image
@@ -503,7 +503,7 @@ export default function NosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/EMINSA/DSC07670.jpg"
+                  src="/FOTOS/DSC07869.jpg"
                   alt={t("altWorkTeam")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

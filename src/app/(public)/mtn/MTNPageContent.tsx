@@ -30,9 +30,9 @@ import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { useTranslations } from "next-intl";
 
 const productPhotos: Record<string, string> = {
-  "tipo-poste": "/EMINSA/DSC07227.jpg",
-  "pad-mounted": "/EMINSA/DSC07213.jpg",
-  "subestacion": "/EMINSA/DSC07624.jpg",
+  "tipo-poste": "/FOTOS/DSC07227.jpg",
+  "pad-mounted": "/FOTOS/DSC07213.jpg",
+  "subestacion": "/FOTOS/DSC07624.jpg",
 };
 
 const resourceIcons: Record<string, React.ElementType> = {
@@ -45,16 +45,16 @@ const resourceIcons: Record<string, React.ElementType> = {
 
 // ─── Hero floating cards ──────────────────────────────────────────────────────
 const HERO_PHOTOS = [
-  "/EMINSA/DSC07227.jpg",  // Transformador Tipo Poste
-  "/EMINSA/DSC07213.jpg",  // Transformador Pad Mounted
-  "/EMINSA/DSC07255.jpg",  // Transformador Subestación
-  "/EMINSA/DSC07624.jpg",  // Transformador de potencia
-  "/EMINSA/DSC07713.jpg",  // Bobinado de transformador
-  "/EMINSA/DSC07174.jpg",  // Laboratorio de pruebas eléctricas
-  "/EMINSA/DSC07780.jpg",  // Ensamble en tanque
-  "/EMINSA/DSC07165.jpg",  // Pruebas de alta tensión
-  "/EMINSA/DSC07158.jpg",  // Transformadores en planta
-  "/EMINSA/DSC07751.jpg",  // Taller de transformadores
+  "/FOTOS/DSC07227.jpg",  // Transformador Tipo Poste
+  "/FOTOS/DSC07816.jpg",  // Planta de manufactura
+  "/FOTOS/DSC07255.jpg",  // Transformador Subestación
+  "/FOTOS/DSC07713.jpg",  // Bobinado de transformador
+  "/FOTOS/DSC07775.jpg",  // Parte activa entrando al tanque
+  "/FOTOS/DSC07780.jpg",  // Ensamble en tanque
+  "/FOTOS/DSC07165.jpg",  // Pruebas de alta tensión
+  "/FOTOS/DSC07751.jpg",  // Taller de transformadores
+  "/FOTOS/DSC07223.jpg",  // Pad Mounted EMINSA
+  "/FOTOS/DSC07845.jpg",  // Horno de secado
 ];
 const HERO_N = HERO_PHOTOS.length;
 const HERO_SLOT_COUNT = 6;
@@ -87,9 +87,9 @@ export default function MTNPageContent() {
   const t = useTranslations("mtnPage");
   const tc = useTranslations("mtnConfig");
 
-  // Hero photo cycling — one slot updates every 2.5s rotating through all 6 slots
+  // Hero photo cycling — one slot updates every 2.5s, no duplicates across slots
   const [heroSlots, setHeroSlots] = useState<number[]>(() =>
-    [...HERO_LEFT_CARDS, ...HERO_RIGHT_CARDS].map((c) => c.photoOffset % HERO_N)
+    Array.from({ length: HERO_SLOT_COUNT }, (_, i) => i)
   );
   useEffect(() => {
     let cursor = 0;
@@ -97,7 +97,13 @@ export default function MTNPageContent() {
       const slot = cursor % HERO_SLOT_COUNT;
       setHeroSlots((prev) => {
         const next = [...prev];
-        next[slot] = (next[slot] + HERO_SLOT_COUNT) % HERO_N;
+        // Find the next photo index not already used by another slot
+        let candidate = (next[slot] + 1) % HERO_N;
+        const otherSlots = new Set(next.filter((_, idx) => idx !== slot));
+        while (otherSlots.has(candidate)) {
+          candidate = (candidate + 1) % HERO_N;
+        }
+        next[slot] = candidate;
         return next;
       });
       cursor++;
@@ -271,7 +277,7 @@ export default function MTNPageContent() {
                   <div className="h-1 bg-linear-to-r from-[#00269b] to-[#0099ce]" />
                   <div className="relative aspect-4/3 overflow-hidden">
                     <Image
-                      src={productPhotos[product.slug] ?? "/EMINSA/DSC07227.jpg"}
+                      src={productPhotos[product.slug] ?? "/FOTOS/DSC07227.jpg"}
                       alt={product.shortName}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -366,14 +372,14 @@ export default function MTNPageContent() {
         {/* Photo grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
           {[
-            { src: "/EMINSA/DSC07713.jpg", label: t("manufacturing.photoLabels.winding") },
-            { src: "/EMINSA/DSC07670.jpg", label: t("manufacturing.photoLabels.metalwork") },
-            { src: "/EMINSA/DSC07780.jpg", label: t("manufacturing.photoLabels.inTank") },
-            { src: "/EMINSA/DSC07174.jpg", label: t("manufacturing.photoLabels.testLab") },
-            { src: "/EMINSA/DSC07733.jpg", label: t("manufacturing.photoLabels.laserCutting") },
-            { src: "/EMINSA/DSC07759.jpg", label: t("manufacturing.photoLabels.assembly") },
-            { src: "/EMINSA/DSC07165.jpg", label: t("manufacturing.photoLabels.highVoltageTesting") },
-            { src: "/EMINSA/DSC07875.jpg", label: t("manufacturing.photoLabels.eminsaTeam") },
+            { src: "/FOTOS/DSC07799.jpg", label: t("manufacturing.photoLabels.winding") },
+            { src: "/FOTOS/DSC07696.jpg", label: t("manufacturing.photoLabels.metalwork") },
+            { src: "/FOTOS/DSC07775.jpg", label: t("manufacturing.photoLabels.inTank") },
+            { src: "/FOTOS/DSC07134.jpg", label: t("manufacturing.photoLabels.testLab") },
+            { src: "/FOTOS/DSC07731.jpg", label: t("manufacturing.photoLabels.laserCutting") },
+            { src: "/FOTOS/DSC07822.jpg", label: t("manufacturing.photoLabels.assembly") },
+            { src: "/FOTOS/DSC07154.jpg", label: t("manufacturing.photoLabels.highVoltageTesting") },
+            { src: "/FOTOS/DSC07869.jpg", label: t("manufacturing.photoLabels.eminsaTeam") },
           ].map((photo, i) => (
             <motion.div
               key={i}
