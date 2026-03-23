@@ -2688,6 +2688,14 @@
     }
   },
   "etrysConfig": {
+    "specLabels": {
+      "power": "Power",
+      "primaryVoltage": "Primary Voltage",
+      "phases": "Phases",
+      "frequency": "Frequency",
+      "cooling": "Cooling",
+      "standards": "Standards"
+    },
     "info": {
       "tagline": "Transformer Repair and Service",
       "slogan": "Transformer Repair and Service",

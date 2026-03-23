@@ -2688,6 +2688,14 @@
     }
   },
   "etrysConfig": {
+    "specLabels": {
+      "power": "Potencia",
+      "primaryVoltage": "Voltaje Primario",
+      "phases": "Fases",
+      "frequency": "Frecuencia",
+      "cooling": "Refrigeración",
+      "standards": "Normas"
+    },
     "info": {
       "tagline": "Reparacion y Servicio De Transformadores",
       "slogan": "Reparación y Servicio de Transformadores",
