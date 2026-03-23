@@ -11,7 +11,7 @@ import { useTranslations } from "next-intl";
 const divisionPhotos: Record<string, string> = {
   mtn:       "/FOTOS/DSC07227.jpg",
   etrys:     "/FOTOS/DSC07618.jpg",
-  eic:       "/FOTOS/DSC07860.jpg",
+  eic:       "/FOTOS/DSC07158.jpg",
   servicios: "/FOTOS/DSC07134.jpg",
 };
 
