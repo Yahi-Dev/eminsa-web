@@ -168,7 +168,7 @@ export default function EtrysAlquilerPage() {
               <div className="grid grid-cols-2 gap-3 h-80">
                 {/* Main large photo */}
                 <div className="relative row-span-2 rounded-2xl overflow-hidden shadow-2xl">
-                  <Image src="/FOTOS/DSC07618.jpg" alt="Alquiler de Transformadores RST" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-90" priority />
+                  <Image src="/fotos-eminsa/rst/DSC07618.jpg" alt="Alquiler de Transformadores RST" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-90" priority />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl p-3">
                     <span className="text-[#0099ce] font-bold text-base block">{t("immediateAvailability")}</span>
@@ -177,13 +177,13 @@ export default function EtrysAlquilerPage() {
                 </div>
                 {/* Top-right */}
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <Image src="/FOTOS/DSC07557.jpg" alt="Inventario de transformadores para alquiler" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
+                  <Image src="/fotos-eminsa/rst/DSC07557.jpg" alt="Inventario de transformadores para alquiler" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <span className="absolute bottom-2 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">{t("distributionLabel")}</span>
                 </div>
                 {/* Bottom-right */}
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <Image src="/FOTOS/DSC07570.jpg" alt="Transformadores disponibles para alquiler" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
+                  <Image src="/fotos-eminsa/rst/DSC07555.jpg" alt="Transformadores disponibles para alquiler" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover brightness-80" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent" />
                   <span className="absolute bottom-2 left-3 text-white text-[10px] font-bold tracking-widest uppercase opacity-80">{t("industrialLabel")}</span>
                 </div>

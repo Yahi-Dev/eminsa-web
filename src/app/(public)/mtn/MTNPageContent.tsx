@@ -30,9 +30,9 @@ import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { useTranslations } from "next-intl";
 
 const productPhotos: Record<string, string> = {
-  "tipo-poste": "/FOTOS/DSC07227.jpg",
-  "pad-mounted": "/FOTOS/DSC07213.jpg",
-  "subestacion": "/FOTOS/DSC07624.jpg",
+  "tipo-poste": "/fotos-eminsa/mtn/DSC07227.jpg",
+  "pad-mounted": "/fotos-eminsa/mtn/DSC07213.jpg",
+  "subestacion": "/fotos-eminsa/mtn/transformador-subestacion.png",
 };
 
 const resourceIcons: Record<string, React.ElementType> = {
@@ -45,16 +45,16 @@ const resourceIcons: Record<string, React.ElementType> = {
 
 // ─── Hero floating cards ──────────────────────────────────────────────────────
 const HERO_PHOTOS = [
-  "/FOTOS/DSC07227.jpg",  // Transformador Tipo Poste
-  "/FOTOS/DSC07816.jpg",  // Planta de manufactura
-  "/FOTOS/DSC07255.jpg",  // Transformador Subestación
-  "/FOTOS/DSC07713.jpg",  // Bobinado de transformador
-  "/FOTOS/DSC07775.jpg",  // Parte activa entrando al tanque
-  "/FOTOS/DSC07780.jpg",  // Ensamble en tanque
-  "/FOTOS/DSC07165.jpg",  // Pruebas de alta tensión
-  "/FOTOS/DSC07751.jpg",  // Taller de transformadores
-  "/FOTOS/DSC07223.jpg",  // Pad Mounted EMINSA
-  "/FOTOS/DSC07845.jpg",  // Horno de secado
+  "/fotos-eminsa/mtn/DSC07227.jpg",  // Transformador Tipo Poste
+  "/fotos-eminsa/mtn/DSC07816.jpg",  // Planta de manufactura
+  "/fotos-eminsa/mtn/transformador-subestacion.png",  // Transformador Subestación
+  "/fotos-eminsa/mtn/DSC07713.jpg",  // Bobinado de transformador
+  "/fotos-eminsa/mtn/DSC07775.jpg",  // Parte activa entrando al tanque
+  "/fotos-eminsa/mtn/DSC07780.jpg",  // Ensamble en tanque
+  "/fotos-eminsa/mtn/DSC07165.jpg",  // Pruebas de alta tensión
+  "/fotos-eminsa/mtn/DSC07751.jpg",  // Taller de transformadores
+  "/fotos-eminsa/mtn/DSC07223.jpg",  // Pad Mounted EMINSA
+  "/fotos-eminsa/mtn/DSC07845.jpg",  // Horno de secado
 ];
 const HERO_N = HERO_PHOTOS.length;
 const HERO_SLOT_COUNT = 6;
@@ -277,7 +277,7 @@ export default function MTNPageContent() {
                   <div className="h-1 bg-linear-to-r from-[#00269b] to-[#0099ce]" />
                   <div className="relative aspect-4/3 overflow-hidden">
                     <Image
-                      src={productPhotos[product.slug] ?? "/FOTOS/DSC07227.jpg"}
+                      src={productPhotos[product.slug] ?? "/fotos-eminsa/mtn/DSC07227.jpg"}
                       alt={product.shortName}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -372,14 +372,14 @@ export default function MTNPageContent() {
         {/* Photo grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
           {[
-            { src: "/FOTOS/DSC07799.jpg", label: t("manufacturing.photoLabels.winding") },
-            { src: "/FOTOS/DSC07696.jpg", label: t("manufacturing.photoLabels.metalwork") },
-            { src: "/FOTOS/DSC07775.jpg", label: t("manufacturing.photoLabels.inTank") },
-            { src: "/FOTOS/DSC07134.jpg", label: t("manufacturing.photoLabels.testLab") },
-            { src: "/FOTOS/DSC07731.jpg", label: t("manufacturing.photoLabels.laserCutting") },
-            { src: "/FOTOS/DSC07822.jpg", label: t("manufacturing.photoLabels.assembly") },
-            { src: "/FOTOS/DSC07154.jpg", label: t("manufacturing.photoLabels.highVoltageTesting") },
-            { src: "/FOTOS/DSC07869.jpg", label: t("manufacturing.photoLabels.eminsaTeam") },
+            { src: "/fotos-eminsa/mtn/DSC07799.jpg", label: t("manufacturing.photoLabels.winding") },
+            { src: "/fotos-eminsa/mtn/DSC07731.jpg", label: t("manufacturing.photoLabels.metalwork") },
+            { src: "/fotos-eminsa/mtn/DSC07775.jpg", label: t("manufacturing.photoLabels.inTank") },
+            { src: "/fotos-eminsa/mtn/DSC07134.jpg", label: t("manufacturing.photoLabels.testLab") },
+            { src: "/fotos-eminsa/mtn/DSC07731.jpg", label: t("manufacturing.photoLabels.laserCutting") },
+            { src: "/fotos-eminsa/mtn/DSC07822.jpg", label: t("manufacturing.photoLabels.assembly") },
+            { src: "/fotos-eminsa/mtn/DSC07154.jpg", label: t("manufacturing.photoLabels.highVoltageTesting") },
+            { src: "/fotos-eminsa/mtn/DSC07842.jpg", label: t("manufacturing.photoLabels.eminsaTeam") },
           ].map((photo, i) => (
             <motion.div
               key={i}

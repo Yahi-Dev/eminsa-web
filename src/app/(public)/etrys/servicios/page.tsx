@@ -99,7 +99,7 @@ export default function EtrysServiciosPage() {
               {/* Main large image - technicians repairing transformer */}
               <div className="relative col-span-7 row-span-4 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="/FOTOS/DSC07262.jpg"
+                  src="/fotos-eminsa/rst/DSC07602.jpg"
                   alt={t("altTechnicians")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -114,7 +114,7 @@ export default function EtrysServiciosPage() {
               {/* Top right - test lab */}
               <div className="relative col-span-5 row-span-3 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="/FOTOS/DSC07154.jpg"
+                  src="/fotos-eminsa/rst/DSC07564.jpg"
                   alt={t("altTestLab")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -126,7 +126,7 @@ export default function EtrysServiciosPage() {
               {/* Bottom right - finished transformer */}
               <div className="relative col-span-5 row-span-3 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="/FOTOS/DSC07628.jpg"
+                  src="/fotos-eminsa/rst/DSC07609.jpg"
                   alt={t("altFinished")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

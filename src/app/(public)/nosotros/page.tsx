@@ -76,7 +76,7 @@ export default function NosotrosPage() {
       {/* Hero */}
       <section className="relative bg-gray-900 text-white py-16 lg:py-24 overflow-hidden">
         <Image
-          src="/FOTOS/DSC07149.jpg"
+          src="/fotos-eminsa/general/DSC07869.jpg"
           alt={t("altHero")}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -129,7 +129,7 @@ export default function NosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/FOTOS/DSC07869.jpg"
+                  src="/fotos-eminsa/general/DSC07869.jpg"
                   alt={t("altTeamHero")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -245,7 +245,7 @@ export default function NosotrosPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/FOTOS/DSC07869.jpg"
+                    src="/fotos-eminsa/general/DSC07624.jpg"
                     alt={t("altFacilities")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -254,7 +254,7 @@ export default function NosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="/FOTOS/DSC07628.jpg"
+                    src="/fotos-eminsa/mtn/DSC07154.jpg"
                     alt={t("altWorkshop")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -263,7 +263,7 @@ export default function NosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/FOTOS/DSC07618.jpg"
+                    src="/fotos-eminsa/mtn/DSC07213.jpg"
                     alt={t("altProduction")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -272,7 +272,7 @@ export default function NosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="/FOTOS/DSC07860.jpg"
+                    src="/fotos-eminsa/mtn/DSC07780.jpg"
                     alt={t("altEquipment")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -397,53 +397,62 @@ export default function NosotrosPage() {
           className="eminsa-marquee-track flex gap-2 w-max"
         >
           {[
-            "/FOTOS/DSC07227.jpg",
-            "/FOTOS/DSC07223.jpg",
-            "/FOTOS/DSC07131.jpg",
-            "/FOTOS/DSC07134.jpg",
-            "/FOTOS/DSC07154.jpg",
-            "/FOTOS/DSC07618.jpg",
-            "/FOTOS/DSC07628.jpg",
-            "/FOTOS/DSC07775.jpg",
-            "/FOTOS/DSC07822.jpg",
-            "/FOTOS/DSC07845.jpg",
-            "/FOTOS/DSC07661.jpg",
-            "/FOTOS/DSC07696.jpg",
-            "/FOTOS/DSC07731.jpg",
-            "/FOTOS/DSC07787.jpg",
-            "/FOTOS/DSC07799.jpg",
-            "/FOTOS/DSC07802.jpg",
-            "/FOTOS/DSC07849.jpg",
-            "/FOTOS/DSC07860.jpg",
-            "/FOTOS/DSC07869.jpg",
-            "/FOTOS/DSC07570.jpg",
-            "/FOTOS/DSC07557.jpg",
-            "/FOTOS/DSC07262.jpg",
-            "/FOTOS/DSC07246.jpg",
+            // MTN - Manufactura
+            "/fotos-eminsa/mtn/DSC07227.jpg",
+            "/fotos-eminsa/mtn/DSC07799.jpg",
+            "/fotos-eminsa/mtn/DSC07775.jpg",
+            "/fotos-eminsa/mtn/DSC07822.jpg",
+            // RST - ETRYS
+            "/fotos-eminsa/rst/DSC07618.jpg",
+            "/fotos-eminsa/rst/DSC07607.jpg",
+            "/fotos-eminsa/rst/DSC07602.jpg",
+            "/fotos-eminsa/rst/DSC07555.jpg",
+            // Servicios
+            "/fotos-eminsa/servicios/DSC07577.jpg",
+            "/fotos-eminsa/servicios/DSC07602.jpg",
+            "/fotos-eminsa/servicios/DSC07598.jpg",
+            // General - Equipo y planta
+            "/fotos-eminsa/general/DSC07624.jpg",
+            "/fotos-eminsa/general/DSC07869.jpg",
+            "/fotos-eminsa/general/DSC07860.jpg",
+            "/fotos-eminsa/general/DSC07859.jpg",
+            "/fotos-eminsa/general/DSC07661.jpg",
+            // MTN - Productos
+            "/fotos-eminsa/mtn/DSC07223.jpg",
+            "/fotos-eminsa/mtn/transformador-subestacion.png",
+            "/fotos-eminsa/mtn/DSC07154.jpg",
+            "/fotos-eminsa/mtn/DSC07845.jpg",
+            // EIC
+            "/fotos-eminsa/eic/DSC07591.jpg",
+            "/fotos-eminsa/eic/DSC07624.jpg",
+            // General - Trabajo
+            "/fotos-eminsa/general/DSC07805.jpg",
+            "/fotos-eminsa/general/DSC07628.jpg",
             // duplicate for seamless loop
-            "/FOTOS/DSC07227.jpg",
-            "/FOTOS/DSC07223.jpg",
-            "/FOTOS/DSC07131.jpg",
-            "/FOTOS/DSC07134.jpg",
-            "/FOTOS/DSC07154.jpg",
-            "/FOTOS/DSC07618.jpg",
-            "/FOTOS/DSC07628.jpg",
-            "/FOTOS/DSC07775.jpg",
-            "/FOTOS/DSC07822.jpg",
-            "/FOTOS/DSC07845.jpg",
-            "/FOTOS/DSC07661.jpg",
-            "/FOTOS/DSC07696.jpg",
-            "/FOTOS/DSC07731.jpg",
-            "/FOTOS/DSC07787.jpg",
-            "/FOTOS/DSC07799.jpg",
-            "/FOTOS/DSC07802.jpg",
-            "/FOTOS/DSC07849.jpg",
-            "/FOTOS/DSC07860.jpg",
-            "/FOTOS/DSC07869.jpg",
-            "/FOTOS/DSC07570.jpg",
-            "/FOTOS/DSC07557.jpg",
-            "/FOTOS/DSC07262.jpg",
-            "/FOTOS/DSC07246.jpg",
+            "/fotos-eminsa/mtn/DSC07227.jpg",
+            "/fotos-eminsa/mtn/DSC07799.jpg",
+            "/fotos-eminsa/mtn/DSC07775.jpg",
+            "/fotos-eminsa/mtn/DSC07822.jpg",
+            "/fotos-eminsa/rst/DSC07618.jpg",
+            "/fotos-eminsa/rst/DSC07607.jpg",
+            "/fotos-eminsa/rst/DSC07602.jpg",
+            "/fotos-eminsa/rst/DSC07555.jpg",
+            "/fotos-eminsa/servicios/DSC07577.jpg",
+            "/fotos-eminsa/servicios/DSC07602.jpg",
+            "/fotos-eminsa/servicios/DSC07598.jpg",
+            "/fotos-eminsa/general/DSC07624.jpg",
+            "/fotos-eminsa/general/DSC07869.jpg",
+            "/fotos-eminsa/general/DSC07860.jpg",
+            "/fotos-eminsa/general/DSC07859.jpg",
+            "/fotos-eminsa/general/DSC07661.jpg",
+            "/fotos-eminsa/mtn/DSC07223.jpg",
+            "/fotos-eminsa/mtn/transformador-subestacion.png",
+            "/fotos-eminsa/mtn/DSC07154.jpg",
+            "/fotos-eminsa/mtn/DSC07845.jpg",
+            "/fotos-eminsa/eic/DSC07591.jpg",
+            "/fotos-eminsa/eic/DSC07624.jpg",
+            "/fotos-eminsa/general/DSC07805.jpg",
+            "/fotos-eminsa/general/DSC07628.jpg",
           ].map((src, i) => (
             <div key={i} className="relative shrink-0 w-72 h-44 overflow-hidden rounded-sm group">
               <Image
@@ -503,7 +512,7 @@ export default function NosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/FOTOS/DSC07869.jpg"
+                  src="/fotos-eminsa/general/DSC07869.jpg"
                   alt={t("altWorkTeam")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

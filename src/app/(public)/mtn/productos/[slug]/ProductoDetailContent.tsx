@@ -50,16 +50,16 @@ interface Props {
 
 const productPhotos: Record<string, { main: string; secondary: string[] }> = {
   "tipo-poste": {
-    main: "/FOTOS/DSC07227.jpg",
-    secondary: ["/FOTOS/DSC07131.jpg", "/FOTOS/DSC07148.jpg"],
+    main: "/fotos-eminsa/mtn/DSC07227.jpg",
+    secondary: ["/fotos-eminsa/mtn/DSC07131.jpg", "/fotos-eminsa/mtn/DSC07148.jpg"],
   },
   "pad-mounted": {
-    main: "/FOTOS/DSC07223.jpg",
-    secondary: ["/FOTOS/DSC07221.jpg", "/FOTOS/DSC07570.jpg"],
+    main: "/fotos-eminsa/mtn/DSC07223.jpg",
+    secondary: ["/fotos-eminsa/mtn/DSC07221.jpg", "/fotos-eminsa/mtn/DSC07570.jpg"],
   },
   "subestacion": {
-    main: "/FOTOS/DSC07255.jpg",
-    secondary: ["/FOTOS/DSC07246.jpg", "/FOTOS/DSC07247.jpg"],
+    main: "/fotos-eminsa/mtn/transformador-subestacion.png",
+    secondary: ["/fotos-eminsa/mtn/DSC07246.jpg", "/fotos-eminsa/mtn/DSC07247.jpg"],
   },
 };
 

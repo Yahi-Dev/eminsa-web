@@ -26,15 +26,15 @@ import {
 
 const stepIcons = [Cpu, Zap, Layers, Flame, Wrench, Hammer, Boxes, Droplets, FlaskConical];
 const stepPhotos = [
-  "/FOTOS/DSC07802.jpg",  // Diseño de Núcleo - corte de láminas
-  "/FOTOS/DSC07799.jpg",  // Bobinado - ensamble núcleo y bobinas
-  "/FOTOS/DSC07787.jpg",  // Ensamble Parte Activa - trabajadores ensamblando
-  "/FOTOS/DSC07845.jpg",  // Secado al Vacío - horno con bobinas
-  "/FOTOS/DSC07661.jpg",  // Fabricación de Tanques - soldadores
-  "/FOTOS/DSC07679.jpg",  // Metalmecánica - soldadores estructura
-  "/FOTOS/DSC07775.jpg",  // EnTanque - parte activa en tanque
-  "/FOTOS/DSC07759.jpg",  // Tratamiento de Aceite
-  "/FOTOS/DSC07154.jpg",  // Pruebas - laboratorio
+  "/fotos-eminsa/mtn/DSC07802.jpg",  // Diseño de Núcleo - corte de láminas
+  "/fotos-eminsa/mtn/DSC07799.jpg",  // Bobinado - ensamble núcleo y bobinas
+  "/fotos-eminsa/mtn/DSC07787.jpg",  // Ensamble Parte Activa - trabajadores ensamblando
+  "/fotos-eminsa/mtn/DSC07845.jpg",  // Secado al Vacío - horno con bobinas
+  "/fotos-eminsa/mtn/DSC07822.jpg",  // Fabricación de Tanques - soldadores
+  "/fotos-eminsa/mtn/DSC07731.jpg",  // Metalmecánica - soldadores estructura
+  "/fotos-eminsa/mtn/DSC07775.jpg",  // EnTanque - parte activa en tanque
+  "/fotos-eminsa/mtn/DSC07759.jpg",  // Tratamiento de Aceite
+  "/fotos-eminsa/mtn/DSC07154.jpg",  // Pruebas - laboratorio
 ];
 const stepAccents = [
   "#00269b", "#0099ce", "#009e49", "#e8a000", "#7c3aed",

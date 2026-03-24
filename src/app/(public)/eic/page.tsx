@@ -24,11 +24,11 @@ import Image from "next/image";
 import { eicInfo, eicProductCategories, eicBrands } from "@/config/eic-data";
 
 const categoryPhotos: Record<string, string> = {
-  "transformadores": "/FOTOS/DSC07227.jpg",
-  "cables": "/FOTOS/DSC07849.jpg",
-  "distribucion-mt": "/FOTOS/DSC07860.jpg",
-  "breakers": "/FOTOS/DSC07753.jpg",
-  "accesorios": "/FOTOS/DSC07570.jpg",
+  "transformadores": "/fotos-eminsa/mtn/DSC07227.jpg",
+  "cables": "/fotos-eminsa/eic/Cables-Electricos.png",
+  "distribucion-mt": "/fotos-eminsa/eic/DSC07591.jpg",
+  "breakers": "/fotos-eminsa/eic/DSC07573.jpg",
+  "accesorios": "/fotos-eminsa/eic/Accesorios-para-Cables-MT.png",
 };
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";

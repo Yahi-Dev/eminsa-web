@@ -42,23 +42,23 @@ const advantageIcons: { [key: string]: React.ElementType } = {
 
 const HERO_IMAGES_A = [
   "/transformador-before.png",
-  "/FOTOS/DSC07618.jpg",
-  "/FOTOS/DSC07262.jpg",
-  "/FOTOS/DSC07775.jpg",
+  "/fotos-eminsa/rst/DSC07618.jpg",
+  "/fotos-eminsa/rst/DSC07602.jpg",
+  "/fotos-eminsa/rst/DSC07607.jpg",
 ];
 
 const HERO_IMAGES_B = [
   "/transformador-after.png",
-  "/FOTOS/DSC07557.jpg",
-  "/FOTOS/DSC07628.jpg",
-  "/FOTOS/DSC07822.jpg",
+  "/fotos-eminsa/rst/DSC07557.jpg",
+  "/fotos-eminsa/rst/DSC07609.jpg",
+  "/fotos-eminsa/rst/DSC07598.jpg",
 ];
 
 const HERO_IMAGES_C = [
-  "/FOTOS/DSC07154.jpg",
-  "/FOTOS/DSC07131.jpg",
-  "/FOTOS/DSC07134.jpg",
-  "/FOTOS/DSC07696.jpg",
+  "/fotos-eminsa/rst/DSC07564.jpg",
+  "/fotos-eminsa/rst/DSC07544.jpg",
+  "/fotos-eminsa/rst/DSC07537.jpg",
+  "/fotos-eminsa/rst/DSC07600.jpg",
 ];
 
 export default function EtrysPage() {
@@ -632,7 +632,7 @@ export default function EtrysPage() {
             >
               <div className="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/FOTOS/DSC07618.jpg"
+                  src="/fotos-eminsa/rst/DSC07618.jpg"
                   alt="Alquiler de Transformadores ETRYS by EMINSA"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

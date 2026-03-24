@@ -9,10 +9,10 @@ import { divisions } from "@/config/navigation";
 import { useTranslations } from "next-intl";
 
 const divisionPhotos: Record<string, string> = {
-  mtn:       "/FOTOS/DSC07227.jpg",
-  etrys:     "/FOTOS/DSC07618.jpg",
-  eic:       "/FOTOS/DSC07158.jpg",
-  servicios: "/FOTOS/DSC07134.jpg",
+  mtn:       "/fotos-eminsa/mtn/DSC07227.jpg",
+  etrys:     "/fotos-eminsa/rst/DSC07618.jpg",
+  eic:       "/fotos-eminsa/eic/DSC07591.jpg",
+  servicios: "/fotos-eminsa/servicios/DSC07577.jpg",
 };
 
 const iconMap: { [key: string]: React.ElementType } = {
@@ -179,7 +179,7 @@ export default function DivisionsSection() {
               <div className="relative flex flex-col justify-between overflow-hidden min-h-80">
                 {/* Background photo */}
                 <Image
-                  src={divisionPhotos[activeDivision.id] ?? "/FOTOS/DSC07174.jpg"}
+                  src={divisionPhotos[activeDivision.id] ?? "/fotos-eminsa/mtn/DSC07227.jpg"}
                   alt={activeDivision.name}
                   fill
                   priority

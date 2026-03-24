@@ -10,9 +10,9 @@ import MarqueeEyebrow from "@/components/shared/MarqueeEyebrow";
 
 // ─── Photos per product ────────────────────────────────────────────────────────
 const PRODUCT_PHOTOS = [
-  "/FOTOS/DSC07227.jpg",  // Tipo Poste
-  "/FOTOS/DSC07223.jpg",  // Pad Mounted
-  "/FOTOS/DSC07255.jpg",  // Subestación
+  "/fotos-eminsa/mtn/DSC07227.jpg",  // Tipo Poste
+  "/fotos-eminsa/mtn/DSC07223.jpg",  // Pad Mounted
+  "/fotos-eminsa/mtn/transformador-subestacion.png",  // Subestación
 ];
 
 // ─── Accent colors ─────────────────────────────────────────────────────────────

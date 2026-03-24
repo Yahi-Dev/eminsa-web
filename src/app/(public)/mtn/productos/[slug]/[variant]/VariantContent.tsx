@@ -40,30 +40,30 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
   // Fotos por variante: clave = "slug/variantSlug"
   const variantPhotos: Record<string, { main: string; side: string }> = {
     "tipo-poste/monofasicos": {
-      main: "/FOTOS/DSC07227.jpg",
-      side: "/FOTOS/DSC07131.jpg",
+      main: "/fotos-eminsa/mtn/DSC07227.jpg",
+      side: "/fotos-eminsa/mtn/DSC07131.jpg",
     },
     "tipo-poste/trifasicos": {
-      main: "/FOTOS/DSC07227.jpg",
-      side: "/FOTOS/DSC07148.jpg",
+      main: "/fotos-eminsa/mtn/DSC07227.jpg",
+      side: "/fotos-eminsa/mtn/DSC07148.jpg",
     },
     "tipo-poste/autoprotegidos": {
-      main: "/FOTOS/DSC07227.jpg",
-      side: "/FOTOS/DSC07134.jpg",
+      main: "/fotos-eminsa/mtn/DSC07227.jpg",
+      side: "/fotos-eminsa/mtn/DSC07134.jpg",
     },
     "pad-mounted/monofasicos": {
-      main: "/FOTOS/DSC07223.jpg",
-      side: "/FOTOS/DSC07570.jpg",
+      main: "/fotos-eminsa/mtn/DSC07223.jpg",
+      side: "/fotos-eminsa/mtn/DSC07570.jpg",
     },
     "pad-mounted/trifasicos": {
-      main: "/FOTOS/DSC07223.jpg",
-      side: "/FOTOS/DSC07221.jpg",
+      main: "/fotos-eminsa/mtn/DSC07223.jpg",
+      side: "/fotos-eminsa/mtn/DSC07221.jpg",
     },
   };
 
   const photos = variantPhotos[`${slug}/${variantSlug}`] ?? {
-    main: "/FOTOS/DSC07227.jpg",
-    side: "/FOTOS/DSC07131.jpg",
+    main: "/fotos-eminsa/mtn/DSC07227.jpg",
+    side: "/fotos-eminsa/mtn/DSC07131.jpg",
   };
 
   return (

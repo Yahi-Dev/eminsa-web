@@ -8,9 +8,9 @@ import { transformerProducts, getVariantsByProduct } from "@/config/mtn-data";
 import { useTranslations } from "next-intl";
 
 const productPhotos: Record<string, string> = {
-  "tipo-poste": "/FOTOS/DSC07227.jpg",
-  "pad-mounted": "/FOTOS/DSC07223.jpg",
-  "subestacion": "/FOTOS/DSC07255.jpg",
+  "tipo-poste": "/fotos-eminsa/mtn/DSC07227.jpg",
+  "pad-mounted": "/fotos-eminsa/mtn/DSC07223.jpg",
+  "subestacion": "/fotos-eminsa/mtn/transformador-subestacion.png",
 };
 
 const fadeUp = {
@@ -73,7 +73,7 @@ export default function ProductosPageContent() {
                   <div className="grid lg:grid-cols-2 gap-0">
                     <div className={`relative min-h-72 lg:min-h-full overflow-hidden ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                       <Image
-                        src={productPhotos[product.slug] ?? "/FOTOS/DSC07227.jpg"}
+                        src={productPhotos[product.slug] ?? "/fotos-eminsa/mtn/DSC07227.jpg"}
                         alt={tc(`products.${product.slug}.name`)}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
