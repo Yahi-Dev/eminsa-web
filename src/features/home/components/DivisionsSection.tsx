@@ -12,7 +12,7 @@ const divisionPhotos: Record<string, string> = {
   mtn:       "/fotos-eminsa/mtn/DSC07227.jpg",
   etrys:     "/fotos-eminsa/rst/DSC07618.jpg",
   eic:       "/fotos-eminsa/eic/DSC07591.jpg",
-  servicios: "/fotos-eminsa/servicios/DSC07577.jpg",
+  servicios: "/fotos-eminsa/mtn/DSC07134.jpg",
 };
 
 const iconMap: { [key: string]: React.ElementType } = {
