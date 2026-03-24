@@ -328,10 +328,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
 
       {/* CTA */}
       <section
-        className="py-12 lg:py-16 text-white"
-        style={{
-          background: `linear-gradient(135deg, ${category.color} 0%, ${category.color}CC 50%, #00269b 100%)`,
-        }}
+        className="py-12 lg:py-16 text-white bg-linear-to-br from-[#009e49] via-[#007d3a] to-[#00269b]"
       >
         <div className="container-eminsa text-center">
           <motion.div
