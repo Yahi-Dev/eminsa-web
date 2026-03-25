@@ -23,6 +23,7 @@
     "@maskito/phone": "^5.0.1",
     "@maskito/react": "^5.0.1",
     "@prisma/client": "^5.22.0",
+    "@tabler/icons-react": "^3.40.0",
     "@types/sanitize-html": "^2.16.1",
     "bcryptjs": "^3.0.3",
     "better-auth": "^1.5.2",

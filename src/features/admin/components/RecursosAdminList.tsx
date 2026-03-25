@@ -104,7 +104,7 @@ export default function RecursosAdminList() {
             <span className="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">{total}</span>
           </div>
           <Link
-            href="/admin/recursos/nuevo"
+            href="/admin/recursos/nueva"
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-white text-sm font-medium"
             style={{ backgroundColor: "#00269b" }}
           >

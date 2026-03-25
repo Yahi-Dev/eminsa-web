@@ -17,9 +17,10 @@ import {
   CircleDot,
   Cpu,
   Flame,
-  Filter,
   Paintbrush,
   Settings,
+  AlertTriangle,
+  TestTube,
 } from "lucide-react";
 import { repairServices, repairCenter, etrysInfo } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
@@ -27,12 +28,12 @@ import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { useTranslations } from "next-intl";
 
 const serviceIcons: { [key: string]: React.ElementType } = {
-  coil: Wrench,
+  "alert-triangle": AlertTriangle,
+  "test-tube": TestTube,
   droplet: Droplet,
   "circle-dot": CircleDot,
   cpu: Cpu,
   flame: Flame,
-  filter: Filter,
   paintbrush: Paintbrush,
   wrench: Settings,
 };

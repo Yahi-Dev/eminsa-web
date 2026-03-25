@@ -449,9 +449,9 @@ export const certifications: Certification[] = [
   },
   {
     id: "ul",
-    name: "UL",
+    name: "UL XPLH",
     slug: "ul",
-    fullName: "Underwriters Laboratories — Familia de Productos Registrados",
+    fullName: "UL CERTIFICATION XPLH: Transformers, Distribution, Liquid-filled Type, Over 600 Volts",
     description: "Nuestra familia de productos está registrada ante UL (Underwriters Laboratories), la organización de certificación de seguridad eléctrica líder en América del Norte. Contar con productos registrados en UL garantiza a nuestros clientes que los equipos han sido evaluados bajo los estándares de seguridad más exigentes del mercado.",
     issuingBody: "Underwriters Laboratories Inc.",
     benefits: [

@@ -5,19 +5,19 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  ChevronDown, 
+  ChevronDown,
   Home,
   Package,
   Wrench,
   Truck,
   FolderOpen,
   FileText,
-
   Menu,
   X,
   Phone,
   MessageCircle
 } from "lucide-react";
+import { IconDeviceMobileCharging } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { contactInfo } from "@/config/navigation";
@@ -39,6 +39,7 @@ interface NavItem {
   name: string;
   href: string;
   icon: React.ComponentType<{ size?: number }>;
+  iconSize?: number;
   exact?: boolean;
   submenu?: SubMenuItem[];
 }
@@ -69,7 +70,7 @@ function useEtrysNavItems(): NavItem[] {
         { name: t("layout.repairCenter"), href: "/etrys/servicios/centro-reparacion", description: t("layout.repairCenterDesc") },
       ],
     },
-    { name: t("layout.rental"), href: "/etrys/alquiler", icon: Truck },
+    { name: t("layout.rental"), href: "/etrys/alquiler", icon: IconDeviceMobileCharging, iconSize: 20 },
     { name: t("layout.resources"), href: "/etrys/recursos", icon: FolderOpen },
     { name: t("layout.quotes"), href: "/etrys/cotizaciones", icon: FileText },
   ];
@@ -180,7 +181,7 @@ export default function EtrysLayout({
                                   : "text-gray-600 hover:bg-gray-100 hover:text-[#0099ce]"
                               )}
                             >
-                              <Icon size={16} />
+                              <Icon size={item.iconSize ?? 16} />
                               <span>{item.name}</span>
                               <ChevronDown 
                                 size={14} 
@@ -263,7 +264,7 @@ export default function EtrysLayout({
                               : "text-gray-600 hover:bg-gray-100 hover:text-[#0099ce]"
                           )}
                         >
-                          <Icon size={16} />
+                          <Icon size={item.iconSize ?? 16} />
                           <span>{item.name}</span>
                         </Link>
                       )}

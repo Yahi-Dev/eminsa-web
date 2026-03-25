@@ -26,9 +26,9 @@ const certItems = [
 ];
 
 const standardItems = [
-  { id: "ansi", abbr: "ANSI", color: "#00269b" },
+  { id: "ansi", abbr: "ANSI/IEEE", color: "#00269b" },
   { id: "doe", abbr: "DOE", color: "#009e49" },
-  { id: "ieee", abbr: "IEEE", color: "#00269b" },
+  { id: "iec60076", abbr: "IEC", color: "#0099ce" },
 ];
 
 export default function StatsSection() {
@@ -154,11 +154,11 @@ export default function StatsSection() {
                   className="relative text-left bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group cursor-pointer"
                 >
                   <div
-                    className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-colors"
+                    className="w-16 h-16 rounded-xl flex items-center justify-center mb-4 transition-colors"
                     style={{ backgroundColor: `${std.color}15` }}
                   >
                     <span
-                      className="font-bold text-lg"
+                      className="font-bold text-sm leading-tight text-center"
                       style={{ color: std.color }}
                     >
                       {std.abbr}

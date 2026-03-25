@@ -249,7 +249,7 @@ const UNIT_CONFIGS: Record<string, UnitConfig> = {
     intro:
       'Hemos recibido su solicitud de servicio técnico. Nuestro coordinador de servicios le contactará para asignar el técnico especializado y planificar la ejecución del trabajo en función de sus requerimientos.',
     nextSteps:
-      'Nuestro coordinador de servicios le contactará para asignar el técnico especializado, planificar la visita técnica y presentarle un presupuesto detallado según los requerimientos indicados.',
+      'Nuestro coordinador de servicios le contactará para asignar el técnico especializado, planificar la visita técnica y presentarle una cotización detallada según los requerimientos indicados.',
     adminDivisionTitle: 'SRV – NUEVA SOLICITUD DE SERVICIO TÉCNICO',
   },
 };

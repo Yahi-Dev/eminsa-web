@@ -15,7 +15,6 @@ import {
   AlertTriangle,
   PenTool,
   FlaskConical,
-  Truck,
   Phone,
   MessageCircle,
   MapPin,
@@ -27,7 +26,9 @@ import {
   Move,
   Database,
   Package,
+  Truck,
 } from "lucide-react";
+import { IconDeviceMobileCharging } from "@tabler/icons-react";
 import { services, contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import {
@@ -44,7 +45,7 @@ const iconMap: { [key: string]: React.ElementType } = {
   "alert-triangle": AlertTriangle,
   blueprint: PenTool,
   flask: FlaskConical,
-  truck: Truck,
+  "mobile-charging": IconDeviceMobileCharging,
 };
 
 const procesoIcons: { [key: string]: React.ElementType } = {

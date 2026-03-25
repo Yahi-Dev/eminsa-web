@@ -21,6 +21,7 @@ import {
   Zap,
   HardHat,
   Loader2,
+  Calculator,
 } from "lucide-react";
 import { rentalInfo } from "@/config/etrys-data";
 import { contactInfo } from "@/config/navigation";
@@ -52,13 +53,45 @@ export default function EtrysAlquilerPage() {
     mensaje: "",
   });
 
+  const [formError, setFormError] = useState<string | null>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    setFormError(null);
+
+    try {
+      const res = await fetch("/api/cotizaciones", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          unidad: "RST",
+          nombre: formData.nombre,
+          empresa: formData.empresa || undefined,
+          email: formData.email,
+          telefono: formData.telefono,
+          detalles: {
+            capacidad: formData.capacidad || undefined,
+            duracion: formData.duracion || undefined,
+            mensaje: formData.mensaje || undefined,
+            tipo: "alquiler",
+          },
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        setFormError(data.message ?? "Error al enviar la solicitud");
+        return;
+      }
+
+      setIsSuccess(true);
+    } catch {
+      setFormError("Error de red. Intenta de nuevo.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -265,6 +298,14 @@ export default function EtrysAlquilerPage() {
                   </li>
                 ))}
               </ul>
+              <Link
+                href="/mtn/recursos/calculadora"
+                className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-[#0099ce] hover:bg-[#007ba8] text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg hover:scale-[1.04] active:scale-95"
+              >
+                <Calculator size={20} />
+                {t("kvaCalculator")}
+                <ArrowRight size={18} />
+              </Link>
             </motion.div>
 
             {/* Images */}
@@ -483,6 +524,12 @@ export default function EtrysAlquilerPage() {
                     placeholder={t("messagePlaceholder")}
                   />
                 </div>
+
+                {formError && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                    {formError}
+                  </div>
+                )}
 
                 <button
                   type="submit"

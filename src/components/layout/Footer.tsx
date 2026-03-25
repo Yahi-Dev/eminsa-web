@@ -218,8 +218,8 @@ export default function Footer() {
               </Link>
               <p className="text-sm text-center md:text-left">
                 <span className="text-white/60">{t('bottomBar.websiteBy')} </span>
-                <Link href="https://www.linkedin.com/in/yahivas-dev/" className="text-white/60 text-sm hover:text-white transition-colors">
-                  Yahinniel Vásquez
+                <Link href="https://www.ampirics.com/" className="text-white/60 text-sm hover:text-white transition-colors">
+                  AMPIRICS
                 </Link>
               </p>
             </div>

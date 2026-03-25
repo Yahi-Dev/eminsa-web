@@ -322,7 +322,7 @@ export const serviciosDetalle: ServicioDetalle[] = [
       "Equipos disponibles para cubrir necesidades temporales o responder ante emergencias.",
     descripcionLarga:
       "Contamos con un amplio inventario de transformadores disponibles para alquiler temporal. Ya sea para proyectos de construcción, expansiones industriales, mantenimiento programado o emergencias, ofrecemos soluciones flexibles con entrega rápida, instalación incluida y soporte técnico 24/7.",
-    icon: "truck",
+    icon: "mobile-charging",
     beneficios: [
       "Disponibilidad inmediata",
       "Opciones flexibles de contrato",

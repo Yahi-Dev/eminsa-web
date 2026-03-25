@@ -199,7 +199,7 @@ export default function CalculadoraPage() {
                     <div key={index} className="flex items-center gap-4 p-3 bg-gray-50 rounded-xl">
                       <div className="flex-1">
                         <p className="font-medium text-gray-900">{load.name}</p>
-                        <p className="text-sm text-gray-500">{load.watts.toLocaleString()} W</p>
+                        <p className="text-sm text-gray-500">{load.watts.toLocaleString("en-US")} W</p>
                       </div>
                       <div className="flex items-center gap-2">
                         <button
@@ -323,7 +323,7 @@ export default function CalculadoraPage() {
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between py-2 border-b border-gray-100">
                     <span className="text-gray-600">{t("breakdown.totalLoad")}</span>
-                    <span className="font-semibold">{totalWatts.toLocaleString()} W</span>
+                    <span className="font-semibold">{totalWatts.toLocaleString("en-US")} W</span>
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-100">
                     <span className="text-gray-600">{t("breakdown.demandFactor")}</span>
@@ -331,7 +331,7 @@ export default function CalculadoraPage() {
                   </div>
                   <div className="flex justify-between py-2 border-b border-gray-100">
                     <span className="text-gray-600">{t("breakdown.adjustedLoad")}</span>
-                    <span className="font-semibold">{adjustedWatts.toLocaleString()} W</span>
+                    <span className="font-semibold">{adjustedWatts.toLocaleString("en-US")} W</span>
                   </div>
                   <div className="flex justify-between py-2">
                     <span className="text-gray-600">{t("breakdown.powerFactor")}</span>

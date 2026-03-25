@@ -1288,19 +1288,19 @@
       }
     },
     "repairServices": {
-      "bobinas": { "name": "Reparación y Reemplazo de Bobinas", "shortName": "Bobinas", "description": "Servicio especializado de reparación y reemplazo de bobinas dañadas o desgastadas.", "details": { "0": "Diagnóstico completo", "1": "Rebobinado con materiales de alta calidad", "2": "Reemplazo total cuando es necesario", "3": "Pruebas de aislamiento" } },
+      "bobinas": { "name": "Rebobinados", "shortName": "Rebobinados", "description": "Servicio especializado de reparación y reemplazo de bobinas dañadas o desgastadas.", "details": { "0": "Diagnóstico completo", "1": "Rebobinado con materiales de alta calidad", "2": "Reemplazo total cuando es necesario", "3": "Pruebas de aislamiento" } },
       "aceite": { "name": "Muestreo y Análisis de Aceite Dieléctrico", "shortName": "Análisis de Aceite", "description": "Análisis completo del aceite dieléctrico para evaluar el estado del transformador.", "details": { "0": "Muestreo profesional", "1": "Análisis físico-químico", "2": "Detección de gases (DGA)", "3": "Recomendaciones de mantenimiento" } },
       "juntas": { "name": "Reemplazo de Juntas", "shortName": "Juntas", "description": "Sustitución de juntas en superficies selladas para prevenir fugas.", "details": { "0": "Inspección de superficies", "1": "Juntas de alta calidad", "2": "Sellado hermético", "3": "Pruebas de presión" } },
       "componentes": { "name": "Sustitución de Componentes Eléctricos", "shortName": "Componentes", "description": "Reemplazo de componentes eléctricos dañados o deteriorados.", "details": { "0": "Bushings y boquillas", "1": "Indicadores de nivel", "2": "Válvulas de protección", "3": "Conectores y terminales" } },
-      "soldaduras": { "name": "Reparación de Soldaduras y Tanques", "shortName": "Soldaduras", "description": "Reparación de soldaduras y corrección de deformaciones en tanques.", "details": { "0": "Evaluación estructural", "1": "Soldadura certificada", "2": "Corrección de deformaciones", "3": "Pruebas de estanqueidad" } },
-      "filtrado": { "name": "Procesamiento y Filtrado de Aceite", "shortName": "Filtrado", "description": "Procesamiento y filtrado de aceite para restaurar propiedades dieléctricas.", "details": { "0": "Filtrado al vacío", "1": "Deshidratación", "2": "Desgasificación", "3": "Regeneración de aceite" } },
+      "soldaduras": { "name": "Reparación de Soldaduras y Tanques", "shortName": "Soldaduras", "description": "Reparación de soldaduras y corrección de fugas en tanques.", "details": { "0": "Evaluación estructural", "1": "Soldadura certificada", "2": "Corrección de deformaciones", "3": "Pruebas de estanqueidad" } },
+      "filtrado": { "name": "Cambio y Filtrado de Aceite", "shortName": "Cambio/Filtrado de Aceite", "description": "Cambio y filtrado de aceite para restaurar propiedades dieléctricas.", "details": { "0": "Filtrado al vacío", "1": "Deshidratación", "2": "Desgasificación", "3": "Regeneración de aceite" } },
       "pintura": { "name": "Repintado de Equipos", "shortName": "Pintura", "description": "Servicio de repintado industrial con acabados de alta durabilidad.", "details": { "0": "Preparación de superficie", "1": "Primer anticorrosivo", "2": "Pintura industrial", "3": "Acabados especiales" } },
       "especializados": { "name": "Servicios Especializados", "shortName": "Especializados", "description": "Otros servicios especializados según requerimiento del cliente.", "details": { "0": "Modificaciones de voltaje", "1": "Cambio de TAPs", "2": "Instalación de accesorios", "3": "Consultoría técnica" } }
     },
     "repairCenter": {
-      "name": "Centro de Reparación RST",
-      "location": "Santo Domingo, República Dominicana",
-      "description": "En nuestro taller en Santo Domingo podemos atender transformadores tipo pedestal, secos de media tensión y subestaciones de hasta 10 toneladas.",
+      "name": "Centro de Reparación EMINSA",
+      "location": "Av. Duarte, Km 22, Parque Industrial Duarte, Nave No. 6, Santo Domingo, República Dominicana",
+      "description": "En nuestro taller podemos atender transformadores tipo pedestal, secos de media tensión y subestaciones de hasta 10 toneladas.",
       "capabilities": {
         "0": { "type": "Transformadores Pedestal", "description": "Reparación completa de transformadores tipo pedestal", "capacity": "Todos los rangos" },
         "1": { "type": "Transformadores Secos MT", "description": "Servicio especializado para transformadores secos de media tensión", "capacity": "Hasta 3,000 kVA" },

@@ -316,7 +316,7 @@ export const services = [
     name: "Alquiler de Transformadores",
     shortName: "Alquiler",
     description: "Equipos disponibles para cubrir necesidades temporales o responder ante emergencias.",
-    icon: "truck",
+    icon: "mobile-charging",
     url: "/servicios/alquiler-transformadores",
     benefits: [
       "Disponibilidad inmediata",

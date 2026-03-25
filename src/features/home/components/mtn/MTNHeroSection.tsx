@@ -11,7 +11,7 @@ import MarqueeEyebrow from "@/components/shared/MarqueeEyebrow";
 // ─── Photos per product ────────────────────────────────────────────────────────
 const PRODUCT_PHOTOS = [
   "/fotos-eminsa/mtn/DSC07227.jpg",  // Tipo Poste
-  "/fotos-eminsa/mtn/DSC07223.jpg",  // Pad Mounted
+  "/fotos-eminsa/mtn/DSC07213.jpg",  // Pad Mounted
   "/fotos-eminsa/mtn/transformador-subestacion.png",  // Subestación
 ];
 
@@ -80,7 +80,8 @@ export default function MTNHeroSection() {
     },
   ];
 
-  const startTimeRef = useRef<number>(Date.now());
+  const startTimeRef = useRef<number>(0);
+  useEffect(() => { startTimeRef.current = Date.now(); }, []);
 
   const next = useCallback(() => {
     setActive((prev) => (prev + 1) % slides.length);

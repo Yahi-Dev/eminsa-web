@@ -79,7 +79,7 @@ export default function RecursoForm({ recurso, isEditing = false }: RecursoFormP
       });
       const data = await res.json();
       if (!res.ok || !data.success) {
-        setApiError(data.error ?? "Error al guardar el recurso");
+        setApiError(data.error ?? data.message ?? "Error al guardar el recurso");
         return;
       }
       router.push("/admin/recursos");

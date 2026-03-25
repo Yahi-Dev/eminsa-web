@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import {
@@ -558,15 +559,20 @@ function CotizacionesContent() {
           {/* Certifications */}
           <div className="mt-6 pt-6 border-t border-gray-100">
             <p className="text-sm text-gray-500 mb-3">{tm("cotizaciones.certifications")}</p>
-            <div className="flex gap-4">
-              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-xs font-bold text-gray-600">ISO 9001</span>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <Image src="/images/SelloAENORISO9001_NEG.png" alt="ISO 9001" width={36} height={36} className="object-contain shrink-0" />
+                <span className="text-xs font-semibold text-gray-700">ISO 9001:2015</span>
               </div>
-              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-xs font-bold text-gray-600">CIDET</span>
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <div className="w-9 h-9 bg-[#00269b]/10 rounded flex items-center justify-center shrink-0">
+                  <Shield size={18} className="text-[#00269b]" />
+                </div>
+                <span className="text-xs font-semibold text-gray-700">ANSI/IEEE C57 — Certificado por CIDET</span>
               </div>
-              <div className="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-xs font-bold text-gray-600">UL</span>
+              <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                <Image src="/certificados/ul-certified-logo.jpg" alt="UL" width={36} height={36} className="object-contain shrink-0" />
+                <span className="text-xs font-semibold text-gray-700">UL XPLH: Transformers, Distribution, Liquid-filled Type, Over 600 Volts</span>
               </div>
             </div>
           </div>

@@ -372,10 +372,10 @@ export const repairServices: RepairService[] = [
   {
     id: "bobinas",
     slug: "reparacion-bobinas",
-    name: "Reparación y Reemplazo de Bobinas",
-    shortName: "Bobinas",
+    name: "Rebobinados",
+    shortName: "Rebobinados",
     description: "Servicio especializado de reparación y reemplazo de bobinas dañadas o desgastadas.",
-    icon: "coil",
+    icon: "alert-triangle",
     details: ["Diagnóstico completo", "Rebobinado con materiales de alta calidad", "Reemplazo total cuando es necesario", "Pruebas de aislamiento"],
   },
   {
@@ -384,7 +384,7 @@ export const repairServices: RepairService[] = [
     name: "Muestreo y Análisis de Aceite Dieléctrico",
     shortName: "Análisis de Aceite",
     description: "Análisis completo del aceite dieléctrico para evaluar el estado del transformador.",
-    icon: "droplet",
+    icon: "test-tube",
     details: ["Muestreo profesional", "Análisis físico-químico", "Detección de gases (DGA)", "Recomendaciones de mantenimiento"],
   },
   {
@@ -410,17 +410,17 @@ export const repairServices: RepairService[] = [
     slug: "soldaduras-tanques",
     name: "Reparación de Soldaduras y Tanques",
     shortName: "Soldaduras",
-    description: "Reparación de soldaduras y corrección de deformaciones en tanques.",
+    description: "Reparación de soldaduras y corrección de fugas en tanques.",
     icon: "flame",
     details: ["Evaluación estructural", "Soldadura certificada", "Corrección de deformaciones", "Pruebas de estanqueidad"],
   },
   {
     id: "filtrado",
     slug: "filtrado-aceite",
-    name: "Procesamiento y Filtrado de Aceite",
-    shortName: "Filtrado",
-    description: "Procesamiento y filtrado de aceite para restaurar propiedades dieléctricas.",
-    icon: "filter",
+    name: "Cambio y Filtrado de Aceite",
+    shortName: "Cambio/Filtrado de Aceite",
+    description: "Cambio y filtrado de aceite para restaurar propiedades dieléctricas.",
+    icon: "droplet",
     details: ["Filtrado al vacío", "Deshidratación", "Desgasificación", "Regeneración de aceite"],
   },
   {
@@ -448,8 +448,8 @@ export const repairServices: RepairService[] = [
 // ============================================================================
 
 export const repairCenter: RepairCenter = {
-  name: "Centro de Reparación RST",
-  location: "Santo Domingo, República Dominicana",
+  name: "Centro de Reparación EMINSA",
+  location: "Av. Duarte, Km 22, Parque Industrial Duarte, Nave No. 6, Santo Domingo, República Dominicana",
   description: "En nuestro taller en Santo Domingo podemos atender transformadores tipo pedestal, secos de media tensión y subestaciones de hasta 10 toneladas.",
   capabilities: [
     { type: "Transformadores Pedestal", description: "Reparación completa de transformadores tipo pedestal", capacity: "Todos los rangos" },
@@ -625,7 +625,7 @@ export const testsPerformed: TestPerformed[] = [
 
 export const rentalInfo: RentalInfo = {
   title: "Alquiler de Transformadores",
-  description: "Obtenga energía a corto plazo con una unidad de alquiler con RST.",
+  description: "Obtenga energía a corto plazo con una unidad de alquiler con EMINSA.",
   phone: "809-560-7773",
   benefits: [
     { id: "disponibilidad", title: "Disponibilidad Inmediata", description: "Equipos listos para entrega rápida.", icon: "clock" },
@@ -653,7 +653,7 @@ export const etrysResources: EtrysResource[] = [
 
 export const aboutEtrys: AboutEtrys = {
   title: "¿Quiénes Somos?",
-  description: "En RST creemos que la verdadera excelencia no está solo en lo que hacemos, sino en cómo lo hacemos. Por más de 50 años hemos trabajado con un enfoque especializado en transformadores.",
+  description: "En EMINSA creemos que la verdadera excelencia no está solo en lo que hacemos, sino en cómo lo hacemos. Por más de 50 años hemos trabajado con un enfoque especializado en transformadores.",
   mission: "Brindar soluciones confiables y una atención que supere expectativas, actuando con transparencia y dedicación en cada paso.",
   vision: "Ser el referente líder en el Caribe para la reparación y remanufactura de transformadores.",
   position: "En la República Dominicana y el Caribe, nos hemos ganado el lugar de especialistas gracias a una pasión que se refleja en cada transformador que pasa por nuestras manos.",

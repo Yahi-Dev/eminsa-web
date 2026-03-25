@@ -111,7 +111,7 @@
       "iso9001": "Sistema de Gestión de Calidad certificado que garantiza procesos consistentes y mejora continua.",
       "iqnetName": "IQNET",
       "iqnet": "Red internacional de certificación que valida nuestros estándares a nivel global.",
-      "ansiName": "ANSI C57",
+      "ansiName": "ANSI/IEEE C57",
       "ansi": "Estándares americanos para transformadores",
       "ansiDetail": "Las normas ANSI/IEEE C57 establecen los requisitos técnicos de diseño, desempeño y pruebas para transformadores de distribución y potencia.",
       "doeName": "DOE-2016",
@@ -120,9 +120,9 @@
       "ulName": "UL Listed",
       "ul": "Seguridad eléctrica certificada",
       "ulDetail": "Certificación Underwriters Laboratories que garantiza la seguridad y conformidad de equipos eléctricos.",
-      "ieeeName": "IEEE C57",
-      "ieee": "Guías técnicas de transformadores",
-      "ieeeDetail": "Guías y recomendaciones del Institute of Electrical and Electronics Engineers para el diseño, operación y mantenimiento de transformadores.",
+      "iec60076Name": "IEC 60076",
+      "iec60076": "Estándar internacional para transformadores de potencia",
+      "iec60076Detail": "La norma IEC 60076 de la Comisión Electrotécnica Internacional establece los requisitos de diseño, fabricación, pruebas y puesta en servicio de transformadores de potencia hasta 765 kV, incluyendo tolerancias de impedancia, ensayos de elevación de temperatura y directrices de transporte e instalación.",
       "viewAll": "Ver Todas las Certificaciones"
     },
     "divisions": {
@@ -3123,8 +3123,8 @@
     },
     "repairServices": {
       "bobinas": {
-        "name": "Reparación y Reemplazo de Bobinas",
-        "shortName": "Bobinas",
+        "name": "Rebobinados",
+        "shortName": "Rebobinados",
         "description": "Servicio especializado de reparación y reemplazo de bobinas dañadas o desgastadas.",
         "details": {
           "0": "Diagnóstico completo",
@@ -3169,7 +3169,7 @@
       "soldaduras": {
         "name": "Reparación de Soldaduras y Tanques",
         "shortName": "Soldaduras",
-        "description": "Reparación de soldaduras y corrección de deformaciones en tanques.",
+        "description": "Reparación de soldaduras y corrección de fugas en tanques.",
         "details": {
           "0": "Evaluación estructural",
           "1": "Soldadura certificada",
@@ -3178,9 +3178,9 @@
         }
       },
       "filtrado": {
-        "name": "Procesamiento y Filtrado de Aceite",
-        "shortName": "Filtrado",
-        "description": "Procesamiento y filtrado de aceite para restaurar propiedades dieléctricas.",
+        "name": "Cambio y Filtrado de Aceite",
+        "shortName": "Cambio/Filtrado de Aceite",
+        "description": "Cambio y filtrado de aceite para restaurar propiedades dieléctricas.",
         "details": {
           "0": "Filtrado al vacío",
           "1": "Deshidratación",
@@ -3212,9 +3212,9 @@
       }
     },
     "repairCenter": {
-      "name": "Centro de Reparación RST",
-      "location": "Santo Domingo, República Dominicana",
-      "description": "En nuestro taller en Santo Domingo podemos atender transformadores tipo pedestal, secos de media tensión y subestaciones de hasta 10 toneladas.",
+      "name": "Centro de Reparación EMINSA",
+      "location": "Av. Duarte, Km 22, Parque Industrial Duarte, Nave No. 6, Santo Domingo, República Dominicana",
+      "description": "En nuestro taller podemos atender transformadores tipo pedestal, secos de media tensión y subestaciones de hasta 10 toneladas.",
       "capabilities": {
         "0": {
           "type": "Transformadores Pedestal",
@@ -4038,7 +4038,7 @@
         "3": { "value": "ANSI", "label": "Fabricado bajo estándar ANSI" }
       },
       "processBadge": "Proceso de Manufactura",
-      "processTitle": "9 etapas, 1 transformador confiable",
+      "processTitle": "9 Etapas, 1 Transformador Confiable",
       "processDescription": "Cada unidad pasa por un proceso estructurado, controlado y documentado con verificación de Plan de Control en cada estación, desde la materia prima hasta el etiquetado y despacho.",
       "steps": {
         "0": {
@@ -4215,8 +4215,8 @@
       "description": "Como división internacional de Grupo Eminsa, ofrecemos acceso directo a las mejores marcas del sector eléctrico con respaldo local."
     },
     "cta": {
-      "title": "¿Necesita Equipos Eléctricos Internacionales?",
-      "description": "Solicite una cotización y obtenga acceso a las mejores marcas del sector eléctrico con asesoría especializada y soporte técnico garantizado.",
+      "title": "Proyectos Internacionales y Confotur",
+      "description": "Si estás desarrollando un proyecto fuera de la República Dominicana o necesitas acogerte a Confotur con exención de arancel, EIC está orientada a prestarte el apoyo que necesitas. Asesoría especializada y soporte técnico garantizado.",
       "requestQuote": "Solicitar Cotización"
     },
     "layout": {
@@ -4318,11 +4318,11 @@
     "cotizaciones": {
       "breadcrumb": "Cotizaciones",
       "heroTitle": "Solicitar Cotización Internacional",
-      "heroDescription": "Complete el formulario y reciba un presupuesto personalizado para productos eléctricos internacionales. Respondemos en menos de 30 minutos durante horario laboral.",
+      "heroDescription": "Complete el formulario y reciba un cotización personalizado para productos eléctricos internacionales. Respondemos en menos de 30 minutos durante horario laboral.",
       "successTitle": "¡Cotización enviada exitosamente!",
       "referenceNumber": "Número de Referencia",
       "saveCode": "Guarde este código para seguimiento",
-      "successDescription": "Hemos recibido su solicitud de cotización. Nuestro equipo de comercio internacional le contactará en breve con un presupuesto personalizado.",
+      "successDescription": "Hemos recibido su solicitud de cotización. Nuestro equipo de comercio internacional le contactará en breve con un cotización personalizado.",
       "estimatedResponseTime": "Tiempo de respuesta estimado:",
       "responseTimeValue": "Menos de 24 horas hábiles",
       "backToEic": "Volver a EIC",
@@ -4515,8 +4515,8 @@
       "viewDetail": "Ver detalle →"
     },
     "whyRst": {
-      "badge": "¿Por qué RST?",
-      "title": "¿Cuál es la Ventaja RST?"
+      "badge": "¿Por qué Nosotros?",
+      "title": "¿Cuál es la Ventaja de Nosotros?"
     },
     "quoteForm": {
       "title": "Solicite una Cotización",
@@ -4529,7 +4529,7 @@
     "rental": {
       "badge": "Solución Temporal",
       "title": "¿Necesita Energía Temporalmente?",
-      "description": "Obtenga energía a corto plazo con una unidad de alquiler RST. Equipos certificados, disponibilidad inmediata y soporte técnico 24/7.",
+      "description": "Obtenga energía a corto plazo con una unidad de alquiler EMINSA. Equipos certificados, disponibilidad inmediata y soporte técnico 24/7.",
       "moreInfo": "Más Información",
       "callNow": "Llamar Ahora"
     },
@@ -4680,7 +4680,7 @@
       "warrantyItem3": "Soporte técnico incluido",
       "warrantyItem4": "Respuesta rápida ante cualquier incidencia",
       "diagnosisTitle": "Solicite un Diagnóstico",
-      "diagnosisDescription": "Nuestros especialistas evaluarán su equipo y le proporcionarán un presupuesto detallado sin compromiso.",
+      "diagnosisDescription": "Nuestros especialistas evaluarán su equipo y le proporcionarán un cotización detallado sin compromiso.",
       "requestDiagnosis": "Solicitar Diagnóstico",
       "responseTime": "Respuesta en menos de 30 minutos en horario laboral",
       "ctaTitle": "¿Necesita reparar su transformador?",
@@ -4772,10 +4772,10 @@
     "alquilerPage": {
       "breadcrumb": "Alquiler",
       "heroBadge": "Solución Temporal",
-      "heroDescription": "¿Necesita energía temporalmente? Obtenga energía a corto plazo con una unidad de alquiler RST. Equipos certificados, disponibilidad inmediata y soporte técnico 24/7.",
+      "heroDescription": "¿Necesita energía temporalmente? Obtenga energía a corto plazo con una unidad de alquiler EMINSA. Equipos certificados, disponibilidad inmediata y soporte técnico 24/7.",
       "immediateAvailability": "Disponibilidad Inmediata",
       "readyForDelivery": "Equipos listos para entrega",
-      "benefitsTitle": "¿Por qué Alquilar con RST?",
+      "benefitsTitle": "¿Por qué Alquilar con EMINSA?",
       "benefitsDescription": "Ofrecemos soluciones de alquiler flexibles y confiables para satisfacer sus necesidades temporales de energía.",
       "useCasesBadge": "Casos de Uso",
       "useCasesTitle": "¿Cuándo Necesita Alquilar?",
@@ -4783,18 +4783,19 @@
       "construction": "Construcción",
       "events": "Eventos",
       "industry": "Industria",
+      "kvaCalculator": "Calculadora de KVA",
       "processTitle": "Proceso de Alquiler",
-      "processDescription": "Alquilar un transformador con RST es rápido y sencillo.",
+      "processDescription": "Alquilar un transformador con EMINSA es rápido y sencillo.",
       "step1Title": "Solicitud",
       "step1Desc": "Complete el formulario o llámenos",
       "step2Title": "Cotización",
-      "step2Desc": "Reciba un presupuesto en 30 min",
+      "step2Desc": "Reciba un cotización en 30 min",
       "step3Title": "Instalación",
       "step3Desc": "Técnicos expertos instalan el equipo",
       "step4Title": "Soporte",
       "step4Desc": "Asistencia técnica 24/7",
-      "formTitle": "Solicitar Presupuesto",
-      "formDescription": "Complete el formulario y le responderemos con un presupuesto personalizado en menos de 30 minutos durante horario laboral.",
+      "formTitle": "Solicitar Cotización",
+      "formDescription": "Complete el formulario y le responderemos con un cotización personalizado en menos de 30 minutos durante horario laboral.",
       "fullName": "Nombre Completo",
       "namePlaceholder": "Su nombre",
       "company": "Empresa",
@@ -4812,7 +4813,7 @@
       "messageLabel": "Mensaje / Detalles Adicionales",
       "messagePlaceholder": "Describa su proyecto o necesidades específicas...",
       "sending": "Enviando...",
-      "submitBudget": "Solicitar Presupuesto",
+      "submitBudget": "Solicitar Cotización",
       "needImmediateResponse": "¿Necesita Respuesta Inmediata?",
       "callDirectly": "Llámenos directamente para una atención más rápida.",
       "availableEquipment": "Equipos Disponibles",
@@ -4822,7 +4823,7 @@
       "ctaDescription": "Contáctenos hoy y obtenga su transformador de alquiler rápidamente.",
       "callNow": "Llamar Ahora",
       "successTitle": "¡Solicitud Enviada!",
-      "successDescription": "Hemos recibido su solicitud de alquiler. Nuestro equipo le contactará en breve con un presupuesto personalizado.",
+      "successDescription": "Hemos recibido su solicitud de alquiler. Nuestro equipo le contactará en breve con un cotización personalizado.",
       "backToEtrys": "Volver a RST",
       "goHome": "Ir al Inicio",
       "phoneLabel": "Teléfono",
@@ -4852,11 +4853,11 @@
     "cotizacionesPage": {
       "breadcrumb": "Cotizaciones",
       "heroTitle": "Solicitar Cotización",
-      "heroDescription": "Complete el formulario y reciba un presupuesto personalizado en menos de 30 minutos durante horario laboral.",
+      "heroDescription": "Complete el formulario y reciba un cotización personalizado en menos de 30 minutos durante horario laboral.",
       "successTitle": "¡Solicitud Enviada!",
       "referenceNumber": "Número de Referencia",
       "saveCode": "Guarde este código para dar seguimiento a su solicitud",
-      "successDescription": "Hemos recibido su solicitud de cotización. Nuestro equipo le contactará en breve con un presupuesto personalizado.",
+      "successDescription": "Hemos recibido su solicitud de cotización. Nuestro equipo le contactará en breve con un cotización personalizado.",
       "estimatedResponseTime": "Tiempo de respuesta estimado:",
       "lessThan30Min": "Menos de 30 minutos en horario laboral",
       "backToEtrys": "Volver a RST",

@@ -111,7 +111,7 @@
       "iso9001": "Certified Quality Management System ensuring consistent processes and continuous improvement.",
       "iqnetName": "IQNET",
       "iqnet": "International certification network validating our standards at a global level.",
-      "ansiName": "ANSI C57",
+      "ansiName": "ANSI/IEEE C57",
       "ansi": "American transformer standards",
       "ansiDetail": "ANSI/IEEE C57 standards establish the technical requirements for design, performance, and testing of distribution and power transformers.",
       "doeName": "DOE-2016",
@@ -120,9 +120,9 @@
       "ulName": "UL Listed",
       "ul": "Certified electrical safety",
       "ulDetail": "Underwriters Laboratories certification ensuring the safety and compliance of electrical equipment.",
-      "ieeeName": "IEEE C57",
-      "ieee": "Transformer technical guides",
-      "ieeeDetail": "Institute of Electrical and Electronics Engineers guidelines and recommendations for transformer design, operation, and maintenance.",
+      "iec60076Name": "IEC 60076",
+      "iec60076": "International standard for power transformers",
+      "iec60076Detail": "The IEC 60076 standard from the International Electrotechnical Commission establishes requirements for the design, manufacturing, testing, and commissioning of power transformers up to 765 kV, including impedance tolerances, temperature rise tests, and transportation and installation guidelines.",
       "viewAll": "View All Certifications"
     },
     "divisions": {
@@ -3123,8 +3123,8 @@
     },
     "repairServices": {
       "bobinas": {
-        "name": "Coil Repair and Replacement",
-        "shortName": "Coils",
+        "name": "Rewinding",
+        "shortName": "Rewinding",
         "description": "Specialized repair and replacement of damaged coils.",
         "details": {
           "0": "Complete diagnosis",
@@ -3169,7 +3169,7 @@
       "soldaduras": {
         "name": "Welding and Tank Repair",
         "shortName": "Welding",
-        "description": "Welding repair and tank deformation correction.",
+        "description": "Welding repair and tank leak correction.",
         "details": {
           "0": "Structural evaluation",
           "1": "Certified welding",
@@ -3178,9 +3178,9 @@
         }
       },
       "filtrado": {
-        "name": "Oil Processing and Filtering",
-        "shortName": "Filtering",
-        "description": "Oil processing to restore dielectric properties.",
+        "name": "Oil Change and Filtering",
+        "shortName": "Oil Change/Filtering",
+        "description": "Oil change and filtering to restore dielectric properties.",
         "details": {
           "0": "Vacuum filtering",
           "1": "Dehydration",
@@ -3212,9 +3212,9 @@
       }
     },
     "repairCenter": {
-      "name": "RST Repair Center",
-      "location": "Santo Domingo, Dominican Republic",
-      "description": "At our workshop in Santo Domingo, we service pedestal-type transformers, MV dry-type transformers, and substations up to 10 tons.",
+      "name": "EMINSA Repair Center",
+      "location": "Av. Duarte, Km 22, Parque Industrial Duarte, Nave No. 6, Santo Domingo, Dominican Republic",
+      "description": "At our workshop, we service pedestal-type transformers, MV dry-type transformers, and substations up to 10 tons.",
       "capabilities": {
         "0": {
           "type": "Pedestal Transformers",
@@ -4216,8 +4216,8 @@
       "description": "As the international division of Grupo Eminsa, we offer direct access to the best brands in the electrical sector with local support."
     },
     "cta": {
-      "title": "Need International Electrical Equipment?",
-      "description": "Request a quote and gain access to the best brands in the electrical sector with specialized consulting and guaranteed technical support.",
+      "title": "International Projects & Confotur",
+      "description": "If you're developing a project outside the Dominican Republic or need to benefit from Confotur with tariff exemption, EIC is ready to provide the support you need. Specialized consulting and guaranteed technical support.",
       "requestQuote": "Request a Quote"
     },
     "layout": {
@@ -4516,8 +4516,8 @@
       "viewDetail": "View detail →"
     },
     "whyRst": {
-      "badge": "Why RST?",
-      "title": "What is the RST Advantage?"
+      "badge": "Why Us?",
+      "title": "What is the EMINSA Advantage?"
     },
     "quoteForm": {
       "title": "Request a Quote",
@@ -4530,7 +4530,7 @@
     "rental": {
       "badge": "Temporary Solution",
       "title": "Need Temporary Power?",
-      "description": "Get short-term power with an RST rental unit. Certified equipment, immediate availability, and 24/7 technical support.",
+      "description": "Get short-term power with an EMINSA rental unit. Certified equipment, immediate availability, and 24/7 technical support.",
       "moreInfo": "More Information",
       "callNow": "Call Now"
     },
@@ -4773,10 +4773,10 @@
     "alquilerPage": {
       "breadcrumb": "Rental",
       "heroBadge": "Temporary Solution",
-      "heroDescription": "Need temporary power? Get short-term power with an RST rental unit. Certified equipment, immediate availability, and 24/7 technical support.",
+      "heroDescription": "Need temporary power? Get short-term power with an EMINSA rental unit. Certified equipment, immediate availability, and 24/7 technical support.",
       "immediateAvailability": "Immediate Availability",
       "readyForDelivery": "Equipment ready for delivery",
-      "benefitsTitle": "Why Rent with RST?",
+      "benefitsTitle": "Why Rent with EMINSA?",
       "benefitsDescription": "We offer flexible and reliable rental solutions to meet your temporary power needs.",
       "useCasesBadge": "Use Cases",
       "useCasesTitle": "When Do You Need to Rent?",
@@ -4784,8 +4784,9 @@
       "construction": "Construction",
       "events": "Events",
       "industry": "Industry",
+      "kvaCalculator": "KVA Calculator",
       "processTitle": "Rental Process",
-      "processDescription": "Renting a transformer with RST is quick and easy.",
+      "processDescription": "Renting a transformer with EMINSA is quick and easy.",
       "step1Title": "Request",
       "step1Desc": "Complete the form or call us",
       "step2Title": "Quote",
