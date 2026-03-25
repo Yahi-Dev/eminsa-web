@@ -203,7 +203,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="container-eminsa py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pr-20 md:pr-24">
             <p className="text-sm text-center md:text-left">
               <span className="text-white">© {currentYear} GRUPO EMINSA</span>
               <span className="text-white/60">. {t('bottomBar.rights')}</span>
@@ -218,7 +218,7 @@ export default function Footer() {
               </Link>
               <p className="text-sm text-center md:text-left">
                 <span className="text-white/60">{t('bottomBar.websiteBy')} </span>
-                <Link href="https://www.ampirics.com/" className="text-white/60 text-sm hover:text-white transition-colors">
+                <Link href="https://www.ampirics.com/" className="text-white/80 text-sm font-medium hover:text-white transition-colors">
                   AMPIRICS
                 </Link>
               </p>
