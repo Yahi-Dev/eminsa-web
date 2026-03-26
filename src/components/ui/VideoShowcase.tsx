@@ -24,6 +24,7 @@ export default function VideoShowcase({
 }: VideoShowcaseProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const fadeRef = useRef<number | null>(null);
   const isInView = useInView(containerRef, { amount: 0.4 });
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -31,11 +32,46 @@ export default function VideoShowcase({
     const video = videoRef.current;
     if (!video) return;
 
-    if (isInView) {
-      video.play().catch(() => {});
-    } else {
-      video.pause();
+    // Clear any running fade
+    if (fadeRef.current !== null) {
+      cancelAnimationFrame(fadeRef.current);
+      fadeRef.current = null;
     }
+
+    if (isInView) {
+      video.volume = 0;
+      video.play().catch(() => {});
+      // Fade volume in over ~1.5s
+      const fadeIn = () => {
+        if (video.volume < 0.95) {
+          video.volume = Math.min(1, video.volume + 0.02);
+          fadeRef.current = requestAnimationFrame(fadeIn);
+        } else {
+          video.volume = 1;
+          fadeRef.current = null;
+        }
+      };
+      fadeRef.current = requestAnimationFrame(fadeIn);
+    } else {
+      // Fade volume out over ~1s then pause
+      const fadeOut = () => {
+        if (video.volume > 0.05) {
+          video.volume = Math.max(0, video.volume - 0.03);
+          fadeRef.current = requestAnimationFrame(fadeOut);
+        } else {
+          video.volume = 0;
+          video.pause();
+          fadeRef.current = null;
+        }
+      };
+      fadeRef.current = requestAnimationFrame(fadeOut);
+    }
+
+    return () => {
+      if (fadeRef.current !== null) {
+        cancelAnimationFrame(fadeRef.current);
+      }
+    };
   }, [isInView]);
 
   const isDark = variant === "dark";
