@@ -42,6 +42,17 @@ export default function ResetPasswordForm() {
       return;
     }
 
+    const hasUpper = /[A-Z]/.test(password);
+    const hasLower = /[a-z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    const complexity = [hasUpper, hasLower, hasNumber, hasSpecial].filter(Boolean).length;
+
+    if (complexity < 3) {
+      setError("La contraseña debe incluir al menos 3 de: mayúsculas, minúsculas, números y caracteres especiales.");
+      return;
+    }
+
     if (!token) {
       setError(
         "Enlace inválido o expirado. Solicita un nuevo enlace de recuperación."

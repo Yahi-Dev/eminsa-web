@@ -10,6 +10,11 @@ import {
 } from '@/utils/email-templates';
 import { buildCotizacionEmails } from '@/utils/cotizacion-templates';
 
+/** Strip CRLF and control characters to prevent email header injection */
+function sanitizeHeader(value: string): string {
+  return value.replace(/[\r\n\x00-\x1f]/g, '').trim();
+}
+
 interface EmailServiceOptions {
   appName?: string;
   logoUrl?: string;
@@ -60,9 +65,11 @@ export async function sendAdminEmail(
   const recipients = adminEmails.split(',').map(email => email.trim());
   
   // Determinar asunto según tipo de consulta
-  let subject = `📧 Nueva Solicitud - ${formData.nombre}`;
-  if (formData.tipoConsulta && formData.categoria) {
-    subject = `📋 ${formData.categoria} - ${formData.nombre} (${formData.tipoConsulta === 'productos' ? 'Productos' : 'Servicios'})`;
+  const nombre = sanitizeHeader(formData.nombre);
+  const categoria = sanitizeHeader(formData.categoria || '');
+  let subject = `📧 Nueva Solicitud - ${nombre}`;
+  if (formData.tipoConsulta && categoria) {
+    subject = `📋 ${categoria} - ${nombre} (${formData.tipoConsulta === 'productos' ? 'Productos' : 'Servicios'})`;
   }
   
   const html = adminNotificationTemplate(formData, ipAddress, mergedOptions);
@@ -183,7 +190,7 @@ export async function sendCotizacionEmails(
     }),
     sendEmail({
       to: recipients,
-      subject: `📋 [${data.codigo}]${data.urgente ? ' ⚠️ URGENTE' : ''} ${data.nombre}${data.empresa ? ` – ${data.empresa}` : ''} · ${unidadLabel}`,
+      subject: sanitizeHeader(`📋 [${data.codigo}]${data.urgente ? ' ⚠️ URGENTE' : ''} ${data.nombre}${data.empresa ? ` – ${data.empresa}` : ''} · ${unidadLabel}`),
       html: adminHtml,
       text: adminText,
       cc: process.env.SALES_EMAIL?.split(',').map((e) => e.trim()),

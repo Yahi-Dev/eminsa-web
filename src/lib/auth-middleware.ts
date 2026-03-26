@@ -37,8 +37,8 @@ export async function requireAdminRole(_request: NextRequest) {
     };
   }
 
-  const role = (session.user as { role?: string }).role;
-  if (role !== "admin") {
+  const role = (session.user as { role?: unknown }).role;
+  if (typeof role !== "string" || role !== "admin") {
     return {
       error: NextResponse.json(
         { success: false, message: "Acceso denegado: se requiere rol de administrador" },

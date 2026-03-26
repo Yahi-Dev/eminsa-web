@@ -10,17 +10,39 @@ import {
 import { sendContactEmails } from '@/lib/email/email-service';
 import { ApiResponse } from '@/features/contact';
 
+// ── Rate limiting (same pattern as /api/cotizaciones) ──
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_MAX = 5;
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  // cleanup expired
+  for (const [k, v] of rateLimitMap.entries()) {
+    if (now > v.resetAt) rateLimitMap.delete(k);
+  }
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return true;
+  }
+  if (entry.count >= RATE_LIMIT_MAX) return false;
+  entry.count += 1;
+  return true;
+}
+
 /**
  * POST /api/contact
  * Endpoint para procesar solicitudes de contacto
  */
 export async function POST(request: NextRequest): Promise<NextResponse<ApiResponse>> {
   try {
-    // Validar que sea una solicitud POST
-    if (request.method !== 'POST') {
+    // Rate limit check
+    const clientIpForLimit = getClientIp(request.headers) || 'unknown';
+    if (!checkRateLimit(clientIpForLimit)) {
       return NextResponse.json(
-        createErrorResponse('Método no permitido'),
-        { status: 405 }
+        createErrorResponse('Demasiadas solicitudes. Intenta de nuevo en unos minutos.'),
+        { status: 429 }
       );
     }
 
@@ -60,7 +82,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
     try {
       await sendContactEmails(validatedData, clientIp);
     } catch (emailError) {
-      console.error('Error sending emails:', emailError);
+      console.error('Contact email send failed:', process.env.NODE_ENV === 'development' ? emailError : '');
 
       // No exponemos los detalles del error al cliente por seguridad
       return NextResponse.json(
@@ -79,7 +101,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       { status: 200 }
     );
   } catch (error) {
-    console.error('Unexpected error in contact API:', error);
+    console.error('Contact API error:', process.env.NODE_ENV === 'development' ? error : '');
 
     return NextResponse.json(
       createErrorResponse(

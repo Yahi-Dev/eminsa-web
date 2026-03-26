@@ -29,7 +29,7 @@ export async function sendEmail({ to, subject, text, html, cc, bcc }: EmailOptio
         pass: process.env.MAIL_PASSWORD,
       },
       tls: {
-        rejectUnauthorized: false
+        rejectUnauthorized: process.env.NODE_ENV === 'production'
       }
     };
 
@@ -94,7 +94,7 @@ export async function verifySMTPConnection(): Promise<boolean> {
         pass: process.env.MAIL_PASSWORD,
       } : undefined,
       tls: {
-        rejectUnauthorized: false
+        rejectUnauthorized: process.env.NODE_ENV === 'production'
       }
     });
 

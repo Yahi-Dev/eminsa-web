@@ -50,16 +50,23 @@ function checkRateLimit(ip: string): boolean {
   return true; // allowed
 }
 
-// Only trust x-forwarded-for in production behind a known proxy (Vercel/Nginx sets this)
-// Validate the IP looks like an actual IP address before using it for rate limiting
-const IP_REGEX = /^[\d.:a-fA-F]+$/;
+// Strict IP validation for rate limiting
+const IPV4_REGEX = /^(\d{1,3}\.){3}\d{1,3}$/;
+const IPV6_REGEX = /^([0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}$/;
+
+function isValidIp(ip: string): boolean {
+  if (IPV4_REGEX.test(ip)) {
+    return ip.split('.').every(n => parseInt(n) <= 255);
+  }
+  return IPV6_REGEX.test(ip);
+}
 
 function getClientIp(headers: Headers): string {
   const forwarded = headers.get('x-forwarded-for')?.split(',')[0].trim() ?? '';
-  if (forwarded && IP_REGEX.test(forwarded)) return forwarded;
+  if (forwarded && isValidIp(forwarded)) return forwarded;
 
   const realIp = headers.get('x-real-ip')?.trim() ?? '';
-  if (realIp && IP_REGEX.test(realIp)) return realIp;
+  if (realIp && isValidIp(realIp)) return realIp;
 
   return 'unknown';
 }
