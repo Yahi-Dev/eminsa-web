@@ -27,6 +27,11 @@ const securityHeaders = [
     key: "Strict-Transport-Security",
     value: "max-age=31536000; includeSubDomains",
   },
+  // Legacy XSS protection for older browsers
+  {
+    key: "X-XSS-Protection",
+    value: "1; mode=block",
+  },
   // Content-Security-Policy
   {
     key: "Content-Security-Policy",
@@ -61,6 +66,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   images: {
     // Serve AVIF first (50% smaller than WebP), fallback to WebP, then original
     formats: ["image/avif", "image/webp"],

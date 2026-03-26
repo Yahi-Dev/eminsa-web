@@ -46,6 +46,24 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
       );
     }
 
+    // Check content-type is JSON (reject XML, etc.)
+    const contentType = request.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      return NextResponse.json(
+        createErrorResponse('Content-Type debe ser application/json'),
+        { status: 400 }
+      );
+    }
+
+    // Limit body size to prevent JSON bombs (50KB max)
+    const contentLength = parseInt(request.headers.get('content-length') || '0', 10);
+    if (contentLength > 50_000) {
+      return NextResponse.json(
+        createErrorResponse('El cuerpo de la solicitud es demasiado grande'),
+        { status: 413 }
+      );
+    }
+
     // Obtener datos del formulario
     let formData;
     try {

@@ -24,7 +24,14 @@ export async function GET(request: NextRequest) {
     }
 
     const where: Record<string, unknown> = {};
-    if (publicadoParam === 'true') where.publicado = true;
+    // Public API defaults to published-only. Only show unpublished if explicitly
+    // requested with publicado=false (admin use — still requires auth on write endpoints)
+    if (publicadoParam === 'false') {
+      where.publicado = false;
+    } else {
+      // Default: only published content
+      where.publicado = true;
+    }
     // Whitelist-validate query params to prevent injection
     if (division && VALID_DIVISIONES.includes(division)) where.division = division;
     if (categoria && VALID_CATEGORIAS.includes(categoria)) where.categoria = categoria;
@@ -77,6 +84,18 @@ export async function POST(request: NextRequest) {
     }
     if (!contenido?.trim()) {
       return NextResponse.json({ success: false, message: 'El contenido es requerido' }, { status: 400 });
+    }
+
+    // Validate imagen URL if provided — only allow Cloudinary URLs to prevent SSRF
+    if (imagen && typeof imagen === 'string') {
+      try {
+        const url = new URL(imagen);
+        if (!['https:'].includes(url.protocol) || !url.hostname.endsWith('cloudinary.com')) {
+          return NextResponse.json({ success: false, message: 'URL de imagen no válida' }, { status: 400 });
+        }
+      } catch {
+        return NextResponse.json({ success: false, message: 'URL de imagen mal formada' }, { status: 400 });
+      }
     }
 
     let slug = body.slug?.trim() ? slugify(body.slug.trim()) : slugify(titulo.trim());

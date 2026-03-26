@@ -83,14 +83,21 @@ async function generateCodigo(unidad: UnidadType): Promise<string> {
   const yearMonth = `${yy}${mm}`;
   const prefix = `${unidad}-${yearMonth}`;
 
-  const count = await prisma.cotizacion.count({
-    where: {
-      codigo: { startsWith: prefix },
-    },
+  // Find the highest existing sequence number to avoid race condition duplicates
+  const latest = await prisma.cotizacion.findFirst({
+    where: { codigo: { startsWith: prefix } },
+    orderBy: { codigo: 'desc' },
+    select: { codigo: true },
   });
 
-  const seq = String(count + 1).padStart(3, '0');
-  return `${prefix}-${seq}`;
+  let nextSeq = 1;
+  if (latest?.codigo) {
+    const parts = latest.codigo.split('-');
+    const lastSeq = parseInt(parts[parts.length - 1], 10);
+    if (Number.isFinite(lastSeq)) nextSeq = lastSeq + 1;
+  }
+
+  return `${prefix}-${String(nextSeq).padStart(3, '0')}`;
 }
 
 export async function POST(request: NextRequest) {

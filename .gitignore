@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+pentest-advanced.sh
 
 # next.js
 /.next/

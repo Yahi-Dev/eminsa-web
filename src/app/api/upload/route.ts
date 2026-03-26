@@ -24,6 +24,18 @@ const VALID_MIME_TYPES = new Set([
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 ]);
 
+const VALID_EXTENSIONS = new Set([
+  ".jpg", ".jpeg", ".png", ".gif", ".webp", ".svg",
+  ".pdf", ".doc", ".docx", ".xls", ".xlsx",
+]);
+
+const DANGEROUS_EXTENSIONS = new Set([
+  ".php", ".phtml", ".php3", ".php4", ".php5",
+  ".exe", ".bat", ".cmd", ".sh", ".bash",
+  ".js", ".jsp", ".asp", ".aspx", ".cgi",
+  ".py", ".rb", ".pl",
+]);
+
 export async function POST(request: NextRequest) {
   const auth = await requireAdminRole(request);
   if ("error" in auth) return auth.error;
@@ -53,6 +65,25 @@ export async function POST(request: NextRequest) {
       rawResourceType && VALID_RESOURCE_TYPES.includes(rawResourceType as ResourceType)
         ? (rawResourceType as ResourceType)
         : "auto";
+
+    // Validate file extension (block dangerous files and double extensions)
+    const fileName = file.name?.toLowerCase() || "";
+    const allExtensions = fileName.match(/\.\w+/g) || [];
+    const lastExt = allExtensions[allExtensions.length - 1] || "";
+
+    if (allExtensions.some(ext => DANGEROUS_EXTENSIONS.has(ext))) {
+      return NextResponse.json(
+        { success: false, message: "Tipo de archivo no permitido" },
+        { status: 400 }
+      );
+    }
+
+    if (lastExt && !VALID_EXTENSIONS.has(lastExt)) {
+      return NextResponse.json(
+        { success: false, message: "Extensión de archivo no permitida" },
+        { status: 400 }
+      );
+    }
 
     // Validate MIME type
     if (file.type && !VALID_MIME_TYPES.has(file.type)) {
