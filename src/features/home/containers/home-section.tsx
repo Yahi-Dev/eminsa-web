@@ -37,7 +37,7 @@ export default function HomeSection() {
       <ServicesSection />
 
       {/* 7. Videos — showcase de divisiones */}
-      <VideoShowcaseSection />
+      {/* <VideoShowcaseSection /> */}
 
       {/* 8. Clientes — prueba social con logos */}
       <ClientesSection />
