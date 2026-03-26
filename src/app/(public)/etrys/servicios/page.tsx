@@ -219,7 +219,7 @@ export default function EtrysServiciosPage() {
               {/* Top right - technician detail */}
               <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
-                  src={repairCenter.images[1]}
+                  src="/images/etrys/centro/Screenshot 2026-03-26 072402.png"
                   alt={t("altComponents")}
                   fill
                   sizes="100vw"
@@ -229,7 +229,7 @@ export default function EtrysServiciosPage() {
               {/* Middle right - test lab */}
               <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
-                  src={repairCenter.images[2]}
+                  src={repairCenter.images[3]}
                   alt={t("altLabTesting")}
                   fill
                   sizes="100vw"
@@ -239,7 +239,7 @@ export default function EtrysServiciosPage() {
               {/* Bottom left - plant overview */}
               <div className="relative col-span-2 row-span-1 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
-                  src="/images/etrys/centro/Screenshot 2026-03-26 072402.png"
+                  src={repairCenter.images[4]}
                   alt={t("altCoils")}
                   fill
                   sizes="100vw"
@@ -249,7 +249,7 @@ export default function EtrysServiciosPage() {
               {/* Bottom center - measurement */}
               <div className="relative col-span-2 row-span-1 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
-                  src={repairCenter.images[4]}
+                  src={repairCenter.images[1]}
                   alt={t("altQuality")}
                   fill
                   sizes="100vw"
