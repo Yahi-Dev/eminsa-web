@@ -28,6 +28,7 @@ import CertificationsTabSelector from "@/features/home/components/mtn/Certificat
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { useTranslations } from "next-intl";
+import VideoShowcase from "@/components/ui/VideoShowcase";
 
 const productPhotos: Record<string, string> = {
   "tipo-poste": "/fotos-eminsa/mtn/DSC07227.jpg",
@@ -86,6 +87,7 @@ const fadeIn = {
 export default function MTNPageContent() {
   const t = useTranslations("mtnPage");
   const tc = useTranslations("mtnConfig");
+  const tv = useTranslations("videos.mtn");
 
   // Hero photo cycling — one slot updates every 2.5s, no duplicates across slots
   const [heroSlots, setHeroSlots] = useState<number[]>(() =>
@@ -404,6 +406,16 @@ export default function MTNPageContent() {
           ))}
         </div>
       </section>
+
+      {/* Video de Manufactura */}
+      <VideoShowcase
+        src="/video/mtn.mp4"
+        subtitle={tv("subtitle")}
+        title={tv("title")}
+        description={tv("description")}
+        variant="dark"
+        textPosition="side"
+      />
 
       {/* Divider */}
       <div className="container-eminsa"><div className="h-px bg-gray-200" /></div>

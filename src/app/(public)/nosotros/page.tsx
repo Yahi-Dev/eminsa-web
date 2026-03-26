@@ -38,6 +38,7 @@ import {
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { useTranslations } from "next-intl";
+import VideoShowcase from "@/components/ui/VideoShowcase";
 
 const valueIcons: { [key: string]: React.ElementType } = {
   award: Award,
@@ -56,6 +57,7 @@ const divisionIcons: { [key: string]: React.ElementType } = {
 export default function NosotrosPage() {
   const t = useTranslations("pages.nosotros");
   const tc = useTranslations("eminsaConfig");
+  const tv = useTranslations("videos.nosotros");
   const [selectedMilestone, setSelectedMilestone] = useState<typeof eminsaMilestones[0] | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -466,6 +468,16 @@ export default function NosotrosPage() {
           ))}
         </div>
       </section>
+
+      {/* Video Nosotros */}
+      <VideoShowcase
+        src="/video/nosotros.mp4"
+        subtitle={tv("subtitle")}
+        title={tv("title")}
+        description={tv("description")}
+        variant="dark"
+        textPosition="side"
+      />
 
       {/* Team */}
       <section className="py-16 lg:py-24 bg-white">

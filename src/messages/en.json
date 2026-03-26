@@ -5635,5 +5635,32 @@
     "servicios": "Services",
     "goHome": "Go to home",
     "contactWhatsapp": "Contact via WhatsApp"
+  },
+  "videos": {
+    "mtn": {
+      "subtitle": "Manufacturing Process",
+      "title": "Excellence in Every Transformer",
+      "description": "Discover our world-class manufacturing process, where every transformer is built with the highest standards of quality and precision."
+    },
+    "rst": {
+      "subtitle": "Repair Center",
+      "title": "Professional Transformer Restoration",
+      "description": "Our repair center features cutting-edge technology and a specialized team to restore transformers to peak performance."
+    },
+    "servicios": {
+      "subtitle": "Services in Action",
+      "title": "Comprehensive Field and Workshop Solutions",
+      "description": "From preventive maintenance to complex repairs, our technical team is ready to address any electrical need."
+    },
+    "nosotros": {
+      "subtitle": "Our People",
+      "title": "The Team Behind EMINSA",
+      "description": "Over 20 years of experience backed by a team committed to excellence and innovation in the electrical sector."
+    },
+    "home": {
+      "subtitle": "Discover EMINSA",
+      "title": "Transforming the Caribbean's Electrical Sector",
+      "description": "Manufacturing, restoration, commercialization, and technical services — all under one corporate group."
+    }
   }
 }

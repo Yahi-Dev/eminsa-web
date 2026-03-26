@@ -5583,5 +5583,32 @@
     "servicios": "Servicios",
     "goHome": "Ir al inicio",
     "contactWhatsapp": "Contactar por WhatsApp"
+  },
+  "videos": {
+    "mtn": {
+      "subtitle": "Proceso de Manufactura",
+      "title": "Excelencia en Cada Transformador",
+      "description": "Conozca nuestro proceso de manufactura de clase mundial, donde cada transformador es fabricado con los más altos estándares de calidad y precisión."
+    },
+    "rst": {
+      "subtitle": "Centro de Reparación",
+      "title": "Restauración Profesional de Transformadores",
+      "description": "Nuestro centro de reparación cuenta con tecnología de punta y un equipo especializado para restaurar transformadores a su máximo rendimiento."
+    },
+    "servicios": {
+      "subtitle": "Servicios en Acción",
+      "title": "Soluciones Integrales en Campo y Taller",
+      "description": "Desde mantenimiento preventivo hasta reparaciones complejas, nuestro equipo técnico está listo para atender cualquier necesidad eléctrica."
+    },
+    "nosotros": {
+      "subtitle": "Nuestra Gente",
+      "title": "El Equipo detrás de EMINSA",
+      "description": "Más de 20 años de experiencia respaldados por un equipo humano comprometido con la excelencia y la innovación en el sector eléctrico."
+    },
+    "home": {
+      "subtitle": "Descubra EMINSA",
+      "title": "Transformando el Sector Eléctrico del Caribe",
+      "description": "Manufactura, restauración, comercialización y servicios técnicos — todo bajo un mismo grupo empresarial."
+    }
   }
 }

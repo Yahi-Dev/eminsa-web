@@ -27,6 +27,7 @@ import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
 import { useTranslations } from "next-intl";
 
+
 const serviceIcons: { [key: string]: React.ElementType } = {
   "alert-triangle": AlertTriangle,
   "test-tube": TestTube,
@@ -204,10 +205,10 @@ export default function EtrysServiciosPage() {
               viewport={{ once: true }}
               className="grid grid-cols-6 grid-rows-4 gap-3 h-[400px] lg:h-[460px]"
             >
-              {/* Main large - team working on transformer */}
+              {/* Main large - lab EMINSA */}
               <div className="relative col-span-4 row-span-3 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
-                  src={repairCenter.images[0]}
+                  src="/images/etrys/centro/Screenshot 2026-03-26 072302.png"
                   alt={t("altTeamRepairing")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -235,10 +236,10 @@ export default function EtrysServiciosPage() {
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
               </div>
-              {/* Bottom left - precision work */}
+              {/* Bottom left - plant overview */}
               <div className="relative col-span-2 row-span-1 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
-                  src={repairCenter.images[3]}
+                  src="/images/etrys/centro/Screenshot 2026-03-26 072402.png"
                   alt={t("altCoils")}
                   fill
                   sizes="100vw"

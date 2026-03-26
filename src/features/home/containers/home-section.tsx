@@ -9,6 +9,7 @@ import ServicesSection from "../components/ServicesSection";
 import StatsSection from "../components/StatsSection";
 import HomeTransformadorSection from "../components/HomeTransformadorSection";
 import NoticiasSection from "../components/NoticiasSection";
+import VideoShowcaseSection from "../components/VideoShowcaseSection";
 
 export default function HomeSection() {
   return (
@@ -35,7 +36,10 @@ export default function HomeSection() {
       {/* 7. Servicios adicionales */}
       <ServicesSection />
 
-      {/* 7. Clientes — prueba social con logos */}
+      {/* 7. Videos — showcase de divisiones */}
+      <VideoShowcaseSection />
+
+      {/* 8. Clientes — prueba social con logos */}
       <ClientesSection />
 
       {/* 8. Certificaciones y Normativas */}

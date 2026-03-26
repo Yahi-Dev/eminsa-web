@@ -37,6 +37,7 @@ import {
   serviciosPorTipo,
 } from "@/config/servicios-data";
 import { useTranslations } from "next-intl";
+import VideoShowcase from "@/components/ui/VideoShowcase";
 
 const iconMap: { [key: string]: React.ElementType } = {
   "shield-check": ShieldCheck,
@@ -68,6 +69,7 @@ const equipmentIcons: { [key: string]: React.ElementType } = {
 export default function ServiciosPage() {
   const t = useTranslations("pages.servicios");
   const tc = useTranslations("serviciosConfig");
+  const tv = useTranslations("videos.servicios");
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollCarousel = (direction: "left" | "right") => {
@@ -474,6 +476,16 @@ export default function ServiciosPage() {
           </div>
         </div>
       </section>
+
+      {/* Video de Servicios */}
+      <VideoShowcase
+        src="/video/Servicios.mp4"
+        subtitle={tv("subtitle")}
+        title={tv("title")}
+        description={tv("description")}
+        variant="dark"
+        textPosition="side"
+      />
 
       {/* ================================================================ */}
       {/* 4. EQUIPAMIENTO ESPECIALIZADO */}

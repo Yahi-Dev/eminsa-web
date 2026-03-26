@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import VideoShowcase from "@/components/ui/VideoShowcase";
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
 import Link from "next/link";
 import Image from "next/image";
@@ -65,6 +66,7 @@ export default function EtrysPage() {
   const router = useRouter();
   const t = useTranslations("etrysPage");
   const tc = useTranslations("etrysConfig");
+  const tv = useTranslations("videos.rst");
   const [quoteForm, setQuoteForm] = useState({ nombre: "", email: "", telefono: "" });
   const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -452,6 +454,16 @@ export default function EtrysPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Video RST */}
+      <VideoShowcase
+        src="/video/rst.mp4"
+        subtitle={tv("subtitle")}
+        title={tv("title")}
+        description={tv("description")}
+        variant="dark"
+        textPosition="side"
+      />
 
       {/* Proceso de Remanufactura */}
       <section className="py-16 lg:py-24 bg-white">
