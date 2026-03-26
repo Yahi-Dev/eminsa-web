@@ -327,8 +327,9 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
       "Cumplen plenamente con las normas ANSI y IEEE, garantizando que cada equipo mantenga sus características eléctricas y mecánicas originales.",
       "Estos transformadores admiten configuraciones personalizadas, como cambiadores de derivación, gabinetes especiales, boquillas de alta capacidad y otros accesorios bajo requerimiento.",
     ],
-    image: "/fotos-eminsa/rst/DSC07609.jpg",
+    image: "/fotos-eminsa/rst/transformador-subestacion.png",
     gallery: [
+      "/fotos-eminsa/rst/transformador-subestacion.png",
       "/fotos-eminsa/rst/DSC07602.jpg",
       "/fotos-eminsa/rst/DSC07598.jpg",
       "/fotos-eminsa/rst/DSC07600.jpg",
