@@ -54,7 +54,7 @@ const productPhotos: Record<string, { main: string; secondary: string[] }> = {
     secondary: ["/fotos-eminsa/mtn/DSC07131.jpg", "/fotos-eminsa/mtn/DSC07148.jpg"],
   },
   "pad-mounted": {
-    main: "/fotos-eminsa/mtn/DSC07223.jpg",
+    main: "/fotos-eminsa/mtn/DSC07213.jpg",
     secondary: ["/fotos-eminsa/mtn/DSC07221.jpg", "/fotos-eminsa/mtn/DSC07570.jpg"],
   },
   "subestacion": {

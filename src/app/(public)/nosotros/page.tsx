@@ -143,6 +143,16 @@ export default function NosotrosPage() {
           </div>
         </div>
       </section>
+      
+      {/* Video Nosotros */}
+      <VideoShowcase
+        src="/video/nosotros.mp4"
+        subtitle={tv("subtitle")}
+        title={tv("title")}
+        description={tv("description")}
+        variant="dark"
+        textPosition="side"
+      />
 
       {/* Mission, Vision & Values */}
       <section className="py-16 lg:py-24 bg-white">
@@ -468,16 +478,6 @@ export default function NosotrosPage() {
           ))}
         </div>
       </section>
-
-      {/* Video Nosotros */}
-      <VideoShowcase
-        src="/video/nosotros.mp4"
-        subtitle={tv("subtitle")}
-        title={tv("title")}
-        description={tv("description")}
-        variant="dark"
-        textPosition="side"
-      />
 
       {/* Team */}
       <section className="py-16 lg:py-24 bg-white">

@@ -201,6 +201,16 @@ export default function ServiciosPage() {
         </div>
       </section>
 
+      {/* Video de Servicios */}
+      <VideoShowcase
+        src="/video/Servicios.mp4"
+        subtitle={tv("subtitle")}
+        title={tv("title")}
+        description={tv("description")}
+        variant="dark"
+        textPosition="side"
+      />
+
       {/* ================================================================ */}
       {/* 2. SERVICES GRID */}
       {/* ================================================================ */}
@@ -476,16 +486,6 @@ export default function ServiciosPage() {
           </div>
         </div>
       </section>
-
-      {/* Video de Servicios */}
-      <VideoShowcase
-        src="/video/Servicios.mp4"
-        subtitle={tv("subtitle")}
-        title={tv("title")}
-        description={tv("description")}
-        variant="dark"
-        textPosition="side"
-      />
 
       {/* ================================================================ */}
       {/* 4. EQUIPAMIENTO ESPECIALIZADO */}

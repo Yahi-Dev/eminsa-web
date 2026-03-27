@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { useRef, useEffect } from "react";
 import {
   ArrowRight,
   ChevronRight,
@@ -11,8 +12,6 @@ import {
   CheckCircle2,
   Factory,
   Zap,
-  Shield,
-  Clock,
   Cpu,
   Layers,
   Flame,
@@ -42,7 +41,70 @@ const stepAccents = [
 ];
 const stepDetailCounts = [5, 6, 5, 6, 5, 9, 4, 5, 5];
 
-const capabilityIcons = [Zap, Factory, Shield, Clock];
+function HeroVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const animRef = useRef<number | null>(null);
+  const targetVol = useRef(0);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.volume = 0;
+    video.muted = false;
+
+    function tick() {
+      if (!video) return;
+      const step = 0.02;
+      const diff = targetVol.current - video.volume;
+
+      if (Math.abs(diff) > step) {
+        video.volume = Math.min(1, Math.max(0, video.volume + Math.sign(diff) * step));
+        animRef.current = requestAnimationFrame(tick);
+      } else {
+        video.volume = targetVol.current;
+        animRef.current = null;
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        targetVol.current = entry.isIntersecting ? 0.5 : 0;
+        if (!animRef.current) {
+          animRef.current = requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+      if (animRef.current) cancelAnimationFrame(animRef.current);
+    };
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, delay: 0.2 }}
+      className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
+    >
+      <video
+        ref={videoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="w-full aspect-video object-cover"
+      >
+        <source src="/video/mtn1.mp4" type="video/mp4" />
+      </video>
+    </motion.div>
+  );
+}
 
 export default function ManufacturaPage() {
   const t = useTranslations("mtnPage.manufacturaPage");
@@ -97,27 +159,8 @@ export default function ManufacturaPage() {
               </p>
             </motion.div>
 
-            {/* Capability stats */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {capabilityIcons.map((IconComp, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 + i * 0.1 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center"
-                >
-                  <IconComp size={28} className="mx-auto mb-3 text-[#0099ce]" />
-                  <p className="text-2xl font-bold text-white">{t(`capabilities.${i}.value`)}</p>
-                  <p className="text-white/60 text-xs mt-1 leading-snug">{t(`capabilities.${i}.label`)}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+            {/* Video */}
+            <HeroVideo />
           </div>
         </div>
       </section>

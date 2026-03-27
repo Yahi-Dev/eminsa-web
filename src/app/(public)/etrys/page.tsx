@@ -333,6 +333,16 @@ export default function EtrysPage() {
         </div>
       </section>
 
+      {/* Video RST */}
+      <VideoShowcase
+        src="/video/rst.mp4"
+        subtitle={tv("subtitle")}
+        title={tv("title")}
+        description={tv("description")}
+        variant="dark"
+        textPosition="side"
+      />
+
       {/* Reparación Section */}
       <section className="bg-white">
         <TransformadorRestauracionSection />
@@ -454,16 +464,6 @@ export default function EtrysPage() {
           </motion.div>
         </div>
       </section>
-
-      {/* Video RST */}
-      <VideoShowcase
-        src="/video/rst.mp4"
-        subtitle={tv("subtitle")}
-        title={tv("title")}
-        description={tv("description")}
-        variant="dark"
-        textPosition="side"
-      />
 
       {/* Proceso de Remanufactura */}
       <section className="py-16 lg:py-24 bg-white">

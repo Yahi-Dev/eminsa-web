@@ -235,6 +235,16 @@ export default function MTNPageContent() {
         </div>
       </section>
 
+      {/* Video de Manufactura */}
+      <VideoShowcase
+        src="/video/mtn.mp4"
+        subtitle={tv("subtitle")}
+        title={tv("title")}
+        description={tv("description")}
+        variant="dark"
+        textPosition="side"
+      />
+
       {/* ============================================================ */}
       {/* Productos Section */}
       {/* ============================================================ */}
@@ -406,16 +416,6 @@ export default function MTNPageContent() {
           ))}
         </div>
       </section>
-
-      {/* Video de Manufactura */}
-      <VideoShowcase
-        src="/video/mtn.mp4"
-        subtitle={tv("subtitle")}
-        title={tv("title")}
-        description={tv("description")}
-        variant="dark"
-        textPosition="side"
-      />
 
       {/* Divider */}
       <div className="container-eminsa"><div className="h-px bg-gray-200" /></div>

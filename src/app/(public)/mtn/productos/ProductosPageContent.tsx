@@ -9,7 +9,7 @@ import { useTranslations } from "next-intl";
 
 const productPhotos: Record<string, string> = {
   "tipo-poste": "/fotos-eminsa/mtn/DSC07227.jpg",
-  "pad-mounted": "/fotos-eminsa/mtn/DSC07223.jpg",
+  "pad-mounted": "/fotos-eminsa/mtn/DSC07213.jpg",
   "subestacion": "/fotos-eminsa/mtn/transformador-subestacion.png",
 };
 
