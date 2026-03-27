@@ -37,7 +37,7 @@ import {
   serviciosPorTipo,
 } from "@/config/servicios-data";
 import { useTranslations } from "next-intl";
-import VideoShowcase from "@/components/ui/VideoShowcase";
+import HeroVideo from "@/components/ui/HeroVideo";
 
 const iconMap: { [key: string]: React.ElementType } = {
   "shield-check": ShieldCheck,
@@ -69,7 +69,6 @@ const equipmentIcons: { [key: string]: React.ElementType } = {
 export default function ServiciosPage() {
   const t = useTranslations("pages.servicios");
   const tc = useTranslations("serviciosConfig");
-  const tv = useTranslations("videos.servicios");
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const scrollCarousel = (direction: "left" | "right") => {
@@ -171,45 +170,18 @@ export default function ServiciosPage() {
               </div>
             </motion.div>
 
-            {/* Right: Stats Grid */}
+            {/* Right: Hero Video */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
             >
-              <div className="grid grid-cols-2 gap-4">
-                {serviciosInfo.stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-white/20 text-center hover:bg-white/15 transition-colors"
-                  >
-                    <div className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold mb-1">
-                      {stat.value}
-                      {stat.suffix && (
-                        <span className="text-white/70">{stat.suffix}</span>
-                      )}
-                    </div>
-                    <div className="text-sm text-white/80">{tc("info.stats." + index + ".label")}</div>
-                  </motion.div>
-                ))}
-              </div>
+              <HeroVideo src="/video/Servicios.mp4" />
             </motion.div>
           </div>
         </div>
       </section>
-
-      {/* Video de Servicios */}
-      <VideoShowcase
-        src="/video/Servicios.mp4"
-        subtitle={tv("subtitle")}
-        title={tv("title")}
-        description={tv("description")}
-        variant="dark"
-        textPosition="side"
-      />
 
       {/* ================================================================ */}
       {/* 2. SERVICES GRID */}

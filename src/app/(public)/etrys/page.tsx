@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import VideoShowcase from "@/components/ui/VideoShowcase";
+import HeroVideo from "@/components/ui/HeroVideo";
 import { PhoneInputField } from "@/components/ui/PhoneInputField";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
@@ -41,51 +41,13 @@ const advantageIcons: { [key: string]: React.ElementType } = {
   leaf: Leaf,
 };
 
-const HERO_IMAGES_A = [
-  "/transformador-before.png",
-  "/fotos-eminsa/rst/DSC07618.jpg",
-  "/fotos-eminsa/rst/DSC07602.jpg",
-  "/fotos-eminsa/rst/DSC07607.jpg",
-];
-
-const HERO_IMAGES_B = [
-  "/transformador-after.png",
-  "/fotos-eminsa/rst/DSC07557.jpg",
-  "/fotos-eminsa/rst/DSC07609.jpg",
-  "/fotos-eminsa/rst/DSC07598.jpg",
-];
-
-const HERO_IMAGES_C = [
-  "/fotos-eminsa/rst/DSC07564.jpg",
-  "/fotos-eminsa/rst/DSC07544.jpg",
-  "/fotos-eminsa/rst/DSC07537.jpg",
-  "/fotos-eminsa/rst/DSC07600.jpg",
-];
-
 export default function EtrysPage() {
   const router = useRouter();
   const t = useTranslations("etrysPage");
   const tc = useTranslations("etrysConfig");
-  const tv = useTranslations("videos.rst");
   const [quoteForm, setQuoteForm] = useState({ nombre: "", email: "", telefono: "" });
   const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [heroIdxA, setHeroIdxA] = useState(0);
-  const [heroIdxB, setHeroIdxB] = useState(0);
-  const [heroIdxC, setHeroIdxC] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => setHeroIdxA(p => (p + 1) % HERO_IMAGES_A.length), 3400);
-    return () => clearInterval(interval);
-  }, []);
-  useEffect(() => {
-    const interval = setInterval(() => setHeroIdxB(p => (p + 1) % HERO_IMAGES_B.length), 4100);
-    return () => clearInterval(interval);
-  }, []);
-  useEffect(() => {
-    const interval = setInterval(() => setHeroIdxC(p => (p + 1) % HERO_IMAGES_C.length), 3700);
-    return () => clearInterval(interval);
-  }, []);
 
   const scrollCarousel = (direction: "left" | "right") => {
     if (!carouselRef.current) return;
@@ -142,7 +104,7 @@ export default function EtrysPage() {
         </div>
 
         <div className="container-eminsa relative w-full py-14 lg:py-0">
-          <div className="grid lg:grid-cols-[1fr_490px] gap-10 lg:gap-6 items-center">
+          <div className="grid lg:grid-cols-[1fr_550px] gap-10 lg:gap-6 items-center">
 
             {/* ══════════ LEFT — CONTENT ══════════ */}
             <div className="space-y-7 lg:pr-6">
@@ -231,117 +193,19 @@ export default function EtrysPage() {
               </motion.div>
             </div>
 
-            {/* ══════════ RIGHT — Floating Depth Gallery ══════════ */}
-            <div className="relative self-center w-full flex items-center justify-center" style={{ height: "clamp(330px, 46vw, 450px)" }}>
-
-              {/* ── Back-left panel (tilted, behind) ── */}
-              <motion.div
-                initial={{ opacity: 0, x: -50, rotate: -8 }}
-                animate={{ opacity: 1, x: 0, rotate: -4 }}
-                transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute z-10"
-                style={{ top: "4%", left: "0%", width: "48%", maxWidth: 210 }}
-              >
-                <motion.div
-                  animate={{ y: [0, -7, 0], rotate: [-4, -3, -4] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: "3/4" }}>
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={heroIdxC}
-                        initial={{ opacity: 0, scale: 1.12 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.9 }}
-                        className="absolute inset-0"
-                      >
-                        <Image src={HERO_IMAGES_C[heroIdxC]} alt="Taller RST" fill sizes="210px" className="object-cover" />
-                      </motion.div>
-                    </AnimatePresence>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* ── Main center panel (largest, front) ── */}
-              <motion.div
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.85, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute z-30"
-                style={{ top: "2%", left: "16%", width: "60%", maxWidth: 280 }}
-              >
-                <motion.div
-                  animate={{ y: [0, -5, 0] }}
-                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                >
-                  <div
-                    className="relative rounded-2xl overflow-hidden"
-                    style={{ aspectRatio: "3/4", boxShadow: "0 30px 70px rgba(0,0,0,0.5), 0 10px 25px rgba(0,0,0,0.3)" }}
-                  >
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={heroIdxA}
-                        initial={{ opacity: 0, x: 40 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -40 }}
-                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute inset-0"
-                      >
-                        <Image src={HERO_IMAGES_A[heroIdxA]} alt="Transformador RST" fill sizes="280px" className="object-cover" priority />
-                      </motion.div>
-                    </AnimatePresence>
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#00175d]/50 via-transparent to-transparent" />
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* ── Back-right panel (tilted opposite, behind) ── */}
-              <motion.div
-                initial={{ opacity: 0, x: 50, rotate: 8 }}
-                animate={{ opacity: 1, x: 0, rotate: 3 }}
-                transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute z-20"
-                style={{ bottom: "2%", right: "0%", width: "46%", maxWidth: 200 }}
-              >
-                <motion.div
-                  animate={{ y: [0, -9, 0], rotate: [3, 4, 3] }}
-                  transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                >
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl" style={{ aspectRatio: "3/4" }}>
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={heroIdxB}
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -30 }}
-                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute inset-0"
-                      >
-                        <Image src={HERO_IMAGES_B[heroIdxB]} alt="Resultado RST" fill sizes="200px" className="object-cover" />
-                      </motion.div>
-                    </AnimatePresence>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  </div>
-                </motion.div>
-              </motion.div>
-
-            </div>
+            {/* ══════════ RIGHT — Hero Video ══════════ */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
+            >
+              <HeroVideo src="/video/rst.mp4" />
+            </motion.div>
 
           </div>
         </div>
       </section>
-
-      {/* Video RST */}
-      <VideoShowcase
-        src="/video/rst.mp4"
-        subtitle={tv("subtitle")}
-        title={tv("title")}
-        description={tv("description")}
-        variant="dark"
-        textPosition="side"
-      />
 
       {/* Reparación Section */}
       <section className="bg-white">

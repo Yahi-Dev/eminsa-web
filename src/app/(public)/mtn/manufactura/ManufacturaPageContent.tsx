@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useRef, useEffect } from "react";
+import HeroVideo from "@/components/ui/HeroVideo";
 import {
   ArrowRight,
   ChevronRight,
@@ -40,71 +40,6 @@ const stepAccents = [
   "#c0392b", "#0099ce", "#00269b", "#009e49",
 ];
 const stepDetailCounts = [5, 6, 5, 6, 5, 9, 4, 5, 5];
-
-function HeroVideo() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const animRef = useRef<number | null>(null);
-  const targetVol = useRef(0);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.volume = 0;
-    video.muted = false;
-
-    function tick() {
-      if (!video) return;
-      const step = 0.02;
-      const diff = targetVol.current - video.volume;
-
-      if (Math.abs(diff) > step) {
-        video.volume = Math.min(1, Math.max(0, video.volume + Math.sign(diff) * step));
-        animRef.current = requestAnimationFrame(tick);
-      } else {
-        video.volume = targetVol.current;
-        animRef.current = null;
-      }
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        targetVol.current = entry.isIntersecting ? 0.5 : 0;
-        if (!animRef.current) {
-          animRef.current = requestAnimationFrame(tick);
-        }
-      },
-      { threshold: 0.4 }
-    );
-
-    observer.observe(video);
-
-    return () => {
-      observer.disconnect();
-      if (animRef.current) cancelAnimationFrame(animRef.current);
-    };
-  }, []);
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 40 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7, delay: 0.2 }}
-      className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
-    >
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="w-full aspect-video object-cover"
-      >
-        <source src="/video/mtn1.mp4" type="video/mp4" />
-      </video>
-    </motion.div>
-  );
-}
 
 export default function ManufacturaPage() {
   const t = useTranslations("mtnPage.manufacturaPage");
@@ -160,7 +95,14 @@ export default function ManufacturaPage() {
             </motion.div>
 
             {/* Video */}
-            <HeroVideo />
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
+            >
+              <HeroVideo src="/video/mtn1.mp4" />
+            </motion.div>
           </div>
         </div>
       </section>

@@ -47,15 +47,15 @@ const resourceIcons: Record<string, React.ElementType> = {
 // ─── Hero floating cards ──────────────────────────────────────────────────────
 const HERO_PHOTOS = [
   "/fotos-eminsa/mtn/DSC07227.jpg",  // Transformador Tipo Poste
-  "/fotos-eminsa/mtn/DSC07816.jpg",  // Planta de manufactura
+  "/fotos-eminsa/mtn/DSC07213.jpg",  // Pad Mounted 75kVA EMINSA
   "/fotos-eminsa/mtn/transformador-subestacion.png",  // Transformador Subestación
-  "/fotos-eminsa/mtn/DSC07713.jpg",  // Bobinado de transformador
-  "/fotos-eminsa/mtn/DSC07775.jpg",  // Parte activa entrando al tanque
-  "/fotos-eminsa/mtn/DSC07780.jpg",  // Ensamble en tanque
-  "/fotos-eminsa/mtn/DSC07165.jpg",  // Pruebas de alta tensión
-  "/fotos-eminsa/mtn/DSC07751.jpg",  // Taller de transformadores
-  "/fotos-eminsa/mtn/DSC07223.jpg",  // Pad Mounted EMINSA
-  "/fotos-eminsa/mtn/DSC07845.jpg",  // Horno de secado
+  "/fotos-eminsa/mtn/DSC07246.jpg",  // Tanque de transformador con radiadores
+  "/fotos-eminsa/mtn/DSC07251.jpg",  // Transformador Tipo Poste monofásico
+  "/fotos-eminsa/mtn/DSC07231.jpg",  // Pad Mounted 500kVA EMINSA
+  "/fotos-eminsa/mtn/DSC07524.jpg",  // Pad Mounted exterior con radiador
+  "/fotos-eminsa/mtn/DSC07573.jpg",  // Pad Mounted EMINSA abierto exterior
+  "/fotos-eminsa/mtn/DSC07215.jpg",  // Pad Mounted 75kVA frontal
+  "/fotos-eminsa/mtn/DSC07158.jpg",  // Aisladores de transformador
 ];
 const HERO_N = HERO_PHOTOS.length;
 const HERO_SLOT_COUNT = 6;
@@ -158,7 +158,7 @@ export default function MTNPageContent() {
                       <div className="relative rounded-[1.2rem] overflow-hidden" style={{ width: card.w, height: card.h }}>
                         <AnimatePresence mode="wait">
                           <motion.div key={heroSlots[i]} className="absolute inset-0" initial={{ opacity: 0, scale: 1.1 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.94 }} transition={{ duration: 0.6, ease: "easeOut" }}>
-                            <Image src={HERO_PHOTOS[heroSlots[i]]} alt="MTN" fill sizes="220px" className="object-cover" />
+                            <Image src={HERO_PHOTOS[heroSlots[i]] || HERO_PHOTOS[0]} alt="MTN" fill sizes="220px" className="object-cover" />
                           </motion.div>
                         </AnimatePresence>
                       </div>
@@ -221,7 +221,7 @@ export default function MTNPageContent() {
                       <div className="relative rounded-[1.2rem] overflow-hidden" style={{ width: card.w, height: card.h }}>
                         <AnimatePresence mode="wait">
                           <motion.div key={heroSlots[3 + i]} className="absolute inset-0" initial={{ opacity: 0, scale: 1.1 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.94 }} transition={{ duration: 0.6, ease: "easeOut" }}>
-                            <Image src={HERO_PHOTOS[heroSlots[3 + i]]} alt="MTN" fill sizes="220px" className="object-cover" />
+                            <Image src={HERO_PHOTOS[heroSlots[3 + i]] || HERO_PHOTOS[0]} alt="MTN" fill sizes="220px" className="object-cover" />
                           </motion.div>
                         </AnimatePresence>
                       </div>
