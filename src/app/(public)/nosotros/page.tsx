@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   ArrowRight,
   ChevronRight,
@@ -62,6 +62,54 @@ export default function NosotrosPage() {
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  const heroContainerRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const heroFadeRef = useRef<number | null>(null);
+  const isHeroInView = useInView(heroContainerRef, { amount: 0.4 });
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    if (heroFadeRef.current !== null) {
+      cancelAnimationFrame(heroFadeRef.current);
+      heroFadeRef.current = null;
+    }
+
+    if (isHeroInView) {
+      video.volume = 0;
+      video.play().catch(() => {});
+      const fadeIn = () => {
+        if (video.volume < 0.95) {
+          video.volume = Math.min(1, video.volume + 0.02);
+          heroFadeRef.current = requestAnimationFrame(fadeIn);
+        } else {
+          video.volume = 1;
+          heroFadeRef.current = null;
+        }
+      };
+      heroFadeRef.current = requestAnimationFrame(fadeIn);
+    } else {
+      const fadeOut = () => {
+        if (video.volume > 0.05) {
+          video.volume = Math.max(0, video.volume - 0.03);
+          heroFadeRef.current = requestAnimationFrame(fadeOut);
+        } else {
+          video.volume = 0;
+          video.pause();
+          heroFadeRef.current = null;
+        }
+      };
+      heroFadeRef.current = requestAnimationFrame(fadeOut);
+    }
+
+    return () => {
+      if (heroFadeRef.current !== null) {
+        cancelAnimationFrame(heroFadeRef.current);
+      }
+    };
+  }, [isHeroInView]);
+
   const openMilestoneDialog = (milestone: typeof eminsaMilestones[0], index: number) => {
     setSelectedMilestone(milestone);
     setSelectedIndex(index);
@@ -76,7 +124,7 @@ export default function NosotrosPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative bg-gray-900 text-white py-16 lg:py-24 overflow-hidden">
+      <section ref={heroContainerRef} className="relative bg-gray-900 text-white py-16 lg:py-24 overflow-hidden">
         <Image
           src="/fotos-eminsa/general/DSC07869.jpg"
           alt={t("altHero")}
@@ -129,14 +177,14 @@ export default function NosotrosPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/fotos-eminsa/general/DSC07869.jpg"
-                  alt={t("altTeamHero")}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover brightness-75"
-                  priority
+              <div className="rounded-2xl overflow-hidden shadow-2xl">
+                <video
+                  ref={heroVideoRef}
+                  src="/video/nosotros.mp4"
+                  loop
+                  playsInline
+                  preload="none"
+                  className="w-full h-auto object-cover"
                 />
               </div>
             </motion.div>
@@ -145,14 +193,14 @@ export default function NosotrosPage() {
       </section>
       
       {/* Video Nosotros */}
-      <VideoShowcase
+      {/* <VideoShowcase
         src="/video/nosotros.mp4"
         subtitle={tv("subtitle")}
         title={tv("title")}
         description={tv("description")}
         variant="dark"
         textPosition="side"
-      />
+      /> */}
 
       {/* Mission, Vision & Values */}
       <section className="py-16 lg:py-24 bg-white">

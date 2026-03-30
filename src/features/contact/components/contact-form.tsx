@@ -46,12 +46,13 @@ export function ContactForm({ form }: ContactFormProps) {
   // Validación para habilitar el botón de envío
   const isSubmitDisabled =
     isSubmitting ||
+    !formData.nombre.trim() ||
+    !formData.email.trim() ||
+    !formData.telefono ||
     !formData.tipoConsulta ||
     !formData.categoria ||
-    !formData.identificacion ||
-    !formData.direccion ||
     (showOtrosField && !formData.otrosDescripcion.trim()) ||
-    (!showOtrosField && !formData.mensaje.trim()) ||
+    (!showOtrosField && !showTransformadorFields && !formData.mensaje.trim()) ||
     (showTransformadorFields && (
       formData.transformadores.some(transformer =>
         !transformer.potenciaKVA ||
@@ -59,7 +60,6 @@ export function ContactForm({ form }: ContactFormProps) {
         !transformer.voltajePrimario ||
         !transformer.voltajeSecundario ||
         !transformer.tipoTransformador ||
-        !transformer.norma ||
         !transformer.zonaInstalacion ||
         !transformer.cantidad ||
         parseInt(transformer.cantidad) < 1
@@ -199,8 +199,8 @@ export function ContactForm({ form }: ContactFormProps) {
         />
       )}
 
-      {/* Mensaje (oculto cuando "Otros" está seleccionado) */}
-      {!showOtrosField && (
+      {/* Mensaje (oculto cuando "Otros" o cuando hay campos de transformador) */}
+      {!showOtrosField && !showTransformadorFields && (
         <MessageField
           value={formData.mensaje}
           error={formErrors.mensaje}

@@ -96,19 +96,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
 
     const clientIp = getClientIp(request.headers);
 
-    // Enviar emails
+    // Enviar emails (fallo de email no bloquea la respuesta al usuario)
     try {
       await sendContactEmails(validatedData, clientIp);
     } catch (emailError) {
       console.error('Contact email send failed:', process.env.NODE_ENV === 'development' ? emailError : '');
-
-      // No exponemos los detalles del error al cliente por seguridad
-      return NextResponse.json(
-        createErrorResponse(
-          'Hubo un problema al enviar tu solicitud. Por favor intenta de nuevo más tarde.'
-        ),
-        { status: 500 }
-      );
+      // Se registra el error pero la solicitud se considera recibida
     }
 
     // Respuesta exitosa

@@ -337,10 +337,6 @@ export function useContactForm(): UseContactFormReturn {
         errors.tipoTransformador = t('form.errors.requiredTransformerType');
         allValid = false;
       }
-      if (!transformer.norma) {
-        errors.norma = t('form.errors.requiredStandard');
-        allValid = false;
-      }
       if (!transformer.zonaInstalacion) {
         errors.zonaInstalacion = t('form.errors.requiredInstallationZone');
         allValid = false;
@@ -376,10 +372,12 @@ export function useContactForm(): UseContactFormReturn {
         return;
       }
 
-      // Si "Otros" está seleccionado, usar otrosDescripcion como mensaje
+      // Determinar el mensaje según el tipo de consulta
       const formDataForSubmission = showOtrosField
         ? { ...formData, mensaje: formData.otrosDescripcion }
-        : formData;
+        : showTransformadorFields
+          ? { ...formData, mensaje: formData.mensaje || 'Solicitud de especificaciones de transformador adjuntas.' }
+          : formData;
 
       const submitData = prepareFormDataForSubmission(
         formDataForSubmission as unknown as Record<string, any>,
