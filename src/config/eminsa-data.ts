@@ -236,15 +236,15 @@ export const eminsaMilestones = [
     year: "2018 – 2019",
     decade: "2018–2019",
     event: "Nuevas representaciones internacionales",
-    description: "Acuerdos con fabricante ecuatoriano, Snyder Electric USA y ELPROM TRAFO Bulgaria.",
+    description: "Acuerdos con fabricante ecuatoriano, Schneider Electric USA y ELPROM TRAFO Bulgaria.",
     details: [
       "En 2018 se firmó un acuerdo de representación con una industria de Transformadores Ecuatorianos, con tecnología propia de punta y profesionales, técnicos y operarios altamente calificados.",
-      "En 2019, EMINSA firmó un contrato de distribución con Snyder Electric USA, especialista global en manejo de energía y automatización con operaciones en más de 100 países.",
+      "En 2019, EMINSA firmó un contrato de distribución con Schneider Electric USA, especialista global en manejo de energía y automatización con operaciones en más de 100 países.",
       "En ese mismo año se firmó un contrato de representación y distribución con la empresa búlgara ELPROM TRAFO, que cuenta con la norma IEC (International Electrotechnical Commission)."
     ],
     achievements: [
       "Representación de fabricante ecuatoriano de transformadores",
-      "Distribución oficial Snyder Electric USA",
+      "Distribución oficial Schneider Electric USA",
       "Representación ELPROM TRAFO Bulgaria (norma IEC)"
     ]
   },
