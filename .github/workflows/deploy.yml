@@ -43,7 +43,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           source: ".next"
           target: "/home/eminsa/new.eminsa.com"
-          rm: true
+          rm: false
 
       - name: Restart app
         uses: appleboy/ssh-action@v1.0.3
