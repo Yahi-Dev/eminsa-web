@@ -18,6 +18,12 @@ const users = [
     role: "admin",
   },
   {
+    name: "Administrador Venta EMINSA",
+    email: "ventas@eminsa.com",
+    password: "Eminsa@Ventas#2024!",
+    role: "admin",
+  },
+  {
     name: "Editor EMINSA",
     email: "editor@eminsa.com",
     password: "Editor2024!",
