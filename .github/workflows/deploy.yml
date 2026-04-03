@@ -34,18 +34,7 @@ jobs:
           CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
 
-      - name: Deploy .next to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          source: ".next"
-          target: "/home/eminsa/new.eminsa.com"
-          rm: false
-
-      - name: Restart app
+      - name: Generate .env on server
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -53,6 +42,89 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            chmod -R 755 ~/new.eminsa.com/.next
-            pm2 restart eminsa-web
+            cat > ~/new.eminsa.com/.env << 'ENVEOF'
+            NODE_ENV=production
+            APP_ENV=PROD
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
+            BETTER_AUTH_SECRET=${{ secrets.BETTER_AUTH_SECRET }}
+            BETTER_AUTH_URL=${{ secrets.BETTER_AUTH_URL }}
+            NEXT_PUBLIC_SITE_URL=${{ secrets.NEXT_PUBLIC_SITE_URL }}
+            NEXT_PUBLIC_BASE_URL=${{ secrets.NEXT_PUBLIC_BASE_URL }}
+            CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}
+            CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }}
+            CLOUDINARY_API_SECRET=${{ secrets.CLOUDINARY_API_SECRET }}
+            MAIL_HOST=${{ secrets.MAIL_HOST }}
+            MAIL_PORT=${{ secrets.MAIL_PORT }}
+            MAIL_ENCRYPTION=${{ secrets.MAIL_ENCRYPTION }}
+            MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}
+            MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}
+            MAIL_FROM_ADDRESS=${{ secrets.MAIL_FROM_ADDRESS }}
+            MAIL_FROM_NAME=${{ secrets.MAIL_FROM_NAME }}
+            ADMIN_EMAIL=${{ secrets.ADMIN_EMAIL }}
+            ADMIN_EMAILS=${{ secrets.ADMIN_EMAILS }}
+            SALES_EMAIL=${{ secrets.SALES_EMAIL }}
+            BCC_EMAIL=${{ secrets.BCC_EMAIL }}
+            ENVEOF
+            chmod 600 ~/new.eminsa.com/.env
+
+      - name: Deploy build to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: ".next,public,prisma,package.json,package-lock.json,server.js,next.config.ts,ecosystem.config.js,src/messages"
+          target: "/home/eminsa/new.eminsa.com"
+          rm: false
+          overwrite: true
+
+      - name: Install deps, migrate DB, restart PM2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ~/new.eminsa.com
+
+            # Ensure logs directory exists
+            mkdir -p logs
+
+            # Set permissions
+            chmod -R 755 .next
+
+            # Install production dependencies
+            npm install --production
+
+            # Generate Prisma client for server architecture
+            npx prisma generate
+
+            # Sync DB schema (safe, non-destructive)
+            npx prisma db push --skip-generate
+
+            # Start or restart with PM2 ecosystem
+            pm2 delete eminsa-web 2>/dev/null || true
+            pm2 start ecosystem.config.js
+            pm2 save
+
             echo "Deploy completado exitosamente"
+
+      - name: Health check
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            sleep 5
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000 || echo "000")
+            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "302" ]; then
+              echo "Health check OK (HTTP $HTTP_CODE)"
+            else
+              echo "Health check FAILED (HTTP $HTTP_CODE)"
+              pm2 logs eminsa-web --lines 20 --nostream
+              exit 1
+            fi
