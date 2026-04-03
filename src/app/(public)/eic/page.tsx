@@ -24,11 +24,11 @@ import Image from "next/image";
 import { eicInfo, eicProductCategories, eicBrands } from "@/config/eic-data";
 
 const categoryPhotos: Record<string, string> = {
-  "transformadores": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
-  "cables": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242317/eminsa/site/fotos-eminsa/eic/Cables-Electricos.png",
-  "distribucion-mt": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242319/eminsa/site/fotos-eminsa/eic/DSC07591.jpg",
-  "breakers": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242318/eminsa/site/fotos-eminsa/eic/DSC07573.jpg",
-  "accesorios": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242317/eminsa/site/fotos-eminsa/eic/Accesorios-para-Cables-MT.png",
+  "transformadores": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+  "cables": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242317/eminsa/site/fotos-eminsa/eic/Cables-Electricos.png",
+  "distribucion-mt": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242319/eminsa/site/fotos-eminsa/eic/DSC07591.jpg",
+  "breakers": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242318/eminsa/site/fotos-eminsa/eic/DSC07573.jpg",
+  "accesorios": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242317/eminsa/site/fotos-eminsa/eic/Accesorios-para-Cables-MT.png",
 };
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
@@ -49,27 +49,27 @@ const advantageIcons: { [key: string]: React.ElementType } = {
 };
 
 const countryFlags: { [key: string]: string } = {
-  Ecuador: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242379/eminsa/site/images/eic/flags/ecuador.png",
-  "Canadá / Norteamérica": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242379/eminsa/site/images/eic/flags/canada.png",
-  Italia: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242383/eminsa/site/images/eic/flags/italia.png",
-  España: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242380/eminsa/site/images/eic/flags/espana.png",
-  "Estados Unidos": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242381/eminsa/site/images/eic/flags/estados-unidos.png",
-  Portugal: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242383/eminsa/site/images/eic/flags/portugal.png",
-  "Francia / Global": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242381/eminsa/site/images/eic/flags/francia.png",
-  Internacional: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242382/eminsa/site/images/eic/flags/internacional.png",
-  "Francia / Polonia / Turquía": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242381/eminsa/site/images/eic/flags/francia.png",
+  Ecuador: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242379/eminsa/site/images/eic/flags/ecuador.png",
+  "Canadá / Norteamérica": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242379/eminsa/site/images/eic/flags/canada.png",
+  Italia: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242383/eminsa/site/images/eic/flags/italia.png",
+  España: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242380/eminsa/site/images/eic/flags/espana.png",
+  "Estados Unidos": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242381/eminsa/site/images/eic/flags/estados-unidos.png",
+  Portugal: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242383/eminsa/site/images/eic/flags/portugal.png",
+  "Francia / Global": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242381/eminsa/site/images/eic/flags/francia.png",
+  Internacional: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242382/eminsa/site/images/eic/flags/internacional.png",
+  "Francia / Polonia / Turquía": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242381/eminsa/site/images/eic/flags/francia.png",
 };
 
 // ─── Shared image pool — same images travel center → top → bottom ─────────────
 const CARD_IMGS = [
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242376/eminsa/site/images/eic/brands/inatra.png",
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242376/eminsa/site/images/eic/brands/hammond.png",
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242375/eminsa/site/images/eic/brands/elpitalia.png",
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242375/eminsa/site/images/eic/brands/green-transfo.png",
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242377/eminsa/site/images/eic/brands/schneider.png",
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242378/eminsa/site/images/eic/brands/topcable.png",
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242374/eminsa/site/images/eic/brands/chardon.png",
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242373/eminsa/site/images/eic/brands/cabelte.png",
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242376/eminsa/site/images/eic/brands/inatra.png",
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242376/eminsa/site/images/eic/brands/hammond.png",
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242375/eminsa/site/images/eic/brands/elpitalia.png",
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242375/eminsa/site/images/eic/brands/green-transfo.png",
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242377/eminsa/site/images/eic/brands/schneider.png",
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242378/eminsa/site/images/eic/brands/topcable.png",
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242374/eminsa/site/images/eic/brands/chardon.png",
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242373/eminsa/site/images/eic/brands/cabelte.png",
 ];
 const N = CARD_IMGS.length;
 

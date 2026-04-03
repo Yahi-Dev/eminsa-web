@@ -304,8 +304,8 @@ export default function CotizarPage() {
                 <div className="bg-gray-50 rounded-2xl p-6">
                   <h4 className="font-semibold text-[#00269b] mb-4">{t("sidebar.certifications")}</h4>
                   <div className="flex gap-4">
-                    <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp" alt="ISO 9001" width={48} height={48} className="object-contain" />
-                    <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242372/eminsa/site/images/IQNET_RCMark_PosCMYK.webp" alt="IQNET" width={48} height={48} className="object-contain" />
+                    <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp" alt="ISO 9001" width={48} height={48} className="object-contain" />
+                    <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242372/eminsa/site/images/IQNET_RCMark_PosCMYK.webp" alt="IQNET" width={48} height={48} className="object-contain" />
                   </div>
                 </div>
               </div>

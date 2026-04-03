@@ -40,30 +40,30 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
   // Fotos por variante: clave = "slug/variantSlug"
   const variantPhotos: Record<string, { main: string; side: string }> = {
     "tipo-poste/monofasicos": {
-      main: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
-      side: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242325/eminsa/site/fotos-eminsa/mtn/DSC07131.jpg",
+      main: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+      side: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242325/eminsa/site/fotos-eminsa/mtn/DSC07131.jpg",
     },
     "tipo-poste/trifasicos": {
-      main: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
-      side: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242327/eminsa/site/fotos-eminsa/mtn/DSC07148.jpg",
+      main: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+      side: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242327/eminsa/site/fotos-eminsa/mtn/DSC07148.jpg",
     },
     "tipo-poste/autoprotegidos": {
-      main: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
-      side: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242326/eminsa/site/fotos-eminsa/mtn/DSC07134.jpg",
+      main: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+      side: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242326/eminsa/site/fotos-eminsa/mtn/DSC07134.jpg",
     },
     "pad-mounted/monofasicos": {
-      main: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07223.jpg",
-      side: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242339/eminsa/site/fotos-eminsa/mtn/DSC07570.jpg",
+      main: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07223.jpg",
+      side: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242339/eminsa/site/fotos-eminsa/mtn/DSC07570.jpg",
     },
     "pad-mounted/trifasicos": {
-      main: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07223.jpg",
-      side: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242333/eminsa/site/fotos-eminsa/mtn/DSC07221.jpg",
+      main: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07223.jpg",
+      side: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242333/eminsa/site/fotos-eminsa/mtn/DSC07221.jpg",
     },
   };
 
   const photos = variantPhotos[`${slug}/${variantSlug}`] ?? {
-    main: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
-    side: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242325/eminsa/site/fotos-eminsa/mtn/DSC07131.jpg",
+    main: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+    side: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242325/eminsa/site/fotos-eminsa/mtn/DSC07131.jpg",
   };
 
   return (

@@ -108,7 +108,7 @@ export default function CentroReparacionPage() {
               {/* Main - team repairing transformer */}
               <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07607.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07607.jpg"
                   alt={t("altHeroTeam")}
                   fill
                   sizes="100vw"
@@ -123,7 +123,7 @@ export default function CentroReparacionPage() {
               {/* Bottom left - lab testing */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242351/eminsa/site/fotos-eminsa/rst/DSC07537.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242351/eminsa/site/fotos-eminsa/rst/DSC07537.jpg"
                   alt={t("altHeroLab")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -134,7 +134,7 @@ export default function CentroReparacionPage() {
               {/* Bottom right - welding/sparks */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242356/eminsa/site/fotos-eminsa/rst/DSC07600.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242356/eminsa/site/fotos-eminsa/rst/DSC07600.jpg"
                   alt={t("altHeroWelding")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

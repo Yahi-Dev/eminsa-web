@@ -200,7 +200,7 @@ export default function EtrysPage() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
             >
-              <HeroVideo src="https://res.cloudinary.com/dixsymrg5/video/upload/v1775242423/eminsa/site/video/rst.mp4" />
+              <HeroVideo src="https://res.cloudinary.com/dixsymrg5/video/upload/q_auto,br_2000k/v1775242423/eminsa/site/video/rst.mp4" />
             </motion.div>
 
           </div>
@@ -508,7 +508,7 @@ export default function EtrysPage() {
             >
               <div className="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242359/eminsa/site/fotos-eminsa/rst/DSC07618.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242359/eminsa/site/fotos-eminsa/rst/DSC07618.jpg"
                   alt="Alquiler de Transformadores ETRYS by EMINSA"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

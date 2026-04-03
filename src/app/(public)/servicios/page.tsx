@@ -103,7 +103,7 @@ export default function ServiciosPage() {
       <section className="relative bg-[#414241] text-white py-12 lg:py-16 overflow-hidden min-h-120 sm:min-h-135 lg:min-h-160">
         {/* Hero photo */}
         <Image
-          src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242370/eminsa/site/fotos-eminsa/servicios/DSC07602.jpg"
+          src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242370/eminsa/site/fotos-eminsa/servicios/DSC07602.jpg"
           alt={t("hero.altPhoto")}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -177,7 +177,7 @@ export default function ServiciosPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
             >
-              <HeroVideo src="https://res.cloudinary.com/dixsymrg5/video/upload/v1775242409/eminsa/site/video/Servicios.mp4" />
+              <HeroVideo src="https://res.cloudinary.com/dixsymrg5/video/upload/q_auto,br_2000k/v1775242409/eminsa/site/video/Servicios.mp4" />
             </motion.div>
           </div>
         </div>
@@ -544,11 +544,11 @@ export default function ServiciosPage() {
       <section className="bg-gray-950 py-4">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-1">
           {[
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242364/eminsa/site/fotos-eminsa/servicios/DSC07544.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242365/eminsa/site/fotos-eminsa/servicios/DSC07577.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242367/eminsa/site/fotos-eminsa/servicios/DSC07598.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242371/eminsa/site/fotos-eminsa/servicios/DSC07607.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242372/eminsa/site/fotos-eminsa/servicios/DSC07609.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242364/eminsa/site/fotos-eminsa/servicios/DSC07544.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242365/eminsa/site/fotos-eminsa/servicios/DSC07577.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242367/eminsa/site/fotos-eminsa/servicios/DSC07598.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242371/eminsa/site/fotos-eminsa/servicios/DSC07607.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242372/eminsa/site/fotos-eminsa/servicios/DSC07609.jpg",
           ].map((src, i) => (
             <div key={i} className={`relative overflow-hidden group aspect-video ${i === 4 ? "hidden lg:block" : ""}`}>
               <Image

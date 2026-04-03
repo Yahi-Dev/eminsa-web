@@ -8,9 +8,9 @@ import { transformerProducts, getVariantsByProduct } from "@/config/mtn-data";
 import { useTranslations } from "next-intl";
 
 const productPhotos: Record<string, string> = {
-  "tipo-poste": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
-  "pad-mounted": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg",
-  "subestacion": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",
+  "tipo-poste": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+  "pad-mounted": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg",
+  "subestacion": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",
 };
 
 const fadeUp = {
@@ -73,7 +73,7 @@ export default function ProductosPageContent() {
                   <div className="grid lg:grid-cols-2 gap-0">
                     <div className={`relative min-h-72 lg:min-h-full overflow-hidden ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                       <Image
-                        src={productPhotos[product.slug] ?? "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg"}
+                        src={productPhotos[product.slug] ?? "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg"}
                         alt={tc(`products.${product.slug}.name`)}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"

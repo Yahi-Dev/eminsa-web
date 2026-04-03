@@ -126,7 +126,7 @@ export default function NosotrosPage() {
       {/* Hero */}
       <section ref={heroContainerRef} className="relative bg-gray-900 text-white py-16 lg:py-24 overflow-hidden">
         <Image
-          src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg"
+          src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg"
           alt={t("altHero")}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -180,7 +180,7 @@ export default function NosotrosPage() {
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <video
                   ref={heroVideoRef}
-                  src="https://res.cloudinary.com/dixsymrg5/video/upload/v1775242419/eminsa/site/video/nosotros.mp4"
+                  src="https://res.cloudinary.com/dixsymrg5/video/upload/q_auto,br_2000k/v1775242419/eminsa/site/video/nosotros.mp4"
                   loop
                   playsInline
                   preload="none"
@@ -194,7 +194,7 @@ export default function NosotrosPage() {
       
       {/* Video Nosotros */}
       {/* <VideoShowcase
-        src="https://res.cloudinary.com/dixsymrg5/video/upload/v1775242419/eminsa/site/video/nosotros.mp4"
+        src="https://res.cloudinary.com/dixsymrg5/video/upload/q_auto,br_2000k/v1775242419/eminsa/site/video/nosotros.mp4"
         subtitle={tv("subtitle")}
         title={tv("title")}
         description={tv("description")}
@@ -305,7 +305,7 @@ export default function NosotrosPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242320/eminsa/site/fotos-eminsa/general/DSC07624.jpg"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242320/eminsa/site/fotos-eminsa/general/DSC07624.jpg"
                     alt={t("altFacilities")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -314,7 +314,7 @@ export default function NosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07154.jpg"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07154.jpg"
                     alt={t("altWorkshop")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -323,7 +323,7 @@ export default function NosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg"
                     alt={t("altProduction")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -332,7 +332,7 @@ export default function NosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242345/eminsa/site/fotos-eminsa/mtn/DSC07780.jpg"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242345/eminsa/site/fotos-eminsa/mtn/DSC07780.jpg"
                     alt={t("altEquipment")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -458,61 +458,61 @@ export default function NosotrosPage() {
         >
           {[
             // MTN - Manufactura
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242346/eminsa/site/fotos-eminsa/mtn/DSC07799.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242344/eminsa/site/fotos-eminsa/mtn/DSC07775.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242349/eminsa/site/fotos-eminsa/mtn/DSC07822.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242346/eminsa/site/fotos-eminsa/mtn/DSC07799.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242344/eminsa/site/fotos-eminsa/mtn/DSC07775.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242349/eminsa/site/fotos-eminsa/mtn/DSC07822.jpg",
             // RST - ETRYS
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242359/eminsa/site/fotos-eminsa/rst/DSC07618.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07607.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07602.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242353/eminsa/site/fotos-eminsa/rst/DSC07555.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242359/eminsa/site/fotos-eminsa/rst/DSC07618.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07607.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07602.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242353/eminsa/site/fotos-eminsa/rst/DSC07555.jpg",
             // Servicios
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242365/eminsa/site/fotos-eminsa/servicios/DSC07577.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242370/eminsa/site/fotos-eminsa/servicios/DSC07602.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242367/eminsa/site/fotos-eminsa/servicios/DSC07598.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242365/eminsa/site/fotos-eminsa/servicios/DSC07577.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242370/eminsa/site/fotos-eminsa/servicios/DSC07602.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242367/eminsa/site/fotos-eminsa/servicios/DSC07598.jpg",
             // General - Equipo y planta
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242320/eminsa/site/fotos-eminsa/general/DSC07624.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242324/eminsa/site/fotos-eminsa/general/DSC07860.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242323/eminsa/site/fotos-eminsa/general/DSC07859.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242322/eminsa/site/fotos-eminsa/general/DSC07661.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242320/eminsa/site/fotos-eminsa/general/DSC07624.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242324/eminsa/site/fotos-eminsa/general/DSC07860.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242323/eminsa/site/fotos-eminsa/general/DSC07859.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242322/eminsa/site/fotos-eminsa/general/DSC07661.jpg",
             // MTN - Productos
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07223.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07154.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/DSC07845.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07223.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07154.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242350/eminsa/site/fotos-eminsa/mtn/DSC07845.jpg",
             // EIC
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242319/eminsa/site/fotos-eminsa/eic/DSC07591.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242320/eminsa/site/fotos-eminsa/eic/DSC07624.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242319/eminsa/site/fotos-eminsa/eic/DSC07591.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242320/eminsa/site/fotos-eminsa/eic/DSC07624.jpg",
             // General - Trabajo
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242322/eminsa/site/fotos-eminsa/general/DSC07805.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242321/eminsa/site/fotos-eminsa/general/DSC07628.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242322/eminsa/site/fotos-eminsa/general/DSC07805.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242321/eminsa/site/fotos-eminsa/general/DSC07628.jpg",
             // duplicate for seamless loop
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242346/eminsa/site/fotos-eminsa/mtn/DSC07799.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242344/eminsa/site/fotos-eminsa/mtn/DSC07775.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242349/eminsa/site/fotos-eminsa/mtn/DSC07822.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242359/eminsa/site/fotos-eminsa/rst/DSC07618.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07607.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07602.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242353/eminsa/site/fotos-eminsa/rst/DSC07555.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242365/eminsa/site/fotos-eminsa/servicios/DSC07577.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242370/eminsa/site/fotos-eminsa/servicios/DSC07602.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242367/eminsa/site/fotos-eminsa/servicios/DSC07598.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242320/eminsa/site/fotos-eminsa/general/DSC07624.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242324/eminsa/site/fotos-eminsa/general/DSC07860.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242323/eminsa/site/fotos-eminsa/general/DSC07859.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242322/eminsa/site/fotos-eminsa/general/DSC07661.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07223.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07154.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/DSC07845.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242319/eminsa/site/fotos-eminsa/eic/DSC07591.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242320/eminsa/site/fotos-eminsa/eic/DSC07624.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242322/eminsa/site/fotos-eminsa/general/DSC07805.jpg",
-            "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242321/eminsa/site/fotos-eminsa/general/DSC07628.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242346/eminsa/site/fotos-eminsa/mtn/DSC07799.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242344/eminsa/site/fotos-eminsa/mtn/DSC07775.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242349/eminsa/site/fotos-eminsa/mtn/DSC07822.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242359/eminsa/site/fotos-eminsa/rst/DSC07618.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07607.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07602.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242353/eminsa/site/fotos-eminsa/rst/DSC07555.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242365/eminsa/site/fotos-eminsa/servicios/DSC07577.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242370/eminsa/site/fotos-eminsa/servicios/DSC07602.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242367/eminsa/site/fotos-eminsa/servicios/DSC07598.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242320/eminsa/site/fotos-eminsa/general/DSC07624.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242324/eminsa/site/fotos-eminsa/general/DSC07860.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242323/eminsa/site/fotos-eminsa/general/DSC07859.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242322/eminsa/site/fotos-eminsa/general/DSC07661.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07223.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07154.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242350/eminsa/site/fotos-eminsa/mtn/DSC07845.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242319/eminsa/site/fotos-eminsa/eic/DSC07591.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242320/eminsa/site/fotos-eminsa/eic/DSC07624.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242322/eminsa/site/fotos-eminsa/general/DSC07805.jpg",
+            "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242321/eminsa/site/fotos-eminsa/general/DSC07628.jpg",
           ].map((src, i) => (
             <div key={i} className="relative shrink-0 w-72 h-44 overflow-hidden rounded-sm group">
               <Image
@@ -572,7 +572,7 @@ export default function NosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg"
                   alt={t("altWorkTeam")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

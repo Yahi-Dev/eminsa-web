@@ -16,7 +16,7 @@ export interface CldTransformOptions {
  * Inserts Cloudinary transformation parameters into an existing Cloudinary URL.
  * Works client-side and server-side — no SDK required.
  *
- * Input:  https://res.cloudinary.com/cloud/image/upload/v123/folder/img.jpg
+ * Input:  https://res.cloudinary.com/cloud/image/upload/f_auto,q_auto/v123/folder/img.jpg
  * Output: https://res.cloudinary.com/cloud/image/upload/f_auto,q_auto,w_800/v123/folder/img.jpg
  */
 export function getCldUrl(

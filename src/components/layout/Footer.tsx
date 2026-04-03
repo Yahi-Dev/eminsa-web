@@ -150,7 +150,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
                 <div className="w-11 h-11 bg-white rounded-md flex items-center justify-center p-1.5 shrink-0">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp"
                     alt="ISO 9001"
                     width={44}
                     height={44}
@@ -165,7 +165,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 bg-white/5 rounded-lg p-2.5">
                 <div className="w-11 h-11 bg-white rounded-md flex items-center justify-center p-1.5 shrink-0">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242372/eminsa/site/images/IQNET_RCMark_PosCMYK.webp"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242372/eminsa/site/images/IQNET_RCMark_PosCMYK.webp"
                     alt="IQNET"
                     width={44}
                     height={44}

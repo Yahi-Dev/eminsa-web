@@ -58,7 +58,7 @@ export function customerConfirmationTemplate(
   const { primary, secondary, text, muted, bg, card } = brandColors;
   
   const preheader = `Confirmación de tu solicitud en ${appName}`;
-  const safeLogo = `https://res.cloudinary.com/ddne5wqxo/image/upload/v1769097816/logoeminsa-Photoroom_jgkqjb.png`;
+  const safeLogo = `https://res.cloudinary.com/ddne5wqxo/image/upload/f_auto,q_auto/v1769097816/logoeminsa-Photoroom_jgkqjb.png`;
 
   // Formatear datos de transformadores si existen
   const especificacionesHTML = data.transformadores && data.transformadores.length > 0 ? `

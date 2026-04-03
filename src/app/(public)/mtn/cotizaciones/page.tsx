@@ -561,7 +561,7 @@ function CotizacionesContent() {
             <p className="text-sm text-gray-500 mb-3">{tm("cotizaciones.certifications")}</p>
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp" alt="ISO 9001" width={36} height={36} className="object-contain shrink-0" />
+                <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp" alt="ISO 9001" width={36} height={36} className="object-contain shrink-0" />
                 <span className="text-xs font-semibold text-gray-700">ISO 9001:2015</span>
               </div>
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
@@ -571,7 +571,7 @@ function CotizacionesContent() {
                 <span className="text-xs font-semibold text-gray-700">ANSI/IEEE C57 — Certificado por CIDET</span>
               </div>
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242300/eminsa/site/certificados/ul-certified-logo.jpg" alt="UL" width={36} height={36} className="object-contain shrink-0" />
+                <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242300/eminsa/site/certificados/ul-certified-logo.jpg" alt="UL" width={36} height={36} className="object-contain shrink-0" />
                 <span className="text-xs font-semibold text-gray-700">UL XPLH: Transformers, Distribution, Liquid-filled Type, Over 600 Volts</span>
               </div>
             </div>

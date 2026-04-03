@@ -39,26 +39,26 @@ import { getWhatsAppUrl } from "@/utils/whatsapp";
 // Country flags map
 // ─────────────────────────────────────────────────────────────────────────────
 const countryFlags: { [key: string]: string } = {
-  Ecuador: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242379/eminsa/site/images/eic/flags/ecuador.png",
-  "Canadá / Norteamérica": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242379/eminsa/site/images/eic/flags/canada.png",
-  Italia: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242383/eminsa/site/images/eic/flags/italia.png",
-  España: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242380/eminsa/site/images/eic/flags/espana.png",
-  "Estados Unidos": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242381/eminsa/site/images/eic/flags/estados-unidos.png",
-  Portugal: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242383/eminsa/site/images/eic/flags/portugal.png",
-  "Francia / Global": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242381/eminsa/site/images/eic/flags/francia.png",
-  Internacional: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242382/eminsa/site/images/eic/flags/internacional.png",
-  "Francia / Polonia / Turquía": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242381/eminsa/site/images/eic/flags/francia.png",
+  Ecuador: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242379/eminsa/site/images/eic/flags/ecuador.png",
+  "Canadá / Norteamérica": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242379/eminsa/site/images/eic/flags/canada.png",
+  Italia: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242383/eminsa/site/images/eic/flags/italia.png",
+  España: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242380/eminsa/site/images/eic/flags/espana.png",
+  "Estados Unidos": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242381/eminsa/site/images/eic/flags/estados-unidos.png",
+  Portugal: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242383/eminsa/site/images/eic/flags/portugal.png",
+  "Francia / Global": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242381/eminsa/site/images/eic/flags/francia.png",
+  Internacional: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242382/eminsa/site/images/eic/flags/internacional.png",
+  "Francia / Polonia / Turquía": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242381/eminsa/site/images/eic/flags/francia.png",
 };
 
 const brandLogos: { [key: string]: string } = {
-  inatra: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242390/eminsa/site/images/eic/logos/img-logo-inatra.png",
-  hammond: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242389/eminsa/site/images/eic/logos/hammondmfg.png",
-  elpitalia: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242386/eminsa/site/images/eic/logos/Elpitalia.png",
-  "top-cable": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242391/eminsa/site/images/eic/logos/top-cable.png",
-  southwire: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242388/eminsa/site/images/eic/logos/Southwire.jpg",
-  cabelte: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242385/eminsa/site/images/eic/logos/Cabelte.png",
-  "schneider-electric": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242387/eminsa/site/images/eic/logos/Schneider%20Electric.png",
-  chardon: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242386/eminsa/site/images/eic/logos/Chardon.png",
+  inatra: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242390/eminsa/site/images/eic/logos/img-logo-inatra.png",
+  hammond: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242389/eminsa/site/images/eic/logos/hammondmfg.png",
+  elpitalia: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242386/eminsa/site/images/eic/logos/Elpitalia.png",
+  "top-cable": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242391/eminsa/site/images/eic/logos/top-cable.png",
+  southwire: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242388/eminsa/site/images/eic/logos/Southwire.jpg",
+  cabelte: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242385/eminsa/site/images/eic/logos/Cabelte.png",
+  "schneider-electric": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242387/eminsa/site/images/eic/logos/Schneider%20Electric.png",
+  chardon: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242386/eminsa/site/images/eic/logos/Chardon.png",
 };
 
 const categoryIcons: { [key: string]: React.ElementType } = {
@@ -141,7 +141,7 @@ export default function MarcaDetailPage({
   const categoryColor = category?.color ?? "#009e49";
   const CategoryIcon = categoryIcons[category?.icon ?? "zap"] ?? Zap;
 
-  const flagSrc = countryFlags[brand.country as string] ?? "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242382/eminsa/site/images/eic/flags/internacional.png";
+  const flagSrc = countryFlags[brand.country as string] ?? "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242382/eminsa/site/images/eic/flags/internacional.png";
   const logoSrc = brandLogos[slug];
 
   return (

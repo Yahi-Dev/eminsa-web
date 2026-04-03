@@ -31,9 +31,9 @@ import { useTranslations } from "next-intl";
 import VideoShowcase from "@/components/ui/VideoShowcase";
 
 const productPhotos: Record<string, string> = {
-  "tipo-poste": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
-  "pad-mounted": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg",
-  "subestacion": "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",
+  "tipo-poste": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+  "pad-mounted": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg",
+  "subestacion": "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",
 };
 
 const resourceIcons: Record<string, React.ElementType> = {
@@ -46,16 +46,16 @@ const resourceIcons: Record<string, React.ElementType> = {
 
 // ─── Hero floating cards ──────────────────────────────────────────────────────
 const HERO_PHOTOS = [
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",  // Transformador Tipo Poste
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg",  // Pad Mounted 75kVA EMINSA
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",  // Transformador Subestación
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242336/eminsa/site/fotos-eminsa/mtn/DSC07246.jpg",  // Tanque de transformador con radiadores
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242337/eminsa/site/fotos-eminsa/mtn/DSC07251.jpg",  // Transformador Tipo Poste monofásico
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242335/eminsa/site/fotos-eminsa/mtn/DSC07231.jpg",  // Pad Mounted 500kVA EMINSA
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242338/eminsa/site/fotos-eminsa/mtn/DSC07524.jpg",  // Pad Mounted exterior con radiador
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242340/eminsa/site/fotos-eminsa/mtn/DSC07573.jpg",  // Pad Mounted EMINSA abierto exterior
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07215.jpg",  // Pad Mounted 75kVA frontal
-  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07158.jpg",  // Aisladores de transformador
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",  // Transformador Tipo Poste
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg",  // Pad Mounted 75kVA EMINSA
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",  // Transformador Subestación
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242336/eminsa/site/fotos-eminsa/mtn/DSC07246.jpg",  // Tanque de transformador con radiadores
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242337/eminsa/site/fotos-eminsa/mtn/DSC07251.jpg",  // Transformador Tipo Poste monofásico
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242335/eminsa/site/fotos-eminsa/mtn/DSC07231.jpg",  // Pad Mounted 500kVA EMINSA
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242338/eminsa/site/fotos-eminsa/mtn/DSC07524.jpg",  // Pad Mounted exterior con radiador
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242340/eminsa/site/fotos-eminsa/mtn/DSC07573.jpg",  // Pad Mounted EMINSA abierto exterior
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07215.jpg",  // Pad Mounted 75kVA frontal
+  "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07158.jpg",  // Aisladores de transformador
 ];
 const HERO_N = HERO_PHOTOS.length;
 const HERO_SLOT_COUNT = 6;
@@ -237,7 +237,7 @@ export default function MTNPageContent() {
 
       {/* Video de Manufactura */}
       <VideoShowcase
-        src="https://res.cloudinary.com/dixsymrg5/video/upload/v1775242413/eminsa/site/video/mtn.mp4"
+        src="https://res.cloudinary.com/dixsymrg5/video/upload/q_auto,br_2000k/v1775242413/eminsa/site/video/mtn.mp4"
         subtitle={tv("subtitle")}
         title={tv("title")}
         description={tv("description")}
@@ -289,7 +289,7 @@ export default function MTNPageContent() {
                   <div className="h-1 bg-linear-to-r from-[#00269b] to-[#0099ce]" />
                   <div className="relative aspect-4/3 overflow-hidden">
                     <Image
-                      src={productPhotos[product.slug] ?? "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg"}
+                      src={productPhotos[product.slug] ?? "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg"}
                       alt={product.shortName}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -384,14 +384,14 @@ export default function MTNPageContent() {
         {/* Photo grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-1">
           {[
-            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242346/eminsa/site/fotos-eminsa/mtn/DSC07799.jpg", label: t("manufacturing.photoLabels.winding") },
-            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242341/eminsa/site/fotos-eminsa/mtn/DSC07731.jpg", label: t("manufacturing.photoLabels.metalwork") },
-            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242344/eminsa/site/fotos-eminsa/mtn/DSC07775.jpg", label: t("manufacturing.photoLabels.inTank") },
-            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242326/eminsa/site/fotos-eminsa/mtn/DSC07134.jpg", label: t("manufacturing.photoLabels.testLab") },
-            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242341/eminsa/site/fotos-eminsa/mtn/DSC07731.jpg", label: t("manufacturing.photoLabels.laserCutting") },
-            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242349/eminsa/site/fotos-eminsa/mtn/DSC07822.jpg", label: t("manufacturing.photoLabels.assembly") },
-            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07154.jpg", label: t("manufacturing.photoLabels.highVoltageTesting") },
-            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242349/eminsa/site/fotos-eminsa/mtn/DSC07842.jpg", label: t("manufacturing.photoLabels.eminsaTeam") },
+            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242346/eminsa/site/fotos-eminsa/mtn/DSC07799.jpg", label: t("manufacturing.photoLabels.winding") },
+            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242341/eminsa/site/fotos-eminsa/mtn/DSC07731.jpg", label: t("manufacturing.photoLabels.metalwork") },
+            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242344/eminsa/site/fotos-eminsa/mtn/DSC07775.jpg", label: t("manufacturing.photoLabels.inTank") },
+            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242326/eminsa/site/fotos-eminsa/mtn/DSC07134.jpg", label: t("manufacturing.photoLabels.testLab") },
+            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242341/eminsa/site/fotos-eminsa/mtn/DSC07731.jpg", label: t("manufacturing.photoLabels.laserCutting") },
+            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242349/eminsa/site/fotos-eminsa/mtn/DSC07822.jpg", label: t("manufacturing.photoLabels.assembly") },
+            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07154.jpg", label: t("manufacturing.photoLabels.highVoltageTesting") },
+            { src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242349/eminsa/site/fotos-eminsa/mtn/DSC07842.jpg", label: t("manufacturing.photoLabels.eminsaTeam") },
           ].map((photo, i) => (
             <motion.div
               key={i}

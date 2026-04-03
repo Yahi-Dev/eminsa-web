@@ -85,7 +85,7 @@ export default function EtrysNosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07602.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07602.jpg"
                   alt={t("altTeam")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -155,7 +155,7 @@ export default function EtrysNosotrosPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242359/eminsa/site/fotos-eminsa/rst/DSC07618.jpg"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242359/eminsa/site/fotos-eminsa/rst/DSC07618.jpg"
                     alt={t("altFacilities")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -164,7 +164,7 @@ export default function EtrysNosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242353/eminsa/site/fotos-eminsa/rst/DSC07557.jpg"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242353/eminsa/site/fotos-eminsa/rst/DSC07557.jpg"
                     alt={t("altWorkshop")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -173,7 +173,7 @@ export default function EtrysNosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242355/eminsa/site/fotos-eminsa/rst/DSC07564.jpg"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242355/eminsa/site/fotos-eminsa/rst/DSC07564.jpg"
                     alt={t("altLab")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -182,7 +182,7 @@ export default function EtrysNosotrosPage() {
                 </div>
                 <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg mt-8">
                   <Image
-                    src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242358/eminsa/site/fotos-eminsa/rst/DSC07609.jpg"
+                    src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242358/eminsa/site/fotos-eminsa/rst/DSC07609.jpg"
                     alt={t("altEquipment")}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -318,7 +318,7 @@ export default function EtrysNosotrosPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242353/eminsa/site/fotos-eminsa/rst/DSC07555.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242353/eminsa/site/fotos-eminsa/rst/DSC07555.jpg"
                   alt={t("altTeamWork")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

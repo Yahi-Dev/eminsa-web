@@ -101,7 +101,7 @@ export default function EtrysServiciosPage() {
               {/* Main large image - technicians repairing transformer */}
               <div className="relative col-span-7 row-span-4 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07602.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07602.jpg"
                   alt={t("altTechnicians")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -116,7 +116,7 @@ export default function EtrysServiciosPage() {
               {/* Top right - test lab */}
               <div className="relative col-span-5 row-span-3 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242355/eminsa/site/fotos-eminsa/rst/DSC07564.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242355/eminsa/site/fotos-eminsa/rst/DSC07564.jpg"
                   alt={t("altTestLab")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -128,7 +128,7 @@ export default function EtrysServiciosPage() {
               {/* Bottom right - finished transformer */}
               <div className="relative col-span-5 row-span-3 rounded-2xl overflow-hidden shadow-2xl group">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242358/eminsa/site/fotos-eminsa/rst/DSC07609.jpg"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242358/eminsa/site/fotos-eminsa/rst/DSC07609.jpg"
                   alt={t("altFinished")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -208,7 +208,7 @@ export default function EtrysServiciosPage() {
               {/* Main large - lab EMINSA */}
               <div className="relative col-span-4 row-span-3 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242395/eminsa/site/images/etrys/centro/Screenshot%202026-03-26%20072302.png"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242395/eminsa/site/images/etrys/centro/Screenshot%202026-03-26%20072302.png"
                   alt={t("altTeamRepairing")}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -219,7 +219,7 @@ export default function EtrysServiciosPage() {
               {/* Top right - technician detail */}
               <div className="relative col-span-2 row-span-2 rounded-2xl overflow-hidden shadow-xl group">
                 <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242396/eminsa/site/images/etrys/centro/Screenshot%202026-03-26%20072402.png"
+                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242396/eminsa/site/images/etrys/centro/Screenshot%202026-03-26%20072402.png"
                   alt={t("altComponents")}
                   fill
                   sizes="100vw"

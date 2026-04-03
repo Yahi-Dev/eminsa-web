@@ -2,7 +2,7 @@
 // Distinct email templates for each business unit's quotation/service requests.
 
 const LOGO_URL =
-  'https://res.cloudinary.com/ddne5wqxo/image/upload/v1769097816/logoeminsa-Photoroom_jgkqjb.png';
+  'https://res.cloudinary.com/ddne5wqxo/image/upload/f_auto,q_auto/v1769097816/logoeminsa-Photoroom_jgkqjb.png';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
