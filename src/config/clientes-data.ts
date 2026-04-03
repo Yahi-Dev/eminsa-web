@@ -35,25 +35,25 @@ export const clientes: Cliente[] = [
     id: 1,
     nombre: "Grupo Eléctrico Dominicano",
     sector: "Energía",
-    logo: "/clientes/grupo-electrico-dominicano.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242311/eminsa/site/clientes/grupo-electrico-dominicano.jpg",
   },
   {
     id: 2,
     nombre: "CEPM",
     sector: "Energía",
-    logo: "/clientes/cepm.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242306/eminsa/site/clientes/cepm.jpg",
   },
   {
     id: 3,
     nombre: "San Pedro Bioenergy",
     sector: "Energía",
-    logo: "/clientes/san-pedro-bioenergy.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242316/eminsa/site/clientes/san-pedro-bioenergy.jpg",
   },
   {
     id: 4,
     nombre: "Gas Caribe",
     sector: "Energía",
-    logo: "/clientes/gas-caribe.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242310/eminsa/site/clientes/gas-caribe.jpg",
   },
 
   // ── Turismo ───────────────────────────────────────────────────────────────
@@ -61,31 +61,31 @@ export const clientes: Cliente[] = [
     id: 5,
     nombre: "Grupo Puntacana",
     sector: "Turismo",
-    logo: "/clientes/grupo-puntacana.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242312/eminsa/site/clientes/grupo-puntacana.jpg",
   },
   {
     id: 6,
     nombre: "Cap Cana",
     sector: "Turismo",
-    logo: "/clientes/cap-cana.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242301/eminsa/site/clientes/cap-cana.jpg",
   },
   {
     id: 7,
     nombre: "Casa de Campo Resort & Villas",
     sector: "Turismo",
-    logo: "/clientes/casa-de-campo.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242304/eminsa/site/clientes/casa-de-campo.jpg",
   },
   {
     id: 8,
     nombre: "Costasur Casa de Campo",
     sector: "Turismo",
-    logo: "/clientes/costasur.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242308/eminsa/site/clientes/costasur.jpg",
   },
   {
     id: 9,
     nombre: "Bluewave Group",
     sector: "Turismo",
-    logo: "/clientes/bluewave-group.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242300/eminsa/site/clientes/bluewave-group.jpg",
   },
 
   // ── Manufactura ───────────────────────────────────────────────────────────
@@ -93,13 +93,13 @@ export const clientes: Cliente[] = [
     id: 10,
     nombre: "Gerdau Metaldom",
     sector: "Manufactura",
-    logo: "/clientes/gerdau-metaldom.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242310/eminsa/site/clientes/gerdau-metaldom.jpg",
   },
   {
     id: 11,
     nombre: "Cementos Cibao",
     sector: "Manufactura",
-    logo: "/clientes/cementos-cibao.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242305/eminsa/site/clientes/cementos-cibao.jpg",
   },
 
   // ── Construcción ──────────────────────────────────────────────────────────
@@ -107,19 +107,19 @@ export const clientes: Cliente[] = [
     id: 12,
     nombre: "Ingeniería Estrella",
     sector: "Construcción",
-    logo: "/clientes/ingenieria-estrella.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242313/eminsa/site/clientes/ingenieria-estrella.jpg",
   },
   {
     id: 13,
     nombre: "Lexco",
     sector: "Construcción",
-    logo: "/clientes/lexco.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242315/eminsa/site/clientes/lexco.jpg",
   },
   {
     id: 14,
     nombre: "CR Industrias",
     sector: "Construcción",
-    logo: "/clientes/cr-industrias.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242309/eminsa/site/clientes/cr-industrias.jpg",
   },
 
   // ── Retail ────────────────────────────────────────────────────────────────
@@ -127,13 +127,13 @@ export const clientes: Cliente[] = [
     id: 15,
     nombre: "CCN – Centro Cuesta Nacional",
     sector: "Retail",
-    logo: "/clientes/ccn.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242304/eminsa/site/clientes/ccn.jpg",
   },
   {
     id: 16,
     nombre: "Ramos Grupo",
     sector: "Retail",
-    logo: "/clientes/ramos-grupo.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242315/eminsa/site/clientes/ramos-grupo.jpg",
   },
 
   // ── Alimentación ─────────────────────────────────────────────────────────
@@ -141,13 +141,13 @@ export const clientes: Cliente[] = [
     id: 17,
     nombre: "Helados Bon",
     sector: "Alimentación",
-    logo: "/clientes/helados-bon.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242313/eminsa/site/clientes/helados-bon.jpg",
   },
   {
     id: 18,
     nombre: "Cervecería Vegana",
     sector: "Alimentación",
-    logo: "/clientes/cerveceria-vegana.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242307/eminsa/site/clientes/cerveceria-vegana.jpg",
   },
 
   // ── Telecomunicaciones ────────────────────────────────────────────────────
@@ -155,7 +155,7 @@ export const clientes: Cliente[] = [
     id: 19,
     nombre: "Claro RD",
     sector: "Telecomunicaciones",
-    logo: "/clientes/claro.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242308/eminsa/site/clientes/claro.jpg",
   },
 
   // ── Industrial ────────────────────────────────────────────────────────────
@@ -163,7 +163,7 @@ export const clientes: Cliente[] = [
     id: 20,
     nombre: "INICA",
     sector: "Industrial",
-    logo: "/clientes/inica.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242314/eminsa/site/clientes/inica.jpg",
   },
 
   // ── Automotriz ────────────────────────────────────────────────────────────
@@ -171,6 +171,6 @@ export const clientes: Cliente[] = [
     id: 21,
     nombre: "Grupo Viamar",
     sector: "Automotriz",
-    logo: "/clientes/grupo-viamar.jpeg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242312/eminsa/site/clientes/grupo-viamar.jpg",
   },
 ];

@@ -430,7 +430,7 @@ export const certifications: Certification[] = [
       "Mejora continua de procesos",
       "Satisfacción del cliente garantizada",
     ],
-    image: "/images/SelloAENORISO9001_NEG.png",
+    image: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp",
   },
   {
     id: "ansi-ieee-c57",

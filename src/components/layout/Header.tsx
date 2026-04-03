@@ -129,7 +129,7 @@ export default function Header() {
               aria-label={language === "en" ? t("ariaLanguageEn") : t("ariaLanguageEs")}
             >
               <Image
-                src={language === "en" ? "/images/eic/flags/estados-unidos.png" : "/images/eic/flags/republica-dominicana.png"}
+                src={language === "en" ? "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242381/eminsa/site/images/eic/flags/estados-unidos.png" : "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242384/eminsa/site/images/eic/flags/republica-dominicana.png"}
                 alt=""
                 width={20}
                 height={14}
@@ -169,7 +169,7 @@ export default function Header() {
               }}
             >
               <Image
-                src="/logoeminsa-Photoroom.png"
+                src="https://res.cloudinary.com/dixsymrg5/image/upload/v1775242404/eminsa/site/logoeminsa-Photoroom.png"
                 alt="Grupo EMINSA"
                 width={240}
                 height={240}
@@ -427,7 +427,7 @@ export default function Header() {
                     aria-label={t("switchLanguage")}
                   >
                     <Image
-                      src={language === "en" ? "/images/eic/flags/republica-dominicana.png" : "/images/eic/flags/estados-unidos.png"}
+                      src={language === "en" ? "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242384/eminsa/site/images/eic/flags/republica-dominicana.png" : "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242381/eminsa/site/images/eic/flags/estados-unidos.png"}
                       alt=""
                       width={22}
                       height={15}

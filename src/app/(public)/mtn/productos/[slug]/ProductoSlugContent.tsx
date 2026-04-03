@@ -50,16 +50,16 @@ export default function ProductoSlugContent({ slug }: Props) {
 
   const productPhotos: Record<string, { main: string; secondary: string[] }> = {
     "tipo-poste": {
-      main: "/fotos-eminsa/mtn/DSC07227.jpg",
-      secondary: ["/fotos-eminsa/mtn/DSC07131.jpg", "/fotos-eminsa/mtn/DSC07148.jpg"],
+      main: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+      secondary: ["https://res.cloudinary.com/dixsymrg5/image/upload/v1775242325/eminsa/site/fotos-eminsa/mtn/DSC07131.jpg", "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242327/eminsa/site/fotos-eminsa/mtn/DSC07148.jpg"],
     },
     "pad-mounted": {
-      main: "/fotos-eminsa/mtn/DSC07213.jpg",
-      secondary: ["/fotos-eminsa/mtn/DSC07221.jpg", "/fotos-eminsa/mtn/DSC07570.jpg"],
+      main: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg",
+      secondary: ["https://res.cloudinary.com/dixsymrg5/image/upload/v1775242333/eminsa/site/fotos-eminsa/mtn/DSC07221.jpg", "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242339/eminsa/site/fotos-eminsa/mtn/DSC07570.jpg"],
     },
     "subestacion": {
-      main: "/fotos-eminsa/mtn/transformador-subestacion.png",
-      secondary: ["/fotos-eminsa/mtn/DSC07753.jpg", "/fotos-eminsa/mtn/DSC07172.jpg"],
+      main: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",
+      secondary: ["https://res.cloudinary.com/dixsymrg5/image/upload/v1775242342/eminsa/site/fotos-eminsa/mtn/DSC07753.jpg", "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242331/eminsa/site/fotos-eminsa/mtn/DSC07172.jpg"],
     },
   };
 

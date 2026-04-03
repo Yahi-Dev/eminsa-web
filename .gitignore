@@ -46,3 +46,6 @@ next-env.d.ts
 deploy.zip
 next-update.zip
 deploy-full.zip
+
+# migration scripts output
+scripts/cloudinary-map.json

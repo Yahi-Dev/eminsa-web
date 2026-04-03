@@ -9,10 +9,10 @@ import { divisions } from "@/config/navigation";
 import { useTranslations } from "next-intl";
 
 const divisionPhotos: Record<string, string> = {
-  mtn:       "/fotos-eminsa/mtn/DSC07227.jpg",
-  etrys:     "/fotos-eminsa/rst/DSC07618.jpg",
-  eic:       "/fotos-eminsa/eic/DSC07591.jpg",
-  servicios: "/fotos-eminsa/mtn/DSC07134.jpg",
+  mtn:       "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",
+  etrys:     "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242359/eminsa/site/fotos-eminsa/rst/DSC07618.jpg",
+  eic:       "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242319/eminsa/site/fotos-eminsa/eic/DSC07591.jpg",
+  servicios: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242326/eminsa/site/fotos-eminsa/mtn/DSC07134.jpg",
 };
 
 const iconMap: { [key: string]: React.ElementType } = {
@@ -179,7 +179,7 @@ export default function DivisionsSection() {
               <div className="relative flex flex-col justify-between overflow-hidden min-h-80">
                 {/* Background photo */}
                 <Image
-                  src={divisionPhotos[activeDivision.id] ?? "/fotos-eminsa/mtn/DSC07227.jpg"}
+                  src={divisionPhotos[activeDivision.id] ?? "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg"}
                   alt={activeDivision.name}
                   fill
                   priority

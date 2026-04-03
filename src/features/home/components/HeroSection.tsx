@@ -188,7 +188,7 @@ export default function HeroSection() {
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay loop muted playsInline
         >
-          <source src="/images/web-banner-video.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dixsymrg5/video/upload/v1775242401/eminsa/site/images/web-banner-video.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/60 to-black/70" />
         <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black/40" />

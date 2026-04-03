@@ -10,17 +10,17 @@ import { useTranslations } from "next-intl";
 const certItems = [
   {
     id: "iso9001",
-    logo: "/images/SelloAENORISO9001_NEG.png",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp",
     color: "#00269b",
   },
   {
     id: "iqnet",
-    logo: "/images/IQNET_RCMark_PosCMYK.png",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242372/eminsa/site/images/IQNET_RCMark_PosCMYK.webp",
     color: "#0099ce",
   },
   {
     id: "ul",
-    logo: "/certificados/ul-certified-logo.jpg",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242300/eminsa/site/certificados/ul-certified-logo.jpg",
     color: "#0099ce",
   },
 ];

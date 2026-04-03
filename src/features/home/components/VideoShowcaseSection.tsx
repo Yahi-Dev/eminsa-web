@@ -6,10 +6,10 @@ import { useTranslations } from "next-intl";
 import { Play } from "lucide-react";
 
 const videos = [
-  { key: "mtn", src: "/video/mtn.mp4", href: "/mtn" },
-  { key: "rst", src: "/video/rst.mp4", href: "/etrys/servicios" },
-  { key: "servicios", src: "/video/Servicios.mp4", href: "/servicios" },
-  { key: "nosotros", src: "/video/nosotros.mp4", href: "/nosotros" },
+  { key: "mtn", src: "https://res.cloudinary.com/dixsymrg5/video/upload/v1775242413/eminsa/site/video/mtn.mp4", href: "/mtn" },
+  { key: "rst", src: "https://res.cloudinary.com/dixsymrg5/video/upload/v1775242423/eminsa/site/video/rst.mp4", href: "/etrys/servicios" },
+  { key: "servicios", src: "https://res.cloudinary.com/dixsymrg5/video/upload/v1775242409/eminsa/site/video/Servicios.mp4", href: "/servicios" },
+  { key: "nosotros", src: "https://res.cloudinary.com/dixsymrg5/video/upload/v1775242419/eminsa/site/video/nosotros.mp4", href: "/nosotros" },
 ];
 
 function VideoCard({

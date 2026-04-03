@@ -10,9 +10,9 @@ import MarqueeEyebrow from "@/components/shared/MarqueeEyebrow";
 
 // ─── Photos per product ────────────────────────────────────────────────────────
 const PRODUCT_PHOTOS = [
-  "/fotos-eminsa/mtn/DSC07227.jpg",  // Tipo Poste
-  "/fotos-eminsa/mtn/DSC07213.jpg",  // Pad Mounted
-  "/fotos-eminsa/mtn/transformador-subestacion.png",  // Subestación
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg",  // Tipo Poste
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242332/eminsa/site/fotos-eminsa/mtn/DSC07213.jpg",  // Pad Mounted
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/transformador-subestacion.png",  // Subestación
 ];
 
 // ─── Accent colors ─────────────────────────────────────────────────────────────

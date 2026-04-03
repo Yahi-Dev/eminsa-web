@@ -332,13 +332,13 @@ export const certifications = [
   {
     name: "ISO 9001:2015",
     description: "Sistema de Gestión de Calidad",
-    logo: "/images/SelloAENORISO9001_NEG.png",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp",
     issuer: "AENOR",
   },
   {
     name: "IQNET",
     description: "Red Internacional de Certificación",
-    logo: "/images/IQNET_RCMark_PosCMYK.png",
+    logo: "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242372/eminsa/site/images/IQNET_RCMark_PosCMYK.webp",
     issuer: "IQNET Association",
   },
   {

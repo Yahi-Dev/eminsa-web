@@ -25,15 +25,15 @@ import {
 
 const stepIcons = [Cpu, Zap, Layers, Flame, Wrench, Hammer, Boxes, Droplets, FlaskConical];
 const stepPhotos = [
-  "/fotos-eminsa/mtn/DSC07802.jpg",  // Diseño de Núcleo - corte de láminas
-  "/fotos-eminsa/mtn/DSC07799.jpg",  // Bobinado - ensamble núcleo y bobinas
-  "/fotos-eminsa/mtn/DSC07787.jpg",  // Ensamble Parte Activa - trabajadores ensamblando
-  "/fotos-eminsa/mtn/DSC07845.jpg",  // Secado al Vacío - horno con bobinas
-  "/fotos-eminsa/mtn/DSC07822.jpg",  // Fabricación de Tanques - soldadores
-  "/fotos-eminsa/mtn/DSC07731.jpg",  // Metalmecánica - soldadores estructura
-  "/fotos-eminsa/mtn/DSC07775.jpg",  // EnTanque - parte activa en tanque
-  "/fotos-eminsa/mtn/DSC07759.jpg",  // Tratamiento de Aceite
-  "/fotos-eminsa/mtn/DSC07154.jpg",  // Pruebas - laboratorio
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242347/eminsa/site/fotos-eminsa/mtn/DSC07802.jpg",  // Diseño de Núcleo - corte de láminas
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242346/eminsa/site/fotos-eminsa/mtn/DSC07799.jpg",  // Bobinado - ensamble núcleo y bobinas
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242345/eminsa/site/fotos-eminsa/mtn/DSC07787.jpg",  // Ensamble Parte Activa - trabajadores ensamblando
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242350/eminsa/site/fotos-eminsa/mtn/DSC07845.jpg",  // Secado al Vacío - horno con bobinas
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242349/eminsa/site/fotos-eminsa/mtn/DSC07822.jpg",  // Fabricación de Tanques - soldadores
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242341/eminsa/site/fotos-eminsa/mtn/DSC07731.jpg",  // Metalmecánica - soldadores estructura
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242344/eminsa/site/fotos-eminsa/mtn/DSC07775.jpg",  // EnTanque - parte activa en tanque
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242343/eminsa/site/fotos-eminsa/mtn/DSC07759.jpg",  // Tratamiento de Aceite
+  "https://res.cloudinary.com/dixsymrg5/image/upload/v1775242328/eminsa/site/fotos-eminsa/mtn/DSC07154.jpg",  // Pruebas - laboratorio
 ];
 const stepAccents = [
   "#00269b", "#0099ce", "#009e49", "#e8a000", "#7c3aed",
@@ -101,7 +101,7 @@ export default function ManufacturaPage() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20"
             >
-              <HeroVideo src="/video/mtn1.mp4" />
+              <HeroVideo src="https://res.cloudinary.com/dixsymrg5/video/upload/v1775242415/eminsa/site/video/mtn1.mp4" />
             </motion.div>
           </div>
         </div>
