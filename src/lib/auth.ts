@@ -3,13 +3,20 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "./prisma";
 import nodemailer from "nodemailer";
 
+const isLocalSmtp = !process.env.MAIL_USERNAME;
+
 const transporter = nodemailer.createTransport({
-  host: process.env.MAIL_HOST,
-  port: Number(process.env.MAIL_PORT),
+  host: process.env.MAIL_HOST || "localhost",
+  port: Number(process.env.MAIL_PORT) || 25,
   secure: process.env.MAIL_ENCRYPTION === "ssl",
-  auth: {
-    user: process.env.MAIL_USERNAME,
-    pass: process.env.MAIL_PASSWORD,
+  ...(isLocalSmtp ? {} : {
+    auth: {
+      user: process.env.MAIL_USERNAME,
+      pass: process.env.MAIL_PASSWORD,
+    },
+  }),
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
