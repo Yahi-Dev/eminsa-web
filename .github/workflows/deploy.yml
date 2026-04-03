@@ -74,7 +74,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          source: ".next,public,prisma,package.json,package-lock.json,server.js,next.config.ts,ecosystem.config.js,src/messages"
+          source: ".next,public,prisma,package.json,package-lock.json,server.js,next.config.ts,ecosystem.config.js,src/messages,src/i18n"
           target: "/home/eminsa/new.eminsa.com"
           rm: false
           overwrite: true
