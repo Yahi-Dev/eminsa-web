@@ -79,7 +79,7 @@ jobs:
           rm: false
           overwrite: true
 
-      - name: Install deps, migrate DB, restart PM2
+      - name: Install deps, migrate DB, restart Passenger
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -88,9 +88,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ~/new.eminsa.com
-
-            # Ensure logs directory exists
-            mkdir -p logs
 
             # Set permissions
             chmod -R 755 .next
@@ -104,10 +101,9 @@ jobs:
             # Sync DB schema (safe, non-destructive)
             npx prisma db push --skip-generate
 
-            # Start or restart with PM2 ecosystem
-            pm2 delete eminsa-web 2>/dev/null || true
-            pm2 start ecosystem.config.js
-            pm2 save
+            # Ensure tmp directory exists and restart Passenger
+            mkdir -p tmp
+            touch tmp/restart.txt
 
             echo "Deploy completado exitosamente"
 
@@ -125,6 +121,6 @@ jobs:
               echo "Health check OK (HTTP $HTTP_CODE)"
             else
               echo "Health check FAILED (HTTP $HTTP_CODE)"
-              pm2 logs eminsa-web --lines 20 --nostream
+              tail -30 ~/logs/error.log 2>/dev/null
               exit 1
             fi
