@@ -140,9 +140,9 @@ export default function EICFichasTecnicasPage() {
                   <div className="shrink-0">
                     {recurso.archivo ? (
                       <a
-                        href={recurso.archivo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={recurso.tipo === "link" ? recurso.archivo : `/api/recursos/${recurso.id}/download`}
+                        target={recurso.tipo === "link" ? "_blank" : undefined}
+                        rel={recurso.tipo === "link" ? "noopener noreferrer" : undefined}
                         className="flex items-center gap-2 bg-[#009e49] hover:bg-[#007d3a] text-white px-5 py-2.5 rounded-lg transition-colors"
                       >
                         {recurso.tipo === "link" ? <ExternalLink size={18} /> : <Download size={18} />}
