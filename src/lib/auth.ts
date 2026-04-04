@@ -27,6 +27,9 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     async sendResetPassword({ user, url }) {
+      console.log("[MAIL] sendResetPassword called for:", user.email);
+      console.log("[MAIL] SMTP config:", { host: process.env.MAIL_HOST, port: process.env.MAIL_PORT, user: process.env.MAIL_USERNAME, from: process.env.MAIL_FROM_ADDRESS });
+      try {
       await transporter.sendMail({
         from: `"${process.env.MAIL_FROM_NAME}" <${process.env.MAIL_FROM_ADDRESS}>`,
         to: user.email,
@@ -55,6 +58,11 @@ export const auth = betterAuth({
           </div>
         `,
       });
+      console.log("[MAIL] Email sent successfully to:", user.email);
+      } catch (error) {
+        console.error("[MAIL] Failed to send email:", error);
+        throw error;
+      }
     },
   },
   user: {
