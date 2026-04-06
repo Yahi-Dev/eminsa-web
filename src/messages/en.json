@@ -606,6 +606,7 @@
       "altProduction": "EMINSA Production Process",
       "altEquipment": "EMINSA Equipment",
       "altWorkTeam": "EMINSA Group Work Team",
+      "clickToChange": "Click to change",
       "altCarousel": "EMINSA Group {number}",
       "cta": {
         "title": "Ready to work with us?",

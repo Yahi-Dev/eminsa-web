@@ -7,11 +7,13 @@ import { motion } from "framer-motion";
 interface StackedCardCarouselProps {
   images: { src: string; alt: string }[];
   autoPlayDelay?: number;
+  clickHint?: string;
 }
 
 export default function StackedCardCarousel({
   images,
   autoPlayDelay = 4000,
+  clickHint = "Click para cambiar",
 }: StackedCardCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -78,7 +80,7 @@ export default function StackedCardCarousel({
         transition={{ delay: 1 }}
       >
         <span className="inline-block w-1.5 h-1.5 bg-[#00269b] rounded-full animate-pulse" />
-        Click para cambiar
+        {clickHint}
       </motion.div>
 
       {/* Dots */}

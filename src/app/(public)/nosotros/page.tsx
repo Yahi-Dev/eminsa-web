@@ -583,6 +583,7 @@ export default function NosotrosPage() {
                   },
                 ]}
                 autoPlayDelay={4000}
+                clickHint={t("clickToChange")}
               />
             </motion.div>
           </div>
