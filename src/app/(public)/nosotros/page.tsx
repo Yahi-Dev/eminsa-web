@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import StackedCardCarousel from "./StackedCardCarousel";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   ArrowRight,
@@ -570,15 +571,19 @@ export default function NosotrosPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg"
-                  alt={t("altWorkTeam")}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover brightness-75"
-                />
-              </div>
+              <StackedCardCarousel
+                images={[
+                  {
+                    src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775489994/eminsa/site/fotos-eminsa/general/DSC07302.jpg",
+                    alt: t("altWorkTeam"),
+                  },
+                  {
+                    src: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242324/eminsa/site/fotos-eminsa/general/DSC07869.jpg",
+                    alt: t("altWorkTeam"),
+                  },
+                ]}
+                autoPlayDelay={4000}
+              />
             </motion.div>
           </div>
         </div>
