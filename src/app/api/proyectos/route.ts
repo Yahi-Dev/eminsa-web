@@ -22,7 +22,14 @@ export async function GET(request: NextRequest) {
     }
 
     const where: Record<string, unknown> = {};
-    if (publicadoParam === 'true') where.publicado = true;
+    // publicado=all → no filter (admin use); publicado=false → drafts only; default → published only
+    if (publicadoParam === 'all') {
+      // No publicado filter — return everything
+    } else if (publicadoParam === 'false') {
+      where.publicado = false;
+    } else if (publicadoParam === 'true') {
+      where.publicado = true;
+    }
     if (division && VALID_DIVISIONES.includes(division)) where.division = division;
     if (destacado === 'true') where.destacado = true;
 

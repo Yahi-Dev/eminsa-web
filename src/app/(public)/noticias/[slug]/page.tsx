@@ -7,9 +7,8 @@ import { ArrowLeft, Calendar, User, Tag, ChevronRight } from "lucide-react";
 import { categoriasNoticias } from "@/data/content";
 import type { NoticiaAPI } from "@/features/admin/types";
 import { useTranslations, useLocale } from "next-intl";
-import Image from "next/image";
 import { sanitizeContent } from "@/lib/sanitize";
-import { getCldUrl } from "@/lib/cloudinary-url";
+import ImageGalleryCarousel from "@/components/ui/ImageGalleryCarousel";
 
 const categoriaColors: { [key: string]: string } = {
   empresa: "#00269b",
@@ -89,6 +88,25 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
         </div>
       </div>
     );
+  }
+
+  // Build image list: prefer imagenes array, fallback to single imagen
+  const allImages: string[] = [];
+  if (Array.isArray(noticia.imagenes)) {
+    for (const img of noticia.imagenes as Array<{ url: string; isPrincipal?: boolean } | string>) {
+      if (typeof img === "string" && img) allImages.push(img);
+      else if (typeof img === "object" && img?.url) allImages.push(img.url);
+    }
+    // Sort principal first
+    const principalIdx = (noticia.imagenes as Array<{ url: string; isPrincipal?: boolean }>)
+      .findIndex((i) => typeof i === "object" && i?.isPrincipal);
+    if (principalIdx > 0) {
+      const [principal] = allImages.splice(principalIdx, 1);
+      allImages.unshift(principal);
+    }
+  }
+  if (allImages.length === 0 && noticia.imagen) {
+    allImages.push(noticia.imagen);
   }
 
   const catColor = categoriaColors[noticia.categoria ?? ""] || "#00269b";
@@ -171,16 +189,9 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
               transition={{ delay: 0.2 }}
               className="lg:col-span-2"
             >
-              {noticia.imagen && (
-                <div className="rounded-2xl overflow-hidden mb-10 shadow-lg relative h-72 md:h-96">
-                  <Image
-                    src={getCldUrl(noticia.imagen, { width: 1200, quality: "auto", format: "auto" })}
-                    alt={noticia.titulo}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                    className="object-cover"
-                  />
+              {allImages.length > 0 && (
+                <div className="mb-10">
+                  <ImageGalleryCarousel images={allImages} alt={noticia.titulo} />
                 </div>
               )}
 
@@ -190,7 +201,7 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
 
               {noticia.contenido ? (
                 <div
-                  className="prose prose-lg max-w-none text-[#414241] leading-relaxed
+                  className="prose prose-lg max-w-none text-[#414241] leading-relaxed whitespace-pre-line
                     prose-headings:text-[#00269b] prose-headings:font-bold
                     prose-a:text-[#0099ce] prose-a:no-underline hover:prose-a:underline
                     prose-strong:text-[#00269b]"

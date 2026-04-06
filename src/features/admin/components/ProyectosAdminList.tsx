@@ -34,7 +34,7 @@ export default function ProyectosAdminList() {
   const [deleteConfirm, setDeleteConfirm] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("/api/proyectos")
+    fetch("/api/proyectos?publicado=all")
       .then((r) => r.json())
       .then((data) => {
         if (data.success) setProyectos(data.proyectos ?? []);

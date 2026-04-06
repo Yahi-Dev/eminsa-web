@@ -5,7 +5,17 @@ import sanitizeHtml from "sanitize-html";
  * Allows common rich-text formatting tags but strips scripts and dangerous attributes.
  */
 export function sanitizeContent(dirty: string): string {
-  return sanitizeHtml(dirty, {
+  // Convert plain-text line breaks to HTML so textarea content renders properly.
+  // Double newlines become paragraph breaks, single newlines become <br>.
+  const withBreaks = dirty.includes("<p>") || dirty.includes("<br")
+    ? dirty // Already contains HTML markup — leave as-is
+    : dirty
+        .split(/\n/)
+        .filter((line) => line.trim() !== "")
+        .map((line) => `<p>${line}</p>`)
+        .join("");
+
+  return sanitizeHtml(withBreaks, {
     allowedTags: [
       "h1", "h2", "h3", "h4", "h5", "h6",
       "p", "br", "hr",

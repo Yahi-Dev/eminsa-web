@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { sanitizeContent } from "@/lib/sanitize";
 import { getCldUrl } from "@/lib/cloudinary-url";
+import ImageGalleryCarousel from "@/components/ui/ImageGalleryCarousel";
 
 const divisionColors: { [key: string]: string } = {
   MTN: "#00269b",
@@ -88,7 +89,24 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
   const divColor = divisionColors[proyecto.division] || "#00269b";
   const divLabel = divisionLabels[proyecto.division] || proyecto.division;
-  const imagenesGaleria = Array.isArray(proyecto.imagenes) ? (proyecto.imagenes as string[]) : [];
+
+  // Build image list: prefer imagenes array, fallback to single imagen
+  const allImages: string[] = [];
+  if (Array.isArray(proyecto.imagenes)) {
+    for (const img of proyecto.imagenes as Array<{ url: string; isPrincipal?: boolean } | string>) {
+      if (typeof img === "string" && img) allImages.push(img);
+      else if (typeof img === "object" && img?.url) allImages.push(img.url);
+    }
+    const principalIdx = (proyecto.imagenes as Array<{ url: string; isPrincipal?: boolean }>)
+      .findIndex((i) => typeof i === "object" && i?.isPrincipal);
+    if (principalIdx > 0) {
+      const [principal] = allImages.splice(principalIdx, 1);
+      allImages.unshift(principal);
+    }
+  }
+  if (allImages.length === 0 && proyecto.imagen) {
+    allImages.push(proyecto.imagen);
+  }
 
   return (
     <>
@@ -173,22 +191,15 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
               transition={{ delay: 0.2 }}
               className="lg:col-span-2"
             >
-              {proyecto.imagen && (
-                <div className="rounded-2xl overflow-hidden mb-10 shadow-lg relative h-72 md:h-96">
-                  <Image
-                    src={getCldUrl(proyecto.imagen, { width: 1200, quality: "auto", format: "auto" })}
-                    alt={proyecto.titulo}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                    className="object-cover"
-                  />
+              {allImages.length > 0 && (
+                <div className="mb-10">
+                  <ImageGalleryCarousel images={allImages} alt={proyecto.titulo} />
                 </div>
               )}
 
               {proyecto.descripcion ? (
                 <div
-                  className="prose prose-lg max-w-none text-[#414241] leading-relaxed
+                  className="prose prose-lg max-w-none text-[#414241] leading-relaxed whitespace-pre-line
                     prose-headings:text-[#00269b] prose-headings:font-bold
                     prose-a:text-[#0099ce] prose-a:no-underline hover:prose-a:underline
                     prose-strong:text-[#00269b]"
@@ -196,32 +207,6 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
                 />
               ) : (
                 <p className="text-[#6d6e6d] italic">{t("noDescription")}</p>
-              )}
-
-              {imagenesGaleria.length > 0 && (
-                <div className="mt-12">
-                  <h3 className="text-xl font-bold text-[#00269b] mb-6">{t("gallery")}</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {imagenesGaleria.map((img, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.06 }}
-                        className="rounded-xl overflow-hidden aspect-square shadow-sm"
-                      >
-                        <Image
-                          src={getCldUrl(img, { width: 600, quality: "auto", format: "auto" })}
-                          alt={`${proyecto.titulo} - imagen ${i + 1}`}
-                          fill
-                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 22vw"
-                          className="object-cover hover:scale-105 transition-transform duration-300"
-                        />
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
               )}
 
               <div className="mt-12 pt-8 border-t border-gray-100">

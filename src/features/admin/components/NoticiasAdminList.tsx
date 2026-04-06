@@ -22,7 +22,7 @@ export default function NoticiasAdminList() {
   const [deleteConfirm, setDeleteConfirm] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("/api/noticias")
+    fetch("/api/noticias?publicado=all")
       .then((r) => r.json())
       .then((data) => {
         if (data.success) setNoticias(data.noticias ?? []);

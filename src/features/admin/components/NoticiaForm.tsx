@@ -6,9 +6,33 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Save, AlertCircle } from "lucide-react";
 import { categoriasNoticias } from "@/data/content";
-import ImageUploadField from "@/components/admin/ImageUploadField";
+import MultiImageUploadField, { type ImageItem } from "@/components/admin/MultiImageUploadField";
 import ScheduledPublishPicker from "@/components/admin/ScheduledPublishPicker";
 import type { NoticiaAPI } from "@/features/admin/types";
+
+function parseImageItems(noticia?: NoticiaAPI): ImageItem[] {
+  if (!noticia) return [];
+  const items: ImageItem[] = [];
+  // imagenes field stores the array of {url, isPrincipal}
+  if (Array.isArray(noticia.imagenes)) {
+    for (const img of noticia.imagenes as Array<{ url: string; isPrincipal?: boolean }>) {
+      if (typeof img === "string") {
+        items.push({ url: img, isPrincipal: false });
+      } else if (img?.url) {
+        items.push({ url: img.url, isPrincipal: img.isPrincipal ?? false });
+      }
+    }
+  }
+  // Legacy: if only imagen exists and no imagenes, convert it
+  if (items.length === 0 && noticia.imagen) {
+    items.push({ url: noticia.imagen, isPrincipal: true });
+  }
+  // Ensure at least one is principal
+  if (items.length > 0 && !items.some((i) => i.isPrincipal)) {
+    items[0].isPrincipal = true;
+  }
+  return items;
+}
 
 interface NoticiaFormProps {
   noticia?: NoticiaAPI;
@@ -25,12 +49,13 @@ function toDatetimeLocal(isoString?: string | null): string {
 export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormProps) {
   const router = useRouter();
 
+  const [imageItems, setImageItems] = useState<ImageItem[]>(parseImageItems(noticia));
+
   const [formData, setFormData] = useState({
     titulo: noticia?.titulo || "",
     slug: noticia?.slug || "",
     resumen: noticia?.resumen || "",
     contenido: noticia?.contenido || "",
-    imagen: noticia?.imagen || "",
     categoria: noticia?.categoria || "empresa",
     division: noticia?.division || "",
     autor: noticia?.autor || "",
@@ -88,12 +113,17 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
         ? new Date(formData.scheduledAt).toISOString()
         : null;
 
+      // Principal image goes to `imagen`, full array to `imagenes`
+      const principalUrl = imageItems.find((i) => i.isPrincipal)?.url || imageItems[0]?.url || null;
+
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
           ...formData,
+          imagen: principalUrl,
+          imagenes: imageItems,
           categoria: formData.categoria || null,
           division: formData.division || null,
           autor: formData.autor || null,
@@ -236,13 +266,14 @@ export default function NoticiaForm({ noticia, isEditing = false }: NoticiaFormP
               </select>
             </div>
 
-            {/* Imagen */}
-            <ImageUploadField
-              label="Imagen"
-              value={formData.imagen}
-              onChange={(val) => setFormData(prev => ({ ...prev, imagen: val }))}
+            {/* Imágenes */}
+            <MultiImageUploadField
+              label="Imágenes"
+              value={imageItems}
+              onChange={setImageItems}
               accentColor="#00269b"
               folder="eminsa/noticias"
+              max={5}
             />
 
             {/* Resumen */}

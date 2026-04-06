@@ -5,9 +5,30 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Save, AlertCircle } from "lucide-react";
-import ImageUploadField from "@/components/admin/ImageUploadField";
+import MultiImageUploadField, { type ImageItem } from "@/components/admin/MultiImageUploadField";
 import ScheduledPublishPicker from "@/components/admin/ScheduledPublishPicker";
 import type { ProyectoAPI } from "@/features/admin/types";
+
+function parseImageItems(proyecto?: ProyectoAPI): ImageItem[] {
+  if (!proyecto) return [];
+  const items: ImageItem[] = [];
+  if (Array.isArray(proyecto.imagenes)) {
+    for (const img of proyecto.imagenes as Array<{ url: string; isPrincipal?: boolean }>) {
+      if (typeof img === "string") {
+        items.push({ url: img, isPrincipal: false });
+      } else if (img?.url) {
+        items.push({ url: img.url, isPrincipal: img.isPrincipal ?? false });
+      }
+    }
+  }
+  if (items.length === 0 && proyecto.imagen) {
+    items.push({ url: proyecto.imagen, isPrincipal: true });
+  }
+  if (items.length > 0 && !items.some((i) => i.isPrincipal)) {
+    items[0].isPrincipal = true;
+  }
+  return items;
+}
 
 const divisionOptions = [
   { value: "MTN", label: "MTN — Manufactura Transformadores Nuevos" },
@@ -40,12 +61,13 @@ function toDatetimeLocal(isoString?: string | null): string {
 export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFormProps) {
   const router = useRouter();
 
+  const [imageItems, setImageItems] = useState<ImageItem[]>(parseImageItems(proyecto));
+
   const [formData, setFormData] = useState({
     titulo: proyecto?.titulo ?? "",
     slug: proyecto?.slug ?? "",
     resumen: proyecto?.resumen ?? "",
     descripcion: proyecto?.descripcion ?? "",
-    imagen: proyecto?.imagen ?? "",
     cliente: proyecto?.cliente ?? "",
     ubicacion: proyecto?.ubicacion ?? "",
     division: proyecto?.division ?? "MTN",
@@ -97,8 +119,12 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
       ? new Date(formData.scheduledAt).toISOString()
       : null;
 
+    const principalUrl = imageItems.find((i) => i.isPrincipal)?.url || imageItems[0]?.url || null;
+
     const body = {
       ...formData,
+      imagen: principalUrl,
+      imagenes: imageItems,
       anio: formData.anio ? parseInt(formData.anio, 10) : null,
       scheduledAt,
     };
@@ -256,12 +282,14 @@ export default function ProyectoForm({ proyecto, isEditing = false }: ProyectoFo
           </div>
 
           <div className="bg-white rounded-xl p-6 shadow-sm space-y-4">
-            <h2 className="text-base font-semibold text-gray-800 mb-2">Imagen Principal</h2>
-            <ImageUploadField
-              label="Imagen Principal"
-              value={formData.imagen}
-              onChange={(base64) => setFormData((prev) => ({ ...prev, imagen: base64 }))}
+            <h2 className="text-base font-semibold text-gray-800 mb-2">Imágenes</h2>
+            <MultiImageUploadField
+              label="Imágenes del proyecto"
+              value={imageItems}
+              onChange={setImageItems}
+              accentColor="#0099ce"
               folder="eminsa/proyectos"
+              max={5}
             />
           </div>
 

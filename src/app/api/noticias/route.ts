@@ -24,12 +24,12 @@ export async function GET(request: NextRequest) {
     }
 
     const where: Record<string, unknown> = {};
-    // Public API defaults to published-only. Only show unpublished if explicitly
-    // requested with publicado=false (admin use — still requires auth on write endpoints)
-    if (publicadoParam === 'false') {
+    // publicado=all → no filter (admin use); publicado=false → drafts only; default → published only
+    if (publicadoParam === 'all') {
+      // No publicado filter — return everything
+    } else if (publicadoParam === 'false') {
       where.publicado = false;
     } else {
-      // Default: only published content
       where.publicado = true;
     }
     // Whitelist-validate query params to prevent injection
