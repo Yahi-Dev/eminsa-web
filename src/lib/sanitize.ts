@@ -7,9 +7,15 @@ import sanitizeHtml from "sanitize-html";
 export function sanitizeContent(dirty: string): string {
   // Convert plain-text line breaks to HTML so textarea content renders properly.
   // Double newlines become paragraph breaks, single newlines become <br>.
-  const withBreaks = dirty.includes("<p>") || dirty.includes("<br")
-    ? dirty // Already contains HTML markup — leave as-is
-    : dirty
+  // Auto-link plain URLs (http/https) that aren't already inside an <a> tag
+  const linkified = dirty.replace(
+    /(?<!["'=])(https?:\/\/[^\s<]+)/g,
+    '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-[#00269b] underline hover:text-[#0099ce]">$1</a>'
+  );
+
+  const withBreaks = linkified.includes("<p>") || linkified.includes("<br")
+    ? linkified // Already contains HTML markup — leave as-is
+    : linkified
         .split(/\n/)
         .filter((line) => line.trim() !== "")
         .map((line) => `<p>${line}</p>`)
