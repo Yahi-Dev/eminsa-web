@@ -42,7 +42,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cat > ~/new.eminsa.com/.env << 'ENVEOF'
+            cat > ~/eminsa.com/.env << 'ENVEOF'
             NODE_ENV=production
             APP_ENV=PROD
             DATABASE_URL=${{ secrets.DATABASE_URL }}
@@ -65,7 +65,7 @@ jobs:
             SALES_EMAIL=${{ secrets.SALES_EMAIL }}
             BCC_EMAIL=${{ secrets.BCC_EMAIL }}
             ENVEOF
-            chmod 600 ~/new.eminsa.com/.env
+            chmod 600 ~/eminsa.com/.env
 
       - name: Deploy build to server
         uses: appleboy/scp-action@v0.1.7
@@ -75,7 +75,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           source: ".next,public,prisma,package.json,package-lock.json,server.js,next.config.ts,ecosystem.config.js,src/messages,src/i18n"
-          target: "/home/eminsa/new.eminsa.com"
+          target: "/home/eminsa/eminsa.com"
           rm: false
           overwrite: true
 
@@ -87,7 +87,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd ~/new.eminsa.com
+            cd ~/eminsa.com
 
             # Set permissions
             chmod -R 755 .next
@@ -116,7 +116,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             sleep 5
-            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://new.eminsa.com || echo "000")
+            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://eminsa.com || echo "000")
             if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "302" ]; then
               echo "Health check OK (HTTP $HTTP_CODE)"
             else

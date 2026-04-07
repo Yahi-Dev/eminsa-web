@@ -1,4 +1,4 @@
-# Guía de Despliegue — new.eminsa.com (cPanel)
+# Guía de Despliegue — eminsa.com (cPanel)
 
 ## Resumen del proceso
 1. Preparar archivos localmente (build)
@@ -54,7 +54,7 @@ Si el build falla, revisa errores antes de continuar.
 
 Conéctate por **FTP** (FileZilla) o usa el **File Manager** de cPanel.
 
-Directorio destino en el servidor: `/home/eminsa/new.eminsa.com/` (o el que cPanel asigne)
+Directorio destino en el servidor: `/home/eminsa/eminsa.com/` (o el que cPanel asigne)
 
 ### Archivos y carpetas a subir:
 
@@ -96,8 +96,8 @@ Directorio destino en el servidor: `/home/eminsa/new.eminsa.com/` (o el que cPan
 |---|---|
 | Node.js version | **18.x** o **20.x** (la más reciente disponible) |
 | Application mode | **Production** |
-| Application root | `/home/eminsa/new.eminsa.com` |
-| Application URL | `new.eminsa.com` |
+| Application root | `/home/eminsa/eminsa.com` |
+| Application URL | `eminsa.com` |
 | Application startup file | `server.js` |
 
 4. Haz clic en **"Create"**
@@ -110,7 +110,7 @@ Una vez creada la app, cPanel muestra un botón **"Run NPM Install"** — haz cl
 
 O por SSH:
 ```bash
-cd /home/eminsa/new.eminsa.com
+cd /home/eminsa/eminsa.com
 npm install --production
 ```
 
@@ -120,7 +120,7 @@ npm install --production
 
 Por SSH (cPanel → Terminal o SSH):
 ```bash
-cd /home/eminsa/new.eminsa.com
+cd /home/eminsa/eminsa.com
 
 # Generar cliente Prisma para el servidor
 npx prisma generate
@@ -149,8 +149,8 @@ En cPanel → Setup Node.js App → encuentra tu app → haz clic en **"Start"**
 
 ## PASO 9 — Verificar
 
-1. Abre https://new.eminsa.com — debe cargar la web
-2. Abre https://new.eminsa.com/admin — debe aparecer el login
+1. Abre https://eminsa.com — debe cargar la web
+2. Abre https://eminsa.com/admin — debe aparecer el login
 3. Inicia sesión con `admin@eminsa.com` / `Admin2024!`
 4. Cambia la contraseña del admin
 
