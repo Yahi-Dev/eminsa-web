@@ -13,12 +13,21 @@ export function sanitizeContent(dirty: string): string {
     '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-[#00269b] underline hover:text-[#0099ce]">$1</a>'
   );
 
-  const withBreaks = linkified.includes("<p>") || linkified.includes("<br")
-    ? linkified // Already contains HTML markup — leave as-is
-    : linkified
-        .split(/\n/)
-        .filter((line) => line.trim() !== "")
-        .map((line) => `<p>${line}</p>`)
+  // Normalize Windows \r\n to \n before processing
+  const normalized = linkified.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
+  const withBreaks = normalized.includes("<p>") || normalized.includes("<br")
+    ? normalized // Already contains HTML markup — leave as-is
+    : normalized
+        // Split by 2+ consecutive newlines → separate <p> paragraphs (visible gap)
+        .split(/\n{2,}/)
+        .map((paragraph) => {
+          // Within each paragraph, single newlines → <br> (same block, next line)
+          const lines = paragraph.trim();
+          if (!lines) return '';
+          return `<p style="margin-bottom:1em;">${lines.replace(/\n/g, '<br>')}</p>`;
+        })
+        .filter(Boolean)
         .join("");
 
   return sanitizeHtml(withBreaks, {
@@ -37,7 +46,7 @@ export function sanitizeContent(dirty: string): string {
     allowedAttributes: {
       a: ["href", "title", "target", "rel"],
       img: ["src", "alt", "title", "width", "height", "loading"],
-      "*": ["class", "id"],
+      "*": ["class", "id", "style"],
     },
     allowedSchemes: ["http", "https", "mailto"],
     // Force external links to be safe

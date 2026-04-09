@@ -147,6 +147,49 @@ function getValue(key: string, raw: unknown): string {
   return VALUE_MAPS[key]?.[str] ?? str;
 }
 
+function renderTransformadoresHtml(
+  transformadores: unknown[],
+  accentColor: string
+): string {
+  return transformadores
+    .map((t, i) => {
+      if (typeof t !== 'object' || t === null) return '';
+      const obj = t as Record<string, unknown>;
+      const rows = Object.entries(obj)
+        .filter(([, v]) => v !== '' && v !== null && v !== undefined)
+        .map(
+          ([k, v]) => `
+        <tr>
+          <td style="padding:6px 12px;background:#f3f4f6;font-weight:600;width:40%;border-bottom:1px solid #e5e7eb;font-size:13px;color:#374151;">${getLabel(k)}</td>
+          <td style="padding:6px 12px;border-bottom:1px solid #e5e7eb;color:#374151;font-size:14px;">${getValue(k, v)}</td>
+        </tr>`
+        )
+        .join('');
+      return `
+        <p style="margin:0 0 6px;font-size:12px;font-weight:700;color:${accentColor};">Transformador #${i + 1}</p>
+        <table style="width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;margin-bottom:12px;">${rows}</table>`;
+    })
+    .join('');
+}
+
+function renderArchivosHtml(archivos: unknown[], accentColor: string): string {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://eminsa.com';
+  const links = archivos
+    .map((a) => {
+      if (typeof a !== 'object' || a === null) return '';
+      const obj = a as Record<string, unknown>;
+      const url = String(obj.url ?? '');
+      const name = String(obj.name ?? 'Archivo');
+      if (!url) return '';
+      const downloadUrl = `${baseUrl}/api/cotizaciones/download?url=${encodeURIComponent(url)}&name=${encodeURIComponent(name)}`;
+      return `<li style="margin-bottom:6px;"><a href="${downloadUrl}" style="color:${accentColor};font-weight:600;text-decoration:underline;font-size:14px;">📎 ${name}</a></li>`;
+    })
+    .filter(Boolean)
+    .join('');
+  if (!links) return '';
+  return `<ul style="margin:0;padding:0 0 0 18px;list-style:none;">${links}</ul>`;
+}
+
 function buildDetallesHtml(
   detalles: Record<string, unknown>,
   accentColor: string
@@ -157,37 +200,100 @@ function buildDetallesHtml(
   if (entries.length === 0)
     return '<p style="color:#6b7280;margin:0;font-size:14px;">Sin detalles adicionales.</p>';
 
-  const specEntries = entries.filter(([k]) => SPEC_KEYS.has(k));
-  const otherEntries = entries.filter(([k]) => !SPEC_KEYS.has(k));
+  // Separate transformadores and archivos from regular entries
+  const transformadores = Array.isArray(detalles.transformadores) ? detalles.transformadores : null;
+  const archivos = Array.isArray(detalles.archivos) ? detalles.archivos : null;
+  const skipKeys = new Set(['transformadores', 'archivos']);
 
-  const row = ([k, v]: [string, unknown]) => `
+  const regularEntries = entries.filter(([k]) => !skipKeys.has(k));
+  const specEntries = regularEntries.filter(([k]) => SPEC_KEYS.has(k));
+  const otherEntries = regularEntries.filter(([k]) => !SPEC_KEYS.has(k));
+
+  const row = ([k, v]: [string, unknown]) => {
+    // Skip nested objects/arrays that would render as [object Object]
+    if (typeof v === 'object' && v !== null) return '';
+    return `
     <tr>
       <td style="padding:7px 12px;background:#f3f4f6;font-weight:600;width:40%;border-bottom:1px solid #e5e7eb;font-size:13px;color:#374151;">${getLabel(k)}</td>
       <td style="padding:7px 12px;border-bottom:1px solid #e5e7eb;color:#374151;font-size:14px;">${getValue(k, v)}</td>
     </tr>`;
+  };
 
-  const table = (rows: [string, unknown][]) =>
-    `<table style="width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;">${rows.map(row).join('')}</table>`;
+  const table = (rows: [string, unknown][]) => {
+    const rendered = rows.map(row).filter(Boolean).join('');
+    if (!rendered) return '';
+    return `<table style="width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;border:1px solid #e5e7eb;">${rendered}</table>`;
+  };
 
   let html = '';
+
+  // Render transformadores section
+  if (transformadores && transformadores.length > 0) {
+    html += `<p style="margin:0 0 8px;font-size:11px;font-weight:700;color:${accentColor};text-transform:uppercase;letter-spacing:.6px;">Transformadores Solicitados</p>`;
+    html += renderTransformadoresHtml(transformadores, accentColor);
+    html += '<div style="height:8px;"></div>';
+  }
+
   if (specEntries.length > 0) {
     html += `<p style="margin:0 0 8px;font-size:11px;font-weight:700;color:${accentColor};text-transform:uppercase;letter-spacing:.6px;">Especificaciones Técnicas</p>`;
     html += table(specEntries);
     if (otherEntries.length > 0) html += '<div style="height:16px;"></div>';
   }
   if (otherEntries.length > 0) {
-    if (specEntries.length > 0)
+    if (specEntries.length > 0 || (transformadores && transformadores.length > 0))
       html += `<p style="margin:0 0 8px;font-size:11px;font-weight:700;color:${accentColor};text-transform:uppercase;letter-spacing:.6px;">Información Adicional</p>`;
     html += table(otherEntries);
   }
+
+  // Render archivos section with download links
+  if (archivos && archivos.length > 0) {
+    html += '<div style="height:16px;"></div>';
+    html += `<p style="margin:0 0 8px;font-size:11px;font-weight:700;color:${accentColor};text-transform:uppercase;letter-spacing:.6px;">Archivos Adjuntos</p>`;
+    html += renderArchivosHtml(archivos, accentColor);
+  }
+
   return html;
 }
 
 function buildDetallesText(detalles: Record<string, unknown>): string {
-  return Object.entries(detalles)
-    .filter(([, v]) => v !== '' && v !== null && v !== undefined)
-    .map(([k, v]) => `  ${getLabel(k)}: ${getValue(k, v)}`)
-    .join('\n');
+  const lines: string[] = [];
+  const skipKeys = new Set(['transformadores', 'archivos']);
+
+  // Render transformadores
+  if (Array.isArray(detalles.transformadores)) {
+    detalles.transformadores.forEach((t, i) => {
+      if (typeof t !== 'object' || t === null) return;
+      const obj = t as Record<string, unknown>;
+      lines.push(`  --- Transformador #${i + 1} ---`);
+      Object.entries(obj)
+        .filter(([, v]) => v !== '' && v !== null && v !== undefined)
+        .forEach(([k, v]) => lines.push(`    ${getLabel(k)}: ${getValue(k, v)}`));
+    });
+  }
+
+  // Render regular entries
+  Object.entries(detalles)
+    .filter(([k, v]) => !skipKeys.has(k) && v !== '' && v !== null && v !== undefined)
+    .forEach(([k, v]) => {
+      if (typeof v === 'object' && v !== null) return; // Skip nested objects
+      lines.push(`  ${getLabel(k)}: ${getValue(k, v)}`);
+    });
+
+  // Render archivos
+  if (Array.isArray(detalles.archivos)) {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_BASE_URL || 'https://eminsa.com';
+    lines.push('  --- Archivos Adjuntos ---');
+    detalles.archivos.forEach((a) => {
+      if (typeof a !== 'object' || a === null) return;
+      const obj = a as Record<string, unknown>;
+      const name = String(obj.name ?? 'Archivo');
+      const url = String(obj.url ?? '');
+      const downloadUrl = `${baseUrl}/api/cotizaciones/download?url=${encodeURIComponent(url)}&name=${encodeURIComponent(name)}`;
+      lines.push(`    ${name}: ${downloadUrl}`);
+    });
+  }
+
+  return lines.join('\n');
 }
 
 // ─── Shared layout builders ───────────────────────────────────────────────────

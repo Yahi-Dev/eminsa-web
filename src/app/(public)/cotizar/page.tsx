@@ -12,7 +12,10 @@ import {
   MessageCircle,
   Building,
   User,
-  FileText
+  FileText,
+  Upload,
+  X,
+  AlertCircle,
 } from "lucide-react";
 import { contactInfo } from "@/config/navigation";
 import { getWhatsAppUrl } from "@/utils/whatsapp";
@@ -28,6 +31,7 @@ const capacidades = [
 export default function CotizarPage() {
   const t = useTranslations("pages.cotizar");
   const tCommon = useTranslations("pages.common");
+  const tc = useTranslations("common");
 
   const tiposServicio = [
     { value: "mtn-transformador", labelKey: "tiposServicio.mtnTransformador", category: "MTN" },
@@ -65,15 +69,61 @@ export default function CotizarPage() {
     urgente: false,
   });
 
+  const [files, setFiles] = useState<{ name: string; url: string; size: number }[]>([]);
+  const [uploadingFile, setUploadingFile] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [codigo, setCodigo] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Map tipoServicio to API unidad
+  function getUnidad(tipoServicio: string): string {
+    if (tipoServicio.startsWith("mtn")) return "MTN";
+    if (tipoServicio.startsWith("etrys")) return "RST";
+    if (tipoServicio.startsWith("eic")) return "EIC";
+    return "SRV";
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    setErrors({});
+
+    try {
+      const unidad = getUnidad(formData.tipoServicio);
+      const detalles: Record<string, unknown> = {
+        tipoServicio: formData.tipoServicio,
+        ...(formData.tipoTransformador && { tipoTransformador: formData.tipoTransformador }),
+        ...(formData.capacidad && { capacidad: formData.capacidad }),
+        ...(formData.cantidad !== "1" && { cantidad: formData.cantidad }),
+        ...(formData.ubicacion && { ubicacion: formData.ubicacion }),
+        ...(formData.mensaje && { descripcion: formData.mensaje }),
+        ...(files.length > 0 && { archivos: files.map(f => ({ name: f.name, url: f.url, size: f.size })) }),
+      };
+
+      const res = await fetch("/api/cotizaciones", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          unidad,
+          nombre: formData.nombre,
+          empresa: formData.empresa || undefined,
+          email: formData.email,
+          telefono: formData.telefono,
+          urgente: formData.urgente,
+          detalles,
+        }),
+      });
+
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message || "Error al enviar");
+      setCodigo(json.codigo);
+      setIsSubmitted(true);
+    } catch (err) {
+      setErrors({ general: err instanceof Error ? err.message : "Error de conexión" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -86,6 +136,30 @@ export default function CotizarPage() {
 
   const handlePhoneChange = (value: string) => {
     setFormData(prev => ({ ...prev, telefono: value }));
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    const selected = Array.from(e.target.files);
+    e.target.value = "";
+    for (const file of selected) {
+      if (files.length >= 5) break;
+      setUploadingFile(true);
+      try {
+        const body = new FormData();
+        body.append("file", file);
+        const res = await fetch("/api/cotizaciones/upload", { method: "POST", body });
+        const data = await res.json();
+        if (data.success) {
+          setFiles(prev => [...prev, { name: data.name, url: data.url, size: data.size }].slice(0, 5));
+        }
+      } catch { /* silent */ }
+      setUploadingFile(false);
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index));
   };
 
   return (
@@ -133,11 +207,17 @@ export default function CotizarPage() {
                     <h2 className="text-3xl font-bold text-[#00269b] mb-4">
                       {t("success.title")}
                     </h2>
+                    {codigo && (
+                      <div className="bg-[#00269b]/5 border border-[#00269b]/20 rounded-xl p-4 mb-4 max-w-xs mx-auto">
+                        <p className="text-xs text-[#00269b] uppercase tracking-wider font-semibold mb-1">{tc("form.refNumber")}</p>
+                        <p className="text-2xl font-bold text-[#00269b] tracking-widest">{codigo}</p>
+                      </div>
+                    )}
                     <p className="text-[#6d6e6d] text-lg mb-8 max-w-md mx-auto">
                       {t("success.description")}
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
-                      <button onClick={() => setIsSubmitted(false)} className="btn-primary">
+                      <button onClick={() => { setIsSubmitted(false); setFiles([]); setCodigo(""); }} className="btn-primary">
                         {t("success.newRequest")}
                       </button>
                       <Link href="/" className="btn-secondary">
@@ -147,6 +227,14 @@ export default function CotizarPage() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="p-8 lg:p-10 space-y-8">
+                    {/* Error general */}
+                    {errors.general && (
+                      <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+                        <AlertCircle className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                        <p className="text-red-700 text-sm">{errors.general}</p>
+                      </div>
+                    )}
+
                     {/* Contact Info */}
                     <div>
                       <div className="flex items-center gap-3 mb-6">
@@ -249,6 +337,43 @@ export default function CotizarPage() {
                           <label className="input-label">{t("fields.description")} *</label>
                           <textarea name="mensaje" value={formData.mensaje} onChange={handleChange} required rows={5} className="input-field resize-none" placeholder={t("fields.descriptionPlaceholder")} />
                         </div>
+                      </div>
+
+                      {/* File Upload */}
+                      <div className="mt-6">
+                        <label className="input-label">{tc("form.attachFile")}</label>
+                        <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 hover:border-[#00269b] transition-colors">
+                          <input
+                            type="file"
+                            multiple
+                            accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx,.xls"
+                            onChange={handleFileChange}
+                            className="hidden"
+                            id="file-upload-cotizar"
+                            disabled={uploadingFile}
+                          />
+                          <label htmlFor="file-upload-cotizar" className="flex flex-col items-center cursor-pointer">
+                            {uploadingFile ? (
+                              <div className="w-8 h-8 border-2 border-[#00269b]/30 border-t-[#00269b] rounded-full animate-spin mb-2" />
+                            ) : (
+                              <Upload size={32} className="text-gray-400 mb-2" />
+                            )}
+                            <span className="text-sm text-gray-600">{tc("form.clickToUpload")}</span>
+                            <span className="text-xs text-gray-400 mt-1">PDF, DOC, DOCX, XLS, XLSX, JPG, PNG (máx. 10MB)</span>
+                          </label>
+                        </div>
+                        {files.length > 0 && (
+                          <div className="mt-3 space-y-2">
+                            {files.map((file, index) => (
+                              <div key={index} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
+                                <span className="text-sm text-gray-700 truncate">{file.name}</span>
+                                <button type="button" onClick={() => removeFile(index)} className="p-1 hover:bg-gray-200 rounded transition-colors">
+                                  <X size={16} className="text-gray-500" />
+                                </button>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
                       <div className="flex items-center gap-3 p-4 bg-orange-50 rounded-xl mt-6">

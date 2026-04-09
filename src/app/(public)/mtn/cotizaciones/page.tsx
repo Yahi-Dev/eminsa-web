@@ -61,7 +61,8 @@ function CotizacionesContent() {
     urgente: false,
   });
 
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<{ name: string; url: string; size: number }[]>([]);
+  const [uploadingFile, setUploadingFile] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [codigo, setCodigo] = useState("");
@@ -147,7 +148,7 @@ function CotizacionesContent() {
             descripcion: formData.descripcion,
             ubicacion: formData.ubicacion,
             ...(files.length > 0 && {
-              archivos: files.map(f => `${f.name} (${(f.size / 1024).toFixed(1)} KB)`).join(' • '),
+              archivos: files.map(f => ({ name: f.name, url: f.url, size: f.size })),
             }),
           },
         }),
@@ -183,10 +184,23 @@ function CotizacionesContent() {
     if (errors.telefono) setErrors(prev => ({ ...prev, telefono: "" }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const newFiles = Array.from(e.target.files);
-      setFiles(prev => [...prev, ...newFiles].slice(0, 5));
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
+    const selected = Array.from(e.target.files);
+    e.target.value = "";
+    for (const file of selected) {
+      if (files.length >= 5) break;
+      setUploadingFile(true);
+      try {
+        const body = new FormData();
+        body.append("file", file);
+        const res = await fetch("/api/cotizaciones/upload", { method: "POST", body });
+        const data = await res.json();
+        if (data.success) {
+          setFiles(prev => [...prev, { name: data.name, url: data.url, size: data.size }].slice(0, 5));
+        }
+      } catch { /* silent */ }
+      setUploadingFile(false);
     }
   };
 

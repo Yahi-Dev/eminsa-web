@@ -11,7 +11,7 @@ const LIMITS = {
   empresa: 100,
   email: 255,
   telefono: 30,
-  detallesJsonMaxBytes: 5000,
+  detallesJsonMaxBytes: 20000,
 };
 
 // Simple in-memory rate limiter: max 5 requests per IP per 10 minutes

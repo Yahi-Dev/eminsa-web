@@ -17,6 +17,7 @@ import {
   AlertTriangle,
   ChevronDown,
   ChevronUp,
+  Download,
 } from "lucide-react";
 import { useAuth } from "@/context/auth-context";
 
@@ -324,20 +325,67 @@ export default function AdminCotizacionesView() {
                             <h4 className="text-xs font-bold text-[#6d6e6d] uppercase tracking-wider mb-3">
                               Detalles Técnicos
                             </h4>
-                            <div className="space-y-1">
+                            <div className="space-y-2">
                               {Object.entries(cot.detalles)
                                 .filter(([, v]) => v !== "" && v !== null && v !== undefined)
-                                .slice(0, 8)
-                                .map(([k, v]) => (
-                                  <div key={k} className="flex gap-2 text-xs">
-                                    <span className="text-[#6d6e6d] shrink-0 capitalize">
-                                      {k.replace(/([A-Z])/g, " $1").trim()}:
-                                    </span>
-                                    <span className="text-gray-700 font-medium truncate">
-                                      {String(v)}
-                                    </span>
-                                  </div>
-                                ))}
+                                .map(([k, v]) => {
+                                  // Transformadores array
+                                  if (k === "transformadores" && Array.isArray(v)) {
+                                    return (
+                                      <div key={k}>
+                                        <span className="text-[#6d6e6d] text-xs font-semibold">Transformadores:</span>
+                                        {(v as Record<string, string>[]).map((tr, i) => (
+                                          <div key={i} className="mt-1 ml-2 p-2 bg-gray-50 rounded-lg text-xs space-y-0.5">
+                                            <span className="font-semibold text-[#00269b]">#{i + 1}</span>
+                                            {Object.entries(tr)
+                                              .filter(([, tv]) => tv)
+                                              .map(([tk, tv]) => (
+                                                <div key={tk} className="flex gap-1">
+                                                  <span className="text-[#6d6e6d] capitalize">{tk.replace(/([A-Z])/g, " $1").trim()}:</span>
+                                                  <span className="text-gray-700 font-medium">{tv}</span>
+                                                </div>
+                                              ))}
+                                          </div>
+                                        ))}
+                                      </div>
+                                    );
+                                  }
+                                  // Archivos array with download links
+                                  if (k === "archivos" && Array.isArray(v)) {
+                                    return (
+                                      <div key={k}>
+                                        <span className="text-[#6d6e6d] text-xs font-semibold">Archivos:</span>
+                                        <div className="mt-1 space-y-1">
+                                          {(v as { name: string; url: string; size: number }[]).map((file, i) => (
+                                            <a
+                                              key={i}
+                                              href={`/api/cotizaciones/download?url=${encodeURIComponent(file.url)}&name=${encodeURIComponent(file.name)}`}
+                                              className="flex items-center gap-2 p-2 bg-blue-50 rounded-lg text-xs text-[#00269b] hover:bg-blue-100 transition-colors"
+                                            >
+                                              <Download size={14} className="shrink-0" />
+                                              <span className="truncate font-medium">{file.name}</span>
+                                              <span className="text-[#6d6e6d] shrink-0">
+                                                ({(file.size / 1024).toFixed(0)} KB)
+                                              </span>
+                                            </a>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    );
+                                  }
+                                  // Regular string/number values
+                                  if (typeof v === "object") return null;
+                                  return (
+                                    <div key={k} className="flex gap-2 text-xs">
+                                      <span className="text-[#6d6e6d] shrink-0 capitalize">
+                                        {k.replace(/([A-Z])/g, " $1").trim()}:
+                                      </span>
+                                      <span className="text-gray-700 font-medium truncate">
+                                        {String(v)}
+                                      </span>
+                                    </div>
+                                  );
+                                })}
                             </div>
                           </div>
                         )}

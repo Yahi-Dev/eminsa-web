@@ -199,7 +199,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
 
               {proyecto.descripcion ? (
                 <div
-                  className="prose prose-lg max-w-none text-[#414241] leading-relaxed whitespace-pre-line
+                  className="prose prose-lg max-w-none text-[#414241] leading-relaxed
                     prose-headings:text-[#00269b] prose-headings:font-bold
                     prose-a:text-[#0099ce] prose-a:no-underline hover:prose-a:underline
                     prose-strong:text-[#00269b]"
