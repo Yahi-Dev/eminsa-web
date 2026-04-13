@@ -134,7 +134,7 @@ export const transformerProducts: TransformerProduct[] = [
     description: "Transformadores para sistemas de distribución eléctrica aérea con máxima confiabilidad y eficiencia.",
     fullDescription: "Los transformadores tipo poste de EMINSA están diseñados para ofrecer máxima confiabilidad, eficiencia y durabilidad en sistemas de distribución eléctrica aérea. Fabricados con materiales de alta calidad y cumpliendo estrictamente con normas internacionales, y diseños robustos que cumplen con los niveles de eficiencia establecidos por ANSI y DOE 2016 según las necesidades de nuestros clientes. Estos equipos garantizan un desempeño óptimo en aplicaciones residenciales, comerciales e industriales.",
     powerRange: "15 – 500 kVA",
-    voltageRange: "Hasta 34.5 kV",
+    voltageRange: "34.5 kV",
     phases: ['monofasico', 'trifasico', 'autoprotegido'],
     standards: ["ANSI", "DOE-2016", "IEEE C57"],
     applications: [
@@ -163,7 +163,7 @@ export const transformerProducts: TransformerProduct[] = [
     description: "Solución segura y compacta para sistemas de distribución subterránea.",
     fullDescription: "Los transformadores tipo pad-mounted de EMINSA están diseñados para ofrecer una solución segura, compacta y altamente eficiente para sistemas de distribución subterránea en áreas residenciales, comerciales e industriales. Su diseño de montaje a nivel del suelo, totalmente cerrado y hermético permite una operación fiable en espacios públicos, garantizando protección ante contactos accidentales y condiciones ambientales adversas.\n\nFabricados bajo estrictos estándares internacionales y alineados con los niveles de eficiencia ANSI/DOE 2016, nuestros transformadores pad-mounted ofrecen bajas pérdidas, excelente regulación de voltaje y un desempeño duradero, incluso en aplicaciones de carga exigente. Su versatilidad en configuraciones, capacidad para integrar accesorios bajo pedido y facilidad de instalación los convierten en la opción ideal para urbanizaciones, proyectos hoteleros, centros comerciales, industrias y empresas distribuidoras que requieren una solución robusta y estéticamente discreta.",
     powerRange: "30 – 3,000 kVA",
-    voltageRange: "Hasta 34.5 kV",
+    voltageRange: "34.5 kV",
     phases: ['monofasico', 'trifasico'],
     standards: ["ANSI", "DOE-2016", "IEEE C57"],
     applications: [
@@ -193,8 +193,8 @@ export const transformerProducts: TransformerProduct[] = [
     shortName: "Subestación",
     description: "Máxima confiabilidad y eficiencia para aplicaciones de media y alta potencia.",
     fullDescription: "Los transformadores tipo subestación de EMINSA están diseñados para suministrar energía con máxima confiabilidad, seguridad y eficiencia en aplicaciones de media y alta potencia.\n\nIdeales para subestaciones industriales, comerciales, de distribución y generación, nuestros transformadores tipo subestación ofrecen excelente regulación de voltaje, bajas pérdidas y una operación segura gracias a su diseño reforzado, sistemas de protección integrados y opciones de enfriamiento adaptadas a las necesidades del proyecto. Su ingeniería permite configuraciones flexibles —incluyendo cambiadores de derivación, gabinetes especiales, boquillas de alta capacidad y accesorios personalizados— convirtiéndolos en la solución ideal para proyectos que demandan continuidad, durabilidad y alto rendimiento energético.",
-    powerRange: "Hasta 3,000 kVA",
-    voltageRange: "Hasta 34.5 kV",
+    powerRange: "3,000 kVA",
+    voltageRange: "34.5 kV",
     phases: ['trifasico'],
     standards: ["ANSI", "IEEE C57"],
     applications: [
@@ -231,7 +231,7 @@ export const transformerVariants: TransformerVariant[] = [
     description: "Transformadores monofásicos para distribución residencial y comercial ligera.",
     specs: {
       power: "15 – 167 kVA",
-      voltage: "Hasta 34.5 kV",
+      voltage: "34.5 kV",
       frequency: "60 Hz",
       cooling: "ONAN",
       insulation: "Clase A (105°C)",
@@ -258,7 +258,7 @@ export const transformerVariants: TransformerVariant[] = [
     description: "Transformadores trifásicos para aplicaciones comerciales e industriales.",
     specs: {
       power: "30 – 500 kVA",
-      voltage: "Hasta 34.5 kV",
+      voltage: "34.5 kV",
       frequency: "60 Hz",
       cooling: "ONAN",
       insulation: "Clase A (105°C)",
@@ -285,7 +285,7 @@ export const transformerVariants: TransformerVariant[] = [
     description: "Transformadores con protección integrada contra sobrecarga y cortocircuito.",
     specs: {
       power: "15 – 167 kVA",
-      voltage: "Hasta 25 kV",
+      voltage: "25 kV",
       frequency: "60 Hz",
       cooling: "ONAN",
       insulation: "Clase A (105°C)",
@@ -312,7 +312,7 @@ export const transformerVariants: TransformerVariant[] = [
     description: "Solución compacta para distribución subterránea residencial.",
     specs: {
       power: "30 – 167 kVA",
-      voltage: "Hasta 25 kV",
+      voltage: "25 kV",
       frequency: "60 Hz",
       cooling: "ONAN",
       insulation: "Clase A (105°C)",
@@ -339,7 +339,7 @@ export const transformerVariants: TransformerVariant[] = [
     description: "Alta capacidad para aplicaciones comerciales e industriales subterráneas.",
     specs: {
       power: "75 – 3,000 kVA",
-      voltage: "Hasta 34.5 kV",
+      voltage: "34.5 kV",
       frequency: "60 Hz",
       cooling: "ONAN / ONAF",
       insulation: "Clase A (105°C)",

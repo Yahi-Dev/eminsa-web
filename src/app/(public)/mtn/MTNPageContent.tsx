@@ -88,6 +88,7 @@ export default function MTNPageContent() {
   const t = useTranslations("mtnPage");
   const tc = useTranslations("mtnConfig");
   const tv = useTranslations("videos.mtn");
+  const tCommon = useTranslations("common");
 
   // Hero photo cycling — one slot updates every 2.5s, no duplicates across slots
   const [heroSlots, setHeroSlots] = useState<number[]>(() =>
@@ -312,7 +313,7 @@ export default function MTNPageContent() {
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-500">{t("products.voltage")}</span>
-                        <span className="font-semibold text-gray-900">{product.voltageRange}</span>
+                        <span className="font-semibold text-gray-900">{tCommon("upTo")} {product.voltageRange}</span>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-2 pt-2">

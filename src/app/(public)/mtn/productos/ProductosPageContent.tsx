@@ -21,6 +21,7 @@ const fadeUp = {
 export default function ProductosPageContent() {
   const t = useTranslations("mtnPage");
   const tc = useTranslations("mtnConfig");
+  const tCommon = useTranslations("common");
 
   return (
     <div className="min-h-screen bg-white">
@@ -103,7 +104,7 @@ export default function ProductosPageContent() {
                           </div>
                           <div>
                             <p className="text-sm text-gray-500">{t("products.voltage")}</p>
-                            <p className="font-semibold text-gray-900">{product.voltageRange}</p>
+                            <p className="font-semibold text-gray-900">{tCommon("upTo")} {product.voltageRange}</p>
                           </div>
                         </div>
                         {variants.length > 0 && (
@@ -211,7 +212,7 @@ export default function ProductosPageContent() {
                 <tr className="bg-gray-50">
                   <td className="py-4 px-4 text-gray-600">{t("products.voltage")}</td>
                   {transformerProducts.map((product) => (
-                    <td key={product.id} className="text-center py-4 px-4 font-medium">{product.voltageRange}</td>
+                    <td key={product.id} className="text-center py-4 px-4 font-medium">{tCommon("upTo")} {product.voltageRange}</td>
                   ))}
                 </tr>
                 <tr>

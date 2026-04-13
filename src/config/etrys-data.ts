@@ -198,7 +198,7 @@ export const remanufacturedAdvantages = [
     title: "Ahorro",
     description: "Menor costo que un equipo nuevo con la misma calidad",
     icon: "piggy-bank",
-    highlight: "Hasta 40%",
+    highlight: "40%",
   },
   {
     id: "reliability",
@@ -240,7 +240,7 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
       "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242357/eminsa/site/fotos-eminsa/rst/DSC07607.jpg",
     ],
     powerRange: "15 – 500 kVA",
-    voltageRange: "Hasta 34.5 kV",
+    voltageRange: "34.5 kV",
     standards: ["ANSI", "IEEE C57"],
     features: [
       "Restauración integral certificada",
@@ -261,7 +261,7 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
     capacities: ["15 kVA", "25 kVA", "37.5 kVA", "50 kVA", "75 kVA", "100 kVA", "167 kVA", "250 kVA", "333 kVA", "500 kVA"],
     specs: [
       { label: "Potencia", value: "15 – 500 kVA" },
-      { label: "Voltaje Primario", value: "Hasta 34.5 kV" },
+      { label: "Voltaje Primario", value: "34.5 kV" },
       { label: "Fases", value: "Monofásico / Trifásico" },
       { label: "Frecuencia", value: "60 Hz" },
       { label: "Refrigeración", value: "ONAN" },
@@ -287,7 +287,7 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
       "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242355/eminsa/site/fotos-eminsa/rst/DSC07564.jpg",
     ],
     powerRange: "30 – 3,000 kVA",
-    voltageRange: "Hasta 34.5 kV",
+    voltageRange: "34.5 kV",
     standards: ["ANSI", "IEEE C57"],
     features: [
       "Diseño cerrado y hermético",
@@ -308,7 +308,7 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
     capacities: ["30 kVA", "45 kVA", "75 kVA", "112.5 kVA", "150 kVA", "225 kVA", "300 kVA", "500 kVA", "750 kVA", "1,000 kVA", "1,500 kVA", "2,000 kVA", "2,500 kVA", "3,000 kVA"],
     specs: [
       { label: "Potencia", value: "30 – 3,000 kVA" },
-      { label: "Voltaje Primario", value: "Hasta 34.5 kV" },
+      { label: "Voltaje Primario", value: "34.5 kV" },
       { label: "Fases", value: "Monofásico / Trifásico" },
       { label: "Frecuencia", value: "60 Hz" },
       { label: "Refrigeración", value: "ONAN / ONAF" },
@@ -334,8 +334,8 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
       "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242355/eminsa/site/fotos-eminsa/rst/DSC07598.jpg",
       "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242356/eminsa/site/fotos-eminsa/rst/DSC07600.jpg",
     ],
-    powerRange: "Hasta 3,000 kVA",
-    voltageRange: "Hasta 34.5 kV",
+    powerRange: "3,000 kVA",
+    voltageRange: "34.5 kV",
     standards: ["ANSI", "IEEE C57"],
     features: [
       "Reacondicionamiento estructural reforzado",
@@ -355,8 +355,8 @@ export const remanufacturedProducts: RemanufacturedProduct[] = [
     ],
     capacities: ["500 kVA", "750 kVA", "1,000 kVA", "1,500 kVA", "2,000 kVA", "2,500 kVA", "3,000 kVA"],
     specs: [
-      { label: "Potencia", value: "Hasta 3,000 kVA" },
-      { label: "Voltaje Primario", value: "Hasta 34.5 kV" },
+      { label: "Potencia", value: "3,000 kVA" },
+      { label: "Voltaje Primario", value: "34.5 kV" },
       { label: "Fases", value: "Trifásico" },
       { label: "Frecuencia", value: "60 Hz" },
       { label: "Refrigeración", value: "ONAN / ONAF / OFAF" },
@@ -454,8 +454,8 @@ export const repairCenter: RepairCenter = {
   description: "En nuestro taller en Santo Domingo podemos atender transformadores tipo pedestal, secos de media tensión y subestaciones de hasta 10 toneladas.",
   capabilities: [
     { type: "Transformadores Pedestal", description: "Reparación completa de transformadores tipo pedestal", capacity: "Todos los rangos" },
-    { type: "Transformadores Secos MT", description: "Servicio especializado para transformadores secos de media tensión", capacity: "Hasta 3,000 kVA" },
-    { type: "Subestaciones", description: "Capacidad para manejar transformadores de subestación pesados", capacity: "Hasta 10 toneladas" },
+    { type: "Transformadores Secos MT", description: "Servicio especializado para transformadores secos de media tensión", capacity: "3,000 kVA" },
+    { type: "Subestaciones", description: "Capacidad para manejar transformadores de subestación pesados", capacity: "10 toneladas" },
   ],
   equipment: [
     { id: "lab", name: "Laboratorio de Pruebas Eléctricas", description: "Laboratorio equipado conforme a normas ANSI C.57", icon: "activity", specs: "Certificación ANSI C.57" },
@@ -676,7 +676,7 @@ export const etrysNavigation: NavItem[] = [
   { name: "Productos", href: "/etrys/productos", submenu: [
     { name: "Tipo Poste", href: "/etrys/productos/tipo-poste", description: "15 – 500 kVA" },
     { name: "Pad-Mounted", href: "/etrys/productos/pad-mounted", description: "30 – 3,000 kVA" },
-    { name: "Subestación", href: "/etrys/productos/subestacion", description: "Hasta 3,000 kVA" },
+    { name: "Subestación", href: "/etrys/productos/subestacion", description: "3,000 kVA" },
   ]},
   { name: "Servicios", href: "/etrys/servicios", submenu: [
     { name: "Reparación", href: "/etrys/servicios", description: "Servicios de reparación integral" },

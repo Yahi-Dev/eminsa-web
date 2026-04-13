@@ -5068,7 +5068,8 @@
       "selectEquipment": "Seleccione el equipo",
       "sending": "Enviando solicitud...",
       "submit": "Enviar cotización"
-    }
+    },
+    "upTo": "Hasta"
   },
   "serviciosConfig": {
     "info": {

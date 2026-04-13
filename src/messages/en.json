@@ -5069,7 +5069,8 @@
       "selectEquipment": "Select equipment",
       "sending": "Sending request...",
       "submit": "Send quotation"
-    }
+    },
+    "upTo": "Up to"
   },
   "serviciosConfig": {
     "info": {

@@ -67,6 +67,7 @@ export default function ProductoDetailContent({ product, variants, colors }: Pro
   const photos = productPhotos[product.slug] ?? productPhotos["tipo-poste"];
   const t = useTranslations("mtnPage");
   const tc = useTranslations("mtnConfig");
+  const tCommon = useTranslations("common");
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -108,7 +109,7 @@ export default function ProductoDetailContent({ product, variants, colors }: Pro
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm px-6 py-4 rounded-xl">
                   <p className="text-sm text-white/60">{t("products.voltage")}</p>
-                  <p className="text-xl font-bold">{product.voltageRange}</p>
+                  <p className="text-xl font-bold">{tCommon("upTo")} {product.voltageRange}</p>
                 </div>
               </div>
 

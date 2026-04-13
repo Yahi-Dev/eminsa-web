@@ -45,6 +45,7 @@ export default function EtrysPage() {
   const router = useRouter();
   const t = useTranslations("etrysPage");
   const tc = useTranslations("etrysConfig");
+  const tCommon = useTranslations("common");
   const [quoteForm, setQuoteForm] = useState({ nombre: "", email: "", telefono: "" });
   const [activeStepIndex, setActiveStepIndex] = useState<number | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -298,7 +299,7 @@ export default function EtrysPage() {
                         {product.powerRange}
                       </span>
                       <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
-                        {product.voltageRange}
+                        {tCommon("upTo")} {product.voltageRange}
                       </span>
                     </div>
                     <div className="flex items-center gap-2 text-[#0099ce] font-medium">

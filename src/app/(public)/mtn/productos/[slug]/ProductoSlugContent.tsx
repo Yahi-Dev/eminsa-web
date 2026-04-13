@@ -31,6 +31,7 @@ interface Props {
 export default function ProductoSlugContent({ slug }: Props) {
   const t = useTranslations("pages.mtn.productDetail");
   const tc = useTranslations("mtnConfig");
+  const tCommon = useTranslations("common");
   const product = getProductBySlug(slug);
 
   if (!product) {
@@ -105,7 +106,7 @@ export default function ProductoSlugContent({ slug }: Props) {
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm px-6 py-4 rounded-xl">
                   <p className="text-sm text-white/60">{t("voltage")}</p>
-                  <p className="text-xl font-bold">{product.voltageRange}</p>
+                  <p className="text-xl font-bold">{tCommon("upTo")} {product.voltageRange}</p>
                 </div>
               </div>
 
