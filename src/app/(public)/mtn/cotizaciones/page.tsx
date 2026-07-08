@@ -582,7 +582,7 @@ function CotizacionesContent() {
                 <div className="w-9 h-9 bg-[#00269b]/10 rounded flex items-center justify-center shrink-0">
                   <Shield size={18} className="text-[#00269b]" />
                 </div>
-                <span className="text-xs font-semibold text-gray-700">ANSI/IEEE C57 — Certificado por CIDET</span>
+                <span className="text-xs font-semibold text-gray-700">{tm("cotizaciones.certAnsiCidet")}</span>
               </div>
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                 <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242300/eminsa/site/certificados/ul-certified-logo.jpg" alt="UL" width={36} height={36} className="object-contain shrink-0" />

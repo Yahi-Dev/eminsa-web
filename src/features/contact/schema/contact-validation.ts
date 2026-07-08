@@ -25,21 +25,21 @@ export const transformerSpecsSchema = z.object({
 export const contactFormSchema = z.object({
   nombre: z
     .string()
-    .min(2, 'El nombre debe tener al menos 2 caracteres')
-    .max(100, 'El nombre no puede exceder 100 caracteres')
+    .min(2, 'form.errors.fields.nombreMin')
+    .max(100, 'form.errors.fields.nombreMax')
     .trim(),
-  
+
   empresa: z
     .string()
-    .max(100, 'El nombre de la empresa no puede exceder 100 caracteres')
+    .max(100, 'form.errors.fields.empresaMax')
     .trim()
     .optional()
     .or(z.literal('')),
-  
+
   email: z
     .string()
-    .email('Por favor ingresa un email válido')
-    .max(255, 'El email no puede exceder 255 caracteres')
+    .email('form.errors.fields.emailInvalid')
+    .max(255, 'form.errors.fields.emailMax')
     .toLowerCase()
     .trim()
     .refine(
@@ -47,23 +47,23 @@ export const contactFormSchema = z.object({
         const domain = email.split('@')[1];
         return !DISPOSABLE_EMAIL_DOMAINS.includes(domain as typeof DISPOSABLE_EMAIL_DOMAINS[number]);
       },
-      'No se permiten correos temporales'
+      'form.errors.fields.emailDisposable'
     ),
-  
+
   telefono: z
     .string()
-    .min(7, 'El teléfono debe tener al menos 7 dígitos')
-    .max(20, 'El teléfono no puede exceder 20 caracteres')
-    .regex(/^[\d+\s\-().]+$/, 'El teléfono contiene caracteres inválidos')
+    .min(7, 'form.errors.fields.telefonoMin')
+    .max(20, 'form.errors.fields.telefonoMax')
+    .regex(/^[\d+\s\-().]+$/, 'form.errors.fields.telefonoInvalid')
     .trim(),
-  
+
   identificacion: z
     .string()
-    .min(9, 'La identificación debe tener al menos 9 caracteres')
-    .max(13, 'La identificación no puede exceder 13 caracteres')
+    .min(9, 'form.errors.fields.idMin')
+    .max(13, 'form.errors.fields.idMax')
     .regex(
       /^(\d{9}|\d{3}-\d{7}-\d{1})$/,
-      'Formato inválido. Use: 123456789 (RNC) o 000-0000000-0 (cédula)'
+      'form.errors.fields.idFormat'
     )
     .transform((val) => {
       const clean = val.replace(/\D/g, '');
@@ -73,30 +73,30 @@ export const contactFormSchema = z.object({
     })
     .optional()
     .or(z.literal('')),
-  
+
   direccion: z
     .string()
-    .min(5, 'La dirección debe tener al menos 5 caracteres')
-    .max(130, 'La dirección no puede exceder 130 caracteres')
+    .min(5, 'form.errors.fields.direccionMin')
+    .max(130, 'form.errors.fields.direccionMax')
     .trim()
     .optional()
     .or(z.literal('')),
-  
+
   tipoConsulta: z
     .enum(['productos', 'servicios', ''])
-    .refine((val) => val !== '', 'Debe seleccionar un tipo de consulta'),
-  
+    .refine((val) => val !== '', 'form.errors.fields.tipoConsultaRequired'),
+
   categoria: z
     .string()
-    .max(50, 'La categoría no puede exceder 50 caracteres')
+    .max(50, 'form.errors.fields.categoriaMax')
     .trim()
     .optional()
     .or(z.literal('')),
-  
+
   mensaje: z
     .string()
-    .min(10, 'El mensaje debe tener al menos 10 caracteres')
-    .max(5000, 'El mensaje no puede exceder 5000 caracteres')
+    .min(10, 'form.errors.fields.mensajeMin')
+    .max(5000, 'form.errors.fields.mensajeMax')
     .trim(),
   
   reCaptchaToken: z.string().optional(),
@@ -122,7 +122,7 @@ export function validateContactForm(data: unknown): ValidationResult {
     if (!data || typeof data !== 'object') {
       return {
         valid: false,
-        errors: { general: 'Los datos del formulario son inválidos' },
+        errors: { general: 'form.errors.fields.general' },
       };
     }
 
@@ -152,7 +152,7 @@ export function validateContactForm(data: unknown): ValidationResult {
     console.error('Validation error:', error);
     return {
       valid: false,
-      errors: { general: 'Error de validación' },
+      errors: { general: 'form.errors.fields.general' },
     };
   }
 }

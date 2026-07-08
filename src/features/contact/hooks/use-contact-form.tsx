@@ -390,7 +390,13 @@ export function useContactForm(): UseContactFormReturn {
 
       if (!response.success) {
         if (response.errors) {
-          setFormErrors(response.errors);
+          const localizedErrors = Object.fromEntries(
+            Object.entries(response.errors).map(([field, msg]) => [
+              field,
+              typeof msg === "string" && t.has(msg) ? t(msg) : msg,
+            ])
+          ) as FormErrors;
+          setFormErrors(localizedErrors);
           setErrorMessage(t('form.errors.validation'));
         } else {
           setErrorMessage(response.message || t('form.errors.submission'));

@@ -12,7 +12,7 @@ import {
   Home,
   ArrowRight,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 interface RecursoAPI {
   id: string;
   nombre: string;
@@ -28,6 +28,7 @@ interface RecursoAPI {
 
 export default function RSTFichasTecnicasPage() {
   const t = useTranslations("etrysPage.recursosPage");
+  const locale = useLocale();
   const [recursos, setRecursos] = useState<RecursoAPI[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -126,7 +127,7 @@ export default function RSTFichasTecnicasPage() {
                           {recurso.tipo}
                         </span>
                         <span className="text-xs text-gray-500">
-                          {new Date(recurso.updatedAt).toLocaleDateString("es-DO")}
+                          {new Date(recurso.updatedAt).toLocaleDateString(locale === "en" ? "en-US" : "es-DO")}
                         </span>
                       </div>
                       <h3 className="font-bold text-gray-900 truncate">{recurso.nombre}</h3>

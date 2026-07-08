@@ -11,7 +11,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { transformerProducts } from "@/config/mtn-data";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 interface RecursoAPI {
   id: string;
@@ -30,6 +30,7 @@ export default function FichasTecnicasPage() {
   const t = useTranslations("pages.fichasTecnicas");
   const tCommon = useTranslations("pages.common");
   const tc = useTranslations("mtnConfig");
+  const locale = useLocale();
   const [recursos, setRecursos] = useState<RecursoAPI[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -124,7 +125,7 @@ export default function FichasTecnicasPage() {
                           {recurso.tipo}
                         </span>
                         <span className="text-xs text-gray-500">
-                          {new Date(recurso.updatedAt).toLocaleDateString("es-DO")}
+                          {new Date(recurso.updatedAt).toLocaleDateString(locale === "en" ? "en-US" : "es-DO")}
                         </span>
                       </div>
                       <h3 className="font-bold text-gray-900 truncate">{recurso.nombre}</h3>
