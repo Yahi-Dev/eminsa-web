@@ -241,7 +241,7 @@ export default function CalculadoraPage() {
                     />
                     <input
                       type="number"
-                      placeholder="Watts"
+                      placeholder={t("wattsPlaceholder")}
                       value={customLoad.watts || ""}
                       onChange={(e) => setCustomLoad({ ...customLoad, watts: Number(e.target.value) })}
                       className="w-24 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#00269b] focus:border-transparent"

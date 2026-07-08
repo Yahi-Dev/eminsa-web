@@ -116,11 +116,11 @@ export default function CotizarPage() {
       });
 
       const json = await res.json();
-      if (!json.success) throw new Error(json.message || "Error al enviar");
+      if (!json.success) throw new Error(json.message || tc("submitError"));
       setCodigo(json.codigo);
       setIsSubmitted(true);
     } catch (err) {
-      setErrors({ general: err instanceof Error ? err.message : "Error de conexión" });
+      setErrors({ general: err instanceof Error ? err.message : tc("connectionError") });
     } finally {
       setIsSubmitting(false);
     }
@@ -288,7 +288,7 @@ export default function CotizarPage() {
                           <select name="tipoServicio" value={formData.tipoServicio} onChange={handleChange} required className="input-field">
                             <option value="">{t("selects.selectOption")}</option>
                             {tiposServicio.map((tipo) => (
-                              <option key={tipo.value} value={tipo.value}>[{tipo.category}] {t(tipo.labelKey as Parameters<typeof t>[0])}</option>
+                              <option key={tipo.value} value={tipo.value}>[{tipo.category === "Servicios" ? tc("services") : tipo.category === "Otro" ? tc("other") : tipo.category}] {t(tipo.labelKey as Parameters<typeof t>[0])}</option>
                             ))}
                           </select>
                         </div>
@@ -306,7 +306,7 @@ export default function CotizarPage() {
                           <select name="capacidad" value={formData.capacidad} onChange={handleChange} className="input-field">
                             <option value="">{t("selects.select")}</option>
                             {capacidades.map((cap) => (
-                              <option key={cap} value={cap}>{cap}</option>
+                              <option key={cap} value={cap}>{cap === "Otro" ? tc("other") : cap}</option>
                             ))}
                           </select>
                         </div>
@@ -359,7 +359,7 @@ export default function CotizarPage() {
                               <Upload size={32} className="text-gray-400 mb-2" />
                             )}
                             <span className="text-sm text-gray-600">{tc("form.clickToUpload")}</span>
-                            <span className="text-xs text-gray-400 mt-1">PDF, DOC, DOCX, XLS, XLSX, JPG, PNG (máx. 10MB)</span>
+                            <span className="text-xs text-gray-400 mt-1">{tc("fileHint")}</span>
                           </label>
                         </div>
                         {files.length > 0 && (

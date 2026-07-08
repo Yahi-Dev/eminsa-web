@@ -335,6 +335,7 @@
           "placeholder": "Your company name"
         },
         "identification": {
+          "cedula": "ID",
           "label": "RNC / ID",
           "placeholder": "123456789 (RNC) or 123-4567890-1 (ID)",
           "rncInfo": "• RNC: 9 digits without hyphens",
@@ -396,6 +397,7 @@
         }
       },
       "transformer": {
+        "typesCount": "Transformer Types:",
         "title": "Transformer Specifications",
         "quantity": {
           "label": "Quantity",
@@ -465,6 +467,7 @@
       }
     },
     "contactInfo": {
+      "mapTitle": "GRUPO EMINSA Location",
       "title": "Contact Information",
       "address": {
         "label": "Address",
@@ -485,6 +488,13 @@
   "pages": {
     "common": {
       "home": "Home",
+      "categorias": {
+        "empresa": "Company",
+        "productos": "Products",
+        "servicios": "Services",
+        "eventos": "Events",
+        "industria": "Industry"
+      },
       "requestQuote": "Request a Quote",
       "learnMore": "Learn more",
       "viewDetails": "View details"
@@ -908,6 +918,17 @@
       },
       "clientesPage": {
         "breadcrumbHome": "Home",
+        "sectors": {
+          "Energía": "Energy",
+          "Turismo": "Tourism",
+          "Manufactura": "Manufacturing",
+          "Construcción": "Construction",
+          "Retail": "Retail",
+          "Alimentación": "Food",
+          "Telecomunicaciones": "Telecommunications",
+          "Industrial": "Industrial",
+          "Automotriz": "Automotive"
+        },
         "breadcrumbServicios": "Services",
         "breadcrumbTitle": "Clients",
         "title": "Our Clients",
@@ -1239,6 +1260,9 @@
           "description": "Our commitment to quality is backed by internationally recognized certifications that validate our processes and products."
         },
         "issuedBy": "Issued by",
+        "navPrevious": "Previous",
+        "navNext": "Next",
+        "goToCertification": "Go to certification {number}",
         "certificationLabel": "Certification",
         "standardCompliance": "Standard Compliance",
         "ourCertifications": "Our Certifications",
@@ -1596,6 +1620,7 @@
           "reset": "Reset",
           "addCustomLoad": "Add custom load",
           "namePlaceholder": "Name",
+          "wattsPlaceholder": "Watts",
           "add": "Add",
           "parameters": "Parameters",
           "powerFactor": "Power factor",
@@ -2012,6 +2037,7 @@
         }
       },
       "servicios": {
+        "name": "Services",
         "fullName": "EMINSA Services",
         "tagline": "Comprehensive Field Solutions",
         "description": "SERVICES is the business unit of Grupo EMINSA focused on providing specialized on-site technical support, offering maintenance, repair, and comprehensive support to ensure the efficiency, safety, and operational continuity of our clients' electrical transformers.",
@@ -2236,6 +2262,7 @@
     "variants": {
       "tipo-poste-monofasico": {
         "name": "Single-Phase Pole Type Transformers",
+        "shortName": "Single-Phase",
         "description": "Single-phase transformers for residential and light commercial distribution.",
         "features": {
           "0": "Ideal for residential loads",
@@ -2247,10 +2274,18 @@
           "0": "Single-family residences",
           "1": "Small businesses",
           "2": "Public lighting"
+        },
+        "specs": {
+          "power": "15 – 167 kVA",
+          "voltage": "Up to 34.5 kV",
+          "frequency": "60 Hz",
+          "cooling": "ONAN",
+          "insulation": "Class A (105°C)"
         }
       },
       "tipo-poste-trifasico": {
         "name": "Three-Phase Pole Type Transformers",
+        "shortName": "Three-Phase",
         "description": "Three-phase transformers for commercial and industrial applications.",
         "features": {
           "0": "Balanced power",
@@ -2262,10 +2297,18 @@
           "0": "Commercial buildings",
           "1": "Small industries",
           "2": "Data centers"
+        },
+        "specs": {
+          "power": "30 – 500 kVA",
+          "voltage": "Up to 34.5 kV",
+          "frequency": "60 Hz",
+          "cooling": "ONAN",
+          "insulation": "Class A (105°C)"
         }
       },
       "tipo-poste-autoprotegido": {
         "name": "Self-Protected Pole Type Transformers (CSP)",
+        "shortName": "Self-Protected (CSP)",
         "description": "Transformers with built-in overload and short-circuit protection.",
         "features": {
           "0": "Integrated MV fuses",
@@ -2277,10 +2320,18 @@
           "0": "Hard-to-reach areas",
           "1": "Rural electrification",
           "2": "Temporary installations"
+        },
+        "specs": {
+          "power": "15 – 167 kVA",
+          "voltage": "Up to 25 kV",
+          "frequency": "60 Hz",
+          "cooling": "ONAN",
+          "insulation": "Class A (105°C)"
         }
       },
       "pad-mounted-monofasico": {
         "name": "Single-Phase Pad Mounted Transformers",
+        "shortName": "Single-Phase",
         "description": "Compact solution for residential underground distribution.",
         "features": {
           "0": "Low-profile enclosure",
@@ -2292,10 +2343,18 @@
           "0": "Residential developments",
           "1": "Condominiums",
           "2": "Green areas"
+        },
+        "specs": {
+          "power": "30 – 167 kVA",
+          "voltage": "Up to 25 kV",
+          "frequency": "60 Hz",
+          "cooling": "ONAN",
+          "insulation": "Class A (105°C)"
         }
       },
       "pad-mounted-trifasico": {
         "name": "Three-Phase Pad Mounted Transformers",
+        "shortName": "Three-Phase",
         "description": "High capacity for underground commercial and industrial applications.",
         "features": {
           "0": "Loop-Feed and Radial configurations",
@@ -2308,6 +2367,13 @@
           "1": "Hotels and resorts",
           "2": "Industrial complexes",
           "3": "Business parks"
+        },
+        "specs": {
+          "power": "75 – 3,000 kVA",
+          "voltage": "Up to 34.5 kV",
+          "frequency": "60 Hz",
+          "cooling": "ONAN / ONAF",
+          "insulation": "Class A (105°C)"
         }
       }
     },
@@ -2433,6 +2499,37 @@
     }
   },
   "eicConfig": {
+    "specLabels": {
+      "Tipo": "Type",
+      "Marca": "Brand",
+      "Origen": "Origin",
+      "Normas": "Standards",
+      "Potencia": "Power",
+      "Tipos": "Types",
+      "Voltaje": "Voltage",
+      "Tecnología": "Technology",
+      "Aplicación": "Application",
+      "Productos": "Products",
+      "Material": "Material",
+      "Capacidad": "Capacity"
+    },
+    "specValues": {
+      "Seco": "Dry",
+      "Norteamérica": "North America",
+      "Seco en Resina": "Cast Resin Dry",
+      "Italia": "Italy",
+      "España": "Spain",
+      "BT, MT, Solar, Marino": "LV, MV, Solar, Marine",
+      "Estados Unidos": "United States",
+      "BT, MT, AT, Especiales": "LV, MV, HV, Special",
+      "BT, MT": "LV, MV",
+      "Breakers y Paneles BT": "LV Breakers and Panels",
+      "Baja Tensión": "Low Voltage",
+      "Codos, Boquillas, Empalmes": "Elbows, Bushings, Splices",
+      "EPDM propio": "Proprietary EPDM",
+      "Subestación / Potencia": "Substation / Power",
+      "Polonia / Turquía": "Poland / Turkey"
+    },
     "info": {
       "tagline": "International Electrical Suppliers",
       "description": "We connect Eminsa with the world, driving our energy solutions through strategic alliances that ensure international presence, specialized service, and close support in every project.",
@@ -4842,7 +4939,14 @@
       "fichasTecnicas": {
         "breadcrumbRecursos": "Resources",
         "title": "Technical Data Sheets",
-        "description": "RST product technical documentation"
+        "description": "RST product technical documentation",
+        "searchPlaceholder": "Search technical data sheets...",
+        "noResults": "There are no technical data sheets available at this time.",
+        "download": "Download",
+        "notAvailable": "Not available",
+        "ctaTitle": "Need More Information?",
+        "ctaDesc": "Contact us for detailed specifications or to request a custom quote.",
+        "ctaButton": "Request a Quote"
       },
       "heroTitle": "Resources & Documentation",
       "heroDescription": "Access data sheets, calculation tools, and useful documentation for the maintenance of your transformers.",
@@ -5004,6 +5108,26 @@
   },
   "common": {
     "requestQuote": "Request a Quote",
+    "phoneLabel": "Phone",
+    "byEminsa": "by EMINSA",
+    "showSubmenu": "Show submenu for {name}",
+    "submitError": "Error submitting the request",
+    "connectionError": "Connection error. Please try again.",
+    "other": "Other",
+    "fileHint": "PDF, DOC, DOCX, XLS, XLSX, JPG, PNG (max. 10MB)",
+    "emailPlaceholder": "email@company.com",
+    "voltagePrimaryPlaceholder": "e.g. 13,200 V",
+    "voltageSecondaryPlaceholder": "e.g. 120/240 V",
+    "beforeAfter": {
+      "before": "Before",
+      "after": "After",
+      "dragToCompare": "← Drag to compare →"
+    },
+    "carousel": {
+      "previous": "Previous",
+      "next": "Next",
+      "thumbnailAlt": "Thumbnail {number}"
+    },
     "viewMore": "View more",
     "viewAll": "View all",
     "callNow": "Call Now",

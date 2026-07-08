@@ -26,6 +26,7 @@ function getDivisionName(division: string) {
 
 export default function ProyectosPage() {
   const t = useTranslations("pages");
+  const tc = useTranslations("common");
   const [proyectos, setProyectos] = useState<ProyectoAPI[]>([]);
   const [loading, setLoading] = useState(true);
   const [filterDivision, setFilterDivision] = useState("");
@@ -102,7 +103,7 @@ export default function ProyectosPage() {
                 }`}
                 style={filterDivision === div.id ? { backgroundColor: div.color } : {}}
               >
-                {div.name}
+                {div.id === "SRV" ? tc("services") : div.name}
               </button>
             ))}
           </motion.div>

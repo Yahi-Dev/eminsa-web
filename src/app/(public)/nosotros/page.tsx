@@ -420,7 +420,7 @@ export default function NosotrosPage() {
                       <Icon size={32} style={{ color: division.color }} />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
-                      {division.name}
+                      {tc.has(`divisions.${division.id}.name`) ? tc(`divisions.${division.id}.name`) : division.name}
                     </h3>
                     <p className="text-sm font-medium text-gray-500 mb-3 text-center">
                       {tc(`divisions.${division.id}.fullName`)}

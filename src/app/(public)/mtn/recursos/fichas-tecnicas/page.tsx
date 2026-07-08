@@ -29,6 +29,7 @@ interface RecursoAPI {
 export default function FichasTecnicasPage() {
   const t = useTranslations("pages.fichasTecnicas");
   const tCommon = useTranslations("pages.common");
+  const tc = useTranslations("mtnConfig");
   const [recursos, setRecursos] = useState<RecursoAPI[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -169,7 +170,7 @@ export default function FichasTecnicasPage() {
                 className="bg-gray-50 hover:bg-[#00269b] rounded-xl p-6 text-center group transition-colors"
               >
                 <h3 className="font-bold text-gray-900 group-hover:text-white transition-colors">
-                  {product.shortName}
+                  {tc(`products.${product.slug}.shortName`)}
                 </h3>
                 <p className="text-sm text-gray-500 group-hover:text-white/70 mt-1 transition-colors">
                   {product.powerRange}

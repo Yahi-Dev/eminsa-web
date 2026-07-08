@@ -233,7 +233,7 @@ export default function CertificacionesPage() {
                   </motion.div>
                   <div className="text-center">
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{t("issuedBy")}</p>
-                    <p className="font-bold text-[#00269b] text-lg">{cert.issuingBody}</p>
+                    <p className="font-bold text-[#00269b] text-lg">{t(`certs.${cert.id}.issuingBody`)}</p>
                   </div>
                   {cert.validUntil && (
                     <div className="px-4 py-2 bg-green-50 rounded-xl border border-green-200 text-center">
@@ -250,11 +250,11 @@ export default function CertificacionesPage() {
                         {cert.complianceOnly ? t("standardCompliance") : t("certificationLabel")}
                       </span>
                       <h2 className="text-3xl font-bold text-gray-900 mb-1">{cert.name}</h2>
-                      <p className="text-gray-400 text-sm">{cert.fullName}</p>
+                      <p className="text-gray-400 text-sm">{t(`certs.${cert.id}.fullName`)}</p>
                     </div>
 
                     <p className="text-gray-600 leading-relaxed text-base">
-                      {cert.description}
+                      {t(`certs.${cert.id}.description`)}
                     </p>
 
                     <div>
@@ -290,7 +290,7 @@ export default function CertificacionesPage() {
             <button
               onClick={() => setActiveCert((prev) => (prev - 1 + filteredCertifications.length) % filteredCertifications.length)}
               className="w-10 h-10 rounded-full bg-white border border-gray-200 hover:border-[#00269b] hover:text-[#00269b] flex items-center justify-center transition-colors shadow-sm"
-              aria-label="Previous"
+              aria-label={t("navPrevious")}
             >
               <ChevronRight size={18} className="rotate-180" />
             </button>
@@ -302,14 +302,14 @@ export default function CertificacionesPage() {
                   className={`h-2 rounded-full transition-all duration-300 ${
                     activeCert === i ? "w-8 bg-[#00269b]" : "w-2 bg-gray-300 hover:bg-gray-400"
                   }`}
-                  aria-label={`Certification ${i + 1}`}
+                  aria-label={t("goToCertification", { number: i + 1 })}
                 />
               ))}
             </div>
             <button
               onClick={() => setActiveCert((prev) => (prev + 1) % filteredCertifications.length)}
               className="w-10 h-10 rounded-full bg-white border border-gray-200 hover:border-[#00269b] hover:text-[#00269b] flex items-center justify-center transition-colors shadow-sm"
-              aria-label="Next"
+              aria-label={t("navNext")}
             >
               <ChevronRight size={18} />
             </button>

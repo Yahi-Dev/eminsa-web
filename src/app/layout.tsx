@@ -3,7 +3,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import ConditionalLayout from "@/components/shared/ConditionalLayout";
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: {
@@ -62,9 +62,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const messages = await getMessages();
-  
+  const locale = await getLocale();
+
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth">
       <body className="min-h-screen flex flex-col antialiased">
         <script
           type="application/ld+json"

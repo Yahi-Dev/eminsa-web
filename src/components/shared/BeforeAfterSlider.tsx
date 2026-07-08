@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -15,10 +16,11 @@ interface BeforeAfterSliderProps {
 export default function BeforeAfterSlider({
   beforeImage,
   afterImage,
-  beforeLabel = "Before",
-  afterLabel = "After",
+  beforeLabel,
+  afterLabel,
   className = "",
 }: BeforeAfterSliderProps) {
+  const t = useTranslations("common.beforeAfter");
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -84,7 +86,7 @@ export default function BeforeAfterSlider({
       <div className="absolute inset-0">
         <Image
           src={afterImage}
-          alt="After"
+          alt={t("after")}
           fill
           sizes="100vw"
           className="object-cover"
@@ -93,7 +95,7 @@ export default function BeforeAfterSlider({
         {/* Label After */}
         <div className="absolute top-6 left-6">
           <span className="px-4 py-2 bg-black text-white font-bold text-sm rounded-lg shadow-lg">
-            {afterLabel}
+            {afterLabel ?? t("after")}
           </span>
         </div>
       </div>
@@ -107,7 +109,7 @@ export default function BeforeAfterSlider({
       >
         <Image
           src={beforeImage}
-          alt="Before"
+          alt={t("before")}
           fill
           sizes="100vw"
           className="object-cover"
@@ -116,7 +118,7 @@ export default function BeforeAfterSlider({
         {/* Label Before */}
         <div className="absolute top-6 right-6">
           <span className="px-4 py-2 bg-black text-white font-bold text-sm rounded-lg shadow-lg">
-            {beforeLabel}
+            {beforeLabel ?? t("before")}
           </span>
         </div>
       </div>
@@ -180,7 +182,7 @@ export default function BeforeAfterSlider({
         transition={{ delay: 3, duration: 1 }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/70 backdrop-blur-sm text-white text-xs rounded-full pointer-events-none"
       >
-        ← Desliza para comparar →
+        {t("dragToCompare")}
       </motion.div>
     </div>
   );

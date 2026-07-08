@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getCldUrl } from "@/lib/cloudinary-url";
+import { useTranslations } from "next-intl";
 
 interface ImageGalleryCarouselProps {
   images: string[];
@@ -17,6 +18,7 @@ export default function ImageGalleryCarousel({
 }: ImageGalleryCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [current, setCurrent] = useState(0);
+  const t = useTranslations("common.carousel");
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -76,14 +78,14 @@ export default function ImageGalleryCarousel({
       <button
         onClick={scrollPrev}
         className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm hover:bg-white rounded-full p-2 shadow-lg transition-all opacity-0 group-hover:opacity-100"
-        aria-label="Anterior"
+        aria-label={t("previous")}
       >
         <ChevronLeft size={20} className="text-gray-800" />
       </button>
       <button
         onClick={scrollNext}
         className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-white/80 backdrop-blur-sm hover:bg-white rounded-full p-2 shadow-lg transition-all opacity-0 group-hover:opacity-100"
-        aria-label="Siguiente"
+        aria-label={t("next")}
       >
         <ChevronRight size={20} className="text-gray-800" />
       </button>
@@ -102,7 +104,7 @@ export default function ImageGalleryCarousel({
           >
             <Image
               src={getCldUrl(img, { width: 120, quality: "auto", format: "auto" })}
-              alt={`Thumbnail ${index + 1}`}
+              alt={t("thumbnailAlt", { number: index + 1 })}
               fill
               sizes="64px"
               className="object-cover"

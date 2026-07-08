@@ -35,6 +35,8 @@ import { PhoneInputField } from "@/components/ui/PhoneInputField";
 function CotizacionesForm() {
   const searchParams = useSearchParams();
   const t = useTranslations("eicPage");
+  const tc = useTranslations("eicConfig");
+  const tCommon = useTranslations("common");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [codigo, setCodigo] = useState("");
@@ -141,11 +143,11 @@ function CotizacionesForm() {
       });
 
       const json = await res.json();
-      if (!json.success) throw new Error(json.message || "Error al enviar la solicitud");
+      if (!json.success) throw new Error(json.message || tCommon("submitError"));
       setCodigo(json.codigo);
       setIsSuccess(true);
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : "Error de conexión. Intente nuevamente.");
+      setSubmitError(err instanceof Error ? err.message : tCommon("connectionError"));
     } finally {
       setIsSubmitting(false);
     }
@@ -364,7 +366,7 @@ function CotizacionesForm() {
                     <option value="">{t("cotizaciones.form.selectCategory")}</option>
                     {eicProductCategories.map((cat) => (
                       <option key={cat.id} value={cat.slug}>
-                        {cat.name}
+                        {tc(`categories.${cat.slug}.name`)}
                       </option>
                     ))}
                   </select>
@@ -380,7 +382,7 @@ function CotizacionesForm() {
                     <option value="">{t("cotizaciones.form.selectProduct")}</option>
                     {filteredProducts.map((prod) => (
                       <option key={prod.id} value={prod.slug}>
-                        {prod.shortName} ({prod.brand})
+                        {tc(`products.${prod.slug}.shortName`)} ({prod.brand})
                       </option>
                     ))}
                     <option value="otro">{t("cotizaciones.form.otherNotSure")}</option>
@@ -397,7 +399,7 @@ function CotizacionesForm() {
                     <option value="">{t("cotizaciones.form.noPreference")}</option>
                     {filteredBrands.map((brand) => (
                       <option key={brand.id} value={brand.name}>
-                        {brand.name} ({brand.country})
+                        {brand.name} ({tc(`brands.${brand.slug}.country`)})
                       </option>
                     ))}
                   </select>

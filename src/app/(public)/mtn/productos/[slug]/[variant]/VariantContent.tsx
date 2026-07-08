@@ -83,7 +83,7 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
               {tc(`products.${product.slug}.shortName`)}
             </Link>
             <ChevronRight size={14} />
-            <span className="text-white">{tc(`variants.${variant.id}.name`).replace(`${tc(`products.${product.slug}.name`)} `, '')}</span>
+            <span className="text-white">{tc(`variants.${variant.id}.shortName`)}</span>
           </nav>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -104,10 +104,10 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
 
               {/* Quick specs */}
               <div className="grid grid-cols-2 gap-4">
-                {Object.entries(variant.specs).slice(0, 4).map(([key, value]) => (
+                {Object.entries(variant.specs).slice(0, 4).map(([key]) => (
                   <div key={key} className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl">
-                    <p className="text-sm text-white/60 capitalize">{key}</p>
-                    <p className="font-semibold">{value}</p>
+                    <p className="text-sm text-white/60">{tc(`specLabels.${key}`)}</p>
+                    <p className="font-semibold">{tc(`variants.${variant.id}.specs.${key}`)}</p>
                   </div>
                 ))}
               </div>
@@ -182,10 +182,10 @@ export default function VariantContent({ slug, variant: variantSlug }: Props) {
               <div className="bg-gray-50 rounded-2xl overflow-hidden">
                 <table className="w-full">
                   <tbody className="divide-y divide-gray-200">
-                    {Object.entries(variant.specs).map(([key, value]) => (
+                    {Object.entries(variant.specs).map(([key]) => (
                       <tr key={key}>
-                        <td className="px-6 py-4 text-gray-600 capitalize font-medium">{key}</td>
-                        <td className="px-6 py-4 text-gray-900 font-semibold">{value}</td>
+                        <td className="px-6 py-4 text-gray-600 font-medium">{tc(`specLabels.${key}`)}</td>
+                        <td className="px-6 py-4 text-gray-900 font-semibold">{tc(`variants.${variant.id}.specs.${key}`)}</td>
                       </tr>
                     ))}
                   </tbody>

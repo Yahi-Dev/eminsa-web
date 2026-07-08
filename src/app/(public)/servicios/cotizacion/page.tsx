@@ -409,7 +409,7 @@ export default function CotizacionServiciosPage() {
                           value={formData.email}
                           onChange={handleInputChange}
                           className={`input-field ${errors.email ? 'border-red-500 focus:ring-red-200' : ''}`}
-                          placeholder="correo@empresa.com"
+                          placeholder={tc("emailPlaceholder")}
                         />
                         {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                       </div>
@@ -517,7 +517,7 @@ export default function CotizacionServiciosPage() {
                               value={formData.voltajePrimario}
                               onChange={handleInputChange}
                               className="input-field"
-                              placeholder="Ej. 13,200 V"
+                              placeholder={tc("voltagePrimaryPlaceholder")}
                             />
                           </div>
                           <div>
@@ -528,7 +528,7 @@ export default function CotizacionServiciosPage() {
                               value={formData.voltajeSecundario}
                               onChange={handleInputChange}
                               className="input-field"
-                              placeholder="Ej. 120/240 V"
+                              placeholder={tc("voltageSecondaryPlaceholder")}
                             />
                           </div>
                           <div className="md:col-span-2">

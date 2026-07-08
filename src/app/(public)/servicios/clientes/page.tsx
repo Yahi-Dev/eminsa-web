@@ -165,7 +165,7 @@ export default function ClientesServiciosPage() {
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-[#00269b]">{sector}</h3>
+                      <h3 className="text-2xl font-bold text-[#00269b]">{t(`sectors.${sector}`)}</h3>
                       <p className="text-[#6d6e6d] text-sm">
                         {sectClientes.length} {sectClientes.length > 1 ? t("clients") : t("client")}
                       </p>
@@ -209,7 +209,7 @@ export default function ClientesServiciosPage() {
                           className="px-2.5 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-wide"
                           style={{ backgroundColor: color }}
                         >
-                          {sector}
+                          {t(`sectors.${sector}`)}
                         </span>
                       </motion.div>
                     ))}

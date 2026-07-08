@@ -132,6 +132,8 @@ export default function MarcaDetailPage({
 
   const t = useTranslations("eicPage.brandSlug");
   const tc = useTranslations("eicConfig");
+  const specLabel = (l: string) => (tc.has(`specLabels.${l}`) ? tc(`specLabels.${l}`) : l);
+  const specValue = (v: string) => (tc.has(`specValues.${v}`) ? tc(`specValues.${v}`) : v);
 
   const brand = getEICBrandBySlug(slug);
   if (!brand) notFound();
@@ -403,10 +405,10 @@ export default function MarcaDetailPage({
                                 className="bg-gray-50 rounded-lg px-3 py-2"
                               >
                                 <span className="block text-xs text-gray-400">
-                                  {spec.label}
+                                  {specLabel(spec.label)}
                                 </span>
                                 <span className="block text-sm font-semibold text-gray-800 mt-0.5">
-                                  {spec.value}
+                                  {specValue(spec.value)}
                                 </span>
                               </div>
                             ))}

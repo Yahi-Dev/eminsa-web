@@ -3,6 +3,7 @@
 import PhoneInput from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
 import "react-phone-number-input/style.css";
+import { useTranslations } from "next-intl";
 
 interface PhoneInputFieldProps {
   value: string;
@@ -18,15 +19,16 @@ export function PhoneInputField({
   value,
   onChange,
   error,
-  label = "Teléfono",
+  label,
   required = false,
   focusColor = "#00269b",
   className,
 }: PhoneInputFieldProps) {
+  const t = useTranslations("common");
   return (
     <div className={className}>
       <label className="block text-sm font-medium text-gray-700 mb-1.5">
-        {label} {required && <span className="text-red-500">*</span>}
+        {label ?? t("phoneLabel")} {required && <span className="text-red-500">*</span>}
       </label>
       <div
         className={`phone-input-wrapper eminsa-phone-input flex items-center border rounded-xl bg-white transition-all ${

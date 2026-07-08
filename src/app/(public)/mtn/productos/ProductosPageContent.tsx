@@ -117,7 +117,7 @@ export default function ProductosPageContent() {
                                   href={`/mtn/productos/${product.slug}/${variant.slug}`}
                                   className="inline-flex items-center gap-1 bg-gray-100 hover:bg-[#00269b] hover:text-white text-gray-700 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
                                 >
-                                  {variant.name.replace("Transformadores Tipo Poste ", "").replace("Transformadores Pad Mounted ", "")}
+                                  {tc(`variants.${variant.id}.shortName`)}
                                 </Link>
                               ))}
                             </div>

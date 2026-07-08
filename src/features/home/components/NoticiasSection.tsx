@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Newspaper } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 interface Noticia {
   id: string | number;
@@ -28,10 +28,10 @@ const categoriaColors: Record<string, string> = {
 
 // Category labels now come from translations
 
-function formatFecha(fecha?: string | null) {
+function formatFecha(fecha: string | null | undefined, locale: string) {
   if (!fecha) return "";
   const date = new Date(fecha);
-  return date.toLocaleDateString("es-DO", {
+  return date.toLocaleDateString(locale === "en" ? "en-US" : "es-DO", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -40,6 +40,7 @@ function formatFecha(fecha?: string | null) {
 
 export default function NoticiasSection() {
   const t = useTranslations("home");
+  const locale = useLocale();
   const [noticias, setNoticias] = useState<Noticia[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -173,7 +174,7 @@ export default function NoticiasSection() {
                       {fecha && (
                         <div className="flex items-center gap-1.5 text-[#6d6e6d] text-xs">
                           <Calendar size={12} />
-                          {formatFecha(fecha)}
+                          {formatFecha(fecha, locale)}
                         </div>
                       )}
 

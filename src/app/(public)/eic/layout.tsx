@@ -73,6 +73,7 @@ export default function EICLayout({
   const pathname = usePathname();
   const t = useTranslations("eicPage");
   const eicNavItems = useEicNavItems();
+  const tCommon = useTranslations("common");
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -259,7 +260,7 @@ export default function EICLayout({
             </div>
             <div>
               <span className="text-[#009e49] font-bold">EIC</span>
-              <span className="text-gray-400 text-xs block -mt-1">by EMINSA</span>
+              <span className="text-gray-400 text-xs block -mt-1">{tCommon("byEminsa")}</span>
             </div>
           </div>
           <button

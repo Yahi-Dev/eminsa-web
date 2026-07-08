@@ -79,6 +79,7 @@ export default function ServiciosLayout({
 }) {
   const pathname = usePathname();
   const t = useTranslations("pages.servicios.layout");
+  const tc = useTranslations("common");
   const serviciosNavItems = useServiciosNavItems();
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -253,7 +254,7 @@ export default function ServiciosLayout({
             </div>
             <div>
               <span className="text-[#6d6e6d] font-bold">{t("services")}</span>
-              <span className="text-gray-400 text-xs block -mt-1">by EMINSA</span>
+              <span className="text-gray-400 text-xs block -mt-1">{tc("byEminsa")}</span>
             </div>
           </div>
           <button
@@ -301,7 +302,7 @@ export default function ServiciosLayout({
                             <button
                               onClick={() => toggleSubmenu(item.name)}
                               className="p-2 rounded-lg hover:bg-gray-50 text-gray-600"
-                              aria-label={`Mostrar submenú de ${item.name}`}
+                              aria-label={tc("showSubmenu", { name: item.name })}
                             >
                               <ChevronDown
                                 size={16}

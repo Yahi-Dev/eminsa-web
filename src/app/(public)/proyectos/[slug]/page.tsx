@@ -28,6 +28,7 @@ const divisionLabels: { [key: string]: string } = {
 export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const t = useTranslations("pages.proyectos.detail");
+  const tc = useTranslations("common");
   const [proyecto, setProyecto] = useState<ProyectoAPI | null>(null);
   const [relacionados, setRelacionados] = useState<ProyectoAPI[]>([]);
   const [loading, setLoading] = useState(true);
@@ -88,7 +89,7 @@ export default function ProyectoSlugPage({ params }: { params: Promise<{ slug: s
   }
 
   const divColor = divisionColors[proyecto.division] || "#00269b";
-  const divLabel = divisionLabels[proyecto.division] || proyecto.division;
+  const divLabel = proyecto.division === "SRV" ? tc("services") : (divisionLabels[proyecto.division] || proyecto.division);
 
   // Build image list: prefer imagenes array, fallback to single imagen
   const allImages: string[] = [];

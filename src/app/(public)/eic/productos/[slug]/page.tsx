@@ -296,7 +296,7 @@ function CategoryPage({ categorySlug }: { categorySlug: string }) {
                         key={spec.label}
                         className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded"
                       >
-                        {spec.label}: {spec.value}
+                        {tc.has(`specLabels.${spec.label}`) ? tc(`specLabels.${spec.label}`) : spec.label}: {tc.has(`specValues.${spec.value}`) ? tc(`specValues.${spec.value}`) : spec.value}
                       </span>
                     ))}
                   </div>
@@ -433,9 +433,9 @@ function ProductPage({ slug }: { slug: string }) {
                     className="bg-white/10 backdrop-blur-sm rounded-xl p-4"
                   >
                     <span className="text-sm text-white/70 block">
-                      {spec.label}
+                      {tc.has(`specLabels.${spec.label}`) ? tc(`specLabels.${spec.label}`) : spec.label}
                     </span>
-                    <span className="font-bold">{spec.value}</span>
+                    <span className="font-bold">{tc.has(`specValues.${spec.value}`) ? tc(`specValues.${spec.value}`) : spec.value}</span>
                   </div>
                 ))}
               </div>

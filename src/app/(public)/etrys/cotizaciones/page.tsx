@@ -36,6 +36,7 @@ function CotizacionesForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [codigo, setCodigo] = useState("");
+  const tCommon = useTranslations("common");
   const [submitError, setSubmitError] = useState("");
   const [files, setFiles] = useState<{ name: string; url: string; size: number }[]>([]);
   const [uploadingFile, setUploadingFile] = useState(false);
@@ -134,11 +135,11 @@ function CotizacionesForm() {
       });
 
       const json = await res.json();
-      if (!json.success) throw new Error(json.message || "Error al enviar la solicitud");
+      if (!json.success) throw new Error(json.message || tCommon("submitError"));
       setCodigo(json.codigo);
       setIsSuccess(true);
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : "Error de conexión. Intente nuevamente.");
+      setSubmitError(err instanceof Error ? err.message : tCommon("connectionError"));
     } finally {
       setIsSubmitting(false);
     }

@@ -87,7 +87,7 @@ export default function RSTFichasTecnicasPage() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Buscar fichas técnicas..."
+              placeholder={t("fichasTecnicas.searchPlaceholder")}
               className="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#0099ce] focus:border-transparent"
             />
           </div>
@@ -104,7 +104,7 @@ export default function RSTFichasTecnicasPage() {
           ) : filtered.length === 0 ? (
             <div className="text-center py-16">
               <FileText size={48} className="mx-auto text-gray-300 mb-4" />
-              <p className="text-gray-500 text-lg">No hay fichas técnicas disponibles en este momento.</p>
+              <p className="text-gray-500 text-lg">{t("fichasTecnicas.noResults")}</p>
             </div>
           ) : (
             <div className="grid gap-4">
@@ -145,10 +145,10 @@ export default function RSTFichasTecnicasPage() {
                         className="flex items-center gap-2 bg-[#0099ce] hover:bg-[#007ba8] text-white px-5 py-2.5 rounded-lg transition-colors"
                       >
                         {recurso.tipo === "link" ? <ExternalLink size={18} /> : <Download size={18} />}
-                        <span className="hidden sm:inline">Descargar</span>
+                        <span className="hidden sm:inline">{t("fichasTecnicas.download")}</span>
                       </a>
                     ) : (
-                      <span className="text-sm text-gray-400 italic">No disponible</span>
+                      <span className="text-sm text-gray-400 italic">{t("fichasTecnicas.notAvailable")}</span>
                     )}
                   </div>
                 </motion.div>
@@ -161,15 +161,15 @@ export default function RSTFichasTecnicasPage() {
       {/* CTA */}
       <section className="py-12 bg-white">
         <div className="container-eminsa text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">¿Necesita más información?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">{t("fichasTecnicas.ctaTitle")}</h2>
           <p className="text-gray-600 mb-6 max-w-xl mx-auto">
-            Contáctenos para obtener especificaciones detalladas o solicitar una cotización personalizada.
+            {t("fichasTecnicas.ctaDesc")}
           </p>
           <Link
             href="/etrys/cotizaciones"
             className="inline-flex items-center gap-2 bg-[#0099ce] hover:bg-[#007ba8] text-white px-8 py-3 rounded-xl font-semibold transition-colors"
           >
-            Solicitar Cotización
+            {t("fichasTecnicas.ctaButton")}
             <ArrowRight size={18} />
           </Link>
         </div>

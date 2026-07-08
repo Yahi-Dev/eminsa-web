@@ -53,6 +53,7 @@ export default function EtrysAlquilerPage() {
     mensaje: "",
   });
 
+  const tCommon = useTranslations("common");
   const [formError, setFormError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -82,13 +83,13 @@ export default function EtrysAlquilerPage() {
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        setFormError(data.message ?? "Error al enviar la solicitud");
+        setFormError(data.message ?? tCommon("submitError"));
         return;
       }
 
       setIsSuccess(true);
     } catch {
-      setFormError("Error de red. Intenta de nuevo.");
+      setFormError(tCommon("connectionError"));
     } finally {
       setIsSubmitting(false);
     }

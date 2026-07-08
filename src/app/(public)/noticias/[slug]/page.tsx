@@ -111,7 +111,9 @@ export default function NoticiaSlugPage({ params }: { params: Promise<{ slug: st
 
   const catColor = categoriaColors[noticia.categoria ?? ""] || "#00269b";
   const catLabel =
-    categoriasNoticias.find((c) => c.value === noticia.categoria)?.label ||
+    (noticia.categoria && tCommon.has(`categorias.${noticia.categoria}`)
+      ? tCommon(`categorias.${noticia.categoria}`)
+      : categoriasNoticias.find((c) => c.value === noticia.categoria)?.label) ||
     noticia.categoria ||
     "";
 

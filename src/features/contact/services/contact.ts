@@ -29,7 +29,7 @@ export async function submitContactForm(
     if (!response.ok) {
       return {
         success: false,
-        message: result.message || 'Error al enviar el formulario',
+        message: result.message,
         errors: result.errors,
       };
     }
@@ -41,13 +41,13 @@ export async function submitContactForm(
     if (error instanceof TypeError && error.message.includes('fetch')) {
       return {
         success: false,
-        message: 'Error de conexión. Por favor, verifica tu conexión a internet.',
+        message: '',
       };
     }
 
     return {
       success: false,
-      message: 'Ha ocurrido un error inesperado. Por favor, intenta de nuevo.',
+      message: '',
     };
   }
 }

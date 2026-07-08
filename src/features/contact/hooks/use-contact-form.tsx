@@ -204,7 +204,9 @@ export function useContactForm(): UseContactFormReturn {
    */
   const getTipoIdentificacion = useCallback((): string => {
     const type = getIdentificationType(formData.identificacion);
-    return type === 'Indefinido' ? t('form.fields.identification.undefined') : type;
+    if (type === 'Indefinido') return t('form.fields.identification.undefined');
+    if (type === 'Cédula') return t('form.fields.identification.cedula');
+    return type;
   }, [formData.identificacion, t]);
 
   /**

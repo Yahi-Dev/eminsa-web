@@ -119,8 +119,6 @@ export default function TransformadorRestauracionSection() {
               <BeforeAfterSlider
                 beforeImage="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242406/eminsa/site/transformador-before.png"
                 afterImage="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242405/eminsa/site/transformador-after.png"
-                beforeLabel="Before"
-                afterLabel="After"
               />
             </div>
           </motion.div>

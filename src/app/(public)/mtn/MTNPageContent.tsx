@@ -291,7 +291,7 @@ export default function MTNPageContent() {
                   <div className="relative aspect-4/3 overflow-hidden">
                     <Image
                       src={productPhotos[product.slug] ?? "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg"}
-                      alt={product.shortName}
+                      alt={tc(`products.${product.slug}.shortName`)}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"

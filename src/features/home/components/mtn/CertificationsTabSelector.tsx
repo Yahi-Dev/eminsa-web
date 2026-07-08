@@ -14,6 +14,7 @@ interface Props {
 
 export default function CertificationsTabSelector({ certifications }: Props) {
   const t = useTranslations("home");
+  const tc = useTranslations("pages.mtn.certificaciones.certs");
   const filtered = certifications.filter((c) => c.id !== "doe-2016");
   const [activeId, setActiveId] = useState(filtered[0]?.id ?? "");
   const activeCert = filtered.find((c) => c.id === activeId) ?? filtered[0];
@@ -70,9 +71,9 @@ export default function CertificationsTabSelector({ certifications }: Props) {
                 <h3 className="font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
                   {activeCert.name}
                 </h3>
-                <p className="text-sm text-gray-500">{activeCert.issuingBody}</p>
+                <p className="text-sm text-gray-500">{tc(`${activeCert.id}.issuingBody`)}</p>
                 <p className="text-sm text-gray-600 line-clamp-2">
-                  {activeCert.description}
+                  {tc(`${activeCert.id}.description`)}
                 </p>
               </div>
               <ArrowRight

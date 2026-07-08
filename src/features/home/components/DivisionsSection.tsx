@@ -180,7 +180,7 @@ export default function DivisionsSection() {
                 {/* Background photo */}
                 <Image
                   src={divisionPhotos[activeDivision.id] ?? "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242334/eminsa/site/fotos-eminsa/mtn/DSC07227.jpg"}
-                  alt={activeDivision.name}
+                  alt={navName(activeDivision.name)}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"

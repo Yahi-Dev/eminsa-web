@@ -20,6 +20,8 @@ function formatFecha(dateStr: string, locale: string) {
 
 export default function NoticiasPage() {
   const t = useTranslations("pages");
+  const catName = (v?: string | null) =>
+    v && t.has(`common.categorias.${v}`) ? t(`common.categorias.${v}`) : (v ?? "");
   const locale = useLocale();
   const [noticias, setNoticias] = useState<NoticiaAPI[]>([]);
   const [loading, setLoading] = useState(true);
@@ -97,7 +99,7 @@ export default function NoticiasPage() {
                 }`}
                 style={filterCategoria === cat.value ? { backgroundColor: cat.color } : {}}
               >
-                {cat.label}
+                {catName(cat.value)}
               </button>
             ))}
           </motion.div>
@@ -139,7 +141,7 @@ export default function NoticiasPage() {
                                 className="px-3 py-1 rounded-full text-xs font-medium text-white"
                                 style={{ backgroundColor: categoriasNoticias.find((c) => c.value === noticia.categoria)?.color }}
                               >
-                                {categoriasNoticias.find((c) => c.value === noticia.categoria)?.label}
+                                {catName(noticia.categoria)}
                               </span>
                             </div>
                           </div>
@@ -215,7 +217,7 @@ export default function NoticiasPage() {
                                   className="px-2 py-1 rounded-full text-xs font-medium text-white"
                                   style={{ backgroundColor: categoriasNoticias.find((c) => c.value === noticia.categoria)?.color }}
                                 >
-                                  {categoriasNoticias.find((c) => c.value === noticia.categoria)?.label}
+                                  {catName(noticia.categoria)}
                                 </span>
                               </div>
                             </div>

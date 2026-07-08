@@ -20,15 +20,17 @@ import {
   proyectosServicios,
   type ProyectoServicio,
 } from "@/config/servicios-data";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
-const formatDate = (dateStr: string) => {
+const formatDate = (dateStr: string, locale: string) => {
   const date = new Date(dateStr + "T00:00:00");
-  return date.toLocaleDateString("es-DO", { month: "short", year: "numeric" });
+  return date.toLocaleDateString(locale === "en" ? "en-US" : "es-DO", { month: "short", year: "numeric" });
 };
 
 export default function ProyectosServiciosPage() {
   const t = useTranslations("pages.servicios.proyectosPage");
+  const tp = useTranslations("serviciosConfig.proyectos");
+  const locale = useLocale();
   const [selectedProject, setSelectedProject] =
     useState<ProyectoServicio | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -209,7 +211,7 @@ export default function ProyectosServiciosPage() {
                       <Settings className="w-16 h-16 text-[#00269b]/20" />
                       <div className="absolute top-3 right-3">
                         <span className="px-3 py-1 bg-[#00269b] text-white text-xs font-bold rounded-full">
-                          {project.tipoServicio}
+                          {tp(`${project.id}.tipoServicio`)}
                         </span>
                       </div>
                       {/* Decorative circles */}
@@ -220,7 +222,7 @@ export default function ProyectosServiciosPage() {
                     {/* Content */}
                     <div className="p-6">
                       <h3 className="text-lg font-bold text-[#00269b] mb-2 group-hover:text-[#00269b] transition-colors line-clamp-2">
-                        {project.titulo}
+                        {tp(`${project.id}.titulo`)}
                       </h3>
                       <div className="flex items-center gap-2 text-sm text-[#6d6e6d] mb-2">
                         <Building2 size={14} className="flex-shrink-0" />
@@ -229,12 +231,12 @@ export default function ProyectosServiciosPage() {
                       <div className="flex items-center gap-2 text-sm text-[#6d6e6d] mb-3">
                         <Calendar size={14} className="flex-shrink-0" />
                         <span>
-                          {formatDate(project.fechaInicio)} -{" "}
-                          {formatDate(project.fechaFin)}
+                          {formatDate(project.fechaInicio, locale)} -{" "}
+                          {formatDate(project.fechaFin, locale)}
                         </span>
                       </div>
                       <p className="text-sm text-[#6d6e6d] line-clamp-2 mb-4">
-                        {project.descripcion}
+                        {tp(`${project.id}.descripcion`)}
                       </p>
 
                       {/* View more hint */}
@@ -307,10 +309,10 @@ export default function ProyectosServiciosPage() {
 
                 <div className="relative z-10">
                   <span className="inline-block px-3 py-1 bg-white/20 rounded-full text-sm font-medium mb-4">
-                    {selectedProject.tipoServicio}
+                    {tp(`${selectedProject.id}.tipoServicio`)}
                   </span>
                   <h2 className="text-2xl md:text-3xl font-bold leading-tight">
-                    {selectedProject.titulo}
+                    {tp(`${selectedProject.id}.titulo`)}
                   </h2>
                 </div>
               </div>
@@ -341,7 +343,7 @@ export default function ProyectosServiciosPage() {
                           size={16}
                           className="text-[#00269b] flex-shrink-0"
                         />
-                        {selectedProject.ubicacion}
+                        {tp(`${selectedProject.id}.ubicacion`)}
                       </p>
                     </div>
                     <div>
@@ -353,7 +355,7 @@ export default function ProyectosServiciosPage() {
                           size={16}
                           className="text-[#00269b] flex-shrink-0"
                         />
-                        {selectedProject.tipoProducto}
+                        {tp(`${selectedProject.id}.tipoProducto`)}
                       </p>
                     </div>
                   </div>
@@ -367,8 +369,8 @@ export default function ProyectosServiciosPage() {
                           size={16}
                           className="text-[#00269b] flex-shrink-0"
                         />
-                        {formatDate(selectedProject.fechaInicio)} -{" "}
-                        {formatDate(selectedProject.fechaFin)}
+                        {formatDate(selectedProject.fechaInicio, locale)} -{" "}
+                        {formatDate(selectedProject.fechaFin, locale)}
                       </p>
                     </div>
                     {selectedProject.capacidad && (
@@ -381,7 +383,7 @@ export default function ProyectosServiciosPage() {
                             size={16}
                             className="text-[#00269b] flex-shrink-0"
                           />
-                          {selectedProject.capacidad}
+                          {tp(`${selectedProject.id}.capacidad`)}
                         </p>
                       </div>
                     )}
@@ -394,7 +396,7 @@ export default function ProyectosServiciosPage() {
                     {t("projectDescription")}
                   </h3>
                   <p className="text-[#6d6e6d] leading-relaxed">
-                    {selectedProject.detalles}
+                    {tp(`${selectedProject.id}.detalles`)}
                   </p>
                 </div>
 
@@ -404,7 +406,7 @@ export default function ProyectosServiciosPage() {
                     {t("resultsObtained")}
                   </h3>
                   <div className="grid sm:grid-cols-2 gap-3">
-                    {selectedProject.resultados.map((resultado, i) => (
+                    {selectedProject.resultados.map((_, i) => (
                       <motion.div
                         key={i}
                         initial={{ opacity: 0, x: -10 }}
@@ -417,7 +419,7 @@ export default function ProyectosServiciosPage() {
                           className="text-[#00269b] flex-shrink-0 mt-0.5"
                         />
                         <span className="text-sm text-[#6d6e6d]">
-                          {resultado}
+                          {tp(`${selectedProject.id}.resultados.${i}`)}
                         </span>
                       </motion.div>
                     ))}
@@ -511,13 +513,13 @@ export default function ProyectosServiciosPage() {
                     </div>
                     <div className="flex items-center gap-2 text-sm text-[#6d6e6d] mb-1.5">
                       <MapPin size={14} className="flex-shrink-0" />
-                      <span>{project.ubicacion}</span>
+                      <span>{tp(`${project.id}.ubicacion`)}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-[#6d6e6d] mb-3">
                       <Calendar size={14} className="flex-shrink-0" />
                       <span>
-                        {formatDate(project.fechaInicio)} -{" "}
-                        {formatDate(project.fechaFin)}
+                        {formatDate(project.fechaInicio, locale)} -{" "}
+                        {formatDate(project.fechaFin, locale)}
                       </span>
                     </div>
 
@@ -528,7 +530,7 @@ export default function ProyectosServiciosPage() {
 
                     {/* Results preview */}
                     <div className="space-y-1.5 mb-4">
-                      {project.resultados.slice(0, 2).map((resultado, i) => (
+                      {project.resultados.slice(0, 2).map((_, i) => (
                         <div
                           key={i}
                           className="flex items-center gap-2 text-xs text-[#6d6e6d]"
@@ -537,7 +539,7 @@ export default function ProyectosServiciosPage() {
                             size={12}
                             className="text-[#00269b] flex-shrink-0"
                           />
-                          {resultado}
+                          {tp(`${project.id}.resultados.${i}`)}
                         </div>
                       ))}
                     </div>

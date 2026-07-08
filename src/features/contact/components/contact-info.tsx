@@ -191,7 +191,7 @@ function GoogleMap() {
           style={{ border: 0 }}
           allowFullScreen
           loading="lazy"
-          title="Ubicación de GRUPO EMINSA"
+          title={t("contactInfo.mapTitle")}
           className="w-full"
         />
       </div>

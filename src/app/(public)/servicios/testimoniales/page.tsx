@@ -15,6 +15,7 @@ import { useTranslations } from "next-intl";
 
 export default function TestimonialesServiciosPage() {
   const t = useTranslations("pages.servicios.testimonialesPage");
+  const tt = useTranslations("serviciosConfig.testimoniales");
 
   return (
     <div className="min-h-screen">
@@ -168,7 +169,7 @@ export default function TestimonialesServiciosPage() {
 
                 {/* Testimonial Text */}
                 <p className="text-[#6d6e6d] italic leading-relaxed mb-6 relative z-10">
-                  &ldquo;{testimonial.testimonio}&rdquo;
+                  &ldquo;{tt(`${testimonial.id}.testimonio`)}&rdquo;
                 </p>
 
                 {/* Rating Stars */}
@@ -196,7 +197,7 @@ export default function TestimonialesServiciosPage() {
                       {testimonial.nombre}
                     </div>
                     <div className="text-xs text-[#6d6e6d]">
-                      {testimonial.cargo} - {testimonial.empresa}
+                      {tt(`${testimonial.id}.cargo`)} - {testimonial.empresa}
                     </div>
                   </div>
                 </div>
@@ -205,7 +206,7 @@ export default function TestimonialesServiciosPage() {
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#00269b]/10 text-[#00269b] text-xs font-medium rounded-full">
                     <Settings size={10} />
-                    {testimonial.servicio}
+                    {tt(`${testimonial.id}.servicio`)}
                   </span>
                   <span className="flex items-center gap-1.5 text-xs text-[#6d6e6d]">
                     <Calendar size={12} />

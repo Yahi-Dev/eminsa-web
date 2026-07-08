@@ -80,7 +80,7 @@ export function TransformerFields({
           {/* Contador de transformadores */}
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-gray-600">
-              Tipos de Transformadores: {formData.transformadores.length}
+              {t("form.transformer.typesCount")} {formData.transformadores.length}
             </span>
           </div>
         </div>

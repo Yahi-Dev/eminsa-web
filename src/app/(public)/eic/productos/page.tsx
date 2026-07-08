@@ -32,6 +32,8 @@ const categoryIcons: { [key: string]: React.ElementType } = {
 export default function EICProductosPage() {
   const t = useTranslations("eicPage.productos");
   const tc = useTranslations("eicConfig");
+  const specLabel = (l: string) => (tc.has(`specLabels.${l}`) ? tc(`specLabels.${l}`) : l);
+  const specValue = (v: string) => (tc.has(`specValues.${v}`) ? tc(`specValues.${v}`) : v);
 
   return (
     <div className="min-h-screen bg-white">
@@ -191,7 +193,7 @@ export default function EICProductosPage() {
                                 key={spec.label}
                                 className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded"
                               >
-                                {spec.label}: {spec.value}
+                                {specLabel(spec.label)}: {specValue(spec.value)}
                               </span>
                             ))}
                           </div>
