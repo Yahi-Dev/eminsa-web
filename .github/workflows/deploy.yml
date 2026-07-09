@@ -67,6 +67,37 @@ jobs:
             ENVEOF
             chmod 600 ~/eminsa.com/.env
 
+      - name: Backup de la base de datos (mysqldump, SOLO lectura) antes de cualquier cambio
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -eu
+            cd ~/eminsa.com
+            echo "== Backup de BD (mysqldump = solo lectura; no modifica ni borra datos) =="
+
+            if ! command -v mysqldump >/dev/null 2>&1; then
+              echo "ERROR: mysqldump no esta disponible en el servidor. Abortando: no se hace deploy sin backup."
+              exit 1
+            fi
+
+            mkdir -p backups
+
+            DBURL="$(grep -m1 '^DATABASE_URL=' .env | sed 's/^DATABASE_URL=//; s/^"//; s/"$//' | tr -d '\r')"
+            export DBURL
+            if [ -z "${DBURL:-}" ]; then
+              echo "ERROR: no se encontro DATABASE_URL en .env. Abortando (no se toca nada)."
+              exit 1
+            fi
+
+            node -e "const{execFileSync}=require(\"child_process\");const fs=require(\"fs\");const u=new URL(process.env.DBURL);const db=u.pathname.replace(/^\//,\"\").split(\"?\")[0];const ts=new Date().toISOString().replace(/[:.]/g,\"-\").slice(0,19);const out=\"backups/\"+db+\"-\"+ts+\".sql\";const fd=fs.openSync(out,\"w\");execFileSync(\"mysqldump\",[\"--host=\"+u.hostname,\"--port=\"+(u.port||\"3306\"),\"--user=\"+decodeURIComponent(u.username),\"--single-transaction\",\"--quick\",\"--no-tablespaces\",\"--skip-lock-tables\",db],{env:Object.assign({},process.env,{MYSQL_PWD:decodeURIComponent(u.password)}),stdio:[\"ignore\",fd,\"inherit\"]});fs.closeSync(fd);const size=fs.statSync(out).size;const head=fs.readFileSync(out,\"utf8\").slice(0,4096);if(size<100||!head.includes(\"CREATE TABLE\")){console.error(\"ERROR: backup vacio o incompleto\");process.exit(1);}execFileSync(\"gzip\",[\"-f\",out]);console.log(\"Backup OK -> \"+out+\".gz\");"
+
+            echo "Backups guardados (mas recientes):"
+            ls -1t backups/*.sql.gz 2>/dev/null | head -5 || true
+
       - name: Deploy build to server
         uses: appleboy/scp-action@v0.1.7
         with:
