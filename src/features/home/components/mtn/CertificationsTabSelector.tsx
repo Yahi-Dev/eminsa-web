@@ -15,6 +15,7 @@ interface Props {
 export default function CertificationsTabSelector({ certifications }: Props) {
   const t = useTranslations("home");
   const tc = useTranslations("pages.mtn.certificaciones.certs");
+  const tp = useTranslations("pages.mtn.certificaciones");
   const filtered = certifications.filter((c) => c.id !== "doe-2016");
   const [activeId, setActiveId] = useState(filtered[0]?.id ?? "");
   const activeCert = filtered.find((c) => c.id === activeId) ?? filtered[0];
@@ -68,8 +69,13 @@ export default function CertificationsTabSelector({ certifications }: Props) {
                 )}
               </div>
               <div className="space-y-1 flex-1">
-                <h3 className="font-bold text-gray-900 group-hover:text-[#00269b] transition-colors">
+                <h3 className="font-bold text-gray-900 group-hover:text-[#00269b] transition-colors flex items-center gap-2 flex-wrap">
                   {activeCert.name}
+                  {activeCert.inProcess && (
+                    <span className="inline-flex items-center px-2 py-0.5 bg-amber-100 text-amber-700 rounded-full text-[10px] font-bold uppercase tracking-wide">
+                      {tp("inProcess")}
+                    </span>
+                  )}
                 </h3>
                 <p className="text-sm text-gray-500">{tc(`${activeCert.id}.issuingBody`)}</p>
                 <p className="text-sm text-gray-600 line-clamp-2">

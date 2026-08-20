@@ -586,7 +586,7 @@ function CotizacionesContent() {
               </div>
               <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                 <Image src="https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242300/eminsa/site/certificados/ul-certified-logo.jpg" alt="UL" width={36} height={36} className="object-contain shrink-0" />
-                <span className="text-xs font-semibold text-gray-700">UL XPLH: Transformers, Distribution, Liquid-filled Type, Over 600 Volts</span>
+                <span className="text-xs font-semibold text-gray-700">{tm("cotizaciones.certUlXplh")}</span>
               </div>
             </div>
           </div>

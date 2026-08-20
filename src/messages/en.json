@@ -107,6 +107,7 @@
       "certificationsLabel": "Certifications",
       "standardsLabel": "Standards and Efficiencies",
       "active": "Active",
+      "inProcess": "In progress",
       "iso9001Name": "ISO 9001:2015",
       "iso9001": "Certified Quality Management System ensuring consistent processes and continuous improvement.",
       "iqnetName": "IQNET",
@@ -1294,6 +1295,7 @@
         },
         "benefitsTitle": "Guaranteed Benefits:",
         "validUntil": "Valid until:",
+        "inProcess": "In progress",
         "certs": {
           "iso-9001": {
             "fullName": "ISO 9001:2015 Quality Management System",
@@ -1308,7 +1310,7 @@
             }
           },
           "ansi-ieee-c57": {
-            "fullName": "ANSI/IEEE C57 Standard — Certified by CIDET (Accredited by ANAB)",
+            "fullName": "ANSI/IEEE C57 Standard — Certified by CIDET (Accredited by ANAB) — In progress",
             "description": "Our transformers are certified by CIDET — accredited by ANAB — in compliance with the ANSI/IEEE C57 standard, which governs the design, performance, and testing of electrical transformers.",
             "issuingBody": "CIDET (Accredited by ANAB)",
             "benefits": {
@@ -1320,7 +1322,7 @@
             }
           },
           "ul": {
-            "fullName": "Underwriters Laboratories — Registered Product Family",
+            "fullName": "Underwriters Laboratories — Registered Product Family — In progress",
             "description": "Our product family is registered with UL, ensuring equipment has been evaluated under the most stringent electrical safety standards in North America.",
             "issuingBody": "Underwriters Laboratories Inc.",
             "benefits": {
@@ -2449,7 +2451,7 @@
         }
       },
       "ansi-ieee-c57": {
-        "fullName": "ANSI/IEEE C57 Standard — Certified by CIDET (Accredited by ANAB)",
+        "fullName": "ANSI/IEEE C57 Standard — Certified by CIDET (Accredited by ANAB) — In progress",
         "description": "Our transformers are certified by CIDET — accredited by ANAB — in compliance with the ANSI/IEEE C57 standard.",
         "benefits": {
           "0": "Compliance with the most rigorous technical standard for transformers",
@@ -2460,7 +2462,7 @@
         }
       },
       "ul": {
-        "fullName": "Underwriters Laboratories — Registered Product Family",
+        "fullName": "Underwriters Laboratories — Registered Product Family — In progress",
         "description": "Our product family is registered with UL, evaluated under the most stringent electrical safety standards in North America.",
         "benefits": {
           "0": "Registered product family with UL",
@@ -4138,7 +4140,8 @@
       "callUs": "Call us",
       "whatsapp": "WhatsApp",
       "certifications": "Certifications",
-      "certAnsiCidet": "ANSI/IEEE C57 — Certified by CIDET",
+      "certAnsiCidet": "ANSI/IEEE C57 — Certified by CIDET (In progress)",
+      "certUlXplh": "UL XPLH: Transformers, Distribution, Liquid-filled Type, Over 600 Volts (In progress)",
       "errorNameRequired": "Name is required",
       "errorEmailRequired": "Email is required",
       "errorEmailInvalid": "Invalid email address",

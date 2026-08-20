@@ -235,6 +235,11 @@ export default function CertificacionesPage() {
                     <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{t("issuedBy")}</p>
                     <p className="font-bold text-[#00269b] text-lg">{t(`certs.${cert.id}.issuingBody`)}</p>
                   </div>
+                  {cert.inProcess && (
+                    <div className="px-4 py-2 bg-amber-50 rounded-xl border border-amber-200 text-center">
+                      <p className="text-xs text-amber-600 font-medium">{t("inProcess")}</p>
+                    </div>
+                  )}
                   {cert.validUntil && (
                     <div className="px-4 py-2 bg-green-50 rounded-xl border border-green-200 text-center">
                       <p className="text-xs text-green-600 font-medium">{t("validUntil")} {cert.validUntil}</p>
@@ -249,7 +254,14 @@ export default function CertificacionesPage() {
                       <span className="inline-block text-[#0099ce] font-semibold text-xs uppercase tracking-widest mb-2">
                         {cert.complianceOnly ? t("standardCompliance") : t("certificationLabel")}
                       </span>
-                      <h2 className="text-3xl font-bold text-gray-900 mb-1">{cert.name}</h2>
+                      <div className="flex items-center gap-3 flex-wrap mb-1">
+                        <h2 className="text-3xl font-bold text-gray-900">{cert.name}</h2>
+                        {cert.inProcess && (
+                          <span className="inline-flex items-center px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-bold uppercase tracking-wide">
+                            {t("inProcess")}
+                          </span>
+                        )}
+                      </div>
                       <p className="text-gray-400 text-sm">{t(`certs.${cert.id}.fullName`)}</p>
                     </div>
 

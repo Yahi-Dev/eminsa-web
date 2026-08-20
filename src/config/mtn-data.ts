@@ -90,6 +90,7 @@ export interface Certification {
   benefits: string[];
   image?: string;
   complianceOnly?: boolean; // true = cumplimiento de estándar, no una certificación formal
+  inProcess?: boolean; // true = certificación en trámite (aún no emitida)
 }
 
 export interface Resource {
@@ -439,6 +440,7 @@ export const certifications: Certification[] = [
     fullName: "Norma ANSI/IEEE C57 — Certificado por CIDET (Acreditado por ANAB)",
     description: "Nuestros transformadores son certificados por CIDET — acreditado por ANAB (la principal entidad de acreditación de América del Norte) — en cumplimiento con la norma ANSI/IEEE C57, el estándar internacional que rige el diseño, desempeño, pruebas y seguridad de transformadores eléctricos, publicado por el Institute of Electrical and Electronics Engineers (IEEE) y acreditado por el American National Standards Institute (ANSI).",
     issuingBody: "CIDET (Acreditado por ANAB)",
+    inProcess: true,
     benefits: [
       "Cumplimiento del estándar técnico más riguroso para transformadores",
       "Certificación emitida por CIDET, acreditado por ANAB",
@@ -454,6 +456,7 @@ export const certifications: Certification[] = [
     fullName: "UL CERTIFICATION XPLH: Transformers, Distribution, Liquid-filled Type, Over 600 Volts",
     description: "Nuestra familia de productos está registrada ante UL (Underwriters Laboratories), la organización de certificación de seguridad eléctrica líder en América del Norte. Contar con productos registrados en UL garantiza a nuestros clientes que los equipos han sido evaluados bajo los estándares de seguridad más exigentes del mercado.",
     issuingBody: "Underwriters Laboratories Inc.",
+    inProcess: true,
     benefits: [
       "Familia de productos registrados ante UL",
       "Evaluación bajo los estándares de seguridad eléctrica más exigentes",

@@ -7,7 +7,7 @@ import { ShieldCheck, FileCheck, Award, BadgeCheck, ArrowRight } from "lucide-re
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 
-const certItems = [
+const certItems: { id: string; logo: string; color: string; inProcess?: boolean }[] = [
   {
     id: "iso9001",
     logo: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242373/eminsa/site/images/SelloAENORISO9001_NEG.webp",
@@ -22,6 +22,7 @@ const certItems = [
     id: "ul",
     logo: "https://res.cloudinary.com/dixsymrg5/image/upload/f_auto,q_auto/v1775242300/eminsa/site/certificados/ul-certified-logo.jpg",
     color: "#0099ce",
+    inProcess: true,
   },
 ];
 
@@ -115,10 +116,17 @@ export default function StatsSection() {
                       </p>
                     </div>
                     <div className="shrink-0">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full text-xs font-semibold">
-                        <BadgeCheck className="w-3.5 h-3.5" />
-                        {t("certifications.active")}
-                      </div>
+                      {cert.inProcess ? (
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 text-amber-700 rounded-full text-xs font-semibold">
+                          <BadgeCheck className="w-3.5 h-3.5" />
+                          {t("certifications.inProcess")}
+                        </div>
+                      ) : (
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 text-green-700 rounded-full text-xs font-semibold">
+                          <BadgeCheck className="w-3.5 h-3.5" />
+                          {t("certifications.active")}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </motion.div>
