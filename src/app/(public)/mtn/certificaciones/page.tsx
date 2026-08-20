@@ -232,12 +232,14 @@ export default function CertificacionesPage() {
                     </div>
                   </motion.div>
                   <div className="text-center">
-                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">{t("issuedBy")}</p>
+                    <p className="text-xs text-gray-400 uppercase tracking-wider mb-1">
+                      {cert.inProcess ? t("certifyingBody") : t("issuedBy")}
+                    </p>
                     <p className="font-bold text-[#00269b] text-lg">{t(`certs.${cert.id}.issuingBody`)}</p>
                   </div>
                   {cert.inProcess && (
                     <div className="px-4 py-2 bg-amber-50 rounded-xl border border-amber-200 text-center">
-                      <p className="text-xs text-amber-600 font-medium">{t("inProcess")}</p>
+                      <p className="text-xs text-amber-600 font-medium">{t("inProcessNote")}</p>
                     </div>
                   )}
                   {cert.validUntil && (
@@ -251,8 +253,16 @@ export default function CertificacionesPage() {
                 <div className="lg:col-span-3 p-8 lg:p-12">
                   <div className="space-y-8">
                     <div>
-                      <span className="inline-block text-[#0099ce] font-semibold text-xs uppercase tracking-widest mb-2">
-                        {cert.complianceOnly ? t("standardCompliance") : t("certificationLabel")}
+                      <span
+                        className={`inline-block font-semibold text-xs uppercase tracking-widest mb-2 ${
+                          cert.inProcess ? "text-amber-600" : "text-[#0099ce]"
+                        }`}
+                      >
+                        {cert.complianceOnly
+                          ? t("standardCompliance")
+                          : cert.inProcess
+                            ? t("certificationInProcess")
+                            : t("certificationLabel")}
                       </span>
                       <div className="flex items-center gap-3 flex-wrap mb-1">
                         <h2 className="text-3xl font-bold text-gray-900">{cert.name}</h2>
@@ -272,7 +282,7 @@ export default function CertificacionesPage() {
                     <div>
                       <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                         <CheckCircle2 size={18} className="text-[#00269b]" />
-                        {t("benefitsTitle")}
+                        {cert.inProcess ? t("benefitsTitleInProcess") : t("benefitsTitle")}
                       </h3>
                       <div className="grid sm:grid-cols-2 gap-3">
                         {cert.benefits.map((_, idx) => (

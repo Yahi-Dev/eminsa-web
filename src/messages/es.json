@@ -118,9 +118,9 @@
       "doeName": "DOE-2016",
       "doe": "Eficiencia energética obligatoria",
       "doeDetail": "Normativa del Departamento de Energía de EE.UU. que establece niveles mínimos de eficiencia, reduciendo pérdidas y emisiones.",
-      "ulName": "UL Listed",
-      "ul": "Seguridad eléctrica certificada",
-      "ulDetail": "Certificación Underwriters Laboratories que garantiza la seguridad y conformidad de equipos eléctricos.",
+      "ulName": "UL XPLH",
+      "ul": "Registro de seguridad eléctrica en trámite",
+      "ulDetail": "Estamos en proceso de registrar nuestra familia de productos ante Underwriters Laboratories, referente en seguridad eléctrica en América del Norte.",
       "iec60076Name": "IEC 60076",
       "iec60076": "Estándar internacional para transformadores de potencia",
       "iec60076Detail": "La norma IEC 60076 de la Comisión Electrotécnica Internacional establece los requisitos de diseño, fabricación, pruebas y puesta en servicio de transformadores de potencia hasta 765 kV, incluyendo tolerancias de impedancia, ensayos de elevación de temperatura y directrices de transporte e instalación.",
@@ -1279,7 +1279,7 @@
         "hero": {
           "badge": "Respaldo de Calidad",
           "title": "Certificaciones",
-          "description": "Nuestro compromiso con la calidad está respaldado por certificaciones internacionales reconocidas que avalan nuestros procesos y productos."
+          "description": "Nuestro compromiso con la calidad se refleja en las certificaciones internacionales que respaldan nuestros procesos y en las que actualmente estamos tramitando."
         },
         "issuedBy": "Emitido por",
         "navPrevious": "Anterior",
@@ -1296,6 +1296,10 @@
         "benefitsTitle": "Beneficios que Garantiza:",
         "validUntil": "Válido hasta:",
         "inProcess": "En trámite",
+        "certificationInProcess": "Certificación en Trámite",
+        "certifyingBody": "Entidad certificadora",
+        "benefitsTitleInProcess": "Beneficios que Aportará:",
+        "inProcessNote": "Proceso de certificación en curso",
         "certs": {
           "iso-9001": {
             "fullName": "Sistema de Gestión de Calidad ISO 9001:2015",
@@ -1310,25 +1314,25 @@
             }
           },
           "ansi-ieee-c57": {
-            "fullName": "Norma ANSI/IEEE C57 — Certificado por CIDET (Acreditado por ANAB) — En trámite",
-            "description": "Nuestros transformadores son certificados por CIDET — acreditado por ANAB — en cumplimiento con la norma ANSI/IEEE C57, el estándar internacional que rige el diseño, desempeño y pruebas de transformadores eléctricos.",
+            "fullName": "Norma ANSI/IEEE C57 — Certificación en trámite con CIDET (Acreditado por ANAB)",
+            "description": "Estamos en proceso de certificar nuestros transformadores con CIDET — acreditado por ANAB — bajo la norma ANSI/IEEE C57, el estándar internacional que rige el diseño, desempeño y pruebas de transformadores eléctricos. El trámite se encuentra actualmente en curso.",
             "issuingBody": "CIDET (Acreditado por ANAB)",
             "benefits": {
-              "0": "Cumplimiento del estándar técnico más riguroso para transformadores",
-              "1": "Certificación emitida por CIDET, acreditado por ANAB",
-              "2": "Diseño y pruebas conforme a IEEE C57.12.00 y C57.12.90",
-              "3": "Acceso a mercados que exigen cumplimiento ANSI/IEEE",
+              "0": "Acreditará el cumplimiento del estándar técnico más riguroso para transformadores",
+              "1": "Será emitida por CIDET, acreditado por ANAB",
+              "2": "Validará el diseño y las pruebas conforme a IEEE C57.12.00 y C57.12.90",
+              "3": "Abrirá el acceso a mercados que exigen cumplimiento ANSI/IEEE",
               "4": "Respaldo de las instituciones normativas líderes en Norteamérica"
             }
           },
           "ul": {
-            "fullName": "Underwriters Laboratories — Familia de Productos Registrados — En trámite",
-            "description": "Nuestra familia de productos está registrada ante UL, garantizando que los equipos han sido evaluados bajo los estándares de seguridad eléctrica más exigentes de América del Norte.",
+            "fullName": "Underwriters Laboratories — Registro de familia de productos en trámite",
+            "description": "Estamos en proceso de registrar nuestra familia de productos ante UL (Underwriters Laboratories), la organización líder en certificación de seguridad eléctrica de América del Norte. El trámite se encuentra actualmente en curso.",
             "issuingBody": "Underwriters Laboratories Inc.",
             "benefits": {
-              "0": "Familia de productos registrados ante UL",
-              "1": "Evaluación bajo los estándares de seguridad eléctrica más exigentes",
-              "2": "Reconocimiento en mercados de América del Norte",
+              "0": "Registrará nuestra familia de productos ante UL",
+              "1": "Someterá los equipos a los estándares de seguridad eléctrica más exigentes",
+              "2": "Ampliará el reconocimiento en mercados de América del Norte",
               "3": "Mayor confianza para clientes, distribuidores e ingenieros",
               "4": "Respaldo de la organización de certificación líder en Norteamérica"
             }
@@ -1364,7 +1368,7 @@
         },
         "cta": {
           "title": "Confíe en la Calidad Certificada",
-          "description": "Todos nuestros transformadores están respaldados por estas certificaciones. Solicite su cotización y reciba un producto de calidad garantizada.",
+          "description": "Nuestros transformadores se fabrican bajo los estándares internacionales más exigentes. Solicite su cotización y reciba un producto de calidad garantizada.",
           "requestQuote": "Solicitar Cotización",
           "viewProducts": "Ver Productos"
         }
@@ -2451,23 +2455,23 @@
         }
       },
       "ansi-ieee-c57": {
-        "fullName": "Norma ANSI/IEEE C57 — Certificado por CIDET (Acreditado por ANAB) — En trámite",
-        "description": "Nuestros transformadores son certificados por CIDET — acreditado por ANAB — en cumplimiento con la norma ANSI/IEEE C57.",
+        "fullName": "Norma ANSI/IEEE C57 — Certificación en trámite con CIDET (Acreditado por ANAB)",
+        "description": "Estamos en proceso de certificar nuestros transformadores con CIDET — acreditado por ANAB — bajo la norma ANSI/IEEE C57. El trámite se encuentra actualmente en curso.",
         "benefits": {
-          "0": "Cumplimiento del estándar técnico más riguroso para transformadores",
-          "1": "Certificación emitida por CIDET, acreditado por ANAB",
-          "2": "Diseño y pruebas conforme a IEEE C57.12.00 y C57.12.90",
-          "3": "Acceso a mercados que exigen cumplimiento ANSI/IEEE",
+          "0": "Acreditará el cumplimiento del estándar técnico más riguroso para transformadores",
+          "1": "Será emitida por CIDET, acreditado por ANAB",
+          "2": "Validará el diseño y las pruebas conforme a IEEE C57.12.00 y C57.12.90",
+          "3": "Abrirá el acceso a mercados que exigen cumplimiento ANSI/IEEE",
           "4": "Respaldo de las instituciones normativas líderes en Norteamérica"
         }
       },
       "ul": {
-        "fullName": "Underwriters Laboratories — Familia de Productos Registrados — En trámite",
-        "description": "Nuestra familia de productos está registrada ante UL, evaluada bajo los estándares de seguridad eléctrica más exigentes de América del Norte.",
+        "fullName": "Underwriters Laboratories — Registro de familia de productos en trámite",
+        "description": "Estamos en proceso de registrar nuestra familia de productos ante UL (Underwriters Laboratories). El trámite se encuentra actualmente en curso.",
         "benefits": {
-          "0": "Familia de productos registrados ante UL",
-          "1": "Evaluación bajo los estándares de seguridad eléctrica más exigentes",
-          "2": "Reconocimiento en mercados de América del Norte",
+          "0": "Registrará nuestra familia de productos ante UL",
+          "1": "Someterá los equipos a los estándares de seguridad eléctrica más exigentes",
+          "2": "Ampliará el reconocimiento en mercados de América del Norte",
           "3": "Mayor confianza para clientes, distribuidores e ingenieros",
           "4": "Respaldo de la organización de certificación líder en Norteamérica"
         }
@@ -4139,8 +4143,8 @@
       "callUs": "Llámenos",
       "whatsapp": "WhatsApp",
       "certifications": "Certificaciones",
-      "certAnsiCidet": "ANSI/IEEE C57 — Certificado por CIDET (En trámite)",
-      "certUlXplh": "UL XPLH: Transformers, Distribution, Liquid-filled Type, Over 600 Volts (En trámite)",
+      "certAnsiCidet": "ANSI/IEEE C57 — Certificación en trámite con CIDET",
+      "certUlXplh": "UL XPLH: Transformers, Distribution, Liquid-filled Type, Over 600 Volts — Registro en trámite",
       "errorNameRequired": "El nombre es requerido",
       "errorEmailRequired": "El correo electrónico es requerido",
       "errorEmailInvalid": "Correo electrónico inválido",
