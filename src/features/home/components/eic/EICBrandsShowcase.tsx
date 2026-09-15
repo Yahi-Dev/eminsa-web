@@ -239,9 +239,14 @@ export default function EICBrandsShowcase() {
                     {t("exclusiveRep")}
                   </span>
                 </div>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {tc(`${activeBrand.slug}.description`)}
-                </p>
+                {/* data-nosnippet: evita que Google use la descripción de la marca
+                    como snippet del sitio (describe al fabricante representado,
+                    no a Grupo EMINSA). No afecta el render ni la indexación. */}
+                <div data-nosnippet>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {tc(`${activeBrand.slug}.description`)}
+                  </p>
+                </div>
               </div>
 
               {/* Separator */}

@@ -7,11 +7,11 @@ import { getMessages, getLocale } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: {
-    default: "Grupo Eminsa | Transformer Manufacturer Dominican Republic & Caribbean",
-    template: "%s | Grupo Eminsa",
+    default: "Grupo EMINSA | Fabricante de Transformadores en República Dominicana",
+    template: "%s | Grupo EMINSA",
   },
   description:
-    "Transformer manufacturer in Dominican Republic and the Caribbean. Distribution transformers (pad-mount, pole-type, substation) built to IEEE/ANSI standards. DOE 2016 compliant. 50+ years of experience.",
+    "Grupo EMINSA: fabricante dominicano de transformadores de distribución con más de 50 años. Manufactura, reparación, alquiler y servicios técnicos.",
   keywords: [
     "transformer manufacturer Dominican Republic",
     "transformer manufacturer Caribbean",
@@ -32,19 +32,19 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://eminsa.com"),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Grupo Eminsa | Transformer Manufacturer — Dominican Republic & Caribbean",
+    title: "Grupo EMINSA | Fabricante dominicano de transformadores",
     description:
-      "Distribution transformer manufacturer in the Caribbean. Pole-type, pad-mount and substation transformers built to IEEE/ANSI standards. DOE 2016 compliant.",
+      "Fabricante dominicano de transformadores de distribución con más de 50 años. Manufactura, reparación, remanufactura y servicios técnicos en República Dominicana y el Caribe.",
     url: "https://eminsa.com",
-    siteName: "Grupo Eminsa",
+    siteName: "Grupo EMINSA",
     locale: "es_DO",
     type: "website",
-    images: [{ url: "/images/eminsa-og.jpg", width: 1200, height: 630, alt: "Grupo Eminsa — Transformer Manufacturer" }],
+    images: [{ url: "/images/eminsa-og.jpg", width: 1200, height: 630, alt: "Grupo EMINSA — Fabricante de transformadores" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Grupo Eminsa | Transformer Manufacturer",
-    description: "Distribution transformer manufacturer in Dominican Republic & Caribbean. IEEE/ANSI · DOE 2016.",
+    title: "Grupo EMINSA | Fabricante dominicano de transformadores",
+    description: "Fabricante dominicano de transformadores de distribución. Más de 50 años en República Dominicana y el Caribe.",
   },
   robots: {
     index: true,
@@ -76,21 +76,33 @@ export default async function RootLayout({
                 {
                   "@type": ["Organization", "LocalBusiness"],
                   "@id": "https://eminsa.com/#organization",
-                  name: "Grupo Eminsa",
+                  name: "Grupo EMINSA",
+                  alternateName: "Grupo Eminsa",
                   url: "https://eminsa.com",
                   logo: "https://eminsa.com/icono-Photoroom.png",
                   description:
-                    "Transformer manufacturer in Dominican Republic and the Caribbean. Distribution transformers (pad-mount, pole-type, substation) built to IEEE/ANSI standards.",
+                    "Grupo EMINSA es una organización empresarial dominicana con más de 50 años de trayectoria en el sector de transformadores eléctricos de distribución: manufactura, reparación, remanufactura, comercialización y servicios técnicos especializados en República Dominicana y el Caribe.",
                   foundingYear: "1973",
                   areaServed: ["Dominican Republic", "Caribbean", "Latin America"],
+                  telephone: "+1-809-560-7773",
+                  email: "info@eminsa.com",
                   contactPoint: {
                     "@type": "ContactPoint",
                     contactType: "sales",
+                    telephone: "+1-809-560-7773",
+                    email: "info@eminsa.com",
                     availableLanguage: ["Spanish", "English"],
                   },
-                  sameAs: [],
+                  sameAs: [
+                    "https://www.facebook.com/GrupoEminsa/",
+                    "https://www.instagram.com/grupo.eminsa/",
+                    "https://www.linkedin.com/company/grupo-eminsa/",
+                    "https://youtube.com/grupoeminsa",
+                  ],
                   address: {
                     "@type": "PostalAddress",
+                    streetAddress: "Av. Duarte, Km 22, Parque Industrial Duarte, Nave No. 6",
+                    addressLocality: "Santo Domingo",
                     addressCountry: "DO",
                   },
                 },
