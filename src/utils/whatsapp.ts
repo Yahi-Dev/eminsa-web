@@ -1,9 +1,20 @@
+import { contactInfo } from "@/config/navigation";
+
 /**
- * Retorna el enlace directo de WhatsApp Business de Grupo Eminsa.
- * El parámetro `message` se mantiene por compatibilidad pero no aplica
- * al formato wa.me/message/... (enlace de WhatsApp Business).
+ * Mensaje que se pre-escribe en WhatsApp cuando el enlace no aporta uno propio.
+ * Las páginas de producto pasan su propio mensaje con el nombre del producto.
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function getWhatsAppUrl(_message?: string): string {
-  return "https://wa.me/message/G3PJBGJETLB7P1";
+export const DEFAULT_WHATSAPP_MESSAGE =
+  "Hola, quiero información sobre transformadores";
+
+/** Número de WhatsApp Business en formato wa.me (solo dígitos). */
+const WHATSAPP_NUMBER = contactInfo.whatsapp.replace(/\D/g, "");
+
+/**
+ * Retorna el enlace de WhatsApp Business de Grupo EMINSA con el mensaje
+ * ya escrito. Si no se pasa `message` se usa DEFAULT_WHATSAPP_MESSAGE.
+ */
+export function getWhatsAppUrl(message?: string): string {
+  const text = (message ?? DEFAULT_WHATSAPP_MESSAGE).trim();
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }

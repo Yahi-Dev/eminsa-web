@@ -192,13 +192,13 @@ export default function GarantiaPage() {
             <div className="bg-gray-50 rounded-2xl p-8">
               <h2 className="text-xl font-bold text-gray-900 mb-6">{t("contact.title")}</h2>
               <div className="space-y-4">
-                <a href="tel:809-555-0123" className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-shadow">
+                <a href="tel:+18095607773" className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-shadow">
                   <div className="w-12 h-12 bg-[#00269b] rounded-lg flex items-center justify-center">
                     <Phone size={24} className="text-white" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">{t("contact.phone")}</p>
-                    <p className="font-semibold text-gray-900">(809) 555-0123</p>
+                    <p className="font-semibold text-gray-900">(809) 560-7773</p>
                   </div>
                 </a>
                 <a href="mailto:servicio@eminsa.com" className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-shadow">

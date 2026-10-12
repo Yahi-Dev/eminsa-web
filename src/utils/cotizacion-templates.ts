@@ -470,9 +470,9 @@ function buildCustomerHtml(data: CotizacionTemplateData): string {
             <!-- Quick contact -->
             <p style="margin:0 0 5px;color:#374151;font-size:13px;font-weight:700;">¿Necesita asistencia inmediata?</p>
             <p style="margin:0;color:#6b7280;font-size:13px;line-height:1.8;">
-              📞 <a href="tel:+18095965774" style="color:${color};font-weight:600;">(809) 596-5774</a>
+              📞 <a href="tel:+18095607773" style="color:${color};font-weight:600;">(809) 560-7773</a>
               &nbsp;|&nbsp;
-              📱 <a href="https://wa.me/18095965774" style="color:${color};font-weight:600;">WhatsApp</a>
+              📱 <a href="https://wa.me/18095607773" style="color:${color};font-weight:600;">WhatsApp</a>
               &nbsp;|&nbsp;
               ✉️ <a href="mailto:info@eminsa.com" style="color:${color};font-weight:600;">info@eminsa.com</a>
             </p>
@@ -522,8 +522,8 @@ ${buildDetallesText(data.detalles) || '  Sin detalles adicionales.'}
 
 
 ¿Necesita asistencia inmediata?
-  Teléfono  : (809) 596-5774
-  WhatsApp  : +1 809-596-5774
+  Teléfono  : (809) 560-7773
+  WhatsApp  : +1 809-560-7773
   Correo    : info@eminsa.com
 
 ─────────────────────────────────────────
